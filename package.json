@@ -1,0 +1,28 @@
+{
+  "name": "@tryvital/vital-node",
+  "version": "0.1.0",
+  "description": "Node client for Vital",
+  "author": "maitham",
+  "keywords": [
+    "vital",
+    "node",
+    "typescript",
+    "wearables data"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "prepublishOnly": "npm run build",
+    "lint": "tsdx lint"
+  },
+  "dependencies": {
+    "auth0": "^2.35.1",
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.5",
+    "typescript": "^3.6.4"
+  }
+}
