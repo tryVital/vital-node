@@ -22,6 +22,9 @@ export enum Providers {
     Garmin = 'garmin',
     Whoop = 'whoop',
     Strava = 'strava',
-    Renpho = 'renpho'
+    Renpho = 'renpho',
+    Peloton = 'peloton',
+    Wahoo = 'wahoo',
+    Zwift = 'zwift'
 }
 

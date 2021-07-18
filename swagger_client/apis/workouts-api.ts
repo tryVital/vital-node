@@ -16,6 +16,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { ClientFacingStream } from '../models';
 import { ClientWorkoutResponse } from '../models';
 import { HTTPValidationError } from '../models';
 /**
@@ -91,6 +92,46 @@ export const WorkoutsApiAxiosParamCreator = function (configuration?: Configurat
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * GET Stream Data for workout
+         * @summary Get Workout Stream
+         * @param {string} workoutId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWorkoutStream: async (workoutId: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workoutId' is not null or undefined
+            if (workoutId === null || workoutId === undefined) {
+                throw new RequiredError('workoutId','Required parameter workoutId was null or undefined when calling getWorkoutStream.');
+            }
+            const localVarPath = `/v1/workouts/{workout_id}/stream/data`
+                .replace(`{${"workout_id"}}`, encodeURIComponent(String(workoutId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                query.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -112,6 +153,20 @@ export const WorkoutsApiFp = function(configuration?: Configuration) {
          */
         async getUserWorkouts(userKey: string, startDate: Date, endDate: Date, provider?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClientWorkoutResponse>> {
             const localVarAxiosArgs = await WorkoutsApiAxiosParamCreator(configuration).getUserWorkouts(userKey, startDate, endDate, provider, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * GET Stream Data for workout
+         * @summary Get Workout Stream
+         * @param {string} workoutId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getWorkoutStream(workoutId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClientFacingStream>> {
+            const localVarAxiosArgs = await WorkoutsApiAxiosParamCreator(configuration).getWorkoutStream(workoutId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -139,6 +194,16 @@ export const WorkoutsApiFactory = function (configuration?: Configuration, baseP
         getUserWorkouts(userKey: string, startDate: Date, endDate: Date, provider?: string, options?: any): AxiosPromise<ClientWorkoutResponse> {
             return WorkoutsApiFp(configuration).getUserWorkouts(userKey, startDate, endDate, provider, options).then((request) => request(axios, basePath));
         },
+        /**
+         * GET Stream Data for workout
+         * @summary Get Workout Stream
+         * @param {string} workoutId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWorkoutStream(workoutId: string, options?: any): AxiosPromise<ClientFacingStream> {
+            return WorkoutsApiFp(configuration).getWorkoutStream(workoutId, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -162,5 +227,16 @@ export class WorkoutsApi extends BaseAPI {
      */
     public getUserWorkouts(userKey: string, startDate: Date, endDate: Date, provider?: string, options?: any) {
         return WorkoutsApiFp(this.configuration).getUserWorkouts(userKey, startDate, endDate, provider, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * GET Stream Data for workout
+     * @summary Get Workout Stream
+     * @param {string} workoutId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkoutsApi
+     */
+    public getWorkoutStream(workoutId: string, options?: any) {
+        return WorkoutsApiFp(this.configuration).getWorkoutStream(workoutId, options).then((request) => request(this.axios, this.basePath));
     }
 }

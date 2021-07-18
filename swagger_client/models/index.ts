@@ -5,6 +5,7 @@ export * from './client-facing-body';
 export * from './client-facing-sleep';
 export * from './client-facing-source-specific';
 export * from './client-facing-sport';
+export * from './client-facing-stream';
 export * from './client-facing-user';
 export * from './client-facing-webhook';
 export * from './client-facing-workout';

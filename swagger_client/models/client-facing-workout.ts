@@ -36,7 +36,7 @@ export interface ClientFacingWorkout {
      */
     maxHr?: any;
     /**
-     * Distance travelled during workout::meters
+     * Cumulated distance for exercise.
      * @type {number}
      * @memberof ClientFacingWorkout
      */
