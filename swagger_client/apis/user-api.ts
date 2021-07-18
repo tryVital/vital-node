@@ -330,6 +330,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        // @ts-ignore
         async getConnectedProviders(userKey: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key, string]: Array<SourceClientFacing>;}>> {
             const localVarAxiosArgs = await UserApiAxiosParamCreator(configuration).getConnectedProviders(userKey, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
@@ -410,7 +411,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} userKey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
-         */
+         */        // @ts-ignore
         getConnectedProviders(userKey: string, options?: any): AxiosPromise<{ [key, string]: Array<SourceClientFacing>;}> {
             return UserApiFp(configuration).getConnectedProviders(userKey, options).then((request) => request(axios, basePath));
         },
