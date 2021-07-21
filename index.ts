@@ -17,7 +17,7 @@ export class VitalClient {
   config: ClientConfig;
   clientCredentials: ClientCredentials;
   Activity: ActivityApi;
-  LinkToken: LinkApi;
+  Link: LinkApi;
   Body: BodyApi;
   ProviderSpecific: ProviderSpecificApi;
   Sleep: SleepApi;
@@ -47,7 +47,7 @@ export class VitalClient {
 
     // Hook APIS
     this.Activity = new ActivityApi(baseConfig, baseURL, axiosApiInstance);
-    this.LinkToken = new LinkApi(baseConfig, baseURL, axiosApiInstance);
+    this.Link = new LinkApi(baseConfig, baseURL, axiosApiInstance);
     this.Body = new BodyApi(baseConfig, baseURL, axiosApiInstance);
     this.ProviderSpecific = new ProviderSpecificApi(
       baseConfig,

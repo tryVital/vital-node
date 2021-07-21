@@ -17,14 +17,66 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { HTTPValidationError } from '../models';
+import { IndividualProviderData } from '../models';
 import { LinkTokenExchange } from '../models';
 import { LinkTokenExchangeResponse } from '../models';
+import { ProviderLinkResponse } from '../models';
+import { ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift } from '../models';
 /**
  * LinkApi - axios parameter creator
  * @export
  */
 export const LinkApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * Check token is valid and begin deletion for one time use token.
+         * @summary Connect Individual Provider
+         * @param {IndividualProviderData} body 
+         * @param {ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift} provider 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectIndividualProvider: async (body: IndividualProviderData, provider: ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling connectIndividualProvider.');
+            }
+            // verify required parameter 'provider' is not null or undefined
+            if (provider === null || provider === undefined) {
+                throw new RequiredError('provider','Required parameter provider was null or undefined when calling connectIndividualProvider.');
+            }
+            const localVarPath = `/v1/link/provider/{provider}`
+                .replace(`{${"provider"}}`, encodeURIComponent(String(provider)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                query.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * POST Generate user Link token using user_key.
          * @summary Generate Temp Link Token
@@ -78,6 +130,21 @@ export const LinkApiAxiosParamCreator = function (configuration?: Configuration)
 export const LinkApiFp = function(configuration?: Configuration) {
     return {
         /**
+         * Check token is valid and begin deletion for one time use token.
+         * @summary Connect Individual Provider
+         * @param {IndividualProviderData} body 
+         * @param {ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift} provider 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async connectIndividualProvider(body: IndividualProviderData, provider: ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProviderLinkResponse>> {
+            const localVarAxiosArgs = await LinkApiAxiosParamCreator(configuration).connectIndividualProvider(body, provider, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
          * POST Generate user Link token using user_key.
          * @summary Generate Temp Link Token
          * @param {LinkTokenExchange} body 
@@ -101,6 +168,17 @@ export const LinkApiFp = function(configuration?: Configuration) {
 export const LinkApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
+         * Check token is valid and begin deletion for one time use token.
+         * @summary Connect Individual Provider
+         * @param {IndividualProviderData} body 
+         * @param {ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift} provider 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectIndividualProvider(body: IndividualProviderData, provider: ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift, options?: any): AxiosPromise<ProviderLinkResponse> {
+            return LinkApiFp(configuration).connectIndividualProvider(body, provider, options).then((request) => request(axios, basePath));
+        },
+        /**
          * POST Generate user Link token using user_key.
          * @summary Generate Temp Link Token
          * @param {LinkTokenExchange} body 
@@ -120,6 +198,18 @@ export const LinkApiFactory = function (configuration?: Configuration, basePath?
  * @extends {BaseAPI}
  */
 export class LinkApi extends BaseAPI {
+    /**
+     * Check token is valid and begin deletion for one time use token.
+     * @summary Connect Individual Provider
+     * @param {IndividualProviderData} body 
+     * @param {ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift} provider 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LinkApi
+     */
+    public connectIndividualProvider(body: IndividualProviderData, provider: ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift, options?: any) {
+        return LinkApiFp(this.configuration).connectIndividualProvider(body, provider, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * POST Generate user Link token using user_key.
      * @summary Generate Temp Link Token

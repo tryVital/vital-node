@@ -16,6 +16,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { ClientFacingSleepStream } from '../models';
 import { ClientSleepResponse } from '../models';
 import { HTTPValidationError } from '../models';
 /**
@@ -91,6 +92,46 @@ export const SleepApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * GET Sleep Stream Data for sleep_id
+         * @summary Get Workout Stream
+         * @param {string} sleepId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWorkoutStream: async (sleepId: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'sleepId' is not null or undefined
+            if (sleepId === null || sleepId === undefined) {
+                throw new RequiredError('sleepId','Required parameter sleepId was null or undefined when calling getWorkoutStream.');
+            }
+            const localVarPath = `/v1/sleep/{sleep_id}/stream/data`
+                .replace(`{${"sleep_id"}}`, encodeURIComponent(String(sleepId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                query.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -112,6 +153,20 @@ export const SleepApiFp = function(configuration?: Configuration) {
          */
         async getUserSleep(userKey: string, startDate: Date, endDate: Date, provider?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClientSleepResponse>> {
             const localVarAxiosArgs = await SleepApiAxiosParamCreator(configuration).getUserSleep(userKey, startDate, endDate, provider, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * GET Sleep Stream Data for sleep_id
+         * @summary Get Workout Stream
+         * @param {string} sleepId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getWorkoutStream(sleepId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClientFacingSleepStream>> {
+            const localVarAxiosArgs = await SleepApiAxiosParamCreator(configuration).getWorkoutStream(sleepId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -139,6 +194,16 @@ export const SleepApiFactory = function (configuration?: Configuration, basePath
         getUserSleep(userKey: string, startDate: Date, endDate: Date, provider?: string, options?: any): AxiosPromise<ClientSleepResponse> {
             return SleepApiFp(configuration).getUserSleep(userKey, startDate, endDate, provider, options).then((request) => request(axios, basePath));
         },
+        /**
+         * GET Sleep Stream Data for sleep_id
+         * @summary Get Workout Stream
+         * @param {string} sleepId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWorkoutStream(sleepId: string, options?: any): AxiosPromise<ClientFacingSleepStream> {
+            return SleepApiFp(configuration).getWorkoutStream(sleepId, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -162,5 +227,16 @@ export class SleepApi extends BaseAPI {
      */
     public getUserSleep(userKey: string, startDate: Date, endDate: Date, provider?: string, options?: any) {
         return SleepApiFp(this.configuration).getUserSleep(userKey, startDate, endDate, provider, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * GET Sleep Stream Data for sleep_id
+     * @summary Get Workout Stream
+     * @param {string} sleepId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SleepApi
+     */
+    public getWorkoutStream(sleepId: string, options?: any) {
+        return SleepApiFp(this.configuration).getWorkoutStream(sleepId, options).then((request) => request(this.axios, this.basePath));
     }
 }

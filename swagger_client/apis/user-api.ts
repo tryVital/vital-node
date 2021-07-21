@@ -411,7 +411,8 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} userKey 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
-         */        // @ts-ignore
+         */
+        // @ts-ignore
         getConnectedProviders(userKey: string, options?: any): AxiosPromise<{ [key, string]: Array<SourceClientFacing>;}> {
             return UserApiFp(configuration).getConnectedProviders(userKey, options).then((request) => request(axios, basePath));
         },
