@@ -1,4 +1,4 @@
-import { AccessToken, ClientConfig } from ".";
+import { AccessToken, ClientConfig } from "./models";
 import CONFIG from "./config";
 
 const AuthenticationClient = require("auth0").AuthenticationClient;

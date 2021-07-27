@@ -9,7 +9,7 @@ import {
   WorkoutsApi,
 } from "./client";
 import axios from "axios";
-import { ClientConfig } from "./lib";
+import { ClientConfig } from "./lib/models";
 import CONFIG from "./lib/config";
 import { ClientCredentials } from "./lib/credentials";
 
@@ -28,8 +28,7 @@ export class VitalClient {
   constructor(config: ClientConfig) {
     this.config = config;
     this.clientCredentials = new ClientCredentials(config);
-    const baseURL = CONFIG.baseUrls[config.environment];
-    const baseConfig = { accessToken: this.clientCredentials.access_token() };
+    const baseURL = CONFIG.baseUrls[config.environment] + "/v1";
     const axiosApiInstance = axios.create();
 
     axiosApiInstance.interceptors.request.use(
