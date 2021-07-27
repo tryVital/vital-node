@@ -23,4 +23,10 @@ export interface LinkTokenExchange {
      * @memberof LinkTokenExchange
      */
     userKey: any;
+    /**
+     * Device slug oura, fitbit, garmin
+     * @type {Providers}
+     * @memberof LinkTokenExchange
+     */
+    provider?: any;
 }

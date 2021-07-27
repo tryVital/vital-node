@@ -16,6 +16,7 @@
  * @export
  * @interface ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift
  */
-import { PasswordProviders } from "./password-providers";
+import { PasswordProviders } from ".";
+
 export type ProvidersThatRequirePasswordAuthWhoopRenphoPelotonZwift =
   PasswordProviders;
