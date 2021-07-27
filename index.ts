@@ -7,7 +7,7 @@ import {
   UserApi,
   WebhooksApi,
   WorkoutsApi,
-} from "./swagger_client";
+} from "./client";
 import axios from "axios";
 import { ClientConfig } from "./lib";
 import CONFIG from "./lib/config";
@@ -46,17 +46,13 @@ export class VitalClient {
     );
 
     // Hook APIS
-    this.Activity = new ActivityApi(baseConfig, baseURL, axiosApiInstance);
-    this.Link = new LinkApi(baseConfig, baseURL, axiosApiInstance);
-    this.Body = new BodyApi(baseConfig, baseURL, axiosApiInstance);
-    this.ProviderSpecific = new ProviderSpecificApi(
-      baseConfig,
-      baseURL,
-      axiosApiInstance
-    );
-    this.Sleep = new SleepApi(baseConfig, baseURL, axiosApiInstance);
-    this.User = new UserApi(baseConfig, baseURL, axiosApiInstance);
-    this.Workouts = new WorkoutsApi(baseConfig, baseURL, axiosApiInstance);
-    this.Webhooks = new WebhooksApi(baseConfig, baseURL, axiosApiInstance);
+    this.Activity = new ActivityApi(baseURL, axiosApiInstance);
+    this.Link = new LinkApi(baseURL, axiosApiInstance);
+    this.Body = new BodyApi(baseURL, axiosApiInstance);
+    this.ProviderSpecific = new ProviderSpecificApi(baseURL, axiosApiInstance);
+    this.Sleep = new SleepApi(baseURL, axiosApiInstance);
+    this.User = new UserApi(baseURL, axiosApiInstance);
+    this.Workouts = new WorkoutsApi(baseURL, axiosApiInstance);
+    this.Webhooks = new WebhooksApi(baseURL, axiosApiInstance);
   }
 }
