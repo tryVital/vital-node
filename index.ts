@@ -35,6 +35,7 @@ export class VitalClient {
       async (config) => {
         const token = await this.clientCredentials.access_token();
         config.headers = {
+          ...config.headers,
           Authorization: `Bearer ${token}`,
         };
         return config;
