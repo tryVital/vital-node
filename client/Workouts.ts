@@ -1,5 +1,8 @@
 import { AxiosInstance } from "axios";
-import { ClientWorkoutResponse } from "./models/workout_models";
+import {
+  ClientWorkoutResponse,
+  ClientWorkoutStreamResponse,
+} from "./models/workout_models";
 
 export class WorkoutsApi {
   baseURL: string;
@@ -18,6 +21,15 @@ export class WorkoutsApi {
     const resp = await this.client.get(this.baseURL + `/workouts/${userKey}`, {
       params: { start_date: startDate, end_date: endDate, provider },
     });
+    return resp.data;
+  }
+
+  public async get_stream(
+    workoutId: string
+  ): Promise<ClientWorkoutStreamResponse> {
+    const resp = await this.client.get(
+      this.baseURL + `/workouts/${workoutId}/stream/data`
+    );
     return resp.data;
   }
 }
