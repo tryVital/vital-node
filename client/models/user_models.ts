@@ -13,6 +13,15 @@ export interface SourceClientFacing {
   logo: string;
 }
 
+export interface SourceWithLinkInfo {
+  name: string;
+  slug: string;
+  description: string;
+  logo: string;
+  oauth_url?: string;
+  auth_type: "oauth";
+}
+
 export interface ConnectedSourceClientFacing {
   source: SourceClientFacing;
 }

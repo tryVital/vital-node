@@ -3,7 +3,9 @@ import {
   ProviderLinkResponse,
   LinkTokenExchangeResponse,
   PasswordProviders,
+  OAuthProviders,
 } from "./models/link_models";
+import { SourceWithLinkInfo } from "./models/user_models";
 
 export class LinkApi {
   baseURL: string;
@@ -36,6 +38,17 @@ export class LinkApi {
         username: username,
         password: password,
       },
+      { headers: { LinkToken: linkToken } }
+    );
+    return resp.data;
+  }
+
+  public async getOAuthLink(
+    linkToken: string,
+    provider: OAuthProviders
+  ): Promise<SourceWithLinkInfo> {
+    const resp = await this.client.get(
+      this.baseURL + `/link/provider/oauth/${provider}`,
       { headers: { LinkToken: linkToken } }
     );
     return resp.data;
