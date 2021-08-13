@@ -57,7 +57,7 @@ export class UserApi {
     userKey: string,
     provider: Providers
   ): Promise<SuccessResponse> {
-    const resp = await this.client.get(
+    const resp = await this.client.delete(
       this.baseURL.concat(`/user/${userKey}/${provider}`)
     );
     return resp.data;
