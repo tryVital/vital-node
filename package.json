@@ -1,6 +1,6 @@
 {
   "name": "@tryvital/vital-node",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Node client for Vital",
   "author": "maitham",
   "keywords": [
@@ -15,14 +15,37 @@
   "scripts": {
     "build": "tsc --outDir dist/",
     "prepublishOnly": "npm run build",
-    "lint": "tsdx lint"
+    "test": "env TS_NODE_PROJECT=\"tsconfig.testing.json\" mocha --require ts-node/register './test/**/*.ts'",
+    "test-typescript": "tsc --build types/test",
+    "lint": "eslint --ext .js,.jsx,.ts ."
   },
   "dependencies": {
     "auth0": "^2.35.1",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "crypto": "^1.0.1"
   },
   "devDependencies": {
-    "@types/node": "^12.11.5",
-    "typescript": "^3.6.4"
+    "@testdeck/mocha": "^0.1.2",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.6.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "chai": "~4.2.0",
+    "chai-as-promised": "~7.1.1",
+    "coveralls": "^3.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-chai-friendly": "^0.4.0",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "esm": "^3.2.25",
+    "mocha": "^8.4.0",
+    "mocha-junit-reporter": "^1.23.1",
+    "nock": "^13.1.1",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.0",
+    "typescript": "^4.3.5"
   }
 }

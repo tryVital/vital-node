@@ -1,11 +1,11 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 import {
   ProviderLinkResponse,
   LinkTokenExchangeResponse,
   PasswordProviders,
   OAuthProviders,
-} from "./models/link_models";
-import { SourceWithLinkInfo } from "./models/user_models";
+} from './models/link_models';
+import { SourceWithLinkInfo } from './models/user_models';
 
 export class LinkApi {
   baseURL: string;
@@ -19,9 +19,9 @@ export class LinkApi {
     userKey: string,
     provider: string = null
   ): Promise<LinkTokenExchangeResponse> {
-    const resp = await this.client.post(this.baseURL + "/link/token/", {
+    const resp = await this.client.post(this.baseURL.concat('/link/token/'), {
       user_key: userKey,
-      provider: provider,
+      provider,
     });
     return resp.data;
   }
@@ -33,10 +33,10 @@ export class LinkApi {
     password: string
   ): Promise<ProviderLinkResponse> {
     const resp = await this.client.post(
-      this.baseURL + `/link/provider/${provider}`,
+      this.baseURL.concat(`/link/provider/${provider}`),
       {
-        username: username,
-        password: password,
+        username,
+        password,
       },
       { headers: { LinkToken: linkToken } }
     );
@@ -48,7 +48,7 @@ export class LinkApi {
     provider: OAuthProviders
   ): Promise<SourceWithLinkInfo> {
     const resp = await this.client.get(
-      this.baseURL + `/link/provider/oauth/${provider}`,
+      this.baseURL.concat(`/link/provider/oauth/${provider}`),
       { headers: { LinkToken: linkToken } }
     );
     return resp.data;

@@ -1,5 +1,5 @@
-import { AxiosInstance } from "axios";
-import { ClientActivityResponse } from "./models/activity";
+import { AxiosInstance } from 'axios';
+import { ClientActivityResponse } from './models/activity';
 
 export class ActivityApi {
   baseURL: string;
@@ -15,9 +15,12 @@ export class ActivityApi {
     endDate: Date,
     provider?: string
   ): Promise<ClientActivityResponse> {
-    const resp = await this.client.get(this.baseURL + `/activity/${userKey}`, {
-      params: { start_date: startDate, end_date: endDate, provider },
-    });
+    const resp = await this.client.get(
+      this.baseURL.concat(`/activity/${userKey}`),
+      {
+        params: { start_date: startDate, end_date: endDate, provider },
+      }
+    );
     return resp.data;
   }
 }

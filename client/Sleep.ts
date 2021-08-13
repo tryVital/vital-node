@@ -1,5 +1,5 @@
-import { AxiosInstance } from "axios";
-import { ClientSleepResponse } from "./models/sleep_models";
+import { AxiosInstance } from 'axios';
+import { ClientSleepResponse } from './models/sleep_models';
 
 export class SleepApi {
   baseURL: string;
@@ -15,9 +15,12 @@ export class SleepApi {
     endDate: Date,
     provider?: string
   ): Promise<ClientSleepResponse> {
-    const resp = await this.client.get(this.baseURL + `/sleep/${userKey}`, {
-      params: { start_date: startDate, end_date: endDate, provider },
-    });
+    const resp = await this.client.get(
+      this.baseURL.concat(`/sleep/${userKey}`),
+      {
+        params: { start_date: startDate, end_date: endDate, provider },
+      }
+    );
     return resp.data;
   }
 }

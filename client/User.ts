@@ -1,11 +1,11 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 import {
   UserKeyResponse,
   SuccessResponse,
   ClientFacingUser,
   SourceClientFacing,
   Providers,
-} from "./models/user_models";
+} from './models/user_models';
 
 export class UserApi {
   baseURL: string;
@@ -16,37 +16,39 @@ export class UserApi {
   }
 
   public async create(clientUserId: string): Promise<UserKeyResponse> {
-    const resp = await this.client.post(this.baseURL + "/user/key", {
+    const resp = await this.client.post(this.baseURL.concat('/user/key'), {
       client_user_id: clientUserId,
     });
     return resp.data;
   }
 
   public async delete(userKey: string): Promise<SuccessResponse> {
-    const resp = await this.client.delete(this.baseURL + `/user/${userKey}`);
+    const resp = await this.client.delete(
+      this.baseURL.concat(`/user/${userKey}`)
+    );
     return resp.data;
   }
 
   public async getAll(): Promise<Array<ClientFacingUser>> {
-    const resp = await this.client.get(this.baseURL + `/user/`);
+    const resp = await this.client.get(this.baseURL.concat('/user/'));
     return resp.data;
   }
 
   public async get(userKey: string): Promise<ClientFacingUser> {
-    const resp = await this.client.get(this.baseURL + `/user/${userKey}`);
+    const resp = await this.client.get(this.baseURL.concat(`/user/${userKey}`));
     return resp.data;
   }
 
   public async resolve(clientUserId: string): Promise<ClientFacingUser> {
     const resp = await this.client.get(
-      this.baseURL + `/user/key/${clientUserId}`
+      this.baseURL.concat(`/user/key/${clientUserId}`)
     );
     return resp.data;
   }
 
   public async providers(userKey: string): Promise<Array<SourceClientFacing>> {
     const resp = await this.client.get(
-      this.baseURL + `/user/providers/${userKey}`
+      this.baseURL.concat(`/user/providers/${userKey}`)
     );
     return resp.data;
   }
@@ -56,7 +58,7 @@ export class UserApi {
     provider: Providers
   ): Promise<SuccessResponse> {
     const resp = await this.client.get(
-      this.baseURL + `/user/${userKey}/${provider}`
+      this.baseURL.concat(`/user/${userKey}/${provider}`)
     );
     return resp.data;
   }

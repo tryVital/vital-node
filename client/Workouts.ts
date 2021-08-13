@@ -1,8 +1,8 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 import {
   ClientWorkoutResponse,
   ClientWorkoutStreamResponse,
-} from "./models/workout_models";
+} from './models/workout_models';
 
 export class WorkoutsApi {
   baseURL: string;
@@ -18,9 +18,12 @@ export class WorkoutsApi {
     endDate: Date,
     provider?: string
   ): Promise<ClientWorkoutResponse> {
-    const resp = await this.client.get(this.baseURL + `/workouts/${userKey}`, {
-      params: { start_date: startDate, end_date: endDate, provider },
-    });
+    const resp = await this.client.get(
+      this.baseURL.concat(`/workouts/${userKey}`),
+      {
+        params: { start_date: startDate, end_date: endDate, provider },
+      }
+    );
     return resp.data;
   }
 
@@ -28,7 +31,7 @@ export class WorkoutsApi {
     workoutId: string
   ): Promise<ClientWorkoutStreamResponse> {
     const resp = await this.client.get(
-      this.baseURL + `/workouts/${workoutId}/stream/data`
+      this.baseURL.concat(`/workouts/${workoutId}/stream/data`)
     );
     return resp.data;
   }

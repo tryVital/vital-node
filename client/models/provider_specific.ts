@@ -21,13 +21,13 @@ export interface ClientFacingSourceSpecific {
    * @type {string}
    * @memberof ClientFacingSourceSpecific
    */
-  type: "activity" | "sleep" | "body" | "workouts";
+  type: 'activity' | 'sleep' | 'body' | 'workouts';
   /**
    * JSON data that is specific to the device
    * @type {any | string}
    * @memberof ClientFacingSourceSpecific
    */
-  data: any;
+  data: unknown;
   /**
    * User key returned by vital create user key request. This key should be stored in your database against the user and used for all interactions with the vital api.
    * @type {string}
