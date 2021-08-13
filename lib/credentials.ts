@@ -1,17 +1,17 @@
-import { AccessToken, ClientConfig } from "./models";
-import CONFIG from "./config";
+import { AccessToken, ClientConfig } from './models';
+import CONFIG from './config';
 
-const AuthenticationClient = require("auth0").AuthenticationClient;
+const AuthenticationClient = require('auth0').AuthenticationClient; // eslint-disable-line
 
 export class ClientCredentials {
   config: ClientConfig;
-  private _access_token: AccessToken;
+  private accessToken: AccessToken;
   constructor(config: ClientConfig) {
     this.config = config;
   }
 
-  public getAccessToken = async () => {
-    var auth0 = new AuthenticationClient({
+  public getAccessToken = async (): Promise<AccessToken> => {
+    const auth0 = new AuthenticationClient({
       domain: CONFIG.domains[this.config.environment],
       clientId: this.config.client_id,
       clientSecret: this.config.client_secret,
@@ -24,10 +24,10 @@ export class ClientCredentials {
 
   access_token: () => Promise<string> = async () => {
     const currentTime = +new Date();
-    if (!this._access_token || currentTime > this._access_token.exp) {
-      this._access_token = await this.getAccessToken();
-      return this._access_token.token;
+    if (!this.accessToken || currentTime > this.accessToken.exp) {
+      this.accessToken = await this.getAccessToken();
+      return this.accessToken.token;
     }
-    return this._access_token.token;
+    return this.accessToken.token;
   };
 }

@@ -1,4 +1,4 @@
-import { SourceClientFacing } from "./user_models";
+import { SourceClientFacing } from './user_models';
 
 export interface ClientFacingSport {
   /**
@@ -26,7 +26,7 @@ export interface ClientFacingWorkout {
    * @type {string}
    * @memberof ClientFacingWorkout
    */
-  id: any;
+  id: string;
   /**
    * Average heart rate during workout::bpm
    * @type {number}
@@ -80,79 +80,79 @@ export interface ClientFacingWorkout {
    * @type {Array&lt;number&gt;}
    * @memberof ClientFacingWorkout
    */
-  hr_zones: any;
+  hr_zones: number[];
   /**
    * User key returned by vital create user key request. This key should be stored in your database against the user and used for all interactions with the vital api.
    * @type {string}
    * @memberof ClientFacingWorkout
    */
-  user_id: any;
+  user_id: string;
   /**
    * Time spent active during the workout::seconds
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  moving_time?: any;
+  moving_time?: number;
   /**
    * Elevation gain during the workout::meters
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  total_elevation_gain?: any;
+  total_elevation_gain?: number;
   /**
    * Highest point of elevation::meters
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  elev_high?: any;
+  elev_high?: number;
   /**
    * Lowest point of elevation::meters
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  elev_low?: any;
+  elev_low?: number;
   /**
    * Average speed during workout in m/s::meters/sec
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  average_speed?: any;
+  average_speed?: number;
   /**
    * Max speed during workout in m/s::meters/sec
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  max_speed?: any;
+  max_speed?: number;
   /**
    * Average watts burned during exercise::watts
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  average_watts?: any;
+  average_watts?: number;
   /**
    * Watts burned during exercise::watts
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  device_watts?: any;
+  device_watts?: number;
   /**
    * Max watts burned during exercise::watts
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  max_watts?: any;
+  max_watts?: number;
   /*
    * Weighted average watts burned during exercise::watts
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  weighted_average_watts?: any;
+  weighted_average_watts?: number;
   /**
    * Map of workouts encoded as polyline
    * @type {string}
    * @memberof ClientFacingWorkout
    */
-  map?: any;
+  map?: string;
 }
 
 export interface ClientWorkoutResponse {

@@ -1,6 +1,5 @@
-import { AxiosInstance } from "axios";
-import { ClientBodyResponse } from "./models/body_model";
-import { ClientProviderSpecificResponse } from "./models/provider_specific";
+import { AxiosInstance } from 'axios';
+import { ClientProviderSpecificResponse } from './models/provider_specific';
 
 export class ProviderSpecificApi {
   baseURL: string;
@@ -15,10 +14,10 @@ export class ProviderSpecificApi {
     startDate: Date,
     endDate: Date,
     provider: string,
-    dataType?: "activity" | "sleep" | "body" | "workouts"
+    dataType?: 'activity' | 'sleep' | 'body' | 'workouts'
   ): Promise<ClientProviderSpecificResponse> {
     const resp = await this.client.get(
-      this.baseURL + `/provider-specific/${userKey}/${provider}`,
+      this.baseURL.concat(`/provider-specific/${userKey}/${provider}`),
       {
         params: {
           start_date: startDate,

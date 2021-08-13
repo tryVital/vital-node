@@ -1,11 +1,11 @@
 export type WebhookEventTypes =
-  | "activity"
-  | "workouts"
-  | "body"
-  | "sleep"
-  | "connection_error"
-  | "provider_specific";
-  
+  | 'activity'
+  | 'workouts'
+  | 'body'
+  | 'sleep'
+  | 'connection_error'
+  | 'provider_specific';
+
 export interface ClientFacingWebhook {
   id: string;
   url: string;

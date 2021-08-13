@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   ActivityApi,
   BodyApi,
@@ -7,11 +8,10 @@ import {
   UserApi,
   WebhooksApi,
   WorkoutsApi,
-} from "./client";
-import axios from "axios";
-import { ClientConfig } from "./lib/models";
-import CONFIG from "./lib/config";
-import { ClientCredentials } from "./lib/credentials";
+} from './client';
+import { ClientConfig } from './lib/models';
+import CONFIG from './lib/config';
+import { ClientCredentials } from './lib/credentials';
 
 export class VitalClient {
   config: ClientConfig;
@@ -28,7 +28,7 @@ export class VitalClient {
   constructor(config: ClientConfig) {
     this.config = config;
     this.clientCredentials = new ClientCredentials(config);
-    const baseURL = CONFIG.baseUrls[config.environment] + "/v1";
+    const baseURL = CONFIG.baseUrls[config.environment].concat('/v1');
     const axiosApiInstance = axios.create();
 
     axiosApiInstance.interceptors.request.use(

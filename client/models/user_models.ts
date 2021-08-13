@@ -19,7 +19,7 @@ export interface SourceWithLinkInfo {
   description: string;
   logo: string;
   oauth_url?: string;
-  auth_type: "oauth";
+  auth_type: 'oauth';
 }
 
 export interface ConnectedSourceClientFacing {
@@ -35,13 +35,13 @@ export interface ClientFacingUser {
 }
 
 export enum Providers {
-  Oura = "oura",
-  Fitbit = "fitbit",
-  Garmin = "garmin",
-  Whoop = "whoop",
-  Strava = "strava",
-  Renpho = "renpho",
-  Peloton = "peloton",
-  Wahoo = "wahoo",
-  Zwift = "zwift",
+  Oura = 'oura',
+  Fitbit = 'fitbit',
+  Garmin = 'garmin',
+  Whoop = 'whoop',
+  Strava = 'strava',
+  Renpho = 'renpho',
+  Peloton = 'peloton',
+  Wahoo = 'wahoo',
+  Zwift = 'zwift',
 }
