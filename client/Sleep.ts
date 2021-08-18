@@ -23,4 +23,11 @@ export class SleepApi {
     );
     return resp.data;
   }
+
+  public async getStream(sleepId: string): Promise<ClientSleepResponse> {
+    const resp = await this.client.get(
+      this.baseURL.concat(`/sleep/${sleepId}/stream/data`)
+    );
+    return resp.data;
+  }
 }
