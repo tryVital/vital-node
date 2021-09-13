@@ -19,7 +19,7 @@ export class ClientCredentials {
     const resp = await auth0.clientCredentialsGrant({
       audience: CONFIG.audiences[this.config.environment],
     });
-    return { token: resp.access_token, exp: resp.exp };
+    return { token: resp.access_token, exp: +new Date() + resp.expires_in };
   };
 
   access_token: () => Promise<string> = async () => {
