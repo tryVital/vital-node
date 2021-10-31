@@ -42,6 +42,17 @@ export class WebhooksApi {
     return resp.data;
   }
 
+  public async test(
+    event_code: 'HISTORICAL_DATA_UPDATE' | 'CREATED',
+    webhook_type: 'activity' | 'body' | 'sleep' | 'workouts'
+  ): Promise<ClientFacingWebhook> {
+    const resp = await this.client.post(this.baseURL.concat('/webhooks/test'), {
+      event_code,
+      webhook_type,
+    });
+    return resp.data;
+  }
+
   public constructWebhookEvent(
     payload: string,
     header: string,
