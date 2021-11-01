@@ -10,9 +10,9 @@ export default {
     sandbox: 'auth.sandbox.tryvital.io',
   },
   baseUrls: {
-    prod: 'https://api-tryvital-io.relay.evervault.com',
-    production: 'https://api-tryvital-io.relay.evervault.com',
-    dev: 'https://api-dev-tryvital-io.relay.evervault.com',
-    sandbox: 'https://api-sandbox-tryvital-io.relay.evervault.com',
+    prod: 'https://api.tryvital.io',
+    production: 'https://api.tryvital.io',
+    dev: 'https://api.dev.tryvital.io',
+    sandbox: 'https://api.sandbox.tryvital.io',
   },
 };

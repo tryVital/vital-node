@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 import {
   ActivityApi,
   BodyApi,
@@ -30,6 +31,11 @@ export class VitalClient {
     this.clientCredentials = new ClientCredentials(config);
     const baseURL = CONFIG.baseUrls[config.environment].concat('/v1');
     const axiosApiInstance = axios.create();
+
+    axiosRetry(axiosApiInstance, {
+      retries: 3,
+      retryDelay: axiosRetry.exponentialDelay,
+    });
 
     axiosApiInstance.interceptors.request.use(
       async (config) => {

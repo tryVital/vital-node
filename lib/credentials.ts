@@ -19,12 +19,15 @@ export class ClientCredentials {
     const resp = await auth0.clientCredentialsGrant({
       audience: CONFIG.audiences[this.config.environment],
     });
-    return { token: resp.access_token, exp: +new Date() + resp.expires_in };
+    return {
+      token: resp.access_token,
+      exp: +new Date() + resp.expires_in - 20,
+    };
   };
 
   access_token: () => Promise<string> = async () => {
     const currentTime = +new Date();
-    if (!this.accessToken || currentTime > this.accessToken.exp) {
+    if (!this.accessToken || currentTime >= this.accessToken.exp) {
       this.accessToken = await this.getAccessToken();
       return this.accessToken.token;
     }
