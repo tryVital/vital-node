@@ -1,5 +1,8 @@
 import { AxiosInstance } from 'axios';
-import { ClientActivityResponse } from './models/activity';
+import {
+  ClientCholesterolResponse,
+  ClientGlucoseResponse,
+} from './models/activity';
 
 export class VitalsApi {
   baseURL: string;
@@ -10,12 +13,12 @@ export class VitalsApi {
   }
 
   public async cholesterol(
+    type: 'ldl' | 'total_cholesterol' | 'triglycerides' | 'hdl',
     userKey: string,
-    type: 'ldl' | 'total' | 'triglycerides' | 'hdl',
     startDate: Date,
     endDate: Date,
     provider?: string
-  ): Promise<ClientActivityResponse> {
+  ): Promise<ClientCholesterolResponse> {
     const resp = await this.client.get(
       this.baseURL.concat(`/vitals/cholesterol/${type}/${userKey}`),
       {
@@ -30,7 +33,7 @@ export class VitalsApi {
     startDate: Date,
     endDate: Date,
     provider?: string
-  ): Promise<ClientActivityResponse> {
+  ): Promise<ClientGlucoseResponse> {
     const resp = await this.client.get(
       this.baseURL.concat(`/vitals/glucose/${userKey}`),
       {

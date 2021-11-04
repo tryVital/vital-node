@@ -64,6 +64,32 @@ export interface ClientFacingActivity {
   user_id: string;
 }
 
+interface ClientFacingCholesterol {
+  timestamp: Date;
+  value: number;
+  type: string;
+  unit: string;
+  user_id: string;
+}
+
+interface ClientFacingGlucose {
+  timestamp: Date;
+  value: number;
+  type: string;
+  unit: string;
+  user_id: string;
+  source_id: number;
+  source: SourceClientFacing;
+}
+
 export interface ClientActivityResponse {
-  activity: ClientFacingActivity;
+  activity: ClientFacingActivity[];
+}
+
+export interface ClientGlucoseResponse {
+  glucose: ClientFacingGlucose[];
+}
+
+export interface ClientCholesterolResponse {
+  cholesterol: ClientFacingCholesterol[];
 }
