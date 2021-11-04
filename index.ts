@@ -13,6 +13,7 @@ import {
 import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
 import { ClientCredentials } from './lib/credentials';
+import { VitalsApi } from './client/Vitals';
 
 export class VitalClient {
   config: ClientConfig;
@@ -25,6 +26,7 @@ export class VitalClient {
   User: UserApi;
   Workouts: WorkoutsApi;
   Webhooks: WebhooksApi;
+  Vitals: VitalsApi;
 
   constructor(config: ClientConfig) {
     this.config = config;
@@ -61,5 +63,6 @@ export class VitalClient {
     this.User = new UserApi(baseURL, axiosApiInstance);
     this.Workouts = new WorkoutsApi(baseURL, axiosApiInstance);
     this.Webhooks = new WebhooksApi(baseURL, axiosApiInstance);
+    this.Vitals = new VitalsApi(baseURL, axiosApiInstance);
   }
 }
