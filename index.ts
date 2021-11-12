@@ -6,6 +6,7 @@ import {
   LinkApi,
   ProviderSpecificApi,
   SleepApi,
+  TestkitsApi,
   UserApi,
   WebhooksApi,
   WorkoutsApi,
@@ -27,7 +28,8 @@ export class VitalClient {
   Workouts: WorkoutsApi;
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
-
+  Testkits: TestkitsApi;
+  
   constructor(config: ClientConfig) {
     this.config = config;
     this.clientCredentials = new ClientCredentials(config);
@@ -64,5 +66,6 @@ export class VitalClient {
     this.Workouts = new WorkoutsApi(baseURL, axiosApiInstance);
     this.Webhooks = new WebhooksApi(baseURL, axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL, axiosApiInstance);
+    this.Testkits = new TestkitsApi(baseURL, axiosApiInstance;
   }
 }
