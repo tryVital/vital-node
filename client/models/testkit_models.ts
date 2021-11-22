@@ -1,7 +1,7 @@
 export interface PatientAdress {
   receiver_name: string;
-  stringeet_number: string;
-  stringeet: string;
+  street_number: string;
+  street: string;
   city: string;
   state: string;
   zip: string;
