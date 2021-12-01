@@ -9,6 +9,11 @@ export interface PatientAdress {
   phone_number: string;
 }
 
+export interface PatientDetails {
+  dob: string;
+  gender: string;
+}
+
 export interface Testkit {
   id: string;
   name: string;

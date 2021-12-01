@@ -5,14 +5,9 @@ import {
   OrderRequestResponse,
   OrderResponse,
   PatientAdress,
-  Testkit,
+  PatientDetails,
   TestkitResponse,
 } from './models/testkit_models';
-import {
-  ClientWebhookResponse,
-  WebhookEventTypes,
-  ClientFacingWebhook,
-} from './models/webhook_models';
 
 export class TestkitsApi {
   baseURL: string;
@@ -43,7 +38,8 @@ export class TestkitsApi {
   public async order(
     userKey: string,
     testkitId: string,
-    patientAddress: PatientAdress
+    patientAddress: PatientAdress,
+    patientDetails: PatientDetails
   ): Promise<OrderRequestResponse> {
     const resp = await this.client.post(
       this.baseURL.concat('/testkit/orders'),

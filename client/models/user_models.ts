@@ -13,6 +13,10 @@ export interface SourceClientFacing {
   logo: string;
 }
 
+export interface ProvidersResponse {
+  providers: SourceClientFacing[];
+}
+
 export interface SourceWithLinkInfo {
   name: string;
   slug: string;

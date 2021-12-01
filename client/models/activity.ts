@@ -18,13 +18,13 @@ export interface ClientFacingActivity {
    * @type {number}
    * @memberof ClientFacingActivity
    */
-  caloriesTotal: number;
+  calories_total: number;
   /**
    * Energy consumption caused by the physical activity of the day in kilocalories.::kilocalories
    * @type {number}
    * @memberof ClientFacingActivity
    */
-  caloriesActive: number;
+  calories_active: number;
   /**
    * Total number of steps registered during the day.::steps
    * @type {number}
@@ -36,7 +36,7 @@ export interface ClientFacingActivity {
    * @type {number}
    * @memberof ClientFacingActivity
    */
-  dailyMovement?: number;
+  daily_movement?: number;
   /**
    * Number of minutes during the day with low intensity activity (e.g. household work).::minutes
    * @type {number}

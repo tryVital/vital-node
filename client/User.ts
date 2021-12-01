@@ -3,8 +3,8 @@ import {
   UserKeyResponse,
   SuccessResponse,
   ClientFacingUser,
-  SourceClientFacing,
   Providers,
+  ProvidersResponse,
 } from './models/user_models';
 
 export class UserApi {
@@ -46,7 +46,7 @@ export class UserApi {
     return resp.data;
   }
 
-  public async providers(userKey: string): Promise<Array<SourceClientFacing>> {
+  public async providers(userKey: string): Promise<ProvidersResponse> {
     const resp = await this.client.get(
       this.baseURL.concat(`/user/providers/${userKey}`)
     );
