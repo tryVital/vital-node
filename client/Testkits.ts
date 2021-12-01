@@ -47,6 +47,7 @@ export class TestkitsApi {
         user_key: userKey,
         testkit_id: testkitId,
         patient_address: patientAddress,
+        patient_details: patientDetails,
       }
     );
     return resp.data;

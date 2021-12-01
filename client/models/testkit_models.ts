@@ -13,11 +13,20 @@ export interface PatientDetails {
   dob: string;
   gender: string;
 }
+export interface Marker {
+  name: string;
+  slug: string;
+  description?: string;
+}
 
 export interface Testkit {
   id: string;
   name: string;
   description: string;
+  markers: Marker[];
+  turnaround_time_lower: number;
+  turnaround_time_upper: number;
+  price: number;
 }
 
 export interface Order {
