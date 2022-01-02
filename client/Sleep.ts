@@ -16,7 +16,7 @@ export class SleepApi {
     provider?: string
   ): Promise<ClientSleepResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/sleep/${userKey}`),
+      this.baseURL.concat(`/summary/sleep/${userKey}`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }
@@ -26,7 +26,7 @@ export class SleepApi {
 
   public async getStream(sleepId: string): Promise<ClientSleepResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/sleep/${sleepId}/stream/data`)
+      this.baseURL.concat(`/timeseries/sleep/${sleepId}/stream`)
     );
     return resp.data;
   }

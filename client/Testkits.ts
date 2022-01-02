@@ -1,5 +1,4 @@
 import { AxiosInstance } from 'axios';
-import { signature } from './lib/WebhookVerification';
 import {
   Order,
   OrderRequestResponse,
@@ -56,6 +55,13 @@ export class TestkitsApi {
   public async get_order(orderId: string): Promise<Order> {
     const resp = await this.client.get(
       this.baseURL.concat(`/testkit/orders/${orderId}`)
+    );
+    return resp.data;
+  }
+
+  public async get_results(orderId: string): Promise<Order> {
+    const resp = await this.client.get(
+      this.baseURL.concat(`/testkit/orders/${orderId}/results`)
     );
     return resp.data;
   }

@@ -94,6 +94,13 @@ export interface ClientCholesterolResponse {
   cholesterol: ClientFacingCholesterol[];
 }
 
+export interface TimeseriesPoint {
+  timestamp: Date;
+  value: number;
+  type: string;
+  unit: string;
+}
+
 enum RespiratoryAllergen {
   D_PTERONYSSINUS = 'd_pteronyssinus',
   D_FARINAE = 'd_farinae',

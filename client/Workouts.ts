@@ -19,7 +19,7 @@ export class WorkoutsApi {
     provider?: string
   ): Promise<ClientWorkoutResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/workouts/${userKey}`),
+      this.baseURL.concat(`/summary/workouts/${userKey}`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }
@@ -27,11 +27,11 @@ export class WorkoutsApi {
     return resp.data;
   }
 
-  public async get_stream(
+  public async getStream(
     workoutId: string
   ): Promise<ClientWorkoutStreamResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/workouts/${workoutId}/stream/data`)
+      this.baseURL.concat(`/timeseries/workouts/${workoutId}/stream`)
     );
     return resp.data;
   }

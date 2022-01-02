@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
-import { ClientBodyResponse } from './models/body_model';
+import { ClientFacingProfile } from './models/profile_model';
 
-export class BodyApi {
+export class ProfileApi {
   baseURL: string;
   client: AxiosInstance;
 
@@ -12,14 +12,12 @@ export class BodyApi {
 
   public async get(
     userKey: string,
-    startDate: Date,
-    endDate: Date,
     provider?: string
-  ): Promise<ClientBodyResponse> {
+  ): Promise<ClientFacingProfile> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/body/${userKey}`),
+      this.baseURL.concat(`/summary/profile/${userKey}`),
       {
-        params: { start_date: startDate, end_date: endDate, provider },
+        params: { provider },
       }
     );
     return resp.data;

@@ -4,12 +4,12 @@ import {
   ActivityApi,
   BodyApi,
   LinkApi,
-  ProviderSpecificApi,
   SleepApi,
   TestkitsApi,
   UserApi,
   WebhooksApi,
   WorkoutsApi,
+  ProfileApi,
 } from './client';
 import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
@@ -22,18 +22,18 @@ export class VitalClient {
   Activity: ActivityApi;
   Link: LinkApi;
   Body: BodyApi;
-  ProviderSpecific: ProviderSpecificApi;
   Sleep: SleepApi;
   User: UserApi;
   Workouts: WorkoutsApi;
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
   Testkits: TestkitsApi;
-  
+  Profile: ProfileApi;
+
   constructor(config: ClientConfig) {
     this.config = config;
     this.clientCredentials = new ClientCredentials(config);
-    const baseURL = CONFIG.baseUrls[config.environment].concat('/v1');
+    const baseURL = CONFIG.baseUrls[config.environment];
     const axiosApiInstance = axios.create();
 
     axiosRetry(axiosApiInstance, {
@@ -57,15 +57,15 @@ export class VitalClient {
     );
 
     // Hook APIS
-    this.Activity = new ActivityApi(baseURL, axiosApiInstance);
-    this.Link = new LinkApi(baseURL, axiosApiInstance);
-    this.Body = new BodyApi(baseURL, axiosApiInstance);
-    this.ProviderSpecific = new ProviderSpecificApi(baseURL, axiosApiInstance);
-    this.Sleep = new SleepApi(baseURL, axiosApiInstance);
-    this.User = new UserApi(baseURL, axiosApiInstance);
-    this.Workouts = new WorkoutsApi(baseURL, axiosApiInstance);
-    this.Webhooks = new WebhooksApi(baseURL, axiosApiInstance);
-    this.Vitals = new VitalsApi(baseURL, axiosApiInstance);
-    this.Testkits = new TestkitsApi(baseURL, axiosApiInstance);
+    this.Activity = new ActivityApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Link = new LinkApi(baseURL.concat('/v1'), axiosApiInstance);
+    this.Body = new BodyApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Sleep = new SleepApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.User = new UserApi(baseURL.concat('/v1'), axiosApiInstance);
+    this.Workouts = new WorkoutsApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Testkits = new TestkitsApi(baseURL.concat('/v1'), axiosApiInstance);
+    this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
   }
 }

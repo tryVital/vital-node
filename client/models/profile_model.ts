@@ -1,35 +1,24 @@
 import { SourceClientFacing } from './user_models';
 
-/**
- *
- * @export
- * @interface ClientFacingBody
- */
-export interface ClientFacingBody {
+export interface ClientFacingProfile {
   /**
-   *
+   * Age of user.::years
+   * @type {number}
+   * @memberof ClientFacingBody
+   */
+  age?: number;
+  /**
+   * Height in cm.::cm
+   * @type {number}
+   * @memberof ClientFacingBody
+   */
+  height?: number;
+  /**
+   * Gender of user.
    * @type {string}
    * @memberof ClientFacingBody
    */
-  id: string;
-  /**
-   * Date for specified record
-   * @type {Date}
-   * @memberof ClientFacingBody
-   */
-  date: Date;
-  /**
-   * Weight in kg.::kg
-   * @type {number}
-   * @memberof ClientFacingBody
-   */
-  weight: number;
-  /**
-   * Body fat percentage.::perc
-   * @type {number}
-   * @memberof ClientFacingBody
-   */
-  fat?: number;
+  gender?: string;
   /**
    * Source the data has come from.
    * @type {SourceClientFacing}
@@ -42,18 +31,4 @@ export interface ClientFacingBody {
    * @memberof ClientFacingBody
    */
   user_id: string;
-}
-
-/**
- *
- * @export
- * @interface ClientBodyResponse
- */
-export interface ClientBodyResponse {
-  /**
-   *
-   * @type {Array&lt;ClientFacingBody&gt;}
-   * @memberof ClientBodyResponse
-   */
-  body: ClientFacingBody[];
 }

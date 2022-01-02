@@ -16,7 +16,7 @@ export class ActivityApi {
     provider?: string
   ): Promise<ClientActivityResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/activity/${userKey}`),
+      this.baseURL.concat(`/summary/activity/${userKey}`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }

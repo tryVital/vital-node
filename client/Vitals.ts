@@ -1,11 +1,5 @@
 import { AxiosInstance } from 'axios';
-import {
-  ClientCholesterolResponse,
-  ClientGlucoseResponse,
-  ClientHba1cResponse,
-  ClientIgeResponse,
-  ClientIggResponse,
-} from './models/activity';
+import { TimeseriesPoint } from './models/activity';
 
 export class VitalsApi {
   baseURL: string;
@@ -15,20 +9,36 @@ export class VitalsApi {
     this.client = axios;
   }
 
-  public async cholesterol(
-    type: 'ldl' | 'total_cholesterol' | 'triglycerides' | 'hdl',
-    userKey: string,
+  private async timeseriesData(
+    user_key: string,
+    resource: string,
     startDate: Date,
     endDate: Date,
     provider?: string
-  ): Promise<ClientCholesterolResponse> {
+  ): Promise<TimeseriesPoint[]> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/vitals/cholesterol/${type}/${userKey}`),
+      this.baseURL.concat(`/timeseries/${user_key}/${resource}`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }
     );
     return resp.data;
+  }
+
+  public async cholesterol(
+    type: 'ldl' | 'total' | 'triglycerides' | 'hdl',
+    userKey: string,
+    startDate: Date,
+    endDate: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userKey,
+      `cholesterol/${type}`,
+      startDate,
+      endDate,
+      provider
+    );
   }
 
   public async glucose(
@@ -36,56 +46,46 @@ export class VitalsApi {
     startDate: Date,
     endDate: Date,
     provider?: string
-  ): Promise<ClientGlucoseResponse> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/vitals/glucose/${userKey}`),
-      {
-        params: { start_date: startDate, end_date: endDate, provider },
-      }
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userKey,
+      'glucose',
+      startDate,
+      endDate,
+      provider
     );
-    return resp.data;
-  }
-
-  public async hba1c(
-    userKey: string,
-    startDate: Date,
-    endDate: Date,
-    provider?: string
-  ): Promise<ClientHba1cResponse> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/vitals/hba1c/${userKey}`),
-      {
-        params: { start_date: startDate, end_date: endDate, provider },
-      }
-    );
-    return resp.data;
   }
 
   public async ige(
     userKey: string,
     startDate: Date,
-    endDate: Date
-  ): Promise<ClientIgeResponse> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/vitals/ige/${userKey}`),
-      {
-        params: { start_date: startDate, end_date: endDate },
-      }
-    );
-    return resp.data;
+    endDate: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(userKey, 'ige', startDate, endDate, provider);
   }
 
   public async igg(
     userKey: string,
     startDate: Date,
-    endDate: Date
-  ): Promise<ClientIggResponse> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/vitals/igg/${userKey}`),
-      {
-        params: { start_date: startDate, end_date: endDate },
-      }
+    endDate: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(userKey, 'igg', startDate, endDate, provider);
+  }
+
+  public async heartrate(
+    userKey: string,
+    startDate: Date,
+    endDate: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userKey,
+      'heartrate',
+      startDate,
+      endDate,
+      provider
     );
-    return resp.data;
   }
 }
