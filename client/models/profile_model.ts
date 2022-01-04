@@ -6,7 +6,7 @@ export interface ClientFacingProfile {
    * @type {number}
    * @memberof ClientFacingBody
    */
-  age?: number;
+  dob?: string;
   /**
    * Height in cm.::cm
    * @type {number}
