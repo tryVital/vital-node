@@ -59,9 +59,12 @@ export class TestkitsApi {
     return resp.data;
   }
 
-  public async get_results(orderId: string): Promise<Order> {
+  public async get_results(orderId: string): Promise<string> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/testkit/orders/${orderId}/results`)
+      this.baseURL.concat(`/testkit/orders/${orderId}/results`),
+      {
+        responseType: 'arraybuffer',
+      }
     );
     return resp.data;
   }
