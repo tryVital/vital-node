@@ -1,3 +1,4 @@
+import { TimeseriesPoint } from './activity';
 import { SourceClientFacing } from './user_models';
 
 /**
@@ -135,4 +136,16 @@ export interface ClientSleepResponse {
    * @memberof ClientSleepResponse
    */
   sleep: ClientFacingSleep[];
+}
+
+export interface ClientSleepStreamResponse {
+  /**
+   *
+   * @type {Array&lt;ClientFacingSleep&gt;}
+   * @memberof ClientSleepResponse
+   */
+  hrv: TimeseriesPoint[];
+  heartrate: TimeseriesPoint[];
+  respiratory_rate: TimeseriesPoint[];
+  hypnogram: TimeseriesPoint[];
 }

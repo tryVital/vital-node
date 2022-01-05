@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { ClientSleepResponse } from './models/sleep_models';
+import { ClientSleepResponse, ClientSleepStreamResponse } from './models/sleep_models';
 
 export class SleepApi {
   baseURL: string;
@@ -24,7 +24,7 @@ export class SleepApi {
     return resp.data;
   }
 
-  public async getStream(sleepId: string): Promise<ClientSleepResponse> {
+  public async getStream(sleepId: string): Promise<ClientSleepStreamResponse> {
     const resp = await this.client.get(
       this.baseURL.concat(`/timeseries/sleep/${sleepId}/stream`)
     );
