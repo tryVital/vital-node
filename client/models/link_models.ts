@@ -10,6 +10,7 @@ export type OAuthProviders =
 export interface ProviderLinkResponse {
   provider: PasswordProviders;
   connected: boolean;
+  provider_id?: string;
 }
 
 export interface LinkTokenExchangeResponse {
