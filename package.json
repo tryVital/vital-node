@@ -24,7 +24,7 @@
     "axios": ">=0.21.2",
     "axios-retry": "^3.2.4",
     "crypto": "^1.0.1",
-    "svix": "^0.42.2"
+    "svix": "0.41.1"
   },
   "devDependencies": {
     "@testdeck/mocha": "^0.1.2",
