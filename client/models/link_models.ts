@@ -7,6 +7,8 @@ export type OAuthProviders =
   | 'strava'
   | 'wahoo';
 
+export type EmailProviders = 'freestyle_libre';
+
 export interface ProviderLinkResponse {
   provider: PasswordProviders;
   connected: boolean;

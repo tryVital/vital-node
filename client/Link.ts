@@ -4,6 +4,7 @@ import {
   LinkTokenExchangeResponse,
   PasswordProviders,
   OAuthProviders,
+  EmailProviders,
 } from './models/link_models';
 import { SourceWithLinkInfo } from './models/user_models';
 
@@ -37,6 +38,21 @@ export class LinkApi {
       {
         username,
         password,
+      },
+      { headers: { LinkToken: linkToken } }
+    );
+    return resp.data;
+  }
+
+  public async connectEmailProvider(
+    linkToken: string,
+    provider: EmailProviders,
+    email: string
+  ): Promise<ProviderLinkResponse> {
+    const resp = await this.client.post(
+      this.baseURL.concat(`/link/provider/email/${provider}`),
+      {
+        email,
       },
       { headers: { LinkToken: linkToken } }
     );
