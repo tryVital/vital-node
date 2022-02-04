@@ -58,14 +58,14 @@ export class VitalClient {
 
     // Hook APIS
     this.Activity = new ActivityApi(baseURL.concat('/v2'), axiosApiInstance);
-    this.Link = new LinkApi(baseURL.concat('/v1'), axiosApiInstance);
+    this.Link = new LinkApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Body = new BodyApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Sleep = new SleepApi(baseURL.concat('/v2'), axiosApiInstance);
-    this.User = new UserApi(baseURL.concat('/v1'), axiosApiInstance);
+    this.User = new UserApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Workouts = new WorkoutsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
-    this.Testkits = new TestkitsApi(baseURL.concat('/v1'), axiosApiInstance);
+    this.Testkits = new TestkitsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
   }
 }

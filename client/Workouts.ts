@@ -1,4 +1,5 @@
 import { AxiosInstance } from 'axios';
+import { ClientWorkoutsRawResponse } from './models/raw_response';
 import {
   ClientWorkoutResponse,
   ClientWorkoutStreamResponse,
@@ -32,6 +33,21 @@ export class WorkoutsApi {
   ): Promise<ClientWorkoutStreamResponse> {
     const resp = await this.client.get(
       this.baseURL.concat(`/timeseries/workouts/${workoutId}/stream`)
+    );
+    return resp.data;
+  }
+
+  public async get_raw(
+    userKey: string,
+    startDate: Date,
+    endDate: Date,
+    provider?: string
+  ): Promise<ClientWorkoutsRawResponse> {
+    const resp = await this.client.get(
+      this.baseURL.concat(`/summary/workouts/${userKey}/raw`),
+      {
+        params: { start_date: startDate, end_date: endDate, provider },
+      }
     );
     return resp.data;
   }
