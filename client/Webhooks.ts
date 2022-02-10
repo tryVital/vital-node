@@ -9,7 +9,7 @@ export class WebhooksApi {
     this.client = axios;
   }
 
-  public static constructWebhookEvent(
+  public constructWebhookEvent(
     payload: string,
     headers: Record<string, string>,
     secret: string
