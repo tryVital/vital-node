@@ -1,5 +1,7 @@
 import { AxiosInstance } from 'axios';
 import {
+  LabResultsMetadata,
+  LabResultsRaw,
   Order,
   OrderRequestResponse,
   OrderResponse,
@@ -65,6 +67,20 @@ export class TestkitsApi {
       {
         responseType: 'arraybuffer',
       }
+    );
+    return resp.data;
+  }
+
+  public async getMetadata(orderId: string): Promise<LabResultsMetadata> {
+    const resp = await this.client.get(
+      this.baseURL.concat(`/testkit/orders/${orderId}/results/metadata`)
+    );
+    return resp.data;
+  }
+
+  public async getRawResults(orderId: string): Promise<LabResultsRaw> {
+    const resp = await this.client.get(
+      this.baseURL.concat(`/testkit/orders/${orderId}/results/raw`)
     );
     return resp.data;
   }

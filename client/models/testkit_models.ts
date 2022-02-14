@@ -68,3 +68,22 @@ export interface OrderRequestResponse {
 export interface TestkitResponse {
   testkits: Testkit[];
 }
+
+export interface LabResultsMetadata {
+  age: string;
+  dob: string;
+  clia_number: string;
+  patient: string;
+  provider: string;
+  laboratory: string;
+  date_reported: string;
+  date_collected: string;
+  specimen_number: string;
+  date_received?: string;
+  clia?: string;
+}
+
+export interface LabResultsRaw {
+  metadata: LabResultsMetadata;
+  data: Record<string, string>;
+}

@@ -15,6 +15,7 @@ import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
 import { ClientCredentials } from './lib/credentials';
 import { VitalsApi } from './client/Vitals';
+import { ProviderApi } from './client/Provider';
 
 export class VitalClient {
   config: ClientConfig;
@@ -29,6 +30,7 @@ export class VitalClient {
   Vitals: VitalsApi;
   Testkits: TestkitsApi;
   Profile: ProfileApi;
+  Providers: ProviderApi;
 
   constructor(config: ClientConfig) {
     this.config = config;
@@ -67,5 +69,6 @@ export class VitalClient {
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Testkits = new TestkitsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
   }
 }
