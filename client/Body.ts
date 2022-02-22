@@ -12,13 +12,13 @@ export class BodyApi {
   }
 
   public async get(
-    userKey: string,
+    userId: string,
     startDate: Date,
     endDate: Date,
     provider?: string
   ): Promise<ClientBodyResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/body/${userKey}`),
+      this.baseURL.concat(`/summary/body/${userId}`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }
@@ -27,13 +27,13 @@ export class BodyApi {
   }
 
   public async get_raw(
-    userKey: string,
+    userId: string,
     startDate: Date,
     endDate: Date,
     provider?: string
   ): Promise<ClientBodyRawResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/body/${userKey}/raw`),
+      this.baseURL.concat(`/summary/body/${userId}/raw`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }

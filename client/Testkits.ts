@@ -37,7 +37,7 @@ export class TestkitsApi {
   }
 
   public async order(
-    userKey: string,
+    userId: string,
     testkitId: string,
     patientAddress: PatientAdress,
     patientDetails: PatientDetails
@@ -45,7 +45,7 @@ export class TestkitsApi {
     const resp = await this.client.post(
       this.baseURL.concat('/testkit/orders'),
       {
-        user_key: userKey,
+        user_key: userId,
         testkit_id: testkitId,
         patient_address: patientAddress,
         patient_details: patientDetails,

@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 import {
-  UserKeyResponse,
+  UserIdResponse,
   SuccessResponse,
   ClientFacingUser,
   Providers,
@@ -15,16 +15,16 @@ export class UserApi {
     this.client = axios;
   }
 
-  public async create(clientUserId: string): Promise<UserKeyResponse> {
+  public async create(clientUserId: string): Promise<UserIdResponse> {
     const resp = await this.client.post(this.baseURL.concat('/user/key'), {
       client_user_id: clientUserId,
     });
     return resp.data;
   }
 
-  public async delete(userKey: string): Promise<SuccessResponse> {
+  public async delete(userId: string): Promise<SuccessResponse> {
     const resp = await this.client.delete(
-      this.baseURL.concat(`/user/${userKey}`)
+      this.baseURL.concat(`/user/${userId}`)
     );
     return resp.data;
   }
@@ -34,8 +34,8 @@ export class UserApi {
     return resp.data;
   }
 
-  public async get(userKey: string): Promise<ClientFacingUser> {
-    const resp = await this.client.get(this.baseURL.concat(`/user/${userKey}`));
+  public async get(userId: string): Promise<ClientFacingUser> {
+    const resp = await this.client.get(this.baseURL.concat(`/user/${userId}`));
     return resp.data;
   }
 
@@ -46,19 +46,19 @@ export class UserApi {
     return resp.data;
   }
 
-  public async providers(userKey: string): Promise<ProvidersResponse> {
+  public async providers(userId: string): Promise<ProvidersResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/user/providers/${userKey}`)
+      this.baseURL.concat(`/user/providers/${userId}`)
     );
     return resp.data;
   }
 
   public async deregisterProvider(
-    userKey: string,
+    userId: string,
     provider: Providers
   ): Promise<SuccessResponse> {
     const resp = await this.client.delete(
-      this.baseURL.concat(`/user/${userKey}/${provider}`)
+      this.baseURL.concat(`/user/${userId}/${provider}`)
     );
     return resp.data;
   }
