@@ -10,6 +10,7 @@ import {
   WebhooksApi,
   WorkoutsApi,
   ProfileApi,
+  DevicesAPI,
 } from './client';
 import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
@@ -31,6 +32,7 @@ export class VitalClient {
   Testkits: TestkitsApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
+  Devices: DevicesAPI;
 
   constructor(config: ClientConfig) {
     this.config = config;
@@ -70,5 +72,6 @@ export class VitalClient {
     this.Testkits = new TestkitsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Devices = new DevicesAPI(baseURL.concat('/v2'), axiosApiInstance);
   }
 }

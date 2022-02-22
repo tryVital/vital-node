@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { ClientFacingProfile, } from './models/profile_model';
+import { ClientFacingProfile } from './models/profile_model';
 import { ClientProfileRawResponse } from './models/raw_response';
 
 export class ProfileApi {

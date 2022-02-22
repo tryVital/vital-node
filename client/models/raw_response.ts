@@ -8,7 +8,16 @@ export interface RawResponse {
   priority: number;
   priority_id: number;
   timestamp: Date;
-  data: Record<string, string>
+  data: Record<string, string>;
+  provider_id: string;
+}
+
+export interface DeviceRawResponse {
+  id: string;
+  user_id: string;
+  source_id: number;
+  source?: SourceClientFacing;
+  data: Record<string, string>;
   provider_id: string;
 }
 
@@ -28,4 +37,8 @@ export interface ClientSleepRawResponse {
 
 export interface ClientProfileRawResponse {
   profile: RawResponse[];
+}
+
+export interface ClientDevicesRawResponse {
+  devices: DeviceRawResponse[];
 }

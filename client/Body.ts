@@ -26,7 +26,6 @@ export class BodyApi {
     return resp.data;
   }
 
-
   public async get_raw(
     userKey: string,
     startDate: Date,
