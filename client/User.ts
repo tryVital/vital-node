@@ -62,4 +62,13 @@ export class UserApi {
     );
     return resp.data;
   }
+
+  public async refresh(
+    userId: string,
+  ): Promise<SuccessResponse> {
+    const resp = await this.client.post(
+      this.baseURL.concat(`/refresh/${userId}`)
+    );
+    return resp.data;
+  }
 }
