@@ -12,6 +12,15 @@ export interface RawResponse {
   provider_id: string;
 }
 
+export interface DeviceRawResponse {
+  id: string;
+  user_id: string;
+  source_id: number;
+  source?: SourceClientFacing;
+  data: Record<string, string>
+  provider_id: string;
+}
+
 export interface ClientActivityRawResponse {
   activity: RawResponse[];
 }
@@ -28,4 +37,8 @@ export interface ClientSleepRawResponse {
 
 export interface ClientProfileRawResponse {
   profile: RawResponse[];
+}
+
+export interface ClientDevicesRawResponse {
+  devices: DeviceRawResponse[];
 }
