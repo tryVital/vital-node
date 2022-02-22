@@ -67,7 +67,7 @@ export class UserApi {
     userId: string,
   ): Promise<SuccessResponse> {
     const resp = await this.client.post(
-      this.baseURL.concat(`/refresh/${userId}`)
+      this.baseURL.concat(`/user/refresh/${userId}`)
     );
     return resp.data;
   }
