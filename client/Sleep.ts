@@ -1,5 +1,8 @@
 import { AxiosInstance } from 'axios';
-import { ClientSleepResponse, ClientSleepStreamResponse  } from './models/sleep_models';
+import {
+  ClientSleepResponse,
+  ClientSleepStreamResponse,
+} from './models/sleep_models';
 import { ClientSleepRawResponse } from './models/raw_response';
 
 export class SleepApi {

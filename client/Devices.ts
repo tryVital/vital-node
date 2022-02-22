@@ -10,7 +10,6 @@ export class DevicesAPI {
     this.client = axios;
   }
 
-
   public async get_raw(
     userId: string,
     provider?: string
@@ -18,7 +17,7 @@ export class DevicesAPI {
     const resp = await this.client.get(
       this.baseURL.concat(`/summary/devices/${userId}/raw`),
       {
-        params: { provider: provider },
+        params: { provider },
       }
     );
     return resp.data;

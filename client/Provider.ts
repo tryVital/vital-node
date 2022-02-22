@@ -11,7 +11,7 @@ export class ProviderApi {
   }
 
   public async getSupportedProviders(): Promise<Provider[]> {
-    const resp = await this.client.get(this.baseURL.concat(`/providers/`));
+    const resp = await this.client.get(this.baseURL.concat('/providers/'));
     return resp.data;
   }
 }
