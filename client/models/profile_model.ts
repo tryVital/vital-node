@@ -26,7 +26,7 @@ export interface ClientFacingProfile {
    */
   source: SourceClientFacing;
   /**
-   * User key returned by vital create user key request. This key should be stored in your database against the user and used for all interactions with the vital api.
+   * User id returned by vital create user id request. This id should be stored in your database against the user and used for all interactions with the vital api.
    * @type {string}
    * @memberof ClientFacingBody
    */

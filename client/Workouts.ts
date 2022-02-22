@@ -14,13 +14,13 @@ export class WorkoutsApi {
   }
 
   public async get(
-    userKey: string,
+    userId: string,
     startDate: Date,
     endDate: Date,
     provider?: string
   ): Promise<ClientWorkoutResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/workouts/${userKey}`),
+      this.baseURL.concat(`/summary/workouts/${userId}`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }
@@ -38,13 +38,13 @@ export class WorkoutsApi {
   }
 
   public async get_raw(
-    userKey: string,
+    userId: string,
     startDate: Date,
     endDate: Date,
     provider?: string
   ): Promise<ClientWorkoutsRawResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/workouts/${userKey}/raw`),
+      this.baseURL.concat(`/summary/workouts/${userId}/raw`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }

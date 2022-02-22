@@ -1,6 +1,6 @@
-export interface UserKeyResponse {
+export interface UserIdResponse {
   client_user_id: string;
-  user_key: string;
+  user_id: string;
 }
 
 export interface SuccessResponse {

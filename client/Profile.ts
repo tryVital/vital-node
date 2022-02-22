@@ -12,11 +12,11 @@ export class ProfileApi {
   }
 
   public async get(
-    userKey: string,
+    userId: string,
     provider?: string
   ): Promise<ClientFacingProfile> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/profile/${userKey}`),
+      this.baseURL.concat(`/summary/profile/${userId}`),
       {
         params: { provider },
       }
@@ -25,13 +25,13 @@ export class ProfileApi {
   }
 
   public async get_raw(
-    userKey: string,
+    userId: string,
     startDate: Date,
     endDate: Date,
     provider?: string
   ): Promise<ClientProfileRawResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/profile/${userKey}/raw`),
+      this.baseURL.concat(`/summary/profile/${userId}/raw`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }

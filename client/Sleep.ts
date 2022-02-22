@@ -14,13 +14,13 @@ export class SleepApi {
   }
 
   public async get(
-    userKey: string,
+    userId: string,
     startDate: Date,
     endDate: Date,
     provider?: string
   ): Promise<ClientSleepResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/sleep/${userKey}`),
+      this.baseURL.concat(`/summary/sleep/${userId}`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }
@@ -36,13 +36,13 @@ export class SleepApi {
   }
 
   public async get_raw(
-    userKey: string,
+    userId: string,
     startDate: Date,
     endDate: Date,
     provider?: string
   ): Promise<ClientSleepRawResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat(`/summary/sleep/${userKey}/raw`),
+      this.baseURL.concat(`/summary/sleep/${userId}/raw`),
       {
         params: { start_date: startDate, end_date: endDate, provider },
       }
