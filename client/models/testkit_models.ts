@@ -35,17 +35,17 @@ export interface Order {
   created_on: Date;
   updated_on: Date;
   status:
-    | 'ordered'
-    | 'transit_customer'
-    | 'out_for_delivery'
-    | 'with_customer'
-    | 'transit_lab'
-    | 'delivered_to_lab'
-    | 'processing_lab'
-    | 'completed'
-    | 'failure_to_deliver_to_customer'
-    | 'failure_to_deliver_to_lab'
-    | 'unknown';
+  | 'ordered'
+  | 'transit_customer'
+  | 'out_for_delivery'
+  | 'with_customer'
+  | 'transit_lab'
+  | 'delivered_to_lab'
+  | 'processing_lab'
+  | 'completed'
+  | 'failure_to_deliver_to_customer'
+  | 'failure_to_deliver_to_lab'
+  | 'unknown';
   user_key: string;
   testkit_id: string;
   testkit: Testkit;
@@ -63,6 +63,10 @@ export interface OrderRequestResponse {
   order: Order;
   status: string;
   message: string;
+}
+
+export interface OrderSuccessResponse {
+  success: boolean;
 }
 
 export interface TestkitResponse {

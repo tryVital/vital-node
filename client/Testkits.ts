@@ -5,6 +5,7 @@ import {
   Order,
   OrderRequestResponse,
   OrderResponse,
+  OrderSuccessResponse,
   PatientAdress,
   PatientDetails,
   TestkitResponse,
@@ -25,12 +26,13 @@ export class TestkitsApi {
 
   public async get_orders(
     startDate: Date,
-    endDate: Date
+    endDate: Date,
+    status: string[],
   ): Promise<OrderResponse> {
     const resp = await this.client.get(
       this.baseURL.concat('/testkit/orders/'),
       {
-        params: { start_date: startDate, end_date: endDate },
+        params: { start_date: startDate, end_date: endDate, status: status },
       }
     );
     return resp.data;
@@ -56,6 +58,13 @@ export class TestkitsApi {
 
   public async get_order(orderId: string): Promise<Order> {
     const resp = await this.client.get(
+      this.baseURL.concat(`/testkit/orders/${orderId}`)
+    );
+    return resp.data;
+  }
+
+  public async cancel_order(orderId: string): Promise<OrderSuccessResponse> {
+    const resp = await this.client.delete(
       this.baseURL.concat(`/testkit/orders/${orderId}`)
     );
     return resp.data;
