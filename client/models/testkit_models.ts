@@ -45,6 +45,7 @@ export interface Order {
   | 'completed'
   | 'failure_to_deliver_to_customer'
   | 'failure_to_deliver_to_lab'
+  | 'cancelled'
   | 'unknown';
   user_key: string;
   testkit_id: string;
