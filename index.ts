@@ -37,7 +37,12 @@ export class VitalClient {
   constructor(config: ClientConfig) {
     this.config = config;
     this.clientCredentials = new ClientCredentials(config);
-    const baseURL = CONFIG.baseUrls[config.environment];
+    let baseURL;
+    if (this.config.region && this.config.region === 'eu') {
+      baseURL = CONFIG.baseEUUrls[config.environment];
+    } else {
+      baseURL = CONFIG.baseUrls[config.environment];
+    }
     const axiosApiInstance = axios.create();
 
     axiosRetry(axiosApiInstance, {

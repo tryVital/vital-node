@@ -14,4 +14,9 @@ export default {
     production: 'https://api.tryvital.io',
     sandbox: 'https://api.sandbox.tryvital.io',
   },
+  baseEUUrls: {
+    prod: 'https://api.eu.tryvital.io',
+    production: 'https://api.eu.tryvital.io',
+    sandbox: 'https://api.sandbox.eu.tryvital.io',
+  },
 };
