@@ -26,7 +26,7 @@ export class TestkitsApi {
   public async get_orders(
     startDate: Date,
     endDate: Date,
-    status: string[],
+    status?: string[] | null,
   ): Promise<OrderResponse> {
     const resp = await this.client.get(
       this.baseURL.concat('/testkit/orders/'),
