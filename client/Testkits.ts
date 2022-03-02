@@ -64,8 +64,8 @@ export class TestkitsApi {
   }
 
   public async cancel_order(orderId: string): Promise<OrderSuccessResponse> {
-    const resp = await this.client.delete(
-      this.baseURL.concat(`/testkit/orders/${orderId}`)
+    const resp = await this.client.post(
+      this.baseURL.concat(`/testkit/orders/${orderId}/cancel`)
     );
     return resp.data;
   }
