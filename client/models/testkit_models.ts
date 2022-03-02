@@ -67,10 +67,6 @@ export interface OrderRequestResponse {
   message: string;
 }
 
-export interface OrderSuccessResponse {
-  success: boolean;
-}
-
 export interface TestkitResponse {
   testkits: Testkit[];
 }

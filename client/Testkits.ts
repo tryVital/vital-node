@@ -5,7 +5,6 @@ import {
   Order,
   OrderRequestResponse,
   OrderResponse,
-  OrderSuccessResponse,
   PatientAdress,
   PatientDetails,
   TestkitResponse,
@@ -63,7 +62,7 @@ export class TestkitsApi {
     return resp.data;
   }
 
-  public async cancel_order(orderId: string): Promise<OrderSuccessResponse> {
+  public async cancel_order(orderId: string): Promise<OrderRequestResponse> {
     const resp = await this.client.post(
       this.baseURL.concat(`/testkit/orders/${orderId}/cancel`)
     );
