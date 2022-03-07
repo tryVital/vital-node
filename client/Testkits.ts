@@ -26,12 +26,12 @@ export class TestkitsApi {
   public async get_orders(
     startDate: Date,
     endDate: Date,
-    status?: string[] | null,
+    status?: string[],
   ): Promise<OrderResponse> {
     const resp = await this.client.get(
       this.baseURL.concat('/testkit/orders/'),
       {
-        params: { start_date: startDate, end_date: endDate, status: status },
+        params: { start_date: startDate, end_date: endDate, status: status ? status : null},
       }
     );
     return resp.data;
