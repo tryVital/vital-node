@@ -1,13 +1,14 @@
 import { VitalClient } from "..";
-import { testClient, test_user_id } from "./arrange";
+import { testClient, testEuClient, getUserId } from "./arrange";
 
 describe('Devices', () => {
     it.each([
-        testClient,
-        // testEuClient
-    ])('should return device data', async (client: VitalClient) => {
+        ["us", testClient],
+        ["eu", testEuClient]
+    ])('should return device data %p', async (region: string, client: VitalClient) => {
+        const userId = await getUserId(client)
         const data = await client.Devices.get_raw(
-            test_user_id,
+            userId,
         )
         expect(data.devices.length).toBeGreaterThan(0)
     });

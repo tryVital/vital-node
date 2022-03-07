@@ -1,13 +1,14 @@
 import { VitalClient } from "..";
-import { testClient, test_user_id } from "./arrange";
+import { testClient, testEuClient, getUserId } from "./arrange";
 
 describe('Vitals', () => {
     it.each([
-        testClient,
-        // testEuClient
-    ])('should return glucose data', async (client: VitalClient) => {
+        ["us", testClient],
+        ["eu", testEuClient]
+    ])('should return glucose data %p', async (region: string, client: VitalClient) => {
+        const userId = await getUserId(client)
         const data = await client.Vitals.glucose(
-            test_user_id,
+            userId,
             new Date("2021-01-01"),
             new Date("2022-01-02"),
         )

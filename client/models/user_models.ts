@@ -36,6 +36,7 @@ export interface ClientFacingUser {
   client_user_id: string;
   created_on: string;
   connecte_sources: Array<ConnectedSourceClientFacing>;
+  user_id: string;
 }
 
 export enum Providers {
