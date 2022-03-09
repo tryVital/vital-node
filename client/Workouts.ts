@@ -16,7 +16,7 @@ export class WorkoutsApi {
   public async get(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientWorkoutResponse> {
     const resp = await this.client.get(
@@ -40,7 +40,7 @@ export class WorkoutsApi {
   public async get_raw(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientWorkoutsRawResponse> {
     const resp = await this.client.get(
