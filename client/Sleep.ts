@@ -16,7 +16,7 @@ export class SleepApi {
   public async get(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientSleepResponse> {
     const resp = await this.client.get(
@@ -38,7 +38,7 @@ export class SleepApi {
   public async get_raw(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientSleepRawResponse> {
     const resp = await this.client.get(

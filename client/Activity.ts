@@ -13,7 +13,7 @@ export class ActivityApi {
   public async get(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientActivityResponse> {
     const resp = await this.client.get(
@@ -28,7 +28,7 @@ export class ActivityApi {
   public async get_raw(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientActivityRawResponse> {
     const resp = await this.client.get(

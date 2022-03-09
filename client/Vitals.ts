@@ -13,7 +13,7 @@ export class VitalsApi {
     user_key: string,
     resource: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<TimeseriesPoint[]> {
     const resp = await this.client.get(
@@ -29,7 +29,7 @@ export class VitalsApi {
     type: 'ldl' | 'total' | 'triglycerides' | 'hdl',
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<TimeseriesPoint[]> {
     return this.timeseriesData(
@@ -44,7 +44,7 @@ export class VitalsApi {
   public async glucose(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<TimeseriesPoint[]> {
     return this.timeseriesData(
@@ -59,7 +59,7 @@ export class VitalsApi {
   public async ige(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<TimeseriesPoint[]> {
     return this.timeseriesData(userId, 'ige', startDate, endDate, provider);
@@ -68,7 +68,7 @@ export class VitalsApi {
   public async igg(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<TimeseriesPoint[]> {
     return this.timeseriesData(userId, 'igg', startDate, endDate, provider);
@@ -77,7 +77,7 @@ export class VitalsApi {
   public async heartrate(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<TimeseriesPoint[]> {
     return this.timeseriesData(

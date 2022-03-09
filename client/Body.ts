@@ -14,7 +14,7 @@ export class BodyApi {
   public async get(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientBodyResponse> {
     const resp = await this.client.get(
@@ -29,7 +29,7 @@ export class BodyApi {
   public async get_raw(
     userId: string,
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     provider?: string
   ): Promise<ClientBodyRawResponse> {
     const resp = await this.client.get(
