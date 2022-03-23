@@ -17,12 +17,13 @@ export class SleepApi {
     userId: string,
     startDate: Date,
     endDate?: Date,
-    provider?: string
+    provider?: string,
+    with_stream?: boolean
   ): Promise<ClientSleepResponse> {
     const resp = await this.client.get(
       this.baseURL.concat(`/summary/sleep/${userId}`),
       {
-        params: { start_date: startDate, end_date: endDate, provider },
+        params: { start_date: startDate, end_date: endDate, provider, with_stream },
       }
     );
     return resp.data;
