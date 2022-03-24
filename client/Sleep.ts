@@ -18,7 +18,7 @@ export class SleepApi {
     startDate: Date,
     endDate?: Date,
     provider?: string,
-    with_stream?: boolean
+    with_stream: boolean = false
   ): Promise<ClientSleepResponse> {
     const resp = await this.client.get(
       this.baseURL.concat(`/summary/sleep/${userId}`),
