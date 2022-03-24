@@ -1,3 +1,4 @@
+/* eslint-disable */
 export interface PatientAdress {
   receiver_name: string;
   street_number: string;
@@ -47,7 +48,7 @@ export interface Order {
   | 'failure_to_deliver_to_lab'
   | 'cancelled'
   | 'do_not_process'
-  | 'unknown';
+  | 'unknown'; 
   user_key: string;
   testkit_id: string;
   testkit: Testkit;

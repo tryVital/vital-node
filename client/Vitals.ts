@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { AxiosInstance } from 'axios';
 import { TimeseriesPoint } from './models/activity';
 

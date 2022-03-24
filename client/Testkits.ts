@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { AxiosInstance } from 'axios';
 import {
   LabResultsMetadata,
@@ -31,7 +32,7 @@ export class TestkitsApi {
     const resp = await this.client.get(
       this.baseURL.concat('/testkit/orders/'),
       {
-        params: { start_date: startDate, end_date: endDate, status: status ? status : null},
+        params: { start_date: startDate, end_date: endDate, status: status ? status : null}, 
       }
     );
     return resp.data;
