@@ -127,6 +127,13 @@ export interface ClientFacingSleep {
    * @memberof ClientFacingSleep
    */
   user_id: string;
+  /**
+   * UTC time when the sleep period started
+   * @type {ClientSleepStreamResponse}
+   * @memberof ClientFacingSleep
+   * 
+   */
+  sleep_stream: ClientSleepStreamResponse[];
 }
 
 export interface ClientSleepResponse {
