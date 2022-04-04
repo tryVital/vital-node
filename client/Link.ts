@@ -18,11 +18,13 @@ export class LinkApi {
 
   public async create(
     userId: string,
-    provider: string = null
+    provider: string = null,
+    redirect_url: string = null
   ): Promise<LinkTokenExchangeResponse> {
     const resp = await this.client.post(this.baseURL.concat('/link/token/'), {
       user_key: userId,
       provider,
+      redirect_url,
     });
     return resp.data;
   }
