@@ -36,7 +36,13 @@ export class VitalClient {
 
   constructor(config: ClientConfig) {
     this.config = config;
-    this.clientCredentials = new ClientCredentials(config);
+    if(!config.api_key){
+      try {
+        this.clientCredentials = new ClientCredentials(config);
+      } catch (error) {
+        throw new Error("You must provide either an API key or a client ID and secret");
+      }
+    }
     let baseURL;
     if (this.config.region && this.config.region === 'eu') {
       baseURL = CONFIG.baseEUUrls[config.environment];
