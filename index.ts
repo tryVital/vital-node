@@ -52,11 +52,16 @@ export class VitalClient {
 
     axiosApiInstance.interceptors.request.use(
       async (config) => {
-        const token = await this.clientCredentials.access_token();
+        const headers = config.headers;
+        if(this.config.api_key){
+          headers["x-vital-api-key"] = this.config.api_key;
+        } else {
+          const token = await this.clientCredentials.access_token();
+          headers["Authorization"] = `Bearer ${token}`;
+        }
         config.headers = {
-          ...config.headers,
+          ...headers,
           'x-vital-client-id': this.config.client_id,
-          Authorization: `Bearer ${token}`,
         };
         return config;
       },

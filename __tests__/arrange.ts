@@ -17,6 +17,12 @@ export const testEuClient = new VitalClient({
     region: "eu",
 });
 
+export const testApiKeyClient = new VitalClient({
+    api_key: process.env.TEST_API_KEY,
+    environment: process.env.TEST_ENVIRONMENT as any,
+    region: "us",
+});
+
 export const test_user_id = "test_user_1234";
 
 export const getUserId = async (client: VitalClient, user_id: string = test_user_id) => {
