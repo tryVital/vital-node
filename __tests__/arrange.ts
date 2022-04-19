@@ -19,6 +19,7 @@ export const testEuClient = new VitalClient({
 
 export const testApiKeyClient = new VitalClient({
     api_key: process.env.TEST_API_KEY,
+    api_secret_key: process.env.TEST_API_SECRET_KEY,
     environment: process.env.TEST_ENVIRONMENT as any,
     region: "us",
 });

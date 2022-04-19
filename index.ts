@@ -35,7 +35,7 @@ export class VitalClient {
   Devices: DevicesAPI;
 
   constructor(config: ClientConfig) {
-    this.config = config;
+    this.config = config; 
     if(!config.api_key){
       try {
         this.clientCredentials = new ClientCredentials(config);
@@ -61,13 +61,14 @@ export class VitalClient {
         const headers = config.headers;
         if(this.config.api_key){
           headers["x-vital-api-key"] = this.config.api_key;
+          headers["x-vital-api-secret-key"] = this.config.api_secret_key;
         } else {
           const token = await this.clientCredentials.access_token();
           headers["Authorization"] = `Bearer ${token}`;
+          headers["x-vital-client-id"] = this.config.client_id;
         }
         config.headers = {
           ...headers,
-          'x-vital-client-id': this.config.client_id,
         };
         return config;
       },
