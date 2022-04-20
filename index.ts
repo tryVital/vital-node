@@ -64,10 +64,10 @@ export class VitalClient {
         } else {
           const token = await this.clientCredentials.access_token();
           headers["Authorization"] = `Bearer ${token}`;
+          headers["x-vital-client-id"] = this.config.client_id;
         }
         config.headers = {
           ...headers,
-          'x-vital-client-id': this.config.client_id,
         };
         return config;
       },
