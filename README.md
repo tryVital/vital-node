@@ -18,4 +18,4 @@ yarn add @tryvital/vital-node
 
 ## Documentation
 
-The official [Vital Link docs](https://docs.tryvital.io) provide a full reference on using this library.
+Please refer to the official [Vital docs](https://docs.tryvital.io) provide a full reference on using this library.
