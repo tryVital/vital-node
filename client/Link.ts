@@ -49,12 +49,14 @@ export class LinkApi {
   public async connectEmailProvider(
     linkToken: string,
     provider: EmailProviders,
-    email: string
+    email: string,
+    region?: string,
   ): Promise<ProviderLinkResponse> {
     const resp = await this.client.post(
       this.baseURL.concat(`/link/provider/email/${provider}`),
       {
         email,
+        region: region || null
       },
       { headers: { LinkToken: linkToken } }
     );
