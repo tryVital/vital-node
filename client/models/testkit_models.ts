@@ -48,7 +48,8 @@ export interface Order {
   | 'cancelled'
   | 'do_not_process'
   | 'unknown'
-  | "rejected";
+  | "rejected"
+  | "lost";
   user_key: string;
   testkit_id: string;
   testkit: Testkit;
