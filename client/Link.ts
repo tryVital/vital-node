@@ -52,12 +52,10 @@ export class LinkApi {
     email: string,
     region?: string,
   ): Promise<ProviderLinkResponse> {
+    const payload = region ? { email, region } : { email };
     const resp = await this.client.post(
       this.baseURL.concat(`/link/provider/email/${provider}`),
-      {
-        email,
-        region: region || null
-      },
+      payload,
       { headers: { LinkToken: linkToken } }
     );
     return resp.data;
