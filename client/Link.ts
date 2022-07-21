@@ -19,12 +19,14 @@ export class LinkApi {
   public async create(
     userId: string,
     provider: string = null,
-    redirect_url: string = null
+    redirect_url: string = null,
+    providers: string[] = null
   ): Promise<LinkTokenExchangeResponse> {
     const resp = await this.client.post(this.baseURL.concat('/link/token/'), {
       user_key: userId,
       provider,
       redirect_url,
+      providers,
     });
     return resp.data;
   }
@@ -50,7 +52,7 @@ export class LinkApi {
     linkToken: string,
     provider: EmailProviders,
     email: string,
-    region?: string,
+    region?: string
   ): Promise<ProviderLinkResponse> {
     const payload = region ? { email, region } : { email };
     const resp = await this.client.post(
