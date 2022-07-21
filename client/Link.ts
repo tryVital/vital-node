@@ -26,12 +26,8 @@ export class LinkApi {
       user_key: userId,
       provider,
       redirect_url,
+      ...(filter_on_providers || {}),
     };
-    if (filter_on_providers) {
-      // @ts-ignore
-      default_params['filter_on_providers'] = filter_on_providers;
-    }
-
     const resp = await this.client.post(
       this.baseURL.concat('/link/token/'),
       default_params
