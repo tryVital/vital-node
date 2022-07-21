@@ -20,14 +20,22 @@ export class LinkApi {
     userId: string,
     provider: string = null,
     redirect_url: string = null,
-    providers: string[] = null
+    filter_on_providers: string[] = null
   ): Promise<LinkTokenExchangeResponse> {
-    const resp = await this.client.post(this.baseURL.concat('/link/token/'), {
+    const default_params = {
       user_key: userId,
       provider,
       redirect_url,
-      providers,
-    });
+    };
+    if (filter_on_providers) {
+      // @ts-ignore
+      default_params['filter_on_providers'] = filter_on_providers;
+    }
+
+    const resp = await this.client.post(
+      this.baseURL.concat('/link/token/'),
+      default_params
+    );
     return resp.data;
   }
 
