@@ -13,7 +13,7 @@ export class WebhooksApi {
     payload: string,
     headers: Record<string, string>,
     secret: string
-  ): unknown {
+  ): Record<string, any> | Record<string, any>[] {
     const wh = new Webhook(secret);
     return wh.verify(payload, headers);
   }
