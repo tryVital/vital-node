@@ -27,11 +27,19 @@ export class TestkitsApi {
     startDate: Date,
     endDate: Date,
     status?: string[],
+    userId?: string,
+    patientName?: string
   ): Promise<OrderResponse> {
     const resp = await this.client.get(
       this.baseURL.concat('/testkit/orders/'),
       {
-        params: { start_date: startDate, end_date: endDate, status: status ? status : null},
+        params: {
+          start_date: startDate,
+          end_date: endDate,
+          status: status ? status : null,
+          user_id: userId ? userId : null,
+          patient_name: patientName ? patientName : null,
+        },
       }
     );
     return resp.data;
