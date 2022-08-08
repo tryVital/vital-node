@@ -49,4 +49,5 @@ export enum Providers {
   Peloton = 'peloton',
   Wahoo = 'wahoo',
   Zwift = 'zwift',
+  Hammerhead = 'hammerhead',
 }
