@@ -1,4 +1,4 @@
-export type PasswordProviders = 'whoop' | 'renpho' | 'peloton' | 'zwift';
+export type PasswordProviders = 'whoop' | 'renpho' | 'peloton' | 'zwift' | 'hammerhead';
 export type OAuthProviders =
   | 'oura'
   | 'fitbit'
