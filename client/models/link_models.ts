@@ -8,6 +8,7 @@ export type OAuthProviders =
   | 'wahoo';
 
 export type EmailProviders = 'freestyle_libre';
+export type DemoProviders = 'apple_health_kit' | 'fitbit' | 'oura' | 'whoop';
 
 export interface ProviderLinkResponse {
   provider: PasswordProviders;
@@ -17,4 +18,9 @@ export interface ProviderLinkResponse {
 
 export interface LinkTokenExchangeResponse {
   link_token: string;
+}
+
+export interface DemoConnectionResponse {
+  success: boolean;
+  redirect_url?: string;
 }
