@@ -62,7 +62,7 @@ export interface ClientFacingWorkout {
    * @type {number}
    * @memberof ClientFacingWorkout
    */
-  calories: number;
+  calories?: number;
   /**
    *
    * @type {ClientFacingSport}
