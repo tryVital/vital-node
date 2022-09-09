@@ -61,6 +61,9 @@ export interface Order {
 
 export interface OrderResponse {
   orders: Order[];
+  total: number;
+  page: number;
+  size: number;
 }
 
 export interface OrderRequestResponse {
