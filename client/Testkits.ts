@@ -28,7 +28,9 @@ export class TestkitsApi {
     endDate: Date,
     status?: string[],
     userId?: string,
-    patientName?: string
+    patientName?: string,
+    page?: number,
+    size?: number
   ): Promise<OrderResponse> {
     const resp = await this.client.get(
       this.baseURL.concat('/testkit/orders/'),
@@ -39,6 +41,8 @@ export class TestkitsApi {
           status: status ? status : null,
           user_id: userId ? userId : null,
           patient_name: patientName ? patientName : null,
+          ...(page && { page }),
+          ...(size && { size }),
         },
       }
     );
