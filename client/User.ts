@@ -5,6 +5,8 @@ import {
   ClientFacingUser,
   Providers,
   ProvidersResponse,
+  GetTeamUsersParams,
+  GetTeamUsersResponse,
 } from './models/user_models';
 
 export class UserApi {
@@ -29,8 +31,16 @@ export class UserApi {
     return resp.data;
   }
 
-  public async getAll(): Promise<Array<ClientFacingUser>> {
-    const resp = await this.client.get(this.baseURL.concat('/user/'));
+  public async getAll({
+    limit = 100,
+    offset = 0,
+  }: GetTeamUsersParams = {}): Promise<GetTeamUsersResponse> {
+    const url = new URL(this.baseURL.concat('/user/'));
+
+    url.searchParams.set('limit', String(limit));
+    url.searchParams.set('offset', String(offset));
+
+    const resp = await this.client.get(url.toString());
     return resp.data;
   }
 
@@ -63,9 +73,7 @@ export class UserApi {
     return resp.data;
   }
 
-  public async refresh(
-    userId: string,
-  ): Promise<SuccessResponse> {
+  public async refresh(userId: string): Promise<SuccessResponse> {
     const resp = await this.client.post(
       this.baseURL.concat(`/user/refresh/${userId}`)
     );

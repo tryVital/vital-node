@@ -51,3 +51,15 @@ export enum Providers {
   Zwift = 'zwift',
   Hammerhead = 'hammerhead',
 }
+
+export interface GetTeamUsersParams {
+  limit?: number;
+  offset?: number;
+}
+
+export interface GetTeamUsersResponse {
+  users: Array<ClientFacingUser>;
+  offset: number;
+  limit: number;
+  total: number;
+}
