@@ -1,107 +1,95 @@
 import { AxiosInstance } from 'axios';
 import {
-  LabResultsMetadata,
-  LabResultsRaw,
-  Order,
-  OrderRequestResponse,
-  OrderResponse,
-  PatientAdress,
-  PatientDetails,
-  TestkitResponse,
+    ClientFacingLabTest,
+    LabResultsMetadata,
+    LabResultsResponse,
+    Order,
+    OrderRequestResponse,
+    PatientAdress,
+    PatientDetails,
+    Physician,
+    TestkitResponse,
 } from './models/testkit_models';
 
 export class TestkitsApi {
-  baseURL: string;
-  client: AxiosInstance;
-  constructor(baseURL: string, axios: AxiosInstance) {
-    this.baseURL = baseURL;
-    this.client = axios;
-  }
+    baseURL: string;
+    client: AxiosInstance;
+    constructor(baseURL: string, axios: AxiosInstance) {
+        this.baseURL = baseURL;
+        this.client = axios;
+    }
 
-  public async get(): Promise<TestkitResponse> {
-    const resp = await this.client.get(this.baseURL.concat('/testkit'));
-    return resp.data;
-  }
 
-  public async get_orders(
-    startDate: Date,
-    endDate: Date,
-    status?: string[],
-    userId?: string,
-    patientName?: string,
-    page?: number,
-    size?: number
-  ): Promise<OrderResponse> {
-    const resp = await this.client.get(
-      this.baseURL.concat('/testkit/orders/'),
-      {
-        params: {
-          start_date: startDate,
-          end_date: endDate,
-          status: status ? status : null,
-          user_id: userId ? userId : null,
-          patient_name: patientName ? patientName : null,
-          ...(page && { page }),
-          ...(size && { size }),
-        },
-      }
-    );
-    return resp.data;
-  }
+    //   Create new order 
+    public async create_order(
+        user_id: string,
+        patient_details: PatientDetails,
+        patient_address: PatientAdress,
+        lab_test_id: string,
+        physician?: Physician,
+    ): Promise<OrderRequestResponse> {
+        const resp = await this.client.post(
+            this.baseURL.concat('/v3/order'),
+            {
+                params: {
+                    user_id: user_id,
+                    patient_details: patient_details,
+                    patient_address: patient_address,
+                    lab_test_id: lab_test_id,
+                    physician: physician ? physician : null
+                },
+            }
+        );
+        return resp.data;
+    }
 
-  public async order(
-    userId: string,
-    testkitId: string,
-    patientAddress: PatientAdress,
-    patientDetails: PatientDetails
-  ): Promise<OrderRequestResponse> {
-    const resp = await this.client.post(
-      this.baseURL.concat('/testkit/orders'),
-      {
-        user_key: userId,
-        testkit_id: testkitId,
-        patient_address: patientAddress,
-        patient_details: patientDetails,
-      }
-    );
-    return resp.data;
-  }
+    //   Get order status.
+    public async getOrder(orderId: string): Promise<Order> {
+        const resp = await this.client.get(
+            this.baseURL.concat(`/v3/order/${orderId}`)
+        );
+        return resp.data;
+    }
 
-  public async get_order(orderId: string): Promise<Order> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/testkit/orders/${orderId}`)
-    );
-    return resp.data;
-  }
+    //   Cancels order.
+    public async cancelOrder(orderId: string): Promise<OrderRequestResponse> {
+        const resp = await this.client.post(
+            this.baseURL.concat(`/v3/order/${orderId}/cancel`)
+        );
+        return resp.data;
+    }
 
-  public async cancel_order(orderId: string): Promise<OrderRequestResponse> {
-    const resp = await this.client.post(
-      this.baseURL.concat(`/testkit/orders/${orderId}/cancel`)
-    );
-    return resp.data;
-  }
+    //   GET all lab tests the team has access to.
+    public async getTests(orderId: string): Promise<ClientFacingLabTest> {
+        const resp = await this.client.get(
+            this.baseURL.concat(`/v3/lab_tests`)
+        );
+        return resp.data;
+    }
 
-  public async get_results(orderId: string): Promise<string> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/testkit/orders/${orderId}/results`),
-      {
-        responseType: 'arraybuffer',
-      }
-    );
-    return resp.data;
-  }
+    // GET both metadata and raw json test data.
+    public async getResults(orderId: string): Promise<LabResultsResponse> {
+        const resp = await this.client.get(
+            this.baseURL.concat(`/v3/order/${orderId}/result`)
+        );
+        return resp.data;
+    }
 
-  public async getMetadata(orderId: string): Promise<LabResultsMetadata> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/testkit/orders/${orderId}/results/metadata`)
-    );
-    return resp.data;
-  }
+    // GET gets the lab result for the order in PDF format. 
+    // TODO Check response type for PDF
+    public async getResultsPdf(orderId: string): Promise<string> {
+        const resp = await this.client.get(
+            this.baseURL.concat(`/v3/order/${orderId}/result/pdf`)
+        );
+        return resp.data;
+    }
 
-  public async getRawResults(orderId: string): Promise<LabResultsRaw> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/testkit/orders/${orderId}/results/raw`)
-    );
-    return resp.data;
-  }
+    // GET metadata related to order results, such as 
+    // lab metadata, provider and sample dates.
+    public async getResultsMetadata(orderId: string): Promise<LabResultsMetadata> {
+        const resp = await this.client.get(
+            this.baseURL.concat(`/v3/order/${orderId}/result/metadata`)
+        );
+        return resp.data;
+    }
 }
