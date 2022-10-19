@@ -5,7 +5,9 @@ import {
   BodyApi,
   LinkApi,
   SleepApi,
-  TestkitsApi,
+  OrdersApi, 
+  TestsApi, 
+  ResultsApi,
   UserApi,
   WebhooksApi,
   WorkoutsApi,
@@ -29,7 +31,9 @@ export class VitalClient {
   Workouts: WorkoutsApi;
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
-  Testkits: TestkitsApi;
+  Orders: OrdersApi;
+  Tests: TestsApi;
+  Results: ResultsApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
   Devices: DevicesAPI;
@@ -85,7 +89,9 @@ export class VitalClient {
     this.Workouts = new WorkoutsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
-    this.Testkits = new TestkitsApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.Orders = new OrdersApi(baseURL.concat('/v3'), axiosApiInstance);
+    this.Tests = new TestsApi(baseURL.concat('/v3'), axiosApiInstance);
+    this.Results = new ResultsApi(baseURL.concat('/v3'), axiosApiInstance);
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Devices = new DevicesAPI(baseURL.concat('/v2'), axiosApiInstance);

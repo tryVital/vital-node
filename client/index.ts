@@ -5,6 +5,6 @@ export { SleepApi } from './Sleep';
 export { UserApi } from './User';
 export { WebhooksApi } from './Webhooks';
 export { WorkoutsApi } from './Workouts';
-export { TestkitsApi } from './Testkits';
+export { OrdersApi, TestsApi, ResultsApi } from './Testing';
 export { ProfileApi } from './Profile';
 export { DevicesAPI } from './Devices';
