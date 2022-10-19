@@ -88,4 +88,36 @@ export class VitalsApi {
       provider
     );
   }
+
+  public async bloodOxygen(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string,
+
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'blood_oxygen',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
+  public async bloodPressure(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string,
+
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'blood_pressure',
+      startDate,
+      endDate,
+      provider
+    );
+  }
 }
