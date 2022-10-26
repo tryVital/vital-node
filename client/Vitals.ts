@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { TimeseriesPoint } from './models/activity';
+import { TimeseriesBloodPressurePoint, TimeseriesPoint } from './models/activity';
 
 export class VitalsApi {
   baseURL: string;
@@ -9,13 +9,13 @@ export class VitalsApi {
     this.client = axios;
   }
 
-  private async timeseriesData(
+  private async timeseriesData<T = TimeseriesPoint>(
     user_key: string,
     resource: string,
     startDate: Date,
     endDate?: Date,
     provider?: string
-  ): Promise<TimeseriesPoint[]> {
+  ): Promise<T[]> {
     const resp = await this.client.get(
       this.baseURL.concat(`/timeseries/${user_key}/${resource}`),
       {
@@ -111,8 +111,8 @@ export class VitalsApi {
     endDate?: Date,
     provider?: string,
 
-  ): Promise<TimeseriesPoint[]> {
-    return this.timeseriesData(
+  ): Promise<TimeseriesBloodPressurePoint[]> {
+    return this.timeseriesData<TimeseriesBloodPressurePoint>(
       userId,
       'blood_pressure',
       startDate,
