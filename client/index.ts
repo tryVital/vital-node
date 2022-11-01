@@ -8,3 +8,4 @@ export { WorkoutsApi } from './Workouts';
 export { TestkitsApi } from './Testkits';
 export { ProfileApi } from './Profile';
 export { DevicesAPI } from './Devices';
+export { MealsApi } from './Meals';
