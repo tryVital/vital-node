@@ -13,6 +13,7 @@ import {
   WorkoutsApi,
   ProfileApi,
   DevicesAPI,
+  MealsApi
 } from './client';
 import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
@@ -27,6 +28,7 @@ export class VitalClient {
   Activity: ActivityApi;
   Link: LinkApi;
   Body: BodyApi;
+  Meals: MealsApi;
   Sleep: SleepApi;
   User: UserApi;
   Workouts: WorkoutsApi;
@@ -92,5 +94,6 @@ export class VitalClient {
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Devices = new DevicesAPI(baseURL.concat('/v2'), axiosApiInstance);
+    this.Meals = new MealsApi(baseURL.concat('/v2'), axiosApiInstance);
   }
 }

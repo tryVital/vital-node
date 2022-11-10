@@ -50,6 +50,17 @@ export enum Providers {
   Wahoo = 'wahoo',
   Zwift = 'zwift',
   Hammerhead = 'hammerhead',
+  FreestyleLibre = "freestyle_libre",
+  Withings = "withings",
+  EightSleep = "eight_sleep",
+  GoogleFit = "google_fit",
+  AppleHealthKit = "apple_health_kit",
+  IHealth = "ihealth",
+  AccuchekBle = "accuchek_ble",
+  ContourBle = "contour_ble",
+  Beurer = "beurer",
+  Dexcom = "dexcom",
+  MyFitnessPal = "my_fitness_pal",
 }
 
 export interface GetTeamUsersParams {
