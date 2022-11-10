@@ -60,22 +60,6 @@ export class OrdersApi {
     }
 }
 
-export class TestsApi {
-    baseURL: string;
-    client: AxiosInstance;
-    constructor(baseURL: string, axios: AxiosInstance) {
-        this.baseURL = baseURL;
-        this.client = axios;
-    }
-    //   GET all lab tests the team has access to.
-    public async getTests(orderId: string): Promise<ClientFacingLabTest> {
-        const resp = await this.client.get(
-            this.baseURL.concat(`/lab_tests`)
-        );
-        return resp.data;
-    }
-}
-
 export class ResultsApi {
     baseURL: string;
     client: AxiosInstance;
@@ -111,3 +95,26 @@ export class ResultsApi {
 }
 
 
+
+
+
+export class LabTestsApi {
+    baseURL: string;
+    client: AxiosInstance;
+    Orders: OrdersApi;
+    Results: ResultsApi;
+
+    constructor(baseURL: string, axios: AxiosInstance) {
+        this.baseURL = baseURL;
+        this.client = axios;
+        this.Orders = new OrdersApi(baseURL, axios)
+        this.Results = new ResultsApi(baseURL, axios)
+
+    }
+    public async getTests(): Promise<ClientFacingLabTest> {
+        const resp = await this.client.get(
+            this.baseURL.concat(`/lab_tests`)
+        );
+        return resp.data;
+    }
+}

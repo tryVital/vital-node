@@ -19,6 +19,7 @@ import CONFIG from './lib/config';
 import { ClientCredentials } from './lib/credentials';
 import { VitalsApi } from './client/Vitals';
 import { ProviderApi } from './client/Provider';
+import { LabTestsApi } from './client/LabTests';
 
 export class VitalClient {
   config: ClientConfig;
@@ -31,9 +32,7 @@ export class VitalClient {
   Workouts: WorkoutsApi;
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
-  Orders: OrdersApi;
-  Tests: TestsApi;
-  Results: ResultsApi;
+  LabTests: LabTestsApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
   Devices: DevicesAPI;
@@ -89,9 +88,7 @@ export class VitalClient {
     this.Workouts = new WorkoutsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
-    this.Orders = new OrdersApi(baseURL.concat('/v3'), axiosApiInstance);
-    this.Tests = new TestsApi(baseURL.concat('/v3'), axiosApiInstance);
-    this.Results = new ResultsApi(baseURL.concat('/v3'), axiosApiInstance);
+    this.LabTests = new LabTestsApi(baseURL.concat('/v3'), axiosApiInstance);
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Devices = new DevicesAPI(baseURL.concat('/v2'), axiosApiInstance);
