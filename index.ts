@@ -5,7 +5,9 @@ import {
   BodyApi,
   LinkApi,
   SleepApi,
-  TestkitsApi,
+  OrdersApi, 
+  TestsApi, 
+  ResultsApi,
   UserApi,
   WebhooksApi,
   WorkoutsApi,
@@ -17,7 +19,8 @@ import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
 import { ClientCredentials } from './lib/credentials';
 import { VitalsApi } from './client/Vitals';
-import { ProviderApi } from './client/Provider';;
+import { ProviderApi } from './client/Provider';
+import { LabTestsApi } from './client/LabTests';
 
 export class VitalClient {
   config: ClientConfig;
@@ -31,7 +34,7 @@ export class VitalClient {
   Workouts: WorkoutsApi;
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
-  Testkits: TestkitsApi;
+  LabTests: LabTestsApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
   Devices: DevicesAPI;
@@ -87,7 +90,7 @@ export class VitalClient {
     this.Workouts = new WorkoutsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
-    this.Testkits = new TestkitsApi(baseURL.concat('/v2'), axiosApiInstance);
+    this.LabTests = new LabTestsApi(baseURL.concat('/v3'), axiosApiInstance);
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Devices = new DevicesAPI(baseURL.concat('/v2'), axiosApiInstance);
