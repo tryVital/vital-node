@@ -1,6 +1,6 @@
 {
   "name": "@tryvital/vital-node",
-  "version": "2.1.0",
+  "version": "1.6.4",
   "description": "Node client for Vital",
   "author": "maitham",
   "keywords": [
