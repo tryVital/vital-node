@@ -34,7 +34,7 @@ export class LinkApi {
       default_params['filter_on_providers'] = filter_on_providers;
     }
     const resp = await this.client.post(
-      this.baseURL.concat('/link/token/'),
+      this.baseURL.concat('/link/token'),
       default_params
     );
     return resp.data;
