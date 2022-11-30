@@ -5,6 +5,7 @@ on:
 env:
   TEST_EU_API_KEY: ${{ secrets.TEST_EU_API_KEY }}
   TEST_US_API_KEY: ${{ secrets.TEST_US_API_KEY }}
+  TEST_ENVIRONMENT: "sandbox"
 name: Test compile
 jobs:
   test-build:
