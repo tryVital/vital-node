@@ -34,6 +34,12 @@ export interface Order {
   team_id: string;
   created_on: Date;
   updated_on: Date;
+  patient_details: PatientDetails;
+  patient_address: PatientAdress;
+  created_at: string;
+  updated_at: string;
+  sample_id?: string;
+  notes?: string;
   status:
   | 'ordered'
   | 'transit_customer'
@@ -92,5 +98,5 @@ export interface LabResultsMetadata {
 
 export interface LabResultsRaw {
   metadata: LabResultsMetadata;
-  data: Record<string, string>;
+  results: Record<string, string>;
 }
