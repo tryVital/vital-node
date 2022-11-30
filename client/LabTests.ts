@@ -8,7 +8,7 @@ import {
     PatientAdress,
     PatientDetails,
     Physician,
-} from './models/testkit_models';
+} from './models/lab_tests_model';
 
 
 

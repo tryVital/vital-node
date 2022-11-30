@@ -22,7 +22,6 @@
     "lint": "eslint --ext .js,.jsx,.ts ."
   },
   "dependencies": {
-    "auth0": "^2.35.1",
     "axios": ">=0.21.2 <1.0.0",
     "axios-retry": "^3.2.4",
     "crypto": "^1.0.1",
