@@ -94,11 +94,19 @@ export interface ClientCholesterolResponse {
   cholesterol: ClientFacingCholesterol[];
 }
 
-export interface TimeseriesPoint {
+interface Timeseries {
   timestamp: Date;
-  value: number;
   type: string;
   unit: string;
+}
+
+export interface TimeseriesPoint extends Timeseries {
+  value: number;
+}
+
+export interface TimeseriesBloodPressurePoint extends Timeseries {
+  systolic: number;
+  diastolic: number;
 }
 
 enum RespiratoryAllergen {

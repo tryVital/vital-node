@@ -33,7 +33,7 @@ export class TestkitsApi {
     size?: number
   ): Promise<OrderResponse> {
     const resp = await this.client.get(
-      this.baseURL.concat('/testkit/orders/'),
+      this.baseURL.concat('/testkit/orders'),
       {
         params: {
           start_date: startDate,

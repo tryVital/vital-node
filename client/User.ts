@@ -35,7 +35,7 @@ export class UserApi {
     limit = 100,
     offset = 0,
   }: GetTeamUsersParams = {}): Promise<GetTeamUsersResponse> {
-    const url = new URL(this.baseURL.concat('/user/'));
+    const url = new URL(this.baseURL.concat('/user'));
 
     url.searchParams.set('limit', String(limit));
     url.searchParams.set('offset', String(offset));
