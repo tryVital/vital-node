@@ -1,18 +1,33 @@
+import internal = require("stream");
+import { IntegrationKeyOut } from "svix";
+
 export interface PatientAdress {
   receiver_name: string;
-  first_line: string;
-  second_line?: string;
+  street: string;
   city: string;
   state: string;
   zip: string;
   country: string;
   phone_number: string;
+  street_number?: string;
 }
 
 export interface PatientDetails {
   dob: string;
   gender: string;
+  email: string;
 }
+
+export interface Physician {
+  first_name: string;
+  last_name: string;
+  npi: string;
+  email?: string;
+  licensed_states?: string[];
+  created_at?: string;
+  updated_at?: string;
+}
+
 export interface Marker {
   name: string;
   slug: string;
@@ -29,12 +44,30 @@ export interface Testkit {
   price: number;
 }
 
+export interface TestkitEvent {
+  id: number;
+  created_at: string;
+  status: string;
+}
+
+
+
 export interface Order {
+  user_id: string;
   id: string;
   team_id: string;
-  created_on: Date;
-  updated_on: Date;
-  status:
+  patient_details: PatientDetails;
+  patient_address: PatientAdress;
+  lab_test: Testkit;
+  // TODO  CHECK WHAT DETAILS IS
+  details: Object;
+  created_at: string;
+  updated_at: string;
+  events: TestkitEvent;
+  user_key?: string;
+  sample_id?: string;
+  notes?: string;
+  status?:
   | 'ordered'
   | 'transit_customer'
   | 'out_for_delivery'
@@ -50,20 +83,6 @@ export interface Order {
   | 'unknown'
   | "rejected"
   | "lost";
-  user_key: string;
-  testkit_id: string;
-  testkit: Testkit;
-  inbound_tracking_number?: string;
-  outbound_tracking_number?: string;
-  outbound_courier?: string;
-  inbound_courier?: string;
-}
-
-export interface OrderResponse {
-  orders: Order[];
-  total: number;
-  page: number;
-  size: number;
 }
 
 export interface OrderRequestResponse {
@@ -72,6 +91,25 @@ export interface OrderRequestResponse {
   message: string;
 }
 
+export interface LabClientFacing {
+  slug: string;
+  name: string;
+  first_line_address: string;
+  city: string;
+  zipcode: string;
+}
+
+export interface ClientFacingLabTest {
+  id: string;
+  slug: string;
+  name: string;
+  sample_type: string;
+  method: string;
+  price: number;
+  is_active: boolean;
+  lab: LabClientFacing;
+  markers: Marker;
+}
 export interface TestkitResponse {
   testkits: Testkit[];
 }
@@ -79,18 +117,17 @@ export interface TestkitResponse {
 export interface LabResultsMetadata {
   age: string;
   dob: string;
-  clia_number: string;
   patient: string;
-  provider: string;
-  laboratory: string;
   date_reported: string;
   date_collected: string;
   specimen_number: string;
-  date_received?: string;
   clia?: string;
+  provider?: string;
+  laboratory?: string;
+  date_received?: string;
 }
 
-export interface LabResultsRaw {
+export interface LabResultsResponse {
   metadata: LabResultsMetadata;
-  data: Record<string, string>;
+  results: Object;
 }
