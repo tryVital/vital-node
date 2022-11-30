@@ -10,18 +10,16 @@ import {
   WorkoutsApi,
   ProfileApi,
   DevicesAPI,
-  MealsApi
+  MealsApi,
+  TestkitsApi
 } from './client';
 import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
-import { ClientCredentials } from './lib/credentials';
 import { VitalsApi } from './client/Vitals';
 import { ProviderApi } from './client/Provider';
-import { LabTestsApi } from './client/LabTests';
 
 export class VitalClient {
   config: ClientConfig;
-  clientCredentials: ClientCredentials;
   Activity: ActivityApi;
   Link: LinkApi;
   Body: BodyApi;
@@ -31,7 +29,7 @@ export class VitalClient {
   Workouts: WorkoutsApi;
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
-  LabTests: LabTestsApi;
+  Testkits: TestkitsApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
   Devices: DevicesAPI;
@@ -39,11 +37,7 @@ export class VitalClient {
   constructor(config: ClientConfig) {
     this.config = config;
     if(!config.api_key){
-      try {
-        this.clientCredentials = new ClientCredentials(config);
-      } catch (error) {
-        throw new Error("You must provide either an API key or a client ID and secret");
-      }
+      throw new Error("You must provide an API key");
     }
     let baseURL;
     if (this.config.region && this.config.region === 'eu') {
@@ -61,13 +55,7 @@ export class VitalClient {
     axiosApiInstance.interceptors.request.use(
       async (config) => {
         const headers = config.headers;
-        if(this.config.api_key){
-          headers["x-vital-api-key"] = this.config.api_key;
-        } else {
-          const token = await this.clientCredentials.access_token();
-          headers["Authorization"] = `Bearer ${token}`;
-          headers["x-vital-client-id"] = this.config.client_id;
-        }
+        headers["x-vital-api-key"] = this.config.api_key;
         config.headers = {
           ...headers,
         };
@@ -87,7 +75,7 @@ export class VitalClient {
     this.Workouts = new WorkoutsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
-    this.LabTests = new LabTestsApi(baseURL.concat('/v3'), axiosApiInstance);
+    this.Testkits = new TestkitsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Devices = new DevicesAPI(baseURL.concat('/v2'), axiosApiInstance);
