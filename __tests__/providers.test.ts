@@ -1,6 +1,6 @@
-import { testApiKeyClient } from "./arrange";
+import { testUSClient } from "./arrange";
 
 it('should return supported providers', async () => {
-    const data = await testApiKeyClient.Providers.getSupportedProviders()
+    const data = await testUSClient.Providers.getSupportedProviders()
     expect(data.length).toBeGreaterThan(0)
 })

@@ -1,6 +1,6 @@
 {
   "name": "@tryvital/vital-node",
-  "version": "1.6.5",
+  "version": "2.1.1",
   "description": "Node client for Vital",
   "author": "maitham",
   "keywords": [
@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc --outDir dist/",
     "prepublishOnly": "npm run build",
-    "test": "env TS_NODE_PROJECT=\"tsconfig.testing.json\" mocha --require ts-node/register './test/**/*.ts'",
+    "test": "env TS_NODE_PROJECT=\"tsconfig.testing.json\" mocha --require ts-node/register './__tests__/**/*.ts'",
     "test-typescript": "tsc --build types/test",
     "test-client": "jest --config jest.config.js",
     "test-single": "jest --config -i __tests__/user.test.ts jest.config.js",
