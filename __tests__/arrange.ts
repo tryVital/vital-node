@@ -3,22 +3,15 @@ require('dotenv').config({
     path: '.env'
 })
 
-export const testClient = new VitalClient({
-    client_id: process.env.TEST_CLIENT_ID,
-    client_secret: process.env.TEST_CLIENT_SECRET,
+export const testEUClient = new VitalClient({
+    api_key: process.env.TEST_EU_API_KEY,
     environment: process.env.TEST_ENVIRONMENT as any,
-    region: "us",
-});
-
-export const testEuClient = new VitalClient({
-    client_id: process.env.TEST_EU_CLIENT_ID,
-    client_secret: process.env.TEST_EU_CLIENT_SECRET,
-    environment: "development",
     region: "eu",
 });
 
-export const testApiKeyClient = new VitalClient({
-    api_key: process.env.TEST_API_KEY,
+
+export const testUSClient = new VitalClient({
+    api_key: process.env.TEST_US_API_KEY,
     environment: process.env.TEST_ENVIRONMENT as any,
     region: "us",
 });

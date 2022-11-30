@@ -96,8 +96,6 @@ export class ResultsApi {
 
 
 
-
-
 export class LabTestsApi {
     baseURL: string;
     client: AxiosInstance;
