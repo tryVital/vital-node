@@ -131,3 +131,15 @@ export interface LabResultsResponse {
   metadata: LabResultsMetadata;
   results: Object;
 }
+
+
+export interface LabResultsRaw {
+  metadata: LabResultsMetadata;
+  data: Record<string, string>;
+}
+export interface OrderResponse {
+  orders: Order[];
+  total: number;
+  page: number;
+  size: number;
+}

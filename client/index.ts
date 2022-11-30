@@ -9,3 +9,4 @@ export { LabTestsApi } from './LabTests';
 export { ProfileApi } from './Profile';
 export { DevicesAPI } from './Devices';
 export { MealsApi } from './Meals';
+export { TestkitsApi } from "./Testkits";
