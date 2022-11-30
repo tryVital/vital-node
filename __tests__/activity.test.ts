@@ -11,7 +11,7 @@ describe('Activity', () => {
         const data = await client.Activity.get(
             userId,
             new Date("2020-01-01"),
-            new Date("2022-01-02"),
+            new Date("2022-12-01"),
         )
         expect(data.activity.length).toBeGreaterThan(0)
     });

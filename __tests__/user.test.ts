@@ -1,5 +1,5 @@
 import { VitalClient } from "..";
-import { getUserId, randomString, testApiKeyClient, testClient, testEuClient, test_user_id } from "./arrange";
+import { testEUClient, testUSClient, getUserId, randomString, test_user_id } from "./arrange";
 
 describe('User', () => {
     const user_id = randomString(10);

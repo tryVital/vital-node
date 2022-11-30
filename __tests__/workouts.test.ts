@@ -10,7 +10,7 @@ describe('Workouts', () => {
         const data = await client.Workouts.get(
             userId,
             new Date("2021-01-01"),
-            new Date("2022-01-02"),
+            new Date("2022-12-01"),
         )
         expect(data.workouts.length).toBeGreaterThan(0)
     });
