@@ -1,11 +1,9 @@
 export interface PatientAdress {
   receiver_name: string;
-  street: string;
   city: string;
   state: string;
   zip: string;
   country: string;
-  phone_number: string;
   street_number?: string;
 }
 
@@ -13,6 +11,9 @@ export interface PatientDetails {
   dob: string;
   gender: string;
   email: string;
+  first_name: string;
+  phone_number: string;
+  last_name: string;
 }
 
 export interface Physician {
@@ -47,8 +48,6 @@ export interface TestkitEvent {
   status: string;
 }
 
-
-
 export interface Order {
   user_id: string;
   id: string;
@@ -65,21 +64,21 @@ export interface Order {
   sample_id?: string;
   notes?: string;
   status?:
-  | 'ordered'
-  | 'transit_customer'
-  | 'out_for_delivery'
-  | 'with_customer'
-  | 'transit_lab'
-  | 'delivered_to_lab'
-  | 'processing_lab'
-  | 'completed'
-  | 'failure_to_deliver_to_customer'
-  | 'failure_to_deliver_to_lab'
-  | 'cancelled'
-  | 'do_not_process'
-  | 'unknown'
-  | "rejected"
-  | "lost";
+    | 'ordered'
+    | 'transit_customer'
+    | 'out_for_delivery'
+    | 'with_customer'
+    | 'transit_lab'
+    | 'delivered_to_lab'
+    | 'processing_lab'
+    | 'completed'
+    | 'failure_to_deliver_to_customer'
+    | 'failure_to_deliver_to_lab'
+    | 'cancelled'
+    | 'do_not_process'
+    | 'unknown'
+    | 'rejected'
+    | 'lost';
 }
 
 export interface OrderRequestResponse {
