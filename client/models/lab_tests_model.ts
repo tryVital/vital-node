@@ -10,7 +10,7 @@ export interface PatientAdress {
 export interface PatientDetails {
   dob: string;
   gender: string;
-  email: string;
+  email?: string;
   first_name: string;
   phone_number: string;
   last_name: string;
