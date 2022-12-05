@@ -35,7 +35,7 @@ export interface ClientFacingUser {
   team_id: string;
   client_user_id: string;
   created_on: string;
-  connecte_sources: Array<ConnectedSourceClientFacing>;
+  connected_sources: Array<ConnectedSourceClientFacing>;
   user_id: string;
 }
 
