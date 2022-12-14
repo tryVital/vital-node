@@ -20,10 +20,6 @@ export interface Physician {
   first_name: string;
   last_name: string;
   npi: string;
-  email?: string;
-  licensed_states?: string[];
-  created_at?: string;
-  updated_at?: string;
 }
 
 export interface Marker {
@@ -54,6 +50,7 @@ export interface Order {
   team_id: string;
   patient_details: PatientDetails;
   patient_address: PatientAdress;
+  physician: Physician
   lab_test: Testkit;
   // TODO  CHECK WHAT DETAILS IS
   details: Object;
