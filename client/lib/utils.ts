@@ -31,4 +31,17 @@ export const utils = {
     }
     return result === 0;
   },
+
+  // Get the difference in days between two dates.
+  getDayDiff: (startDate: Date, endDate?: Date): number => {
+    if (!endDate) {
+      endDate = new Date();
+    }
+
+    const msInDay = 24 * 60 * 60 * 1000;
+
+    return Math.round(
+      Math.abs(endDate.getTime() - startDate.getTime()) / msInDay,
+    );
+  }
 };
