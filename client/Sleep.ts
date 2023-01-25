@@ -52,7 +52,7 @@ export class SleepApi {
     let response = resp.data as ClientSleepResponse;
     for (let i = 0; i < response.sleep.length; i++) {
       const stream = await this.getStream(response.sleep[i].id);
-      response.sleep[i].sleep_stream = [stream];
+      response.sleep[i].sleep_stream = stream;
     }
 
     return resp.data;

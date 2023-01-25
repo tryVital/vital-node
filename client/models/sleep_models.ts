@@ -133,7 +133,7 @@ export interface ClientFacingSleep {
    * @memberof ClientFacingSleep
    * 
    */
-  sleep_stream: ClientSleepStreamResponse[];
+  sleep_stream: ClientSleepStreamResponse;
 }
 
 export interface ClientSleepResponse {
