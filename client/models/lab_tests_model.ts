@@ -4,8 +4,8 @@ export interface PatientAdress {
   state: string;
   zip: string;
   country: string;
-  street: string;
-  street_number?: string;
+  first_line: string;
+  second_line?: string;
 }
 
 export interface PatientDetails {
