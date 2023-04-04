@@ -22,7 +22,7 @@ export interface HealthInsurance {
   back_image: Image;
 }
 
-interface Image {
+export interface Image {
   content: string;
   content_type: "image/jpeg" | "image/jpg" | "image/png";
 }
