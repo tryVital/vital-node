@@ -17,6 +17,16 @@ export interface PatientDetails {
   last_name: string;
 }
 
+export interface HealthInsurance {
+  front_image: Image;
+  back_image: Image;
+}
+
+interface Image {
+  content: string;
+  content_type: "image/jpeg" | "image/jpg" | "image/png";
+}
+
 export interface Physician {
   first_name: string;
   last_name: string;
