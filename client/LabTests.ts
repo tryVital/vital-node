@@ -1,6 +1,7 @@
 import { AxiosInstance } from 'axios';
 import {
   ClientFacingLabTest,
+  HealthInsurance,
   LabResultsMetadata,
   LabResultsResponse,
   Order,
@@ -24,7 +25,8 @@ export class OrdersApi {
     patient_details: PatientDetails,
     patient_address: PatientAdress,
     lab_test_id: string,
-    physician?: Physician
+    physician?: Physician,
+    health_insurance?: HealthInsurance,
   ): Promise<OrderRequestResponse> {
     const resp = await this.client.post(this.baseURL.concat('/order'), {
       user_id: user_id,
@@ -32,6 +34,7 @@ export class OrdersApi {
       patient_address: patient_address,
       lab_test_id: lab_test_id,
       physician: physician ? physician : null,
+      health_insurance: health_insurance ? health_insurance : null,
     });
     return resp.data;
   }
