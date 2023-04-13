@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios';
 import {
+  AreaInfo,
   ClientFacingLabTest,
   HealthInsurance,
   LabResultsMetadata,
@@ -26,7 +27,7 @@ export class OrdersApi {
     patient_address: PatientAdress,
     lab_test_id: string,
     physician?: Physician,
-    health_insurance?: HealthInsurance,
+    health_insurance?: HealthInsurance
   ): Promise<OrderRequestResponse> {
     const resp = await this.client.post(this.baseURL.concat('/order'), {
       user_id: user_id,
@@ -87,6 +88,16 @@ export class ResultsApi {
   ): Promise<LabResultsMetadata> {
     const resp = await this.client.get(
       this.baseURL.concat(`/order/${orderId}/result/metadata`)
+    );
+    return resp.data;
+  }
+
+  // GET lab-testing information about a geographical area,
+  // such as whether the area is served by our Phlebotomy network.
+  public async getAreaInfo(zip_code: string): Promise<AreaInfo> {
+    const resp = await this.client.get(
+      this.baseURL.concat('/area/info?') +
+        new URLSearchParams({ zip_code: zip_code })
     );
     return resp.data;
   }

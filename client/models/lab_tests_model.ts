@@ -24,7 +24,7 @@ export interface HealthInsurance {
 
 export interface Image {
   content: string;
-  content_type: "image/jpeg" | "image/jpg" | "image/png";
+  content_type: 'image/jpeg' | 'image/jpg' | 'image/png';
 }
 
 export interface Physician {
@@ -61,7 +61,7 @@ export interface Order {
   team_id: string;
   patient_details: PatientDetails;
   patient_address: PatientAdress;
-  physician: Physician
+  physician: Physician;
   lab_test: Testkit;
   // TODO  CHECK WHAT DETAILS IS
   details: Object;
@@ -134,4 +134,13 @@ export interface LabResultsMetadata {
 export interface LabResultsResponse {
   metadata: LabResultsMetadata;
   results: Object;
+}
+
+export interface AreaInfo {
+  zip_code: string;
+  phlebotomy: PhlebotomyAreaInfo;
+}
+
+export interface PhlebotomyAreaInfo {
+  is_served: boolean;
 }
