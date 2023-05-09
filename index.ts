@@ -2,6 +2,7 @@ import axios from 'axios';
 import axiosRetry from 'axios-retry';
 import {
   ActivityApi,
+  AtHomePhlebotomyApi,
   BodyApi,
   LinkApi,
   SleepApi,
@@ -11,7 +12,7 @@ import {
   ProfileApi,
   DevicesAPI,
   MealsApi,
-  LabTestsApi
+  LabTestsApi,
 } from './client';
 import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
@@ -30,14 +31,15 @@ export class VitalClient {
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
   LabTests: LabTestsApi;
+  AtHomePhlebotomyApi: AtHomePhlebotomyApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
   Devices: DevicesAPI;
 
   constructor(config: ClientConfig) {
     this.config = config;
-    if(!config.api_key){
-      throw new Error("You must provide an API key");
+    if (!config.api_key) {
+      throw new Error('You must provide an API key');
     }
     let baseURL;
     if (this.config.region && this.config.region === 'eu') {
@@ -55,7 +57,7 @@ export class VitalClient {
     axiosApiInstance.interceptors.request.use(
       async (config) => {
         const headers = config.headers;
-        headers["x-vital-api-key"] = this.config.api_key;
+        headers['x-vital-api-key'] = this.config.api_key;
         config.headers = {
           ...headers,
         };
@@ -76,6 +78,10 @@ export class VitalClient {
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.LabTests = new LabTestsApi(baseURL.concat('/v3'), axiosApiInstance);
+    this.AtHomePhlebotomyApi = new AtHomePhlebotomyApi(
+      baseURL.concat('/v3'),
+      axiosApiInstance
+    );
     this.Profile = new ProfileApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Providers = new ProviderApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Devices = new DevicesAPI(baseURL.concat('/v2'), axiosApiInstance);
