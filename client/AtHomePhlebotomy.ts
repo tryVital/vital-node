@@ -9,7 +9,7 @@ import {
 } from './models/athome_phlebotomy_models';
 import { keysToCamel } from '../lib/utils';
 
-export class AtHomePhlebotomy {
+export class AtHomePhlebotomyApi {
   baseURL: string;
   client: AxiosInstance;
 
