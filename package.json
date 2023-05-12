@@ -22,9 +22,11 @@
     "lint": "eslint --ext .js,.jsx,.ts ."
   },
   "dependencies": {
+    "@types/humps": "^2.0.2",
     "axios": ">=0.21.2 <1.0.0",
     "axios-retry": "^3.2.4",
     "crypto": "^1.0.1",
+    "humps": "^2.0.1",
     "svix": "0.64.2"
   },
   "devDependencies": {

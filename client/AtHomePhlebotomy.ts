@@ -1,4 +1,5 @@
 import { AxiosInstance } from 'axios';
+import { camelize, camelizeKeys } from 'humps';
 
 import {
   Appointment,
@@ -6,7 +7,6 @@ import {
   CancellationReason,
   USAddress,
 } from './models/athome_phlebotomy_models';
-import { keysToCamel } from '../lib/utils';
 
 export class AtHomePhlebotomyApi {
   baseURL: string;
@@ -35,7 +35,7 @@ export class AtHomePhlebotomyApi {
       }
     );
 
-    return keysToCamel(resp.data);
+    return camelizeKeys<AppointmentAvailability>(resp.data);
   }
 
   public async bookAppointment(
@@ -49,7 +49,7 @@ export class AtHomePhlebotomyApi {
       }
     );
 
-    return keysToCamel(resp.data);
+    return camelizeKeys<Appointment>(resp.data);
   }
 
   public async rescheduleAppointment(
@@ -65,7 +65,7 @@ export class AtHomePhlebotomyApi {
       }
     );
 
-    return keysToCamel(resp.data);
+    return camelizeKeys<Appointment>(resp.data);
   }
 
   public async cancelAppointment(
@@ -79,7 +79,7 @@ export class AtHomePhlebotomyApi {
       }
     );
 
-    return keysToCamel(resp.data);
+    return camelizeKeys<Appointment>(resp.data);
   }
 
   public async cancellationReasons(): Promise<CancellationReason[]> {
@@ -87,7 +87,7 @@ export class AtHomePhlebotomyApi {
       this.baseURL.concat(`/order/phlebotomy/appointment/cancellation-reasons`)
     );
 
-    return keysToCamel(resp.data);
+    return camelize(resp.data);
   }
 
   public async getAppointment(orderId: string): Promise<Appointment> {
@@ -95,6 +95,6 @@ export class AtHomePhlebotomyApi {
       this.baseURL.concat(`/order/${orderId}/phlebotomy/appointment`)
     );
 
-    return keysToCamel(resp.data);
+    return camelizeKeys<Appointment>(resp.data);
   }
 }

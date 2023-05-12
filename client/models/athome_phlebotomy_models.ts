@@ -7,11 +7,16 @@ type Status =
   | 'completed'
   | 'cancelled';
 
+export interface LngLat {
+  lng: number;
+  lat: number;
+}
+
 export interface Appointment {
   id: string;
   userId: string;
   address: USAddress;
-  location: AppointmentLocation;
+  location: LngLat;
   startAt: string;
   endAt: string;
   ianaTimezone: string;
