@@ -3,7 +3,6 @@ import { AxiosInstance } from 'axios';
 import {
   Appointment,
   AppointmentAvailability,
-  AppointmentLocation,
   CancellationReason,
   USAddress,
 } from './models/athome_phlebotomy_models';
