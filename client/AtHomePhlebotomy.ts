@@ -41,14 +41,12 @@ export class AtHomePhlebotomyApi {
 
   public async bookAppointment(
     orderId: string,
-    bookingKey: string,
-    location: AppointmentLocation
+    bookingKey: string
   ): Promise<Appointment> {
     const resp = await this.client.post(
       this.baseURL.concat(`/order/${orderId}/phlebotomy/appointment/book`),
       {
         booking_key: bookingKey,
-        location: location,
       }
     );
 
@@ -57,8 +55,7 @@ export class AtHomePhlebotomyApi {
 
   public async rescheduleAppointment(
     orderId: string,
-    bookingKey: string,
-    location: AppointmentLocation
+    bookingKey: string
   ): Promise<Appointment> {
     const resp = await this.client.post(
       this.baseURL.concat(
@@ -66,7 +63,6 @@ export class AtHomePhlebotomyApi {
       ),
       {
         booking_key: bookingKey,
-        location: location,
       }
     );
 

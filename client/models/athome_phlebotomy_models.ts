@@ -31,11 +31,6 @@ export interface USAddress {
   unit?: string;
 }
 
-export interface AppointmentLocation {
-  lng: number;
-  lat: number;
-}
-
 export interface AppointmentAvailability {
   timezone: string;
   slots: AppointmentSlot[];
