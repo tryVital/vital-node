@@ -31,7 +31,7 @@ export class VitalClient {
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
   LabTests: LabTestsApi;
-  AtHomePhlebotomyApi: AtHomePhlebotomyApi;
+  AtHomePhlebotomy: AtHomePhlebotomyApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
   Devices: DevicesAPI;
@@ -78,7 +78,7 @@ export class VitalClient {
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.LabTests = new LabTestsApi(baseURL.concat('/v3'), axiosApiInstance);
-    this.AtHomePhlebotomyApi = new AtHomePhlebotomyApi(
+    this.AtHomePhlebotomy = new AtHomePhlebotomyApi(
       baseURL.concat('/v3'),
       axiosApiInstance
     );
