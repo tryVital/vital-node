@@ -58,6 +58,12 @@ export interface ClientFacingWorkout {
    */
   time_end: Date;
   /**
+   * Date for specified record (YYYY-MM-DD)
+   * @type {String}
+   * @memberof ClientFacingWorkout
+   */
+    calendar_date: string;
+  /**
    * Calories burned during the workout::kCal
    * @type {number}
    * @memberof ClientFacingWorkout
@@ -153,6 +159,12 @@ export interface ClientFacingWorkout {
    * @memberof ClientFacingWorkout
    */
   map?: string;
+  /**
+   * Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds
+   * @type {number}
+   * @memberof ClientFacingActivity
+   */
+  timezone_offset?: number;
 }
 
 export interface ClientWorkoutResponse {
