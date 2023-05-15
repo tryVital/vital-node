@@ -11,8 +11,15 @@ export interface ClientFacingActivity {
    * Date for specified record
    * @type {Date}
    * @memberof ClientFacingActivity
+   * @deprecated Use calendar_date instead
    */
   date: Date;
+  /**
+   * Date for specified record (YYYY-MM-DD)
+   * @type {String}
+   * @memberof ClientFacingActivity
+   */
+  calendar_date: string;
   /**
    * Total energy consumption during the day including Basal Metabolic Rate in kilocalories.::kilocalories
    * @type {number}
@@ -25,6 +32,12 @@ export interface ClientFacingActivity {
    * @memberof ClientFacingActivity
    */
   calories_active: number;
+    /**
+   * Number of floors climbed by the user::count
+   * @type {number}
+   * @memberof ClientFacingActivity
+   */
+  floors_climbed?: number;
   /**
    * Total number of steps registered during the day.::steps
    * @type {number}
@@ -56,6 +69,12 @@ export interface ClientFacingActivity {
    */
   high?: number;
   /**
+   * Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds
+   * @type {number}
+   * @memberof ClientFacingActivity
+   */
+  timezone_offset?: number;
+    /**
    * Source the data has come from.
    * @type {SourceClientFacing}
    * @memberof ClientFacingActivity

@@ -17,8 +17,15 @@ export interface ClientFacingSleep {
    * Date for specified record
    * @type {Date}
    * @memberof ClientFacingSleep
+   * @deprecated Use calendar_date instead
    */
   date: Date;
+  /**
+   * Date for specified record (YYYY-MM-DD). This generally matches the sleep end date.
+   * @type {String}
+   * @memberof ClientFacingSleep
+   */
+  calendar_date: string;
   /**
    * UTC Time when the sleep period started
    * @type {Date}
@@ -115,6 +122,12 @@ export interface ClientFacingSleep {
    * @memberof ClientFacingSleep
    */
   respiratory_rate?: number;
+  /**
+   * Average skin temperature.::celcius
+   * @type {number}
+   * @memberof ClientFacingSleep
+   */
+  skin_temperature?: number;
   /**
    * Source the data has come from.
    * @type {SourceClientFacing}
