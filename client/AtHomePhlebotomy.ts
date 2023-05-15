@@ -19,20 +19,22 @@ export class AtHomePhlebotomyApi {
 
   public async appointmentAvailability(
     orderId: string,
-    address: USAddress
+    address?: USAddress
   ): Promise<AppointmentAvailability> {
     const resp = await this.client.post(
       this.baseURL.concat(
         `/order/${orderId}/phlebotomy/appointment/availability`
       ),
-      {
-        first_line: address.firstLine,
-        second_line: address.secondLine,
-        city: address.city,
-        state: address.state,
-        zip_code: address.zipCode,
-        unit: address.unit,
-      }
+      address
+        ? {
+            first_line: address.firstLine,
+            second_line: address.secondLine,
+            city: address.city,
+            state: address.state,
+            zip_code: address.zipCode,
+            unit: address.unit,
+          }
+        : {}
     );
 
     return camelizeKeys<AppointmentAvailability>(resp.data);
