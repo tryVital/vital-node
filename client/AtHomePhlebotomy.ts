@@ -34,7 +34,7 @@ export class AtHomePhlebotomyApi {
             zip_code: address.zipCode,
             unit: address.unit,
           }
-        : {}
+        : undefined
     );
 
     return camelizeKeys<AppointmentAvailability>(resp.data);
@@ -58,7 +58,7 @@ export class AtHomePhlebotomyApi {
     orderId: string,
     bookingKey: string
   ): Promise<Appointment> {
-    const resp = await this.client.post(
+    const resp = await this.client.patch(
       this.baseURL.concat(
         `/order/${orderId}/phlebotomy/appointment/reschedule`
       ),
@@ -89,7 +89,12 @@ export class AtHomePhlebotomyApi {
       this.baseURL.concat(`/order/phlebotomy/appointment/cancellation-reasons`)
     );
 
-    return camelize(resp.data);
+    let cancellationReasons: CancellationReason[] = [];
+    for (const reason of resp.data) {
+      cancellationReasons.push(camelizeKeys<CancellationReason>(reason));
+    }
+
+    return cancellationReasons;
   }
 
   public async getAppointment(orderId: string): Promise<Appointment> {
