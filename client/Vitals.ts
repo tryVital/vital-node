@@ -25,6 +25,51 @@ export class VitalsApi {
     return resp.data;
   }
 
+  public async bloodOxygen(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string,
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'blood_oxygen',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
+  public async bloodPressure(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string,
+  ): Promise<TimeseriesBloodPressurePoint[]> {
+    return this.timeseriesData<TimeseriesBloodPressurePoint>(
+      userId,
+      'blood_pressure',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
+  public async caffeine(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'caffeine',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
   public async cholesterol(
     type: 'ldl' | 'total' | 'triglycerides' | 'hdl',
     userId: string,
@@ -56,6 +101,51 @@ export class VitalsApi {
     );
   }
 
+  public async heartrate(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'heartrate',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
+  public async hrv(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'hrv',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
+  public async hypnogram(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'hypnogram',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
   public async ige(
     userId: string,
     startDate: Date,
@@ -74,7 +164,7 @@ export class VitalsApi {
     return this.timeseriesData(userId, 'igg', startDate, endDate, provider);
   }
 
-  public async heartrate(
+  public async mindfulnessMinutes(
     userId: string,
     startDate: Date,
     endDate?: Date,
@@ -82,39 +172,52 @@ export class VitalsApi {
   ): Promise<TimeseriesPoint[]> {
     return this.timeseriesData(
       userId,
-      'heartrate',
+      'mindfulness_minutes',
       startDate,
       endDate,
       provider
     );
   }
 
-  public async bloodOxygen(
+  public async respiratoryRate(
     userId: string,
     startDate: Date,
     endDate?: Date,
-    provider?: string,
-
+    provider?: string
   ): Promise<TimeseriesPoint[]> {
     return this.timeseriesData(
       userId,
-      'blood_oxygen',
+      'respiratory_rate',
       startDate,
       endDate,
       provider
     );
   }
 
-  public async bloodPressure(
+  public async steps(
     userId: string,
     startDate: Date,
     endDate?: Date,
-    provider?: string,
-
-  ): Promise<TimeseriesBloodPressurePoint[]> {
-    return this.timeseriesData<TimeseriesBloodPressurePoint>(
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
       userId,
-      'blood_pressure',
+      'steps',
+      startDate,
+      endDate,
+      provider
+    );
+  }
+
+  public async water(
+    userId: string,
+    startDate: Date,
+    endDate?: Date,
+    provider?: string
+  ): Promise<TimeseriesPoint[]> {
+    return this.timeseriesData(
+      userId,
+      'water',
       startDate,
       endDate,
       provider
