@@ -48,6 +48,17 @@ export class OrdersApi {
     return resp.data;
   }
 
+  public async getOrders(page?: number, size?: number): Promise<Order[]> {
+    const resp = await this.client.get(
+      this.baseURL.concat(`/orders?`) +
+        new URLSearchParams({
+          page: page ? page.toString() : '1',
+          size: size ? size.toString() : '50',
+        })
+    );
+    return resp.data;
+  }
+
   //   Cancels order.
   public async cancelOrder(orderId: string): Promise<OrderRequestResponse> {
     const resp = await this.client.post(

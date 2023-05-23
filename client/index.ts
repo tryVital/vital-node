@@ -7,6 +7,7 @@ export { WebhooksApi } from './Webhooks';
 export { WorkoutsApi } from './Workouts';
 export { AtHomePhlebotomyApi } from './AtHomePhlebotomy';
 export { LabTestsApi } from './LabTests';
+export { OrdersApi } from './LabTests';
 export { ProfileApi } from './Profile';
 export { DevicesAPI } from './Devices';
 export { MealsApi } from './Meals';

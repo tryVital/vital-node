@@ -13,6 +13,7 @@ import {
   DevicesAPI,
   MealsApi,
   LabTestsApi,
+  OrdersApi,
 } from './client';
 import { ClientConfig } from './lib/models';
 import CONFIG from './lib/config';
@@ -31,6 +32,7 @@ export class VitalClient {
   Webhooks: WebhooksApi;
   Vitals: VitalsApi;
   LabTests: LabTestsApi;
+  Orders: OrdersApi;
   AtHomePhlebotomy: AtHomePhlebotomyApi;
   Profile: ProfileApi;
   Providers: ProviderApi;
@@ -78,6 +80,7 @@ export class VitalClient {
     this.Webhooks = new WebhooksApi(baseURL.concat('/v2'), axiosApiInstance);
     this.Vitals = new VitalsApi(baseURL.concat('/v2'), axiosApiInstance);
     this.LabTests = new LabTestsApi(baseURL.concat('/v3'), axiosApiInstance);
+    this.Orders = new OrdersApi(baseURL.concat('/v3'), axiosApiInstance);
     this.AtHomePhlebotomy = new AtHomePhlebotomyApi(
       baseURL.concat('/v3'),
       axiosApiInstance
