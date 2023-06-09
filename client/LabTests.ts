@@ -27,7 +27,8 @@ export class OrdersApi {
     patient_address: PatientAdress,
     lab_test_id: string,
     physician?: Physician,
-    health_insurance?: HealthInsurance
+    health_insurance?: HealthInsurance,
+    priority?: boolean,
   ): Promise<OrderRequestResponse> {
     const resp = await this.client.post(this.baseURL.concat('/order'), {
       user_id: user_id,
@@ -36,6 +37,7 @@ export class OrdersApi {
       lab_test_id: lab_test_id,
       physician: physician ? physician : null,
       health_insurance: health_insurance ? health_insurance : null,
+      priority: priority ? priority : null,
     });
     return resp.data;
   }
