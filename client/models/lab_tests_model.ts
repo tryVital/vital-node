@@ -1,3 +1,19 @@
+export type ConsentType = "terms-of-use" | "telehealth-informed-consent" | "mobile-terms-and-conditions" | "notice-of-privacy-practices" | "privacy-policy" | "hipaa-authorization";
+
+export type Consent = {
+  consentType: ConsentType;
+};
+
+export interface ShippingDetails {
+  receiver_name: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+  first_line: string;
+  second_line?: string;
+  phone_number: string;
+}
 export interface PatientAdress {
   receiver_name: string;
   city: string;
