@@ -2,6 +2,7 @@ import { AxiosInstance } from 'axios';
 import {
   AreaInfo,
   ClientFacingLabTest,
+  Consent,
   HealthInsurance,
   LabResultsMetadata,
   LabResultsResponse,
@@ -10,6 +11,7 @@ import {
   PatientAdress,
   PatientDetails,
   Physician,
+  ShippingDetails,
 } from './models/lab_tests_model';
 
 export class OrdersApi {
@@ -18,6 +20,44 @@ export class OrdersApi {
   constructor(baseURL: string, axios: AxiosInstance) {
     this.baseURL = baseURL;
     this.client = axios;
+  }
+
+  public async create_unregistered_testkit_order(
+    user_id: string,
+    lab_test_id: string,
+    shipping_details: ShippingDetails,
+  ): Promise<OrderRequestResponse> {
+    const resp = await this.client.post(
+      this.baseURL.concat('/order/testkit'),
+      {
+        user_id: user_id,
+        lab_test_id: lab_test_id,
+        shipping_details: shipping_details,
+      }
+    );
+    return resp.data;
+  }
+
+  public async register_testkit_order(
+    user_id: string,
+    sample_id: string,
+    patient_details: PatientDetails,
+    patient_address: PatientAdress,
+    physician?: Physician,
+    consents?: [Consent]
+  ): Promise<OrderRequestResponse> {
+    const resp = await this.client.post(
+      this.baseURL.concat('/order/testkit/register'),
+      {
+        user_id: user_id,
+        sample_id: sample_id,
+        patient_details: patient_details,
+        patient_address: patient_address,
+        physician: physician ? physician : null,
+        consents: consents ? consents : null,
+      }
+    );
+    return resp.data;
   }
 
   //   Create new order
@@ -29,6 +69,7 @@ export class OrdersApi {
     physician?: Physician,
     health_insurance?: HealthInsurance,
     priority?: boolean,
+    consents?: [Consent]
   ): Promise<OrderRequestResponse> {
     const resp = await this.client.post(this.baseURL.concat('/order'), {
       user_id: user_id,
@@ -38,6 +79,7 @@ export class OrdersApi {
       physician: physician ? physician : null,
       health_insurance: health_insurance ? health_insurance : null,
       priority: priority ? priority : null,
+      consents: consents ? consents : null,
     });
     return resp.data;
   }
