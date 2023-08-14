@@ -21,6 +21,14 @@ export class OrdersApi {
     this.baseURL = baseURL;
     this.client = axios;
   }
+  
+  public async getRequisitionPdf(orderId: string): Promise<string> {
+    const resp = await this.client.get(
+      this.baseURL.concat(`/order/${orderId}/requisition/pdf`),
+      { headers: { 'Accept': 'application/pdf' } }
+    );
+    return resp.data;
+  }
 
   public async create_unregistered_testkit_order(
     user_id: string,
