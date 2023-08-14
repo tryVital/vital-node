@@ -23,14 +23,9 @@ export class OrdersApi {
   }
   
   public async getRequisitionPdf(orderId: string): Promise<string> {
-    let config = {
-      headers: {
-        'Accept': "application/pdf",
-      }
-    }
     const resp = await this.client.get(
       this.baseURL.concat(`/order/${orderId}/requisition/pdf`),
-      config,
+      { headers: { 'Accept': 'application/pdf' } }
     );
     return resp.data;
   }
