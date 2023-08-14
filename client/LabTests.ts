@@ -25,7 +25,7 @@ export class OrdersApi {
   public async getRequisitionPdf(orderId: string): Promise<string> {
     let config = {
       headers: {
-        'accept': "application/pdf",
+        'Accept': "application/pdf",
       }
     }
     const resp = await this.client.get(
