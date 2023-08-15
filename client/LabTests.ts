@@ -62,7 +62,7 @@ export class OrdersApi {
         patient_details: patient_details,
         patient_address: patient_address,
         physician: physician ? physician : null,
-        consents: consents ? consents : null,
+        consents: consents ? consents : [],
       }
     );
     return resp.data;
@@ -86,8 +86,8 @@ export class OrdersApi {
       lab_test_id: lab_test_id,
       physician: physician ? physician : null,
       health_insurance: health_insurance ? health_insurance : null,
-      priority: priority ? priority : null,
-      consents: consents ? consents : null,
+      priority: priority ? priority : false,
+      consents: consents ? consents : [],
     });
     return resp.data;
   }
