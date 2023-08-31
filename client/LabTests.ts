@@ -2,14 +2,14 @@ import { AxiosInstance } from 'axios';
 import {
   AreaInfo,
   ClientFacingLabTest,
-  Consent,
+  Consent, Diagnosis,
   HealthInsurance,
   LabResultsMetadata,
   LabResultsResponse,
   Order,
   OrderRequestResponse,
   PatientAdress,
-  PatientDetails,
+  PatientDetails, Payor,
   Physician,
   ShippingDetails,
 } from './models/lab_tests_model';
@@ -96,6 +96,25 @@ export class OrdersApi {
   public async getOrder(orderId: string): Promise<Order> {
     const resp = await this.client.get(
       this.baseURL.concat(`/order/${orderId}`)
+    );
+    return resp.data;
+  }
+
+  //Get order status.
+  public async searchPayor(insurance_name: string, insurance_state?: string): Promise<Payor> {
+    const resp = await this.client.post(
+      this.baseURL.concat(`/insurance/search/payor`), {
+          insurance_name: insurance_name,
+          insurance_state: insurance_state ?? null
+        }
+    );
+    return resp.data;
+  }
+
+  public async searchDiagnosis(diagnosis_query: string): Promise<Diagnosis[]> {
+    const resp = await this.client.get(
+      this.baseURL.concat('/insurance/search/diagnosis?') +
+        new URLSearchParams({ diagnosis_query: diagnosis_query })
     );
     return resp.data;
   }

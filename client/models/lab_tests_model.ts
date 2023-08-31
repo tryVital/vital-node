@@ -1,3 +1,5 @@
+import {USAddress} from "./athome_phlebotomy_models";
+
 export type ConsentType = "terms-of-use" | "telehealth-informed-consent" | "mobile-terms-and-conditions" | "notice-of-privacy-practices" | "privacy-policy" | "hipaa-authorization";
 
 export type Consent = {
@@ -69,6 +71,25 @@ export interface TestkitEvent {
   id: number;
   created_at: string;
   status: string;
+}
+
+export interface PayorAddress{
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+  first_line: string;
+}
+
+export interface Payor {
+  code: string;
+  name: string;
+  org_address: PayorAddress;
+}
+
+export interface Diagnosis {
+  diagnosis_code: string;
+  description: string;
 }
 
 export interface Order {
