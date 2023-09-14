@@ -178,7 +178,7 @@ export class ResultsApi {
   // such as whether the area is served by our Phlebotomy network.
   public async getAreaInfo(zip_code: string): Promise<AreaInfo> {
     const resp = await this.client.get(
-      this.baseURL.concat('/area/info?') +
+      this.baseURL.concat('/order/area/info?') +
         new URLSearchParams({ zip_code: zip_code })
     );
     return resp.data;
