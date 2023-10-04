@@ -1,11 +1,26 @@
-export type PasswordProviders = 'whoop' | 'renpho' | 'peloton' | 'zwift' | 'hammerhead';
+export type PasswordProviders =
+  | 'whoop'
+  | 'renpho'
+  | 'peloton'
+  | 'zwift'
+  | 'hammerhead'
+  | 'eight_sleep'
+  | 'beurer_api'
+  | 'dexcom'
+  | 'my_fitness_pal';
+
 export type OAuthProviders =
   | 'oura'
   | 'fitbit'
   | 'garmin'
-  | 'whoop'
   | 'strava'
-  | 'wahoo';
+  | 'wahoo'
+  | 'ihealth'
+  | 'withings'
+  | 'google_fit'
+  | 'dexcom_v3'
+  | 'polar'
+  | 'cronometer';
 
 export type EmailProviders = 'freestyle_libre';
 export type DemoProviders = 'apple_health_kit' | 'fitbit' | 'oura' | 'whoop';
