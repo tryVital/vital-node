@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance, AxiosResponse } from 'axios';
 import {
   AreaInfo,
   ClientFacingLabTest,
@@ -22,12 +22,13 @@ export class OrdersApi {
     this.client = axios;
   }
   
-  public async getRequisitionPdf(orderId: string): Promise<string> {
-    const resp = await this.client.get(
+  public async getRequisitionPdf(orderId: string): Promise<NodeJS.ReadableStream> {
+    const response: AxiosResponse = await this.client.get(
       this.baseURL.concat(`/order/${orderId}/requisition/pdf`),
-      { headers: { 'Accept': 'application/pdf' } }
+      { responseType: 'stream', headers: { 'Accept': 'application/pdf' } }
     );
-    return resp.data;
+
+    return response.data;
   }
 
   public async create_unregistered_testkit_order(
@@ -155,12 +156,13 @@ export class ResultsApi {
   }
 
   // GET gets the lab result for the order in PDF format.
-  // TODO Check response type for PDF
-  public async getResultsPdf(orderId: string): Promise<string> {
-    const resp = await this.client.get(
-      this.baseURL.concat(`/order/${orderId}/result/pdf`)
+  public async getResultsPdf(orderId: string): Promise<NodeJS.ReadableStream> {
+    const response: AxiosResponse = await this.client.get(
+      this.baseURL.concat(`/order/${orderId}/result/pdf`),
+      { responseType: 'stream', headers: { 'Accept': 'application/pdf' } }
     );
-    return resp.data;
+
+    return response.data;
   }
 
   // GET metadata related to order results, such as
