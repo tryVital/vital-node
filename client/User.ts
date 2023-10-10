@@ -1,6 +1,7 @@
 import { AxiosInstance } from 'axios';
 import {
   UserIdResponse,
+  CreateSignInTokenResponse,
   SuccessResponse,
   ClientFacingUser,
   Providers,
@@ -53,6 +54,11 @@ export class UserApi {
     const resp = await this.client.get(
       this.baseURL.concat(`/user/key/${clientUserId}`)
     );
+    return resp.data;
+  }
+
+  public async createSignInToken(userId: string): Promise<CreateSignInTokenResponse> {
+    const resp = await this.client.post(this.baseURL.concat(`/user/${userId}/sign_in_token`), {});
     return resp.data;
   }
 
