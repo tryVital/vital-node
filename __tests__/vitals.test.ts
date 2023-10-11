@@ -10,7 +10,7 @@ describe('Vitals', () => {
         const data = await client.Vitals.heartrate(
             userId,
             new Date("2022-10-01"),
-            new Date("2022-11-01"),
+            new Date("2022-10-07"),
         )
         expect(data.length).toBeGreaterThan(0)
     });
