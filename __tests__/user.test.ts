@@ -2,15 +2,15 @@ import { VitalClient } from "..";
 import { testEUClient, testUSClient, getUserId, randomString, test_user_id } from "./arrange";
 
 describe('User', () => {
-    const user_id = randomString(10);
+    const clientUserId = randomString(10);
     it.each([
         ["eu_api_key", testEUClient],
         ["us_api_key", testUSClient],
     ])('should create a user %p', async (region: string, client: VitalClient) => {
         const user = await client.User.create(
-            user_id,
+            clientUserId,
         )
-        expect(user.client_user_id).toBe(user_id)
+        expect(user.client_user_id).toBe(clientUserId)
     });
 
     it.each([
@@ -26,12 +26,20 @@ describe('User', () => {
     it.each([
         testEUClient,
         testUSClient,
+    ])('should create a sign-in token', async (client: VitalClient) => {
+        const userId = await getUserId(client, clientUserId);
+        const user = await client.User.createSignInToken(userId);
+        expect(user.user_id).toBe(userId)
+    });
+
+    it.each([
+        testEUClient,
+        testUSClient,
     ])('should delete a user', async (client: VitalClient) => {
-        const userToDelete = await getUserId(client, user_id);
+        const userToDelete = await getUserId(client, clientUserId);
         const user = await client.User.delete(
             userToDelete,
         )
         expect(user.success).toBe(true)
     });
-
 })

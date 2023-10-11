@@ -3,6 +3,11 @@ export interface UserIdResponse {
   user_id: string;
 }
 
+export interface CreateSignInTokenResponse {
+  user_id: string;
+  sign_in_token: string;
+}
+
 export interface SuccessResponse {
   success: boolean;
 }
