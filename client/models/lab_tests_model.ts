@@ -193,7 +193,7 @@ export enum ResultType {
 
 export interface Result {
   name: string;
-  slug?: string; // Optional and has a default value of an empty string
+  slug: string; // Optional and has a default value of an empty string
   value?: number; // Deprecated and optional
   result: string;
   type: ResultType;
