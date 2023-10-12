@@ -1,6 +1,12 @@
-import {USAddress} from "./athome_phlebotomy_models";
+import { USAddress } from './athome_phlebotomy_models';
 
-export type ConsentType = "terms-of-use" | "telehealth-informed-consent" | "mobile-terms-and-conditions" | "notice-of-privacy-practices" | "privacy-policy" | "hipaa-authorization";
+export type ConsentType =
+  | 'terms-of-use'
+  | 'telehealth-informed-consent'
+  | 'mobile-terms-and-conditions'
+  | 'notice-of-privacy-practices'
+  | 'privacy-policy'
+  | 'hipaa-authorization';
 
 export type Consent = {
   consentType: ConsentType;
@@ -73,7 +79,7 @@ export interface TestkitEvent {
   status: string;
 }
 
-export interface PayorAddress{
+export interface PayorAddress {
   city: string;
   state: string;
   zip: string;
@@ -170,7 +176,35 @@ export interface LabResultsMetadata {
 
 export interface LabResultsResponse {
   metadata: LabResultsMetadata;
-  results: Object;
+  results: Result[];
+}
+
+export enum Interpretation {
+  NORMAL = 'normal',
+  ABNORMAL = 'abnormal',
+  CRITICAL = 'critical',
+}
+
+export enum ResultType {
+  NUMERIC = 'numeric',
+  RANGE = 'range',
+  COMMENT = 'comment',
+}
+
+export interface Result {
+  name: string;
+  slug?: string; // Optional and has a default value of an empty string
+  value?: number; // Deprecated and optional
+  result: string;
+  type: ResultType;
+  unit?: string; // Optional
+  timestamp?: Date; // Optional
+  notes?: string; // Optional
+  min_range_value?: number; // Optional
+  max_range_value?: number; // Optional
+  is_above_max_range?: boolean; // Optional
+  is_below_min_range?: boolean; // Optional
+  interpretation?: Interpretation; // Optional and has a default value of Interpretation.NORMAL
 }
 
 export interface AreaInfo {
