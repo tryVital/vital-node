@@ -194,7 +194,7 @@ export enum ResultType {
 export interface Result {
   name: string;
   slug: string; // Optional and has a default value of an empty string
-  value: number; // Deprecated and optional
+  value: number; // Deprecated
   result: string;
   type: ResultType;
   unit?: string; // Optional
@@ -204,7 +204,7 @@ export interface Result {
   max_range_value?: number; // Optional
   is_above_max_range?: boolean; // Optional
   is_below_min_range?: boolean; // Optional
-  interpretation?: Interpretation; // Optional and has a default value of Interpretation.NORMAL
+  interpretation: Interpretation; // default value of Interpretation.NORMAL
 }
 
 export interface AreaInfo {
