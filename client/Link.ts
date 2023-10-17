@@ -7,6 +7,7 @@ import {
   OAuthProviders,
   EmailProviders,
   DemoProviders,
+  VitalCodeCreatedResponse,
 } from './models/link_models';
 import { SourceWithLinkInfo } from './models/user_models';
 
@@ -87,6 +88,18 @@ export class LinkApi {
     const resp = await this.client.post(
       this.baseURL.concat(`/link/connect/demo`),
       { user_id: userId, provider: provider },
+    );
+    return resp.data;
+  }
+
+  public async codeCreate(userId: string, expiresAt: string = ""): Promise<VitalCodeCreatedResponse> {
+    const paramsObject = expiresAt ? {user_id: userId, expires_at: expiresAt} : {user_id: userId};
+    const resp = await this.client.post(
+      this.baseURL.concat(`/link/code/create`),
+      null,
+      {
+        params: paramsObject
+      }
     );
     return resp.data;
   }

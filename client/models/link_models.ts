@@ -39,3 +39,8 @@ export interface DemoConnectionResponse {
   success: boolean;
   redirect_url?: string;
 }
+
+export interface VitalCodeCreatedResponse {
+  code: string;
+  exchange_url: string;
+}
