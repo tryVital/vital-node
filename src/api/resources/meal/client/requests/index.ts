@@ -1,0 +1,1 @@
+export { MealGetRequest } from "./MealGetRequest";

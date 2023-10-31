@@ -1,4 +1,0 @@
-*.node*.js
-node_modules
-dist/*
-test/*

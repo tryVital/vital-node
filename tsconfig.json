@@ -1,23 +1,20 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "target": "es5",
-    "module": "commonjs",
-    "noImplicitAny": true,
-    "outDir": "dist",
-    "rootDir": ".",
-    "skipLibCheck": true,
-    "lib": [
-      "es6",
-      "dom"
+    "compilerOptions": {
+        "extendedDiagnostics": true,
+        "strict": true,
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "noUnusedParameters": true,
+        "outDir": "dist",
+        "rootDir": "src",
+        "baseUrl": "src"
+    },
+    "include": [
+        "src"
     ],
-    "typeRoots": [
-      "node_modules/@types"
-    ]
-  },
-  "exclude": [
-    "dist",
-    "node_modules/**",
-    "__tests__"
-  ]
+    "exclude": []
 }

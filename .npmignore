@@ -1,1 +1,8 @@
-# empty npmignore to ensure all required files (e.g., in the dist folder) are published by npm
+node_modules
+src
+.gitignore
+.github
+.fernignore
+.prettierrc.yml
+tsconfig.json
+yarn.lock
