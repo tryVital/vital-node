@@ -15,8 +15,9 @@ export const Region: core.serialization.Schema<serializers.Region.Raw, Vital.Reg
     "br",
     "nl",
     "fr",
+    "ca",
 ]);
 
 export declare namespace Region {
-    type Raw = "us" | "eu" | "sg" | "de" | "au" | "br" | "nl" | "fr";
+    type Raw = "us" | "eu" | "sg" | "de" | "au" | "br" | "nl" | "fr" | "ca";
 }

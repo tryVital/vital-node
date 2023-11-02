@@ -6,10 +6,8 @@ import * as serializers from "../../..";
 import * as Vital from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<
-    serializers.team.searchTeamUsersByUuidOrClientUserId.Response.Raw,
-    Vital.ClientFacingUser[]
-> = core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).ClientFacingUser));
+export const Response: core.serialization.Schema<serializers.team.getUserById.Response.Raw, Vital.ClientFacingUser[]> =
+    core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).ClientFacingUser));
 
 export declare namespace Response {
     type Raw = serializers.ClientFacingUser.Raw[];

@@ -21,4 +21,6 @@ export interface BiomarkerResult {
     isAboveMaxRange?: boolean;
     isBelowMinRange?: boolean;
     interpretation?: string;
+    loinc?: string;
+    loincSlug?: string;
 }

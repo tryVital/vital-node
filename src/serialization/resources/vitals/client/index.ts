@@ -19,4 +19,5 @@ export * as cholesterolHdl from "./cholesterolHdl";
 export * as cholesterolLdl from "./cholesterolLdl";
 export * as cholesterol from "./cholesterol";
 export * as bloodOxygen from "./bloodOxygen";
+export * as electrocardiogramVoltage from "./electrocardiogramVoltage";
 export * as bloodPressure from "./bloodPressure";

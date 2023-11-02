@@ -7,7 +7,7 @@ import * as Vital from "../../../../api";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
-    serializers.providers.getListOfProviders.Response.Raw,
+    serializers.providers.getAll.Response.Raw,
     Vital.ClientFacingProviderDetailed[]
 > = core.serialization.list(
     core.serialization.lazyObject(async () => (await import("../../..")).ClientFacingProviderDetailed)

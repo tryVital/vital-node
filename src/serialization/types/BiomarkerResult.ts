@@ -21,6 +21,8 @@ export const BiomarkerResult: core.serialization.ObjectSchema<serializers.Biomar
         isAboveMaxRange: core.serialization.property("is_above_max_range", core.serialization.boolean().optional()),
         isBelowMinRange: core.serialization.property("is_below_min_range", core.serialization.boolean().optional()),
         interpretation: core.serialization.string().optional(),
+        loinc: core.serialization.string().optional(),
+        loincSlug: core.serialization.property("loinc_slug", core.serialization.string().optional()),
     });
 
 export declare namespace BiomarkerResult {
@@ -38,5 +40,7 @@ export declare namespace BiomarkerResult {
         is_above_max_range?: boolean | null;
         is_below_min_range?: boolean | null;
         interpretation?: string | null;
+        loinc?: string | null;
+        loinc_slug?: string | null;
     }
 }

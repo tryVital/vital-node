@@ -27,7 +27,7 @@ export class Team {
     /**
      * Post teams.
      */
-    public async getTeamConfig(requestOptions?: Team.RequestOptions): Promise<Record<string, unknown>> {
+    public async getLinkConfig(requestOptions?: Team.RequestOptions): Promise<Record<string, unknown>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -38,13 +38,13 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.0-beta.0",
+                "X-Fern-SDK-Version": "3.0.1",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
-            return await serializers.team.getTeamConfig.Response.parseOrThrow(_response.body, {
+            return await serializers.team.getLinkConfig.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -78,7 +78,7 @@ export class Team {
      * Get team.
      * @throws {@link Vital.UnprocessableEntityError}
      */
-    public async getTeam(teamId: string, requestOptions?: Team.RequestOptions): Promise<Vital.ClientFacingTeam> {
+    public async get(teamId: string, requestOptions?: Team.RequestOptions): Promise<Vital.ClientFacingTeam> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -89,7 +89,7 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.0-beta.0",
+                "X-Fern-SDK-Version": "3.0.1",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -141,8 +141,8 @@ export class Team {
      * Search team users by user_id
      * @throws {@link Vital.UnprocessableEntityError}
      */
-    public async searchTeamUsersByUuidOrClientUserId(
-        request: Vital.SearchTeamUsersByUuidOrClientUserIdV2TeamUsersSearchGetRequest = {},
+    public async getUserById(
+        request: Vital.TeamGetUserByIdRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Vital.ClientFacingUser[]> {
         const { queryId } = request;
@@ -161,14 +161,14 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.0-beta.0",
+                "X-Fern-SDK-Version": "3.0.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
-            return await serializers.team.searchTeamUsersByUuidOrClientUserId.Response.parseOrThrow(_response.body, {
+            return await serializers.team.getUserById.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -210,7 +210,7 @@ export class Team {
         }
     }
 
-    public async getSvixWebhookUrl(requestOptions?: Team.RequestOptions): Promise<Record<string, unknown>> {
+    public async getSvixUrl(requestOptions?: Team.RequestOptions): Promise<Record<string, unknown>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -221,13 +221,13 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.0-beta.0",
+                "X-Fern-SDK-Version": "3.0.1",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
-            return await serializers.team.getSvixWebhookUrl.Response.parseOrThrow(_response.body, {
+            return await serializers.team.getSvixUrl.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -262,7 +262,7 @@ export class Team {
      * @throws {@link Vital.UnprocessableEntityError}
      */
     public async getSourcePriorities(
-        request: Vital.GetSourcePrioritiesV2TeamSourcePrioritiesGetRequest = {},
+        request: Vital.TeamGetSourcePrioritiesRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Record<string, unknown>[]> {
         const { dataType } = request;
@@ -281,7 +281,7 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.0-beta.0",
+                "X-Fern-SDK-Version": "3.0.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -335,7 +335,7 @@ export class Team {
      * @throws {@link Vital.UnprocessableEntityError}
      */
     public async updateSourcePriorities(
-        request: Vital.UpdateSourcePrioritiesV2TeamSourcePrioritiesPatchRequest,
+        request: Vital.TeamUpdateSourcePrioritiesRequest,
         requestOptions?: Team.RequestOptions
     ): Promise<Record<string, unknown>[]> {
         const { teamId } = request;
@@ -351,7 +351,7 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.0-beta.0",
+                "X-Fern-SDK-Version": "3.0.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

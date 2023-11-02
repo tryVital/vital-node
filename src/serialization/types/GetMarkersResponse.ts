@@ -11,7 +11,7 @@ export const GetMarkersResponse: core.serialization.ObjectSchema<
     Vital.GetMarkersResponse
 > = core.serialization.object({
     markers: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingMarker)
+        core.serialization.lazyObject(async () => (await import("..")).ClientFacingMarkerComplete)
     ),
     total: core.serialization.number(),
     page: core.serialization.number(),
@@ -20,7 +20,7 @@ export const GetMarkersResponse: core.serialization.ObjectSchema<
 
 export declare namespace GetMarkersResponse {
     interface Raw {
-        markers: serializers.ClientFacingMarker.Raw[];
+        markers: serializers.ClientFacingMarkerComplete.Raw[];
         total: number;
         page: number;
         size: number;

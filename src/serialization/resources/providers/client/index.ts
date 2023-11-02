@@ -1,1 +1,1 @@
-export * as getListOfProviders from "./getListOfProviders";
+export * as getAll from "./getAll";

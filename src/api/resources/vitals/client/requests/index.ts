@@ -19,4 +19,5 @@ export { VitalsCholesterolHdlRequest } from "./VitalsCholesterolHdlRequest";
 export { VitalsCholesterolLdlRequest } from "./VitalsCholesterolLdlRequest";
 export { VitalsCholesterolRequest } from "./VitalsCholesterolRequest";
 export { VitalsBloodOxygenRequest } from "./VitalsBloodOxygenRequest";
+export { VitalsElectrocardiogramVoltageRequest } from "./VitalsElectrocardiogramVoltageRequest";
 export { VitalsBloodPressureRequest } from "./VitalsBloodPressureRequest";

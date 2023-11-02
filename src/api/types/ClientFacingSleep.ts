@@ -44,7 +44,7 @@ export interface ClientFacingSleep {
     temperatureDelta?: number;
     /** The skin temperature::celcius */
     skinTemperature?: number;
-    /** Sleeping Heart Rate Dip is the percentage difference between your average waking heart rate and your average sleeping heart rate. In health studies, a greater "dip" is typically seen as a positive indicator of overall health::perc */
+    /** Sleeping Heart Rate Dip is the percentage difference between your average waking heart rate and your average sleeping heart rate. In health studies, a greater "dip" is typically seen as a positive indicator of overall health. Currently only available for Garmin::perc */
     hrDip?: number;
     /** The average heart rate variability registered during the sleep period::rmssd */
     averageHrv?: number;

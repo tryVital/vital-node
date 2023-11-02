@@ -6,7 +6,6 @@ export * as workouts from "./workouts";
 export * as sleep from "./sleep";
 export * as body from "./body";
 export * as meal from "./meal";
-export * as timeseries from "./timeseries";
 export * as vitals from "./vitals";
 export * as user from "./user";
 export * as team from "./team";

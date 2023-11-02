@@ -6,7 +6,7 @@ import * as serializers from "../../..";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
-    serializers.team.getSvixWebhookUrl.Response.Raw,
+    serializers.team.getSvixUrl.Response.Raw,
     Record<string, unknown>
 > = core.serialization.record(core.serialization.string(), core.serialization.unknown());
 

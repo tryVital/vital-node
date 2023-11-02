@@ -6,7 +6,7 @@ import * as serializers from "../../..";
 import * as Vital from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<serializers.link.getProviders.Response.Raw, Vital.SourceLink[]> =
+export const Response: core.serialization.Schema<serializers.link.getAllProviders.Response.Raw, Vital.SourceLink[]> =
     core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).SourceLink));
 
 export declare namespace Response {
