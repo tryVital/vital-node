@@ -1,5 +1,6 @@
 export { CreateLabTestRequest } from "./CreateLabTestRequest";
 export { LabTestsGetMarkersRequest } from "./LabTestsGetMarkersRequest";
+export { LabTestsGetMarkersForLabTestRequest } from "./LabTestsGetMarkersForLabTestRequest";
 export { AppointmentBookingRequest } from "./AppointmentBookingRequest";
 export { AppointmentRescheduleRequest } from "./AppointmentRescheduleRequest";
 export { AppointmentCancelRequest } from "./AppointmentCancelRequest";
