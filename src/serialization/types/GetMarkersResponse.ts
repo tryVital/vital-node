@@ -13,16 +13,18 @@ export const GetMarkersResponse: core.serialization.ObjectSchema<
     markers: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("..")).ClientFacingMarkerComplete)
     ),
-    total: core.serialization.number(),
-    page: core.serialization.number(),
-    size: core.serialization.number(),
+    total: core.serialization.number().optional(),
+    page: core.serialization.number().optional(),
+    size: core.serialization.number().optional(),
+    pages: core.serialization.number().optional(),
 });
 
 export declare namespace GetMarkersResponse {
     interface Raw {
         markers: serializers.ClientFacingMarkerComplete.Raw[];
-        total: number;
-        page: number;
-        size: number;
+        total?: number | null;
+        page?: number | null;
+        size?: number | null;
+        pages?: number | null;
     }
 }

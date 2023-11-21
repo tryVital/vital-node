@@ -21,4 +21,5 @@ export interface ClientFacingTeam {
     labTestsPatientSmsCommunicationEnabled: boolean;
     labTestsPatientEmailCommunicationEnabled: boolean;
     logoUrl?: string;
+    delegatedFlow: Vital.DelegatedFlowType;
 }

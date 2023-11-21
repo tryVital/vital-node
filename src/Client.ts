@@ -16,6 +16,7 @@ import { Vitals } from "./api/resources/vitals/client/Client";
 import { User } from "./api/resources/user/client/Client";
 import { Team } from "./api/resources/team/client/Client";
 import { Providers } from "./api/resources/providers/client/Client";
+import { Introspect } from "./api/resources/introspect/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
 import { Insurance } from "./api/resources/insurance/client/Client";
@@ -104,6 +105,12 @@ export class VitalClient {
 
     public get providers(): Providers {
         return (this._providers ??= new Providers(this._options));
+    }
+
+    protected _introspect: Introspect | undefined;
+
+    public get introspect(): Introspect {
+        return (this._introspect ??= new Introspect(this._options));
     }
 
     protected _labTests: LabTests | undefined;

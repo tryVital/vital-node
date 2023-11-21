@@ -34,7 +34,7 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
         core.serialization.lazyObject(async () => (await import("..")).ClientFacingOrderEvent)
     ),
     status: core.serialization.lazy(async () => (await import("..")).OrderTopLevelStatus).optional(),
-    physician: core.serialization.lazyObject(async () => (await import("..")).PhysicianClientFacing).optional(),
+    physician: core.serialization.lazyObject(async () => (await import("..")).ClientFacingPhysician).optional(),
     healthInsuranceId: core.serialization.property("health_insurance_id", core.serialization.string().optional()),
     requisitionFormUrl: core.serialization.property("requisition_form_url", core.serialization.string().optional()),
     priority: core.serialization.boolean().optional(),
@@ -59,7 +59,7 @@ export declare namespace ClientFacingOrder {
         updated_at: string;
         events: serializers.ClientFacingOrderEvent.Raw[];
         status?: serializers.OrderTopLevelStatus.Raw | null;
-        physician?: serializers.PhysicianClientFacing.Raw | null;
+        physician?: serializers.ClientFacingPhysician.Raw | null;
         health_insurance_id?: string | null;
         requisition_form_url?: string | null;
         priority?: boolean | null;

@@ -40,6 +40,10 @@ export const ClientFacingTeam: core.serialization.ObjectSchema<
         core.serialization.boolean()
     ),
     logoUrl: core.serialization.property("logo_url", core.serialization.string().optional()),
+    delegatedFlow: core.serialization.property(
+        "delegated_flow",
+        core.serialization.lazy(async () => (await import("..")).DelegatedFlowType)
+    ),
 });
 
 export declare namespace ClientFacingTeam {
@@ -60,5 +64,6 @@ export declare namespace ClientFacingTeam {
         lab_tests_patient_sms_communication_enabled: boolean;
         lab_tests_patient_email_communication_enabled: boolean;
         logo_url?: string | null;
+        delegated_flow: serializers.DelegatedFlowType.Raw;
     }
 }

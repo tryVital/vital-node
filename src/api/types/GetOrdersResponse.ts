@@ -6,7 +6,7 @@ import * as Vital from "..";
 
 export interface GetOrdersResponse {
     orders: Vital.ClientFacingOrder[];
-    total: number;
-    page: number;
-    size: number;
+    total?: number;
+    page?: number;
+    size?: number;
 }

@@ -10,7 +10,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
-export declare namespace Devices {
+export declare namespace Introspect {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey: core.Supplier<string>;
@@ -21,28 +21,38 @@ export declare namespace Devices {
     }
 }
 
-export class Devices {
-    constructor(protected readonly _options: Devices.Options) {}
+export class Introspect {
+    constructor(protected readonly _options: Introspect.Options) {}
 
     /**
-     * Get Devices for user_id
      * @throws {@link Vital.UnprocessableEntityError}
      */
-    public async getRaw(
-        userId: string,
-        request: Vital.DevicesGetRawRequest = {},
-        requestOptions?: Devices.RequestOptions
-    ): Promise<Vital.RawDevices> {
-        const { provider } = request;
+    public async getUserResources(
+        request: Vital.IntrospectGetUserResourcesRequest = {},
+        requestOptions?: Introspect.RequestOptions
+    ): Promise<Vital.UserResourcesResponse> {
+        const { userId, provider, userLimit, cursor } = request;
         const _queryParams = new URLSearchParams();
+        if (userId != null) {
+            _queryParams.append("user_id", userId);
+        }
+
         if (provider != null) {
             _queryParams.append("provider", provider);
+        }
+
+        if (userLimit != null) {
+            _queryParams.append("user_limit", userLimit.toString());
+        }
+
+        if (cursor != null) {
+            _queryParams.append("cursor", cursor);
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/summary/devices/${userId}/raw`
+                "v2/introspect/resources"
             ),
             method: "GET",
             headers: {
@@ -56,7 +66,7 @@ export class Devices {
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
-            return await serializers.RawDevices.parseOrThrow(_response.body, {
+            return await serializers.UserResourcesResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

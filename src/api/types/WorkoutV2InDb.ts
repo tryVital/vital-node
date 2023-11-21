@@ -6,7 +6,7 @@ import * as Vital from "..";
 
 export interface WorkoutV2InDb {
     timestamp: Date;
-    data?: string;
+    data: Record<string, unknown>;
     providerId: string;
     userId: string;
     sourceId: number;

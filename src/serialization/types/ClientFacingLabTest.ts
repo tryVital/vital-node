@@ -20,6 +20,7 @@ export const ClientFacingLabTest: core.serialization.ObjectSchema<
     method: core.serialization.lazy(async () => (await import("..")).LabTestCollectionMethod),
     price: core.serialization.number(),
     isActive: core.serialization.property("is_active", core.serialization.boolean()),
+    status: core.serialization.lazy(async () => (await import("..")).LabTestStatus),
     fasting: core.serialization.boolean().optional(),
     lab: core.serialization.lazyObject(async () => (await import("..")).ClientFacingLab).optional(),
     markers: core.serialization
@@ -37,6 +38,7 @@ export declare namespace ClientFacingLabTest {
         method: serializers.LabTestCollectionMethod.Raw;
         price: number;
         is_active: boolean;
+        status: serializers.LabTestStatus.Raw;
         fasting?: boolean | null;
         lab?: serializers.ClientFacingLab.Raw | null;
         markers?: serializers.ClientFacingMarker.Raw[] | null;

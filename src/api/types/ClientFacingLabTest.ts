@@ -11,7 +11,9 @@ export interface ClientFacingLabTest {
     sampleType: Vital.LabTestSampleType;
     method: Vital.LabTestCollectionMethod;
     price: number;
+    /** Deprecated. Use status instead. */
     isActive: boolean;
+    status: Vital.LabTestStatus;
     /** Defines whether a lab test requires fasting. Only available for Labcorp. */
     fasting?: boolean;
     lab?: Vital.ClientFacingLab;

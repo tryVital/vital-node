@@ -6,7 +6,8 @@ import * as Vital from "..";
 
 export interface GetMarkersResponse {
     markers: Vital.ClientFacingMarkerComplete[];
-    total: number;
-    page: number;
-    size: number;
+    total?: number;
+    page?: number;
+    size?: number;
+    pages?: number;
 }

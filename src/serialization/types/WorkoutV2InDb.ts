@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const WorkoutV2InDb: core.serialization.ObjectSchema<serializers.WorkoutV2InDb.Raw, Vital.WorkoutV2InDb> =
     core.serialization.object({
         timestamp: core.serialization.date(),
-        data: core.serialization.string().optional(),
+        data: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
         providerId: core.serialization.property("provider_id", core.serialization.string()),
         userId: core.serialization.property("user_id", core.serialization.string()),
         sourceId: core.serialization.property("source_id", core.serialization.number()),
@@ -23,7 +23,7 @@ export const WorkoutV2InDb: core.serialization.ObjectSchema<serializers.WorkoutV
 export declare namespace WorkoutV2InDb {
     interface Raw {
         timestamp: string;
-        data?: string | null;
+        data: Record<string, unknown>;
         provider_id: string;
         user_id: string;
         source_id: number;

@@ -28,7 +28,7 @@ export interface ClientFacingOrder {
     updatedAt: Date;
     events: Vital.ClientFacingOrderEvent[];
     status?: Vital.OrderTopLevelStatus;
-    physician?: Vital.PhysicianClientFacing;
+    physician?: Vital.ClientFacingPhysician;
     /** Vital ID of the health insurance. */
     healthInsuranceId?: string;
     /** DEPRECATED. Requistion form url. */

@@ -11,16 +11,16 @@ export const GetOrdersResponse: core.serialization.ObjectSchema<
     Vital.GetOrdersResponse
 > = core.serialization.object({
     orders: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingOrder)),
-    total: core.serialization.number(),
-    page: core.serialization.number(),
-    size: core.serialization.number(),
+    total: core.serialization.number().optional(),
+    page: core.serialization.number().optional(),
+    size: core.serialization.number().optional(),
 });
 
 export declare namespace GetOrdersResponse {
     interface Raw {
         orders: serializers.ClientFacingOrder.Raw[];
-        total: number;
-        page: number;
-        size: number;
+        total?: number | null;
+        page?: number | null;
+        size?: number | null;
     }
 }
