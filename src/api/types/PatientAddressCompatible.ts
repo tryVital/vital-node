@@ -4,8 +4,8 @@
 
 export interface PatientAddressCompatible {
     receiverName?: string;
-    street: string;
-    streetNumber?: string;
+    firstLine: string;
+    secondLine?: string;
     city: string;
     state: string;
     zip: string;

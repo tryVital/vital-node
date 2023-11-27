@@ -10,11 +10,26 @@ export const TeamConfig: core.serialization.ObjectSchema<serializers.TeamConfig.
     core.serialization.object({
         libreview: core.serialization.lazyObject(async () => (await import("..")).LibreConfig),
         textsEnabled: core.serialization.property("texts_enabled", core.serialization.boolean().optional()),
+        pushHistoricalData: core.serialization.property(
+            "push_historical_data",
+            core.serialization.boolean().optional()
+        ),
+        edsPreferences: core.serialization.property(
+            "eds_preferences",
+            core.serialization.lazyObject(async () => (await import("..")).EventDestinationPreferences).optional()
+        ),
+        eventTypePrefixes: core.serialization.property(
+            "event_type_prefixes",
+            core.serialization.list(core.serialization.string()).optional()
+        ),
     });
 
 export declare namespace TeamConfig {
     interface Raw {
         libreview: serializers.LibreConfig.Raw;
         texts_enabled?: boolean | null;
+        push_historical_data?: boolean | null;
+        eds_preferences?: serializers.EventDestinationPreferences.Raw | null;
+        event_type_prefixes?: string[] | null;
     }
 }

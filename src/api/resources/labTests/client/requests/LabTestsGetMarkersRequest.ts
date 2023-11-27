@@ -6,7 +6,7 @@ export interface LabTestsGetMarkersRequest {
     /**
      * The identifier Vital assigned to a lab partner.
      */
-    labId?: number;
+    labId?: number | number[];
     /**
      * The name of an individual biomarker or a panel. Used as a fuzzy filter when searching markers.
      */

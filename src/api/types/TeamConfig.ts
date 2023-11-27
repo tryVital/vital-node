@@ -7,4 +7,7 @@ import * as Vital from "..";
 export interface TeamConfig {
     libreview: Vital.LibreConfig;
     textsEnabled?: boolean;
+    pushHistoricalData?: boolean;
+    edsPreferences?: Vital.EventDestinationPreferences;
+    eventTypePrefixes?: string[];
 }
