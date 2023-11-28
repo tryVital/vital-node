@@ -1,11 +1,13 @@
 export { LinkTokenExchange } from "./LinkTokenExchange";
 export { LinkTokenBase } from "./LinkTokenBase";
 export { LinkCodeCreateRequest } from "./LinkCodeCreateRequest";
-export { LinkConnectOauthProviderRequest } from "./LinkConnectOauthProviderRequest";
 export { BeginLinkTokenRequest } from "./BeginLinkTokenRequest";
+export { LinkTokenStateRequest } from "./LinkTokenStateRequest";
 export { EmailAuthLink } from "./EmailAuthLink";
 export { PasswordAuthLink } from "./PasswordAuthLink";
+export { LinkGenerateOauthLinkRequest } from "./LinkGenerateOauthLinkRequest";
 export { IndividualProviderData } from "./IndividualProviderData";
 export { EmailProviderAuthLink } from "./EmailProviderAuthLink";
+export { LinkGetAllProvidersRequest } from "./LinkGetAllProvidersRequest";
 export { ManualConnectionData } from "./ManualConnectionData";
 export { DemoConnectionCreationPayload } from "./DemoConnectionCreationPayload";

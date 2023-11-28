@@ -1,5 +1,4 @@
 export * as isTokenValid from "./isTokenValid";
-export * as connectOauthProvider from "./connectOauthProvider";
 export * as startConnect from "./startConnect";
 export * as tokenState from "./tokenState";
 export * as getAllProviders from "./getAllProviders";

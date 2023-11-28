@@ -8,7 +8,7 @@ import * as core from "../../../../../core";
 
 export const PasswordAuthLink: core.serialization.Schema<
     serializers.PasswordAuthLink.Raw,
-    Omit<Vital.PasswordAuthLink, "vitalLinkClientRegion">
+    Omit<Vital.PasswordAuthLink, "vitalLinkClientRegion" | "vitalLinkToken">
 > = core.serialization.object({
     username: core.serialization.string(),
     password: core.serialization.string(),

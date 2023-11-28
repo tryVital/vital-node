@@ -5,6 +5,7 @@
 import * as Vital from "../../../..";
 
 export interface EmailProviderAuthLink {
+    vitalLinkToken?: unknown;
     email: string;
     emailProviderAuthLinkProvider?: Vital.Providers;
     region?: Vital.Region;
