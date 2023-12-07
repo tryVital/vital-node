@@ -9,6 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 import { default as URLSearchParams } from "@ungap/url-search-params";
+import * as stream from "stream";
 
 export declare namespace LabTests {
     interface Options {
@@ -38,7 +39,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -91,7 +92,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.CreateLabTestRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -182,7 +183,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -259,7 +260,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -327,7 +328,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -389,7 +390,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -443,7 +444,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -510,7 +511,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.UsAddress.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -578,7 +579,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.AppointmentBookingRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -646,7 +647,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.AppointmentRescheduleRequest.jsonOrThrow(request, {
@@ -716,7 +717,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.AppointmentCancelRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -781,7 +782,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -838,7 +839,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -910,7 +911,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -961,10 +962,9 @@ export class LabTests {
 
     /**
      * This endpoint returns the lab results for the order.
-     * @throws {@link Vital.UnprocessableEntityError}
      */
-    public async getResultPdf(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<unknown> {
-        const _response = await core.fetcher({
+    public async getResultPdf(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<stream.Readable> {
+        const _response = await core.streamingFetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
                 `v3/order/${orderId}/result/pdf`
@@ -974,47 +974,16 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
-            contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            onError: (error) => {
+                throw new errors.VitalError({
+                    message: (error as any)?.message,
+                });
+            },
         });
-        if (_response.ok) {
-            return _response.body;
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VitalError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VitalTimeoutError();
-            case "unknown":
-                throw new errors.VitalError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return _response.data;
     }
 
     /**
@@ -1036,7 +1005,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1099,7 +1068,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1162,7 +1131,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1220,7 +1189,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1286,7 +1255,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.CreateOrderRequestCompatible.jsonOrThrow(request, {
@@ -1355,7 +1324,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1432,7 +1401,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1530,7 +1499,7 @@ export class LabTests {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

@@ -40,7 +40,7 @@ export class Testkit {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.RegisterTestkitRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -107,7 +107,7 @@ export class Testkit {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.CreateRegistrableTestkitOrderRequest.jsonOrThrow(request, {

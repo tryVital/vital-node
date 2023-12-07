@@ -3,5 +3,5 @@
  */
 
 export interface TeamGetLinkConfigRequest {
-    vitalLinkToken?: unknown;
+    vitalLinkToken?: string;
 }

@@ -4,7 +4,7 @@
 
 import * as Vital from "..";
 
-export interface SingleUserResourceResponse {
+export interface SingleUserHistoricalPullResponse {
     userId: string;
-    provider: Record<string, Record<string, Vital.SingleResourceStatistics>>;
+    provider: Record<string, Vital.SingleProviderHistoricalPullResponse>;
 }

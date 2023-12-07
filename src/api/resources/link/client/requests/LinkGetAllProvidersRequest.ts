@@ -3,5 +3,5 @@
  */
 
 export interface LinkGetAllProvidersRequest {
-    vitalLinkToken?: unknown;
+    vitalLinkToken?: string;
 }

@@ -3,5 +3,5 @@
  */
 
 export interface LinkTokenStateRequest {
-    vitalLinkToken?: unknown;
+    vitalLinkToken?: string;
 }

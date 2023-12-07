@@ -47,7 +47,7 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.LinkTokenExchange.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -113,7 +113,7 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.LinkTokenBase.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -187,7 +187,7 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -255,7 +255,7 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.BeginLinkTokenRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -310,7 +310,7 @@ export class Link {
      * @throws {@link Vital.UnprocessableEntityError}
      */
     public async tokenState(
-        request: Vital.LinkTokenStateRequest,
+        request: Vital.LinkTokenStateRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Record<string, unknown>> {
         const { vitalLinkToken } = request;
@@ -324,13 +324,8 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
-                "x-vital-link-token":
-                    vitalLinkToken != null
-                        ? typeof vitalLinkToken === "string"
-                            ? vitalLinkToken
-                            : JSON.stringify(vitalLinkToken)
-                        : undefined,
+                "X-Fern-SDK-Version": "3.0.6",
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -399,13 +394,8 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
-                "x-vital-link-token":
-                    vitalLinkToken != null
-                        ? typeof vitalLinkToken === "string"
-                            ? vitalLinkToken
-                            : JSON.stringify(vitalLinkToken)
-                        : undefined,
+                "X-Fern-SDK-Version": "3.0.6",
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             body: await serializers.EmailAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
@@ -475,14 +465,9 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
                 "x-vital-link-client-region": vitalLinkClientRegion != null ? vitalLinkClientRegion : undefined,
-                "x-vital-link-token":
-                    vitalLinkToken != null
-                        ? typeof vitalLinkToken === "string"
-                            ? vitalLinkToken
-                            : JSON.stringify(vitalLinkToken)
-                        : undefined,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             body: await serializers.PasswordAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
@@ -537,7 +522,7 @@ export class Link {
      */
     public async generateOauthLink(
         oauthProvider: Vital.OAuthProviders,
-        request: Vital.LinkGenerateOauthLinkRequest,
+        request: Vital.LinkGenerateOauthLinkRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.Source> {
         const { vitalLinkToken } = request;
@@ -551,13 +536,8 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
-                "x-vital-link-token":
-                    vitalLinkToken != null
-                        ? typeof vitalLinkToken === "string"
-                            ? vitalLinkToken
-                            : JSON.stringify(vitalLinkToken)
-                        : undefined,
+                "X-Fern-SDK-Version": "3.0.6",
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -625,14 +605,9 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
                 "x-vital-link-client-region": vitalLinkClientRegion != null ? vitalLinkClientRegion : undefined,
-                "x-vital-link-token":
-                    vitalLinkToken != null
-                        ? typeof vitalLinkToken === "string"
-                            ? vitalLinkToken
-                            : JSON.stringify(vitalLinkToken)
-                        : undefined,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             body: await serializers.IndividualProviderData.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
@@ -701,13 +676,8 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
-                "x-vital-link-token":
-                    vitalLinkToken != null
-                        ? typeof vitalLinkToken === "string"
-                            ? vitalLinkToken
-                            : JSON.stringify(vitalLinkToken)
-                        : undefined,
+                "X-Fern-SDK-Version": "3.0.6",
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             body: await serializers.EmailProviderAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
@@ -761,7 +731,7 @@ export class Link {
      * @throws {@link Vital.UnprocessableEntityError}
      */
     public async getAllProviders(
-        request: Vital.LinkGetAllProvidersRequest,
+        request: Vital.LinkGetAllProvidersRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.SourceLink[]> {
         const { vitalLinkToken } = request;
@@ -775,13 +745,8 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
-                "x-vital-link-token":
-                    vitalLinkToken != null
-                        ? typeof vitalLinkToken === "string"
-                            ? vitalLinkToken
-                            : JSON.stringify(vitalLinkToken)
-                        : undefined,
+                "X-Fern-SDK-Version": "3.0.6",
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -850,7 +815,7 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.ManualConnectionData.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -917,7 +882,7 @@ export class Link {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.5",
+                "X-Fern-SDK-Version": "3.0.6",
             },
             contentType: "application/json",
             body: await serializers.DemoConnectionCreationPayload.jsonOrThrow(request, {

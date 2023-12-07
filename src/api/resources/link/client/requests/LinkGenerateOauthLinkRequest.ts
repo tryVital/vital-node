@@ -3,5 +3,5 @@
  */
 
 export interface LinkGenerateOauthLinkRequest {
-    vitalLinkToken?: unknown;
+    vitalLinkToken?: string;
 }
