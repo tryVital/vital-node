@@ -16,6 +16,10 @@ export const UserRefreshSuccessResponse: core.serialization.ObjectSchema<
         "refreshed_sources",
         core.serialization.list(core.serialization.string())
     ),
+    inProgressSources: core.serialization.property(
+        "in_progress_sources",
+        core.serialization.list(core.serialization.string())
+    ),
     failedSources: core.serialization.property("failed_sources", core.serialization.list(core.serialization.string())),
 });
 
@@ -24,6 +28,7 @@ export declare namespace UserRefreshSuccessResponse {
         success: string;
         user_id: string;
         refreshed_sources: string[];
+        in_progress_sources: string[];
         failed_sources: string[];
     }
 }

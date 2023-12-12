@@ -11,15 +11,12 @@ export const UserSignInTokenResponse: core.serialization.ObjectSchema<
     Vital.UserSignInTokenResponse
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
-    signInToken: core.serialization.property(
-        "sign_in_token",
-        core.serialization.lazy(async () => (await import("..")).UserSignInTokenResponseSignInToken)
-    ),
+    signInToken: core.serialization.property("sign_in_token", core.serialization.string()),
 });
 
 export declare namespace UserSignInTokenResponse {
     interface Raw {
         user_id: string;
-        sign_in_token: serializers.UserSignInTokenResponseSignInToken.Raw;
+        sign_in_token: string;
     }
 }

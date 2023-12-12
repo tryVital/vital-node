@@ -15,9 +15,9 @@ export const ClientFacingAppointment: core.serialization.ObjectSchema<
     orderId: core.serialization.property("order_id", core.serialization.string()),
     address: core.serialization.lazyObject(async () => (await import("..")).UsAddress),
     location: core.serialization.lazyObject(async () => (await import("..")).LngLat),
-    startAt: core.serialization.property("start_at", core.serialization.date()),
-    endAt: core.serialization.property("end_at", core.serialization.date()),
-    ianaTimezone: core.serialization.property("iana_timezone", core.serialization.string()),
+    startAt: core.serialization.property("start_at", core.serialization.date().optional()),
+    endAt: core.serialization.property("end_at", core.serialization.date().optional()),
+    ianaTimezone: core.serialization.property("iana_timezone", core.serialization.string().optional()),
     type: core.serialization.lazy(async () => (await import("..")).AppointmentType),
     provider: core.serialization.lazy(async () => (await import("..")).AppointmentProvider),
     status: core.serialization.lazy(async () => (await import("..")).AppointmentStatus),
@@ -43,9 +43,9 @@ export declare namespace ClientFacingAppointment {
         order_id: string;
         address: serializers.UsAddress.Raw;
         location: serializers.LngLat.Raw;
-        start_at: string;
-        end_at: string;
-        iana_timezone: string;
+        start_at?: string | null;
+        end_at?: string | null;
+        iana_timezone?: string | null;
         type: serializers.AppointmentType.Raw;
         provider: serializers.AppointmentProvider.Raw;
         status: serializers.AppointmentStatus.Raw;

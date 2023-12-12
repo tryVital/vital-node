@@ -11,10 +11,10 @@ export interface ClientFacingAppointment {
     address: Vital.UsAddress;
     location: Vital.LngLat;
     /** Time is in UTC */
-    startAt: Date;
+    startAt?: Date;
     /** Time is in UTC */
-    endAt: Date;
-    ianaTimezone: string;
+    endAt?: Date;
+    ianaTimezone?: string;
     type: Vital.AppointmentType;
     provider: Vital.AppointmentProvider;
     status: Vital.AppointmentStatus;

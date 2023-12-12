@@ -11,10 +11,14 @@ export const PhlebotomyAreaInfo: core.serialization.ObjectSchema<
     Vital.PhlebotomyAreaInfo
 > = core.serialization.object({
     isServed: core.serialization.property("is_served", core.serialization.boolean()),
+    providers: core.serialization.list(
+        core.serialization.lazyObject(async () => (await import("..")).PhlebotomyProviderInfo)
+    ),
 });
 
 export declare namespace PhlebotomyAreaInfo {
     interface Raw {
         is_served: boolean;
+        providers: serializers.PhlebotomyProviderInfo.Raw[];
     }
 }

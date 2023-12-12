@@ -14,6 +14,7 @@ export type OrderStatus =
     | "cancelled.walk_in_test.cancelled"
     | "received.at_home_phlebotomy.ordered"
     | "received.at_home_phlebotomy.requisition_created"
+    | "collecting_sample.at_home_phlebotomy.appointment_pending"
     | "collecting_sample.at_home_phlebotomy.appointment_scheduled"
     | "collecting_sample.at_home_phlebotomy.draw_completed"
     | "collecting_sample.at_home_phlebotomy.appointment_cancelled"
@@ -46,6 +47,7 @@ export const OrderStatus = {
     CancelledWalkInTestCancelled: "cancelled.walk_in_test.cancelled",
     ReceivedAtHomePhlebotomyOrdered: "received.at_home_phlebotomy.ordered",
     ReceivedAtHomePhlebotomyRequisitionCreated: "received.at_home_phlebotomy.requisition_created",
+    CollectingSampleAtHomePhlebotomyAppointmentPending: "collecting_sample.at_home_phlebotomy.appointment_pending",
     CollectingSampleAtHomePhlebotomyAppointmentScheduled: "collecting_sample.at_home_phlebotomy.appointment_scheduled",
     CollectingSampleAtHomePhlebotomyDrawCompleted: "collecting_sample.at_home_phlebotomy.draw_completed",
     CollectingSampleAtHomePhlebotomyAppointmentCancelled: "collecting_sample.at_home_phlebotomy.appointment_cancelled",

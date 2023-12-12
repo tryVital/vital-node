@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const AppointmentEventStatus: core.serialization.Schema<
     serializers.AppointmentEventStatus.Raw,
     Vital.AppointmentEventStatus
-> = core.serialization.enum_(["scheduled", "completed", "cancelled", "in_progress"]);
+> = core.serialization.enum_(["pending", "scheduled", "completed", "cancelled", "in_progress"]);
 
 export declare namespace AppointmentEventStatus {
-    type Raw = "scheduled" | "completed" | "cancelled" | "in_progress";
+    type Raw = "pending" | "scheduled" | "completed" | "cancelled" | "in_progress";
 }

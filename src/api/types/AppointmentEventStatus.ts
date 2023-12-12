@@ -5,9 +5,10 @@
 /**
  * An enumeration.
  */
-export type AppointmentEventStatus = "scheduled" | "completed" | "cancelled" | "in_progress";
+export type AppointmentEventStatus = "pending" | "scheduled" | "completed" | "cancelled" | "in_progress";
 
 export const AppointmentEventStatus = {
+    Pending: "pending",
     Scheduled: "scheduled",
     Completed: "completed",
     Cancelled: "cancelled",

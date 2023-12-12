@@ -5,9 +5,10 @@
 /**
  * An enumeration.
  */
-export type AppointmentProvider = "getlabs" | "axlehealth";
+export type AppointmentProvider = "getlabs" | "axlehealth" | "phlebfinders";
 
 export const AppointmentProvider = {
     Getlabs: "getlabs",
     Axlehealth: "axlehealth",
+    Phlebfinders: "phlebfinders",
 } as const;
