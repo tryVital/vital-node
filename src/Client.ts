@@ -29,6 +29,7 @@ export declare namespace VitalClient {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 

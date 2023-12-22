@@ -18,7 +18,6 @@ export interface ClientFacingUser {
     /**
      *     Fallback time zone of the user, in the form of a valid IANA tzdatabase identifier (e.g., `Europe/London` or `America/Los_Angeles`).
      *     Used when pulling data from sources that are completely time zone agnostic (e.g., all time is relative to UTC clock, without any time zone attributions on data points).
-     *
      */
     fallbackTimeZone?: Vital.FallbackTimeZone;
 }

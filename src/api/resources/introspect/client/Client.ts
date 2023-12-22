@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vital from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Introspect {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -26,27 +26,32 @@ export class Introspect {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.introspect.getUserResources({
+     *         provider: Vital.Providers.Oura
+     *     })
      */
     public async getUserResources(
         request: Vital.IntrospectGetUserResourcesRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserResourcesResponse> {
         const { userId, provider, userLimit, cursor } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (userId != null) {
-            _queryParams.append("user_id", userId);
+            _queryParams["user_id"] = userId;
         }
 
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
         if (userLimit != null) {
-            _queryParams.append("user_limit", userLimit.toString());
+            _queryParams["user_limit"] = userLimit.toString();
         }
 
         if (cursor != null) {
-            _queryParams.append("cursor", cursor);
+            _queryParams["cursor"] = cursor;
         }
 
         const _response = await core.fetcher({
@@ -59,11 +64,12 @@ export class Introspect {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.UserResourcesResponse.parseOrThrow(_response.body, {
@@ -110,27 +116,32 @@ export class Introspect {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.introspect.getUserHistoricalPulls({
+     *         provider: Vital.Providers.Oura
+     *     })
      */
     public async getUserHistoricalPulls(
         request: Vital.IntrospectGetUserHistoricalPullsRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserHistoricalPullsResponse> {
         const { userId, provider, userLimit, cursor } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (userId != null) {
-            _queryParams.append("user_id", userId);
+            _queryParams["user_id"] = userId;
         }
 
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
         if (userLimit != null) {
-            _queryParams.append("user_limit", userLimit.toString());
+            _queryParams["user_limit"] = userLimit.toString();
         }
 
         if (cursor != null) {
-            _queryParams.append("cursor", cursor);
+            _queryParams["cursor"] = cursor;
         }
 
         const _response = await core.fetcher({
@@ -143,11 +154,12 @@ export class Introspect {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.UserHistoricalPullsResponse.parseOrThrow(_response.body, {

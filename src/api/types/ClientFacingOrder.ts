@@ -33,7 +33,7 @@ export interface ClientFacingOrder {
     healthInsuranceId?: string;
     /** DEPRECATED. Requistion form url. */
     requisitionFormUrl?: string;
-    /** Defines whether order is priority or not. Only available for Labcorp. For Labcorp, this corresponds to a STAT order. */
+    /** Defines whether order is priority or not. For some labs, this refers to a STAT order. */
     priority?: boolean;
     /** Shipping Details. For unregistered testkit orders. */
     shippingDetails?: Vital.ShippingAddress;

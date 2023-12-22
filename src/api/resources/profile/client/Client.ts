@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vital from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Profile {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -34,9 +34,9 @@ export class Profile {
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.ClientFacingProfile> {
         const { provider } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
         const _response = await core.fetcher({
@@ -49,11 +49,12 @@ export class Profile {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ClientFacingProfile.parseOrThrow(_response.body, {
@@ -108,9 +109,9 @@ export class Profile {
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.RawProfile> {
         const { provider } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
         const _response = await core.fetcher({
@@ -123,11 +124,12 @@ export class Profile {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.RawProfile.parseOrThrow(_response.body, {

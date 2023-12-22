@@ -17,6 +17,7 @@ export declare namespace Providers {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -25,6 +26,9 @@ export class Providers {
 
     /**
      * Get Provider list
+     *
+     * @example
+     *     await vital.providers.getAll()
      */
     public async getAll(requestOptions?: Providers.RequestOptions): Promise<Vital.ClientFacingProviderDetailed[]> {
         const _response = await core.fetcher({
@@ -37,10 +41,11 @@ export class Providers {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.providers.getAll.Response.parseOrThrow(_response.body, {

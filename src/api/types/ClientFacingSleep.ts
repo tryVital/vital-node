@@ -36,7 +36,7 @@ export interface ClientFacingSleep {
     hrLowest?: number;
     /** The average heart rate registered during the sleep period::beats per minute */
     hrAverage?: number;
-    /** Sleep efficiency is the percentage of the sleep period spent asleep (100% * sleep.total / sleep.duration)::perc */
+    /** Sleep efficiency is the percentage of the sleep period spent asleep (100% \* sleep.total / sleep.duration)::perc */
     efficiency?: number;
     /** Detected latency from bedtime_start to the beginning of the first five minutes of persistent sleep::seconds */
     latency?: number;

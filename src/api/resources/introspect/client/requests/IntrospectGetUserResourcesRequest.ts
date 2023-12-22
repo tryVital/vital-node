@@ -4,6 +4,12 @@
 
 import * as Vital from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         provider: Vital.Providers.Oura
+ *     }
+ */
 export interface IntrospectGetUserResourcesRequest {
     userId?: string;
     provider?: Vital.Providers;

@@ -3,8 +3,8 @@
  */
 
 export interface ClientFacingDiagnosisInformation {
-    /** Diagnosis code for insurance information required by Labcorp. */
+    /** Diagnosis code for insurance information. */
     diagnosisCode: string;
-    /** Diagnosis description insurance information required by Labcorp. */
+    /** Diagnosis description insurance information. */
     description: string;
 }

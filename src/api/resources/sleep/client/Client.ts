@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vital from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Sleep {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -27,6 +27,11 @@ export class Sleep {
     /**
      * Get Daily sleep for user_id
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.sleep.get("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async get(
         userId: string,
@@ -34,14 +39,14 @@ export class Sleep {
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientSleepResponse> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -54,11 +59,12 @@ export class Sleep {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ClientSleepResponse.parseOrThrow(_response.body, {
@@ -106,6 +112,11 @@ export class Sleep {
     /**
      * Get Daily sleep stream for user_id
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.sleep.getStream("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async getStream(
         userId: string,
@@ -113,14 +124,14 @@ export class Sleep {
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientSleepResponse> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -133,11 +144,12 @@ export class Sleep {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ClientSleepResponse.parseOrThrow(_response.body, {
@@ -185,6 +197,11 @@ export class Sleep {
     /**
      * Get Daily sleep for user_id
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.sleep.getRaw("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async getRaw(
         userId: string,
@@ -192,14 +209,14 @@ export class Sleep {
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.RawSleep> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -212,11 +229,12 @@ export class Sleep {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.RawSleep.parseOrThrow(_response.body, {
@@ -264,6 +282,9 @@ export class Sleep {
     /**
      * Get Sleep stream for a user_id
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.sleep.getStreamBySleepId("sleep-id")
      */
     public async getStreamBySleepId(
         sleepId: string,
@@ -279,10 +300,11 @@ export class Sleep {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ClientFacingSleepStream.parseOrThrow(_response.body, {

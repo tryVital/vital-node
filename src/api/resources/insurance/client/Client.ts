@@ -8,7 +8,6 @@ import * as Vital from "../../..";
 import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 
 export declare namespace Insurance {
     interface Options {
@@ -18,6 +17,7 @@ export declare namespace Insurance {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -41,11 +41,12 @@ export class Insurance {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             body: await serializers.PayorSearchRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.insurance.searchPayorInfo.Response.parseOrThrow(_response.body, {
@@ -92,14 +93,19 @@ export class Insurance {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.insurance.searchDiagnosis({
+     *         diagnosisQuery: "diagnosis-query"
+     *     })
      */
     public async searchDiagnosis(
         request: Vital.InsuranceSearchDiagnosisRequest,
         requestOptions?: Insurance.RequestOptions
     ): Promise<Vital.ClientFacingDiagnosisInformation[]> {
         const { diagnosisQuery } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("diagnosis_query", diagnosisQuery);
+        const _queryParams: Record<string, string | string[]> = {};
+        _queryParams["diagnosis_query"] = diagnosisQuery;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -110,11 +116,12 @@ export class Insurance {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.insurance.searchDiagnosis.Response.parseOrThrow(_response.body, {

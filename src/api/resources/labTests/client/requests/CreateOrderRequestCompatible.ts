@@ -9,7 +9,7 @@ export interface CreateOrderRequestCompatible {
     labTestId: string;
     physician?: Vital.PhysicianCreateRequest;
     healthInsurance?: Vital.HealthInsuranceCreateRequest;
-    /** Defines whether order is priority or not. Only available for Labcorp. For Labcorp, this corresponds to a STAT order. */
+    /** Defines whether order is priority or not. For some labs, this refers to a STAT order. */
     priority?: boolean;
     consents?: Vital.Consent[];
     patientDetails: Vital.PatientDetails;

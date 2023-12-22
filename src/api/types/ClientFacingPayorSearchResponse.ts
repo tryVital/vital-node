@@ -5,10 +5,10 @@
 import * as Vital from "..";
 
 export interface ClientFacingPayorSearchResponse {
-    /** Payor code returned for the insurance information required by Labcorp. */
+    /** Payor code returned for the insurance information. */
     code: string;
-    /** Insurance name returned for the insurance information required by Labcorp. */
+    /** Insurance name returned for the insurance information. */
     name: string;
-    /** Insurance business address returned for the insurance information required by Labcorp. */
+    /** Insurance business address returned for the insurance information. */
     orgAddress: Vital.Address;
 }

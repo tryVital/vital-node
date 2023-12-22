@@ -8,6 +8,7 @@ import * as Vital from "..";
 export class UnprocessableEntityError extends errors.VitalError {
     constructor(body: Vital.HttpValidationError) {
         super({
+            message: "UnprocessableEntityError",
             statusCode: 422,
             body: body,
         });

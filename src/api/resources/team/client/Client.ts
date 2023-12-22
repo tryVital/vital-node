@@ -8,7 +8,6 @@ import * as Vital from "../../..";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 
 export declare namespace Team {
     interface Options {
@@ -18,6 +17,7 @@ export declare namespace Team {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -27,6 +27,9 @@ export class Team {
     /**
      * Post teams.
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.team.getLinkConfig({})
      */
     public async getLinkConfig(
         request: Vital.TeamGetLinkConfigRequest = {},
@@ -43,11 +46,12 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.team.getLinkConfig.Response.parseOrThrow(_response.body, {
@@ -107,10 +111,11 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ClientFacingTeam.parseOrThrow(_response.body, {
@@ -158,15 +163,18 @@ export class Team {
     /**
      * Search team users by user_id
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.team.getUserById({})
      */
     public async getUserById(
         request: Vital.TeamGetUserByIdRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Vital.ClientFacingUser[]> {
         const { queryId } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (queryId != null) {
-            _queryParams.append("query_id", queryId);
+            _queryParams["query_id"] = queryId;
         }
 
         const _response = await core.fetcher({
@@ -179,11 +187,12 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.team.getUserById.Response.parseOrThrow(_response.body, {
@@ -239,10 +248,11 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.team.getSvixUrl.Response.parseOrThrow(_response.body, {
@@ -278,15 +288,18 @@ export class Team {
     /**
      * GET source priorities.
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.team.getSourcePriorities({})
      */
     public async getSourcePriorities(
         request: Vital.TeamGetSourcePrioritiesRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Record<string, unknown>[]> {
         const { dataType } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (dataType != null) {
-            _queryParams.append("data_type", dataType);
+            _queryParams["data_type"] = dataType;
         }
 
         const _response = await core.fetcher({
@@ -299,11 +312,12 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.team.getSourcePriorities.Response.parseOrThrow(_response.body, {
@@ -351,14 +365,19 @@ export class Team {
     /**
      * Patch source priorities.
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.team.updateSourcePriorities({
+     *         teamId: "team-id"
+     *     })
      */
     public async updateSourcePriorities(
         request: Vital.TeamUpdateSourcePrioritiesRequest,
         requestOptions?: Team.RequestOptions
     ): Promise<Record<string, unknown>[]> {
         const { teamId } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("team_id", teamId);
+        const _queryParams: Record<string, string | string[]> = {};
+        _queryParams["team_id"] = teamId;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -369,11 +388,12 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.team.updateSourcePriorities.Response.parseOrThrow(_response.body, {
@@ -420,6 +440,9 @@ export class Team {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.team.getPhysicians("team-id")
      */
     public async getPhysicians(
         teamId: string,
@@ -435,10 +458,11 @@ export class Team {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.team.getPhysicians.Response.parseOrThrow(_response.body, {

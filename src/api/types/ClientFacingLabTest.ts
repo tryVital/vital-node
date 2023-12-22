@@ -14,7 +14,7 @@ export interface ClientFacingLabTest {
     /** Deprecated. Use status instead. */
     isActive: boolean;
     status: Vital.LabTestStatus;
-    /** Defines whether a lab test requires fasting. Only available for Labcorp. */
+    /** Defines whether a lab test requires fasting. */
     fasting?: boolean;
     lab?: Vital.ClientFacingLab;
     markers?: Vital.ClientFacingMarker[];

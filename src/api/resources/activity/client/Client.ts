@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vital from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Activity {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -27,6 +27,11 @@ export class Activity {
     /**
      * Get Daily Activity for user_id
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.activity.get("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async get(
         userId: string,
@@ -34,14 +39,14 @@ export class Activity {
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.ClientActivityResponse> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -54,11 +59,12 @@ export class Activity {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ClientActivityResponse.parseOrThrow(_response.body, {
@@ -106,6 +112,11 @@ export class Activity {
     /**
      * Get Daily Activity for user_id
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.activity.getRaw("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async getRaw(
         userId: string,
@@ -113,14 +124,14 @@ export class Activity {
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.RawActivity> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -133,11 +144,12 @@ export class Activity {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.RawActivity.parseOrThrow(_response.body, {

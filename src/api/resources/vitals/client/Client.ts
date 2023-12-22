@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vital from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Vitals {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -27,6 +27,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.mindfulnessMinutes("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async mindfulnessMinutes(
         userId: string,
@@ -34,14 +39,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingMindfulnessMinutesTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -54,11 +59,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.mindfulnessMinutes.Response.parseOrThrow(_response.body, {
@@ -106,6 +112,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.caffeine("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async caffeine(
         userId: string,
@@ -113,14 +124,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCaffeineTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -133,11 +144,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.caffeine.Response.parseOrThrow(_response.body, {
@@ -185,6 +197,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.water("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async water(
         userId: string,
@@ -192,14 +209,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingWaterTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -212,11 +229,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.water.Response.parseOrThrow(_response.body, {
@@ -264,6 +282,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.steps("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async steps(
         userId: string,
@@ -271,14 +294,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingStepsTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -291,11 +314,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.steps.Response.parseOrThrow(_response.body, {
@@ -343,6 +367,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.floorsClimbed("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async floorsClimbed(
         userId: string,
@@ -350,14 +379,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingFloorsClimbedTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -370,11 +399,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.floorsClimbed.Response.parseOrThrow(_response.body, {
@@ -422,6 +452,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.distance("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async distance(
         userId: string,
@@ -429,14 +464,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingDistanceTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -449,11 +484,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.distance.Response.parseOrThrow(_response.body, {
@@ -501,6 +537,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.caloriesBasal("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async caloriesBasal(
         userId: string,
@@ -508,14 +549,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCaloriesBasalTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -528,11 +569,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.caloriesBasal.Response.parseOrThrow(_response.body, {
@@ -580,6 +622,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.caloriesActive("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async caloriesActive(
         userId: string,
@@ -587,14 +634,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCaloriesActiveTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -607,11 +654,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.caloriesActive.Response.parseOrThrow(_response.body, {
@@ -659,6 +707,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.respiratoryRate("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async respiratoryRate(
         userId: string,
@@ -666,14 +719,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingRespiratoryRateTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -686,11 +739,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.respiratoryRate.Response.parseOrThrow(_response.body, {
@@ -738,6 +792,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.ige("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async ige(
         userId: string,
@@ -745,14 +804,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingIgeTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -765,11 +824,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.ige.Response.parseOrThrow(_response.body, {
@@ -817,6 +877,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.igg("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async igg(
         userId: string,
@@ -824,14 +889,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingIggTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -844,11 +909,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.igg.Response.parseOrThrow(_response.body, {
@@ -896,6 +962,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.hypnogram("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async hypnogram(
         userId: string,
@@ -903,14 +974,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingHypnogramTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -923,11 +994,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.hypnogram.Response.parseOrThrow(_response.body, {
@@ -975,6 +1047,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.hrv("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async hrv(
         userId: string,
@@ -982,14 +1059,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingHrvTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1002,11 +1079,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.hrv.Response.parseOrThrow(_response.body, {
@@ -1054,6 +1132,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.heartrate("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async heartrate(
         userId: string,
@@ -1061,14 +1144,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingHeartRateTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1081,11 +1164,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.heartrate.Response.parseOrThrow(_response.body, {
@@ -1133,6 +1217,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.glucose("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async glucose(
         userId: string,
@@ -1140,14 +1229,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingGlucoseTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1160,11 +1249,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.glucose.Response.parseOrThrow(_response.body, {
@@ -1212,6 +1302,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.triglycerides("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async triglycerides(
         userId: string,
@@ -1219,14 +1314,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1239,11 +1334,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.triglycerides.Response.parseOrThrow(_response.body, {
@@ -1291,6 +1387,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.cholesterolTotal("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async cholesterolTotal(
         userId: string,
@@ -1298,14 +1399,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1318,11 +1419,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.cholesterolTotal.Response.parseOrThrow(_response.body, {
@@ -1370,6 +1472,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.cholesterolHdl("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async cholesterolHdl(
         userId: string,
@@ -1377,14 +1484,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1397,11 +1504,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.cholesterolHdl.Response.parseOrThrow(_response.body, {
@@ -1449,6 +1557,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.cholesterolLdl("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async cholesterolLdl(
         userId: string,
@@ -1456,14 +1569,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1476,11 +1589,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.cholesterolLdl.Response.parseOrThrow(_response.body, {
@@ -1528,6 +1642,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.cholesterol("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async cholesterol(
         userId: string,
@@ -1535,14 +1654,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1555,11 +1674,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.cholesterol.Response.parseOrThrow(_response.body, {
@@ -1607,6 +1727,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bloodOxygen("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async bloodOxygen(
         userId: string,
@@ -1614,14 +1739,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingBloodOxygenTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1634,11 +1759,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.bloodOxygen.Response.parseOrThrow(_response.body, {
@@ -1686,6 +1812,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.electrocardiogramVoltage("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async electrocardiogramVoltage(
         userId: string,
@@ -1693,14 +1824,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingElectrocardiogramVoltageTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1713,11 +1844,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.electrocardiogramVoltage.Response.parseOrThrow(_response.body, {
@@ -1765,6 +1897,11 @@ export class Vitals {
     /**
      * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bloodPressure("user-id", {
+     *         startDate: "start-date"
+     *     })
      */
     public async bloodPressure(
         userId: string,
@@ -1772,14 +1909,14 @@ export class Vitals {
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingBloodPressureTimeseries[]> {
         const { provider, startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (provider != null) {
-            _queryParams.append("provider", provider);
+            _queryParams["provider"] = provider;
         }
 
-        _queryParams.append("start_date", startDate);
+        _queryParams["start_date"] = startDate;
         if (endDate != null) {
-            _queryParams.append("end_date", endDate);
+            _queryParams["end_date"] = endDate;
         }
 
         const _response = await core.fetcher({
@@ -1792,11 +1929,12 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.7",
+                "X-Fern-SDK-Version": "3.0.8",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.vitals.bloodPressure.Response.parseOrThrow(_response.body, {

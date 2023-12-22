@@ -8,6 +8,7 @@ import * as Vital from "..";
 export class BadRequestError extends errors.VitalError {
     constructor(body: Vital.UserRefreshErrorResponse) {
         super({
+            message: "BadRequestError",
             statusCode: 400,
             body: body,
         });
