@@ -5,7 +5,7 @@
 import * as Vital from "..";
 
 export interface DeviceV2InDb {
-    data?: string;
+    data: Record<string, unknown>;
     providerId: string;
     userId: string;
     sourceId: number;

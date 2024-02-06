@@ -11,6 +11,7 @@ export const ClientFacingTeam: core.serialization.ObjectSchema<
     Vital.ClientFacingTeam
 > = core.serialization.object({
     id: core.serialization.string(),
+    orgId: core.serialization.property("org_id", core.serialization.string().optional()),
     name: core.serialization.string(),
     svixAppId: core.serialization.property("svix_app_id", core.serialization.string().optional()),
     clientId: core.serialization.property("client_id", core.serialization.string().optional()),
@@ -49,6 +50,7 @@ export const ClientFacingTeam: core.serialization.ObjectSchema<
 export declare namespace ClientFacingTeam {
     interface Raw {
         id: string;
+        org_id?: string | null;
         name: string;
         svix_app_id?: string | null;
         client_id?: string | null;

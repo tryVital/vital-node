@@ -37,7 +37,8 @@ export type Providers =
     | "health_connect"
     | "polar"
     | "cronometer"
-    | "kardia";
+    | "kardia"
+    | "whoop_v2";
 
 export const Providers = {
     Oura: "oura",
@@ -72,4 +73,5 @@ export const Providers = {
     Polar: "polar",
     Cronometer: "cronometer",
     Kardia: "kardia",
+    WhoopV2: "whoop_v2",
 } as const;

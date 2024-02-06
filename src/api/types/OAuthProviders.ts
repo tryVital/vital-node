@@ -17,7 +17,8 @@ export type OAuthProviders =
     | "dexcom_v3"
     | "polar"
     | "cronometer"
-    | "omron";
+    | "omron"
+    | "whoop_v2";
 
 export const OAuthProviders = {
     Oura: "oura",
@@ -32,4 +33,5 @@ export const OAuthProviders = {
     Polar: "polar",
     Cronometer: "cronometer",
     Omron: "omron",
+    WhoopV2: "whoop_v2",
 } as const;

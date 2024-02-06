@@ -6,6 +6,7 @@ import * as Vital from "..";
 
 export interface ClientFacingTeam {
     id: string;
+    orgId?: string;
     name: string;
     svixAppId?: string;
     clientId?: string;

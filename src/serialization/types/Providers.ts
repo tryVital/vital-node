@@ -40,6 +40,7 @@ export const Providers: core.serialization.Schema<serializers.Providers.Raw, Vit
         "polar",
         "cronometer",
         "kardia",
+        "whoop_v2",
     ]);
 
 export declare namespace Providers {
@@ -75,5 +76,6 @@ export declare namespace Providers {
         | "health_connect"
         | "polar"
         | "cronometer"
-        | "kardia";
+        | "kardia"
+        | "whoop_v2";
 }

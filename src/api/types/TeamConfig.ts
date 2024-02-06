@@ -8,6 +8,7 @@ export interface TeamConfig {
     libreview: Vital.LibreConfig;
     textsEnabled?: boolean;
     pushHistoricalData?: boolean;
+    providerRawData?: boolean;
     edsPreferences?: Vital.EventDestinationPreferences;
     eventTypePrefixes?: string[];
 }

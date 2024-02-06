@@ -14,6 +14,7 @@ export const TeamConfig: core.serialization.ObjectSchema<serializers.TeamConfig.
             "push_historical_data",
             core.serialization.boolean().optional()
         ),
+        providerRawData: core.serialization.property("provider_raw_data", core.serialization.boolean().optional()),
         edsPreferences: core.serialization.property(
             "eds_preferences",
             core.serialization.lazyObject(async () => (await import("..")).EventDestinationPreferences).optional()
@@ -29,6 +30,7 @@ export declare namespace TeamConfig {
         libreview: serializers.LibreConfig.Raw;
         texts_enabled?: boolean | null;
         push_historical_data?: boolean | null;
+        provider_raw_data?: boolean | null;
         eds_preferences?: serializers.EventDestinationPreferences.Raw | null;
         event_type_prefixes?: string[] | null;
     }

@@ -20,6 +20,7 @@ export const OAuthProviders: core.serialization.Schema<serializers.OAuthProvider
         "polar",
         "cronometer",
         "omron",
+        "whoop_v2",
     ]);
 
 export declare namespace OAuthProviders {
@@ -35,5 +36,6 @@ export declare namespace OAuthProviders {
         | "dexcom_v3"
         | "polar"
         | "cronometer"
-        | "omron";
+        | "omron"
+        | "whoop_v2";
 }
