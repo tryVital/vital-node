@@ -15,8 +15,8 @@ export const TimeseriesResource: core.serialization.Schema<
     "distance",
     "blood_oxygen",
     "blood_pressure",
-    "body/fat",
-    "body/weight",
+    "body_fat",
+    "body_weight",
     "cholesterol",
     "cholesterol/ldl",
     "cholesterol/hdl",
@@ -27,7 +27,6 @@ export const TimeseriesResource: core.serialization.Schema<
     "glucose",
     "heartrate",
     "hrv",
-    "heartrate_variability",
     "hypnogram",
     "ige",
     "igg",
@@ -47,8 +46,8 @@ export declare namespace TimeseriesResource {
         | "distance"
         | "blood_oxygen"
         | "blood_pressure"
-        | "body/fat"
-        | "body/weight"
+        | "body_fat"
+        | "body_weight"
         | "cholesterol"
         | "cholesterol/ldl"
         | "cholesterol/hdl"
@@ -59,7 +58,6 @@ export declare namespace TimeseriesResource {
         | "glucose"
         | "heartrate"
         | "hrv"
-        | "heartrate_variability"
         | "hypnogram"
         | "ige"
         | "igg"

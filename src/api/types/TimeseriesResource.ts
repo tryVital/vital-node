@@ -11,8 +11,8 @@ export type TimeseriesResource =
     | "distance"
     | "blood_oxygen"
     | "blood_pressure"
-    | "body/fat"
-    | "body/weight"
+    | "body_fat"
+    | "body_weight"
     | "cholesterol"
     | "cholesterol/ldl"
     | "cholesterol/hdl"
@@ -23,7 +23,6 @@ export type TimeseriesResource =
     | "glucose"
     | "heartrate"
     | "hrv"
-    | "heartrate_variability"
     | "hypnogram"
     | "ige"
     | "igg"
@@ -41,8 +40,8 @@ export const TimeseriesResource = {
     Distance: "distance",
     BloodOxygen: "blood_oxygen",
     BloodPressure: "blood_pressure",
-    BodyFat: "body/fat",
-    BodyWeight: "body/weight",
+    BodyFat: "body_fat",
+    BodyWeight: "body_weight",
     Cholesterol: "cholesterol",
     CholesterolLdl: "cholesterol/ldl",
     CholesterolHdl: "cholesterol/hdl",
@@ -53,7 +52,6 @@ export const TimeseriesResource = {
     Glucose: "glucose",
     Heartrate: "heartrate",
     Hrv: "hrv",
-    HeartrateVariability: "heartrate_variability",
     Hypnogram: "hypnogram",
     Ige: "ige",
     Igg: "igg",

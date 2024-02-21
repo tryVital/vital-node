@@ -10,11 +10,13 @@ export const UserCreateBody: core.serialization.Schema<serializers.UserCreateBod
     core.serialization.object({
         clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
         fallbackTimeZone: core.serialization.property("fallback_time_zone", core.serialization.string().optional()),
+        fallbackBirthDate: core.serialization.property("fallback_birth_date", core.serialization.string().optional()),
     });
 
 export declare namespace UserCreateBody {
     interface Raw {
         client_user_id: string;
         fallback_time_zone?: string | null;
+        fallback_birth_date?: string | null;
     }
 }

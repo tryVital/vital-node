@@ -8,7 +8,11 @@
  *         startDate: "start-date"
  *     }
  */
-export interface VitalsTriglyceridesRequest {
+export interface VitalsBloodOxygenGroupedRequest {
+    /**
+     * The cursor for fetching the next page, or `null` to fetch the first page.
+     */
+    cursor?: string;
     /**
      * Provider oura/strava etc
      */

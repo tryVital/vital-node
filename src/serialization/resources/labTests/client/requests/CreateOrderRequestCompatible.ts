@@ -23,6 +23,7 @@ export const CreateOrderRequestCompatible: core.serialization.Schema<
     consents: core.serialization
         .list(core.serialization.lazyObject(async () => (await import("../../../..")).Consent))
         .optional(),
+    activateBy: core.serialization.property("activate_by", core.serialization.string().optional()),
     patientDetails: core.serialization.property(
         "patient_details",
         core.serialization.lazyObject(async () => (await import("../../../..")).PatientDetails)
@@ -41,6 +42,7 @@ export declare namespace CreateOrderRequestCompatible {
         health_insurance?: serializers.HealthInsuranceCreateRequest.Raw | null;
         priority?: boolean | null;
         consents?: serializers.Consent.Raw[] | null;
+        activate_by?: string | null;
         patient_details: serializers.PatientDetails.Raw;
         patient_address: serializers.PatientAddressCompatible.Raw;
     }

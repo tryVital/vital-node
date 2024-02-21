@@ -12,6 +12,8 @@ export interface CreateOrderRequestCompatible {
     /** Defines whether order is priority or not. For some labs, this refers to a STAT order. */
     priority?: boolean;
     consents?: Vital.Consent[];
+    /** Defines when an Order should be activated, making it a Delayed Order. */
+    activateBy?: string;
     patientDetails: Vital.PatientDetails;
     patientAddress: Vital.PatientAddressCompatible;
 }

@@ -12,7 +12,7 @@ export interface LabTestsGetMarkersRequest {
      */
     labId?: number | number[];
     /**
-     * The name of an individual biomarker or a panel. Used as a fuzzy filter when searching markers.
+     * The name or test code of an individual biomarker or a panel.
      */
     name?: string;
     page?: number;

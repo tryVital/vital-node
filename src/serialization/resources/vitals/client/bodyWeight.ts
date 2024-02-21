@@ -7,12 +7,12 @@ import * as Vital from "../../../../api";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
-    serializers.vitals.triglycerides.Response.Raw,
-    Vital.ClientFacingCholesterolTimeseries[]
+    serializers.vitals.bodyWeight.Response.Raw,
+    Vital.ClientFacingBodyWeightTimeseries[]
 > = core.serialization.list(
-    core.serialization.lazyObject(async () => (await import("../../..")).ClientFacingCholesterolTimeseries)
+    core.serialization.lazyObject(async () => (await import("../../..")).ClientFacingBodyWeightTimeseries)
 );
 
 export declare namespace Response {
-    type Raw = serializers.ClientFacingCholesterolTimeseries.Raw[];
+    type Raw = serializers.ClientFacingBodyWeightTimeseries.Raw[];
 }

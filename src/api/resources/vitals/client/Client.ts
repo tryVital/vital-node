@@ -25,7 +25,2198 @@ export class Vitals {
     constructor(protected readonly _options: Vitals.Options) {}
 
     /**
-     * Get timeseries data for user
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.vo2MaxGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async vo2MaxGrouped(
+        userId: string,
+        request: Vital.VitalsVo2MaxGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedVo2MaxResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/vo2_max/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedVo2MaxResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.stressLevelGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async stressLevelGrouped(
+        userId: string,
+        request: Vital.VitalsStressLevelGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedStressLevelResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/stress_level/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedStressLevelResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.mindfulnessMinutesGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async mindfulnessMinutesGrouped(
+        userId: string,
+        request: Vital.VitalsMindfulnessMinutesGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedMindfulnessMinutesResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/mindfulness_minutes/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedMindfulnessMinutesResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.caffeineGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async caffeineGrouped(
+        userId: string,
+        request: Vital.VitalsCaffeineGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedCaffeineResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/caffeine/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedCaffeineResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.waterGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async waterGrouped(
+        userId: string,
+        request: Vital.VitalsWaterGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedWaterResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/water/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedWaterResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.stepsGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async stepsGrouped(
+        userId: string,
+        request: Vital.VitalsStepsGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedStepsResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/steps/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedStepsResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.floorsClimbedGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async floorsClimbedGrouped(
+        userId: string,
+        request: Vital.VitalsFloorsClimbedGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedFloorsClimbedResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/floors_climbed/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedFloorsClimbedResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.distanceGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async distanceGrouped(
+        userId: string,
+        request: Vital.VitalsDistanceGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedDistanceResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/distance/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedDistanceResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.caloriesBasalGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async caloriesBasalGrouped(
+        userId: string,
+        request: Vital.VitalsCaloriesBasalGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedCaloriesBasalResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/calories_basal/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedCaloriesBasalResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.caloriesActiveGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async caloriesActiveGrouped(
+        userId: string,
+        request: Vital.VitalsCaloriesActiveGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedCaloriesActiveResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/calories_active/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedCaloriesActiveResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.respiratoryRateGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async respiratoryRateGrouped(
+        userId: string,
+        request: Vital.VitalsRespiratoryRateGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedRespiratoryRateResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/respiratory_rate/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedRespiratoryRateResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.igeGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async igeGrouped(
+        userId: string,
+        request: Vital.VitalsIgeGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedIgeResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/ige/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedIgeResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.iggGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async iggGrouped(
+        userId: string,
+        request: Vital.VitalsIggGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedIggResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/igg/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedIggResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.hypnogramGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async hypnogramGrouped(
+        userId: string,
+        request: Vital.VitalsHypnogramGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedHypnogramResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/hypnogram/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedHypnogramResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.hrvGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async hrvGrouped(
+        userId: string,
+        request: Vital.VitalsHrvGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedHrvResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/hrv/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedHrvResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.heartrateGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async heartrateGrouped(
+        userId: string,
+        request: Vital.VitalsHeartrateGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedHeartRateResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/heartrate/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedHeartRateResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.glucoseGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async glucoseGrouped(
+        userId: string,
+        request: Vital.VitalsGlucoseGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedGlucoseResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/glucose/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedGlucoseResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.cholesterolGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async cholesterolGrouped(
+        userId: string,
+        request: Vital.VitalsCholesterolGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedCholesterolResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/cholesterol/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedCholesterolResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bodyWeightGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async bodyWeightGrouped(
+        userId: string,
+        request: Vital.VitalsBodyWeightGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedBodyWeightResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/body_weight/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedBodyWeightResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bodyFatGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async bodyFatGrouped(
+        userId: string,
+        request: Vital.VitalsBodyFatGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedBodyFatResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/body_fat/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedBodyFatResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bloodOxygenGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async bloodOxygenGrouped(
+        userId: string,
+        request: Vital.VitalsBloodOxygenGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedBloodOxygenResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/blood_oxygen/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedBloodOxygenResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.electrocardiogramVoltageGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async electrocardiogramVoltageGrouped(
+        userId: string,
+        request: Vital.VitalsElectrocardiogramVoltageGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedElectrocardiogramVoltageResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/electrocardiogram_voltage/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedElectrocardiogramVoltageResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bloodPressureGrouped("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async bloodPressureGrouped(
+        userId: string,
+        request: Vital.VitalsBloodPressureGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedBloodPressureResponse> {
+        const { cursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/blood_pressure/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.GroupedBloodPressureResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.vo2Max("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async vo2Max(
+        userId: string,
+        request: Vital.VitalsVo2MaxRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.ClientFacingVo2MaxTimeseries[]> {
+        const { provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/vo2_max`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.vitals.vo2Max.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.stressLevel("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async stressLevel(
+        userId: string,
+        request: Vital.VitalsStressLevelRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.ClientFacingStressLevelTimeseries[]> {
+        const { provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/stress_level`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.vitals.stressLevel.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -59,7 +2250,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -110,7 +2301,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -144,7 +2334,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -195,7 +2385,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -229,7 +2418,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -280,7 +2469,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -314,7 +2502,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -365,7 +2553,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -399,7 +2586,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -450,7 +2637,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -484,7 +2670,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -535,7 +2721,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -569,7 +2754,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -620,7 +2805,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -654,7 +2838,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -705,7 +2889,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -739,7 +2922,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -790,7 +2973,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -824,7 +3006,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -875,7 +3057,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -909,7 +3090,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -960,7 +3141,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -994,7 +3174,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1045,7 +3225,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1079,7 +3258,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1130,7 +3309,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1164,7 +3342,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1215,7 +3393,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1249,7 +3426,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1300,17 +3477,16 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.triglycerides("user-id", {
+     *     await vital.vitals.cholesterolTriglycerides("user-id", {
      *         startDate: "start-date"
      *     })
      */
-    public async triglycerides(
+    public async cholesterolTriglycerides(
         userId: string,
-        request: Vital.VitalsTriglyceridesRequest,
+        request: Vital.VitalsCholesterolTriglyceridesRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -1334,7 +3510,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1342,7 +3518,7 @@ export class Vitals {
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.vitals.triglycerides.Response.parseOrThrow(_response.body, {
+            return await serializers.vitals.cholesterolTriglycerides.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1385,7 +3561,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1419,7 +3594,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1470,92 +3645,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await vital.vitals.cholesterolHdl("user-id", {
-     *         startDate: "start-date"
-     *     })
-     */
-    public async cholesterolHdl(
-        userId: string,
-        request: Vital.VitalsCholesterolHdlRequest,
-        requestOptions?: Vitals.RequestOptions
-    ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
-        const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, string | string[]> = {};
-        if (provider != null) {
-            _queryParams["provider"] = provider;
-        }
-
-        _queryParams["start_date"] = startDate;
-        if (endDate != null) {
-            _queryParams["end_date"] = endDate;
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/timeseries/${userId}/cholesterol/hdl`
-            ),
-            method: "GET",
-            headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-        });
-        if (_response.ok) {
-            return await serializers.vitals.cholesterolHdl.Response.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VitalError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VitalTimeoutError();
-            case "unknown":
-                throw new errors.VitalError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1589,7 +3678,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1640,7 +3729,90 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.cholesterolHdl("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async cholesterolHdl(
+        userId: string,
+        request: Vital.VitalsCholesterolHdlRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
+        const { provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/cholesterol/hdl`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.vitals.cholesterolHdl.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1674,7 +3846,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1725,7 +3897,174 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bodyWeight("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async bodyWeight(
+        userId: string,
+        request: Vital.VitalsBodyWeightRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.ClientFacingBodyWeightTimeseries[]> {
+        const { provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/body_weight`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.vitals.bodyWeight.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.vitals.bodyFat("user-id", {
+     *         startDate: "start-date"
+     *     })
+     */
+    public async bodyFat(
+        userId: string,
+        request: Vital.VitalsBodyFatRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.ClientFacingBodyFatTimeseries[]> {
+        const { provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${userId}/body_fat`
+            ),
+            method: "GET",
+            headers: {
+                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.vitals.bodyFat.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1759,7 +4098,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1810,7 +4149,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1844,7 +4182,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1895,7 +4233,6 @@ export class Vitals {
     }
 
     /**
-     * Get timeseries data for user
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
@@ -1929,7 +4266,7 @@ export class Vitals {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.0.9",
+                "X-Fern-SDK-Version": "3.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

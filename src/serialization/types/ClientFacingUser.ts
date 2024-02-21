@@ -24,6 +24,10 @@ export const ClientFacingUser: core.serialization.ObjectSchema<
         "fallback_time_zone",
         core.serialization.lazyObject(async () => (await import("..")).FallbackTimeZone).optional()
     ),
+    fallbackBirthDate: core.serialization.property(
+        "fallback_birth_date",
+        core.serialization.lazyObject(async () => (await import("..")).FallbackBirthDate).optional()
+    ),
 });
 
 export declare namespace ClientFacingUser {
@@ -34,5 +38,6 @@ export declare namespace ClientFacingUser {
         created_on: string;
         connected_sources: serializers.ConnectedSourceClientFacing.Raw[];
         fallback_time_zone?: serializers.FallbackTimeZone.Raw | null;
+        fallback_birth_date?: serializers.FallbackBirthDate.Raw | null;
     }
 }

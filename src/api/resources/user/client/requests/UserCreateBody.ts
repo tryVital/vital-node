@@ -11,4 +11,6 @@ export interface UserCreateBody {
      *
      */
     fallbackTimeZone?: string;
+    /** Fallback date of birth of the user, in YYYY-mm-dd format. Used for calculating max heartrate for providers that don not provide users' age. */
+    fallbackBirthDate?: string;
 }

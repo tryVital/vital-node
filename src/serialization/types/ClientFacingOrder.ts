@@ -42,6 +42,7 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
         "shipping_details",
         core.serialization.lazyObject(async () => (await import("..")).ShippingAddress).optional()
     ),
+    activateBy: core.serialization.property("activate_by", core.serialization.string().optional()),
 });
 
 export declare namespace ClientFacingOrder {
@@ -64,5 +65,6 @@ export declare namespace ClientFacingOrder {
         requisition_form_url?: string | null;
         priority?: boolean | null;
         shipping_details?: serializers.ShippingAddress.Raw | null;
+        activate_by?: string | null;
     }
 }
