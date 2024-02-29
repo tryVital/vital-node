@@ -10,5 +10,6 @@ export interface ClientFacingResult {
     slug: string;
     labId?: number;
     providerId?: string;
+    required: boolean;
     loinc?: Vital.ClientFacingLoinc;
 }

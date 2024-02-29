@@ -37,6 +37,6 @@ export interface ClientFacingOrder {
     priority?: boolean;
     /** Shipping Details. For unregistered testkit orders. */
     shippingDetails?: Vital.ShippingAddress;
-    /** Defines when an Order should be activated, making it a Delayed Order. */
+    /** Schedule an Order to be processed in a future date. */
     activateBy?: string;
 }

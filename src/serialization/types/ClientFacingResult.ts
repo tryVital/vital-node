@@ -15,6 +15,7 @@ export const ClientFacingResult: core.serialization.ObjectSchema<
     slug: core.serialization.string(),
     labId: core.serialization.property("lab_id", core.serialization.number().optional()),
     providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
+    required: core.serialization.boolean(),
     loinc: core.serialization.lazyObject(async () => (await import("..")).ClientFacingLoinc).optional(),
 });
 
@@ -25,6 +26,7 @@ export declare namespace ClientFacingResult {
         slug: string;
         lab_id?: number | null;
         provider_id?: string | null;
+        required: boolean;
         loinc?: serializers.ClientFacingLoinc.Raw | null;
     }
 }
