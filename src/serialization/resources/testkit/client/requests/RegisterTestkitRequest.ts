@@ -23,6 +23,10 @@ export const RegisterTestkitRequest: core.serialization.Schema<
     physician: core.serialization
         .lazyObject(async () => (await import("../../../..")).PhysicianCreateRequestBase)
         .optional(),
+    healthInsurance: core.serialization.property(
+        "health_insurance",
+        core.serialization.lazyObject(async () => (await import("../../../..")).HealthInsuranceCreateRequest).optional()
+    ),
     consents: core.serialization
         .list(core.serialization.lazyObject(async () => (await import("../../../..")).Consent))
         .optional(),
@@ -35,6 +39,7 @@ export declare namespace RegisterTestkitRequest {
         patient_details: serializers.PatientDetails.Raw;
         patient_address: serializers.PatientAddressCompatible.Raw;
         physician?: serializers.PhysicianCreateRequestBase.Raw | null;
+        health_insurance?: serializers.HealthInsuranceCreateRequest.Raw | null;
         consents?: serializers.Consent.Raw[] | null;
     }
 }

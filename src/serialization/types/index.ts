@@ -80,6 +80,7 @@ export * from "./ClientFacingWalkInTestOrder";
 export * from "./ClientFacingWaterTimeseries";
 export * from "./ClientFacingWorkout";
 export * from "./ClientSleepResponse";
+export * from "./ClientUserIdConflict";
 export * from "./ClientWorkoutResponse";
 export * from "./ConnectedSourceClientFacing";
 export * from "./ConnectionStatus";

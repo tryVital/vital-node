@@ -10,11 +10,15 @@ export const UserPatchBody: core.serialization.Schema<serializers.UserPatchBody.
     core.serialization.object({
         fallbackTimeZone: core.serialization.property("fallback_time_zone", core.serialization.string().optional()),
         fallbackBirthDate: core.serialization.property("fallback_birth_date", core.serialization.string().optional()),
+        ingestionStart: core.serialization.property("ingestion_start", core.serialization.string().optional()),
+        ingestionEnd: core.serialization.property("ingestion_end", core.serialization.string().optional()),
     });
 
 export declare namespace UserPatchBody {
     interface Raw {
         fallback_time_zone?: string | null;
         fallback_birth_date?: string | null;
+        ingestion_start?: string | null;
+        ingestion_end?: string | null;
     }
 }

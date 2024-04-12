@@ -5,7 +5,7 @@
 /**
  * An enumeration.
  */
-export type Region = "us" | "eu" | "sg" | "de" | "au" | "br" | "nl" | "fr" | "ca";
+export type Region = "us" | "eu" | "sg" | "de" | "au" | "br" | "nl" | "fr" | "ca" | "in";
 
 export const Region = {
     Us: "us",
@@ -17,4 +17,5 @@ export const Region = {
     Nl: "nl",
     Fr: "fr",
     Ca: "ca",
+    In: "in",
 } as const;

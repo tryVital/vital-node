@@ -22,4 +22,8 @@ export interface ClientFacingUser {
     fallbackTimeZone?: Vital.FallbackTimeZone;
     /** Fallback date of birth of the user, in YYYY-mm-dd format. Used for calculating max heartrate for providers that don not provide users' age. */
     fallbackBirthDate?: Vital.FallbackBirthDate;
+    /** Starting bound for user data ingestion. Data older than this date will not be ingested. */
+    ingestionStart?: string;
+    /** Ending bound for user data ingestion. Data newer than this date will not be ingested and the connection deregistered. */
+    ingestionEnd?: string;
 }

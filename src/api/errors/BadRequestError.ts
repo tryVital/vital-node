@@ -3,10 +3,9 @@
  */
 
 import * as errors from "../../errors";
-import * as Vital from "..";
 
 export class BadRequestError extends errors.VitalError {
-    constructor(body: Vital.UserRefreshErrorResponse) {
+    constructor(body?: unknown) {
         super({
             message: "BadRequestError",
             statusCode: 400,

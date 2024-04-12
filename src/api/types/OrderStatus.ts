@@ -21,6 +21,7 @@ export type OrderStatus =
     | "completed.at_home_phlebotomy.completed"
     | "sample_with_lab.at_home_phlebotomy.partial_results"
     | "cancelled.at_home_phlebotomy.cancelled"
+    | "failed.at_home_phlebotomy.sample_error"
     | "received.testkit.ordered"
     | "received.testkit.awaiting_registration"
     | "received.testkit.requisition_created"
@@ -54,6 +55,7 @@ export const OrderStatus = {
     CompletedAtHomePhlebotomyCompleted: "completed.at_home_phlebotomy.completed",
     SampleWithLabAtHomePhlebotomyPartialResults: "sample_with_lab.at_home_phlebotomy.partial_results",
     CancelledAtHomePhlebotomyCancelled: "cancelled.at_home_phlebotomy.cancelled",
+    FailedAtHomePhlebotomySampleError: "failed.at_home_phlebotomy.sample_error",
     ReceivedTestkitOrdered: "received.testkit.ordered",
     ReceivedTestkitAwaitingRegistration: "received.testkit.awaiting_registration",
     ReceivedTestkitRequisitionCreated: "received.testkit.requisition_created",

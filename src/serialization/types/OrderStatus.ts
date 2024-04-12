@@ -23,6 +23,7 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "completed.at_home_phlebotomy.completed",
         "sample_with_lab.at_home_phlebotomy.partial_results",
         "cancelled.at_home_phlebotomy.cancelled",
+        "failed.at_home_phlebotomy.sample_error",
         "received.testkit.ordered",
         "received.testkit.awaiting_registration",
         "received.testkit.requisition_created",
@@ -58,6 +59,7 @@ export declare namespace OrderStatus {
         | "completed.at_home_phlebotomy.completed"
         | "sample_with_lab.at_home_phlebotomy.partial_results"
         | "cancelled.at_home_phlebotomy.cancelled"
+        | "failed.at_home_phlebotomy.sample_error"
         | "received.testkit.ordered"
         | "received.testkit.awaiting_registration"
         | "received.testkit.requisition_created"

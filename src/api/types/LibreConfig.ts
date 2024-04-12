@@ -4,4 +4,5 @@
 
 export interface LibreConfig {
     practiceId: Record<string, unknown>;
+    stripTz?: boolean;
 }

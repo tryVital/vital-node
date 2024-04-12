@@ -12,10 +12,12 @@ export const LibreConfig: core.serialization.ObjectSchema<serializers.LibreConfi
             "practice_id",
             core.serialization.record(core.serialization.string(), core.serialization.unknown())
         ),
+        stripTz: core.serialization.property("strip_tz", core.serialization.boolean().optional()),
     });
 
 export declare namespace LibreConfig {
     interface Raw {
         practice_id: Record<string, unknown>;
+        strip_tz?: boolean | null;
     }
 }

@@ -52,7 +52,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -104,6 +104,7 @@ export class User {
 
     /**
      * POST Create a Vital user given a client_user_id and returns the user_id.
+     * @throws {@link Vital.BadRequestError}
      * @throws {@link Vital.UnprocessableEntityError}
      */
     public async create(
@@ -120,7 +121,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             body: await serializers.UserCreateBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -138,6 +139,8 @@ export class User {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vital.BadRequestError(_response.error.body);
                 case 422:
                     throw new Vital.UnprocessableEntityError(
                         await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
@@ -184,7 +187,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -238,7 +241,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -308,7 +311,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -372,7 +375,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -435,7 +438,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -505,7 +508,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             body: await serializers.UserPatchBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -568,7 +571,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -635,7 +638,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -711,7 +714,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -787,7 +790,7 @@ export class User {
                 "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.2",
+                "X-Fern-SDK-Version": "3.1.3",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -806,14 +809,7 @@ export class User {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new Vital.BadRequestError(
-                        await serializers.UserRefreshErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
+                    throw new Vital.BadRequestError(_response.error.body);
                 case 422:
                     throw new Vital.UnprocessableEntityError(
                         await serializers.HttpValidationError.parseOrThrow(_response.error.body, {

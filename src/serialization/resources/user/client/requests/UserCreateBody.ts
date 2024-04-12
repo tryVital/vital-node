@@ -11,6 +11,8 @@ export const UserCreateBody: core.serialization.Schema<serializers.UserCreateBod
         clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
         fallbackTimeZone: core.serialization.property("fallback_time_zone", core.serialization.string().optional()),
         fallbackBirthDate: core.serialization.property("fallback_birth_date", core.serialization.string().optional()),
+        ingestionStart: core.serialization.property("ingestion_start", core.serialization.string().optional()),
+        ingestionEnd: core.serialization.property("ingestion_end", core.serialization.string().optional()),
     });
 
 export declare namespace UserCreateBody {
@@ -18,5 +20,7 @@ export declare namespace UserCreateBody {
         client_user_id: string;
         fallback_time_zone?: string | null;
         fallback_birth_date?: string | null;
+        ingestion_start?: string | null;
+        ingestion_end?: string | null;
     }
 }
