@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { GroupedElectrocardiogramVoltage } from "./GroupedElectrocardiogramVoltage";
 
 export const GroupedElectrocardiogramVoltageResponse: core.serialization.ObjectSchema<
     serializers.GroupedElectrocardiogramVoltageResponse.Raw,
@@ -12,16 +13,14 @@ export const GroupedElectrocardiogramVoltageResponse: core.serialization.ObjectS
 > = core.serialization.object({
     groups: core.serialization.record(
         core.serialization.string(),
-        core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).GroupedElectrocardiogramVoltage)
-        )
+        core.serialization.list(GroupedElectrocardiogramVoltage)
     ),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace GroupedElectrocardiogramVoltageResponse {
     interface Raw {
-        groups: Record<string, serializers.GroupedElectrocardiogramVoltage.Raw[]>;
+        groups: Record<string, GroupedElectrocardiogramVoltage.Raw[]>;
         next?: string | null;
     }
 }

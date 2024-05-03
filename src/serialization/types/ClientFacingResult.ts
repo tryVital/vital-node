@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingLoinc } from "./ClientFacingLoinc";
 
 export const ClientFacingResult: core.serialization.ObjectSchema<
     serializers.ClientFacingResult.Raw,
@@ -16,7 +17,7 @@ export const ClientFacingResult: core.serialization.ObjectSchema<
     labId: core.serialization.property("lab_id", core.serialization.number().optional()),
     providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
     required: core.serialization.boolean(),
-    loinc: core.serialization.lazyObject(async () => (await import("..")).ClientFacingLoinc).optional(),
+    loinc: ClientFacingLoinc.optional(),
 });
 
 export declare namespace ClientFacingResult {
@@ -27,6 +28,6 @@ export declare namespace ClientFacingResult {
         lab_id?: number | null;
         provider_id?: string | null;
         required: boolean;
-        loinc?: serializers.ClientFacingLoinc.Raw | null;
+        loinc?: ClientFacingLoinc.Raw | null;
     }
 }

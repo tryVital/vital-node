@@ -5,6 +5,11 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { PhysicianCreateRequest } from "../../../../types/PhysicianCreateRequest";
+import { HealthInsuranceCreateRequest } from "../../../../types/HealthInsuranceCreateRequest";
+import { Consent } from "../../../../types/Consent";
+import { PatientDetails } from "../../../../types/PatientDetails";
+import { PatientAddressCompatible } from "../../../../types/PatientAddressCompatible";
 
 export const CreateOrderRequestCompatible: core.serialization.Schema<
     serializers.CreateOrderRequestCompatible.Raw,
@@ -12,38 +17,25 @@ export const CreateOrderRequestCompatible: core.serialization.Schema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     labTestId: core.serialization.property("lab_test_id", core.serialization.string()),
-    physician: core.serialization
-        .lazyObject(async () => (await import("../../../..")).PhysicianCreateRequest)
-        .optional(),
-    healthInsurance: core.serialization.property(
-        "health_insurance",
-        core.serialization.lazyObject(async () => (await import("../../../..")).HealthInsuranceCreateRequest).optional()
-    ),
+    physician: PhysicianCreateRequest.optional(),
+    healthInsurance: core.serialization.property("health_insurance", HealthInsuranceCreateRequest.optional()),
     priority: core.serialization.boolean().optional(),
-    consents: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("../../../..")).Consent))
-        .optional(),
+    consents: core.serialization.list(Consent).optional(),
     activateBy: core.serialization.property("activate_by", core.serialization.string().optional()),
-    patientDetails: core.serialization.property(
-        "patient_details",
-        core.serialization.lazyObject(async () => (await import("../../../..")).PatientDetails)
-    ),
-    patientAddress: core.serialization.property(
-        "patient_address",
-        core.serialization.lazyObject(async () => (await import("../../../..")).PatientAddressCompatible)
-    ),
+    patientDetails: core.serialization.property("patient_details", PatientDetails),
+    patientAddress: core.serialization.property("patient_address", PatientAddressCompatible),
 });
 
 export declare namespace CreateOrderRequestCompatible {
     interface Raw {
         user_id: string;
         lab_test_id: string;
-        physician?: serializers.PhysicianCreateRequest.Raw | null;
-        health_insurance?: serializers.HealthInsuranceCreateRequest.Raw | null;
+        physician?: PhysicianCreateRequest.Raw | null;
+        health_insurance?: HealthInsuranceCreateRequest.Raw | null;
         priority?: boolean | null;
-        consents?: serializers.Consent.Raw[] | null;
+        consents?: Consent.Raw[] | null;
         activate_by?: string | null;
-        patient_details: serializers.PatientDetails.Raw;
-        patient_address: serializers.PatientAddressCompatible.Raw;
+        patient_details: PatientDetails.Raw;
+        patient_address: PatientAddressCompatible.Raw;
     }
 }

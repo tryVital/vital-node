@@ -5,20 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { EventDestinationPreferencesPreferred } from "./EventDestinationPreferencesPreferred";
+import { EventDestinationPreferencesEnabledItem } from "./EventDestinationPreferencesEnabledItem";
 
 export const EventDestinationPreferences: core.serialization.ObjectSchema<
     serializers.EventDestinationPreferences.Raw,
     Vital.EventDestinationPreferences
 > = core.serialization.object({
-    preferred: core.serialization.lazy(async () => (await import("..")).EventDestinationPreferencesPreferred),
-    enabled: core.serialization.list(
-        core.serialization.lazy(async () => (await import("..")).EventDestinationPreferencesEnabledItem)
-    ),
+    preferred: EventDestinationPreferencesPreferred,
+    enabled: core.serialization.list(EventDestinationPreferencesEnabledItem),
 });
 
 export declare namespace EventDestinationPreferences {
     interface Raw {
-        preferred: serializers.EventDestinationPreferencesPreferred.Raw;
-        enabled: serializers.EventDestinationPreferencesEnabledItem.Raw[];
+        preferred: EventDestinationPreferencesPreferred.Raw;
+        enabled: EventDestinationPreferencesEnabledItem.Raw[];
     }
 }

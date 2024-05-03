@@ -5,20 +5,21 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingProvider } from "./ClientFacingProvider";
 
 export const ConnectedSourceClientFacing: core.serialization.ObjectSchema<
     serializers.ConnectedSourceClientFacing.Raw,
     Vital.ConnectedSourceClientFacing
 > = core.serialization.object({
-    provider: core.serialization.lazyObject(async () => (await import("..")).ClientFacingProvider),
+    provider: ClientFacingProvider,
     createdOn: core.serialization.property("created_on", core.serialization.date()),
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingProvider),
+    source: ClientFacingProvider,
 });
 
 export declare namespace ConnectedSourceClientFacing {
     interface Raw {
-        provider: serializers.ClientFacingProvider.Raw;
+        provider: ClientFacingProvider.Raw;
         created_on: string;
-        source: serializers.ClientFacingProvider.Raw;
+        source: ClientFacingProvider.Raw;
     }
 }

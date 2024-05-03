@@ -5,18 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingIggTimeseries } from "./ClientFacingIggTimeseries";
 
 export const GroupedIgg: core.serialization.ObjectSchema<serializers.GroupedIgg.Raw, Vital.GroupedIgg> =
     core.serialization.object({
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-        data: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).ClientFacingIggTimeseries)
-        ),
+        source: ClientFacingSource,
+        data: core.serialization.list(ClientFacingIggTimeseries),
     });
 
 export declare namespace GroupedIgg {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingIggTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingIggTimeseries.Raw[];
     }
 }

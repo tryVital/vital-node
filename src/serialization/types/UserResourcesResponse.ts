@@ -5,20 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { SingleUserResourceResponse } from "./SingleUserResourceResponse";
 
 export const UserResourcesResponse: core.serialization.ObjectSchema<
     serializers.UserResourcesResponse.Raw,
     Vital.UserResourcesResponse
 > = core.serialization.object({
-    data: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).SingleUserResourceResponse)
-    ),
+    data: core.serialization.list(SingleUserResourceResponse),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace UserResourcesResponse {
     interface Raw {
-        data: serializers.SingleUserResourceResponse.Raw[];
+        data: SingleUserResourceResponse.Raw[];
         next?: string | null;
     }
 }

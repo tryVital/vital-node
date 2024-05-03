@@ -5,18 +5,19 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { DemoProviders } from "../../../../types/DemoProviders";
 
 export const DemoConnectionCreationPayload: core.serialization.Schema<
     serializers.DemoConnectionCreationPayload.Raw,
     Vital.DemoConnectionCreationPayload
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
-    provider: core.serialization.lazy(async () => (await import("../../../..")).DemoProviders),
+    provider: DemoProviders,
 });
 
 export declare namespace DemoConnectionCreationPayload {
     interface Raw {
         user_id: string;
-        provider: serializers.DemoProviders.Raw;
+        provider: DemoProviders.Raw;
     }
 }

@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { SourceAuthType } from "./SourceAuthType";
+import { ClientFacingResource } from "./ClientFacingResource";
 
 export const ClientFacingProviderDetailed: core.serialization.ObjectSchema<
     serializers.ClientFacingProviderDetailed.Raw,
@@ -14,15 +16,10 @@ export const ClientFacingProviderDetailed: core.serialization.ObjectSchema<
     slug: core.serialization.string(),
     description: core.serialization.string(),
     logo: core.serialization.string().optional(),
-    authType: core.serialization.property(
-        "auth_type",
-        core.serialization.lazy(async () => (await import("..")).SourceAuthType).optional()
-    ),
+    authType: core.serialization.property("auth_type", SourceAuthType.optional()),
     supportedResources: core.serialization.property(
         "supported_resources",
-        core.serialization
-            .list(core.serialization.lazy(async () => (await import("..")).ClientFacingResource))
-            .optional()
+        core.serialization.list(ClientFacingResource).optional()
     ),
 });
 
@@ -32,7 +29,7 @@ export declare namespace ClientFacingProviderDetailed {
         slug: string;
         description: string;
         logo?: string | null;
-        auth_type?: serializers.SourceAuthType.Raw | null;
-        supported_resources?: serializers.ClientFacingResource.Raw[] | null;
+        auth_type?: SourceAuthType.Raw | null;
+        supported_resources?: ClientFacingResource.Raw[] | null;
     }
 }

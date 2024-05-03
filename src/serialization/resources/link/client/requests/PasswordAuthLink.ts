@@ -5,25 +5,22 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { Providers } from "../../../../types/Providers";
+import { AuthType } from "../../../../types/AuthType";
 
-export const PasswordAuthLink: core.serialization.Schema<
-    serializers.PasswordAuthLink.Raw,
-    Omit<Vital.PasswordAuthLink, "vitalLinkClientRegion" | "vitalLinkToken">
-> = core.serialization.object({
-    username: core.serialization.string(),
-    password: core.serialization.string(),
-    provider: core.serialization.lazy(async () => (await import("../../../..")).Providers),
-    authType: core.serialization.property(
-        "auth_type",
-        core.serialization.lazy(async () => (await import("../../../..")).AuthType)
-    ),
-});
+export const PasswordAuthLink: core.serialization.Schema<serializers.PasswordAuthLink.Raw, Vital.PasswordAuthLink> =
+    core.serialization.object({
+        username: core.serialization.string(),
+        password: core.serialization.string(),
+        provider: Providers,
+        authType: core.serialization.property("auth_type", AuthType),
+    });
 
 export declare namespace PasswordAuthLink {
     interface Raw {
         username: string;
         password: string;
-        provider: serializers.Providers.Raw;
-        auth_type: serializers.AuthType.Raw;
+        provider: Providers.Raw;
+        auth_type: AuthType.Raw;
     }
 }

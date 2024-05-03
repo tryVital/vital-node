@@ -13,6 +13,7 @@ export declare namespace User {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey: core.Supplier<string>;
+        vitalLinkToken: core.Supplier<string>;
     }
 
     interface RequestOptions {
@@ -33,7 +34,7 @@ export class User {
         requestOptions?: User.RequestOptions
     ): Promise<Vital.PaginatedUsersResponse> {
         const { offset, limit } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (offset != null) {
             _queryParams["offset"] = offset.toString();
         }
@@ -49,10 +50,13 @@ export class User {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -118,10 +122,13 @@ export class User {
             ),
             method: "POST",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.UserCreateBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -184,10 +191,13 @@ export class User {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -238,10 +248,13 @@ export class User {
             ),
             method: "POST",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -308,10 +321,13 @@ export class User {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -372,10 +388,13 @@ export class User {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -435,10 +454,13 @@ export class User {
             ),
             method: "DELETE",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -491,7 +513,7 @@ export class User {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.user.patch("user-id", {})
+     *     await vital.user.patch("user-id")
      */
     public async patch(
         userId: string,
@@ -505,10 +527,13 @@ export class User {
             ),
             method: "PATCH",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.UserPatchBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -568,10 +593,13 @@ export class User {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -635,10 +663,13 @@ export class User {
             ),
             method: "DELETE",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -695,7 +726,7 @@ export class User {
         requestOptions?: User.RequestOptions
     ): Promise<Vital.UserSuccessResponse> {
         const { userId, clientUserId } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (userId != null) {
             _queryParams["user_id"] = userId;
         }
@@ -711,10 +742,13 @@ export class User {
             ),
             method: "POST",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -775,7 +809,7 @@ export class User {
         requestOptions?: User.RequestOptions
     ): Promise<Vital.UserRefreshSuccessResponse> {
         const { timeout } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (timeout != null) {
             _queryParams["timeout"] = timeout.toString();
         }
@@ -787,10 +821,13 @@ export class User {
             ),
             method: "POST",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -840,5 +877,10 @@ export class User {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { "x-vital-api-key": apiKeyValue };
     }
 }

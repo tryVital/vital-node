@@ -13,6 +13,7 @@ export declare namespace Insurance {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey: core.Supplier<string>;
+        vitalLinkToken: core.Supplier<string>;
     }
 
     interface RequestOptions {
@@ -38,10 +39,13 @@ export class Insurance {
             ),
             method: "POST",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.PayorSearchRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -104,7 +108,7 @@ export class Insurance {
         requestOptions?: Insurance.RequestOptions
     ): Promise<Vital.ClientFacingDiagnosisInformation[]> {
         const { diagnosisQuery } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         _queryParams["diagnosis_query"] = diagnosisQuery;
         const _response = await core.fetcher({
             url: urlJoin(
@@ -113,10 +117,13 @@ export class Insurance {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -164,5 +171,10 @@ export class Insurance {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { "x-vital-api-key": apiKeyValue };
     }
 }

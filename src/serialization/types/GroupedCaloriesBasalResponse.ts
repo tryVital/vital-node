@@ -5,21 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { GroupedCaloriesBasal } from "./GroupedCaloriesBasal";
 
 export const GroupedCaloriesBasalResponse: core.serialization.ObjectSchema<
     serializers.GroupedCaloriesBasalResponse.Raw,
     Vital.GroupedCaloriesBasalResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GroupedCaloriesBasal))
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedCaloriesBasal)),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace GroupedCaloriesBasalResponse {
     interface Raw {
-        groups: Record<string, serializers.GroupedCaloriesBasal.Raw[]>;
+        groups: Record<string, GroupedCaloriesBasal.Raw[]>;
         next?: string | null;
     }
 }

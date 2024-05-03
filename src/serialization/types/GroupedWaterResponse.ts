@@ -5,21 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { GroupedWater } from "./GroupedWater";
 
 export const GroupedWaterResponse: core.serialization.ObjectSchema<
     serializers.GroupedWaterResponse.Raw,
     Vital.GroupedWaterResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GroupedWater))
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedWater)),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace GroupedWaterResponse {
     interface Raw {
-        groups: Record<string, serializers.GroupedWater.Raw[]>;
+        groups: Record<string, GroupedWater.Raw[]>;
         next?: string | null;
     }
 }

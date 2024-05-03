@@ -13,6 +13,7 @@ export declare namespace Devices {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey: core.Supplier<string>;
+        vitalLinkToken: core.Supplier<string>;
     }
 
     interface RequestOptions {
@@ -29,7 +30,7 @@ export class Devices {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.devices.getRaw("user-id", {})
+     *     await vital.devices.getRaw("user-id")
      */
     public async getRaw(
         userId: string,
@@ -37,7 +38,7 @@ export class Devices {
         requestOptions?: Devices.RequestOptions
     ): Promise<Vital.RawDevices> {
         const { provider } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (provider != null) {
             _queryParams["provider"] = provider;
         }
@@ -49,10 +50,13 @@ export class Devices {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this._options.apiKey),
+                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.3",
+                "X-Fern-SDK-Version": "3.1.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -100,5 +104,10 @@ export class Devices {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { "x-vital-api-key": apiKeyValue };
     }
 }

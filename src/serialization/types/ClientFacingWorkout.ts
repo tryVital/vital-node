@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSport } from "./ClientFacingSport";
+import { ClientFacingSource } from "./ClientFacingSource";
 
 export const ClientFacingWorkout: core.serialization.ObjectSchema<
     serializers.ClientFacingWorkout.Raw,
@@ -21,7 +23,7 @@ export const ClientFacingWorkout: core.serialization.ObjectSchema<
     timeStart: core.serialization.property("time_start", core.serialization.date()),
     timeEnd: core.serialization.property("time_end", core.serialization.date()),
     calories: core.serialization.number().optional(),
-    sport: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSport).optional(),
+    sport: ClientFacingSport.optional(),
     hrZones: core.serialization.property("hr_zones", core.serialization.list(core.serialization.number()).optional()),
     movingTime: core.serialization.property("moving_time", core.serialization.number().optional()),
     totalElevationGain: core.serialization.property("total_elevation_gain", core.serialization.number().optional()),
@@ -35,7 +37,7 @@ export const ClientFacingWorkout: core.serialization.ObjectSchema<
     weightedAverageWatts: core.serialization.property("weighted_average_watts", core.serialization.number().optional()),
     map: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     providerId: core.serialization.property("provider_id", core.serialization.string()),
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
+    source: ClientFacingSource,
 });
 
 export declare namespace ClientFacingWorkout {
@@ -51,7 +53,7 @@ export declare namespace ClientFacingWorkout {
         time_start: string;
         time_end: string;
         calories?: number | null;
-        sport?: serializers.ClientFacingSport.Raw | null;
+        sport?: ClientFacingSport.Raw | null;
         hr_zones?: number[] | null;
         moving_time?: number | null;
         total_elevation_gain?: number | null;
@@ -65,6 +67,6 @@ export declare namespace ClientFacingWorkout {
         weighted_average_watts?: number | null;
         map?: Record<string, unknown> | null;
         provider_id: string;
-        source: serializers.ClientFacingSource.Raw;
+        source: ClientFacingSource.Raw;
     }
 }

@@ -5,20 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingFloorsClimbedTimeseries } from "./ClientFacingFloorsClimbedTimeseries";
 
 export const GroupedFloorsClimbed: core.serialization.ObjectSchema<
     serializers.GroupedFloorsClimbed.Raw,
     Vital.GroupedFloorsClimbed
 > = core.serialization.object({
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-    data: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingFloorsClimbedTimeseries)
-    ),
+    source: ClientFacingSource,
+    data: core.serialization.list(ClientFacingFloorsClimbedTimeseries),
 });
 
 export declare namespace GroupedFloorsClimbed {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingFloorsClimbedTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingFloorsClimbedTimeseries.Raw[];
     }
 }

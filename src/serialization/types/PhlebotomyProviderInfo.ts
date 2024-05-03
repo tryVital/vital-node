@@ -5,21 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { AppointmentProvider } from "./AppointmentProvider";
+import { AppointmentServiceType } from "./AppointmentServiceType";
 
 export const PhlebotomyProviderInfo: core.serialization.ObjectSchema<
     serializers.PhlebotomyProviderInfo.Raw,
     Vital.PhlebotomyProviderInfo
 > = core.serialization.object({
-    name: core.serialization.lazy(async () => (await import("..")).AppointmentProvider),
-    serviceTypes: core.serialization.property(
-        "service_types",
-        core.serialization.list(core.serialization.lazy(async () => (await import("..")).AppointmentServiceType))
-    ),
+    name: AppointmentProvider,
+    serviceTypes: core.serialization.property("service_types", core.serialization.list(AppointmentServiceType)),
 });
 
 export declare namespace PhlebotomyProviderInfo {
     interface Raw {
-        name: serializers.AppointmentProvider.Raw;
-        service_types: serializers.AppointmentServiceType.Raw[];
+        name: AppointmentProvider.Raw;
+        service_types: AppointmentServiceType.Raw[];
     }
 }

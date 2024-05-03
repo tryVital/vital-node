@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { MarkerType } from "./MarkerType";
+import { ClientFacingResult } from "./ClientFacingResult";
 
 export const ClientFacingMarkerComplete: core.serialization.ObjectSchema<
     serializers.ClientFacingMarkerComplete.Raw,
@@ -16,13 +18,10 @@ export const ClientFacingMarkerComplete: core.serialization.ObjectSchema<
     description: core.serialization.string().optional(),
     labId: core.serialization.property("lab_id", core.serialization.number().optional()),
     providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
-    type: core.serialization.lazy(async () => (await import("..")).MarkerType).optional(),
+    type: MarkerType.optional(),
     unit: core.serialization.string().optional(),
     price: core.serialization.string().optional(),
-    expectedResults: core.serialization.property(
-        "expected_results",
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingResult))
-    ),
+    expectedResults: core.serialization.property("expected_results", core.serialization.list(ClientFacingResult)),
 });
 
 export declare namespace ClientFacingMarkerComplete {
@@ -33,9 +32,9 @@ export declare namespace ClientFacingMarkerComplete {
         description?: string | null;
         lab_id?: number | null;
         provider_id?: string | null;
-        type?: serializers.MarkerType.Raw | null;
+        type?: MarkerType.Raw | null;
         unit?: string | null;
         price?: string | null;
-        expected_results: serializers.ClientFacingResult.Raw[];
+        expected_results: ClientFacingResult.Raw[];
     }
 }

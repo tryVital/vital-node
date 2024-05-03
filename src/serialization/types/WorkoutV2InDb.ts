@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingProvider } from "./ClientFacingProvider";
+import { ClientFacingSport } from "./ClientFacingSport";
 
 export const WorkoutV2InDb: core.serialization.ObjectSchema<serializers.WorkoutV2InDb.Raw, Vital.WorkoutV2InDb> =
     core.serialization.object({
@@ -16,8 +18,8 @@ export const WorkoutV2InDb: core.serialization.ObjectSchema<serializers.WorkoutV
         priorityId: core.serialization.property("priority_id", core.serialization.number().optional()),
         id: core.serialization.string(),
         sportId: core.serialization.property("sport_id", core.serialization.number()),
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingProvider),
-        sport: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSport),
+        source: ClientFacingProvider,
+        sport: ClientFacingSport,
     });
 
 export declare namespace WorkoutV2InDb {
@@ -30,7 +32,7 @@ export declare namespace WorkoutV2InDb {
         priority_id?: number | null;
         id: string;
         sport_id: number;
-        source: serializers.ClientFacingProvider.Raw;
-        sport: serializers.ClientFacingSport.Raw;
+        source: ClientFacingProvider.Raw;
+        sport: ClientFacingSport.Raw;
     }
 }

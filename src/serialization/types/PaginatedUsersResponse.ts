@@ -5,12 +5,13 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingUser } from "./ClientFacingUser";
 
 export const PaginatedUsersResponse: core.serialization.ObjectSchema<
     serializers.PaginatedUsersResponse.Raw,
     Vital.PaginatedUsersResponse
 > = core.serialization.object({
-    users: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingUser)),
+    users: core.serialization.list(ClientFacingUser),
     total: core.serialization.number(),
     offset: core.serialization.number(),
     limit: core.serialization.number(),
@@ -18,7 +19,7 @@ export const PaginatedUsersResponse: core.serialization.ObjectSchema<
 
 export declare namespace PaginatedUsersResponse {
     interface Raw {
-        users: serializers.ClientFacingUser.Raw[];
+        users: ClientFacingUser.Raw[];
         total: number;
         offset: number;
         limit: number;

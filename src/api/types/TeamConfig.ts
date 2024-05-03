@@ -9,6 +9,7 @@ export interface TeamConfig {
     textsEnabled?: boolean;
     pushHistoricalData?: boolean;
     providerRawData?: boolean;
+    rejectDuplicateConnection?: boolean;
     edsPreferences?: Vital.EventDestinationPreferences;
     eventTypePrefixes?: string[];
 }

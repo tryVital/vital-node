@@ -4,7 +4,6 @@
 
 export interface IndividualProviderData {
     vitalLinkClientRegion?: string;
-    vitalLinkToken?: string;
     /** Username for provider */
     username: string;
     /** Password for provider */

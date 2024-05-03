@@ -5,21 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { GroupedHrv } from "./GroupedHrv";
 
 export const GroupedHrvResponse: core.serialization.ObjectSchema<
     serializers.GroupedHrvResponse.Raw,
     Vital.GroupedHrvResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GroupedHrv))
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedHrv)),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace GroupedHrvResponse {
     interface Raw {
-        groups: Record<string, serializers.GroupedHrv.Raw[]>;
+        groups: Record<string, GroupedHrv.Raw[]>;
         next?: string | null;
     }
 }

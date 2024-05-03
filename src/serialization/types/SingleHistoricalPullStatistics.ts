@@ -5,12 +5,13 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { HistoricalPullStatus } from "./HistoricalPullStatus";
 
 export const SingleHistoricalPullStatistics: core.serialization.ObjectSchema<
     serializers.SingleHistoricalPullStatistics.Raw,
     Vital.SingleHistoricalPullStatistics
 > = core.serialization.object({
-    status: core.serialization.lazy(async () => (await import("..")).HistoricalPullStatus),
+    status: HistoricalPullStatus,
     rangeStart: core.serialization.property("range_start", core.serialization.date().optional()),
     rangeEnd: core.serialization.property("range_end", core.serialization.date().optional()),
     daysWithData: core.serialization.property("days_with_data", core.serialization.number().optional()),
@@ -20,7 +21,7 @@ export const SingleHistoricalPullStatistics: core.serialization.ObjectSchema<
 
 export declare namespace SingleHistoricalPullStatistics {
     interface Raw {
-        status: serializers.HistoricalPullStatus.Raw;
+        status: HistoricalPullStatus.Raw;
         range_start?: string | null;
         range_end?: string | null;
         days_with_data?: number | null;

@@ -5,18 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingCaffeineTimeseries } from "./ClientFacingCaffeineTimeseries";
 
 export const GroupedCaffeine: core.serialization.ObjectSchema<serializers.GroupedCaffeine.Raw, Vital.GroupedCaffeine> =
     core.serialization.object({
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-        data: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).ClientFacingCaffeineTimeseries)
-        ),
+        source: ClientFacingSource,
+        data: core.serialization.list(ClientFacingCaffeineTimeseries),
     });
 
 export declare namespace GroupedCaffeine {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingCaffeineTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingCaffeineTimeseries.Raw[];
     }
 }

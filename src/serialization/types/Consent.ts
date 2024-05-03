@@ -5,17 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ConsentType } from "./ConsentType";
 
 export const Consent: core.serialization.ObjectSchema<serializers.Consent.Raw, Vital.Consent> =
     core.serialization.object({
-        consentType: core.serialization.lazy(async () => (await import("..")).ConsentType),
+        consentType: ConsentType,
         version: core.serialization.string().optional(),
         timeOfConsent: core.serialization.date().optional(),
     });
 
 export declare namespace Consent {
     interface Raw {
-        consentType: serializers.ConsentType.Raw;
+        consentType: ConsentType.Raw;
         version?: string | null;
         timeOfConsent?: string | null;
     }

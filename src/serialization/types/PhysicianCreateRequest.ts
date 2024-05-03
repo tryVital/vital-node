@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { PhysicianCreateRequestSignatureImage } from "./PhysicianCreateRequestSignatureImage";
 
 export const PhysicianCreateRequest: core.serialization.ObjectSchema<
     serializers.PhysicianCreateRequest.Raw,
@@ -18,10 +19,7 @@ export const PhysicianCreateRequest: core.serialization.ObjectSchema<
         "licensed_states",
         core.serialization.list(core.serialization.string()).optional()
     ),
-    signatureImage: core.serialization.property(
-        "signature_image",
-        core.serialization.lazy(async () => (await import("..")).PhysicianCreateRequestSignatureImage).optional()
-    ),
+    signatureImage: core.serialization.property("signature_image", PhysicianCreateRequestSignatureImage.optional()),
 });
 
 export declare namespace PhysicianCreateRequest {
@@ -31,6 +29,6 @@ export declare namespace PhysicianCreateRequest {
         email?: string | null;
         npi: string;
         licensed_states?: string[] | null;
-        signature_image?: serializers.PhysicianCreateRequestSignatureImage.Raw | null;
+        signature_image?: PhysicianCreateRequestSignatureImage.Raw | null;
     }
 }

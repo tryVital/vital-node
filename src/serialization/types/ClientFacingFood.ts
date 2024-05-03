@@ -5,20 +5,23 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { Energy } from "./Energy";
+import { Macros } from "./Macros";
+import { Micros } from "./Micros";
 
 export const ClientFacingFood: core.serialization.ObjectSchema<
     serializers.ClientFacingFood.Raw,
     Vital.ClientFacingFood
 > = core.serialization.object({
-    energy: core.serialization.lazyObject(async () => (await import("..")).Energy).optional(),
-    macros: core.serialization.lazyObject(async () => (await import("..")).Macros).optional(),
-    micros: core.serialization.lazyObject(async () => (await import("..")).Micros).optional(),
+    energy: Energy.optional(),
+    macros: Macros.optional(),
+    micros: Micros.optional(),
 });
 
 export declare namespace ClientFacingFood {
     interface Raw {
-        energy?: serializers.Energy.Raw | null;
-        macros?: serializers.Macros.Raw | null;
-        micros?: serializers.Micros.Raw | null;
+        energy?: Energy.Raw | null;
+        macros?: Macros.Raw | null;
+        micros?: Micros.Raw | null;
     }
 }

@@ -25,6 +25,7 @@ export declare namespace VitalClient {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey: core.Supplier<string>;
+        vitalLinkToken: core.Supplier<string>;
     }
 
     interface RequestOptions {

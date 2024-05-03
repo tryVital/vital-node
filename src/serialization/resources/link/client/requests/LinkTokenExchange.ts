@@ -5,25 +5,24 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { Providers } from "../../../../types/Providers";
 
 export const LinkTokenExchange: core.serialization.Schema<serializers.LinkTokenExchange.Raw, Vital.LinkTokenExchange> =
     core.serialization.object({
         userId: core.serialization.property("user_id", core.serialization.string()),
-        provider: core.serialization.lazy(async () => (await import("../../../..")).Providers).optional(),
+        provider: Providers.optional(),
         redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),
         filterOnProviders: core.serialization.property(
             "filter_on_providers",
-            core.serialization
-                .list(core.serialization.lazy(async () => (await import("../../../..")).Providers))
-                .optional()
+            core.serialization.list(Providers).optional()
         ),
     });
 
 export declare namespace LinkTokenExchange {
     interface Raw {
         user_id: string;
-        provider?: serializers.Providers.Raw | null;
+        provider?: Providers.Raw | null;
         redirect_url?: string | null;
-        filter_on_providers?: serializers.Providers.Raw[] | null;
+        filter_on_providers?: Providers.Raw[] | null;
     }
 }

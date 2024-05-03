@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { DaySlots } from "./DaySlots";
 
 export const AppointmentAvailabilitySlots: core.serialization.ObjectSchema<
     serializers.AppointmentAvailabilitySlots.Raw,
     Vital.AppointmentAvailabilitySlots
 > = core.serialization.object({
-    slots: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).DaySlots)),
+    slots: core.serialization.list(DaySlots),
     timezone: core.serialization.string().optional(),
 });
 
 export declare namespace AppointmentAvailabilitySlots {
     interface Raw {
-        slots: serializers.DaySlots.Raw[];
+        slots: DaySlots.Raw[];
         timezone?: string | null;
     }
 }

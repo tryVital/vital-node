@@ -5,15 +5,16 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { BiomarkerResult } from "./BiomarkerResult";
 
 export const LabResultsRawResults: core.serialization.Schema<
     serializers.LabResultsRawResults.Raw,
     Vital.LabResultsRawResults
 > = core.serialization.undiscriminatedUnion([
-    core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).BiomarkerResult)),
+    core.serialization.list(BiomarkerResult),
     core.serialization.record(core.serialization.string(), core.serialization.unknown()),
 ]);
 
 export declare namespace LabResultsRawResults {
-    type Raw = serializers.BiomarkerResult.Raw[] | Record<string, unknown>;
+    type Raw = BiomarkerResult.Raw[] | Record<string, unknown>;
 }

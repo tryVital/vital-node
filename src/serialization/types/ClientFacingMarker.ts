@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { MarkerType } from "./MarkerType";
 
 export const ClientFacingMarker: core.serialization.ObjectSchema<
     serializers.ClientFacingMarker.Raw,
@@ -16,7 +17,7 @@ export const ClientFacingMarker: core.serialization.ObjectSchema<
     description: core.serialization.string().optional(),
     labId: core.serialization.property("lab_id", core.serialization.number().optional()),
     providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
-    type: core.serialization.lazy(async () => (await import("..")).MarkerType).optional(),
+    type: MarkerType.optional(),
     unit: core.serialization.string().optional(),
     price: core.serialization.string().optional(),
 });
@@ -29,7 +30,7 @@ export declare namespace ClientFacingMarker {
         description?: string | null;
         lab_id?: number | null;
         provider_id?: string | null;
-        type?: serializers.MarkerType.Raw | null;
+        type?: MarkerType.Raw | null;
         unit?: string | null;
         price?: string | null;
     }

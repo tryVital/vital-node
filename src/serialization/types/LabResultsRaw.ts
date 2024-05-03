@@ -5,16 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { LabResultsMetadata } from "./LabResultsMetadata";
+import { LabResultsRawResults } from "./LabResultsRawResults";
 
 export const LabResultsRaw: core.serialization.ObjectSchema<serializers.LabResultsRaw.Raw, Vital.LabResultsRaw> =
     core.serialization.object({
-        metadata: core.serialization.lazyObject(async () => (await import("..")).LabResultsMetadata),
-        results: core.serialization.lazy(async () => (await import("..")).LabResultsRawResults),
+        metadata: LabResultsMetadata,
+        results: LabResultsRawResults,
     });
 
 export declare namespace LabResultsRaw {
     interface Raw {
-        metadata: serializers.LabResultsMetadata.Raw;
-        results: serializers.LabResultsRawResults.Raw;
+        metadata: LabResultsMetadata.Raw;
+        results: LabResultsRawResults.Raw;
     }
 }

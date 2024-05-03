@@ -5,14 +5,15 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { DeviceV2InDb } from "./DeviceV2InDb";
 
 export const RawDevices: core.serialization.ObjectSchema<serializers.RawDevices.Raw, Vital.RawDevices> =
     core.serialization.object({
-        devices: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).DeviceV2InDb)),
+        devices: core.serialization.list(DeviceV2InDb),
     });
 
 export declare namespace RawDevices {
     interface Raw {
-        devices: serializers.DeviceV2InDb.Raw[];
+        devices: DeviceV2InDb.Raw[];
     }
 }

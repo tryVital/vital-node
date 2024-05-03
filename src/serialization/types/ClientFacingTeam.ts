@@ -5,13 +5,16 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingApiKey } from "./ClientFacingApiKey";
+import { TeamConfig } from "./TeamConfig";
+import { DelegatedFlowType } from "./DelegatedFlowType";
 
 export const ClientFacingTeam: core.serialization.ObjectSchema<
     serializers.ClientFacingTeam.Raw,
     Vital.ClientFacingTeam
 > = core.serialization.object({
     id: core.serialization.string(),
-    orgId: core.serialization.property("org_id", core.serialization.string().optional()),
+    orgId: core.serialization.property("org_id", core.serialization.string()),
     name: core.serialization.string(),
     svixAppId: core.serialization.property("svix_app_id", core.serialization.string().optional()),
     clientId: core.serialization.property("client_id", core.serialization.string().optional()),
@@ -20,13 +23,8 @@ export const ClientFacingTeam: core.serialization.ObjectSchema<
     airtableBaseId: core.serialization.property("airtable_base_id", core.serialization.string().optional()),
     webhookSecret: core.serialization.property("webhook_secret", core.serialization.string().optional()),
     apiKey: core.serialization.property("api_key", core.serialization.string().optional()),
-    apiKeys: core.serialization.property(
-        "api_keys",
-        core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingApiKey))
-            .optional()
-    ),
-    configuration: core.serialization.lazyObject(async () => (await import("..")).TeamConfig).optional(),
+    apiKeys: core.serialization.property("api_keys", core.serialization.list(ClientFacingApiKey).optional()),
+    configuration: TeamConfig.optional(),
     testkitsTextsEnabled: core.serialization.property("testkits_texts_enabled", core.serialization.boolean()),
     labTestsPatientCommunicationEnabled: core.serialization.property(
         "lab_tests_patient_communication_enabled",
@@ -41,16 +39,13 @@ export const ClientFacingTeam: core.serialization.ObjectSchema<
         core.serialization.boolean()
     ),
     logoUrl: core.serialization.property("logo_url", core.serialization.string().optional()),
-    delegatedFlow: core.serialization.property(
-        "delegated_flow",
-        core.serialization.lazy(async () => (await import("..")).DelegatedFlowType)
-    ),
+    delegatedFlow: core.serialization.property("delegated_flow", DelegatedFlowType),
 });
 
 export declare namespace ClientFacingTeam {
     interface Raw {
         id: string;
-        org_id?: string | null;
+        org_id: string;
         name: string;
         svix_app_id?: string | null;
         client_id?: string | null;
@@ -59,13 +54,13 @@ export declare namespace ClientFacingTeam {
         airtable_base_id?: string | null;
         webhook_secret?: string | null;
         api_key?: string | null;
-        api_keys?: serializers.ClientFacingApiKey.Raw[] | null;
-        configuration?: serializers.TeamConfig.Raw | null;
+        api_keys?: ClientFacingApiKey.Raw[] | null;
+        configuration?: TeamConfig.Raw | null;
         testkits_texts_enabled: boolean;
         lab_tests_patient_communication_enabled: boolean;
         lab_tests_patient_sms_communication_enabled: boolean;
         lab_tests_patient_email_communication_enabled: boolean;
         logo_url?: string | null;
-        delegated_flow: serializers.DelegatedFlowType.Raw;
+        delegated_flow: DelegatedFlowType.Raw;
     }
 }

@@ -5,25 +5,23 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { Providers } from "../../../../types/Providers";
+import { AuthType } from "../../../../types/AuthType";
+import { Region } from "../../../../types/Region";
 
-export const EmailAuthLink: core.serialization.Schema<
-    serializers.EmailAuthLink.Raw,
-    Omit<Vital.EmailAuthLink, "vitalLinkToken">
-> = core.serialization.object({
-    email: core.serialization.string(),
-    provider: core.serialization.lazy(async () => (await import("../../../..")).Providers),
-    authType: core.serialization.property(
-        "auth_type",
-        core.serialization.lazy(async () => (await import("../../../..")).AuthType)
-    ),
-    region: core.serialization.lazy(async () => (await import("../../../..")).Region).optional(),
-});
+export const EmailAuthLink: core.serialization.Schema<serializers.EmailAuthLink.Raw, Vital.EmailAuthLink> =
+    core.serialization.object({
+        email: core.serialization.string(),
+        provider: Providers,
+        authType: core.serialization.property("auth_type", AuthType),
+        region: Region.optional(),
+    });
 
 export declare namespace EmailAuthLink {
     interface Raw {
         email: string;
-        provider: serializers.Providers.Raw;
-        auth_type: serializers.AuthType.Raw;
-        region?: serializers.Region.Raw | null;
+        provider: Providers.Raw;
+        auth_type: AuthType.Raw;
+        region?: Region.Raw | null;
     }
 }

@@ -5,18 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingDistanceTimeseries } from "./ClientFacingDistanceTimeseries";
 
 export const GroupedDistance: core.serialization.ObjectSchema<serializers.GroupedDistance.Raw, Vital.GroupedDistance> =
     core.serialization.object({
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-        data: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).ClientFacingDistanceTimeseries)
-        ),
+        source: ClientFacingSource,
+        data: core.serialization.list(ClientFacingDistanceTimeseries),
     });
 
 export declare namespace GroupedDistance {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingDistanceTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingDistanceTimeseries.Raw[];
     }
 }

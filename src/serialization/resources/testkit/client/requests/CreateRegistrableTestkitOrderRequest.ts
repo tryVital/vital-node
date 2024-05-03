@@ -5,6 +5,7 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { ShippingAddress } from "../../../../types/ShippingAddress";
 
 export const CreateRegistrableTestkitOrderRequest: core.serialization.Schema<
     serializers.CreateRegistrableTestkitOrderRequest.Raw,
@@ -12,16 +13,13 @@ export const CreateRegistrableTestkitOrderRequest: core.serialization.Schema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     labTestId: core.serialization.property("lab_test_id", core.serialization.string()),
-    shippingDetails: core.serialization.property(
-        "shipping_details",
-        core.serialization.lazyObject(async () => (await import("../../../..")).ShippingAddress)
-    ),
+    shippingDetails: core.serialization.property("shipping_details", ShippingAddress),
 });
 
 export declare namespace CreateRegistrableTestkitOrderRequest {
     interface Raw {
         user_id: string;
         lab_test_id: string;
-        shipping_details: serializers.ShippingAddress.Raw;
+        shipping_details: ShippingAddress.Raw;
     }
 }

@@ -5,20 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingStressLevelTimeseries } from "./ClientFacingStressLevelTimeseries";
 
 export const GroupedStressLevel: core.serialization.ObjectSchema<
     serializers.GroupedStressLevel.Raw,
     Vital.GroupedStressLevel
 > = core.serialization.object({
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-    data: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingStressLevelTimeseries)
-    ),
+    source: ClientFacingSource,
+    data: core.serialization.list(ClientFacingStressLevelTimeseries),
 });
 
 export declare namespace GroupedStressLevel {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingStressLevelTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingStressLevelTimeseries.Raw[];
     }
 }

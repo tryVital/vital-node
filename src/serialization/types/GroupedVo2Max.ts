@@ -5,18 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingVo2MaxTimeseries } from "./ClientFacingVo2MaxTimeseries";
 
 export const GroupedVo2Max: core.serialization.ObjectSchema<serializers.GroupedVo2Max.Raw, Vital.GroupedVo2Max> =
     core.serialization.object({
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-        data: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).ClientFacingVo2MaxTimeseries)
-        ),
+        source: ClientFacingSource,
+        data: core.serialization.list(ClientFacingVo2MaxTimeseries),
     });
 
 export declare namespace GroupedVo2Max {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingVo2MaxTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingVo2MaxTimeseries.Raw[];
     }
 }

@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
 
 export const ClientFacingBody: core.serialization.ObjectSchema<
     serializers.ClientFacingBody.Raw,
@@ -16,7 +17,7 @@ export const ClientFacingBody: core.serialization.ObjectSchema<
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
     weight: core.serialization.number().optional(),
     fat: core.serialization.number().optional(),
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
+    source: ClientFacingSource,
 });
 
 export declare namespace ClientFacingBody {
@@ -27,6 +28,6 @@ export declare namespace ClientFacingBody {
         calendar_date: string;
         weight?: number | null;
         fat?: number | null;
-        source: serializers.ClientFacingSource.Raw;
+        source: ClientFacingSource.Raw;
     }
 }

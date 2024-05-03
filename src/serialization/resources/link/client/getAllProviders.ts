@@ -5,10 +5,11 @@
 import * as serializers from "../../..";
 import * as Vital from "../../../../api";
 import * as core from "../../../../core";
+import { SourceLink } from "../../../types/SourceLink";
 
 export const Response: core.serialization.Schema<serializers.link.getAllProviders.Response.Raw, Vital.SourceLink[]> =
-    core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).SourceLink));
+    core.serialization.list(SourceLink);
 
 export declare namespace Response {
-    type Raw = serializers.SourceLink.Raw[];
+    type Raw = SourceLink.Raw[];
 }

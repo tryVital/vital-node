@@ -4,9 +4,15 @@
 
 import * as Vital from "..";
 
+/**
+ * [Deprecated] GET /v2/team is in the process of being removed.
+ * Neither customers nor Dashboard should retrieve team settings and metadata directly.
+ *
+ * All must migrate to the Team endpoints of the Org Management API.
+ */
 export interface ClientFacingTeam {
     id: string;
-    orgId?: string;
+    orgId: string;
     name: string;
     svixAppId?: string;
     clientId?: string;

@@ -5,21 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { GroupedStressLevel } from "./GroupedStressLevel";
 
 export const GroupedStressLevelResponse: core.serialization.ObjectSchema<
     serializers.GroupedStressLevelResponse.Raw,
     Vital.GroupedStressLevelResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GroupedStressLevel))
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedStressLevel)),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace GroupedStressLevelResponse {
     interface Raw {
-        groups: Record<string, serializers.GroupedStressLevel.Raw[]>;
+        groups: Record<string, GroupedStressLevel.Raw[]>;
         next?: string | null;
     }
 }

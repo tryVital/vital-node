@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingProvider } from "./ClientFacingProvider";
 
 export const DeviceV2InDb: core.serialization.ObjectSchema<serializers.DeviceV2InDb.Raw, Vital.DeviceV2InDb> =
     core.serialization.object({
@@ -13,7 +14,7 @@ export const DeviceV2InDb: core.serialization.ObjectSchema<serializers.DeviceV2I
         userId: core.serialization.property("user_id", core.serialization.string()),
         sourceId: core.serialization.property("source_id", core.serialization.number()),
         id: core.serialization.string(),
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingProvider),
+        source: ClientFacingProvider,
     });
 
 export declare namespace DeviceV2InDb {
@@ -23,6 +24,6 @@ export declare namespace DeviceV2InDb {
         user_id: string;
         source_id: number;
         id: string;
-        source: serializers.ClientFacingProvider.Raw;
+        source: ClientFacingProvider.Raw;
     }
 }

@@ -5,20 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingBloodOxygenTimeseries } from "./ClientFacingBloodOxygenTimeseries";
 
 export const GroupedBloodOxygen: core.serialization.ObjectSchema<
     serializers.GroupedBloodOxygen.Raw,
     Vital.GroupedBloodOxygen
 > = core.serialization.object({
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-    data: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingBloodOxygenTimeseries)
-    ),
+    source: ClientFacingSource,
+    data: core.serialization.list(ClientFacingBloodOxygenTimeseries),
 });
 
 export declare namespace GroupedBloodOxygen {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingBloodOxygenTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingBloodOxygenTimeseries.Raw[];
     }
 }

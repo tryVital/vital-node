@@ -5,6 +5,11 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { LabTestSampleType } from "./LabTestSampleType";
+import { LabTestCollectionMethod } from "./LabTestCollectionMethod";
+import { LabTestStatus } from "./LabTestStatus";
+import { ClientFacingLab } from "./ClientFacingLab";
+import { ClientFacingMarker } from "./ClientFacingMarker";
 
 export const ClientFacingLabTest: core.serialization.ObjectSchema<
     serializers.ClientFacingLabTest.Raw,
@@ -13,19 +18,14 @@ export const ClientFacingLabTest: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     slug: core.serialization.string(),
     name: core.serialization.string(),
-    sampleType: core.serialization.property(
-        "sample_type",
-        core.serialization.lazy(async () => (await import("..")).LabTestSampleType)
-    ),
-    method: core.serialization.lazy(async () => (await import("..")).LabTestCollectionMethod),
+    sampleType: core.serialization.property("sample_type", LabTestSampleType),
+    method: LabTestCollectionMethod,
     price: core.serialization.number(),
     isActive: core.serialization.property("is_active", core.serialization.boolean()),
-    status: core.serialization.lazy(async () => (await import("..")).LabTestStatus),
+    status: LabTestStatus,
     fasting: core.serialization.boolean().optional(),
-    lab: core.serialization.lazyObject(async () => (await import("..")).ClientFacingLab).optional(),
-    markers: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingMarker))
-        .optional(),
+    lab: ClientFacingLab.optional(),
+    markers: core.serialization.list(ClientFacingMarker).optional(),
     isDelegated: core.serialization.property("is_delegated", core.serialization.boolean().optional()),
 });
 
@@ -34,14 +34,14 @@ export declare namespace ClientFacingLabTest {
         id: string;
         slug: string;
         name: string;
-        sample_type: serializers.LabTestSampleType.Raw;
-        method: serializers.LabTestCollectionMethod.Raw;
+        sample_type: LabTestSampleType.Raw;
+        method: LabTestCollectionMethod.Raw;
         price: number;
         is_active: boolean;
-        status: serializers.LabTestStatus.Raw;
+        status: LabTestStatus.Raw;
         fasting?: boolean | null;
-        lab?: serializers.ClientFacingLab.Raw | null;
-        markers?: serializers.ClientFacingMarker.Raw[] | null;
+        lab?: ClientFacingLab.Raw | null;
+        markers?: ClientFacingMarker.Raw[] | null;
         is_delegated?: boolean | null;
     }
 }

@@ -8,4 +8,7 @@ export interface ProviderLinkResponse {
     provider: Vital.PasswordProviders;
     connected: boolean;
     providerId?: string;
+    state: Vital.ProviderLinkResponseState;
+    errorType?: string;
+    error?: string;
 }

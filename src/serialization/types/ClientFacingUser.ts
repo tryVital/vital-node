@@ -5,6 +5,9 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ConnectedSourceClientFacing } from "./ConnectedSourceClientFacing";
+import { FallbackTimeZone } from "./FallbackTimeZone";
+import { FallbackBirthDate } from "./FallbackBirthDate";
 
 export const ClientFacingUser: core.serialization.ObjectSchema<
     serializers.ClientFacingUser.Raw,
@@ -16,18 +19,10 @@ export const ClientFacingUser: core.serialization.ObjectSchema<
     createdOn: core.serialization.property("created_on", core.serialization.date()),
     connectedSources: core.serialization.property(
         "connected_sources",
-        core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).ConnectedSourceClientFacing)
-        )
+        core.serialization.list(ConnectedSourceClientFacing)
     ),
-    fallbackTimeZone: core.serialization.property(
-        "fallback_time_zone",
-        core.serialization.lazyObject(async () => (await import("..")).FallbackTimeZone).optional()
-    ),
-    fallbackBirthDate: core.serialization.property(
-        "fallback_birth_date",
-        core.serialization.lazyObject(async () => (await import("..")).FallbackBirthDate).optional()
-    ),
+    fallbackTimeZone: core.serialization.property("fallback_time_zone", FallbackTimeZone.optional()),
+    fallbackBirthDate: core.serialization.property("fallback_birth_date", FallbackBirthDate.optional()),
     ingestionStart: core.serialization.property("ingestion_start", core.serialization.string().optional()),
     ingestionEnd: core.serialization.property("ingestion_end", core.serialization.string().optional()),
 });
@@ -38,9 +33,9 @@ export declare namespace ClientFacingUser {
         team_id: string;
         client_user_id: string;
         created_on: string;
-        connected_sources: serializers.ConnectedSourceClientFacing.Raw[];
-        fallback_time_zone?: serializers.FallbackTimeZone.Raw | null;
-        fallback_birth_date?: serializers.FallbackBirthDate.Raw | null;
+        connected_sources: ConnectedSourceClientFacing.Raw[];
+        fallback_time_zone?: FallbackTimeZone.Raw | null;
+        fallback_birth_date?: FallbackBirthDate.Raw | null;
         ingestion_start?: string | null;
         ingestion_end?: string | null;
     }

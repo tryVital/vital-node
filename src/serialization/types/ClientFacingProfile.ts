@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
 
 export const ClientFacingProfile: core.serialization.ObjectSchema<
     serializers.ClientFacingProfile.Raw,
@@ -13,7 +14,7 @@ export const ClientFacingProfile: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
     height: core.serialization.number().optional(),
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
+    source: ClientFacingSource,
 });
 
 export declare namespace ClientFacingProfile {
@@ -21,6 +22,6 @@ export declare namespace ClientFacingProfile {
         user_id: string;
         id: string;
         height?: number | null;
-        source: serializers.ClientFacingSource.Raw;
+        source: ClientFacingSource.Raw;
     }
 }

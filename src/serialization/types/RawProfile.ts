@@ -5,14 +5,15 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ProfileInDb } from "./ProfileInDb";
 
 export const RawProfile: core.serialization.ObjectSchema<serializers.RawProfile.Raw, Vital.RawProfile> =
     core.serialization.object({
-        profile: core.serialization.lazyObject(async () => (await import("..")).ProfileInDb),
+        profile: ProfileInDb,
     });
 
 export declare namespace RawProfile {
     interface Raw {
-        profile: serializers.ProfileInDb.Raw;
+        profile: ProfileInDb.Raw;
     }
 }

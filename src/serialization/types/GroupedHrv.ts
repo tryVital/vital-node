@@ -5,18 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingHrvTimeseries } from "./ClientFacingHrvTimeseries";
 
 export const GroupedHrv: core.serialization.ObjectSchema<serializers.GroupedHrv.Raw, Vital.GroupedHrv> =
     core.serialization.object({
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-        data: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).ClientFacingHrvTimeseries)
-        ),
+        source: ClientFacingSource,
+        data: core.serialization.list(ClientFacingHrvTimeseries),
     });
 
 export declare namespace GroupedHrv {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingHrvTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingHrvTimeseries.Raw[];
     }
 }

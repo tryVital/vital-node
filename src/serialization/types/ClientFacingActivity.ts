@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingHeartRate } from "./ClientFacingHeartRate";
 
 export const ClientFacingActivity: core.serialization.ObjectSchema<
     serializers.ClientFacingActivity.Raw,
@@ -22,14 +24,11 @@ export const ClientFacingActivity: core.serialization.ObjectSchema<
     low: core.serialization.number().optional(),
     medium: core.serialization.number().optional(),
     high: core.serialization.number().optional(),
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
+    source: ClientFacingSource,
     floorsClimbed: core.serialization.property("floors_climbed", core.serialization.number().optional()),
     timeZone: core.serialization.property("time_zone", core.serialization.string().optional()),
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
-    heartRate: core.serialization.property(
-        "heart_rate",
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingHeartRate).optional()
-    ),
+    heartRate: core.serialization.property("heart_rate", ClientFacingHeartRate.optional()),
 });
 
 export declare namespace ClientFacingActivity {
@@ -46,10 +45,10 @@ export declare namespace ClientFacingActivity {
         low?: number | null;
         medium?: number | null;
         high?: number | null;
-        source: serializers.ClientFacingSource.Raw;
+        source: ClientFacingSource.Raw;
         floors_climbed?: number | null;
         time_zone?: string | null;
         timezone_offset?: number | null;
-        heart_rate?: serializers.ClientFacingHeartRate.Raw | null;
+        heart_rate?: ClientFacingHeartRate.Raw | null;
     }
 }

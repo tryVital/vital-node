@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { SourceAuthType } from "./SourceAuthType";
+import { SourceType } from "./SourceType";
 
 export const Source: core.serialization.ObjectSchema<serializers.Source.Raw, Vital.Source> = core.serialization.object({
     name: core.serialization.string(),
@@ -13,14 +15,8 @@ export const Source: core.serialization.ObjectSchema<serializers.Source.Raw, Vit
     logo: core.serialization.string(),
     group: core.serialization.string().optional(),
     oauthUrl: core.serialization.property("oauth_url", core.serialization.string().optional()),
-    authType: core.serialization.property(
-        "auth_type",
-        core.serialization.lazy(async () => (await import("..")).SourceAuthType).optional()
-    ),
-    sourceType: core.serialization.property(
-        "source_type",
-        core.serialization.lazy(async () => (await import("..")).SourceType).optional()
-    ),
+    authType: core.serialization.property("auth_type", SourceAuthType.optional()),
+    sourceType: core.serialization.property("source_type", SourceType.optional()),
     isActive: core.serialization.property("is_active", core.serialization.boolean().optional()),
     backfillNumDays: core.serialization.property("backfill_num_days", core.serialization.number().optional()),
     id: core.serialization.number(),
@@ -34,8 +30,8 @@ export declare namespace Source {
         logo: string;
         group?: string | null;
         oauth_url?: string | null;
-        auth_type?: serializers.SourceAuthType.Raw | null;
-        source_type?: serializers.SourceType.Raw | null;
+        auth_type?: SourceAuthType.Raw | null;
+        source_type?: SourceType.Raw | null;
         is_active?: boolean | null;
         backfill_num_days?: number | null;
         id: number;

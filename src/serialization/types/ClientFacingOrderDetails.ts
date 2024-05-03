@@ -5,17 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingWalkInOrderDetails } from "./ClientFacingWalkInOrderDetails";
+import { ClientFacingTestKitOrderDetails } from "./ClientFacingTestKitOrderDetails";
+import { ClientFacingAtHomePhlebotomyOrderDetails } from "./ClientFacingAtHomePhlebotomyOrderDetails";
 
 export const ClientFacingOrderDetails: core.serialization.Schema<
     serializers.ClientFacingOrderDetails.Raw,
     Vital.ClientFacingOrderDetails
 > = core.serialization
     .union("type", {
-        walk_in_test: core.serialization.lazyObject(async () => (await import("..")).ClientFacingWalkInOrderDetails),
-        testkit: core.serialization.lazyObject(async () => (await import("..")).ClientFacingTestKitOrderDetails),
-        at_home_phlebotomy: core.serialization.lazyObject(
-            async () => (await import("..")).ClientFacingAtHomePhlebotomyOrderDetails
-        ),
+        walk_in_test: ClientFacingWalkInOrderDetails,
+        testkit: ClientFacingTestKitOrderDetails,
+        at_home_phlebotomy: ClientFacingAtHomePhlebotomyOrderDetails,
     })
     .transform<Vital.ClientFacingOrderDetails>({
         transform: (value) => value,
@@ -28,15 +29,15 @@ export declare namespace ClientFacingOrderDetails {
         | ClientFacingOrderDetails.Testkit
         | ClientFacingOrderDetails.AtHomePhlebotomy;
 
-    interface WalkInTest extends serializers.ClientFacingWalkInOrderDetails.Raw {
+    interface WalkInTest extends ClientFacingWalkInOrderDetails.Raw {
         type: "walk_in_test";
     }
 
-    interface Testkit extends serializers.ClientFacingTestKitOrderDetails.Raw {
+    interface Testkit extends ClientFacingTestKitOrderDetails.Raw {
         type: "testkit";
     }
 
-    interface AtHomePhlebotomy extends serializers.ClientFacingAtHomePhlebotomyOrderDetails.Raw {
+    interface AtHomePhlebotomy extends ClientFacingAtHomePhlebotomyOrderDetails.Raw {
         type: "at_home_phlebotomy";
     }
 }

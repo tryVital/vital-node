@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { SourceAuthType } from "./SourceAuthType";
 
 export const SourceLink: core.serialization.ObjectSchema<serializers.SourceLink.Raw, Vital.SourceLink> =
     core.serialization.object({
@@ -14,10 +15,7 @@ export const SourceLink: core.serialization.ObjectSchema<serializers.SourceLink.
         description: core.serialization.string(),
         logo: core.serialization.string(),
         oauthUrl: core.serialization.property("oauth_url", core.serialization.string().optional()),
-        authType: core.serialization.property(
-            "auth_type",
-            core.serialization.lazy(async () => (await import("..")).SourceAuthType).optional()
-        ),
+        authType: core.serialization.property("auth_type", SourceAuthType.optional()),
         formComponents: core.serialization.property(
             "form_components",
             core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
@@ -32,7 +30,7 @@ export declare namespace SourceLink {
         description: string;
         logo: string;
         oauth_url?: string | null;
-        auth_type?: serializers.SourceAuthType.Raw | null;
+        auth_type?: SourceAuthType.Raw | null;
         form_components?: Record<string, unknown> | null;
     }
 }

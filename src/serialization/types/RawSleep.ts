@@ -5,14 +5,15 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { SleepV2InDb } from "./SleepV2InDb";
 
 export const RawSleep: core.serialization.ObjectSchema<serializers.RawSleep.Raw, Vital.RawSleep> =
     core.serialization.object({
-        sleep: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).SleepV2InDb)),
+        sleep: core.serialization.list(SleepV2InDb),
     });
 
 export declare namespace RawSleep {
     interface Raw {
-        sleep: serializers.SleepV2InDb.Raw[];
+        sleep: SleepV2InDb.Raw[];
     }
 }

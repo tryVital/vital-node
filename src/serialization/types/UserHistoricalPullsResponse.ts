@@ -5,20 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { SingleUserHistoricalPullResponse } from "./SingleUserHistoricalPullResponse";
 
 export const UserHistoricalPullsResponse: core.serialization.ObjectSchema<
     serializers.UserHistoricalPullsResponse.Raw,
     Vital.UserHistoricalPullsResponse
 > = core.serialization.object({
-    data: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).SingleUserHistoricalPullResponse)
-    ),
+    data: core.serialization.list(SingleUserHistoricalPullResponse),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace UserHistoricalPullsResponse {
     interface Raw {
-        data: serializers.SingleUserHistoricalPullResponse.Raw[];
+        data: SingleUserHistoricalPullResponse.Raw[];
         next?: string | null;
     }
 }

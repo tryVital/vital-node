@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingProvider } from "./ClientFacingProvider";
 
 export const ProfileInDb: core.serialization.ObjectSchema<serializers.ProfileInDb.Raw, Vital.ProfileInDb> =
     core.serialization.object({
@@ -13,7 +14,7 @@ export const ProfileInDb: core.serialization.ObjectSchema<serializers.ProfileInD
         sourceId: core.serialization.property("source_id", core.serialization.number()),
         priorityId: core.serialization.property("priority_id", core.serialization.number().optional()),
         id: core.serialization.string(),
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingProvider),
+        source: ClientFacingProvider,
         updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
     });
 
@@ -24,7 +25,7 @@ export declare namespace ProfileInDb {
         source_id: number;
         priority_id?: number | null;
         id: string;
-        source: serializers.ClientFacingProvider.Raw;
+        source: ClientFacingProvider.Raw;
         updated_at?: string | null;
     }
 }

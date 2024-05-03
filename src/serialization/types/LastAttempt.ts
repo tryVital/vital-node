@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { AttemptStatus } from "./AttemptStatus";
 
 export const LastAttempt: core.serialization.ObjectSchema<serializers.LastAttempt.Raw, Vital.LastAttempt> =
     core.serialization.object({
         timestamp: core.serialization.date(),
-        status: core.serialization.lazy(async () => (await import("..")).AttemptStatus),
+        status: AttemptStatus,
     });
 
 export declare namespace LastAttempt {
     interface Raw {
         timestamp: string;
-        status: serializers.AttemptStatus.Raw;
+        status: AttemptStatus.Raw;
     }
 }

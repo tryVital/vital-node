@@ -5,6 +5,11 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { PatientDetails } from "../../../../types/PatientDetails";
+import { PatientAddressCompatible } from "../../../../types/PatientAddressCompatible";
+import { PhysicianCreateRequestBase } from "../../../../types/PhysicianCreateRequestBase";
+import { HealthInsuranceCreateRequest } from "../../../../types/HealthInsuranceCreateRequest";
+import { Consent } from "../../../../types/Consent";
 
 export const RegisterTestkitRequest: core.serialization.Schema<
     serializers.RegisterTestkitRequest.Raw,
@@ -12,34 +17,21 @@ export const RegisterTestkitRequest: core.serialization.Schema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     sampleId: core.serialization.property("sample_id", core.serialization.string()),
-    patientDetails: core.serialization.property(
-        "patient_details",
-        core.serialization.lazyObject(async () => (await import("../../../..")).PatientDetails)
-    ),
-    patientAddress: core.serialization.property(
-        "patient_address",
-        core.serialization.lazyObject(async () => (await import("../../../..")).PatientAddressCompatible)
-    ),
-    physician: core.serialization
-        .lazyObject(async () => (await import("../../../..")).PhysicianCreateRequestBase)
-        .optional(),
-    healthInsurance: core.serialization.property(
-        "health_insurance",
-        core.serialization.lazyObject(async () => (await import("../../../..")).HealthInsuranceCreateRequest).optional()
-    ),
-    consents: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("../../../..")).Consent))
-        .optional(),
+    patientDetails: core.serialization.property("patient_details", PatientDetails),
+    patientAddress: core.serialization.property("patient_address", PatientAddressCompatible),
+    physician: PhysicianCreateRequestBase.optional(),
+    healthInsurance: core.serialization.property("health_insurance", HealthInsuranceCreateRequest.optional()),
+    consents: core.serialization.list(Consent).optional(),
 });
 
 export declare namespace RegisterTestkitRequest {
     interface Raw {
         user_id: string;
         sample_id: string;
-        patient_details: serializers.PatientDetails.Raw;
-        patient_address: serializers.PatientAddressCompatible.Raw;
-        physician?: serializers.PhysicianCreateRequestBase.Raw | null;
-        health_insurance?: serializers.HealthInsuranceCreateRequest.Raw | null;
-        consents?: serializers.Consent.Raw[] | null;
+        patient_details: PatientDetails.Raw;
+        patient_address: PatientAddressCompatible.Raw;
+        physician?: PhysicianCreateRequestBase.Raw | null;
+        health_insurance?: HealthInsuranceCreateRequest.Raw | null;
+        consents?: Consent.Raw[] | null;
     }
 }

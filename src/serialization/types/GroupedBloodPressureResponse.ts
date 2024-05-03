@@ -5,21 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { GroupedBloodPressure } from "./GroupedBloodPressure";
 
 export const GroupedBloodPressureResponse: core.serialization.ObjectSchema<
     serializers.GroupedBloodPressureResponse.Raw,
     Vital.GroupedBloodPressureResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GroupedBloodPressure))
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedBloodPressure)),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace GroupedBloodPressureResponse {
     interface Raw {
-        groups: Record<string, serializers.GroupedBloodPressure.Raw[]>;
+        groups: Record<string, GroupedBloodPressure.Raw[]>;
         next?: string | null;
     }
 }

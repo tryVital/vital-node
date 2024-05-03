@@ -5,18 +5,20 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { UsAddress } from "../../../../types/UsAddress";
+import { AppointmentProvider } from "../../../../types/AppointmentProvider";
 
 export const RequestAppointmentRequest: core.serialization.Schema<
     serializers.RequestAppointmentRequest.Raw,
     Vital.RequestAppointmentRequest
 > = core.serialization.object({
-    address: core.serialization.lazyObject(async () => (await import("../../../..")).UsAddress),
-    provider: core.serialization.lazy(async () => (await import("../../../..")).AppointmentProvider),
+    address: UsAddress,
+    provider: AppointmentProvider,
 });
 
 export declare namespace RequestAppointmentRequest {
     interface Raw {
-        address: serializers.UsAddress.Raw;
-        provider: serializers.AppointmentProvider.Raw;
+        address: UsAddress.Raw;
+        provider: AppointmentProvider.Raw;
     }
 }

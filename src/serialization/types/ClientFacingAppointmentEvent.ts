@@ -5,20 +5,21 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { AppointmentEventStatus } from "./AppointmentEventStatus";
 
 export const ClientFacingAppointmentEvent: core.serialization.ObjectSchema<
     serializers.ClientFacingAppointmentEvent.Raw,
     Vital.ClientFacingAppointmentEvent
 > = core.serialization.object({
     createdAt: core.serialization.property("created_at", core.serialization.date()),
-    status: core.serialization.lazy(async () => (await import("..")).AppointmentEventStatus),
+    status: AppointmentEventStatus,
     data: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
 export declare namespace ClientFacingAppointmentEvent {
     interface Raw {
         created_at: string;
-        status: serializers.AppointmentEventStatus.Raw;
+        status: AppointmentEventStatus.Raw;
         data?: Record<string, unknown> | null;
     }
 }

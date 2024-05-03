@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { TimeseriesMetricPoint } from "./TimeseriesMetricPoint";
 
 export const MetricsResult: core.serialization.ObjectSchema<serializers.MetricsResult.Raw, Vital.MetricsResult> =
     core.serialization.object({
@@ -20,9 +21,7 @@ export const MetricsResult: core.serialization.ObjectSchema<serializers.MetricsR
         ),
         numberOfConnectedSourcesByWeek: core.serialization.property(
             "number_of_connected_sources_by_week",
-            core.serialization
-                .list(core.serialization.lazyObject(async () => (await import("..")).TimeseriesMetricPoint))
-                .optional()
+            core.serialization.list(TimeseriesMetricPoint).optional()
         ),
         numberOfOrderedTests: core.serialization.property(
             "number_of_ordered_tests",
@@ -36,7 +35,7 @@ export declare namespace MetricsResult {
         number_of_connected_sources?: number | null;
         number_of_users?: number | null;
         number_of_errored_connected_sources?: number | null;
-        number_of_connected_sources_by_week?: serializers.TimeseriesMetricPoint.Raw[] | null;
+        number_of_connected_sources_by_week?: TimeseriesMetricPoint.Raw[] | null;
         number_of_ordered_tests?: number | null;
     }
 }

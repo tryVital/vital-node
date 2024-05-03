@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { Address } from "./Address";
 
 export const ClientFacingPayorSearchResponse: core.serialization.ObjectSchema<
     serializers.ClientFacingPayorSearchResponse.Raw,
@@ -12,16 +13,13 @@ export const ClientFacingPayorSearchResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     code: core.serialization.string(),
     name: core.serialization.string(),
-    orgAddress: core.serialization.property(
-        "org_address",
-        core.serialization.lazyObject(async () => (await import("..")).Address)
-    ),
+    orgAddress: core.serialization.property("org_address", Address),
 });
 
 export declare namespace ClientFacingPayorSearchResponse {
     interface Raw {
         code: string;
         name: string;
-        org_address: serializers.Address.Raw;
+        org_address: Address.Raw;
     }
 }

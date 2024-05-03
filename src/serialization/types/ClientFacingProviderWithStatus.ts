@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ResourceAvailability } from "./ResourceAvailability";
 
 export const ClientFacingProviderWithStatus: core.serialization.ObjectSchema<
     serializers.ClientFacingProviderWithStatus.Raw,
@@ -14,6 +15,10 @@ export const ClientFacingProviderWithStatus: core.serialization.ObjectSchema<
     slug: core.serialization.string(),
     logo: core.serialization.string(),
     status: core.serialization.string(),
+    resourceAvailability: core.serialization.property(
+        "resource_availability",
+        core.serialization.record(core.serialization.string(), ResourceAvailability)
+    ),
 });
 
 export declare namespace ClientFacingProviderWithStatus {
@@ -22,5 +27,6 @@ export declare namespace ClientFacingProviderWithStatus {
         slug: string;
         logo: string;
         status: string;
+        resource_availability: Record<string, ResourceAvailability.Raw>;
     }
 }

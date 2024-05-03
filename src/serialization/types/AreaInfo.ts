@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { PhlebotomyAreaInfo } from "./PhlebotomyAreaInfo";
 
 export const AreaInfo: core.serialization.ObjectSchema<serializers.AreaInfo.Raw, Vital.AreaInfo> =
     core.serialization.object({
         zipCode: core.serialization.property("zip_code", core.serialization.string()),
-        phlebotomy: core.serialization.lazyObject(async () => (await import("..")).PhlebotomyAreaInfo),
+        phlebotomy: PhlebotomyAreaInfo,
     });
 
 export declare namespace AreaInfo {
     interface Raw {
         zip_code: string;
-        phlebotomy: serializers.PhlebotomyAreaInfo.Raw;
+        phlebotomy: PhlebotomyAreaInfo.Raw;
     }
 }

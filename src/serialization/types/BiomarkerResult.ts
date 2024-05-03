@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ResultType } from "./ResultType";
 
 export const BiomarkerResult: core.serialization.ObjectSchema<serializers.BiomarkerResult.Raw, Vital.BiomarkerResult> =
     core.serialization.object({
@@ -12,7 +13,7 @@ export const BiomarkerResult: core.serialization.ObjectSchema<serializers.Biomar
         slug: core.serialization.string().optional(),
         value: core.serialization.number(),
         result: core.serialization.string(),
-        type: core.serialization.lazy(async () => (await import("..")).ResultType),
+        type: ResultType,
         unit: core.serialization.string().optional(),
         timestamp: core.serialization.date().optional(),
         notes: core.serialization.string().optional(),
@@ -31,7 +32,7 @@ export declare namespace BiomarkerResult {
         slug?: string | null;
         value: number;
         result: string;
-        type: serializers.ResultType.Raw;
+        type: ResultType.Raw;
         unit?: string | null;
         timestamp?: string | null;
         notes?: string | null;

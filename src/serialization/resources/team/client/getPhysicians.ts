@@ -5,14 +5,13 @@
 import * as serializers from "../../..";
 import * as Vital from "../../../../api";
 import * as core from "../../../../core";
+import { ClientFacingPhysician } from "../../../types/ClientFacingPhysician";
 
 export const Response: core.serialization.Schema<
     serializers.team.getPhysicians.Response.Raw,
     Vital.ClientFacingPhysician[]
-> = core.serialization.list(
-    core.serialization.lazyObject(async () => (await import("../../..")).ClientFacingPhysician)
-);
+> = core.serialization.list(ClientFacingPhysician);
 
 export declare namespace Response {
-    type Raw = serializers.ClientFacingPhysician.Raw[];
+    type Raw = ClientFacingPhysician.Raw[];
 }

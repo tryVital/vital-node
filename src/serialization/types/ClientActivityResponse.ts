@@ -5,18 +5,17 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingActivity } from "./ClientFacingActivity";
 
 export const ClientActivityResponse: core.serialization.ObjectSchema<
     serializers.ClientActivityResponse.Raw,
     Vital.ClientActivityResponse
 > = core.serialization.object({
-    activity: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingActivity)
-    ),
+    activity: core.serialization.list(ClientFacingActivity),
 });
 
 export declare namespace ClientActivityResponse {
     interface Raw {
-        activity: serializers.ClientFacingActivity.Raw[];
+        activity: ClientFacingActivity.Raw[];
     }
 }

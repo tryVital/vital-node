@@ -5,21 +5,19 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { GroupedCholesterol } from "./GroupedCholesterol";
 
 export const GroupedCholesterolResponse: core.serialization.ObjectSchema<
     serializers.GroupedCholesterolResponse.Raw,
     Vital.GroupedCholesterolResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GroupedCholesterol))
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedCholesterol)),
     next: core.serialization.string().optional(),
 });
 
 export declare namespace GroupedCholesterolResponse {
     interface Raw {
-        groups: Record<string, serializers.GroupedCholesterol.Raw[]>;
+        groups: Record<string, GroupedCholesterol.Raw[]>;
         next?: string | null;
     }
 }

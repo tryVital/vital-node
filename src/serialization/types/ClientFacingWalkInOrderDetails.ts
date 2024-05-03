@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingWalkInTestOrder } from "./ClientFacingWalkInTestOrder";
 
 export const ClientFacingWalkInOrderDetails: core.serialization.ObjectSchema<
     serializers.ClientFacingWalkInOrderDetails.Raw,
     Vital.ClientFacingWalkInOrderDetails
 > = core.serialization.object({
-    data: core.serialization.lazyObject(async () => (await import("..")).ClientFacingWalkInTestOrder).optional(),
+    data: ClientFacingWalkInTestOrder.optional(),
 });
 
 export declare namespace ClientFacingWalkInOrderDetails {
     interface Raw {
-        data?: serializers.ClientFacingWalkInTestOrder.Raw | null;
+        data?: ClientFacingWalkInTestOrder.Raw | null;
     }
 }

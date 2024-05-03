@@ -5,20 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingCholesterolTimeseries } from "./ClientFacingCholesterolTimeseries";
 
 export const GroupedCholesterol: core.serialization.ObjectSchema<
     serializers.GroupedCholesterol.Raw,
     Vital.GroupedCholesterol
 > = core.serialization.object({
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-    data: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingCholesterolTimeseries)
-    ),
+    source: ClientFacingSource,
+    data: core.serialization.list(ClientFacingCholesterolTimeseries),
 });
 
 export declare namespace GroupedCholesterol {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingCholesterolTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingCholesterolTimeseries.Raw[];
     }
 }

@@ -5,20 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingBodyWeightTimeseries } from "./ClientFacingBodyWeightTimeseries";
 
 export const GroupedBodyWeight: core.serialization.ObjectSchema<
     serializers.GroupedBodyWeight.Raw,
     Vital.GroupedBodyWeight
 > = core.serialization.object({
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-    data: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingBodyWeightTimeseries)
-    ),
+    source: ClientFacingSource,
+    data: core.serialization.list(ClientFacingBodyWeightTimeseries),
 });
 
 export declare namespace GroupedBodyWeight {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingBodyWeightTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingBodyWeightTimeseries.Raw[];
     }
 }

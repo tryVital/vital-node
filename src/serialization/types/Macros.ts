@@ -5,11 +5,12 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { Fats } from "./Fats";
 
 export const Macros: core.serialization.ObjectSchema<serializers.Macros.Raw, Vital.Macros> = core.serialization.object({
     carbs: core.serialization.number().optional(),
     protein: core.serialization.number().optional(),
-    fats: core.serialization.lazyObject(async () => (await import("..")).Fats).optional(),
+    fats: Fats.optional(),
     alcohol: core.serialization.number().optional(),
     water: core.serialization.number().optional(),
     fibre: core.serialization.number().optional(),
@@ -20,7 +21,7 @@ export declare namespace Macros {
     interface Raw {
         carbs?: number | null;
         protein?: number | null;
-        fats?: serializers.Fats.Raw | null;
+        fats?: Fats.Raw | null;
         alcohol?: number | null;
         water?: number | null;
         fibre?: number | null;

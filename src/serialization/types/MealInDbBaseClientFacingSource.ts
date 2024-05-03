@@ -5,6 +5,11 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { Energy } from "./Energy";
+import { Macros } from "./Macros";
+import { Micros } from "./Micros";
+import { ClientFacingFood } from "./ClientFacingFood";
+import { ClientFacingSource } from "./ClientFacingSource";
 
 export const MealInDbBaseClientFacingSource: core.serialization.ObjectSchema<
     serializers.MealInDbBaseClientFacingSource.Raw,
@@ -17,16 +22,11 @@ export const MealInDbBaseClientFacingSource: core.serialization.ObjectSchema<
     providerId: core.serialization.property("provider_id", core.serialization.string()),
     timestamp: core.serialization.date(),
     name: core.serialization.string(),
-    energy: core.serialization.lazyObject(async () => (await import("..")).Energy).optional(),
-    macros: core.serialization.lazyObject(async () => (await import("..")).Macros).optional(),
-    micros: core.serialization.lazyObject(async () => (await import("..")).Micros).optional(),
-    data: core.serialization
-        .record(
-            core.serialization.string(),
-            core.serialization.lazyObject(async () => (await import("..")).ClientFacingFood)
-        )
-        .optional(),
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
+    energy: Energy.optional(),
+    macros: Macros.optional(),
+    micros: Micros.optional(),
+    data: core.serialization.record(core.serialization.string(), ClientFacingFood).optional(),
+    source: ClientFacingSource,
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
@@ -40,11 +40,11 @@ export declare namespace MealInDbBaseClientFacingSource {
         provider_id: string;
         timestamp: string;
         name: string;
-        energy?: serializers.Energy.Raw | null;
-        macros?: serializers.Macros.Raw | null;
-        micros?: serializers.Micros.Raw | null;
-        data?: Record<string, serializers.ClientFacingFood.Raw> | null;
-        source: serializers.ClientFacingSource.Raw;
+        energy?: Energy.Raw | null;
+        macros?: Macros.Raw | null;
+        micros?: Micros.Raw | null;
+        data?: Record<string, ClientFacingFood.Raw> | null;
+        source: ClientFacingSource.Raw;
         created_at: string;
         updated_at: string;
     }

@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { OrderStatus } from "./OrderStatus";
 
 export const ClientFacingOrderEvent: core.serialization.ObjectSchema<
     serializers.ClientFacingOrderEvent.Raw,
@@ -12,13 +13,13 @@ export const ClientFacingOrderEvent: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.number(),
     createdAt: core.serialization.property("created_at", core.serialization.date()),
-    status: core.serialization.lazy(async () => (await import("..")).OrderStatus),
+    status: OrderStatus,
 });
 
 export declare namespace ClientFacingOrderEvent {
     interface Raw {
         id: number;
         created_at: string;
-        status: serializers.OrderStatus.Raw;
+        status: OrderStatus.Raw;
     }
 }

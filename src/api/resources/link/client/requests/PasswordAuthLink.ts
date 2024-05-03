@@ -5,8 +5,6 @@
 import * as Vital from "../../../..";
 
 export interface PasswordAuthLink {
-    vitalLinkClientRegion?: string;
-    vitalLinkToken?: string;
     username: string;
     password: string;
     provider: Vital.Providers;

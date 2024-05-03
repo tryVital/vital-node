@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingSleepStream } from "./ClientFacingSleepStream";
 
 export const ClientFacingSleep: core.serialization.ObjectSchema<
     serializers.ClientFacingSleep.Raw,
@@ -33,11 +35,8 @@ export const ClientFacingSleep: core.serialization.ObjectSchema<
     hrDip: core.serialization.property("hr_dip", core.serialization.number().optional()),
     averageHrv: core.serialization.property("average_hrv", core.serialization.number().optional()),
     respiratoryRate: core.serialization.property("respiratory_rate", core.serialization.number().optional()),
-    source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-    sleepStream: core.serialization.property(
-        "sleep_stream",
-        core.serialization.lazyObject(async () => (await import("..")).ClientFacingSleepStream).optional()
-    ),
+    source: ClientFacingSource,
+    sleepStream: core.serialization.property("sleep_stream", ClientFacingSleepStream.optional()),
 });
 
 export declare namespace ClientFacingSleep {
@@ -65,7 +64,7 @@ export declare namespace ClientFacingSleep {
         hr_dip?: number | null;
         average_hrv?: number | null;
         respiratory_rate?: number | null;
-        source: serializers.ClientFacingSource.Raw;
-        sleep_stream?: serializers.ClientFacingSleepStream.Raw | null;
+        source: ClientFacingSource.Raw;
+        sleep_stream?: ClientFacingSleepStream.Raw | null;
     }
 }

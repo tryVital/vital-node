@@ -5,12 +5,13 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingOrder } from "./ClientFacingOrder";
 
 export const GetOrdersResponse: core.serialization.ObjectSchema<
     serializers.GetOrdersResponse.Raw,
     Vital.GetOrdersResponse
 > = core.serialization.object({
-    orders: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingOrder)),
+    orders: core.serialization.list(ClientFacingOrder),
     total: core.serialization.number().optional(),
     page: core.serialization.number().optional(),
     size: core.serialization.number().optional(),
@@ -18,7 +19,7 @@ export const GetOrdersResponse: core.serialization.ObjectSchema<
 
 export declare namespace GetOrdersResponse {
     interface Raw {
-        orders: serializers.ClientFacingOrder.Raw[];
+        orders: ClientFacingOrder.Raw[];
         total?: number | null;
         page?: number | null;
         size?: number | null;

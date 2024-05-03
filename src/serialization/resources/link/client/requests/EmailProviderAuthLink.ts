@@ -5,23 +5,22 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { Providers } from "../../../../types/Providers";
+import { Region } from "../../../../types/Region";
 
 export const EmailProviderAuthLink: core.serialization.Schema<
     serializers.EmailProviderAuthLink.Raw,
-    Omit<Vital.EmailProviderAuthLink, "vitalLinkToken">
+    Vital.EmailProviderAuthLink
 > = core.serialization.object({
     email: core.serialization.string(),
-    emailProviderAuthLinkProvider: core.serialization.property(
-        "provider",
-        core.serialization.lazy(async () => (await import("../../../..")).Providers).optional()
-    ),
-    region: core.serialization.lazy(async () => (await import("../../../..")).Region).optional(),
+    emailProviderAuthLinkProvider: core.serialization.property("provider", Providers.optional()),
+    region: Region.optional(),
 });
 
 export declare namespace EmailProviderAuthLink {
     interface Raw {
         email: string;
-        provider?: serializers.Providers.Raw | null;
-        region?: serializers.Region.Raw | null;
+        provider?: Providers.Raw | null;
+        region?: Region.Raw | null;
     }
 }

@@ -5,15 +5,13 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { LastAttempt } from "./LastAttempt";
 
 export const SingleResourceStatistics: core.serialization.ObjectSchema<
     serializers.SingleResourceStatistics.Raw,
     Vital.SingleResourceStatistics
 > = core.serialization.object({
-    lastAttempt: core.serialization.property(
-        "last_attempt",
-        core.serialization.lazyObject(async () => (await import("..")).LastAttempt).optional()
-    ),
+    lastAttempt: core.serialization.property("last_attempt", LastAttempt.optional()),
     oldestData: core.serialization.property("oldest_data", core.serialization.date().optional()),
     newestData: core.serialization.property("newest_data", core.serialization.date().optional()),
     sentCount: core.serialization.property("sent_count", core.serialization.number().optional()),
@@ -21,7 +19,7 @@ export const SingleResourceStatistics: core.serialization.ObjectSchema<
 
 export declare namespace SingleResourceStatistics {
     interface Raw {
-        last_attempt?: serializers.LastAttempt.Raw | null;
+        last_attempt?: LastAttempt.Raw | null;
         oldest_data?: string | null;
         newest_data?: string | null;
         sent_count?: number | null;

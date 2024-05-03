@@ -5,33 +5,29 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingHrvTimeseries } from "./ClientFacingHrvTimeseries";
+import { ClientFacingHeartRateTimeseries } from "./ClientFacingHeartRateTimeseries";
+import { ClientFacingHypnogramTimeseries } from "./ClientFacingHypnogramTimeseries";
+import { ClientFacingRespiratoryRateTimeseries } from "./ClientFacingRespiratoryRateTimeseries";
 
 export const ClientFacingSleepStream: core.serialization.ObjectSchema<
     serializers.ClientFacingSleepStream.Raw,
     Vital.ClientFacingSleepStream
 > = core.serialization.object({
-    hrv: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingHrvTimeseries))
-        .optional(),
-    heartrate: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingHeartRateTimeseries))
-        .optional(),
-    hypnogram: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingHypnogramTimeseries))
-        .optional(),
+    hrv: core.serialization.list(ClientFacingHrvTimeseries).optional(),
+    heartrate: core.serialization.list(ClientFacingHeartRateTimeseries).optional(),
+    hypnogram: core.serialization.list(ClientFacingHypnogramTimeseries).optional(),
     respiratoryRate: core.serialization.property(
         "respiratory_rate",
-        core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("..")).ClientFacingRespiratoryRateTimeseries))
-            .optional()
+        core.serialization.list(ClientFacingRespiratoryRateTimeseries).optional()
     ),
 });
 
 export declare namespace ClientFacingSleepStream {
     interface Raw {
-        hrv?: serializers.ClientFacingHrvTimeseries.Raw[] | null;
-        heartrate?: serializers.ClientFacingHeartRateTimeseries.Raw[] | null;
-        hypnogram?: serializers.ClientFacingHypnogramTimeseries.Raw[] | null;
-        respiratory_rate?: serializers.ClientFacingRespiratoryRateTimeseries.Raw[] | null;
+        hrv?: ClientFacingHrvTimeseries.Raw[] | null;
+        heartrate?: ClientFacingHeartRateTimeseries.Raw[] | null;
+        hypnogram?: ClientFacingHypnogramTimeseries.Raw[] | null;
+        respiratory_rate?: ClientFacingRespiratoryRateTimeseries.Raw[] | null;
     }
 }

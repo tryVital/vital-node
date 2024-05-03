@@ -5,13 +5,14 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingShipment } from "./ClientFacingShipment";
 
 export const ClientFacingTestkitOrder: core.serialization.ObjectSchema<
     serializers.ClientFacingTestkitOrder.Raw,
     Vital.ClientFacingTestkitOrder
 > = core.serialization.object({
     id: core.serialization.string(),
-    shipment: core.serialization.lazyObject(async () => (await import("..")).ClientFacingShipment).optional(),
+    shipment: ClientFacingShipment.optional(),
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
@@ -19,7 +20,7 @@ export const ClientFacingTestkitOrder: core.serialization.ObjectSchema<
 export declare namespace ClientFacingTestkitOrder {
     interface Raw {
         id: string;
-        shipment?: serializers.ClientFacingShipment.Raw | null;
+        shipment?: ClientFacingShipment.Raw | null;
         created_at: string;
         updated_at: string;
     }

@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { LabTestCollectionMethod } from "./LabTestCollectionMethod";
+import { LabTestSampleType } from "./LabTestSampleType";
 
 export const ClientFacingLab: core.serialization.ObjectSchema<serializers.ClientFacingLab.Raw, Vital.ClientFacingLab> =
     core.serialization.object({
@@ -16,12 +18,9 @@ export const ClientFacingLab: core.serialization.ObjectSchema<serializers.Client
         zipcode: core.serialization.string(),
         collectionMethods: core.serialization.property(
             "collection_methods",
-            core.serialization.list(core.serialization.lazy(async () => (await import("..")).LabTestCollectionMethod))
+            core.serialization.list(LabTestCollectionMethod)
         ),
-        sampleTypes: core.serialization.property(
-            "sample_types",
-            core.serialization.list(core.serialization.lazy(async () => (await import("..")).LabTestSampleType))
-        ),
+        sampleTypes: core.serialization.property("sample_types", core.serialization.list(LabTestSampleType)),
     });
 
 export declare namespace ClientFacingLab {
@@ -32,7 +31,7 @@ export declare namespace ClientFacingLab {
         first_line_address: string;
         city: string;
         zipcode: string;
-        collection_methods: serializers.LabTestCollectionMethod.Raw[];
-        sample_types: serializers.LabTestSampleType.Raw[];
+        collection_methods: LabTestCollectionMethod.Raw[];
+        sample_types: LabTestSampleType.Raw[];
     }
 }

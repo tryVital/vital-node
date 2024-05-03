@@ -5,18 +5,19 @@
 import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
+import { Providers } from "../../../../types/Providers";
 
 export const BeginLinkTokenRequest: core.serialization.Schema<
     serializers.BeginLinkTokenRequest.Raw,
     Vital.BeginLinkTokenRequest
 > = core.serialization.object({
     linkToken: core.serialization.property("link_token", core.serialization.string()),
-    provider: core.serialization.lazy(async () => (await import("../../../..")).Providers),
+    provider: Providers,
 });
 
 export declare namespace BeginLinkTokenRequest {
     interface Raw {
         link_token: string;
-        provider: serializers.Providers.Raw;
+        provider: Providers.Raw;
     }
 }

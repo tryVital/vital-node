@@ -5,18 +5,18 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingSource } from "./ClientFacingSource";
+import { ClientFacingGlucoseTimeseries } from "./ClientFacingGlucoseTimeseries";
 
 export const GroupedGlucose: core.serialization.ObjectSchema<serializers.GroupedGlucose.Raw, Vital.GroupedGlucose> =
     core.serialization.object({
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingSource),
-        data: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).ClientFacingGlucoseTimeseries)
-        ),
+        source: ClientFacingSource,
+        data: core.serialization.list(ClientFacingGlucoseTimeseries),
     });
 
 export declare namespace GroupedGlucose {
     interface Raw {
-        source: serializers.ClientFacingSource.Raw;
-        data: serializers.ClientFacingGlucoseTimeseries.Raw[];
+        source: ClientFacingSource.Raw;
+        data: ClientFacingGlucoseTimeseries.Raw[];
     }
 }

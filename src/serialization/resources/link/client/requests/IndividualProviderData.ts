@@ -8,7 +8,7 @@ import * as core from "../../../../../core";
 
 export const IndividualProviderData: core.serialization.Schema<
     serializers.IndividualProviderData.Raw,
-    Omit<Vital.IndividualProviderData, "vitalLinkClientRegion" | "vitalLinkToken">
+    Omit<Vital.IndividualProviderData, "vitalLinkClientRegion">
 > = core.serialization.object({
     username: core.serialization.string(),
     password: core.serialization.string(),

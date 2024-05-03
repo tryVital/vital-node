@@ -5,13 +5,14 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { Gender } from "./Gender";
 
 export const PatientDetails: core.serialization.ObjectSchema<serializers.PatientDetails.Raw, Vital.PatientDetails> =
     core.serialization.object({
         firstName: core.serialization.property("first_name", core.serialization.string()),
         lastName: core.serialization.property("last_name", core.serialization.string()),
         dob: core.serialization.date(),
-        gender: core.serialization.lazy(async () => (await import("..")).Gender),
+        gender: Gender,
         phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
         email: core.serialization.string(),
     });
@@ -21,7 +22,7 @@ export declare namespace PatientDetails {
         first_name: string;
         last_name: string;
         dob: string;
-        gender: serializers.Gender.Raw;
+        gender: Gender.Raw;
         phone_number: string;
         email: string;
     }

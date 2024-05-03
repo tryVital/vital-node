@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingProvider } from "./ClientFacingProvider";
 
 export const SleepV2InDb: core.serialization.ObjectSchema<serializers.SleepV2InDb.Raw, Vital.SleepV2InDb> =
     core.serialization.object({
@@ -15,7 +16,7 @@ export const SleepV2InDb: core.serialization.ObjectSchema<serializers.SleepV2InD
         sourceId: core.serialization.property("source_id", core.serialization.number()),
         priorityId: core.serialization.property("priority_id", core.serialization.number().optional()),
         id: core.serialization.string(),
-        source: core.serialization.lazyObject(async () => (await import("..")).ClientFacingProvider),
+        source: ClientFacingProvider,
         priority: core.serialization.number().optional(),
     });
 
@@ -28,7 +29,7 @@ export declare namespace SleepV2InDb {
         source_id: number;
         priority_id?: number | null;
         id: string;
-        source: serializers.ClientFacingProvider.Raw;
+        source: ClientFacingProvider.Raw;
         priority?: number | null;
     }
 }
