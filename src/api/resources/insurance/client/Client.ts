@@ -13,7 +13,6 @@ export declare namespace Insurance {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey: core.Supplier<string>;
-        vitalLinkToken: core.Supplier<string>;
     }
 
     interface RequestOptions {
@@ -39,10 +38,9 @@ export class Insurance {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -117,10 +115,9 @@ export class Insurance {
             ),
             method: "GET",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

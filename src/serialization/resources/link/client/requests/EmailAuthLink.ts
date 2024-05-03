@@ -9,13 +9,15 @@ import { Providers } from "../../../../types/Providers";
 import { AuthType } from "../../../../types/AuthType";
 import { Region } from "../../../../types/Region";
 
-export const EmailAuthLink: core.serialization.Schema<serializers.EmailAuthLink.Raw, Vital.EmailAuthLink> =
-    core.serialization.object({
-        email: core.serialization.string(),
-        provider: Providers,
-        authType: core.serialization.property("auth_type", AuthType),
-        region: Region.optional(),
-    });
+export const EmailAuthLink: core.serialization.Schema<
+    serializers.EmailAuthLink.Raw,
+    Omit<Vital.EmailAuthLink, "vitalLinkToken">
+> = core.serialization.object({
+    email: core.serialization.string(),
+    provider: Providers,
+    authType: core.serialization.property("auth_type", AuthType),
+    region: Region.optional(),
+});
 
 export declare namespace EmailAuthLink {
     interface Raw {

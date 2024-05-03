@@ -8,13 +8,15 @@ import * as core from "../../../../../core";
 import { Providers } from "../../../../types/Providers";
 import { AuthType } from "../../../../types/AuthType";
 
-export const PasswordAuthLink: core.serialization.Schema<serializers.PasswordAuthLink.Raw, Vital.PasswordAuthLink> =
-    core.serialization.object({
-        username: core.serialization.string(),
-        password: core.serialization.string(),
-        provider: Providers,
-        authType: core.serialization.property("auth_type", AuthType),
-    });
+export const PasswordAuthLink: core.serialization.Schema<
+    serializers.PasswordAuthLink.Raw,
+    Omit<Vital.PasswordAuthLink, "vitalLinkToken">
+> = core.serialization.object({
+    username: core.serialization.string(),
+    password: core.serialization.string(),
+    provider: Providers,
+    authType: core.serialization.property("auth_type", AuthType),
+});
 
 export declare namespace PasswordAuthLink {
     interface Raw {

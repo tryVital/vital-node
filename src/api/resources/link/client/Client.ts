@@ -13,7 +13,6 @@ export declare namespace Link {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey: core.Supplier<string>;
-        vitalLinkToken: core.Supplier<string>;
     }
 
     interface RequestOptions {
@@ -45,10 +44,9 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -115,10 +113,9 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -193,10 +190,9 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -265,10 +261,9 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -329,7 +324,11 @@ export class Link {
      * @example
      *     await vital.link.tokenState()
      */
-    public async tokenState(requestOptions?: Link.RequestOptions): Promise<Record<string, unknown>> {
+    public async tokenState(
+        request: Vital.LinkTokenStateRequest = {},
+        requestOptions?: Link.RequestOptions
+    ): Promise<Record<string, unknown>> {
+        const { vitalLinkToken } = request;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -337,12 +336,12 @@ export class Link {
             ),
             method: "GET",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
@@ -400,6 +399,7 @@ export class Link {
         request: Vital.EmailAuthLink,
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.ConnectionStatus> {
+        const { vitalLinkToken, ..._body } = request;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -407,16 +407,16 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.EmailAuthLink.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.EmailAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -471,6 +471,7 @@ export class Link {
         request: Vital.PasswordAuthLink,
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.ConnectionStatus> {
+        const { vitalLinkToken, ..._body } = request;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -478,16 +479,16 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.PasswordAuthLink.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.PasswordAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -540,8 +541,10 @@ export class Link {
      */
     public async generateOauthLink(
         oauthProvider: Vital.OAuthProviders,
+        request: Vital.LinkGenerateOauthLinkRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.Source> {
+        const { vitalLinkToken } = request;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -549,12 +552,12 @@ export class Link {
             ),
             method: "GET",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
@@ -613,7 +616,7 @@ export class Link {
         request: Vital.IndividualProviderData,
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.ProviderLinkResponse> {
-        const { vitalLinkClientRegion, ..._body } = request;
+        const { vitalLinkClientRegion, vitalLinkToken, ..._body } = request;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -621,13 +624,13 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-client-region": vitalLinkClientRegion != null ? vitalLinkClientRegion : undefined,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
@@ -687,6 +690,7 @@ export class Link {
         request: Vital.EmailProviderAuthLink,
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.ConnectionStatus> {
+        const { vitalLinkToken, ..._body } = request;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -694,16 +698,16 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.EmailProviderAuthLink.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.EmailProviderAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -757,7 +761,11 @@ export class Link {
      * @example
      *     await vital.link.getAllProviders()
      */
-    public async getAllProviders(requestOptions?: Link.RequestOptions): Promise<Vital.SourceLink[]> {
+    public async getAllProviders(
+        request: Vital.LinkGetAllProvidersRequest = {},
+        requestOptions?: Link.RequestOptions
+    ): Promise<Vital.SourceLink[]> {
+        const { vitalLinkToken } = request;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -765,12 +773,12 @@ export class Link {
             ),
             method: "GET",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
@@ -835,10 +843,9 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -906,10 +913,9 @@ export class Link {
             ),
             method: "POST",
             headers: {
-                "x-vital-link-token": await core.Supplier.get(this._options.vitalLinkToken),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.6",
+                "X-Fern-SDK-Version": "3.1.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

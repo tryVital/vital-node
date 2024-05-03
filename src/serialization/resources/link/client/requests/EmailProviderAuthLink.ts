@@ -10,7 +10,7 @@ import { Region } from "../../../../types/Region";
 
 export const EmailProviderAuthLink: core.serialization.Schema<
     serializers.EmailProviderAuthLink.Raw,
-    Vital.EmailProviderAuthLink
+    Omit<Vital.EmailProviderAuthLink, "vitalLinkToken">
 > = core.serialization.object({
     email: core.serialization.string(),
     emailProviderAuthLinkProvider: core.serialization.property("provider", Providers.optional()),
