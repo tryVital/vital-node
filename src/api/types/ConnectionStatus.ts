@@ -5,9 +5,10 @@
 import * as Vital from "..";
 
 export interface ConnectionStatus {
-    success: boolean;
-    redirectUrl?: string;
     state: Vital.ConnectionStatusState;
     errorType?: string;
     error?: string;
+    providerMfa?: Vital.ProviderMfaRequest;
+    success: boolean;
+    redirectUrl?: string;
 }

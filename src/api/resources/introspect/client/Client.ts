@@ -28,9 +28,7 @@ export class Introspect {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.introspect.getUserResources({
-     *         provider: Vital.Providers.Oura
-     *     })
+     *     await vital.introspect.getUserResources()
      */
     public async getUserResources(
         request: Vital.IntrospectGetUserResourcesRequest = {},
@@ -63,7 +61,7 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -120,9 +118,7 @@ export class Introspect {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.introspect.getUserHistoricalPulls({
-     *         provider: Vital.Providers.Oura
-     *     })
+     *     await vital.introspect.getUserHistoricalPulls()
      */
     public async getUserHistoricalPulls(
         request: Vital.IntrospectGetUserHistoricalPullsRequest = {},
@@ -155,7 +151,7 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

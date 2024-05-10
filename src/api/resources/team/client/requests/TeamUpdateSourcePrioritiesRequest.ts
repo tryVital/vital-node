@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         teamId: "team-id"
+ *         teamId: "team_id"
  *     }
  */
 export interface TeamUpdateSourcePrioritiesRequest {

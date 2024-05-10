@@ -4,6 +4,17 @@
 
 import * as Vital from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         markerIds: [1],
+ *         labId: 1,
+ *         name: "name",
+ *         method: Vital.LabTestCollectionMethod.Testkit,
+ *         sampleType: Vital.LabTestSampleType.DriedBloodSpot,
+ *         description: "description"
+ *     }
+ */
 export interface CreateLabTestRequest {
     markerIds: number[];
     labId: number;

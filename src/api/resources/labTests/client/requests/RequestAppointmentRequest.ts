@@ -4,6 +4,18 @@
 
 import * as Vital from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         address: {
+ *             firstLine: "first_line",
+ *             city: "city",
+ *             state: "state",
+ *             zipCode: "zip_code"
+ *         },
+ *         provider: Vital.AppointmentProvider.Getlabs
+ *     }
+ */
 export interface RequestAppointmentRequest {
     /** At-home phlebotomy appointment address. */
     address: Vital.UsAddress;

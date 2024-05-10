@@ -4,6 +4,10 @@
 
 import * as Vital from "../../../..";
 
+/**
+ * @example
+ *     {}
+ */
 export interface LabTestsSimulateOrderProcessRequest {
     finalStatus?: Vital.OrderStatus;
     delay?: number;

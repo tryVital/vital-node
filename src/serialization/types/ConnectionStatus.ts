@@ -6,24 +6,27 @@ import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
 import { ConnectionStatusState } from "./ConnectionStatusState";
+import { ProviderMfaRequest } from "./ProviderMfaRequest";
 
 export const ConnectionStatus: core.serialization.ObjectSchema<
     serializers.ConnectionStatus.Raw,
     Vital.ConnectionStatus
 > = core.serialization.object({
-    success: core.serialization.boolean(),
-    redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),
     state: ConnectionStatusState,
     errorType: core.serialization.property("error_type", core.serialization.string().optional()),
     error: core.serialization.string().optional(),
+    providerMfa: core.serialization.property("provider_mfa", ProviderMfaRequest.optional()),
+    success: core.serialization.boolean(),
+    redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),
 });
 
 export declare namespace ConnectionStatus {
     interface Raw {
-        success: boolean;
-        redirect_url?: string | null;
         state: ConnectionStatusState.Raw;
         error_type?: string | null;
         error?: string | null;
+        provider_mfa?: ProviderMfaRequest.Raw | null;
+        success: boolean;
+        redirect_url?: string | null;
     }
 }

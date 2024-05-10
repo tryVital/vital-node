@@ -9,6 +9,7 @@ export interface ClientFacingFloorsClimbedTimeseries {
     timezoneOffset?: number;
     /** The reading type of the measurement. This is applicable only to Cholesterol, IGG and IGE. */
     type?: string;
+    /** Measured in counts */
     unit: "count";
     /** The timestamp of the measurement. */
     timestamp: Date;

@@ -26,6 +26,11 @@ export class Insurance {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.insurance.searchPayorInfo({
+     *         insuranceName: "insurance_name"
+     *     })
      */
     public async searchPayorInfo(
         request: Vital.PayorSearchRequest,
@@ -40,7 +45,7 @@ export class Insurance {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -98,7 +103,7 @@ export class Insurance {
      *
      * @example
      *     await vital.insurance.searchDiagnosis({
-     *         diagnosisQuery: "diagnosis-query"
+     *         diagnosisQuery: "diagnosis_query"
      *     })
      */
     public async searchDiagnosis(
@@ -117,7 +122,7 @@ export class Insurance {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

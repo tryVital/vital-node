@@ -5,28 +5,31 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
-import { PasswordProviders } from "./PasswordProviders";
 import { ProviderLinkResponseState } from "./ProviderLinkResponseState";
+import { ProviderMfaRequest } from "./ProviderMfaRequest";
+import { PasswordProviders } from "./PasswordProviders";
 
 export const ProviderLinkResponse: core.serialization.ObjectSchema<
     serializers.ProviderLinkResponse.Raw,
     Vital.ProviderLinkResponse
 > = core.serialization.object({
-    provider: PasswordProviders,
-    connected: core.serialization.boolean(),
-    providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
     state: ProviderLinkResponseState,
     errorType: core.serialization.property("error_type", core.serialization.string().optional()),
     error: core.serialization.string().optional(),
+    providerMfa: core.serialization.property("provider_mfa", ProviderMfaRequest.optional()),
+    provider: PasswordProviders,
+    connected: core.serialization.boolean(),
+    providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
 });
 
 export declare namespace ProviderLinkResponse {
     interface Raw {
-        provider: PasswordProviders.Raw;
-        connected: boolean;
-        provider_id?: string | null;
         state: ProviderLinkResponseState.Raw;
         error_type?: string | null;
         error?: string | null;
+        provider_mfa?: ProviderMfaRequest.Raw | null;
+        provider: PasswordProviders.Raw;
+        connected: boolean;
+        provider_id?: string | null;
     }
 }

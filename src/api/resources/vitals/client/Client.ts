@@ -28,8 +28,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.vo2MaxGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.vo2MaxGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async vo2MaxGrouped(
@@ -61,7 +61,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -118,8 +118,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.stressLevelGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.stressLevelGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async stressLevelGrouped(
@@ -151,7 +151,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -208,8 +208,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.mindfulnessMinutesGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.mindfulnessMinutesGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async mindfulnessMinutesGrouped(
@@ -241,7 +241,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -298,8 +298,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.caffeineGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.caffeineGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async caffeineGrouped(
@@ -331,7 +331,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -388,8 +388,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.waterGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.waterGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async waterGrouped(
@@ -421,7 +421,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -478,8 +478,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.stepsGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.stepsGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async stepsGrouped(
@@ -511,7 +511,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -568,8 +568,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.floorsClimbedGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.floorsClimbedGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async floorsClimbedGrouped(
@@ -601,7 +601,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -658,8 +658,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.distanceGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.distanceGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async distanceGrouped(
@@ -691,7 +691,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -748,8 +748,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.caloriesBasalGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.caloriesBasalGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async caloriesBasalGrouped(
@@ -781,7 +781,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -838,8 +838,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.caloriesActiveGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.caloriesActiveGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async caloriesActiveGrouped(
@@ -871,7 +871,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -928,8 +928,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.respiratoryRateGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.respiratoryRateGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async respiratoryRateGrouped(
@@ -961,7 +961,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1018,8 +1018,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.igeGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.igeGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async igeGrouped(
@@ -1051,7 +1051,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1108,8 +1108,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.iggGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.iggGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async iggGrouped(
@@ -1141,7 +1141,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1198,8 +1198,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.hypnogramGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.hypnogramGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async hypnogramGrouped(
@@ -1231,7 +1231,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1288,8 +1288,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.hrvGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.hrvGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async hrvGrouped(
@@ -1321,7 +1321,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1378,8 +1378,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.heartrateGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.heartrateGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async heartrateGrouped(
@@ -1411,7 +1411,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1468,8 +1468,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.glucoseGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.glucoseGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async glucoseGrouped(
@@ -1501,7 +1501,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1558,8 +1558,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.cholesterolGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.cholesterolGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async cholesterolGrouped(
@@ -1591,7 +1591,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1648,8 +1648,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bodyWeightGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bodyWeightGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bodyWeightGrouped(
@@ -1681,7 +1681,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1738,8 +1738,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bodyFatGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bodyFatGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bodyFatGrouped(
@@ -1771,7 +1771,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1828,8 +1828,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bloodOxygenGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bloodOxygenGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bloodOxygenGrouped(
@@ -1861,7 +1861,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1918,8 +1918,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.electrocardiogramVoltageGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.electrocardiogramVoltageGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async electrocardiogramVoltageGrouped(
@@ -1951,7 +1951,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2008,8 +2008,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bloodPressureGrouped("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bloodPressureGrouped("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bloodPressureGrouped(
@@ -2041,7 +2041,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2098,8 +2098,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.vo2Max("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.vo2Max("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async vo2Max(
@@ -2127,7 +2127,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2184,8 +2184,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.stressLevel("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.stressLevel("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async stressLevel(
@@ -2213,7 +2213,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2270,8 +2270,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.mindfulnessMinutes("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.mindfulnessMinutes("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async mindfulnessMinutes(
@@ -2299,7 +2299,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2356,8 +2356,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.caffeine("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.caffeine("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async caffeine(
@@ -2385,7 +2385,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2442,8 +2442,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.water("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.water("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async water(
@@ -2471,7 +2471,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2528,8 +2528,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.steps("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.steps("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async steps(
@@ -2557,7 +2557,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2614,8 +2614,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.floorsClimbed("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.floorsClimbed("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async floorsClimbed(
@@ -2643,7 +2643,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2700,8 +2700,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.distance("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.distance("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async distance(
@@ -2729,7 +2729,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2786,8 +2786,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.caloriesBasal("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.caloriesBasal("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async caloriesBasal(
@@ -2815,7 +2815,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2872,8 +2872,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.caloriesActive("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.caloriesActive("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async caloriesActive(
@@ -2901,7 +2901,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2958,8 +2958,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.respiratoryRate("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.respiratoryRate("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async respiratoryRate(
@@ -2987,7 +2987,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3044,8 +3044,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.ige("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.ige("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async ige(
@@ -3073,7 +3073,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3130,8 +3130,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.igg("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.igg("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async igg(
@@ -3159,7 +3159,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3216,8 +3216,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.hypnogram("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.hypnogram("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async hypnogram(
@@ -3245,7 +3245,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3302,8 +3302,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.hrv("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.hrv("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async hrv(
@@ -3331,7 +3331,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3388,8 +3388,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.heartrate("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.heartrate("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async heartrate(
@@ -3417,7 +3417,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3474,8 +3474,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.glucose("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.glucose("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async glucose(
@@ -3503,7 +3503,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3560,8 +3560,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.cholesterolTriglycerides("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.cholesterolTriglycerides("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async cholesterolTriglycerides(
@@ -3589,7 +3589,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3646,8 +3646,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.cholesterolTotal("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.cholesterolTotal("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async cholesterolTotal(
@@ -3675,7 +3675,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3732,8 +3732,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.cholesterolLdl("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.cholesterolLdl("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async cholesterolLdl(
@@ -3761,7 +3761,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3818,8 +3818,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.cholesterolHdl("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.cholesterolHdl("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async cholesterolHdl(
@@ -3847,7 +3847,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3904,8 +3904,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.cholesterol("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.cholesterol("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async cholesterol(
@@ -3933,7 +3933,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3990,8 +3990,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bodyWeight("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bodyWeight("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bodyWeight(
@@ -4019,7 +4019,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4076,8 +4076,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bodyFat("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bodyFat("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bodyFat(
@@ -4105,7 +4105,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4162,8 +4162,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bloodOxygen("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bloodOxygen("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bloodOxygen(
@@ -4191,7 +4191,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4248,8 +4248,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.electrocardiogramVoltage("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.electrocardiogramVoltage("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async electrocardiogramVoltage(
@@ -4277,7 +4277,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4334,8 +4334,8 @@ export class Vitals {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.vitals.bloodPressure("user-id", {
-     *         startDate: "start-date"
+     *     await vital.vitals.bloodPressure("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async bloodPressure(
@@ -4363,7 +4363,7 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

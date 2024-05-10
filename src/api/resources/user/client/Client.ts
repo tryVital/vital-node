@@ -27,6 +27,9 @@ export class User {
     /**
      * GET All users for team.
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.getAll()
      */
     public async getAll(
         request: Vital.UserGetAllRequest = {},
@@ -51,7 +54,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -108,6 +111,11 @@ export class User {
      * POST Create a Vital user given a client_user_id and returns the user_id.
      * @throws {@link Vital.BadRequestError}
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.create({
+     *         clientUserId: "client_user_id"
+     *     })
      */
     public async create(
         request: Vital.UserCreateBody,
@@ -122,7 +130,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -179,6 +187,9 @@ export class User {
 
     /**
      * GET metrics for team.
+     *
+     * @example
+     *     await vital.user.getTeamMetrics()
      */
     public async getTeamMetrics(requestOptions?: User.RequestOptions): Promise<Vital.MetricsResult> {
         const _response = await core.fetcher({
@@ -190,7 +201,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -232,6 +243,9 @@ export class User {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.getUserSignInToken("user_id")
      */
     public async getUserSignInToken(
         userId: string,
@@ -246,7 +260,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -303,7 +317,7 @@ export class User {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.user.getConnectedProviders("user-id")
+     *     await vital.user.getConnectedProviders("user_id")
      */
     public async getConnectedProviders(
         userId: string,
@@ -318,7 +332,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -373,6 +387,9 @@ export class User {
     /**
      * GET User details given the user_id.
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.get("user_id")
      */
     public async get(userId: string, requestOptions?: User.RequestOptions): Promise<Vital.ClientFacingUser> {
         const _response = await core.fetcher({
@@ -384,7 +401,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -438,6 +455,9 @@ export class User {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.delete("user_id")
      */
     public async delete(userId: string, requestOptions?: User.RequestOptions): Promise<Vital.UserSuccessResponse> {
         const _response = await core.fetcher({
@@ -449,7 +469,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -505,7 +525,7 @@ export class User {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.user.patch("user-id")
+     *     await vital.user.patch("user_id")
      */
     public async patch(
         userId: string,
@@ -521,7 +541,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -572,6 +592,9 @@ export class User {
     /**
      * GET user_id from client_user_id.
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.getByClientUserId("client_user_id")
      */
     public async getByClientUserId(
         clientUserId: string,
@@ -586,7 +609,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -640,6 +663,9 @@ export class User {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.deregisterProvider("user_id", Vital.Providers.Oura)
      */
     public async deregisterProvider(
         userId: string,
@@ -655,7 +681,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -709,6 +735,9 @@ export class User {
 
     /**
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.undoDelete()
      */
     public async undoDelete(
         request: Vital.UserUndoDeleteRequest = {},
@@ -733,7 +762,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -790,6 +819,9 @@ export class User {
      * Trigger a manual refresh for a specific user
      * @throws {@link Vital.BadRequestError}
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await vital.user.refresh("user_id")
      */
     public async refresh(
         userId: string,
@@ -811,7 +843,7 @@ export class User {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

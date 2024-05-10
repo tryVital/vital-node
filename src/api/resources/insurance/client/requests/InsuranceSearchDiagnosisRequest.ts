@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         diagnosisQuery: "diagnosis-query"
+ *         diagnosisQuery: "diagnosis_query"
  *     }
  */
 export interface InsuranceSearchDiagnosisRequest {

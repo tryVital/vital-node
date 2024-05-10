@@ -16,6 +16,7 @@ export type Providers =
     | "wahoo"
     | "zwift"
     | "freestyle_libre"
+    | "abbott_libreview"
     | "freestyle_libre_ble"
     | "eight_sleep"
     | "withings"
@@ -51,6 +52,7 @@ export const Providers = {
     Wahoo: "wahoo",
     Zwift: "zwift",
     FreestyleLibre: "freestyle_libre",
+    AbbottLibreview: "abbott_libreview",
     FreestyleLibreBle: "freestyle_libre_ble",
     EightSleep: "eight_sleep",
     Withings: "withings",

@@ -5,10 +5,11 @@
 import * as Vital from "..";
 
 export interface ProviderLinkResponse {
-    provider: Vital.PasswordProviders;
-    connected: boolean;
-    providerId?: string;
     state: Vital.ProviderLinkResponseState;
     errorType?: string;
     error?: string;
+    providerMfa?: Vital.ProviderMfaRequest;
+    provider: Vital.PasswordProviders;
+    connected: boolean;
+    providerId?: string;
 }

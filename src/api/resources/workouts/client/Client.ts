@@ -29,8 +29,8 @@ export class Workouts {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.workouts.get("user-id", {
-     *         startDate: "start-date"
+     *     await vital.workouts.get("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async get(
@@ -58,7 +58,7 @@ export class Workouts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -116,8 +116,8 @@ export class Workouts {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.workouts.getRaw("user-id", {
-     *         startDate: "start-date"
+     *     await vital.workouts.getRaw("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async getRaw(
@@ -145,7 +145,7 @@ export class Workouts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -202,7 +202,7 @@ export class Workouts {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.workouts.getByWorkoutId("workout-id")
+     *     await vital.workouts.getByWorkoutId("workout_id")
      */
     public async getByWorkoutId(
         workoutId: string,
@@ -217,7 +217,7 @@ export class Workouts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

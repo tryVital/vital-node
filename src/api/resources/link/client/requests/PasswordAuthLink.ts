@@ -4,6 +4,15 @@
 
 import * as Vital from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         username: "username",
+ *         password: "password",
+ *         provider: Vital.Providers.Oura,
+ *         authType: Vital.AuthType.Password
+ *     }
+ */
 export interface PasswordAuthLink {
     vitalLinkToken?: string;
     username: string;

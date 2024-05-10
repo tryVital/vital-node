@@ -4,6 +4,13 @@
 
 import * as Vital from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         userId: "user_id",
+ *         provider: Vital.DemoProviders.AppleHealthKit
+ *     }
+ */
 export interface DemoConnectionCreationPayload {
     /** Vital user ID */
     userId: string;

@@ -9,6 +9,7 @@ export interface ClientFacingCaloriesActiveTimeseries {
     timezoneOffset?: number;
     /** The reading type of the measurement. This is applicable only to Cholesterol, IGG and IGE. */
     type?: string;
+    /** Measured in kilocalories (kcal) */
     unit: "kcal";
     /** Depracated. The start time (inclusive) of the interval. */
     timestamp: Date;

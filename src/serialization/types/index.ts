@@ -191,6 +191,8 @@ export * from "./PostOrderResponse";
 export * from "./ProfileInDb";
 export * from "./ProviderLinkResponseState";
 export * from "./ProviderLinkResponse";
+export * from "./ProviderMfaRequestMethod";
+export * from "./ProviderMfaRequest";
 export * from "./Providers";
 export * from "./RawActivity";
 export * from "./RawBody";

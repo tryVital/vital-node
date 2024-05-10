@@ -29,8 +29,8 @@ export class Meal {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.meal.get("user-id", {
-     *         startDate: "start-date"
+     *     await vital.meal.get("user_id", {
+     *         startDate: "start_date"
      *     })
      */
     public async get(
@@ -58,7 +58,7 @@ export class Meal {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.7",
+                "X-Fern-SDK-Version": "3.1.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

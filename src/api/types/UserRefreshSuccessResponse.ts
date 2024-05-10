@@ -4,7 +4,7 @@
 
 export interface UserRefreshSuccessResponse {
     /** Whether operation was successful or not */
-    success: string;
+    success: boolean;
     /** A unique ID representing the end user. Typically this will be a user ID from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id. */
     userId: string;
     refreshedSources: string[];

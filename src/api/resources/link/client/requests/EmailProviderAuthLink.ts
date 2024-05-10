@@ -4,6 +4,12 @@
 
 import * as Vital from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         email: "email"
+ *     }
+ */
 export interface EmailProviderAuthLink {
     vitalLinkToken?: string;
     email: string;

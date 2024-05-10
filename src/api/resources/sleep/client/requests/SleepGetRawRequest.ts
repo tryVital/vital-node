@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         startDate: "start-date"
+ *         startDate: "start_date"
  *     }
  */
 export interface SleepGetRawRequest {

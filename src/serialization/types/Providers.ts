@@ -18,6 +18,7 @@ export const Providers: core.serialization.Schema<serializers.Providers.Raw, Vit
         "wahoo",
         "zwift",
         "freestyle_libre",
+        "abbott_libreview",
         "freestyle_libre_ble",
         "eight_sleep",
         "withings",
@@ -55,6 +56,7 @@ export declare namespace Providers {
         | "wahoo"
         | "zwift"
         | "freestyle_libre"
+        | "abbott_libreview"
         | "freestyle_libre_ble"
         | "eight_sleep"
         | "withings"
