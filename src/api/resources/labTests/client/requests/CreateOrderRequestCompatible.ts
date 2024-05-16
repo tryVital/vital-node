@@ -14,6 +14,7 @@ export interface CreateOrderRequestCompatible {
     consents?: Vital.Consent[];
     /** Schedule an Order to be processed in a future date. */
     activateBy?: string;
+    aoeAnswers?: Vital.AoEAnswer[];
     patientDetails: Vital.PatientDetails;
     patientAddress: Vital.PatientAddressCompatible;
 }

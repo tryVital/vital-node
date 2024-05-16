@@ -14,5 +14,6 @@ export interface ClientFacingMarkerComplete {
     type?: Vital.MarkerType;
     unit?: string;
     price?: string;
+    aoe?: Vital.AoE;
     expectedResults: Vital.ClientFacingResult[];
 }

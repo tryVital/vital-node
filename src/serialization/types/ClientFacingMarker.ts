@@ -6,6 +6,7 @@ import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
 import { MarkerType } from "./MarkerType";
+import { AoE } from "./AoE";
 
 export const ClientFacingMarker: core.serialization.ObjectSchema<
     serializers.ClientFacingMarker.Raw,
@@ -20,6 +21,7 @@ export const ClientFacingMarker: core.serialization.ObjectSchema<
     type: MarkerType.optional(),
     unit: core.serialization.string().optional(),
     price: core.serialization.string().optional(),
+    aoe: AoE.optional(),
 });
 
 export declare namespace ClientFacingMarker {
@@ -33,5 +35,6 @@ export declare namespace ClientFacingMarker {
         type?: MarkerType.Raw | null;
         unit?: string | null;
         price?: string | null;
+        aoe?: AoE.Raw | null;
     }
 }

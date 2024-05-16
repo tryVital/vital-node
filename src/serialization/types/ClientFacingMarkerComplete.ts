@@ -6,6 +6,7 @@ import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
 import { MarkerType } from "./MarkerType";
+import { AoE } from "./AoE";
 import { ClientFacingResult } from "./ClientFacingResult";
 
 export const ClientFacingMarkerComplete: core.serialization.ObjectSchema<
@@ -21,6 +22,7 @@ export const ClientFacingMarkerComplete: core.serialization.ObjectSchema<
     type: MarkerType.optional(),
     unit: core.serialization.string().optional(),
     price: core.serialization.string().optional(),
+    aoe: AoE.optional(),
     expectedResults: core.serialization.property("expected_results", core.serialization.list(ClientFacingResult)),
 });
 
@@ -35,6 +37,7 @@ export declare namespace ClientFacingMarkerComplete {
         type?: MarkerType.Raw | null;
         unit?: string | null;
         price?: string | null;
+        aoe?: AoE.Raw | null;
         expected_results: ClientFacingResult.Raw[];
     }
 }

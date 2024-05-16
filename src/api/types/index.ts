@@ -1,5 +1,8 @@
 export * from "./ActivityV2InDb";
 export * from "./Address";
+export * from "./Answer";
+export * from "./AoE";
+export * from "./AoEAnswer";
 export * from "./AppointmentAvailabilitySlots";
 export * from "./AppointmentEventStatus";
 export * from "./AppointmentProvider";
@@ -194,6 +197,8 @@ export * from "./ProviderLinkResponse";
 export * from "./ProviderMfaRequestMethod";
 export * from "./ProviderMfaRequest";
 export * from "./Providers";
+export * from "./Question";
+export * from "./QuestionType";
 export * from "./RawActivity";
 export * from "./RawBody";
 export * from "./RawDevices";

@@ -14,4 +14,5 @@ export interface ClientFacingMarker {
     type?: Vital.MarkerType;
     unit?: string;
     price?: string;
+    aoe?: Vital.AoE;
 }
