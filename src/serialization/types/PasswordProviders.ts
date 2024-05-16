@@ -18,6 +18,7 @@ export const PasswordProviders: core.serialization.Schema<serializers.PasswordPr
         "hammerhead",
         "my_fitness_pal",
         "kardia",
+        "abbott_libreview",
     ]);
 
 export declare namespace PasswordProviders {
@@ -31,5 +32,6 @@ export declare namespace PasswordProviders {
         | "dexcom"
         | "hammerhead"
         | "my_fitness_pal"
-        | "kardia";
+        | "kardia"
+        | "abbott_libreview";
 }

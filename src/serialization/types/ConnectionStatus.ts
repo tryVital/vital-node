@@ -13,20 +13,20 @@ export const ConnectionStatus: core.serialization.ObjectSchema<
     Vital.ConnectionStatus
 > = core.serialization.object({
     state: ConnectionStatusState,
+    redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),
     errorType: core.serialization.property("error_type", core.serialization.string().optional()),
     error: core.serialization.string().optional(),
     providerMfa: core.serialization.property("provider_mfa", ProviderMfaRequest.optional()),
     success: core.serialization.boolean(),
-    redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),
 });
 
 export declare namespace ConnectionStatus {
     interface Raw {
         state: ConnectionStatusState.Raw;
+        redirect_url?: string | null;
         error_type?: string | null;
         error?: string | null;
         provider_mfa?: ProviderMfaRequest.Raw | null;
         success: boolean;
-        redirect_url?: string | null;
     }
 }

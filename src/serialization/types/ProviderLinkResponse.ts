@@ -14,22 +14,24 @@ export const ProviderLinkResponse: core.serialization.ObjectSchema<
     Vital.ProviderLinkResponse
 > = core.serialization.object({
     state: ProviderLinkResponseState,
+    redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),
     errorType: core.serialization.property("error_type", core.serialization.string().optional()),
     error: core.serialization.string().optional(),
     providerMfa: core.serialization.property("provider_mfa", ProviderMfaRequest.optional()),
     provider: PasswordProviders,
     connected: core.serialization.boolean(),
-    providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
+    providerId: core.serialization.property("provider_id", core.serialization.string()),
 });
 
 export declare namespace ProviderLinkResponse {
     interface Raw {
         state: ProviderLinkResponseState.Raw;
+        redirect_url?: string | null;
         error_type?: string | null;
         error?: string | null;
         provider_mfa?: ProviderMfaRequest.Raw | null;
         provider: PasswordProviders.Raw;
         connected: boolean;
-        provider_id?: string | null;
+        provider_id: string;
     }
 }

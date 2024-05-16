@@ -7,6 +7,7 @@ export { EmailAuthLink } from "./EmailAuthLink";
 export { PasswordAuthLink } from "./PasswordAuthLink";
 export { LinkGenerateOauthLinkRequest } from "./LinkGenerateOauthLinkRequest";
 export { IndividualProviderData } from "./IndividualProviderData";
+export { CompletePasswordProviderMfaBody } from "./CompletePasswordProviderMfaBody";
 export { EmailProviderAuthLink } from "./EmailProviderAuthLink";
 export { LinkGetAllProvidersRequest } from "./LinkGetAllProvidersRequest";
 export { ManualConnectionData } from "./ManualConnectionData";

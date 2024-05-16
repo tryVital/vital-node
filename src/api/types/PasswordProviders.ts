@@ -15,7 +15,8 @@ export type PasswordProviders =
     | "dexcom"
     | "hammerhead"
     | "my_fitness_pal"
-    | "kardia";
+    | "kardia"
+    | "abbott_libreview";
 
 export const PasswordProviders = {
     Whoop: "whoop",
@@ -28,4 +29,5 @@ export const PasswordProviders = {
     Hammerhead: "hammerhead",
     MyFitnessPal: "my_fitness_pal",
     Kardia: "kardia",
+    AbbottLibreview: "abbott_libreview",
 } as const;

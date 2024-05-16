@@ -17,6 +17,6 @@ export interface UserPatchBody {
     fallbackBirthDate?: string;
     /** Starting bound for user data ingestion. Data older than this date will not be ingested. */
     ingestionStart?: string;
-    /** Ending bound for user data ingestion. Data newer than this date will not be ingested and the connection deregistered. */
+    /** Ending bound for user data ingestion. Data from this date or later will not be ingested and the connection will be deregistered. */
     ingestionEnd?: string;
 }
