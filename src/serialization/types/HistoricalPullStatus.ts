@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const HistoricalPullStatus: core.serialization.Schema<
     serializers.HistoricalPullStatus.Raw,
     Vital.HistoricalPullStatus
-> = core.serialization.enum_(["success", "failure", "in_progress"]);
+> = core.serialization.enum_(["success", "failure", "in_progress", "scheduled"]);
 
 export declare namespace HistoricalPullStatus {
-    type Raw = "success" | "failure" | "in_progress";
+    type Raw = "success" | "failure" | "in_progress" | "scheduled";
 }

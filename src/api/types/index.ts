@@ -159,6 +159,7 @@ export * from "./HealthInsuranceCreateRequestBackImage";
 export * from "./HealthInsuranceCreateRequestPatientSignatureImage";
 export * from "./HealthInsuranceCreateRequest";
 export * from "./HistoricalPullStatus";
+export * from "./HistoricalPullTimeline";
 export * from "./Jpeg";
 export * from "./LabResultsMetadata";
 export * from "./LabResultsRawResults";

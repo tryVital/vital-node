@@ -5,10 +5,11 @@
 /**
  * An enumeration.
  */
-export type HistoricalPullStatus = "success" | "failure" | "in_progress";
+export type HistoricalPullStatus = "success" | "failure" | "in_progress" | "scheduled";
 
 export const HistoricalPullStatus = {
     Success: "success",
     Failure: "failure",
     InProgress: "in_progress",
+    Scheduled: "scheduled",
 } as const;

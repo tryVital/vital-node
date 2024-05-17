@@ -6,6 +6,7 @@ import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
 import { HistoricalPullStatus } from "./HistoricalPullStatus";
+import { HistoricalPullTimeline } from "./HistoricalPullTimeline";
 
 export const SingleHistoricalPullStatistics: core.serialization.ObjectSchema<
     serializers.SingleHistoricalPullStatistics.Raw,
@@ -14,6 +15,7 @@ export const SingleHistoricalPullStatistics: core.serialization.ObjectSchema<
     status: HistoricalPullStatus,
     rangeStart: core.serialization.property("range_start", core.serialization.date().optional()),
     rangeEnd: core.serialization.property("range_end", core.serialization.date().optional()),
+    timeline: HistoricalPullTimeline,
     daysWithData: core.serialization.property("days_with_data", core.serialization.number().optional()),
     release: core.serialization.string(),
     traceId: core.serialization.property("trace_id", core.serialization.string().optional()),
@@ -24,6 +26,7 @@ export declare namespace SingleHistoricalPullStatistics {
         status: HistoricalPullStatus.Raw;
         range_start?: string | null;
         range_end?: string | null;
+        timeline: HistoricalPullTimeline.Raw;
         days_with_data?: number | null;
         release: string;
         trace_id?: string | null;

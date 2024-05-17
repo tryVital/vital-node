@@ -8,6 +8,7 @@ export interface SingleHistoricalPullStatistics {
     status: Vital.HistoricalPullStatus;
     rangeStart?: Date;
     rangeEnd?: Date;
+    timeline: Vital.HistoricalPullTimeline;
     daysWithData?: number;
     release: string;
     traceId?: string;
