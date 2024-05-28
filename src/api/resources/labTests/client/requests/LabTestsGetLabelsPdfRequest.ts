@@ -10,5 +10,5 @@ export interface LabTestsGetLabelsPdfRequest {
     /**
      * Collection date
      */
-    collectionDate?: Date;
+    collectionDate: Date;
 }

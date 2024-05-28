@@ -26,11 +26,21 @@ export class Providers {
 
     /**
      * Get Provider list
+     * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await vital.providers.getAll()
      */
-    public async getAll(requestOptions?: Providers.RequestOptions): Promise<Vital.ClientFacingProviderDetailed[]> {
+    public async getAll(
+        request: Vital.ProvidersGetAllRequest = {},
+        requestOptions?: Providers.RequestOptions
+    ): Promise<Vital.ClientFacingProviderDetailed[]> {
+        const { sourceType } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (sourceType != null) {
+            _queryParams["source_type"] = sourceType;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -40,12 +50,13 @@ export class Providers {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.13",
+                "X-Fern-SDK-Version": "3.1.14",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -59,10 +70,22 @@ export class Providers {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VitalError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

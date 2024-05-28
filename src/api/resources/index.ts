@@ -25,6 +25,7 @@ export * from "./meal/client/requests";
 export * from "./vitals/client/requests";
 export * from "./user/client/requests";
 export * from "./team/client/requests";
+export * from "./providers/client/requests";
 export * from "./introspect/client/requests";
 export * from "./labTests/client/requests";
 export * from "./testkit/client/requests";
