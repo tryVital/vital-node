@@ -12,9 +12,7 @@ export interface ClientFacingBody {
     date: Date;
     /** Date of the summary in the YYYY-mm-dd format. */
     calendarDate: string;
-    /** Weight in kg::kg */
     weight?: number;
-    /** Body fat percentage::perc */
     fat?: number;
     source: Vital.ClientFacingSource;
 }

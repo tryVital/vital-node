@@ -8,10 +8,12 @@ import * as core from "../../core";
 
 export const Png: core.serialization.ObjectSchema<serializers.Png.Raw, Vital.Png> = core.serialization.object({
     content: core.serialization.string(),
+    contentType: core.serialization.property("content_type", core.serialization.stringLiteral("image/png")),
 });
 
 export declare namespace Png {
     interface Raw {
         content: string;
+        content_type: "image/png";
     }
 }

@@ -6,7 +6,7 @@ import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
 import { PatientDetails } from "../../../../types/PatientDetails";
-import { PatientAddressCompatible } from "../../../../types/PatientAddressCompatible";
+import { PatientAddressCompatibleInput } from "../../../../types/PatientAddressCompatibleInput";
 import { PhysicianCreateRequestBase } from "../../../../types/PhysicianCreateRequestBase";
 import { HealthInsuranceCreateRequest } from "../../../../types/HealthInsuranceCreateRequest";
 import { Consent } from "../../../../types/Consent";
@@ -18,7 +18,7 @@ export const RegisterTestkitRequest: core.serialization.Schema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     sampleId: core.serialization.property("sample_id", core.serialization.string()),
     patientDetails: core.serialization.property("patient_details", PatientDetails),
-    patientAddress: core.serialization.property("patient_address", PatientAddressCompatible),
+    patientAddress: core.serialization.property("patient_address", PatientAddressCompatibleInput),
     physician: PhysicianCreateRequestBase.optional(),
     healthInsurance: core.serialization.property("health_insurance", HealthInsuranceCreateRequest.optional()),
     consents: core.serialization.list(Consent).optional(),
@@ -29,7 +29,7 @@ export declare namespace RegisterTestkitRequest {
         user_id: string;
         sample_id: string;
         patient_details: PatientDetails.Raw;
-        patient_address: PatientAddressCompatible.Raw;
+        patient_address: PatientAddressCompatibleInput.Raw;
         physician?: PhysicianCreateRequestBase.Raw | null;
         health_insurance?: HealthInsuranceCreateRequest.Raw | null;
         consents?: Consent.Raw[] | null;

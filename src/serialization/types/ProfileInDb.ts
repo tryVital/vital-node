@@ -9,7 +9,7 @@ import { ClientFacingProvider } from "./ClientFacingProvider";
 
 export const ProfileInDb: core.serialization.ObjectSchema<serializers.ProfileInDb.Raw, Vital.ProfileInDb> =
     core.serialization.object({
-        data: core.serialization.unknown().optional(),
+        data: core.serialization.unknown(),
         userId: core.serialization.property("user_id", core.serialization.string()),
         sourceId: core.serialization.property("source_id", core.serialization.number()),
         priorityId: core.serialization.property("priority_id", core.serialization.number().optional()),
@@ -20,7 +20,7 @@ export const ProfileInDb: core.serialization.ObjectSchema<serializers.ProfileInD
 
 export declare namespace ProfileInDb {
     interface Raw {
-        data?: unknown | null;
+        data?: unknown;
         user_id: string;
         source_id: number;
         priority_id?: number | null;

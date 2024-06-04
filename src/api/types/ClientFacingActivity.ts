@@ -12,30 +12,18 @@ export interface ClientFacingActivity {
     date: Date;
     /** Date of the summary in the YYYY-mm-dd format. */
     calendarDate: string;
-    /** Total energy consumption during the day including Basal Metabolic Rate in kilocalories::kilocalories */
     caloriesTotal?: number;
-    /** Energy consumption caused by the physical activity of the day in kilocalories::kilocalories */
     caloriesActive?: number;
-    /** Total number of steps registered during the day::steps */
     steps?: number;
-    /** Deprecated. Daily physical activity as equal meters i.e. amount of walking needed to get the same amount of activity::meters */
     dailyMovement?: number;
-    /** Distance traveled during activities throughout the day::meters */
     distance?: number;
-    /** Number of minutes during the day with low intensity activity (e.g. household work)::minutes */
     low?: number;
-    /** Number of minutes during the day with medium intensity activity (e.g. walking)::minutes */
     medium?: number;
-    /** Number of minutes during the day with high intensity activity (e.g. running)::minutes */
     high?: number;
     /** Source the data has come from. */
     source: Vital.ClientFacingSource;
-    /** Number of floors climbed by the user::count */
     floorsClimbed?: number;
-    /** [DEPRECATED] The time zone full identifier for the data. Example: 'Europe/London'. */
     timeZone?: string;
-    /** Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds */
     timezoneOffset?: number;
-    /** Heart rate daily summary. */
     heartRate?: Vital.ClientFacingHeartRate;
 }

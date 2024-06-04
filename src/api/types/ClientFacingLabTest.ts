@@ -5,14 +5,21 @@
 import * as Vital from "..";
 
 export interface ClientFacingLabTest {
+    /** */
     id: string;
+    /** */
     slug: string;
+    /** */
     name: string;
+    /** */
     sampleType: Vital.LabTestSampleType;
+    /** */
     method: Vital.LabTestCollectionMethod;
+    /** */
     price: number;
     /** Deprecated. Use status instead. */
     isActive: boolean;
+    /** */
     status: Vital.LabTestStatus;
     /** Defines whether a lab test requires fasting. */
     fasting?: boolean;

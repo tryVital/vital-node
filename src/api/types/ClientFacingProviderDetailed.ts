@@ -11,7 +11,6 @@ export interface ClientFacingProviderDetailed {
     slug: string;
     /** Description of source of information */
     description: string;
-    /** URL for source logo */
     logo?: string;
     authType?: Vital.SourceAuthType;
     supportedResources?: Vital.ClientFacingResource[];

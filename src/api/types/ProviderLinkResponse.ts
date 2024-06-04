@@ -12,5 +12,5 @@ export interface ProviderLinkResponse {
     providerMfa?: Vital.ProviderMfaRequest;
     provider: Vital.PasswordProviders;
     connected: boolean;
-    providerId: string;
+    providerId?: string;
 }

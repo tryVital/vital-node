@@ -15,15 +15,8 @@ export interface ClientFacingUser {
     createdOn: Date;
     /** A list of the users connected sources. */
     connectedSources: Vital.ConnectedSourceClientFacing[];
-    /**
-     *     Fallback time zone of the user, in the form of a valid IANA tzdatabase identifier (e.g., `Europe/London` or `America/Los_Angeles`).
-     *     Used when pulling data from sources that are completely time zone agnostic (e.g., all time is relative to UTC clock, without any time zone attributions on data points).
-     */
     fallbackTimeZone?: Vital.FallbackTimeZone;
-    /** Fallback date of birth of the user, in YYYY-mm-dd format. Used for calculating max heartrate for providers that don not provide users' age. */
     fallbackBirthDate?: Vital.FallbackBirthDate;
-    /** Starting bound for user data ingestion. Data older than this date will not be ingested. */
     ingestionStart?: string;
-    /** Ending bound for user data ingestion. Data from this date or later will not be ingested and the connection will be deregistered. */
     ingestionEnd?: string;
 }

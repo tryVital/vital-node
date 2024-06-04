@@ -5,18 +5,12 @@
 import * as Vital from "..";
 
 export interface Macros {
-    /** Amount of carbohydrates in grams (g) */
     carbs?: number;
-    /** Amount of protein in grams (g) */
     protein?: number;
     /** Details of fat content */
     fats?: Vital.Fats;
-    /** Amount of alcohol in grams (g) */
     alcohol?: number;
-    /** Amount of water in grams (g) */
     water?: number;
-    /** Amount of dietary fiber in grams (g) */
     fibre?: number;
-    /** Amount of sugar in grams (g) */
     sugar?: number;
 }

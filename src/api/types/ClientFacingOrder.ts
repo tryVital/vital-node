@@ -11,16 +11,12 @@ export interface ClientFacingOrder {
     id: string;
     /** Your team id. */
     teamId: string;
-    /** Patient Details */
     patientDetails?: Vital.ClientFacingPatientDetailsCompatible;
-    /** Patient Address */
-    patientAddress?: Vital.PatientAddressCompatible;
+    patientAddress?: Vital.PatientAddressCompatibleOutput;
     /** The Vital Test associated with the order */
     labTest: Vital.ClientFacingLabTest;
     details: Vital.ClientFacingOrderDetails;
-    /** Sample ID */
     sampleId?: string;
-    /** Notes associated with the order */
     notes?: string;
     /** When your order was created */
     createdAt: Date;
@@ -29,14 +25,10 @@ export interface ClientFacingOrder {
     events: Vital.ClientFacingOrderEvent[];
     status?: Vital.OrderTopLevelStatus;
     physician?: Vital.ClientFacingPhysician;
-    /** Vital ID of the health insurance. */
     healthInsuranceId?: string;
-    /** DEPRECATED. Requistion form url. */
     requisitionFormUrl?: string;
     /** Defines whether order is priority or not. For some labs, this refers to a STAT order. */
     priority?: boolean;
-    /** Shipping Details. For unregistered testkit orders. */
     shippingDetails?: Vital.ShippingAddress;
-    /** Schedule an Order to be processed in a future date. */
     activateBy?: string;
 }

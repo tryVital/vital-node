@@ -7,16 +7,4 @@ import * as Vital from "..";
 /**
  * An image of the back of the patient insurance card.
  */
-export type HealthInsuranceCreateRequestBackImage =
-    | Vital.HealthInsuranceCreateRequestBackImage.ImageJpeg
-    | Vital.HealthInsuranceCreateRequestBackImage.ImagePng;
-
-export declare namespace HealthInsuranceCreateRequestBackImage {
-    interface ImageJpeg extends Vital.Jpeg {
-        contentType: "image/jpeg";
-    }
-
-    interface ImagePng extends Vital.Png {
-        contentType: "image/png";
-    }
-}
+export type HealthInsuranceCreateRequestBackImage = Vital.Jpeg | Vital.Png;

@@ -8,15 +8,10 @@ export interface ClientFacingWorkout {
     /** User id returned by vital create user request. This id should be stored in your database against the user and used for all interactions with the vital api. */
     userId: string;
     id: string;
-    /** Title given for the workout */
     title?: string;
-    /** Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds */
     timezoneOffset?: number;
-    /** Average heart rate during workout::bpm */
     averageHr?: number;
-    /** Max heart rate during workout::bpm */
     maxHr?: number;
-    /** Distance travelled during workout::meters */
     distance?: number;
     /** Date of the workout summary in the YYYY-mm-dd format. This generally matches the workout start date. */
     calendarDate: string;
@@ -24,33 +19,21 @@ export interface ClientFacingWorkout {
     timeStart: Date;
     /** End time of the workout::time */
     timeEnd: Date;
-    /** Calories burned during the workout::kCal */
     calories?: number;
     /** Sport's name */
     sport?: Vital.ClientFacingSport;
-    /** Time in seconds spent in different heart rate zones <50%, 50-60%, 60-70%, 70-80%, 80-90%, 90%+. Due to rounding errors, it's possible that summing all values is different than the total time of the workout. Not available for all providers::seconds */
     hrZones?: number[];
-    /** Time spent active during the workout::seconds */
     movingTime?: number;
-    /** Elevation gain during the workout::meters */
     totalElevationGain?: number;
-    /** Highest point of elevation::meters */
     elevHigh?: number;
-    /** Lowest point of elevation::meters */
     elevLow?: number;
-    /** Average speed during workout in m/s::meters/sec */
     averageSpeed?: number;
-    /** Max speed during workout in m/s::meters/sec */
     maxSpeed?: number;
-    /** Average watts burned during exercise::watts */
     averageWatts?: number;
-    /** Watts burned during exercise::watts */
     deviceWatts?: number;
-    /** Max watts burned during exercise::watts */
     maxWatts?: number;
-    /** Weighted average watts burned during exercise::watts */
     weightedAverageWatts?: number;
-    /** Map of workouts encoded as polyline */
+    steps?: number;
     map?: Record<string, unknown>;
     /** Provider ID given for that specific workout */
     providerId: string;

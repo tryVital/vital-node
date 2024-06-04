@@ -12,9 +12,9 @@ export const ClientFacingElectrocardiogramVoltageTimeseries: core.serialization.
 > = core.serialization.object({
     id: core.serialization.number().optional(),
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
-    type: core.serialization.string(),
+    type: core.serialization.string().optional(),
     unit: core.serialization.string(),
-    timestamp: core.serialization.date(),
+    timestamp: core.serialization.string(),
     value: core.serialization.number(),
 });
 
@@ -22,7 +22,7 @@ export declare namespace ClientFacingElectrocardiogramVoltageTimeseries {
     interface Raw {
         id?: number | null;
         timezone_offset?: number | null;
-        type: string;
+        type?: string | null;
         unit: string;
         timestamp: string;
         value: number;

@@ -35,6 +35,7 @@ export const ClientFacingWorkout: core.serialization.ObjectSchema<
     deviceWatts: core.serialization.property("device_watts", core.serialization.number().optional()),
     maxWatts: core.serialization.property("max_watts", core.serialization.number().optional()),
     weightedAverageWatts: core.serialization.property("weighted_average_watts", core.serialization.number().optional()),
+    steps: core.serialization.number().optional(),
     map: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     providerId: core.serialization.property("provider_id", core.serialization.string()),
     source: ClientFacingSource,
@@ -65,6 +66,7 @@ export declare namespace ClientFacingWorkout {
         device_watts?: number | null;
         max_watts?: number | null;
         weighted_average_watts?: number | null;
+        steps?: number | null;
         map?: Record<string, unknown> | null;
         provider_id: string;
         source: ClientFacingSource.Raw;

@@ -7,7 +7,6 @@ export { AppointmentRescheduleRequest } from "./AppointmentRescheduleRequest";
 export { AppointmentCancelRequest } from "./AppointmentCancelRequest";
 export { LabTestsGetAreaInfoRequest } from "./LabTestsGetAreaInfoRequest";
 export { LabTestsGetLabelsPdfRequest } from "./LabTestsGetLabelsPdfRequest";
-export { PostOrderFhir } from "./PostOrderFhir";
 export { CreateOrderRequestCompatible } from "./CreateOrderRequestCompatible";
 export { LabTestsSimulateOrderProcessRequest } from "./LabTestsSimulateOrderProcessRequest";
 export { LabTestsGetOrdersRequest } from "./LabTestsGetOrdersRequest";

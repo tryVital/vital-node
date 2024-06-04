@@ -20,7 +20,7 @@ export const ProviderLinkResponse: core.serialization.ObjectSchema<
     providerMfa: core.serialization.property("provider_mfa", ProviderMfaRequest.optional()),
     provider: PasswordProviders,
     connected: core.serialization.boolean(),
-    providerId: core.serialization.property("provider_id", core.serialization.string()),
+    providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
 });
 
 export declare namespace ProviderLinkResponse {
@@ -32,6 +32,6 @@ export declare namespace ProviderLinkResponse {
         provider_mfa?: ProviderMfaRequest.Raw | null;
         provider: PasswordProviders.Raw;
         connected: boolean;
-        provider_id: string;
+        provider_id?: string | null;
     }
 }

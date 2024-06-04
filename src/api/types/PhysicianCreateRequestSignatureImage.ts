@@ -7,16 +7,4 @@ import * as Vital from "..";
 /**
  * An image of the physician signature for health insurance billing
  */
-export type PhysicianCreateRequestSignatureImage =
-    | Vital.PhysicianCreateRequestSignatureImage.ImageJpeg
-    | Vital.PhysicianCreateRequestSignatureImage.ImagePng;
-
-export declare namespace PhysicianCreateRequestSignatureImage {
-    interface ImageJpeg extends Vital.Jpeg {
-        contentType: "image/jpeg";
-    }
-
-    interface ImagePng extends Vital.Png {
-        contentType: "image/png";
-    }
-}
+export type PhysicianCreateRequestSignatureImage = Vital.Jpeg | Vital.Png;

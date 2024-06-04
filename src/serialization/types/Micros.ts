@@ -7,18 +7,18 @@ import * as Vital from "../../api";
 import * as core from "../../core";
 
 export const Micros: core.serialization.ObjectSchema<serializers.Micros.Raw, Vital.Micros> = core.serialization.object({
-    minerals: core.serialization.record(core.serialization.string(), core.serialization.number()).optional(),
+    minerals: core.serialization.record(core.serialization.string(), core.serialization.number().optional()).optional(),
     traceElements: core.serialization.property(
         "trace_elements",
-        core.serialization.record(core.serialization.string(), core.serialization.number()).optional()
+        core.serialization.record(core.serialization.string(), core.serialization.number().optional()).optional()
     ),
-    vitamins: core.serialization.record(core.serialization.string(), core.serialization.number()).optional(),
+    vitamins: core.serialization.record(core.serialization.string(), core.serialization.number().optional()).optional(),
 });
 
 export declare namespace Micros {
     interface Raw {
-        minerals?: Record<string, number> | null;
-        trace_elements?: Record<string, number> | null;
-        vitamins?: Record<string, number> | null;
+        minerals?: Record<string, number | null | undefined> | null;
+        trace_elements?: Record<string, number | null | undefined> | null;
+        vitamins?: Record<string, number | null | undefined> | null;
     }
 }

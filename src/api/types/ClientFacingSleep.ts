@@ -16,7 +16,6 @@ export interface ClientFacingSleep {
     bedtimeStart: Date;
     /** UTC Time when the sleep period ended */
     bedtimeStop: Date;
-    /** Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds */
     timezoneOffset?: number;
     /** Total duration of the sleep period (sleep.duration = sleep.bedtime_end - sleep.bedtime_start)::seconds */
     duration: number;
@@ -30,25 +29,15 @@ export interface ClientFacingSleep {
     rem: number;
     /** Total amount of deep (N3) sleep registered during the sleep period::seconds */
     deep: number;
-    /** A value between 1 and 100 representing how well the user slept. Currently only available for Withings, Oura, Whoop and Garmin::scalar */
     score?: number;
-    /** The lowest heart rate (5 minutes sliding average) registered during the sleep period::beats per minute */
     hrLowest?: number;
-    /** The average heart rate registered during the sleep period::beats per minute */
     hrAverage?: number;
-    /** Sleep efficiency is the percentage of the sleep period spent asleep (100% \* sleep.total / sleep.duration)::perc */
     efficiency?: number;
-    /** Detected latency from bedtime_start to the beginning of the first five minutes of persistent sleep::seconds */
     latency?: number;
-    /** Skin temperature deviation from the long-term temperature average::celcius */
     temperatureDelta?: number;
-    /** The skin temperature::celcius */
     skinTemperature?: number;
-    /** Sleeping Heart Rate Dip is the percentage difference between your average waking heart rate and your average sleeping heart rate. In health studies, a greater "dip" is typically seen as a positive indicator of overall health. Currently only available for Garmin::perc */
     hrDip?: number;
-    /** The average heart rate variability registered during the sleep period::rmssd */
     averageHrv?: number;
-    /** Average respiratory rate::breaths per minute */
     respiratoryRate?: number;
     /** Source the data has come from. */
     source: Vital.ClientFacingSource;

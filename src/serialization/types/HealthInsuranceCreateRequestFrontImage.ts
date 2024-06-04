@@ -11,24 +11,8 @@ import { Png } from "./Png";
 export const HealthInsuranceCreateRequestFrontImage: core.serialization.Schema<
     serializers.HealthInsuranceCreateRequestFrontImage.Raw,
     Vital.HealthInsuranceCreateRequestFrontImage
-> = core.serialization
-    .union(core.serialization.discriminant("contentType", "content_type"), {
-        "image/jpeg": Jpeg,
-        "image/png": Png,
-    })
-    .transform<Vital.HealthInsuranceCreateRequestFrontImage>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([Jpeg, Png]);
 
 export declare namespace HealthInsuranceCreateRequestFrontImage {
-    type Raw = HealthInsuranceCreateRequestFrontImage.ImageJpeg | HealthInsuranceCreateRequestFrontImage.ImagePng;
-
-    interface ImageJpeg extends Jpeg.Raw {
-        content_type: "image/jpeg";
-    }
-
-    interface ImagePng extends Png.Raw {
-        content_type: "image/png";
-    }
+    type Raw = Jpeg.Raw | Png.Raw;
 }

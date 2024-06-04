@@ -12,7 +12,6 @@ import * as Vital from "..";
 export interface ClientFacingTestkitOrder {
     /** The Vital TestKit Order ID */
     id: string;
-    /** Shipment object */
     shipment?: Vital.ClientFacingShipment;
     createdAt: Date;
     updatedAt: Date;

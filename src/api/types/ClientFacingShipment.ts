@@ -10,18 +10,11 @@
 export interface ClientFacingShipment {
     /** The Vital Shipment ID */
     id: string;
-    /** Tracking number for delivery to customer */
     outboundTrackingNumber?: string;
-    /** Tracking url for delivery to customer */
     outboundTrackingUrl?: string;
-    /** Tracking number for delivery to lab */
     inboundTrackingNumber?: string;
-    /** Tracking url for delivery to lab */
     inboundTrackingUrl?: string;
-    /** Courier used for delivery to customer */
     outboundCourier?: string;
-    /** Courier used for delivery to lab */
     inboundCourier?: string;
-    /** Notes associated to the Vital shipment */
     notes?: string;
 }

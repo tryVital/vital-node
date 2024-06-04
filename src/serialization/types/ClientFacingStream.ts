@@ -5,37 +5,43 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { ClientFacingStreamCadence } from "./ClientFacingStreamCadence";
+import { ClientFacingStreamAltitude } from "./ClientFacingStreamAltitude";
+import { ClientFacingStreamVelocitySmooth } from "./ClientFacingStreamVelocitySmooth";
+import { ClientFacingStreamHeartrate } from "./ClientFacingStreamHeartrate";
+import { ClientFacingStreamLat } from "./ClientFacingStreamLat";
+import { ClientFacingStreamLng } from "./ClientFacingStreamLng";
+import { ClientFacingStreamDistance } from "./ClientFacingStreamDistance";
+import { ClientFacingStreamPower } from "./ClientFacingStreamPower";
+import { ClientFacingStreamResistance } from "./ClientFacingStreamResistance";
 
 export const ClientFacingStream: core.serialization.ObjectSchema<
     serializers.ClientFacingStream.Raw,
     Vital.ClientFacingStream
 > = core.serialization.object({
-    cadence: core.serialization.list(core.serialization.number()).optional(),
+    cadence: ClientFacingStreamCadence.optional(),
     time: core.serialization.list(core.serialization.number()).optional(),
-    altitude: core.serialization.list(core.serialization.number()).optional(),
-    velocitySmooth: core.serialization.property(
-        "velocity_smooth",
-        core.serialization.list(core.serialization.number()).optional()
-    ),
-    heartrate: core.serialization.list(core.serialization.number()).optional(),
-    lat: core.serialization.list(core.serialization.number()).optional(),
-    lng: core.serialization.list(core.serialization.number()).optional(),
-    distance: core.serialization.list(core.serialization.number()).optional(),
-    power: core.serialization.list(core.serialization.number()).optional(),
-    resistance: core.serialization.list(core.serialization.number()).optional(),
+    altitude: ClientFacingStreamAltitude.optional(),
+    velocitySmooth: core.serialization.property("velocity_smooth", ClientFacingStreamVelocitySmooth.optional()),
+    heartrate: ClientFacingStreamHeartrate.optional(),
+    lat: ClientFacingStreamLat.optional(),
+    lng: ClientFacingStreamLng.optional(),
+    distance: ClientFacingStreamDistance.optional(),
+    power: ClientFacingStreamPower.optional(),
+    resistance: ClientFacingStreamResistance.optional(),
 });
 
 export declare namespace ClientFacingStream {
     interface Raw {
-        cadence?: number[] | null;
+        cadence?: ClientFacingStreamCadence.Raw | null;
         time?: number[] | null;
-        altitude?: number[] | null;
-        velocity_smooth?: number[] | null;
-        heartrate?: number[] | null;
-        lat?: number[] | null;
-        lng?: number[] | null;
-        distance?: number[] | null;
-        power?: number[] | null;
-        resistance?: number[] | null;
+        altitude?: ClientFacingStreamAltitude.Raw | null;
+        velocity_smooth?: ClientFacingStreamVelocitySmooth.Raw | null;
+        heartrate?: ClientFacingStreamHeartrate.Raw | null;
+        lat?: ClientFacingStreamLat.Raw | null;
+        lng?: ClientFacingStreamLng.Raw | null;
+        distance?: ClientFacingStreamDistance.Raw | null;
+        power?: ClientFacingStreamPower.Raw | null;
+        resistance?: ClientFacingStreamResistance.Raw | null;
     }
 }

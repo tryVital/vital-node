@@ -10,9 +10,7 @@ export interface ClientFacingAppointment {
     orderId: string;
     address: Vital.UsAddress;
     location: Vital.LngLat;
-    /** Time is in UTC */
     startAt?: Date;
-    /** Time is in UTC */
     endAt?: Date;
     ianaTimezone?: string;
     type: Vital.AppointmentType;

@@ -4,4 +4,5 @@
 
 export interface Jpeg {
     content: string;
+    contentType: "image/jpeg";
 }

@@ -4,4 +4,5 @@
 
 export interface Png {
     content: string;
+    contentType: "image/png";
 }

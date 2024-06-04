@@ -11,26 +11,8 @@ import { Png } from "./Png";
 export const HealthInsuranceCreateRequestPatientSignatureImage: core.serialization.Schema<
     serializers.HealthInsuranceCreateRequestPatientSignatureImage.Raw,
     Vital.HealthInsuranceCreateRequestPatientSignatureImage
-> = core.serialization
-    .union(core.serialization.discriminant("contentType", "content_type"), {
-        "image/jpeg": Jpeg,
-        "image/png": Png,
-    })
-    .transform<Vital.HealthInsuranceCreateRequestPatientSignatureImage>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([Jpeg, Png]);
 
 export declare namespace HealthInsuranceCreateRequestPatientSignatureImage {
-    type Raw =
-        | HealthInsuranceCreateRequestPatientSignatureImage.ImageJpeg
-        | HealthInsuranceCreateRequestPatientSignatureImage.ImagePng;
-
-    interface ImageJpeg extends Jpeg.Raw {
-        content_type: "image/jpeg";
-    }
-
-    interface ImagePng extends Png.Raw {
-        content_type: "image/png";
-    }
+    type Raw = Jpeg.Raw | Png.Raw;
 }
