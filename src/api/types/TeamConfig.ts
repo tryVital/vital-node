@@ -10,6 +10,7 @@ export interface TeamConfig {
     pushHistoricalData?: boolean;
     providerRawData?: boolean;
     rejectDuplicateConnection?: boolean;
+    sdkPerDeviceActivityTimeseries?: boolean;
     edsPreferences?: Vital.EventDestinationPreferences;
     eventTypePrefixes?: string[];
 }

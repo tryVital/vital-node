@@ -21,6 +21,10 @@ export const TeamConfig: core.serialization.ObjectSchema<serializers.TeamConfig.
             "reject_duplicate_connection",
             core.serialization.boolean().optional()
         ),
+        sdkPerDeviceActivityTimeseries: core.serialization.property(
+            "sdk_per_device_activity_timeseries",
+            core.serialization.boolean().optional()
+        ),
         edsPreferences: core.serialization.property("eds_preferences", EventDestinationPreferences.optional()),
         eventTypePrefixes: core.serialization.property(
             "event_type_prefixes",
@@ -35,6 +39,7 @@ export declare namespace TeamConfig {
         push_historical_data?: boolean | null;
         provider_raw_data?: boolean | null;
         reject_duplicate_connection?: boolean | null;
+        sdk_per_device_activity_timeseries?: boolean | null;
         eds_preferences?: EventDestinationPreferences.Raw | null;
         event_type_prefixes?: string[] | null;
     }

@@ -31,4 +31,5 @@ export interface ClientFacingOrder {
     priority?: boolean;
     shippingDetails?: Vital.ShippingAddress;
     activateBy?: string;
+    passthrough?: string;
 }

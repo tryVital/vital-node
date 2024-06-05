@@ -8,4 +8,5 @@ export interface CreateRegistrableTestkitOrderRequest {
     userId: string;
     labTestId: string;
     shippingDetails: Vital.ShippingAddress;
+    passthrough?: string;
 }

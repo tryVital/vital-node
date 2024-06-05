@@ -14,6 +14,7 @@ export const CreateRegistrableTestkitOrderRequest: core.serialization.Schema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     labTestId: core.serialization.property("lab_test_id", core.serialization.string()),
     shippingDetails: core.serialization.property("shipping_details", ShippingAddress),
+    passthrough: core.serialization.string().optional(),
 });
 
 export declare namespace CreateRegistrableTestkitOrderRequest {
@@ -21,5 +22,6 @@ export declare namespace CreateRegistrableTestkitOrderRequest {
         user_id: string;
         lab_test_id: string;
         shipping_details: ShippingAddress.Raw;
+        passthrough?: string | null;
     }
 }

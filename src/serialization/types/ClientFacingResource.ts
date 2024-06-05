@@ -32,6 +32,8 @@ export const ClientFacingResource: core.serialization.Schema<
     "device",
     "weight",
     "fat",
+    "body_temperature",
+    "body_temperature_delta",
     "meal",
     "water",
     "caffeine",
@@ -72,6 +74,8 @@ export declare namespace ClientFacingResource {
         | "device"
         | "weight"
         | "fat"
+        | "body_temperature"
+        | "body_temperature_delta"
         | "meal"
         | "water"
         | "caffeine"

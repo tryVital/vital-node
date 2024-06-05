@@ -25,6 +25,8 @@ export type ClientFacingResource =
     | "device"
     | "weight"
     | "fat"
+    | "body_temperature"
+    | "body_temperature_delta"
     | "meal"
     | "water"
     | "caffeine"
@@ -63,6 +65,8 @@ export const ClientFacingResource = {
     Device: "device",
     Weight: "weight",
     Fat: "fat",
+    BodyTemperature: "body_temperature",
+    BodyTemperatureDelta: "body_temperature_delta",
     Meal: "meal",
     Water: "water",
     Caffeine: "caffeine",

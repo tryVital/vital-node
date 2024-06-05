@@ -10,6 +10,8 @@ export type TimeseriesResource =
     | "blood_pressure"
     | "body_fat"
     | "body_weight"
+    | "body_temperature"
+    | "body_temperature_delta"
     | "cholesterol"
     | "cholesterol/ldl"
     | "cholesterol/hdl"
@@ -39,6 +41,8 @@ export const TimeseriesResource = {
     BloodPressure: "blood_pressure",
     BodyFat: "body_fat",
     BodyWeight: "body_weight",
+    BodyTemperature: "body_temperature",
+    BodyTemperatureDelta: "body_temperature_delta",
     Cholesterol: "cholesterol",
     CholesterolLdl: "cholesterol/ldl",
     CholesterolHdl: "cholesterol/hdl",

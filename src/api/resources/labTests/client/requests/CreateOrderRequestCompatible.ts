@@ -14,6 +14,7 @@ export interface CreateOrderRequestCompatible {
     consents?: Vital.Consent[];
     activateBy?: string;
     aoeAnswers?: Vital.AoEAnswer[];
+    passthrough?: string;
     patientDetails: Vital.PatientDetails;
     patientAddress: Vital.PatientAddressCompatibleInput;
 }

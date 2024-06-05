@@ -17,6 +17,8 @@ export const TimeseriesResource: core.serialization.Schema<
     "blood_pressure",
     "body_fat",
     "body_weight",
+    "body_temperature",
+    "body_temperature_delta",
     "cholesterol",
     "cholesterol/ldl",
     "cholesterol/hdl",
@@ -48,6 +50,8 @@ export declare namespace TimeseriesResource {
         | "blood_pressure"
         | "body_fat"
         | "body_weight"
+        | "body_temperature"
+        | "body_temperature_delta"
         | "cholesterol"
         | "cholesterol/ldl"
         | "cholesterol/hdl"

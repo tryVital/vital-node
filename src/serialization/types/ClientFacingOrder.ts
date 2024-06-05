@@ -37,6 +37,7 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
     priority: core.serialization.boolean().optional(),
     shippingDetails: core.serialization.property("shipping_details", ShippingAddress.optional()),
     activateBy: core.serialization.property("activate_by", core.serialization.string().optional()),
+    passthrough: core.serialization.string().optional(),
 });
 
 export declare namespace ClientFacingOrder {
@@ -60,5 +61,6 @@ export declare namespace ClientFacingOrder {
         priority?: boolean | null;
         shipping_details?: ShippingAddress.Raw | null;
         activate_by?: string | null;
+        passthrough?: string | null;
     }
 }
