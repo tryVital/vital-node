@@ -16,6 +16,8 @@ export { VitalsHrvGroupedRequest } from "./VitalsHrvGroupedRequest";
 export { VitalsHeartrateGroupedRequest } from "./VitalsHeartrateGroupedRequest";
 export { VitalsGlucoseGroupedRequest } from "./VitalsGlucoseGroupedRequest";
 export { VitalsCholesterolGroupedRequest } from "./VitalsCholesterolGroupedRequest";
+export { VitalsBodyTemperatureDeltaGroupedRequest } from "./VitalsBodyTemperatureDeltaGroupedRequest";
+export { VitalsBodyTemperatureGroupedRequest } from "./VitalsBodyTemperatureGroupedRequest";
 export { VitalsBodyWeightGroupedRequest } from "./VitalsBodyWeightGroupedRequest";
 export { VitalsBodyFatGroupedRequest } from "./VitalsBodyFatGroupedRequest";
 export { VitalsBloodOxygenGroupedRequest } from "./VitalsBloodOxygenGroupedRequest";

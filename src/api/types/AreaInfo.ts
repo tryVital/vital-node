@@ -7,4 +7,5 @@ import * as Vital from "..";
 export interface AreaInfo {
     zipCode: string;
     phlebotomy: Vital.PhlebotomyAreaInfo;
+    psc: Vital.PscAreaInfo;
 }
