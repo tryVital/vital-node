@@ -155,6 +155,8 @@ export * from "./OAuthProviders";
 export * from "./OrderStatus";
 export * from "./OrderTopLevelStatus";
 export * from "./PscAreaInfo";
+export * from "./PscAreaInfoDetails";
+export * from "./PscInfo";
 export * from "./PaginatedUsersResponse";
 export * from "./PasswordProviders";
 export * from "./PatientAddressCompatibleInput";

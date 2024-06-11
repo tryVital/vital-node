@@ -5,18 +5,15 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
-import { ClientFacingLabLocation } from "./ClientFacingLabLocation";
+import { PscAreaInfoDetails } from "./PscAreaInfoDetails";
 
 export const PscAreaInfo: core.serialization.ObjectSchema<serializers.PscAreaInfo.Raw, Vital.PscAreaInfo> =
     core.serialization.object({
-        locations: core.serialization.record(
-            core.serialization.string(),
-            core.serialization.list(ClientFacingLabLocation)
-        ),
+        locations: core.serialization.record(core.serialization.string(), PscAreaInfoDetails),
     });
 
 export declare namespace PscAreaInfo {
     interface Raw {
-        locations: Record<string, ClientFacingLabLocation.Raw[]>;
+        locations: Record<string, PscAreaInfoDetails.Raw>;
     }
 }

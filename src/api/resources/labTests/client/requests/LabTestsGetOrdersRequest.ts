@@ -24,6 +24,10 @@ export interface LabTestsGetOrdersRequest {
      */
     patientName?: string;
     /**
+     * Filter by shipping recipient name.
+     */
+    shippingRecipientName?: string;
+    /**
      * Filter by order ids.
      */
     orderIds?: string | string[];

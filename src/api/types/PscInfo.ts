@@ -4,6 +4,7 @@
 
 import * as Vital from "..";
 
-export interface PscAreaInfo {
-    locations: Record<string, Vital.PscAreaInfoDetails>;
+export interface PscInfo {
+    labId: number;
+    pscs: Vital.ClientFacingLabLocation[];
 }
