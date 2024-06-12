@@ -1,5 +1,6 @@
 export * from "./ActivityV2InDb";
 export * from "./Address";
+export * from "./AllowedRadius";
 export * from "./Answer";
 export * from "./AoE";
 export * from "./AoEAnswer";
