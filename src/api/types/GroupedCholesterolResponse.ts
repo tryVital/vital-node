@@ -8,4 +8,5 @@ export interface GroupedCholesterolResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedCholesterol[]>;
     next?: string;
+    nextCursor?: string;
 }

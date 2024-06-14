@@ -8,4 +8,5 @@ export interface GroupedBloodPressureResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedBloodPressure[]>;
     next?: string;
+    nextCursor?: string;
 }

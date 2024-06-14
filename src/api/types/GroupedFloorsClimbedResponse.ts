@@ -8,4 +8,5 @@ export interface GroupedFloorsClimbedResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedFloorsClimbed[]>;
     next?: string;
+    nextCursor?: string;
 }

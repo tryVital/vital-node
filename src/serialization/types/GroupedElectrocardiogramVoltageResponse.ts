@@ -16,11 +16,13 @@ export const GroupedElectrocardiogramVoltageResponse: core.serialization.ObjectS
         core.serialization.list(GroupedElectrocardiogramVoltage)
     ),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedElectrocardiogramVoltageResponse {
     interface Raw {
         groups: Record<string, GroupedElectrocardiogramVoltage.Raw[]>;
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

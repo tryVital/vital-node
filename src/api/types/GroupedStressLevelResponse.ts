@@ -8,4 +8,5 @@ export interface GroupedStressLevelResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedStressLevel[]>;
     next?: string;
+    nextCursor?: string;
 }

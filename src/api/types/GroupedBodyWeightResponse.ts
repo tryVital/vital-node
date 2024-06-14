@@ -8,4 +8,5 @@ export interface GroupedBodyWeightResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedBodyWeight[]>;
     next?: string;
+    nextCursor?: string;
 }

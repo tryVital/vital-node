@@ -8,4 +8,5 @@ export interface GroupedCaloriesActiveResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedCaloriesActive[]>;
     next?: string;
+    nextCursor?: string;
 }

@@ -8,4 +8,5 @@ export interface GroupedVo2MaxResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedVo2Max[]>;
     next?: string;
+    nextCursor?: string;
 }

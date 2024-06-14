@@ -8,4 +8,5 @@ export interface GroupedStepsResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedSteps[]>;
     next?: string;
+    nextCursor?: string;
 }

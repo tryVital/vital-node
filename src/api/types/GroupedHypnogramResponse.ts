@@ -8,4 +8,5 @@ export interface GroupedHypnogramResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedHypnogram[]>;
     next?: string;
+    nextCursor?: string;
 }

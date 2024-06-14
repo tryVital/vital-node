@@ -8,4 +8,5 @@ export interface GroupedBloodOxygenResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedBloodOxygen[]>;
     next?: string;
+    nextCursor?: string;
 }

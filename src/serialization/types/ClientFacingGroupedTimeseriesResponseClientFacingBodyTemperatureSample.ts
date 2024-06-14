@@ -16,11 +16,13 @@ export const ClientFacingGroupedTimeseriesResponseClientFacingBodyTemperatureSam
         core.serialization.list(ClientFacingTimeseriesGroupClientFacingBodyTemperatureSample)
     ),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace ClientFacingGroupedTimeseriesResponseClientFacingBodyTemperatureSample {
     interface Raw {
         groups: Record<string, ClientFacingTimeseriesGroupClientFacingBodyTemperatureSample.Raw[]>;
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

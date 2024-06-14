@@ -13,11 +13,13 @@ export const GroupedBloodOxygenResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedBloodOxygen)),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedBloodOxygenResponse {
     interface Raw {
         groups: Record<string, GroupedBloodOxygen.Raw[]>;
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

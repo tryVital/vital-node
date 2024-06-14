@@ -8,4 +8,5 @@ export interface GroupedIggResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedIgg[]>;
     next?: string;
+    nextCursor?: string;
 }

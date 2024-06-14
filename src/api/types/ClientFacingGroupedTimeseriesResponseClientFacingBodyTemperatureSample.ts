@@ -8,4 +8,5 @@ export interface ClientFacingGroupedTimeseriesResponseClientFacingBodyTemperatur
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.ClientFacingTimeseriesGroupClientFacingBodyTemperatureSample[]>;
     next?: string;
+    nextCursor?: string;
 }

@@ -8,4 +8,5 @@ export interface GroupedHeartRateResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedHeartRate[]>;
     next?: string;
+    nextCursor?: string;
 }

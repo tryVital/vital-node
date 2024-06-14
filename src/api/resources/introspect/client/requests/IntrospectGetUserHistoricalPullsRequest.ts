@@ -13,4 +13,8 @@ export interface IntrospectGetUserHistoricalPullsRequest {
     provider?: Vital.Providers;
     userLimit?: number;
     cursor?: string;
+    /**
+     * The cursor for fetching the next page, or `null` to fetch the first page.
+     */
+    nextCursor?: string;
 }

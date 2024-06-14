@@ -7,4 +7,5 @@ import * as Vital from "..";
 export interface UserResourcesResponse {
     data: Vital.SingleUserResourceResponse[];
     next?: string;
+    nextCursor?: string;
 }

@@ -8,4 +8,5 @@ export interface GroupedWaterResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedWater[]>;
     next?: string;
+    nextCursor?: string;
 }

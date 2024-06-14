@@ -8,4 +8,5 @@ export interface GroupedMindfulnessMinutesResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedMindfulnessMinutes[]>;
     next?: string;
+    nextCursor?: string;
 }

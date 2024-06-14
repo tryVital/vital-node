@@ -7,4 +7,5 @@ import * as Vital from "..";
 export interface UserHistoricalPullsResponse {
     data: Vital.SingleUserHistoricalPullResponse[];
     next?: string;
+    nextCursor?: string;
 }

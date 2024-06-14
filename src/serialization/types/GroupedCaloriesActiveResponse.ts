@@ -13,11 +13,13 @@ export const GroupedCaloriesActiveResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedCaloriesActive)),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedCaloriesActiveResponse {
     interface Raw {
         groups: Record<string, GroupedCaloriesActive.Raw[]>;
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

@@ -8,4 +8,5 @@ export interface GroupedBodyFatResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedBodyFat[]>;
     next?: string;
+    nextCursor?: string;
 }

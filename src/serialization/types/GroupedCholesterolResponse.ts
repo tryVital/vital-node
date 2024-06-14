@@ -13,11 +13,13 @@ export const GroupedCholesterolResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedCholesterol)),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedCholesterolResponse {
     interface Raw {
         groups: Record<string, GroupedCholesterol.Raw[]>;
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

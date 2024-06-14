@@ -8,4 +8,5 @@ export interface GroupedElectrocardiogramVoltageResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedElectrocardiogramVoltage[]>;
     next?: string;
+    nextCursor?: string;
 }

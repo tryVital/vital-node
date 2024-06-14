@@ -13,11 +13,13 @@ export const UserHistoricalPullsResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     data: core.serialization.list(SingleUserHistoricalPullResponse),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace UserHistoricalPullsResponse {
     interface Raw {
         data: SingleUserHistoricalPullResponse.Raw[];
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

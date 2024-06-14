@@ -34,7 +34,7 @@ export class Introspect {
         request: Vital.IntrospectGetUserResourcesRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserResourcesResponse> {
-        const { userId, provider, userLimit, cursor } = request;
+        const { userId, provider, userLimit, cursor, nextCursor } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (userId != null) {
             _queryParams["user_id"] = userId;
@@ -52,6 +52,10 @@ export class Introspect {
             _queryParams["cursor"] = cursor;
         }
 
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -61,7 +65,7 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.30",
+                "X-Fern-SDK-Version": "3.1.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -124,7 +128,7 @@ export class Introspect {
         request: Vital.IntrospectGetUserHistoricalPullsRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserHistoricalPullsResponse> {
-        const { userId, provider, userLimit, cursor } = request;
+        const { userId, provider, userLimit, cursor, nextCursor } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (userId != null) {
             _queryParams["user_id"] = userId;
@@ -142,6 +146,10 @@ export class Introspect {
             _queryParams["cursor"] = cursor;
         }
 
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -151,7 +159,7 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.30",
+                "X-Fern-SDK-Version": "3.1.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -13,11 +13,13 @@ export const GroupedHrvResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedHrv)),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedHrvResponse {
     interface Raw {
         groups: Record<string, GroupedHrv.Raw[]>;
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

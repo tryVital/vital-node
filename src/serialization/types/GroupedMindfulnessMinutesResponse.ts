@@ -13,11 +13,13 @@ export const GroupedMindfulnessMinutesResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedMindfulnessMinutes)),
     next: core.serialization.string().optional(),
+    nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedMindfulnessMinutesResponse {
     interface Raw {
         groups: Record<string, GroupedMindfulnessMinutes.Raw[]>;
         next?: string | null;
+        next_cursor?: string | null;
     }
 }

@@ -8,4 +8,5 @@ export interface GroupedDistanceResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedDistance[]>;
     next?: string;
+    nextCursor?: string;
 }

@@ -8,4 +8,5 @@ export interface GroupedHrvResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
     groups: Record<string, Vital.GroupedHrv[]>;
     next?: string;
+    nextCursor?: string;
 }

@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const EventDestinationPreferencesEnabledItem: core.serialization.Schema<
     serializers.EventDestinationPreferencesEnabledItem.Raw,
     Vital.EventDestinationPreferencesEnabledItem
-> = core.serialization.enum_(["cloud_pubsub", "rabbitmq", "svix"]);
+> = core.serialization.enum_(["cloud_pubsub", "rabbitmq", "svix", "azure_amqp"]);
 
 export declare namespace EventDestinationPreferencesEnabledItem {
-    type Raw = "cloud_pubsub" | "rabbitmq" | "svix";
+    type Raw = "cloud_pubsub" | "rabbitmq" | "svix" | "azure_amqp";
 }
