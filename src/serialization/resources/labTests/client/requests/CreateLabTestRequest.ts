@@ -6,28 +6,33 @@ import * as serializers from "../../../..";
 import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
 import { LabTestCollectionMethod } from "../../../../types/LabTestCollectionMethod";
-import { LabTestSampleType } from "../../../../types/LabTestSampleType";
 
 export const CreateLabTestRequest: core.serialization.Schema<
     serializers.CreateLabTestRequest.Raw,
     Vital.CreateLabTestRequest
 > = core.serialization.object({
-    markerIds: core.serialization.property("marker_ids", core.serialization.list(core.serialization.number())),
+    markerIds: core.serialization.property(
+        "marker_ids",
+        core.serialization.list(core.serialization.number()).optional()
+    ),
+    providerIds: core.serialization.property(
+        "provider_ids",
+        core.serialization.list(core.serialization.string()).optional()
+    ),
     labId: core.serialization.property("lab_id", core.serialization.number()),
     name: core.serialization.string(),
     method: LabTestCollectionMethod,
-    sampleType: core.serialization.property("sample_type", LabTestSampleType),
     description: core.serialization.string(),
     fasting: core.serialization.boolean().optional(),
 });
 
 export declare namespace CreateLabTestRequest {
     interface Raw {
-        marker_ids: number[];
+        marker_ids?: number[] | null;
+        provider_ids?: string[] | null;
         lab_id: number;
         name: string;
         method: LabTestCollectionMethod.Raw;
-        sample_type: LabTestSampleType.Raw;
         description: string;
         fasting?: boolean | null;
     }

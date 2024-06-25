@@ -16,7 +16,11 @@ export interface LabTestsGetAreaInfoRequest {
      */
     zipCode: string;
     /**
-     * Radius in which to search (meters)
+     * Radius in which to search in miles
      */
     radius?: Vital.AllowedRadius;
+    /**
+     * Lab to check for PSCs
+     */
+    lab?: Vital.Labs;
 }

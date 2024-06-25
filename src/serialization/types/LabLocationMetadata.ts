@@ -14,8 +14,8 @@ export const LabLocationMetadata: core.serialization.ObjectSchema<
     state: core.serialization.string(),
     city: core.serialization.string(),
     zipCode: core.serialization.property("zip_code", core.serialization.string()),
-    address: core.serialization.string(),
-    unit: core.serialization.string().optional(),
+    firstLine: core.serialization.property("first_line", core.serialization.string()),
+    secondLine: core.serialization.property("second_line", core.serialization.string().optional()),
     phoneNumber: core.serialization.property("phone_number", core.serialization.string().optional()),
     faxNumber: core.serialization.property("fax_number", core.serialization.string().optional()),
     hours: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
@@ -27,8 +27,8 @@ export declare namespace LabLocationMetadata {
         state: string;
         city: string;
         zip_code: string;
-        address: string;
-        unit?: string | null;
+        first_line: string;
+        second_line?: string | null;
         phone_number?: string | null;
         fax_number?: string | null;
         hours?: Record<string, unknown> | null;

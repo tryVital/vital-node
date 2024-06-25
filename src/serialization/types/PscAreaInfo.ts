@@ -9,11 +9,11 @@ import { PscAreaInfoDetails } from "./PscAreaInfoDetails";
 
 export const PscAreaInfo: core.serialization.ObjectSchema<serializers.PscAreaInfo.Raw, Vital.PscAreaInfo> =
     core.serialization.object({
-        locations: core.serialization.record(core.serialization.string(), PscAreaInfoDetails),
+        patientServiceCenters: core.serialization.property("patient_service_centers", PscAreaInfoDetails),
     });
 
 export declare namespace PscAreaInfo {
     interface Raw {
-        locations: Record<string, PscAreaInfoDetails.Raw>;
+        patient_service_centers: PscAreaInfoDetails.Raw;
     }
 }

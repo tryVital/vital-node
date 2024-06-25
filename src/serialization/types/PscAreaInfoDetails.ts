@@ -11,12 +11,12 @@ export const PscAreaInfoDetails: core.serialization.ObjectSchema<
     Vital.PscAreaInfoDetails
 > = core.serialization.object({
     withinRadius: core.serialization.property("within_radius", core.serialization.number()),
-    radius: core.serialization.number(),
+    radius: core.serialization.string(),
 });
 
 export declare namespace PscAreaInfoDetails {
     interface Raw {
         within_radius: number;
-        radius: number;
+        radius: string;
     }
 }

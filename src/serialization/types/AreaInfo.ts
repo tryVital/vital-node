@@ -12,13 +12,16 @@ export const AreaInfo: core.serialization.ObjectSchema<serializers.AreaInfo.Raw,
     core.serialization.object({
         zipCode: core.serialization.property("zip_code", core.serialization.string()),
         phlebotomy: PhlebotomyAreaInfo,
-        psc: PscAreaInfo,
+        centralLabs: core.serialization.property(
+            "central_labs",
+            core.serialization.record(core.serialization.string(), PscAreaInfo)
+        ),
     });
 
 export declare namespace AreaInfo {
     interface Raw {
         zip_code: string;
         phlebotomy: PhlebotomyAreaInfo.Raw;
-        psc: PscAreaInfo.Raw;
+        central_labs: Record<string, PscAreaInfo.Raw>;
     }
 }

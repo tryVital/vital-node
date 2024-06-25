@@ -7,8 +7,8 @@ import * as Vital from "../../api";
 import * as core from "../../core";
 
 export const AllowedRadius: core.serialization.Schema<serializers.AllowedRadius.Raw, Vital.AllowedRadius> =
-    core.serialization.number();
+    core.serialization.enum_(["10", "20", "25", "50"]);
 
 export declare namespace AllowedRadius {
-    type Raw = number;
+    type Raw = "10" | "20" | "25" | "50";
 }

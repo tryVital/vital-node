@@ -7,8 +7,8 @@ export interface LabLocationMetadata {
     state: string;
     city: string;
     zipCode: string;
-    address: string;
-    unit?: string;
+    firstLine: string;
+    secondLine?: string;
     phoneNumber?: string;
     faxNumber?: string;
     hours?: Record<string, unknown>;

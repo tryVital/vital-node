@@ -5,17 +5,20 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { Labs } from "./Labs";
 import { ClientFacingLabLocation } from "./ClientFacingLabLocation";
 
 export const PscInfo: core.serialization.ObjectSchema<serializers.PscInfo.Raw, Vital.PscInfo> =
     core.serialization.object({
         labId: core.serialization.property("lab_id", core.serialization.number()),
+        slug: Labs,
         pscs: core.serialization.list(ClientFacingLabLocation),
     });
 
 export declare namespace PscInfo {
     interface Raw {
         lab_id: number;
+        slug: Labs.Raw;
         pscs: ClientFacingLabLocation.Raw[];
     }
 }

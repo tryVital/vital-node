@@ -6,5 +6,6 @@ import * as Vital from "..";
 
 export interface PscInfo {
     labId: number;
+    slug: Vital.Labs;
     pscs: Vital.ClientFacingLabLocation[];
 }

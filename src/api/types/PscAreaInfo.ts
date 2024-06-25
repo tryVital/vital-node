@@ -5,5 +5,5 @@
 import * as Vital from "..";
 
 export interface PscAreaInfo {
-    locations: Record<string, Vital.PscAreaInfoDetails>;
+    patientServiceCenters: Vital.PscAreaInfoDetails;
 }

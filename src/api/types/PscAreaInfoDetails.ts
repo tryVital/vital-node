@@ -4,5 +4,5 @@
 
 export interface PscAreaInfoDetails {
     withinRadius: number;
-    radius: number;
+    radius: string;
 }

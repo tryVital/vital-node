@@ -10,7 +10,7 @@ import * as Vital from "../../../..";
  */
 export interface LabTestsGetOrderPscInfoRequest {
     /**
-     * Radius in which to search. (meters)
+     * Radius in which to search in miles
      */
     radius?: Vital.AllowedRadius;
 }
