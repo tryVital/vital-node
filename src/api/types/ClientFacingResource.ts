@@ -39,6 +39,7 @@ export type ClientFacingResource =
     | "vo2_max"
     | "calories_basal"
     | "stress_level"
+    | "menstrual_cycle"
     | "electrocardiogram_voltage"
     | "sleep_stream";
 
@@ -79,6 +80,7 @@ export const ClientFacingResource = {
     Vo2Max: "vo2_max",
     CaloriesBasal: "calories_basal",
     StressLevel: "stress_level",
+    MenstrualCycle: "menstrual_cycle",
     ElectrocardiogramVoltage: "electrocardiogram_voltage",
     SleepStream: "sleep_stream",
 } as const;

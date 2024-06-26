@@ -46,6 +46,7 @@ export const ClientFacingResource: core.serialization.Schema<
     "vo2_max",
     "calories_basal",
     "stress_level",
+    "menstrual_cycle",
     "electrocardiogram_voltage",
     "sleep_stream",
 ]);
@@ -88,6 +89,7 @@ export declare namespace ClientFacingResource {
         | "vo2_max"
         | "calories_basal"
         | "stress_level"
+        | "menstrual_cycle"
         | "electrocardiogram_voltage"
         | "sleep_stream";
 }
