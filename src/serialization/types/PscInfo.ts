@@ -12,13 +12,16 @@ export const PscInfo: core.serialization.ObjectSchema<serializers.PscInfo.Raw, V
     core.serialization.object({
         labId: core.serialization.property("lab_id", core.serialization.number()),
         slug: Labs,
-        pscs: core.serialization.list(ClientFacingLabLocation),
+        patientServiceCenters: core.serialization.property(
+            "patient_service_centers",
+            core.serialization.list(ClientFacingLabLocation)
+        ),
     });
 
 export declare namespace PscInfo {
     interface Raw {
         lab_id: number;
         slug: Labs.Raw;
-        pscs: ClientFacingLabLocation.Raw[];
+        patient_service_centers: ClientFacingLabLocation.Raw[];
     }
 }

@@ -13,9 +13,9 @@ export interface ClientFacingSource {
     type?: string;
     appId?: string;
     /** Deprecated. Subject to removal after 1 Jan 2024. */
-    name: string;
+    name?: string;
     /** Deprecated. Use `provider` instead. Subject to removal after 1 Jan 2024. */
-    slug: string;
+    slug?: string;
     /** Deprecated. Subject to removal after 1 Jan 2024. */
-    logo: string;
+    logo?: string;
 }
