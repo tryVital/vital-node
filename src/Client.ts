@@ -12,6 +12,7 @@ import { Workouts } from "./api/resources/workouts/client/Client";
 import { Sleep } from "./api/resources/sleep/client/Client";
 import { Body } from "./api/resources/body/client/Client";
 import { Meal } from "./api/resources/meal/client/Client";
+import { MenstrualCycle } from "./api/resources/menstrualCycle/client/Client";
 import { Vitals } from "./api/resources/vitals/client/Client";
 import { User } from "./api/resources/user/client/Client";
 import { Team } from "./api/resources/team/client/Client";
@@ -82,6 +83,12 @@ export class VitalClient {
 
     public get meal(): Meal {
         return (this._meal ??= new Meal(this._options));
+    }
+
+    protected _menstrualCycle: MenstrualCycle | undefined;
+
+    public get menstrualCycle(): MenstrualCycle {
+        return (this._menstrualCycle ??= new MenstrualCycle(this._options));
     }
 
     protected _vitals: Vitals | undefined;
