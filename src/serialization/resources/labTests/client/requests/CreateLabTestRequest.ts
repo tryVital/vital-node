@@ -19,7 +19,6 @@ export const CreateLabTestRequest: core.serialization.Schema<
         "provider_ids",
         core.serialization.list(core.serialization.string()).optional()
     ),
-    labId: core.serialization.property("lab_id", core.serialization.number()),
     name: core.serialization.string(),
     method: LabTestCollectionMethod,
     description: core.serialization.string(),
@@ -30,7 +29,6 @@ export declare namespace CreateLabTestRequest {
     interface Raw {
         marker_ids?: number[] | null;
         provider_ids?: string[] | null;
-        lab_id: number;
         name: string;
         method: LabTestCollectionMethod.Raw;
         description: string;

@@ -7,7 +7,6 @@ import * as Vital from "../../../..";
 /**
  * @example
  *     {
- *         labId: 1,
  *         name: "name",
  *         method: Vital.LabTestCollectionMethod.Testkit,
  *         description: "description"
@@ -16,7 +15,6 @@ import * as Vital from "../../../..";
 export interface CreateLabTestRequest {
     markerIds?: number[];
     providerIds?: string[];
-    labId: number;
     name: string;
     method: Vital.LabTestCollectionMethod;
     description: string;
