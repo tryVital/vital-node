@@ -10,7 +10,7 @@ import { HealthInsuranceCreateRequest } from "../../../../types/HealthInsuranceC
 import { Consent } from "../../../../types/Consent";
 import { AoEAnswer } from "../../../../types/AoEAnswer";
 import { PatientDetails } from "../../../../types/PatientDetails";
-import { PatientAddressCompatibleInput } from "../../../../types/PatientAddressCompatibleInput";
+import { PatientAddressCompatible } from "../../../../types/PatientAddressCompatible";
 
 export const CreateOrderRequestCompatible: core.serialization.Schema<
     serializers.CreateOrderRequestCompatible.Raw,
@@ -26,7 +26,7 @@ export const CreateOrderRequestCompatible: core.serialization.Schema<
     aoeAnswers: core.serialization.property("aoe_answers", core.serialization.list(AoEAnswer).optional()),
     passthrough: core.serialization.string().optional(),
     patientDetails: core.serialization.property("patient_details", PatientDetails),
-    patientAddress: core.serialization.property("patient_address", PatientAddressCompatibleInput),
+    patientAddress: core.serialization.property("patient_address", PatientAddressCompatible),
 });
 
 export declare namespace CreateOrderRequestCompatible {
@@ -41,6 +41,6 @@ export declare namespace CreateOrderRequestCompatible {
         aoe_answers?: AoEAnswer.Raw[] | null;
         passthrough?: string | null;
         patient_details: PatientDetails.Raw;
-        patient_address: PatientAddressCompatibleInput.Raw;
+        patient_address: PatientAddressCompatible.Raw;
     }
 }

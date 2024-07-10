@@ -6,7 +6,7 @@ import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
 import { ClientFacingPatientDetailsCompatible } from "./ClientFacingPatientDetailsCompatible";
-import { PatientAddressCompatibleOutput } from "./PatientAddressCompatibleOutput";
+import { PatientAddressCompatible } from "./PatientAddressCompatible";
 import { ClientFacingLabTest } from "./ClientFacingLabTest";
 import { ClientFacingOrderDetails } from "./ClientFacingOrderDetails";
 import { ClientFacingOrderEvent } from "./ClientFacingOrderEvent";
@@ -22,7 +22,7 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     teamId: core.serialization.property("team_id", core.serialization.string()),
     patientDetails: core.serialization.property("patient_details", ClientFacingPatientDetailsCompatible.optional()),
-    patientAddress: core.serialization.property("patient_address", PatientAddressCompatibleOutput.optional()),
+    patientAddress: core.serialization.property("patient_address", PatientAddressCompatible.optional()),
     labTest: core.serialization.property("lab_test", ClientFacingLabTest),
     details: ClientFacingOrderDetails,
     sampleId: core.serialization.property("sample_id", core.serialization.string().optional()),
@@ -46,7 +46,7 @@ export declare namespace ClientFacingOrder {
         id: string;
         team_id: string;
         patient_details?: ClientFacingPatientDetailsCompatible.Raw | null;
-        patient_address?: PatientAddressCompatibleOutput.Raw | null;
+        patient_address?: PatientAddressCompatible.Raw | null;
         lab_test: ClientFacingLabTest.Raw;
         details: ClientFacingOrderDetails.Raw;
         sample_id?: string | null;

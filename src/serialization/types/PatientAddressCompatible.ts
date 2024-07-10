@@ -6,13 +6,13 @@ import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
 
-export const PatientAddressCompatibleInput: core.serialization.ObjectSchema<
-    serializers.PatientAddressCompatibleInput.Raw,
-    Vital.PatientAddressCompatibleInput
+export const PatientAddressCompatible: core.serialization.ObjectSchema<
+    serializers.PatientAddressCompatible.Raw,
+    Vital.PatientAddressCompatible
 > = core.serialization.object({
     receiverName: core.serialization.property("receiver_name", core.serialization.string().optional()),
-    street: core.serialization.string(),
-    streetNumber: core.serialization.property("street_number", core.serialization.string().optional()),
+    firstLine: core.serialization.property("first_line", core.serialization.string()),
+    secondLine: core.serialization.property("second_line", core.serialization.string().optional()),
     city: core.serialization.string(),
     state: core.serialization.string(),
     zip: core.serialization.string(),
@@ -20,11 +20,11 @@ export const PatientAddressCompatibleInput: core.serialization.ObjectSchema<
     phoneNumber: core.serialization.property("phone_number", core.serialization.string().optional()),
 });
 
-export declare namespace PatientAddressCompatibleInput {
+export declare namespace PatientAddressCompatible {
     interface Raw {
         receiver_name?: string | null;
-        street: string;
-        street_number?: string | null;
+        first_line: string;
+        second_line?: string | null;
         city: string;
         state: string;
         zip: string;

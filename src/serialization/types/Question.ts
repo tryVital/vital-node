@@ -17,6 +17,7 @@ export const Question: core.serialization.ObjectSchema<serializers.Question.Raw,
         type: QuestionType,
         sequence: core.serialization.number(),
         answers: core.serialization.list(Answer),
+        constraint: core.serialization.string().optional(),
     });
 
 export declare namespace Question {
@@ -28,5 +29,6 @@ export declare namespace Question {
         type: QuestionType.Raw;
         sequence: number;
         answers: Answer.Raw[];
+        constraint?: string | null;
     }
 }

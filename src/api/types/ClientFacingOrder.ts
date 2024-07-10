@@ -12,7 +12,7 @@ export interface ClientFacingOrder {
     /** Your team id. */
     teamId: string;
     patientDetails?: Vital.ClientFacingPatientDetailsCompatible;
-    patientAddress?: Vital.PatientAddressCompatibleOutput;
+    patientAddress?: Vital.PatientAddressCompatible;
     /** The Vital Test associated with the order */
     labTest: Vital.ClientFacingLabTest;
     details: Vital.ClientFacingOrderDetails;
