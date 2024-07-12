@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const OvulationTestEntryTestResult: core.serialization.Schema<
     serializers.OvulationTestEntryTestResult.Raw,
     Vital.OvulationTestEntryTestResult
-> = core.serialization.enum_(["negative", "luteinizing_hormone_surge", "estrogen_surge", "indeterminate"]);
+> = core.serialization.enum_(["negative", "positive", "luteinizing_hormone_surge", "estrogen_surge", "indeterminate"]);
 
 export declare namespace OvulationTestEntryTestResult {
-    type Raw = "negative" | "luteinizing_hormone_surge" | "estrogen_surge" | "indeterminate";
+    type Raw = "negative" | "positive" | "luteinizing_hormone_surge" | "estrogen_surge" | "indeterminate";
 }

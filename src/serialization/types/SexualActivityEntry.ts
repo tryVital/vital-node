@@ -11,12 +11,12 @@ export const SexualActivityEntry: core.serialization.ObjectSchema<
     Vital.SexualActivityEntry
 > = core.serialization.object({
     date: core.serialization.string(),
-    protectionUsed: core.serialization.property("protection_used", core.serialization.boolean()),
+    protectionUsed: core.serialization.property("protection_used", core.serialization.boolean().optional()),
 });
 
 export declare namespace SexualActivityEntry {
     interface Raw {
         date: string;
-        protection_used: boolean;
+        protection_used?: boolean | null;
     }
 }

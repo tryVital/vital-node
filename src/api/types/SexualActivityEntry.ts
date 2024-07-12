@@ -4,5 +4,5 @@
 
 export interface SexualActivityEntry {
     date: string;
-    protectionUsed: boolean;
+    protectionUsed?: boolean;
 }
