@@ -31,7 +31,10 @@ export type TimeseriesResource =
     | "vo2_max"
     | "water"
     | "caffeine"
-    | "mindfulness_minutes";
+    | "mindfulness_minutes"
+    | "workout_duration"
+    | "insulin_injection"
+    | "carbohydrates";
 
 export const TimeseriesResource = {
     CaloriesActive: "calories_active",
@@ -63,4 +66,7 @@ export const TimeseriesResource = {
     Water: "water",
     Caffeine: "caffeine",
     MindfulnessMinutes: "mindfulness_minutes",
+    WorkoutDuration: "workout_duration",
+    InsulinInjection: "insulin_injection",
+    Carbohydrates: "carbohydrates",
 } as const;

@@ -3,6 +3,8 @@
  */
 
 export interface LinkTokenExchangeResponse {
-    /** Link token to use to launch link widget */
+    /** A short-lived Vital Link token for your Custom Link Widget to communicate with the Vital API. */
     linkToken: string;
+    /** The web browser link to launch the default Vital Link experience. If you requested the token for one specific provider, the link would redirect directly to the provider authentication flow. Otherwise, the user would be presented with a list of providers based on your team and token configurations. */
+    linkWebUrl: string;
 }

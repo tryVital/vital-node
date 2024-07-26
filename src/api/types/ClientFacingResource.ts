@@ -41,6 +41,9 @@ export type ClientFacingResource =
     | "stress_level"
     | "menstrual_cycle"
     | "electrocardiogram_voltage"
+    | "workout_duration"
+    | "insulin_injection"
+    | "carbohydrates"
     | "sleep_stream";
 
 export const ClientFacingResource = {
@@ -82,5 +85,8 @@ export const ClientFacingResource = {
     StressLevel: "stress_level",
     MenstrualCycle: "menstrual_cycle",
     ElectrocardiogramVoltage: "electrocardiogram_voltage",
+    WorkoutDuration: "workout_duration",
+    InsulinInjection: "insulin_injection",
+    Carbohydrates: "carbohydrates",
     SleepStream: "sleep_stream",
 } as const;

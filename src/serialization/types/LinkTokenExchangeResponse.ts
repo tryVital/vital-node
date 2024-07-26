@@ -11,10 +11,12 @@ export const LinkTokenExchangeResponse: core.serialization.ObjectSchema<
     Vital.LinkTokenExchangeResponse
 > = core.serialization.object({
     linkToken: core.serialization.property("link_token", core.serialization.string()),
+    linkWebUrl: core.serialization.property("link_web_url", core.serialization.string()),
 });
 
 export declare namespace LinkTokenExchangeResponse {
     interface Raw {
         link_token: string;
+        link_web_url: string;
     }
 }
