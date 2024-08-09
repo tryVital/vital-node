@@ -10,5 +10,4 @@
  */
 export interface PayorSearchRequest {
     insuranceName: string;
-    insuranceState?: string;
 }

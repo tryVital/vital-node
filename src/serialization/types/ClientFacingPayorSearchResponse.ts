@@ -13,6 +13,7 @@ export const ClientFacingPayorSearchResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     code: core.serialization.string(),
     name: core.serialization.string(),
+    aliases: core.serialization.list(core.serialization.string()),
     orgAddress: core.serialization.property("org_address", Address),
 });
 
@@ -20,6 +21,7 @@ export declare namespace ClientFacingPayorSearchResponse {
     interface Raw {
         code: string;
         name: string;
+        aliases: string[];
         org_address: Address.Raw;
     }
 }

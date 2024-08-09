@@ -34,7 +34,8 @@ export type TimeseriesResource =
     | "mindfulness_minutes"
     | "workout_duration"
     | "insulin_injection"
-    | "carbohydrates";
+    | "carbohydrates"
+    | "note";
 
 export const TimeseriesResource = {
     CaloriesActive: "calories_active",
@@ -69,4 +70,5 @@ export const TimeseriesResource = {
     WorkoutDuration: "workout_duration",
     InsulinInjection: "insulin_injection",
     Carbohydrates: "carbohydrates",
+    Note: "note",
 } as const;

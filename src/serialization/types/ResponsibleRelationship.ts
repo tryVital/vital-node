@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const ResponsibleRelationship: core.serialization.Schema<
     serializers.ResponsibleRelationship.Raw,
     Vital.ResponsibleRelationship
-> = core.serialization.enum_(["Self", "Spouse", "Other Relationship"]);
+> = core.serialization.enum_(["Self", "Spouse", "Other"]);
 
 export declare namespace ResponsibleRelationship {
-    type Raw = "Self" | "Spouse" | "Other Relationship";
+    type Raw = "Self" | "Spouse" | "Other";
 }

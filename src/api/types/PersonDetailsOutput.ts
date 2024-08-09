@@ -4,10 +4,12 @@
 
 import * as Vital from "..";
 
-export interface PersonDetails {
+export interface PersonDetailsOutput {
     firstName: string;
     lastName: string;
+    gender: Vital.Gender;
     address: Vital.Address;
+    dob: string;
+    email: string;
     phoneNumber: string;
-    phoneType?: string;
 }

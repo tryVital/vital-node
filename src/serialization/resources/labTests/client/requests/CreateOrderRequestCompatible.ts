@@ -7,6 +7,7 @@ import * as Vital from "../../../../../api";
 import * as core from "../../../../../core";
 import { PhysicianCreateRequest } from "../../../../types/PhysicianCreateRequest";
 import { HealthInsuranceCreateRequest } from "../../../../types/HealthInsuranceCreateRequest";
+import { Billing } from "../../../../types/Billing";
 import { Consent } from "../../../../types/Consent";
 import { AoEAnswer } from "../../../../types/AoEAnswer";
 import { PatientDetails } from "../../../../types/PatientDetails";
@@ -21,6 +22,8 @@ export const CreateOrderRequestCompatible: core.serialization.Schema<
     physician: PhysicianCreateRequest.optional(),
     healthInsurance: core.serialization.property("health_insurance", HealthInsuranceCreateRequest.optional()),
     priority: core.serialization.boolean().optional(),
+    billingType: core.serialization.property("billing_type", Billing.optional()),
+    icdCodes: core.serialization.property("icd_codes", core.serialization.list(core.serialization.string()).optional()),
     consents: core.serialization.list(Consent).optional(),
     activateBy: core.serialization.property("activate_by", core.serialization.string().optional()),
     aoeAnswers: core.serialization.property("aoe_answers", core.serialization.list(AoEAnswer).optional()),
@@ -36,6 +39,8 @@ export declare namespace CreateOrderRequestCompatible {
         physician?: PhysicianCreateRequest.Raw | null;
         health_insurance?: HealthInsuranceCreateRequest.Raw | null;
         priority?: boolean | null;
+        billing_type?: Billing.Raw | null;
+        icd_codes?: string[] | null;
         consents?: Consent.Raw[] | null;
         activate_by?: string | null;
         aoe_answers?: AoEAnswer.Raw[] | null;

@@ -51,6 +51,7 @@ export const ClientFacingResource: core.serialization.Schema<
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
+    "note",
     "sleep_stream",
 ]);
 
@@ -97,5 +98,6 @@ export declare namespace ClientFacingResource {
         | "workout_duration"
         | "insulin_injection"
         | "carbohydrates"
+        | "note"
         | "sleep_stream";
 }

@@ -9,6 +9,8 @@ export interface ClientFacingPayorSearchResponse {
     code: string;
     /** Insurance name returned for the insurance information. */
     name: string;
+    /** Insurance name aliases returned for the insurance information. */
+    aliases: string[];
     /** Insurance business address returned for the insurance information. */
     orgAddress: Vital.Address;
 }

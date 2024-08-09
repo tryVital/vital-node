@@ -42,6 +42,7 @@ export const TimeseriesResource: core.serialization.Schema<
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
+    "note",
 ]);
 
 export declare namespace TimeseriesResource {
@@ -77,5 +78,6 @@ export declare namespace TimeseriesResource {
         | "mindfulness_minutes"
         | "workout_duration"
         | "insulin_injection"
-        | "carbohydrates";
+        | "carbohydrates"
+        | "note";
 }

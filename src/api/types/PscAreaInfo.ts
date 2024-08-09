@@ -6,4 +6,5 @@ import * as Vital from "..";
 
 export interface PscAreaInfo {
     patientServiceCenters: Vital.PscAreaInfoDetails;
+    supportedBillTypes: Vital.Billing[];
 }

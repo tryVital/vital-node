@@ -44,6 +44,7 @@ export type ClientFacingResource =
     | "workout_duration"
     | "insulin_injection"
     | "carbohydrates"
+    | "note"
     | "sleep_stream";
 
 export const ClientFacingResource = {
@@ -88,5 +89,6 @@ export const ClientFacingResource = {
     WorkoutDuration: "workout_duration",
     InsulinInjection: "insulin_injection",
     Carbohydrates: "carbohydrates",
+    Note: "note",
     SleepStream: "sleep_stream",
 } as const;

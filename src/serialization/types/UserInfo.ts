@@ -7,21 +7,25 @@ import * as Vital from "../../api";
 import * as core from "../../core";
 import { Address } from "./Address";
 
-export const PersonDetails: core.serialization.ObjectSchema<serializers.PersonDetails.Raw, Vital.PersonDetails> =
+export const UserInfo: core.serialization.ObjectSchema<serializers.UserInfo.Raw, Vital.UserInfo> =
     core.serialization.object({
         firstName: core.serialization.property("first_name", core.serialization.string()),
         lastName: core.serialization.property("last_name", core.serialization.string()),
-        address: Address,
+        email: core.serialization.string(),
         phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
-        phoneType: core.serialization.property("phone_type", core.serialization.string().optional()),
+        gender: core.serialization.string(),
+        dob: core.serialization.string(),
+        address: Address,
     });
 
-export declare namespace PersonDetails {
+export declare namespace UserInfo {
     interface Raw {
         first_name: string;
         last_name: string;
-        address: Address.Raw;
+        email: string;
         phone_number: string;
-        phone_type?: string | null;
+        gender: string;
+        dob: string;
+        address: Address.Raw;
     }
 }

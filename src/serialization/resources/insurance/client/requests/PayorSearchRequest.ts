@@ -11,12 +11,10 @@ export const PayorSearchRequest: core.serialization.Schema<
     Vital.PayorSearchRequest
 > = core.serialization.object({
     insuranceName: core.serialization.property("insurance_name", core.serialization.string()),
-    insuranceState: core.serialization.property("insurance_state", core.serialization.string().optional()),
 });
 
 export declare namespace PayorSearchRequest {
     interface Raw {
         insurance_name: string;
-        insurance_state?: string | null;
     }
 }

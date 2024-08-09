@@ -32,4 +32,6 @@ export interface ClientFacingOrder {
     shippingDetails?: Vital.ShippingAddress;
     activateBy?: string;
     passthrough?: string;
+    billingType?: Vital.Billing;
+    icdCodes?: string[];
 }

@@ -9,7 +9,7 @@ import { HealthInsuranceCreateRequestFrontImage } from "./HealthInsuranceCreateR
 import { HealthInsuranceCreateRequestBackImage } from "./HealthInsuranceCreateRequestBackImage";
 import { HealthInsuranceCreateRequestPatientSignatureImage } from "./HealthInsuranceCreateRequestPatientSignatureImage";
 import { ResponsibleRelationship } from "./ResponsibleRelationship";
-import { PersonDetails } from "./PersonDetails";
+import { VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails } from "./VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails";
 
 export const HealthInsuranceCreateRequest: core.serialization.ObjectSchema<
     serializers.HealthInsuranceCreateRequest.Raw,
@@ -29,7 +29,10 @@ export const HealthInsuranceCreateRequest: core.serialization.ObjectSchema<
         "responsible_relationship",
         ResponsibleRelationship.optional()
     ),
-    responsibleDetails: core.serialization.property("responsible_details", PersonDetails.optional()),
+    responsibleDetails: core.serialization.property(
+        "responsible_details",
+        VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails.optional()
+    ),
     diagnosisCodes: core.serialization.property(
         "diagnosis_codes",
         core.serialization.list(core.serialization.string()).optional()
@@ -46,7 +49,7 @@ export declare namespace HealthInsuranceCreateRequest {
         payor_code?: string | null;
         insurance_id?: string | null;
         responsible_relationship?: ResponsibleRelationship.Raw | null;
-        responsible_details?: PersonDetails.Raw | null;
+        responsible_details?: VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails.Raw | null;
         diagnosis_codes?: string[] | null;
     }
 }

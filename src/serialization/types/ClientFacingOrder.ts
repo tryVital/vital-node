@@ -13,6 +13,7 @@ import { ClientFacingOrderEvent } from "./ClientFacingOrderEvent";
 import { OrderTopLevelStatus } from "./OrderTopLevelStatus";
 import { ClientFacingPhysician } from "./ClientFacingPhysician";
 import { ShippingAddress } from "./ShippingAddress";
+import { Billing } from "./Billing";
 
 export const ClientFacingOrder: core.serialization.ObjectSchema<
     serializers.ClientFacingOrder.Raw,
@@ -38,6 +39,8 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
     shippingDetails: core.serialization.property("shipping_details", ShippingAddress.optional()),
     activateBy: core.serialization.property("activate_by", core.serialization.string().optional()),
     passthrough: core.serialization.string().optional(),
+    billingType: core.serialization.property("billing_type", Billing.optional()),
+    icdCodes: core.serialization.property("icd_codes", core.serialization.list(core.serialization.string()).optional()),
 });
 
 export declare namespace ClientFacingOrder {
@@ -62,5 +65,7 @@ export declare namespace ClientFacingOrder {
         shipping_details?: ShippingAddress.Raw | null;
         activate_by?: string | null;
         passthrough?: string | null;
+        billing_type?: Billing.Raw | null;
+        icd_codes?: string[] | null;
     }
 }

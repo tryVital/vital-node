@@ -16,6 +16,6 @@ export interface HealthInsuranceCreateRequest {
     payorCode?: string;
     insuranceId?: string;
     responsibleRelationship?: Vital.ResponsibleRelationship;
-    responsibleDetails?: Vital.PersonDetails;
+    responsibleDetails?: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails;
     diagnosisCodes?: string[];
 }

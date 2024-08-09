@@ -6,14 +6,17 @@ import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
 import { PscAreaInfoDetails } from "./PscAreaInfoDetails";
+import { Billing } from "./Billing";
 
 export const PscAreaInfo: core.serialization.ObjectSchema<serializers.PscAreaInfo.Raw, Vital.PscAreaInfo> =
     core.serialization.object({
         patientServiceCenters: core.serialization.property("patient_service_centers", PscAreaInfoDetails),
+        supportedBillTypes: core.serialization.property("supported_bill_types", core.serialization.list(Billing)),
     });
 
 export declare namespace PscAreaInfo {
     interface Raw {
         patient_service_centers: PscAreaInfoDetails.Raw;
+        supported_bill_types: Billing.Raw[];
     }
 }
