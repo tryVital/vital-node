@@ -1,3 +1,5 @@
+export * as labTests from "./labTests";
+export * from "./labTests/types";
 export * as link from "./link";
 export * as profile from "./profile";
 export * as devices from "./devices";
@@ -12,7 +14,6 @@ export * as user from "./user";
 export * as team from "./team";
 export * as providers from "./providers";
 export * as introspect from "./introspect";
-export * as labTests from "./labTests";
 export * as testkit from "./testkit";
 export * as insurance from "./insurance";
 export * from "./link/client/requests";

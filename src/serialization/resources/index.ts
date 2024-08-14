@@ -1,9 +1,10 @@
+export * as labTests from "./labTests";
+export * from "./labTests/types";
 export * as link from "./link";
 export * as vitals from "./vitals";
 export * as user from "./user";
 export * as team from "./team";
 export * as providers from "./providers";
-export * as labTests from "./labTests";
 export * as insurance from "./insurance";
 export * from "./link/client/requests";
 export * from "./user/client/requests";
