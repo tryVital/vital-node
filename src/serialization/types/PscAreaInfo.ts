@@ -12,11 +12,13 @@ export const PscAreaInfo: core.serialization.ObjectSchema<serializers.PscAreaInf
     core.serialization.object({
         patientServiceCenters: core.serialization.property("patient_service_centers", PscAreaInfoDetails),
         supportedBillTypes: core.serialization.property("supported_bill_types", core.serialization.list(Billing)),
+        labId: core.serialization.property("lab_id", core.serialization.number()),
     });
 
 export declare namespace PscAreaInfo {
     interface Raw {
         patient_service_centers: PscAreaInfoDetails.Raw;
         supported_bill_types: Billing.Raw[];
+        lab_id: number;
     }
 }
