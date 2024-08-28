@@ -234,6 +234,7 @@ export * from "./SingleProviderHistoricalPullResponse";
 export * from "./SingleResourceStatistics";
 export * from "./SingleUserHistoricalPullResponse";
 export * from "./SingleUserResourceResponse";
+export * from "./SleepSummaryState";
 export * from "./SleepV2InDb";
 export * from "./Source";
 export * from "./SourceAuthType";

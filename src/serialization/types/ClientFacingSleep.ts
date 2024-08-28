@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vital from "../../api";
 import * as core from "../../core";
+import { SleepSummaryState } from "./SleepSummaryState";
 import { ClientFacingSource } from "./ClientFacingSource";
 import { ClientFacingSleepStream } from "./ClientFacingSleepStream";
 
@@ -33,6 +34,7 @@ export const ClientFacingSleep: core.serialization.ObjectSchema<
     temperatureDelta: core.serialization.property("temperature_delta", core.serialization.number().optional()),
     skinTemperature: core.serialization.property("skin_temperature", core.serialization.number().optional()),
     hrDip: core.serialization.property("hr_dip", core.serialization.number().optional()),
+    state: SleepSummaryState.optional(),
     averageHrv: core.serialization.property("average_hrv", core.serialization.number().optional()),
     respiratoryRate: core.serialization.property("respiratory_rate", core.serialization.number().optional()),
     source: ClientFacingSource,
@@ -62,6 +64,7 @@ export declare namespace ClientFacingSleep {
         temperature_delta?: number | null;
         skin_temperature?: number | null;
         hr_dip?: number | null;
+        state?: SleepSummaryState.Raw | null;
         average_hrv?: number | null;
         respiratory_rate?: number | null;
         source: ClientFacingSource.Raw;

@@ -37,6 +37,7 @@ export interface ClientFacingSleep {
     temperatureDelta?: number;
     skinTemperature?: number;
     hrDip?: number;
+    state?: Vital.SleepSummaryState;
     averageHrv?: number;
     respiratoryRate?: number;
     /** Source the data has come from. */
