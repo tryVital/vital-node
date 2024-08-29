@@ -24,4 +24,6 @@ export interface ClientFacingStream {
     power?: Vital.ClientFacingStreamPower;
     /** Resistance on bike */
     resistance?: Vital.ClientFacingStreamResistance;
+    /** Temperature stream measured by device in Celsius */
+    temperature?: Vital.ClientFacingStreamTemperature;
 }

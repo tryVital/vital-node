@@ -14,6 +14,7 @@ import { ClientFacingStreamLng } from "./ClientFacingStreamLng";
 import { ClientFacingStreamDistance } from "./ClientFacingStreamDistance";
 import { ClientFacingStreamPower } from "./ClientFacingStreamPower";
 import { ClientFacingStreamResistance } from "./ClientFacingStreamResistance";
+import { ClientFacingStreamTemperature } from "./ClientFacingStreamTemperature";
 
 export const ClientFacingStream: core.serialization.ObjectSchema<
     serializers.ClientFacingStream.Raw,
@@ -29,6 +30,7 @@ export const ClientFacingStream: core.serialization.ObjectSchema<
     distance: ClientFacingStreamDistance.optional(),
     power: ClientFacingStreamPower.optional(),
     resistance: ClientFacingStreamResistance.optional(),
+    temperature: ClientFacingStreamTemperature.optional(),
 });
 
 export declare namespace ClientFacingStream {
@@ -43,5 +45,6 @@ export declare namespace ClientFacingStream {
         distance?: ClientFacingStreamDistance.Raw | null;
         power?: ClientFacingStreamPower.Raw | null;
         resistance?: ClientFacingStreamResistance.Raw | null;
+        temperature?: ClientFacingStreamTemperature.Raw | null;
     }
 }

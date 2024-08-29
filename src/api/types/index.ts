@@ -103,6 +103,7 @@ export * from "./ClientFacingStreamLng";
 export * from "./ClientFacingStreamDistance";
 export * from "./ClientFacingStreamPower";
 export * from "./ClientFacingStreamResistance";
+export * from "./ClientFacingStreamTemperature";
 export * from "./ClientFacingStream";
 export * from "./ClientFacingStressLevelTimeseries";
 export * from "./ClientFacingTeam";
