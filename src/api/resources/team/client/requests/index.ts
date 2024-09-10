@@ -1,3 +1,3 @@
-export { TeamGetLinkConfigRequest } from "./TeamGetLinkConfigRequest";
-export { TeamGetUserByIdRequest } from "./TeamGetUserByIdRequest";
-export { TeamGetSourcePrioritiesRequest } from "./TeamGetSourcePrioritiesRequest";
+export { type TeamGetLinkConfigRequest } from "./TeamGetLinkConfigRequest";
+export { type TeamGetUserByIdRequest } from "./TeamGetUserByIdRequest";
+export { type TeamGetSourcePrioritiesRequest } from "./TeamGetSourcePrioritiesRequest";

@@ -21,21 +21,26 @@ import { Introspect } from "./api/resources/introspect/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
 import { Insurance } from "./api/resources/insurance/client/Client";
+import { Aggregate } from "./api/resources/aggregate/client/Client";
 
 export declare namespace VitalClient {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
+        abortSignal?: AbortSignal;
     }
 }
 
 export class VitalClient {
-    constructor(protected readonly _options: VitalClient.Options) {}
+    constructor(protected readonly _options: VitalClient.Options = {}) {}
 
     protected _link: Link | undefined;
 
@@ -137,5 +142,11 @@ export class VitalClient {
 
     public get insurance(): Insurance {
         return (this._insurance ??= new Insurance(this._options));
+    }
+
+    protected _aggregate: Aggregate | undefined;
+
+    public get aggregate(): Aggregate {
+        return (this._aggregate ??= new Aggregate(this._options));
     }
 }

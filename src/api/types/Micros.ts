@@ -3,7 +3,10 @@
  */
 
 export interface Micros {
+    /** Amount of each mineral in grams (g) */
     minerals?: Record<string, number | undefined>;
+    /** Amount of each trace element in grams (g) */
     traceElements?: Record<string, number | undefined>;
+    /** Amount of each vitamin in grams (g) */
     vitamins?: Record<string, number | undefined>;
 }

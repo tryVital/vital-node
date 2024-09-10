@@ -11,8 +11,16 @@
 export interface UserCreateBody {
     /** A unique ID representing the end user. Typically this will be a user ID from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id. */
     clientUserId: string;
+    /**
+     *     Fallback time zone of the user, in the form of a valid IANA tzdatabase identifier (e.g., `Europe/London` or `America/Los_Angeles`).
+     *     Used when pulling data from sources that are completely time zone agnostic (e.g., all time is relative to UTC clock, without any time zone attributions on data points).
+     *
+     */
     fallbackTimeZone?: string;
+    /** Fallback date of birth of the user, in YYYY-mm-dd format. Used for calculating max heartrate for providers that don not provide users' age. */
     fallbackBirthDate?: string;
+    /** Starting bound for user data ingestion. Data older than this date will not be ingested. */
     ingestionStart?: string;
+    /** Ending bound for user data ingestion. Data from this date or later will not be ingested and the connection will be deregistered. */
     ingestionEnd?: string;
 }

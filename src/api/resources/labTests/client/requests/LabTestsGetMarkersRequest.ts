@@ -15,6 +15,7 @@ export interface LabTestsGetMarkersRequest {
      * The name or test code of an individual biomarker or a panel.
      */
     name?: string;
+    aLaCarteEnabled?: boolean;
     page?: number;
     size?: number;
 }

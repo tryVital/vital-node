@@ -4,31 +4,38 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vital from "../../..";
+import * as Vital from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 
 export declare namespace Introspect {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Introspect {
-    constructor(protected readonly _options: Introspect.Options) {}
+    constructor(protected readonly _options: Introspect.Options = {}) {}
 
     /**
+     * @param {Vital.IntrospectGetUserResourcesRequest} request
+     * @param {Introspect.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.introspect.getUserResources()
+     *     await client.introspect.getUserResources()
      */
     public async getUserResources(
         request: Vital.IntrospectGetUserResourcesRequest = {},
@@ -65,18 +72,21 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.UserResourcesResponse.parseOrThrow(_response.body, {
+            return serializers.UserResourcesResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -88,7 +98,7 @@ export class Introspect {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -119,10 +129,13 @@ export class Introspect {
     }
 
     /**
+     * @param {Vital.IntrospectGetUserHistoricalPullsRequest} request
+     * @param {Introspect.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.introspect.getUserHistoricalPulls()
+     *     await client.introspect.getUserHistoricalPulls()
      */
     public async getUserHistoricalPulls(
         request: Vital.IntrospectGetUserHistoricalPullsRequest = {},
@@ -159,18 +172,21 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.UserHistoricalPullsResponse.parseOrThrow(_response.body, {
+            return serializers.UserHistoricalPullsResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -182,7 +198,7 @@ export class Introspect {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

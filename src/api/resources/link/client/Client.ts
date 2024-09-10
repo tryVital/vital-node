@@ -4,25 +4,29 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vital from "../../..";
-import * as serializers from "../../../../serialization";
+import * as Vital from "../../../index";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
+import * as errors from "../../../../errors/index";
 
 export declare namespace Link {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Link {
-    constructor(protected readonly _options: Link.Options) {}
+    constructor(protected readonly _options: Link.Options = {}) {}
 
     /**
      * Endpoint to generate a user link token, to be used throughout the vital
@@ -31,10 +35,14 @@ export class Link {
      * with a specific provider, pass in a provider in the body. If you would
      * like to redirect to a custom url after successful or error connection,
      * pass in your own custom redirect_url parameter.
+     *
+     * @param {Vital.LinkTokenExchange} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.token({
+     *     await client.link.token({
      *         userId: "user_id"
      *     })
      */
@@ -51,18 +59,21 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.LinkTokenExchange.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.LinkTokenExchange.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.LinkTokenExchangeResponse.parseOrThrow(_response.body, {
+            return serializers.LinkTokenExchangeResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -74,7 +85,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -105,10 +116,13 @@ export class Link {
     }
 
     /**
+     * @param {Vital.LinkTokenBase} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.isTokenValid({
+     *     await client.link.isTokenValid({
      *         token: "token"
      *     })
      */
@@ -125,18 +139,21 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.LinkTokenBase.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.LinkTokenBase.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.link.isTokenValid.Response.parseOrThrow(_response.body, {
+            return serializers.link.isTokenValid.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -148,7 +165,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -180,10 +197,14 @@ export class Link {
 
     /**
      * Generate a token to invite a user of Vital mobile app to your team
+     *
+     * @param {Vital.LinkCodeCreateRequest} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.codeCreate({
+     *     await client.link.codeCreate({
      *         userId: "user_id"
      *     })
      */
@@ -207,18 +228,21 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.VitalTokenCreatedResponse.parseOrThrow(_response.body, {
+            return serializers.VitalTokenCreatedResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -230,7 +254,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -263,10 +287,14 @@ export class Link {
     /**
      * REQUEST_SOURCE: VITAL-LINK
      * Start link token process
+     *
+     * @param {Vital.BeginLinkTokenRequest} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.startConnect({
+     *     await client.link.startConnect({
      *         linkToken: "link_token",
      *         provider: Vital.Providers.Oura
      *     })
@@ -284,18 +312,21 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.BeginLinkTokenRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.BeginLinkTokenRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.link.startConnect.Response.parseOrThrow(_response.body, {
+            return serializers.link.startConnect.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -307,7 +338,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -340,10 +371,14 @@ export class Link {
     /**
      * REQUEST_SOURCE: VITAL-LINK
      * Check link token state - can be hit continuously used as heartbeat
+     *
+     * @param {Vital.LinkTokenStateRequest} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.tokenState()
+     *     await client.link.tokenState()
      */
     public async tokenState(
         request: Vital.LinkTokenStateRequest = {},
@@ -359,18 +394,21 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.link.tokenState.Response.parseOrThrow(_response.body, {
+            return serializers.link.tokenState.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -382,7 +420,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -414,10 +452,14 @@ export class Link {
 
     /**
      * Deprecated. Use `POST /v2/link/provider/email/{provider}` instead.
+     *
+     * @param {Vital.EmailAuthLink} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.emailAuth({
+     *     await client.link.emailAuth({
      *         email: "email",
      *         provider: Vital.Providers.Oura,
      *         authType: Vital.AuthType.Password
@@ -437,19 +479,22 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.EmailAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.EmailAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ConnectionStatus.parseOrThrow(_response.body, {
+            return serializers.ConnectionStatus.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -461,7 +506,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -493,10 +538,14 @@ export class Link {
 
     /**
      * Deprecated. Use `POST /v2/link/provider/password/{provider}` instead.
+     *
+     * @param {Vital.PasswordAuthLink} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.passwordAuth({
+     *     await client.link.passwordAuth({
      *         username: "username",
      *         password: "password",
      *         provider: Vital.Providers.Oura,
@@ -517,19 +566,22 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.PasswordAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.PasswordAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ConnectionStatus.parseOrThrow(_response.body, {
+            return serializers.ConnectionStatus.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -541,7 +593,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -573,10 +625,15 @@ export class Link {
 
     /**
      * This endpoint generates an OAuth link for oauth provider
+     *
+     * @param {Vital.OAuthProviders} oauthProvider
+     * @param {Vital.LinkGenerateOauthLinkRequest} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.generateOauthLink(Vital.OAuthProviders.Oura)
+     *     await client.link.generateOauthLink(Vital.OAuthProviders.Oura)
      */
     public async generateOauthLink(
         oauthProvider: Vital.OAuthProviders,
@@ -587,24 +644,27 @@ export class Link {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/link/provider/oauth/${await serializers.OAuthProviders.jsonOrThrow(oauthProvider)}`
+                `v2/link/provider/oauth/${encodeURIComponent(serializers.OAuthProviders.jsonOrThrow(oauthProvider))}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.Source.parseOrThrow(_response.body, {
+            return serializers.Source.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -616,7 +676,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -648,10 +708,15 @@ export class Link {
 
     /**
      * This connects auth providers that are password based.
+     *
+     * @param {Vital.PasswordProviders} provider
+     * @param {Vital.IndividualProviderData} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.connectPasswordProvider(Vital.PasswordProviders.Whoop, {
+     *     await client.link.connectPasswordProvider(Vital.PasswordProviders.Whoop, {
      *         username: "username",
      *         password: "password"
      *     })
@@ -665,25 +730,28 @@ export class Link {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/link/provider/password/${await serializers.PasswordProviders.jsonOrThrow(provider)}`
+                `v2/link/provider/password/${encodeURIComponent(serializers.PasswordProviders.jsonOrThrow(provider))}`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.IndividualProviderData.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.IndividualProviderData.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ProviderLinkResponse.parseOrThrow(_response.body, {
+            return serializers.ProviderLinkResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -695,7 +763,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -727,10 +795,15 @@ export class Link {
 
     /**
      * This connects auth providers that are password based.
+     *
+     * @param {Vital.PasswordProviders} provider
+     * @param {Vital.CompletePasswordProviderMfaBody} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.completePasswordProviderMfa(Vital.PasswordProviders.Whoop, {
+     *     await client.link.completePasswordProviderMfa(Vital.PasswordProviders.Whoop, {
      *         mfaCode: "mfa_code"
      *     })
      */
@@ -743,27 +816,30 @@ export class Link {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/link/provider/password/${await serializers.PasswordProviders.jsonOrThrow(provider)}/complete_mfa`
+                `v2/link/provider/password/${encodeURIComponent(
+                    serializers.PasswordProviders.jsonOrThrow(provider)
+                )}/complete_mfa`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.CompletePasswordProviderMfaBody.jsonOrThrow(_body, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.CompletePasswordProviderMfaBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ProviderLinkResponse.parseOrThrow(_response.body, {
+            return serializers.ProviderLinkResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -775,7 +851,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -807,10 +883,15 @@ export class Link {
 
     /**
      * This connects auth providers that are email based.
+     *
+     * @param {Vital.EmailProviders} provider
+     * @param {Vital.EmailProviderAuthLink} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.connectEmailAuthProvider("freestyle_libre", {
+     *     await client.link.connectEmailAuthProvider("freestyle_libre", {
      *         email: "email"
      *     })
      */
@@ -823,25 +904,28 @@ export class Link {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/link/provider/email/${await serializers.EmailProviders.jsonOrThrow(provider)}`
+                `v2/link/provider/email/${encodeURIComponent(serializers.EmailProviders.jsonOrThrow(provider))}`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.EmailProviderAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.EmailProviderAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ConnectionStatus.parseOrThrow(_response.body, {
+            return serializers.ConnectionStatus.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -853,7 +937,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -885,10 +969,14 @@ export class Link {
 
     /**
      * GET List of all available providers given the generated link token.
+     *
+     * @param {Vital.LinkGetAllProvidersRequest} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.getAllProviders()
+     *     await client.link.getAllProviders()
      */
     public async getAllProviders(
         request: Vital.LinkGetAllProvidersRequest = {},
@@ -904,18 +992,21 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.link.getAllProviders.Response.parseOrThrow(_response.body, {
+            return serializers.link.getAllProviders.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -927,7 +1018,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -958,10 +1049,14 @@ export class Link {
     }
 
     /**
+     * @param {Vital.ManualProviders} provider
+     * @param {Vital.ManualConnectionData} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.connectManualProvider(Vital.ManualProviders.BeurerBle, {
+     *     await client.link.connectManualProvider(Vital.ManualProviders.BeurerBle, {
      *         userId: "user_id"
      *     })
      */
@@ -973,24 +1068,27 @@ export class Link {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/link/provider/manual/${await serializers.ManualProviders.jsonOrThrow(provider)}`
+                `v2/link/provider/manual/${encodeURIComponent(serializers.ManualProviders.jsonOrThrow(provider))}`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.ManualConnectionData.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.ManualConnectionData.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.link.connectManualProvider.Response.parseOrThrow(_response.body, {
+            return serializers.link.connectManualProvider.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1002,7 +1100,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1034,10 +1132,14 @@ export class Link {
 
     /**
      * POST Connect the given Vital user to a demo provider.
+     *
+     * @param {Vital.DemoConnectionCreationPayload} request
+     * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.link.connectDemoProvider({
+     *     await client.link.connectDemoProvider({
      *         userId: "user_id",
      *         provider: Vital.DemoProviders.AppleHealthKit
      *     })
@@ -1055,20 +1157,21 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.DemoConnectionCreationPayload.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.DemoConnectionCreationPayload.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.DemoConnectionStatus.parseOrThrow(_response.body, {
+            return serializers.DemoConnectionStatus.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1080,7 +1183,7 @@ export class Link {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

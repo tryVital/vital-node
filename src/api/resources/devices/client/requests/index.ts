@@ -1,1 +1,1 @@
-export { DevicesGetRawRequest } from "./DevicesGetRawRequest";
+export { type DevicesGetRawRequest } from "./DevicesGetRawRequest";

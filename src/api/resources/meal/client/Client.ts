@@ -4,32 +4,41 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vital from "../../..";
+import * as Vital from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 
 export declare namespace Meal {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Meal {
-    constructor(protected readonly _options: Meal.Options) {}
+    constructor(protected readonly _options: Meal.Options = {}) {}
 
     /**
      * Get user's meals
+     *
+     * @param {string} userId
+     * @param {Vital.MealGetRequest} request
+     * @param {Meal.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.meal.get("user_id", {
+     *     await client.meal.get("user_id", {
      *         startDate: "start_date"
      *     })
      */
@@ -52,24 +61,27 @@ export class Meal {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/summary/meal/${userId}`
+                `v2/summary/meal/${encodeURIComponent(userId)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingMealResponse.parseOrThrow(_response.body, {
+            return serializers.ClientFacingMealResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -81,7 +93,7 @@ export class Meal {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

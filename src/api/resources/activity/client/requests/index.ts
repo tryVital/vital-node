@@ -1,2 +1,2 @@
-export { ActivityGetRequest } from "./ActivityGetRequest";
-export { ActivityGetRawRequest } from "./ActivityGetRawRequest";
+export { type ActivityGetRequest } from "./ActivityGetRequest";
+export { type ActivityGetRawRequest } from "./ActivityGetRawRequest";

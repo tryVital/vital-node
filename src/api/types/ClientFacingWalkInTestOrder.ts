@@ -10,6 +10,6 @@
 export interface ClientFacingWalkInTestOrder {
     /** The Vital walk-in test Order ID */
     id: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 }

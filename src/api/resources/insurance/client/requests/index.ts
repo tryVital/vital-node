@@ -1,2 +1,2 @@
-export { PayorSearchRequest } from "./PayorSearchRequest";
-export { InsuranceSearchDiagnosisRequest } from "./InsuranceSearchDiagnosisRequest";
+export { type PayorSearchRequest } from "./PayorSearchRequest";
+export { type InsuranceSearchDiagnosisRequest } from "./InsuranceSearchDiagnosisRequest";

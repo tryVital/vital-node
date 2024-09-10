@@ -4,28 +4,56 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vital from "../../..";
-import * as serializers from "../../../../serialization";
+import * as Vital from "../../../index";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
+import * as errors from "../../../../errors/index";
 
 export declare namespace Testkit {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Testkit {
-    constructor(protected readonly _options: Testkit.Options) {}
+    constructor(protected readonly _options: Testkit.Options = {}) {}
 
     /**
+     * @param {Vital.RegisterTestkitRequest} request
+     * @param {Testkit.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.testkit.register({
+     *         userId: "user_id",
+     *         sampleId: "sample_id",
+     *         patientDetails: {
+     *             firstName: "first_name",
+     *             lastName: "last_name",
+     *             dob: "2024-01-15T09:30:00Z",
+     *             gender: Vital.Gender.Female,
+     *             phoneNumber: "phone_number",
+     *             email: "email"
+     *         },
+     *         patientAddress: {
+     *             firstLine: "first_line",
+     *             city: "city",
+     *             state: "state",
+     *             zip: "zip",
+     *             country: "country"
+     *         }
+     *     })
      */
     public async register(
         request: Vital.RegisterTestkitRequest,
@@ -40,18 +68,21 @@ export class Testkit {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.RegisterTestkitRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.RegisterTestkitRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PostOrderResponse.parseOrThrow(_response.body, {
+            return serializers.PostOrderResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -63,7 +94,7 @@ export class Testkit {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -95,7 +126,26 @@ export class Testkit {
 
     /**
      * Creates an order for an unregistered testkit
+     *
+     * @param {Vital.CreateRegistrableTestkitOrderRequest} request
+     * @param {Testkit.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.testkit.createOrder({
+     *         userId: "user_id",
+     *         labTestId: "lab_test_id",
+     *         shippingDetails: {
+     *             receiverName: "receiver_name",
+     *             firstLine: "first_line",
+     *             city: "city",
+     *             state: "state",
+     *             zip: "zip",
+     *             country: "country",
+     *             phoneNumber: "phone_number"
+     *         }
+     *     })
      */
     public async createOrder(
         request: Vital.CreateRegistrableTestkitOrderRequest,
@@ -110,20 +160,23 @@ export class Testkit {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.CreateRegistrableTestkitOrderRequest.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.CreateRegistrableTestkitOrderRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PostOrderResponse.parseOrThrow(_response.body, {
+            return serializers.PostOrderResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -135,7 +188,7 @@ export class Testkit {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

@@ -3,6 +3,6 @@
  */
 
 export interface TimeseriesMetricPoint {
-    date: Date;
+    date: string;
     value: number;
 }

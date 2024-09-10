@@ -7,5 +7,5 @@ export interface FallbackBirthDate {
     value: string;
     /** Slug for designated source */
     sourceSlug: string;
-    updatedAt: Date;
+    updatedAt: string;
 }

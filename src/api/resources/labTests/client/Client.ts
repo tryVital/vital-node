@@ -4,32 +4,38 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vital from "../../..";
+import * as Vital from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 import * as stream from "stream";
 
 export declare namespace LabTests {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
+        abortSignal?: AbortSignal;
     }
 }
 
 export class LabTests {
-    constructor(protected readonly _options: LabTests.Options) {}
+    constructor(protected readonly _options: LabTests.Options = {}) {}
 
     /**
      * GET all the lab tests the team has access to.
      *
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
-     *     await vital.labTests.get()
+     *     await client.labTests.get()
      */
     public async get(requestOptions?: LabTests.RequestOptions): Promise<Vital.ClientFacingLabTest[]> {
         const _response = await core.fetcher({
@@ -41,17 +47,20 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.labTests.get.Response.parseOrThrow(_response.body, {
+            return serializers.labTests.get.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -82,10 +91,13 @@ export class LabTests {
     }
 
     /**
+     * @param {Vital.CreateLabTestRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.create({
+     *     await client.labTests.create({
      *         name: "name",
      *         method: Vital.LabTestCollectionMethod.Testkit,
      *         description: "description"
@@ -104,18 +116,21 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.CreateLabTestRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.CreateLabTestRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingLabTest.parseOrThrow(_response.body, {
+            return serializers.ClientFacingLabTest.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -127,7 +142,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -159,16 +174,20 @@ export class LabTests {
 
     /**
      * GET all the markers for the given lab.
+     *
+     * @param {Vital.LabTestsGetMarkersRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getMarkers()
+     *     await client.labTests.getMarkers()
      */
     public async getMarkers(
         request: Vital.LabTestsGetMarkersRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.GetMarkersResponse> {
-        const { labId, name, page, size } = request;
+        const { labId, name, aLaCarteEnabled, page, size } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (labId != null) {
             if (Array.isArray(labId)) {
@@ -180,6 +199,10 @@ export class LabTests {
 
         if (name != null) {
             _queryParams["name"] = name;
+        }
+
+        if (aLaCarteEnabled != null) {
+            _queryParams["a_la_carte_enabled"] = aLaCarteEnabled.toString();
         }
 
         if (page != null) {
@@ -199,18 +222,21 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.GetMarkersResponse.parseOrThrow(_response.body, {
+            return serializers.GetMarkersResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -222,7 +248,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -253,10 +279,14 @@ export class LabTests {
     }
 
     /**
+     * @param {string} labTestId
+     * @param {Vital.LabTestsGetMarkersForLabTestRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getMarkersForLabTest("lab_test_id")
+     *     await client.labTests.getMarkersForLabTest("lab_test_id")
      */
     public async getMarkersForLabTest(
         labTestId: string,
@@ -276,24 +306,27 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/lab_tests/${labTestId}/markers`
+                `v3/lab_tests/${encodeURIComponent(labTestId)}/markers`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.GetMarkersResponse.parseOrThrow(_response.body, {
+            return serializers.GetMarkersResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -305,7 +338,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -337,10 +370,15 @@ export class LabTests {
 
     /**
      * GET a specific marker for the given lab and provider_id
+     *
+     * @param {string} providerId
+     * @param {number} labId
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getMarkersByLabAndProviderId("provider_id", 1)
+     *     await client.labTests.getMarkersByLabAndProviderId("provider_id", 1)
      */
     public async getMarkersByLabAndProviderId(
         providerId: string,
@@ -350,23 +388,26 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/lab_tests/${labId}/markers/${providerId}`
+                `v3/lab_tests/${encodeURIComponent(labId)}/markers/${encodeURIComponent(providerId)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingMarker.parseOrThrow(_response.body, {
+            return serializers.ClientFacingMarker.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -378,7 +419,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -411,8 +452,10 @@ export class LabTests {
     /**
      * GET all the labs.
      *
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
-     *     await vital.labTests.getLabs()
+     *     await client.labTests.getLabs()
      */
     public async getLabs(requestOptions?: LabTests.RequestOptions): Promise<Vital.ClientFacingLab[]> {
         const _response = await core.fetcher({
@@ -424,17 +467,20 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.labTests.getLabs.Response.parseOrThrow(_response.body, {
+            return serializers.labTests.getLabs.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -466,10 +512,14 @@ export class LabTests {
 
     /**
      * GET all the lab tests the team has access to.
+     *
+     * @param {string} labTestId
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getById("lab_test_id")
+     *     await client.labTests.getById("lab_test_id")
      */
     public async getById(
         labTestId: string,
@@ -478,23 +528,26 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/lab_tests/${labTestId}`
+                `v3/lab_tests/${encodeURIComponent(labTestId)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingLabTest.parseOrThrow(_response.body, {
+            return serializers.ClientFacingLabTest.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -506,7 +559,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -539,10 +592,14 @@ export class LabTests {
     /**
      * Return the available time slots to book an appointment with a phlebotomist
      * for the given address and order.
+     *
+     * @param {Vital.UsAddress} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getPhlebotomyAppointmentAvailability({
+     *     await client.labTests.getPhlebotomyAppointmentAvailability({
      *         firstLine: "first_line",
      *         city: "city",
      *         state: "state",
@@ -562,18 +619,21 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.UsAddress.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.UsAddress.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.AppointmentAvailabilitySlots.parseOrThrow(_response.body, {
+            return serializers.AppointmentAvailabilitySlots.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -585,7 +645,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -617,10 +677,15 @@ export class LabTests {
 
     /**
      * Book an at-home phlebotomy appointment.
+     *
+     * @param {string} orderId - Your Order ID.
+     * @param {Vital.AppointmentBookingRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.bookPhlebotomyAppointment("order_id", {
+     *     await client.labTests.bookPhlebotomyAppointment("order_id", {
      *         bookingKey: "booking_key"
      *     })
      */
@@ -632,24 +697,27 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/phlebotomy/appointment/book`
+                `v3/order/${encodeURIComponent(orderId)}/phlebotomy/appointment/book`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.AppointmentBookingRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.AppointmentBookingRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
+            return serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -661,7 +729,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -693,10 +761,15 @@ export class LabTests {
 
     /**
      * Request an at-home phlebotomy appointment.
+     *
+     * @param {string} orderId - Your Order ID.
+     * @param {Vital.RequestAppointmentRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.requestPhlebotomyAppointment("order_id", {
+     *     await client.labTests.requestPhlebotomyAppointment("order_id", {
      *         address: {
      *             firstLine: "first_line",
      *             city: "city",
@@ -714,24 +787,27 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/phlebotomy/appointment/request`
+                `v3/order/${encodeURIComponent(orderId)}/phlebotomy/appointment/request`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.RequestAppointmentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.RequestAppointmentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
+            return serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -743,7 +819,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -775,10 +851,15 @@ export class LabTests {
 
     /**
      * Reschedule a previously booked at-home phlebotomy appointment.
+     *
+     * @param {string} orderId - Your Order ID.
+     * @param {Vital.AppointmentRescheduleRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.reschedulePhlebotomyAppointment("order_id", {
+     *     await client.labTests.reschedulePhlebotomyAppointment("order_id", {
      *         bookingKey: "booking_key"
      *     })
      */
@@ -790,26 +871,27 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/phlebotomy/appointment/reschedule`
+                `v3/order/${encodeURIComponent(orderId)}/phlebotomy/appointment/reschedule`
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.AppointmentRescheduleRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.AppointmentRescheduleRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
+            return serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -821,7 +903,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -853,10 +935,15 @@ export class LabTests {
 
     /**
      * Cancel a previously booked at-home phlebotomy appointment.
+     *
+     * @param {string} orderId - Your Order ID.
+     * @param {Vital.AppointmentCancelRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.cancelPhlebotomyAppointment("order_id", {
+     *     await client.labTests.cancelPhlebotomyAppointment("order_id", {
      *         cancellationReasonId: "cancellation_reason_id"
      *     })
      */
@@ -868,24 +955,27 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/phlebotomy/appointment/cancel`
+                `v3/order/${encodeURIComponent(orderId)}/phlebotomy/appointment/cancel`
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.AppointmentCancelRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.AppointmentCancelRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
+            return serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -897,7 +987,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -930,8 +1020,10 @@ export class LabTests {
     /**
      * Get the list of reasons for cancelling an at-home phlebotomy appointment.
      *
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
-     *     await vital.labTests.getPhlebotomyAppointmentCancellationReason()
+     *     await client.labTests.getPhlebotomyAppointmentCancellationReason()
      */
     public async getPhlebotomyAppointmentCancellationReason(
         requestOptions?: LabTests.RequestOptions
@@ -945,17 +1037,20 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.labTests.getPhlebotomyAppointmentCancellationReason.Response.parseOrThrow(
+            return serializers.labTests.getPhlebotomyAppointmentCancellationReason.Response.parseOrThrow(
                 _response.body,
                 {
                     unrecognizedObjectKeys: "passthrough",
@@ -990,10 +1085,14 @@ export class LabTests {
 
     /**
      * Get the appointment associated with an order.
+     *
+     * @param {string} orderId - Your Order ID.
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getPhlebotomyAppointment("order_id")
+     *     await client.labTests.getPhlebotomyAppointment("order_id")
      */
     public async getPhlebotomyAppointment(
         orderId: string,
@@ -1002,23 +1101,26 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/phlebotomy/appointment`
+                `v3/order/${encodeURIComponent(orderId)}/phlebotomy/appointment`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
+            return serializers.ClientFacingAppointment.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1030,7 +1132,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1067,10 +1169,14 @@ export class LabTests {
      *
      * - Whether a given zip code is served by our Phlebotomy network.
      * - List of Lab locations in the area.
+     *
+     * @param {Vital.LabTestsGetAreaInfoRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getAreaInfo({
+     *     await client.labTests.getAreaInfo({
      *         zipCode: "zip_code"
      *     })
      */
@@ -1098,18 +1204,21 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.AreaInfo.parseOrThrow(_response.body, {
+            return serializers.AreaInfo.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1121,7 +1230,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1152,10 +1261,13 @@ export class LabTests {
     }
 
     /**
+     * @param {Vital.LabTestsGetPscInfoRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getPscInfo({
+     *     await client.labTests.getPscInfo({
      *         zipCode: "zip_code",
      *         labId: 1
      *     })
@@ -1181,18 +1293,21 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PscInfo.parseOrThrow(_response.body, {
+            return serializers.PscInfo.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1204,7 +1319,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1235,10 +1350,14 @@ export class LabTests {
     }
 
     /**
+     * @param {string} orderId - Your Order ID.
+     * @param {Vital.LabTestsGetOrderPscInfoRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getOrderPscInfo("order_id")
+     *     await client.labTests.getOrderPscInfo("order_id")
      */
     public async getOrderPscInfo(
         orderId: string,
@@ -1254,24 +1373,27 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/psc/info`
+                `v3/order/${encodeURIComponent(orderId)}/psc/info`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PscInfo.parseOrThrow(_response.body, {
+            return serializers.PscInfo.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1283,7 +1405,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1321,21 +1443,24 @@ export class LabTests {
         const _response = await core.fetcher<stream.Readable>({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/result/pdf`
+                `v3/order/${encodeURIComponent(orderId)}/result/pdf`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             responseType: "streaming",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return _response.body;
@@ -1345,7 +1470,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1378,10 +1503,14 @@ export class LabTests {
     /**
      * Return metadata related to order results, such as lab metadata,
      * provider and sample dates.
+     *
+     * @param {string} orderId
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getResultMetadata("order_id")
+     *     await client.labTests.getResultMetadata("order_id")
      */
     public async getResultMetadata(
         orderId: string,
@@ -1390,23 +1519,26 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/result/metadata`
+                `v3/order/${encodeURIComponent(orderId)}/result/metadata`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.LabResultsMetadata.parseOrThrow(_response.body, {
+            return serializers.LabResultsMetadata.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1418,7 +1550,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1450,32 +1582,39 @@ export class LabTests {
 
     /**
      * Return both metadata and raw json test data
+     *
+     * @param {string} orderId
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getResultRaw("order_id")
+     *     await client.labTests.getResultRaw("order_id")
      */
     public async getResultRaw(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<Vital.LabResultsRaw> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/result`
+                `v3/order/${encodeURIComponent(orderId)}/result`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.LabResultsRaw.parseOrThrow(_response.body, {
+            return serializers.LabResultsRaw.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1487,7 +1626,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1536,22 +1675,25 @@ export class LabTests {
         const _response = await core.fetcher<stream.Readable>({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/labels/pdf`
+                `v3/order/${encodeURIComponent(orderId)}/labels/pdf`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             responseType: "streaming",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return _response.body;
@@ -1561,7 +1703,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1602,21 +1744,24 @@ export class LabTests {
         const _response = await core.fetcher<stream.Readable>({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/requisition/pdf`
+                `v3/order/${encodeURIComponent(orderId)}/requisition/pdf`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             responseType: "streaming",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return _response.body;
@@ -1626,7 +1771,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1658,29 +1803,39 @@ export class LabTests {
 
     /**
      * GET individual order by ID.
+     *
+     * @param {string} orderId - Your Order ID.
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.labTests.getOrder("order_id")
      */
     public async getOrder(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<Vital.ClientFacingOrder> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}`
+                `v3/order/${encodeURIComponent(orderId)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ClientFacingOrder.parseOrThrow(_response.body, {
+            return serializers.ClientFacingOrder.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1692,7 +1847,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1724,7 +1879,31 @@ export class LabTests {
 
     /**
      * POST create new order
+     *
+     * @param {Vital.CreateOrderRequestCompatible} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.labTests.createOrder({
+     *         userId: "user_id",
+     *         patientDetails: {
+     *             firstName: "first_name",
+     *             lastName: "last_name",
+     *             dob: "2024-01-15T09:30:00Z",
+     *             gender: Vital.Gender.Female,
+     *             phoneNumber: "phone_number",
+     *             email: "email"
+     *         },
+     *         patientAddress: {
+     *             firstLine: "first_line",
+     *             city: "city",
+     *             state: "state",
+     *             zip: "zip",
+     *             country: "country"
+     *         }
+     *     })
      */
     public async createOrder(
         request: Vital.CreateOrderRequestCompatible,
@@ -1739,20 +1918,21 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.CreateOrderRequestCompatible.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.CreateOrderRequestCompatible.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PostOrderResponse.parseOrThrow(_response.body, {
+            return serializers.PostOrderResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1764,7 +1944,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1796,7 +1976,14 @@ export class LabTests {
 
     /**
      * POST cancel order
+     *
+     * @param {string} orderId - Your Order ID.
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.labTests.cancelOrder("order_id")
      */
     public async cancelOrder(
         orderId: string,
@@ -1805,23 +1992,26 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/cancel`
+                `v3/order/${encodeURIComponent(orderId)}/cancel`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PostOrderResponse.parseOrThrow(_response.body, {
+            return serializers.PostOrderResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -1833,7 +2023,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1865,10 +2055,15 @@ export class LabTests {
 
     /**
      * Get available test kits.
+     *
+     * @param {string} orderId
+     * @param {Vital.LabTestsSimulateOrderProcessRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.simulateOrderProcess("order_id")
+     *     await client.labTests.simulateOrderProcess("order_id")
      */
     public async simulateOrderProcess(
         orderId: string,
@@ -1888,21 +2083,24 @@ export class LabTests {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v3/order/${orderId}/test`
+                `v3/order/${encodeURIComponent(orderId)}/test`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return _response.body;
@@ -1912,7 +2110,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -1944,10 +2142,14 @@ export class LabTests {
 
     /**
      * GET many orders with filters.
+     *
+     * @param {Vital.LabTestsGetOrdersRequest} request
+     * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await vital.labTests.getOrders()
+     *     await client.labTests.getOrders()
      */
     public async getOrders(
         request: Vital.LabTestsGetOrdersRequest = {},
@@ -2034,18 +2236,21 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.69",
+                "X-Fern-SDK-Version": "3.1.70",
+                "User-Agent": "@tryvital/vital-node/3.1.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.GetOrdersResponse.parseOrThrow(_response.body, {
+            return serializers.GetOrdersResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -2057,7 +2262,7 @@ export class LabTests {
             switch (_response.error.statusCode) {
                 case 422:
                     throw new Vital.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

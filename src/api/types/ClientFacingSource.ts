@@ -11,6 +11,7 @@ export interface ClientFacingSource {
     provider: string;
     /** The type of the data source (app or device) by which the summary or the timeseries data were recorded. This defaults to `unknown` when Vital cannot extract or infer that information */
     type?: string;
+    /** The identifier of the app which recorded this summary. This is only applicable to multi-source providers like Apple Health and Android Health Connect. */
     appId?: string;
     /** Deprecated. Subject to removal after 1 Jan 2024. */
     name?: string;

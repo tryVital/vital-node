@@ -1,5 +1,7 @@
 export * as labTests from "./labTests";
 export * from "./labTests/types";
+export * as aggregate from "./aggregate";
+export * from "./aggregate/types";
 export * as link from "./link";
 export * as profile from "./profile";
 export * as devices from "./devices";
@@ -33,3 +35,4 @@ export * from "./introspect/client/requests";
 export * from "./labTests/client/requests";
 export * from "./testkit/client/requests";
 export * from "./insurance/client/requests";
+export * from "./aggregate/client/requests";

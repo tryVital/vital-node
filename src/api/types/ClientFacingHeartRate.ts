@@ -3,8 +3,12 @@
  */
 
 export interface ClientFacingHeartRate {
+    /** Average heart rate::bpm */
     avgBpm?: number;
+    /** Minimum heart rate::bpm */
     minBpm?: number;
+    /** Maximum heart rate::bpm */
     maxBpm?: number;
+    /** Resting heart rate::bpm */
     restingBpm?: number;
 }

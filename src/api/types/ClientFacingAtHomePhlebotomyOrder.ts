@@ -11,6 +11,6 @@ export interface ClientFacingAtHomePhlebotomyOrder {
     /** The Vital at-home phlebotomy Order ID */
     id: string;
     appointmentId?: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 }

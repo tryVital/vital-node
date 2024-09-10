@@ -1,2 +1,2 @@
-export { WorkoutsGetRequest } from "./WorkoutsGetRequest";
-export { WorkoutsGetRawRequest } from "./WorkoutsGetRawRequest";
+export { type WorkoutsGetRequest } from "./WorkoutsGetRequest";
+export { type WorkoutsGetRawRequest } from "./WorkoutsGetRawRequest";

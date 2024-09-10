@@ -1,5 +1,7 @@
 export * as labTests from "./labTests";
 export * from "./labTests/types";
+export * as aggregate from "./aggregate";
+export * from "./aggregate/types";
 export * as link from "./link";
 export * as vitals from "./vitals";
 export * as user from "./user";
@@ -12,3 +14,4 @@ export * from "./labTests/client/requests";
 export * as testkit from "./testkit";
 export * from "./testkit/client/requests";
 export * from "./insurance/client/requests";
+export * from "./aggregate/client/requests";

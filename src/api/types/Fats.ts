@@ -3,10 +3,16 @@
  */
 
 export interface Fats {
+    /** Amount of saturated fats in grams (g) */
     saturated?: number;
+    /** Amount of monounsaturated fats in grams (g) */
     monounsaturated?: number;
+    /** Amount of polyunsaturated fats in grams (g) */
     polyunsaturated?: number;
+    /** Amount of Omega-3 fatty acids in grams (g) */
     omega3?: number;
+    /** Amount of Omega-6 fatty acids in grams (g) */
     omega6?: number;
+    /** Total amount of fats in grams (g) */
     total?: number;
 }
