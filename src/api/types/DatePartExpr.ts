@@ -4,4 +4,7 @@
 
 import * as Vital from "../index";
 
-export type QueryInstructionSelect = Vital.SleepSelector | Vital.ActivitySelector;
+export interface DatePartExpr {
+    arg: Vital.DatePartExprArg;
+    datePart: Vital.DatePartExprDatePart;
+}

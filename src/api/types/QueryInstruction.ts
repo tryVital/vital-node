@@ -5,9 +5,7 @@
 import * as Vital from "../index";
 
 export interface QueryInstruction {
-    select: Vital.QueryInstructionSelect;
-    partitionBy: Vital.QueryInstructionPartitionBy;
-    swizzleBy?: Vital.Swizzling;
-    reduceBy: Vital.Reducer[];
+    select: Vital.QueryInstructionSelectItem[];
+    groupBy: Vital.QueryInstructionGroupByItem[];
     splitBySource?: boolean;
 }

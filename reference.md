@@ -8826,15 +8826,22 @@ await client.aggregate.queryOne("user_id", {
     },
     instructions: [
         {
-            select: {
-                sleep: Vital.SleepSelectorSleep.SessionStart,
-            },
-            partitionBy: {
-                unit: Vital.PeriodUnit.Minute,
-            },
-            reduceBy: [
+            select: [
                 {
-                    function: Vital.ReducerFunction.Mean,
+                    arg: {
+                        sleep: Vital.SleepColumnExprSleep.SessionStart,
+                    },
+                    func: Vital.AggregateExprFunc.Mean,
+                },
+            ],
+            groupBy: [
+                {
+                    dateTrunc: {
+                        unit: Vital.PeriodUnit.Minute,
+                    },
+                    arg: {
+                        index: Vital.IndexColumnExprIndex.Sleep,
+                    },
                 },
             ],
         },

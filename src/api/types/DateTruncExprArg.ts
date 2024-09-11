@@ -4,6 +4,4 @@
 
 import * as Vital from "../index";
 
-export interface ActivitySelector {
-    activity: Vital.ActivitySelectorActivity;
-}
+export type DateTruncExprArg = Vital.IndexColumnExpr | Vital.Placeholder;

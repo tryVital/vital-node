@@ -6,9 +6,9 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 
-export const ActivitySelectorActivity: core.serialization.Schema<
-    serializers.ActivitySelectorActivity.Raw,
-    Vital.ActivitySelectorActivity
+export const ActivityColumnExprActivity: core.serialization.Schema<
+    serializers.ActivityColumnExprActivity.Raw,
+    Vital.ActivityColumnExprActivity
 > = core.serialization.enum_([
     "date",
     "calories_total",
@@ -30,7 +30,7 @@ export const ActivitySelectorActivity: core.serialization.Schema<
     "source_app_id",
 ]);
 
-export declare namespace ActivitySelectorActivity {
+export declare namespace ActivityColumnExprActivity {
     type Raw =
         | "date"
         | "calories_total"

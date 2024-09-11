@@ -15,14 +15,19 @@ import * as Vital from "../../../../index";
  *             }
  *         },
  *         instructions: [{
- *                 select: {
- *                     sleep: Vital.SleepSelectorSleep.SessionStart
- *                 },
- *                 partitionBy: {
- *                     unit: Vital.PeriodUnit.Minute
- *                 },
- *                 reduceBy: [{
- *                         function: Vital.ReducerFunction.Mean
+ *                 select: [{
+ *                         arg: {
+ *                             sleep: Vital.SleepColumnExprSleep.SessionStart
+ *                         },
+ *                         func: Vital.AggregateExprFunc.Mean
+ *                     }],
+ *                 groupBy: [{
+ *                         dateTrunc: {
+ *                             unit: Vital.PeriodUnit.Minute
+ *                         },
+ *                         arg: {
+ *                             index: Vital.IndexColumnExprIndex.Sleep
+ *                         }
  *                     }]
  *             }]
  *     }

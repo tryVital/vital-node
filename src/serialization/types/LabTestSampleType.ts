@@ -7,8 +7,8 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 
 export const LabTestSampleType: core.serialization.Schema<serializers.LabTestSampleType.Raw, Vital.LabTestSampleType> =
-    core.serialization.enum_(["dried_blood_spot", "serum", "saliva", "urine"]);
+    core.serialization.enum_(["dried_blood_spot", "arm_collector", "serum", "saliva", "urine"]);
 
 export declare namespace LabTestSampleType {
-    type Raw = "dried_blood_spot" | "serum" | "saliva" | "urine";
+    type Raw = "dried_blood_spot" | "arm_collector" | "serum" | "saliva" | "urine";
 }

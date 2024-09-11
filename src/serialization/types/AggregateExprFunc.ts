@@ -6,9 +6,9 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 
-export const ReducerFunction: core.serialization.Schema<serializers.ReducerFunction.Raw, Vital.ReducerFunction> =
+export const AggregateExprFunc: core.serialization.Schema<serializers.AggregateExprFunc.Raw, Vital.AggregateExprFunc> =
     core.serialization.enum_(["mean", "min", "max", "sum", "count", "median", "stddev", "oldest", "newest"]);
 
-export declare namespace ReducerFunction {
+export declare namespace AggregateExprFunc {
     type Raw = "mean" | "min" | "max" | "sum" | "count" | "median" | "stddev" | "oldest" | "newest";
 }

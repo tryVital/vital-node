@@ -4,4 +4,6 @@
 
 import * as Vital from "../index";
 
-export type QueryInstructionPartitionBy = Vital.Period | Vital.Placeholder;
+export interface IndexColumnExpr {
+    index: Vital.IndexColumnExprIndex;
+}

@@ -12,11 +12,13 @@ export const TimeseriesMetricPoint: core.serialization.ObjectSchema<
 > = core.serialization.object({
     date: core.serialization.string(),
     value: core.serialization.number(),
+    all: core.serialization.number(),
 });
 
 export declare namespace TimeseriesMetricPoint {
     interface Raw {
         date: string;
         value: number;
+        all: number;
     }
 }

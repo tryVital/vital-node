@@ -5,10 +5,11 @@
 /**
  * The type of sample used to perform a lab test.
  */
-export type LabTestSampleType = "dried_blood_spot" | "serum" | "saliva" | "urine";
+export type LabTestSampleType = "dried_blood_spot" | "arm_collector" | "serum" | "saliva" | "urine";
 
 export const LabTestSampleType = {
     DriedBloodSpot: "dried_blood_spot",
+    ArmCollector: "arm_collector",
     Serum: "serum",
     Saliva: "saliva",
     Urine: "urine",

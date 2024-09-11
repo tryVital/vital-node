@@ -4,6 +4,7 @@
 
 import * as Vital from "../index";
 
-export interface SleepSelector {
-    sleep: Vital.SleepSelectorSleep;
+export interface AggregateExpr {
+    arg: Vital.AggregateExprArg;
+    func: Vital.AggregateExprFunc;
 }

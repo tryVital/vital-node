@@ -6,9 +6,9 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 
-export const SleepSelectorSleep: core.serialization.Schema<
-    serializers.SleepSelectorSleep.Raw,
-    Vital.SleepSelectorSleep
+export const SleepColumnExprSleep: core.serialization.Schema<
+    serializers.SleepColumnExprSleep.Raw,
+    Vital.SleepColumnExprSleep
 > = core.serialization.enum_([
     "session_start",
     "session_end",
@@ -36,7 +36,7 @@ export const SleepSelectorSleep: core.serialization.Schema<
     "source_app_id",
 ]);
 
-export declare namespace SleepSelectorSleep {
+export declare namespace SleepColumnExprSleep {
     type Raw =
         | "session_start"
         | "session_end"

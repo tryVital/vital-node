@@ -4,6 +4,6 @@
 
 import * as Vital from "../index";
 
-export interface Reducer {
-    function: Vital.ReducerFunction;
+export interface GroupKeyColumnExpr {
+    groupKey?: Vital.GroupKeyColumnExprGroupKey;
 }

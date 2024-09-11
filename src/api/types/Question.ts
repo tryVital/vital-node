@@ -13,4 +13,5 @@ export interface Question {
     sequence: number;
     answers: Vital.Answer[];
     constraint?: string;
+    default?: string;
 }
