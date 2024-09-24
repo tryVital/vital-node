@@ -7,16 +7,22 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { LabResultsMetadata } from "./LabResultsMetadata";
 import { LabResultsRawResults } from "./LabResultsRawResults";
+import { MissingBiomarkerResult } from "./MissingBiomarkerResult";
 
 export const LabResultsRaw: core.serialization.ObjectSchema<serializers.LabResultsRaw.Raw, Vital.LabResultsRaw> =
     core.serialization.object({
         metadata: LabResultsMetadata,
         results: LabResultsRawResults,
+        missingResults: core.serialization.property(
+            "missing_results",
+            core.serialization.list(MissingBiomarkerResult).optional()
+        ),
     });
 
 export declare namespace LabResultsRaw {
     interface Raw {
         metadata: LabResultsMetadata.Raw;
         results: LabResultsRawResults.Raw;
+        missing_results?: MissingBiomarkerResult.Raw[] | null;
     }
 }

@@ -1,6 +1,7 @@
 export { type CreateLabTestRequest } from "./CreateLabTestRequest";
 export { type LabTestsGetMarkersRequest } from "./LabTestsGetMarkersRequest";
 export { type LabTestsGetMarkersForLabTestRequest } from "./LabTestsGetMarkersForLabTestRequest";
+export { type LabTestsGetPhlebotomyAppointmentAvailabilityRequest } from "./LabTestsGetPhlebotomyAppointmentAvailabilityRequest";
 export { type AppointmentBookingRequest } from "./AppointmentBookingRequest";
 export { type RequestAppointmentRequest } from "./RequestAppointmentRequest";
 export { type AppointmentRescheduleRequest } from "./AppointmentRescheduleRequest";

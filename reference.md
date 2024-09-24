@@ -7258,10 +7258,12 @@ for the given address and order.
 
 ```typescript
 await client.labTests.getPhlebotomyAppointmentAvailability({
-    firstLine: "first_line",
-    city: "city",
-    state: "state",
-    zipCode: "zip_code",
+    body: {
+        firstLine: "first_line",
+        city: "city",
+        state: "state",
+        zipCode: "zip_code",
+    },
 });
 ```
 
@@ -7278,7 +7280,7 @@ await client.labTests.getPhlebotomyAppointmentAvailability({
 <dl>
 <dd>
 
-**request:** `Vital.UsAddress`
+**request:** `Vital.LabTestsGetPhlebotomyAppointmentAvailabilityRequest`
 
 </dd>
 </dl>

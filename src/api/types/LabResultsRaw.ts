@@ -7,4 +7,5 @@ import * as Vital from "../index";
 export interface LabResultsRaw {
     metadata: Vital.LabResultsMetadata;
     results: Vital.LabResultsRawResults;
+    missingResults?: Vital.MissingBiomarkerResult[];
 }
