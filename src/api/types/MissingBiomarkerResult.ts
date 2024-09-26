@@ -7,7 +7,8 @@ import * as Vital from "../index";
 export interface MissingBiomarkerResult {
     name: string;
     slug: string;
-    reason: Vital.FailureType;
+    inferredFailureType: Vital.FailureType;
+    note?: string;
     loinc?: string;
     loincSlug?: string;
     providerId?: string;

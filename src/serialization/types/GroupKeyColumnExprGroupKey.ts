@@ -5,12 +5,13 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { Select } from "./Select";
 
 export const GroupKeyColumnExprGroupKey: core.serialization.Schema<
     serializers.GroupKeyColumnExprGroupKey.Raw,
     Vital.GroupKeyColumnExprGroupKey
-> = core.serialization.undiscriminatedUnion([core.serialization.number(), core.serialization.stringLiteral("*")]);
+> = core.serialization.undiscriminatedUnion([core.serialization.number(), Select]);
 
 export declare namespace GroupKeyColumnExprGroupKey {
-    type Raw = number | "*";
+    type Raw = number | Select.Raw;
 }

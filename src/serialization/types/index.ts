@@ -339,3 +339,4 @@ export * from "./GroupedBodyFat";
 export * from "./GroupedBloodOxygen";
 export * from "./GroupedElectrocardiogramVoltage";
 export * from "./GroupedBloodPressure";
+export * from "./Select";

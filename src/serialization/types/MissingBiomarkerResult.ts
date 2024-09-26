@@ -13,7 +13,8 @@ export const MissingBiomarkerResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: core.serialization.string(),
     slug: core.serialization.string(),
-    reason: FailureType,
+    inferredFailureType: core.serialization.property("inferred_failure_type", FailureType),
+    note: core.serialization.string().optional(),
     loinc: core.serialization.string().optional(),
     loincSlug: core.serialization.property("loinc_slug", core.serialization.string().optional()),
     providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
@@ -23,7 +24,8 @@ export declare namespace MissingBiomarkerResult {
     interface Raw {
         name: string;
         slug: string;
-        reason: FailureType.Raw;
+        inferred_failure_type: FailureType.Raw;
+        note?: string | null;
         loinc?: string | null;
         loinc_slug?: string | null;
         provider_id?: string | null;
