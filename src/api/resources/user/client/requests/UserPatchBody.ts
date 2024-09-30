@@ -19,4 +19,6 @@ export interface UserPatchBody {
     ingestionStart?: string;
     /** Ending bound for user data ingestion. Data from this date or later will not be ingested and the connection will be deregistered. */
     ingestionEnd?: string;
+    /** A unique ID representing the end user. Typically this will be a user ID from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id. */
+    clientUserId?: string;
 }

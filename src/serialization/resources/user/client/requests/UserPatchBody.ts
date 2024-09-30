@@ -12,6 +12,7 @@ export const UserPatchBody: core.serialization.Schema<serializers.UserPatchBody.
         fallbackBirthDate: core.serialization.property("fallback_birth_date", core.serialization.string().optional()),
         ingestionStart: core.serialization.property("ingestion_start", core.serialization.string().optional()),
         ingestionEnd: core.serialization.property("ingestion_end", core.serialization.string().optional()),
+        clientUserId: core.serialization.property("client_user_id", core.serialization.string().optional()),
     });
 
 export declare namespace UserPatchBody {
@@ -20,5 +21,6 @@ export declare namespace UserPatchBody {
         fallback_birth_date?: string | null;
         ingestion_start?: string | null;
         ingestion_end?: string | null;
+        client_user_id?: string | null;
     }
 }
