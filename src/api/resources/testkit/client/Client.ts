@@ -68,8 +68,8 @@ export class Testkit {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.75",
-                "User-Agent": "@tryvital/vital-node/3.1.75",
+                "X-Fern-SDK-Version": "3.1.76",
+                "User-Agent": "@tryvital/vital-node/3.1.76",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -160,8 +160,8 @@ export class Testkit {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.75",
-                "User-Agent": "@tryvital/vital-node/3.1.75",
+                "X-Fern-SDK-Version": "3.1.76",
+                "User-Agent": "@tryvital/vital-node/3.1.76",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
