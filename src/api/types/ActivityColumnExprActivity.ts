@@ -15,8 +15,8 @@ export type ActivityColumnExprActivity =
     | "intensity_medium_second"
     | "intensity_high_second"
     | "heart_rate_mean"
-    | "heart_rate_min"
-    | "heart_rate_max"
+    | "heart_rate_minimum"
+    | "heart_rate_maximum"
     | "heart_rate_resting"
     | "source_type"
     | "source_provider"
@@ -35,8 +35,8 @@ export const ActivityColumnExprActivity = {
     IntensityMediumSecond: "intensity_medium_second",
     IntensityHighSecond: "intensity_high_second",
     HeartRateMean: "heart_rate_mean",
-    HeartRateMin: "heart_rate_min",
-    HeartRateMax: "heart_rate_max",
+    HeartRateMinimum: "heart_rate_minimum",
+    HeartRateMaximum: "heart_rate_maximum",
     HeartRateResting: "heart_rate_resting",
     SourceType: "source_type",
     SourceProvider: "source_provider",

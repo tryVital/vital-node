@@ -7,12 +7,24 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { SleepColumnExpr } from "./SleepColumnExpr";
 import { ActivityColumnExpr } from "./ActivityColumnExpr";
+import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
 import { IndexColumnExpr } from "./IndexColumnExpr";
 import { GroupKeyColumnExpr } from "./GroupKeyColumnExpr";
 
 export const AggregateExprArg: core.serialization.Schema<serializers.AggregateExprArg.Raw, Vital.AggregateExprArg> =
-    core.serialization.undiscriminatedUnion([SleepColumnExpr, ActivityColumnExpr, IndexColumnExpr, GroupKeyColumnExpr]);
+    core.serialization.undiscriminatedUnion([
+        SleepColumnExpr,
+        ActivityColumnExpr,
+        WorkoutColumnExpr,
+        IndexColumnExpr,
+        GroupKeyColumnExpr,
+    ]);
 
 export declare namespace AggregateExprArg {
-    type Raw = SleepColumnExpr.Raw | ActivityColumnExpr.Raw | IndexColumnExpr.Raw | GroupKeyColumnExpr.Raw;
+    type Raw =
+        | SleepColumnExpr.Raw
+        | ActivityColumnExpr.Raw
+        | WorkoutColumnExpr.Raw
+        | IndexColumnExpr.Raw
+        | GroupKeyColumnExpr.Raw;
 }

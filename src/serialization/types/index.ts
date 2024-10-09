@@ -289,6 +289,8 @@ export * from "./ValidationErrorLocItem";
 export * from "./ValidationError";
 export * from "./VitalTokenCreatedResponse";
 export * from "./Vitamins";
+export * from "./WorkoutColumnExprWorkout";
+export * from "./WorkoutColumnExpr";
 export * from "./WorkoutV2InDb";
 export * from "./ClientFacingSampleGroupingKeys";
 export * from "./VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails";

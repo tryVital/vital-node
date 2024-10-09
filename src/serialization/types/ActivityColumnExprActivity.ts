@@ -22,8 +22,8 @@ export const ActivityColumnExprActivity: core.serialization.Schema<
     "intensity_medium_second",
     "intensity_high_second",
     "heart_rate_mean",
-    "heart_rate_min",
-    "heart_rate_max",
+    "heart_rate_minimum",
+    "heart_rate_maximum",
     "heart_rate_resting",
     "source_type",
     "source_provider",
@@ -44,8 +44,8 @@ export declare namespace ActivityColumnExprActivity {
         | "intensity_medium_second"
         | "intensity_high_second"
         | "heart_rate_mean"
-        | "heart_rate_min"
-        | "heart_rate_max"
+        | "heart_rate_minimum"
+        | "heart_rate_maximum"
         | "heart_rate_resting"
         | "source_type"
         | "source_provider"

@@ -7,5 +7,6 @@ import * as Vital from "../index";
 export type AggregateExprArg =
     | Vital.SleepColumnExpr
     | Vital.ActivityColumnExpr
+    | Vital.WorkoutColumnExpr
     | Vital.IndexColumnExpr
     | Vital.GroupKeyColumnExpr;
