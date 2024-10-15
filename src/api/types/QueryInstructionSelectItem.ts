@@ -9,5 +9,6 @@ export type QueryInstructionSelectItem =
     | Vital.SleepColumnExpr
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
+    | Vital.BodyColumnExpr
     | Vital.IndexColumnExpr
     | Vital.GroupKeyColumnExpr;

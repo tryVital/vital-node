@@ -23,6 +23,8 @@ export * from "./Availability";
 export * from "./BasalBodyTemperatureEntry";
 export * from "./Billing";
 export * from "./BiomarkerResult";
+export * from "./BodyColumnExprBody";
+export * from "./BodyColumnExpr";
 export * from "./BodyV2InDb";
 export * from "./CervicalMucusEntryQuality";
 export * from "./CervicalMucusEntry";

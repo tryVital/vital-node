@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { SleepColumnExpr } from "./SleepColumnExpr";
 import { ActivityColumnExpr } from "./ActivityColumnExpr";
 import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
+import { BodyColumnExpr } from "./BodyColumnExpr";
 import { IndexColumnExpr } from "./IndexColumnExpr";
 import { GroupKeyColumnExpr } from "./GroupKeyColumnExpr";
 
@@ -16,6 +17,7 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         SleepColumnExpr,
         ActivityColumnExpr,
         WorkoutColumnExpr,
+        BodyColumnExpr,
         IndexColumnExpr,
         GroupKeyColumnExpr,
     ]);
@@ -25,6 +27,7 @@ export declare namespace AggregateExprArg {
         | SleepColumnExpr.Raw
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
+        | BodyColumnExpr.Raw
         | IndexColumnExpr.Raw
         | GroupKeyColumnExpr.Raw;
 }

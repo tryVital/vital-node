@@ -9,6 +9,7 @@ import { AggregateExpr } from "./AggregateExpr";
 import { SleepColumnExpr } from "./SleepColumnExpr";
 import { ActivityColumnExpr } from "./ActivityColumnExpr";
 import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
+import { BodyColumnExpr } from "./BodyColumnExpr";
 import { IndexColumnExpr } from "./IndexColumnExpr";
 import { GroupKeyColumnExpr } from "./GroupKeyColumnExpr";
 
@@ -20,6 +21,7 @@ export const QueryInstructionSelectItem: core.serialization.Schema<
     SleepColumnExpr,
     ActivityColumnExpr,
     WorkoutColumnExpr,
+    BodyColumnExpr,
     IndexColumnExpr,
     GroupKeyColumnExpr,
 ]);
@@ -30,6 +32,7 @@ export declare namespace QueryInstructionSelectItem {
         | SleepColumnExpr.Raw
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
+        | BodyColumnExpr.Raw
         | IndexColumnExpr.Raw
         | GroupKeyColumnExpr.Raw;
 }

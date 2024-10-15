@@ -8,5 +8,6 @@ export type AggregateExprArg =
     | Vital.SleepColumnExpr
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
+    | Vital.BodyColumnExpr
     | Vital.IndexColumnExpr
     | Vital.GroupKeyColumnExpr;

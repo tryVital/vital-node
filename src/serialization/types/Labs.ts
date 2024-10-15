@@ -13,10 +13,20 @@ export const Labs: core.serialization.Schema<serializers.Labs.Raw, Vital.Labs> =
     "quest",
     "labcorp",
     "bioreference",
+    "us_biotek",
     "manual",
     "sanocardio",
 ]);
 
 export declare namespace Labs {
-    type Raw = "ayumetrix" | "spiriplex" | "ussl" | "quest" | "labcorp" | "bioreference" | "manual" | "sanocardio";
+    type Raw =
+        | "ayumetrix"
+        | "spiriplex"
+        | "ussl"
+        | "quest"
+        | "labcorp"
+        | "bioreference"
+        | "us_biotek"
+        | "manual"
+        | "sanocardio";
 }
