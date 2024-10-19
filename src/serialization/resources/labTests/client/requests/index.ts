@@ -1,6 +1,5 @@
 export { CreateLabTestRequest } from "./CreateLabTestRequest";
-export { AppointmentBookingRequest } from "./AppointmentBookingRequest";
 export { RequestAppointmentRequest } from "./RequestAppointmentRequest";
-export { AppointmentRescheduleRequest } from "./AppointmentRescheduleRequest";
-export { AppointmentCancelRequest } from "./AppointmentCancelRequest";
+export { ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest } from "./ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest";
+export { VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest } from "./VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest";
 export { CreateOrderRequestCompatible } from "./CreateOrderRequestCompatible";

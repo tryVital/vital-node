@@ -12,4 +12,5 @@ export interface ClientFacingWalkInTestOrder {
     id: string;
     createdAt: string;
     updatedAt: string;
+    appointmentId?: string;
 }

@@ -5,16 +5,19 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { AppointmentLocation } from "./AppointmentLocation";
 import { TimeSlot } from "./TimeSlot";
 
 export const DaySlots: core.serialization.ObjectSchema<serializers.DaySlots.Raw, Vital.DaySlots> =
     core.serialization.object({
+        location: AppointmentLocation.optional(),
         date: core.serialization.string(),
         slots: core.serialization.list(TimeSlot),
     });
 
 export declare namespace DaySlots {
     interface Raw {
+        location?: AppointmentLocation.Raw | null;
         date: string;
         slots: TimeSlot.Raw[];
     }

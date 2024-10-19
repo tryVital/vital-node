@@ -43,6 +43,7 @@ export const Providers: core.serialization.Schema<serializers.Providers.Raw, Vit
         "kardia",
         "whoop_v2",
         "ultrahuman",
+        "my_fitness_pal_v2",
     ]);
 
 export declare namespace Providers {
@@ -81,5 +82,6 @@ export declare namespace Providers {
         | "cronometer"
         | "kardia"
         | "whoop_v2"
-        | "ultrahuman";
+        | "ultrahuman"
+        | "my_fitness_pal_v2";
 }

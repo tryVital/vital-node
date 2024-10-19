@@ -21,6 +21,7 @@ export const OAuthProviders: core.serialization.Schema<serializers.OAuthProvider
         "cronometer",
         "omron",
         "whoop_v2",
+        "my_fitness_pal_v2",
     ]);
 
 export declare namespace OAuthProviders {
@@ -37,5 +38,6 @@ export declare namespace OAuthProviders {
         | "polar"
         | "cronometer"
         | "omron"
-        | "whoop_v2";
+        | "whoop_v2"
+        | "my_fitness_pal_v2";
 }

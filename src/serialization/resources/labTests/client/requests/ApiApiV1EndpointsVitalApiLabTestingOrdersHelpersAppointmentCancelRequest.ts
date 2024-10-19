@@ -6,15 +6,15 @@ import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
 
-export const AppointmentCancelRequest: core.serialization.Schema<
-    serializers.AppointmentCancelRequest.Raw,
-    Vital.AppointmentCancelRequest
+export const ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest: core.serialization.Schema<
+    serializers.ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest.Raw,
+    Vital.ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest
 > = core.serialization.object({
     cancellationReasonId: core.serialization.property("cancellation_reason_id", core.serialization.string()),
     notes: core.serialization.string().optional(),
 });
 
-export declare namespace AppointmentCancelRequest {
+export declare namespace ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest {
     interface Raw {
         cancellation_reason_id: string;
         notes?: string | null;

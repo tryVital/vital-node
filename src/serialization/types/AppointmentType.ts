@@ -7,8 +7,8 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 
 export const AppointmentType: core.serialization.Schema<serializers.AppointmentType.Raw, Vital.AppointmentType> =
-    core.serialization.stringLiteral("phlebotomy");
+    core.serialization.enum_(["phlebotomy", "patient_service_center"]);
 
 export declare namespace AppointmentType {
-    type Raw = "phlebotomy";
+    type Raw = "phlebotomy" | "patient_service_center";
 }

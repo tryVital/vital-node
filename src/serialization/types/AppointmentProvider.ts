@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const AppointmentProvider: core.serialization.Schema<
     serializers.AppointmentProvider.Raw,
     Vital.AppointmentProvider
-> = core.serialization.enum_(["getlabs", "axlehealth", "phlebfinders"]);
+> = core.serialization.enum_(["getlabs", "axlehealth", "phlebfinders", "quest"]);
 
 export declare namespace AppointmentProvider {
-    type Raw = "getlabs" | "axlehealth" | "phlebfinders";
+    type Raw = "getlabs" | "axlehealth" | "phlebfinders" | "quest";
 }

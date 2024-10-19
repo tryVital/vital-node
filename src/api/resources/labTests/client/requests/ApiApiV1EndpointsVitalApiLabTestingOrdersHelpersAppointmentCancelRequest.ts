@@ -8,7 +8,7 @@
  *         cancellationReasonId: "cancellation_reason_id"
  *     }
  */
-export interface AppointmentCancelRequest {
+export interface ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest {
     cancellationReasonId: string;
     notes?: string;
 }

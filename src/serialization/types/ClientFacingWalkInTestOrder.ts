@@ -13,6 +13,7 @@ export const ClientFacingWalkInTestOrder: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     createdAt: core.serialization.property("created_at", core.serialization.string()),
     updatedAt: core.serialization.property("updated_at", core.serialization.string()),
+    appointmentId: core.serialization.property("appointment_id", core.serialization.string().optional()),
 });
 
 export declare namespace ClientFacingWalkInTestOrder {
@@ -20,5 +21,6 @@ export declare namespace ClientFacingWalkInTestOrder {
         id: string;
         created_at: string;
         updated_at: string;
+        appointment_id?: string | null;
     }
 }

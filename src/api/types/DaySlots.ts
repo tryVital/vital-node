@@ -5,6 +5,7 @@
 import * as Vital from "../index";
 
 export interface DaySlots {
+    location?: Vital.AppointmentLocation;
     date: string;
     slots: Vital.TimeSlot[];
 }

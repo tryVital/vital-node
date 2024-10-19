@@ -14,6 +14,9 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "sample_with_lab.walk_in_test.partial_results",
         "failed.walk_in_test.sample_error",
         "cancelled.walk_in_test.cancelled",
+        "collecting_sample.walk_in_test.appointment_pending",
+        "collecting_sample.walk_in_test.appointment_scheduled",
+        "collecting_sample.walk_in_test.appointment_cancelled",
         "received.at_home_phlebotomy.ordered",
         "received.at_home_phlebotomy.requisition_created",
         "collecting_sample.at_home_phlebotomy.appointment_pending",
@@ -50,6 +53,9 @@ export declare namespace OrderStatus {
         | "sample_with_lab.walk_in_test.partial_results"
         | "failed.walk_in_test.sample_error"
         | "cancelled.walk_in_test.cancelled"
+        | "collecting_sample.walk_in_test.appointment_pending"
+        | "collecting_sample.walk_in_test.appointment_scheduled"
+        | "collecting_sample.walk_in_test.appointment_cancelled"
         | "received.at_home_phlebotomy.ordered"
         | "received.at_home_phlebotomy.requisition_created"
         | "collecting_sample.at_home_phlebotomy.appointment_pending"
