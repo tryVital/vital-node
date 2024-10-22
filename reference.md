@@ -8469,6 +8469,69 @@ await client.labTests.getPscAppointmentCancellationReason();
 </dl>
 </details>
 
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPscAppointment</a>(orderId) -> Vital.ClientFacingAppointment</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the appointment associated with an order.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labTests.getPscAppointment("order_id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**orderId:** `string` — Your Order ID.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LabTests.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderRequistionPdf</a>(orderId) -> stream.Readable</code></summary>
 <dl>
 <dd>

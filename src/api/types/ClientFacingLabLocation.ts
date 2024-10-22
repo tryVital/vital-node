@@ -7,4 +7,5 @@ import * as Vital from "../index";
 export interface ClientFacingLabLocation {
     metadata: Vital.LabLocationMetadata;
     distance: number;
+    siteCode: string;
 }

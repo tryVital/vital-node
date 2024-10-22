@@ -13,11 +13,13 @@ export const ClientFacingLabLocation: core.serialization.ObjectSchema<
 > = core.serialization.object({
     metadata: LabLocationMetadata,
     distance: core.serialization.number(),
+    siteCode: core.serialization.property("site_code", core.serialization.string()),
 });
 
 export declare namespace ClientFacingLabLocation {
     interface Raw {
         metadata: LabLocationMetadata.Raw;
         distance: number;
+        site_code: string;
     }
 }

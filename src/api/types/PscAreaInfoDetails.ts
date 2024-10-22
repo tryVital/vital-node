@@ -3,6 +3,7 @@
  */
 
 export interface PscAreaInfoDetails {
+    appointmentWithVital: boolean;
     withinRadius: number;
     radius: string;
 }
