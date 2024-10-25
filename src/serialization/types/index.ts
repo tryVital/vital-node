@@ -173,6 +173,7 @@ export * from "./GetMarkersResponse";
 export * from "./GetOrdersResponse";
 export * from "./GroupKeyColumnExprGroupKey";
 export * from "./GroupKeyColumnExpr";
+export * from "./GuarantorDetails";
 export * from "./HttpValidationError";
 export * from "./HealthInsuranceCreateRequestFrontImage";
 export * from "./HealthInsuranceCreateRequestBackImage";

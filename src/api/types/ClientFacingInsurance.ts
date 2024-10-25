@@ -11,5 +11,5 @@ export interface ClientFacingInsurance {
     insured: Vital.PersonDetailsOutput;
     company: Vital.CompanyDetails;
     groupId?: string;
-    guarantor?: Vital.PersonDetailsOutput;
+    guarantor?: Vital.GuarantorDetails;
 }

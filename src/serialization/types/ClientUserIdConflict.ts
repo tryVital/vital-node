@@ -13,7 +13,7 @@ export const ClientUserIdConflict: core.serialization.ObjectSchema<
     errorType: core.serialization.property("error_type", core.serialization.string()),
     errorMessage: core.serialization.property("error_message", core.serialization.string()),
     userId: core.serialization.property("user_id", core.serialization.string()),
-    createdOn: core.serialization.property("created_on", core.serialization.date()),
+    createdOn: core.serialization.property("created_on", core.serialization.string()),
 });
 
 export declare namespace ClientUserIdConflict {

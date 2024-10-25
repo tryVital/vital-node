@@ -10,8 +10,9 @@ export const Billing: core.serialization.Schema<serializers.Billing.Raw, Vital.B
     "client_bill",
     "commercial_insurance",
     "patient_bill_passthrough",
+    "patient_bill",
 ]);
 
 export declare namespace Billing {
-    type Raw = "client_bill" | "commercial_insurance" | "patient_bill_passthrough";
+    type Raw = "client_bill" | "commercial_insurance" | "patient_bill_passthrough" | "patient_bill";
 }

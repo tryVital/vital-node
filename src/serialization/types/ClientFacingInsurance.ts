@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { ResponsibleRelationship } from "./ResponsibleRelationship";
 import { PersonDetailsOutput } from "./PersonDetailsOutput";
 import { CompanyDetails } from "./CompanyDetails";
+import { GuarantorDetails } from "./GuarantorDetails";
 
 export const ClientFacingInsurance: core.serialization.ObjectSchema<
     serializers.ClientFacingInsurance.Raw,
@@ -19,7 +20,7 @@ export const ClientFacingInsurance: core.serialization.ObjectSchema<
     insured: PersonDetailsOutput,
     company: CompanyDetails,
     groupId: core.serialization.property("group_id", core.serialization.string().optional()),
-    guarantor: PersonDetailsOutput.optional(),
+    guarantor: GuarantorDetails.optional(),
 });
 
 export declare namespace ClientFacingInsurance {
@@ -30,6 +31,6 @@ export declare namespace ClientFacingInsurance {
         insured: PersonDetailsOutput.Raw;
         company: CompanyDetails.Raw;
         group_id?: string | null;
-        guarantor?: PersonDetailsOutput.Raw | null;
+        guarantor?: GuarantorDetails.Raw | null;
     }
 }

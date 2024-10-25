@@ -7,6 +7,7 @@ import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
 import { ResponsibleRelationship } from "../../../../types/ResponsibleRelationship";
 import { VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails } from "../../../../types/VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails";
+import { GuarantorDetails } from "../../../../types/GuarantorDetails";
 
 export const CreateInsuranceRequest: core.serialization.Schema<
     serializers.CreateInsuranceRequest.Raw,
@@ -17,7 +18,7 @@ export const CreateInsuranceRequest: core.serialization.Schema<
     groupId: core.serialization.property("group_id", core.serialization.string().optional()),
     relationship: ResponsibleRelationship,
     insured: VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails,
-    guarantor: VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails.optional(),
+    guarantor: GuarantorDetails.optional(),
 });
 
 export declare namespace CreateInsuranceRequest {
@@ -27,6 +28,6 @@ export declare namespace CreateInsuranceRequest {
         group_id?: string | null;
         relationship: ResponsibleRelationship.Raw;
         insured: VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails.Raw;
-        guarantor?: VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails.Raw | null;
+        guarantor?: GuarantorDetails.Raw | null;
     }
 }

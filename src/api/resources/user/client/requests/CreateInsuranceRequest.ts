@@ -33,5 +33,5 @@ export interface CreateInsuranceRequest {
     groupId?: string;
     relationship: Vital.ResponsibleRelationship;
     insured: Vital.VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails;
-    guarantor?: Vital.VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails;
+    guarantor?: Vital.GuarantorDetails;
 }
