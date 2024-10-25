@@ -60,8 +60,8 @@ export class Devices {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.92",
-                "User-Agent": "@tryvital/vital-node/3.1.92",
+                "X-Fern-SDK-Version": "3.1.93",
+                "User-Agent": "@tryvital/vital-node/3.1.93",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
