@@ -16,7 +16,8 @@ export type OAuthProviders =
     | "cronometer"
     | "omron"
     | "whoop_v2"
-    | "my_fitness_pal_v2";
+    | "my_fitness_pal_v2"
+    | "ultrahuman";
 
 export const OAuthProviders = {
     Oura: "oura",
@@ -33,4 +34,5 @@ export const OAuthProviders = {
     Omron: "omron",
     WhoopV2: "whoop_v2",
     MyFitnessPalV2: "my_fitness_pal_v2",
+    Ultrahuman: "ultrahuman",
 } as const;
