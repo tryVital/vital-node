@@ -41,22 +41,22 @@ export class Aggregate {
      *             type: "relative",
      *             anchor: "anchor",
      *             past: {
-     *                 unit: Vital.PeriodUnit.Minute
+     *                 unit: "minute"
      *             }
      *         },
      *         instructions: [{
      *                 select: [{
      *                         arg: {
-     *                             sleep: Vital.SleepColumnExprSleep.SessionStart
+     *                             sleep: "session_start"
      *                         },
-     *                         func: Vital.AggregateExprFunc.Mean
+     *                         func: "mean"
      *                     }],
      *                 groupBy: [{
      *                         dateTrunc: {
-     *                             unit: Vital.PeriodUnit.Minute
+     *                             unit: "minute"
      *                         },
      *                         arg: {
-     *                             index: Vital.IndexColumnExprIndex.Sleep
+     *                             index: "sleep"
      *                         }
      *                     }]
      *             }]
@@ -76,8 +76,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",

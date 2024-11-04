@@ -9,8 +9,8 @@ import * as Vital from "../../../../index";
  *     {
  *         username: "username",
  *         password: "password",
- *         provider: Vital.Providers.Oura,
- *         authType: Vital.AuthType.Password
+ *         provider: "oura",
+ *         authType: "password"
  *     }
  */
 export interface PasswordAuthLink {

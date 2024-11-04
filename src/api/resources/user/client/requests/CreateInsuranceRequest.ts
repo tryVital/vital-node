@@ -9,11 +9,11 @@ import * as Vital from "../../../../index";
  *     {
  *         payorCode: "payor_code",
  *         memberId: "member_id",
- *         relationship: Vital.ResponsibleRelationship.Self,
+ *         relationship: "Self",
  *         insured: {
  *             firstName: "first_name",
  *             lastName: "last_name",
- *             gender: Vital.Gender.Female,
+ *             gender: "female",
  *             address: {
  *                 firstLine: "first_line",
  *                 country: "country",

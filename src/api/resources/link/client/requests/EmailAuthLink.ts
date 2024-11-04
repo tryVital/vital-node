@@ -8,8 +8,8 @@ import * as Vital from "../../../../index";
  * @example
  *     {
  *         email: "email",
- *         provider: Vital.Providers.Oura,
- *         authType: Vital.AuthType.Password
+ *         provider: "oura",
+ *         authType: "password"
  *     }
  */
 export interface EmailAuthLink {

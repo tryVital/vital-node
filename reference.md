@@ -218,7 +218,7 @@ Start link token process
 ```typescript
 await client.link.startConnect({
     linkToken: "link_token",
-    provider: Vital.Providers.Oura,
+    provider: "oura",
 });
 ```
 
@@ -348,8 +348,8 @@ Deprecated. Use `POST /v2/link/provider/email/{provider}` instead.
 ```typescript
 await client.link.emailAuth({
     email: "email",
-    provider: Vital.Providers.Oura,
-    authType: Vital.AuthType.Password,
+    provider: "oura",
+    authType: "password",
 });
 ```
 
@@ -416,8 +416,8 @@ Deprecated. Use `POST /v2/link/provider/password/{provider}` instead.
 await client.link.passwordAuth({
     username: "username",
     password: "password",
-    provider: Vital.Providers.Oura,
-    authType: Vital.AuthType.Password,
+    provider: "oura",
+    authType: "password",
 });
 ```
 
@@ -481,7 +481,7 @@ This endpoint generates an OAuth link for oauth provider
 <dd>
 
 ```typescript
-await client.link.generateOauthLink(Vital.OAuthProviders.Oura);
+await client.link.generateOauthLink("oura");
 ```
 
 </dd>
@@ -552,7 +552,7 @@ This connects auth providers that are password based.
 <dd>
 
 ```typescript
-await client.link.connectPasswordProvider(Vital.PasswordProviders.Whoop, {
+await client.link.connectPasswordProvider("whoop", {
     username: "username",
     password: "password",
 });
@@ -626,7 +626,7 @@ This connects auth providers that are password based.
 <dd>
 
 ```typescript
-await client.link.completePasswordProviderMfa(Vital.PasswordProviders.Whoop, {
+await client.link.completePasswordProviderMfa("whoop", {
     mfaCode: "mfa_code",
 });
 ```
@@ -820,7 +820,7 @@ await client.link.getAllProviders();
 <dd>
 
 ```typescript
-await client.link.connectManualProvider(Vital.ManualProviders.BeurerBle, {
+await client.link.connectManualProvider("beurer_ble", {
     userId: "user_id",
 });
 ```
@@ -895,7 +895,7 @@ POST Connect the given Vital user to a demo provider.
 ```typescript
 await client.link.connectDemoProvider({
     userId: "user_id",
-    provider: Vital.DemoProviders.AppleHealthKit,
+    provider: "apple_health_kit",
 });
 ```
 
@@ -5836,11 +5836,11 @@ await client.user.getLatestUserInfo("user_id");
 await client.user.createInsurance("user_id", {
     payorCode: "payor_code",
     memberId: "member_id",
-    relationship: Vital.ResponsibleRelationship.Self,
+    relationship: "Self",
     insured: {
         firstName: "first_name",
         lastName: "last_name",
-        gender: Vital.Gender.Female,
+        gender: "female",
         address: {
             firstLine: "first_line",
             country: "country",
@@ -6089,7 +6089,7 @@ await client.user.getByClientUserId("client_user_id");
 <dd>
 
 ```typescript
-await client.user.deregisterProvider("user_id", Vital.Providers.Oura);
+await client.user.deregisterProvider("user_id", "oura");
 ```
 
 </dd>
@@ -6883,7 +6883,7 @@ await client.labTests.get();
 ```typescript
 await client.labTests.create({
     name: "name",
-    method: Vital.LabTestCollectionMethod.Testkit,
+    method: "testkit",
     description: "description",
 });
 ```
@@ -7457,7 +7457,7 @@ await client.labTests.requestPhlebotomyAppointment("order_id", {
         state: "state",
         zipCode: "zip_code",
     },
-    provider: Vital.AppointmentProvider.Getlabs,
+    provider: "getlabs",
 });
 ```
 
@@ -8692,7 +8692,7 @@ await client.labTests.createOrder({
         firstName: "first_name",
         lastName: "last_name",
         dob: "2024-01-15T09:30:00Z",
-        gender: Vital.Gender.Female,
+        gender: "female",
         phoneNumber: "phone_number",
         email: "email",
     },
@@ -8957,7 +8957,7 @@ await client.testkit.register({
         firstName: "first_name",
         lastName: "last_name",
         dob: "2024-01-15T09:30:00Z",
-        gender: Vital.Gender.Female,
+        gender: "female",
         phoneNumber: "phone_number",
         email: "email",
     },
@@ -9200,7 +9200,7 @@ await client.aggregate.queryOne("user_id", {
         type: "relative",
         anchor: "anchor",
         past: {
-            unit: Vital.PeriodUnit.Minute,
+            unit: "minute",
         },
     },
     instructions: [
@@ -9208,18 +9208,18 @@ await client.aggregate.queryOne("user_id", {
             select: [
                 {
                     arg: {
-                        sleep: Vital.SleepColumnExprSleep.SessionStart,
+                        sleep: "session_start",
                     },
-                    func: Vital.AggregateExprFunc.Mean,
+                    func: "mean",
                 },
             ],
             groupBy: [
                 {
                     dateTrunc: {
-                        unit: Vital.PeriodUnit.Minute,
+                        unit: "minute",
                     },
                     arg: {
-                        index: Vital.IndexColumnExprIndex.Sleep,
+                        index: "sleep",
                     },
                 },
             ],

@@ -13,7 +13,7 @@ import * as Vital from "../../../../index";
  *             state: "state",
  *             zipCode: "zip_code"
  *         },
- *         provider: Vital.AppointmentProvider.Getlabs
+ *         provider: "getlabs"
  *     }
  */
 export interface RequestAppointmentRequest {

@@ -8,7 +8,7 @@ import * as Vital from "../../../../index";
  * @example
  *     {
  *         name: "name",
- *         method: Vital.LabTestCollectionMethod.Testkit,
+ *         method: "testkit",
  *         description: "description"
  *     }
  */

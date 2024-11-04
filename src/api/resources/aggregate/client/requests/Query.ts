@@ -11,22 +11,22 @@ import * as Vital from "../../../../index";
  *             type: "relative",
  *             anchor: "anchor",
  *             past: {
- *                 unit: Vital.PeriodUnit.Minute
+ *                 unit: "minute"
  *             }
  *         },
  *         instructions: [{
  *                 select: [{
  *                         arg: {
- *                             sleep: Vital.SleepColumnExprSleep.SessionStart
+ *                             sleep: "session_start"
  *                         },
- *                         func: Vital.AggregateExprFunc.Mean
+ *                         func: "mean"
  *                     }],
  *                 groupBy: [{
  *                         dateTrunc: {
- *                             unit: Vital.PeriodUnit.Minute
+ *                             unit: "minute"
  *                         },
  *                         arg: {
- *                             index: Vital.IndexColumnExprIndex.Sleep
+ *                             index: "sleep"
  *                         }
  *                     }]
  *             }]

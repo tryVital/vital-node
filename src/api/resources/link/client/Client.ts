@@ -59,8 +59,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -139,8 +139,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -228,8 +228,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -296,7 +296,7 @@ export class Link {
      * @example
      *     await client.link.startConnect({
      *         linkToken: "link_token",
-     *         provider: Vital.Providers.Oura
+     *         provider: "oura"
      *     })
      */
     public async startConnect(
@@ -312,8 +312,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -394,8 +394,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -461,8 +461,8 @@ export class Link {
      * @example
      *     await client.link.emailAuth({
      *         email: "email",
-     *         provider: Vital.Providers.Oura,
-     *         authType: Vital.AuthType.Password
+     *         provider: "oura",
+     *         authType: "password"
      *     })
      */
     public async emailAuth(
@@ -479,8 +479,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -548,8 +548,8 @@ export class Link {
      *     await client.link.passwordAuth({
      *         username: "username",
      *         password: "password",
-     *         provider: Vital.Providers.Oura,
-     *         authType: Vital.AuthType.Password
+     *         provider: "oura",
+     *         authType: "password"
      *     })
      */
     public async passwordAuth(
@@ -566,8 +566,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -633,7 +633,7 @@ export class Link {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.generateOauthLink(Vital.OAuthProviders.Oura)
+     *     await client.link.generateOauthLink("oura")
      */
     public async generateOauthLink(
         oauthProvider: Vital.OAuthProviders,
@@ -650,8 +650,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -716,7 +716,7 @@ export class Link {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.connectPasswordProvider(Vital.PasswordProviders.Whoop, {
+     *     await client.link.connectPasswordProvider("whoop", {
      *         username: "username",
      *         password: "password"
      *     })
@@ -736,8 +736,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -803,7 +803,7 @@ export class Link {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.completePasswordProviderMfa(Vital.PasswordProviders.Whoop, {
+     *     await client.link.completePasswordProviderMfa("whoop", {
      *         mfaCode: "mfa_code"
      *     })
      */
@@ -824,8 +824,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -910,8 +910,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -992,8 +992,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -1056,7 +1056,7 @@ export class Link {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.connectManualProvider(Vital.ManualProviders.BeurerBle, {
+     *     await client.link.connectManualProvider("beurer_ble", {
      *         userId: "user_id"
      *     })
      */
@@ -1074,8 +1074,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1141,7 +1141,7 @@ export class Link {
      * @example
      *     await client.link.connectDemoProvider({
      *         userId: "user_id",
-     *         provider: Vital.DemoProviders.AppleHealthKit
+     *         provider: "apple_health_kit"
      *     })
      */
     public async connectDemoProvider(
@@ -1157,8 +1157,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

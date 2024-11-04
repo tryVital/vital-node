@@ -8,7 +8,7 @@ import * as Vital from "../../../../index";
  * @example
  *     {
  *         linkToken: "link_token",
- *         provider: Vital.Providers.Oura
+ *         provider: "oura"
  *     }
  */
 export interface BeginLinkTokenRequest {

@@ -42,7 +42,7 @@ export class Testkit {
      *             firstName: "first_name",
      *             lastName: "last_name",
      *             dob: "2024-01-15T09:30:00Z",
-     *             gender: Vital.Gender.Female,
+     *             gender: "female",
      *             phoneNumber: "phone_number",
      *             email: "email"
      *         },
@@ -68,8 +68,8 @@ export class Testkit {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -160,8 +160,8 @@ export class Testkit {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.99",
-                "User-Agent": "@tryvital/vital-node/3.1.99",
+                "X-Fern-SDK-Version": "3.1.100",
+                "User-Agent": "@tryvital/vital-node/3.1.100",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

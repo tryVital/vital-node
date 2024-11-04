@@ -8,7 +8,7 @@ import * as Vital from "../../../../index";
  * @example
  *     {
  *         userId: "user_id",
- *         provider: Vital.DemoProviders.AppleHealthKit
+ *         provider: "apple_health_kit"
  *     }
  */
 export interface DemoConnectionCreationPayload {

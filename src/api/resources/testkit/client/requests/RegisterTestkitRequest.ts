@@ -13,7 +13,7 @@ import * as Vital from "../../../../index";
  *             firstName: "first_name",
  *             lastName: "last_name",
  *             dob: "2024-01-15T09:30:00Z",
- *             gender: Vital.Gender.Female,
+ *             gender: "female",
  *             phoneNumber: "phone_number",
  *             email: "email"
  *         },
