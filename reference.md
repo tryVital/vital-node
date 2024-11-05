@@ -9213,16 +9213,6 @@ await client.aggregate.queryOne("user_id", {
                     func: "mean",
                 },
             ],
-            groupBy: [
-                {
-                    dateTrunc: {
-                        unit: "minute",
-                    },
-                    arg: {
-                        index: "sleep",
-                    },
-                },
-            ],
         },
     ],
 });

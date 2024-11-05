@@ -13,14 +13,14 @@ export const QueryInstruction: core.serialization.ObjectSchema<
     Vital.QueryInstruction
 > = core.serialization.object({
     select: core.serialization.list(QueryInstructionSelectItem),
-    groupBy: core.serialization.property("group_by", core.serialization.list(QueryInstructionGroupByItem)),
+    groupBy: core.serialization.property("group_by", core.serialization.list(QueryInstructionGroupByItem).optional()),
     splitBySource: core.serialization.property("split_by_source", core.serialization.boolean().optional()),
 });
 
 export declare namespace QueryInstruction {
     interface Raw {
         select: QueryInstructionSelectItem.Raw[];
-        group_by: QueryInstructionGroupByItem.Raw[];
+        group_by?: QueryInstructionGroupByItem.Raw[] | null;
         split_by_source?: boolean | null;
     }
 }

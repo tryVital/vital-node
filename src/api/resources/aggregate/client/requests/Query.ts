@@ -20,14 +20,6 @@ import * as Vital from "../../../../index";
  *                             sleep: "session_start"
  *                         },
  *                         func: "mean"
- *                     }],
- *                 groupBy: [{
- *                         dateTrunc: {
- *                             unit: "minute"
- *                         },
- *                         arg: {
- *                             index: "sleep"
- *                         }
  *                     }]
  *             }]
  *     }

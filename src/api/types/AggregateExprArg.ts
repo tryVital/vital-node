@@ -10,4 +10,6 @@ export type AggregateExprArg =
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr
     | Vital.IndexColumnExpr
-    | Vital.GroupKeyColumnExpr;
+    | Vital.GroupKeyColumnExpr
+    | Vital.SleepScoreValueMacroExpr
+    | Vital.UnrecognizedValueMacroExpr;

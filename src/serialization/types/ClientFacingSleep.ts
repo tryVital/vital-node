@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { SleepType } from "./SleepType";
 import { SleepSummaryState } from "./SleepSummaryState";
 import { ClientFacingSource } from "./ClientFacingSource";
 import { ClientFacingSleepStream } from "./ClientFacingSleepStream";
@@ -19,6 +20,7 @@ export const ClientFacingSleep: core.serialization.ObjectSchema<
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
     bedtimeStart: core.serialization.property("bedtime_start", core.serialization.string()),
     bedtimeStop: core.serialization.property("bedtime_stop", core.serialization.string()),
+    type: SleepType,
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     duration: core.serialization.number(),
     total: core.serialization.number(),
@@ -49,6 +51,7 @@ export declare namespace ClientFacingSleep {
         calendar_date: string;
         bedtime_start: string;
         bedtime_stop: string;
+        type: SleepType.Raw;
         timezone_offset?: number | null;
         duration: number;
         total: number;

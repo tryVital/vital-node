@@ -12,6 +12,8 @@ import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
 import { BodyColumnExpr } from "./BodyColumnExpr";
 import { IndexColumnExpr } from "./IndexColumnExpr";
 import { GroupKeyColumnExpr } from "./GroupKeyColumnExpr";
+import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
+import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
 
 export const QueryInstructionSelectItem: core.serialization.Schema<
     serializers.QueryInstructionSelectItem.Raw,
@@ -24,6 +26,8 @@ export const QueryInstructionSelectItem: core.serialization.Schema<
     BodyColumnExpr,
     IndexColumnExpr,
     GroupKeyColumnExpr,
+    SleepScoreValueMacroExpr,
+    UnrecognizedValueMacroExpr,
 ]);
 
 export declare namespace QueryInstructionSelectItem {
@@ -34,5 +38,7 @@ export declare namespace QueryInstructionSelectItem {
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
         | IndexColumnExpr.Raw
-        | GroupKeyColumnExpr.Raw;
+        | GroupKeyColumnExpr.Raw
+        | SleepScoreValueMacroExpr.Raw
+        | UnrecognizedValueMacroExpr.Raw;
 }

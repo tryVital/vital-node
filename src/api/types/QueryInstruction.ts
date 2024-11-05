@@ -6,6 +6,6 @@ import * as Vital from "../index";
 
 export interface QueryInstruction {
     select: Vital.QueryInstructionSelectItem[];
-    groupBy: Vital.QueryInstructionGroupByItem[];
+    groupBy?: Vital.QueryInstructionGroupByItem[];
     splitBySource?: boolean;
 }

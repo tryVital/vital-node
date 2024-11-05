@@ -16,6 +16,13 @@ export interface ClientFacingSleep {
     bedtimeStart: string;
     /** UTC Time when the sleep period ended */
     bedtimeStop: string;
+    /**
+     * `long_sleep`: >=3 hours of sleep;
+     * `short_sleep`: <3 hours of sleep that was ended before 6:00 PM in local time;
+     * `acknowledged_nap`: User-acknowledged naps, typically under 3 hours of sleep;
+     * `indeterminate`: The sleep session recording is ongoing.
+     */
+    type: Vital.SleepType;
     /** Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds */
     timezoneOffset?: number;
     /** Total duration of the sleep period (sleep.duration = sleep.bedtime_end - sleep.bedtime_start)::seconds */
