@@ -40,6 +40,7 @@ export type ClientFacingResource =
     | "calories_basal"
     | "stress_level"
     | "menstrual_cycle"
+    | "sleep_cycle"
     | "electrocardiogram_voltage"
     | "workout_duration"
     | "insulin_injection"
@@ -85,6 +86,7 @@ export const ClientFacingResource = {
     CaloriesBasal: "calories_basal",
     StressLevel: "stress_level",
     MenstrualCycle: "menstrual_cycle",
+    SleepCycle: "sleep_cycle",
     ElectrocardiogramVoltage: "electrocardiogram_voltage",
     WorkoutDuration: "workout_duration",
     InsulinInjection: "insulin_injection",

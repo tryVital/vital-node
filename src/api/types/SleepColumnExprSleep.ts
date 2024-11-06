@@ -6,6 +6,7 @@ export type SleepColumnExprSleep =
     | "session_start"
     | "session_end"
     | "state"
+    | "type"
     | "duration_second"
     | "stage_asleep_second"
     | "stage_awake_second"
@@ -32,6 +33,7 @@ export const SleepColumnExprSleep = {
     SessionStart: "session_start",
     SessionEnd: "session_end",
     State: "state",
+    Type: "type",
     DurationSecond: "duration_second",
     StageAsleepSecond: "stage_asleep_second",
     StageAwakeSecond: "stage_awake_second",

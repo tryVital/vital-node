@@ -13,6 +13,7 @@ export const SleepColumnExprSleep: core.serialization.Schema<
     "session_start",
     "session_end",
     "state",
+    "type",
     "duration_second",
     "stage_asleep_second",
     "stage_awake_second",
@@ -41,6 +42,7 @@ export declare namespace SleepColumnExprSleep {
         | "session_start"
         | "session_end"
         | "state"
+        | "type"
         | "duration_second"
         | "stage_asleep_second"
         | "stage_awake_second"
