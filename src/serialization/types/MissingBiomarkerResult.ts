@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { FailureType } from "./FailureType";
+import { ParentBiomarkerData } from "./ParentBiomarkerData";
 
 export const MissingBiomarkerResult: core.serialization.ObjectSchema<
     serializers.MissingBiomarkerResult.Raw,
@@ -18,6 +19,10 @@ export const MissingBiomarkerResult: core.serialization.ObjectSchema<
     loinc: core.serialization.string().optional(),
     loincSlug: core.serialization.property("loinc_slug", core.serialization.string().optional()),
     providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
+    sourceMarkers: core.serialization.property(
+        "source_markers",
+        core.serialization.list(ParentBiomarkerData).optional()
+    ),
 });
 
 export declare namespace MissingBiomarkerResult {
@@ -29,5 +34,6 @@ export declare namespace MissingBiomarkerResult {
         loinc?: string | null;
         loinc_slug?: string | null;
         provider_id?: string | null;
+        source_markers?: ParentBiomarkerData.Raw[] | null;
     }
 }

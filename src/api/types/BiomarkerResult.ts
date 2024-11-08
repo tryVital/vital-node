@@ -24,4 +24,5 @@ export interface BiomarkerResult {
     loinc?: string;
     loincSlug?: string;
     providerId?: string;
+    sourceMarkers?: Vital.ParentBiomarkerData[];
 }

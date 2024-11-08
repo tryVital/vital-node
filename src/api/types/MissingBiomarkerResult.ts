@@ -12,4 +12,5 @@ export interface MissingBiomarkerResult {
     loinc?: string;
     loincSlug?: string;
     providerId?: string;
+    sourceMarkers?: Vital.ParentBiomarkerData[];
 }

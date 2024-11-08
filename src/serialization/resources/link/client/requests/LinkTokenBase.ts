@@ -5,6 +5,7 @@
 import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
+import { LinkRequirements } from "../../../../types/LinkRequirements";
 
 export const LinkTokenBase: core.serialization.Schema<serializers.LinkTokenBase.Raw, Vital.LinkTokenBase> =
     core.serialization.object({
@@ -14,6 +15,7 @@ export const LinkTokenBase: core.serialization.Schema<serializers.LinkTokenBase.
             "oauth_info",
             core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
         ),
+        requirements: LinkRequirements.optional(),
     });
 
 export declare namespace LinkTokenBase {
@@ -21,5 +23,6 @@ export declare namespace LinkTokenBase {
         token: string;
         is_used?: boolean | null;
         oauth_info?: Record<string, unknown> | null;
+        requirements?: LinkRequirements.Raw | null;
     }
 }

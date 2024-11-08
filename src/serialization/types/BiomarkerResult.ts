@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ResultType } from "./ResultType";
+import { ParentBiomarkerData } from "./ParentBiomarkerData";
 
 export const BiomarkerResult: core.serialization.ObjectSchema<serializers.BiomarkerResult.Raw, Vital.BiomarkerResult> =
     core.serialization.object({
@@ -25,6 +26,10 @@ export const BiomarkerResult: core.serialization.ObjectSchema<serializers.Biomar
         loinc: core.serialization.string().optional(),
         loincSlug: core.serialization.property("loinc_slug", core.serialization.string().optional()),
         providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
+        sourceMarkers: core.serialization.property(
+            "source_markers",
+            core.serialization.list(ParentBiomarkerData).optional()
+        ),
     });
 
 export declare namespace BiomarkerResult {
@@ -45,5 +50,6 @@ export declare namespace BiomarkerResult {
         loinc?: string | null;
         loinc_slug?: string | null;
         provider_id?: string | null;
+        source_markers?: ParentBiomarkerData.Raw[] | null;
     }
 }
