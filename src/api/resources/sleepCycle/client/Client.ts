@@ -9,7 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Providers {
+export declare namespace SleepCycle {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey?: core.Supplier<string | undefined>;
@@ -25,34 +25,43 @@ export declare namespace Providers {
     }
 }
 
-export class Providers {
-    constructor(protected readonly _options: Providers.Options = {}) {}
+export class SleepCycle {
+    constructor(protected readonly _options: SleepCycle.Options = {}) {}
 
     /**
-     * Get Provider list
+     * Get Daily sleep cycle for user_id
      *
-     * @param {Vital.ProvidersGetAllRequest} request
-     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} userId
+     * @param {Vital.SleepCycleGetRequest} request
+     * @param {SleepCycle.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.providers.getAll()
+     *     await client.sleepCycle.get("user_id", {
+     *         startDate: "start_date"
+     *     })
      */
-    public async getAll(
-        request: Vital.ProvidersGetAllRequest = {},
-        requestOptions?: Providers.RequestOptions
-    ): Promise<Vital.ClientFacingProviderDetailed[]> {
-        const { sourceType } = request;
+    public async get(
+        userId: string,
+        request: Vital.SleepCycleGetRequest,
+        requestOptions?: SleepCycle.RequestOptions
+    ): Promise<Vital.ClientSleepCycleResponse> {
+        const { startDate, endDate, provider } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (sourceType != null) {
-            _queryParams["source_type"] = sourceType;
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                "v2/providers"
+                `v2/summary/sleep_cycle/${encodeURIComponent(userId)}`
             ),
             method: "GET",
             headers: {
@@ -72,7 +81,7 @@ export class Providers {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.providers.getAll.Response.parseOrThrow(_response.body, {
+            return serializers.ClientSleepCycleResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

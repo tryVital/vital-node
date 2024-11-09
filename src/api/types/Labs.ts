@@ -11,7 +11,8 @@ export type Labs =
     | "bioreference"
     | "us_biotek"
     | "manual"
-    | "sanocardio";
+    | "sanocardio"
+    | "ihd";
 
 export const Labs = {
     Ayumetrix: "ayumetrix",
@@ -23,4 +24,5 @@ export const Labs = {
     UsBiotek: "us_biotek",
     Manual: "manual",
     Sanocardio: "sanocardio",
+    Ihd: "ihd",
 } as const;

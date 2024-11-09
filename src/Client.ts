@@ -5,6 +5,7 @@
 import * as environments from "./environments";
 import * as core from "./core";
 import { Link } from "./api/resources/link/client/Client";
+import { SleepCycle } from "./api/resources/sleepCycle/client/Client";
 import { Profile } from "./api/resources/profile/client/Client";
 import { Devices } from "./api/resources/devices/client/Client";
 import { Activity } from "./api/resources/activity/client/Client";
@@ -46,6 +47,12 @@ export class VitalClient {
 
     public get link(): Link {
         return (this._link ??= new Link(this._options));
+    }
+
+    protected _sleepCycle: SleepCycle | undefined;
+
+    public get sleepCycle(): SleepCycle {
+        return (this._sleepCycle ??= new SleepCycle(this._options));
     }
 
     protected _profile: Profile | undefined;
