@@ -103,7 +103,7 @@ await client.link.isTokenValid({
 <dl>
 <dd>
 
-**request:** `Vital.LinkTokenBase`
+**request:** `Vital.LinkTokenValidationRequest`
 
 </dd>
 </dl>

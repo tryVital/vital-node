@@ -200,7 +200,6 @@ export * from "./LabTestStatus";
 export * from "./Labs";
 export * from "./LastAttempt";
 export * from "./LibreConfig";
-export * from "./LinkRequirements";
 export * from "./LinkTokenExchangeResponse";
 export * from "./LngLat";
 export * from "./Macros";

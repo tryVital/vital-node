@@ -1,5 +1,5 @@
 export { LinkTokenExchange } from "./LinkTokenExchange";
-export { LinkTokenBase } from "./LinkTokenBase";
+export { LinkTokenValidationRequest } from "./LinkTokenValidationRequest";
 export { BeginLinkTokenRequest } from "./BeginLinkTokenRequest";
 export { EmailAuthLink } from "./EmailAuthLink";
 export { PasswordAuthLink } from "./PasswordAuthLink";

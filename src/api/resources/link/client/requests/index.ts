@@ -1,5 +1,5 @@
 export { type LinkTokenExchange } from "./LinkTokenExchange";
-export { type LinkTokenBase } from "./LinkTokenBase";
+export { type LinkTokenValidationRequest } from "./LinkTokenValidationRequest";
 export { type LinkCodeCreateRequest } from "./LinkCodeCreateRequest";
 export { type BeginLinkTokenRequest } from "./BeginLinkTokenRequest";
 export { type LinkTokenStateRequest } from "./LinkTokenStateRequest";
