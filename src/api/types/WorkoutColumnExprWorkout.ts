@@ -24,8 +24,8 @@ export type WorkoutColumnExprWorkout =
     | "elevation_gain_meter"
     | "elevation_maximum_meter"
     | "elevation_minimum_meter"
-    | "average_speed"
-    | "max_speed"
+    | "speed_mean"
+    | "speed_maximum"
     | "power_source"
     | "power_mean"
     | "power_maximum"
@@ -58,8 +58,8 @@ export const WorkoutColumnExprWorkout = {
     ElevationGainMeter: "elevation_gain_meter",
     ElevationMaximumMeter: "elevation_maximum_meter",
     ElevationMinimumMeter: "elevation_minimum_meter",
-    AverageSpeed: "average_speed",
-    MaxSpeed: "max_speed",
+    SpeedMean: "speed_mean",
+    SpeedMaximum: "speed_maximum",
     PowerSource: "power_source",
     PowerMean: "power_mean",
     PowerMaximum: "power_maximum",

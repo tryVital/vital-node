@@ -31,8 +31,8 @@ export const WorkoutColumnExprWorkout: core.serialization.Schema<
     "elevation_gain_meter",
     "elevation_maximum_meter",
     "elevation_minimum_meter",
-    "average_speed",
-    "max_speed",
+    "speed_mean",
+    "speed_maximum",
     "power_source",
     "power_mean",
     "power_maximum",
@@ -67,8 +67,8 @@ export declare namespace WorkoutColumnExprWorkout {
         | "elevation_gain_meter"
         | "elevation_maximum_meter"
         | "elevation_minimum_meter"
-        | "average_speed"
-        | "max_speed"
+        | "speed_mean"
+        | "speed_maximum"
         | "power_source"
         | "power_mean"
         | "power_maximum"
