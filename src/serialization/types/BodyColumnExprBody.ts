@@ -12,7 +12,10 @@ export const BodyColumnExprBody: core.serialization.Schema<
 > = core.serialization.enum_([
     "measured_at",
     "weight_kilogram",
-    "fat_percentage",
+    "fat_mass_percentage",
+    "water_percentage",
+    "muscle_mass_percentage",
+    "visceral_fat_index",
     "source_type",
     "source_provider",
     "source_app_id",
@@ -22,7 +25,10 @@ export declare namespace BodyColumnExprBody {
     type Raw =
         | "measured_at"
         | "weight_kilogram"
-        | "fat_percentage"
+        | "fat_mass_percentage"
+        | "water_percentage"
+        | "muscle_mass_percentage"
+        | "visceral_fat_index"
         | "source_type"
         | "source_provider"
         | "source_app_id";

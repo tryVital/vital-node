@@ -5,7 +5,10 @@
 export type BodyColumnExprBody =
     | "measured_at"
     | "weight_kilogram"
-    | "fat_percentage"
+    | "fat_mass_percentage"
+    | "water_percentage"
+    | "muscle_mass_percentage"
+    | "visceral_fat_index"
     | "source_type"
     | "source_provider"
     | "source_app_id";
@@ -13,7 +16,10 @@ export type BodyColumnExprBody =
 export const BodyColumnExprBody = {
     MeasuredAt: "measured_at",
     WeightKilogram: "weight_kilogram",
-    FatPercentage: "fat_percentage",
+    FatMassPercentage: "fat_mass_percentage",
+    WaterPercentage: "water_percentage",
+    MuscleMassPercentage: "muscle_mass_percentage",
+    VisceralFatIndex: "visceral_fat_index",
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",

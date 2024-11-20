@@ -14,7 +14,13 @@ export interface ClientFacingBody {
     calendarDate: string;
     /** Weight in kg::kg */
     weight?: number;
-    /** Body fat percentage::perc */
+    /** Total body fat percentage::perc */
     fat?: number;
+    /** Water percentage in the body::perc */
+    waterPercentage?: number;
+    /** Muscle mass percentage in the body::perc */
+    muscleMassPercentage?: number;
+    /** Visceral fat index::scalar */
+    visceralFatIndex?: number;
     source: Vital.ClientFacingSource;
 }
