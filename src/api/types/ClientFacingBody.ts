@@ -22,5 +22,7 @@ export interface ClientFacingBody {
     muscleMassPercentage?: number;
     /** Visceral fat index::scalar */
     visceralFatIndex?: number;
+    /** Bone mass percentage in the body::perc */
+    boneMassPercentage?: number;
     source: Vital.ClientFacingSource;
 }

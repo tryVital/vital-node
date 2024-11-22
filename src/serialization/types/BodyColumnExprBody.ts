@@ -16,6 +16,7 @@ export const BodyColumnExprBody: core.serialization.Schema<
     "water_percentage",
     "muscle_mass_percentage",
     "visceral_fat_index",
+    "bone_mass_percentage",
     "source_type",
     "source_provider",
     "source_app_id",
@@ -29,6 +30,7 @@ export declare namespace BodyColumnExprBody {
         | "water_percentage"
         | "muscle_mass_percentage"
         | "visceral_fat_index"
+        | "bone_mass_percentage"
         | "source_type"
         | "source_provider"
         | "source_app_id";

@@ -20,6 +20,7 @@ export const ClientFacingBody: core.serialization.ObjectSchema<
     waterPercentage: core.serialization.property("water_percentage", core.serialization.number().optional()),
     muscleMassPercentage: core.serialization.property("muscle_mass_percentage", core.serialization.number().optional()),
     visceralFatIndex: core.serialization.property("visceral_fat_index", core.serialization.number().optional()),
+    boneMassPercentage: core.serialization.property("bone_mass_percentage", core.serialization.number().optional()),
     source: ClientFacingSource,
 });
 
@@ -34,6 +35,7 @@ export declare namespace ClientFacingBody {
         water_percentage?: number | null;
         muscle_mass_percentage?: number | null;
         visceral_fat_index?: number | null;
+        bone_mass_percentage?: number | null;
         source: ClientFacingSource.Raw;
     }
 }

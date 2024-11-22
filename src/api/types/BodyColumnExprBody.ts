@@ -9,6 +9,7 @@ export type BodyColumnExprBody =
     | "water_percentage"
     | "muscle_mass_percentage"
     | "visceral_fat_index"
+    | "bone_mass_percentage"
     | "source_type"
     | "source_provider"
     | "source_app_id";
@@ -20,6 +21,7 @@ export const BodyColumnExprBody = {
     WaterPercentage: "water_percentage",
     MuscleMassPercentage: "muscle_mass_percentage",
     VisceralFatIndex: "visceral_fat_index",
+    BoneMassPercentage: "bone_mass_percentage",
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",
