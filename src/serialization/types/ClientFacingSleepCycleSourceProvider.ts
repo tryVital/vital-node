@@ -8,11 +8,11 @@ import * as core from "../../core";
 import { Providers } from "./Providers";
 import { Labs } from "./Labs";
 
-export const SleepCycleSourceProvider: core.serialization.Schema<
-    serializers.SleepCycleSourceProvider.Raw,
-    Vital.SleepCycleSourceProvider
+export const ClientFacingSleepCycleSourceProvider: core.serialization.Schema<
+    serializers.ClientFacingSleepCycleSourceProvider.Raw,
+    Vital.ClientFacingSleepCycleSourceProvider
 > = core.serialization.undiscriminatedUnion([Providers, Labs]);
 
-export declare namespace SleepCycleSourceProvider {
+export declare namespace ClientFacingSleepCycleSourceProvider {
     type Raw = Providers.Raw | Labs.Raw;
 }

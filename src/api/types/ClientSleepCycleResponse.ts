@@ -5,5 +5,5 @@
 import * as Vital from "../index";
 
 export interface ClientSleepCycleResponse {
-    sleepCycle: Vital.SleepCycle[];
+    sleepCycle: Vital.ClientFacingSleepCycle[];
 }

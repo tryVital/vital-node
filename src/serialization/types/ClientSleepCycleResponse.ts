@@ -5,17 +5,17 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { SleepCycle } from "./SleepCycle";
+import { ClientFacingSleepCycle } from "./ClientFacingSleepCycle";
 
 export const ClientSleepCycleResponse: core.serialization.ObjectSchema<
     serializers.ClientSleepCycleResponse.Raw,
     Vital.ClientSleepCycleResponse
 > = core.serialization.object({
-    sleepCycle: core.serialization.property("sleep_cycle", core.serialization.list(SleepCycle)),
+    sleepCycle: core.serialization.property("sleep_cycle", core.serialization.list(ClientFacingSleepCycle)),
 });
 
 export declare namespace ClientSleepCycleResponse {
     interface Raw {
-        sleep_cycle: SleepCycle.Raw[];
+        sleep_cycle: ClientFacingSleepCycle.Raw[];
     }
 }

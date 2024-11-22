@@ -4,4 +4,4 @@
 
 import * as Vital from "../index";
 
-export type SleepCycleSourceProvider = Vital.Providers | Vital.Labs;
+export type ClientFacingSleepCycleSourceProvider = Vital.Providers | Vital.Labs;

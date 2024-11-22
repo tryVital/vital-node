@@ -5,17 +5,16 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { ValidationError } from "./ValidationError";
 
 export const HttpValidationError: core.serialization.ObjectSchema<
     serializers.HttpValidationError.Raw,
     Vital.HttpValidationError
 > = core.serialization.object({
-    detail: core.serialization.list(ValidationError).optional(),
+    detail: core.serialization.unknown().optional(),
 });
 
 export declare namespace HttpValidationError {
     interface Raw {
-        detail?: ValidationError.Raw[] | null;
+        detail?: unknown | null;
     }
 }

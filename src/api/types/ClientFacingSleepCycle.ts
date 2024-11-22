@@ -4,7 +4,7 @@
 
 import * as Vital from "../index";
 
-export interface SleepCycle {
+export interface ClientFacingSleepCycle {
     id: string;
     sleepId: string;
     sessionStart: Date;
@@ -13,7 +13,9 @@ export interface SleepCycle {
     stageEndOffsetSecond: number[];
     stageType: Vital.VitalSleepStage[];
     timeZone?: string;
-    sourceProvider: Vital.SleepCycleSourceProvider;
-    sourceType: Vital.SleepCycleSourceType;
+    sourceProvider: Vital.ClientFacingSleepCycleSourceProvider;
+    sourceType: Vital.ClientFacingSleepCycleSourceType;
     sourceAppId?: string;
+    userId: string;
+    source: Vital.ClientFacingSource;
 }

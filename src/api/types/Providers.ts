@@ -38,7 +38,8 @@ export type Providers =
     | "kardia"
     | "whoop_v2"
     | "ultrahuman"
-    | "my_fitness_pal_v2";
+    | "my_fitness_pal_v2"
+    | "map_my_fitness";
 
 export const Providers = {
     Oura: "oura",
@@ -77,4 +78,5 @@ export const Providers = {
     WhoopV2: "whoop_v2",
     Ultrahuman: "ultrahuman",
     MyFitnessPalV2: "my_fitness_pal_v2",
+    MapMyFitness: "map_my_fitness",
 } as const;

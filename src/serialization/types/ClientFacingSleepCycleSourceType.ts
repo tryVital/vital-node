@@ -6,9 +6,9 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 
-export const SleepCycleSourceType: core.serialization.Schema<
-    serializers.SleepCycleSourceType.Raw,
-    Vital.SleepCycleSourceType
+export const ClientFacingSleepCycleSourceType: core.serialization.Schema<
+    serializers.ClientFacingSleepCycleSourceType.Raw,
+    Vital.ClientFacingSleepCycleSourceType
 > = core.serialization.enum_([
     "unknown",
     "phone",
@@ -25,7 +25,7 @@ export const SleepCycleSourceType: core.serialization.Schema<
     "lab",
 ]);
 
-export declare namespace SleepCycleSourceType {
+export declare namespace ClientFacingSleepCycleSourceType {
     type Raw =
         | "unknown"
         | "phone"
