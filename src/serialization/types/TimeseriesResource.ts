@@ -39,6 +39,8 @@ export const TimeseriesResource: core.serialization.Schema<
     "water",
     "caffeine",
     "mindfulness_minutes",
+    "afib_burden",
+    "heart_rate_alert",
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
@@ -76,6 +78,8 @@ export declare namespace TimeseriesResource {
         | "water"
         | "caffeine"
         | "mindfulness_minutes"
+        | "afib_burden"
+        | "heart_rate_alert"
         | "workout_duration"
         | "insulin_injection"
         | "carbohydrates"

@@ -12,4 +12,5 @@ export type AggregateExprArg =
     | Vital.IndexColumnExpr
     | Vital.GroupKeyColumnExpr
     | Vital.SleepScoreValueMacroExpr
+    | Vital.ChronotypeValueMacroExpr
     | Vital.UnrecognizedValueMacroExpr;

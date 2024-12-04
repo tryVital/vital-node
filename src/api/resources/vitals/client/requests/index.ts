@@ -1,3 +1,5 @@
+export { type VitalsHeartRateAlertGroupedRequest } from "./VitalsHeartRateAlertGroupedRequest";
+export { type VitalsAfibBurdenGroupedRequest } from "./VitalsAfibBurdenGroupedRequest";
 export { type VitalsWorkoutDurationGroupedRequest } from "./VitalsWorkoutDurationGroupedRequest";
 export { type VitalsVo2MaxGroupedRequest } from "./VitalsVo2MaxGroupedRequest";
 export { type VitalsStressLevelGroupedRequest } from "./VitalsStressLevelGroupedRequest";

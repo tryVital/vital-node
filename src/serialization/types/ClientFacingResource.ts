@@ -49,6 +49,8 @@ export const ClientFacingResource: core.serialization.Schema<
     "menstrual_cycle",
     "sleep_cycle",
     "electrocardiogram_voltage",
+    "afib_burden",
+    "heart_rate_alert",
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
@@ -97,6 +99,8 @@ export declare namespace ClientFacingResource {
         | "menstrual_cycle"
         | "sleep_cycle"
         | "electrocardiogram_voltage"
+        | "afib_burden"
+        | "heart_rate_alert"
         | "workout_duration"
         | "insulin_injection"
         | "carbohydrates"

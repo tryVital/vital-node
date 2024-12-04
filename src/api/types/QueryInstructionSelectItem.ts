@@ -13,4 +13,5 @@ export type QueryInstructionSelectItem =
     | Vital.IndexColumnExpr
     | Vital.GroupKeyColumnExpr
     | Vital.SleepScoreValueMacroExpr
+    | Vital.ChronotypeValueMacroExpr
     | Vital.UnrecognizedValueMacroExpr;

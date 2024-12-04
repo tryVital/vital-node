@@ -12,6 +12,7 @@ import { BodyColumnExpr } from "./BodyColumnExpr";
 import { IndexColumnExpr } from "./IndexColumnExpr";
 import { GroupKeyColumnExpr } from "./GroupKeyColumnExpr";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
+import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
 import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
 
 export const AggregateExprArg: core.serialization.Schema<serializers.AggregateExprArg.Raw, Vital.AggregateExprArg> =
@@ -23,6 +24,7 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         IndexColumnExpr,
         GroupKeyColumnExpr,
         SleepScoreValueMacroExpr,
+        ChronotypeValueMacroExpr,
         UnrecognizedValueMacroExpr,
     ]);
 
@@ -35,5 +37,6 @@ export declare namespace AggregateExprArg {
         | IndexColumnExpr.Raw
         | GroupKeyColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
+        | ChronotypeValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw;
 }

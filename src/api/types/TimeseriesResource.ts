@@ -32,6 +32,8 @@ export type TimeseriesResource =
     | "water"
     | "caffeine"
     | "mindfulness_minutes"
+    | "afib_burden"
+    | "heart_rate_alert"
     | "workout_duration"
     | "insulin_injection"
     | "carbohydrates"
@@ -67,6 +69,8 @@ export const TimeseriesResource = {
     Water: "water",
     Caffeine: "caffeine",
     MindfulnessMinutes: "mindfulness_minutes",
+    AfibBurden: "afib_burden",
+    HeartRateAlert: "heart_rate_alert",
     WorkoutDuration: "workout_duration",
     InsulinInjection: "insulin_injection",
     Carbohydrates: "carbohydrates",

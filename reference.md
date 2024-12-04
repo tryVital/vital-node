@@ -2136,6 +2136,122 @@ await client.menstrualCycle.get("user_id", {
 
 ## Vitals
 
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateAlertGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingHeartRateAlertSample</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.heartRateAlertGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsHeartRateAlertGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">afibBurdenGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingAFibBurdenSample</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.afibBurdenGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsAfibBurdenGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutDurationGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingWorkoutDurationSample</code></summary>
 <dl>
 <dd>
