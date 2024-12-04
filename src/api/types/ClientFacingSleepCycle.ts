@@ -11,6 +11,15 @@ export interface ClientFacingSleepCycle {
     sessionEnd: Date;
     stageStartOffsetSecond: number[];
     stageEndOffsetSecond: number[];
+    /**
+     * Sleep stage classification:
+     * `-1`: Unknown or unclassified sleep stage;
+     * `1`: Deep sleep;
+     * `2`: Light/non-REM sleep;
+     * `3`: Rapid Eye Movement sleep;
+     * `4`: Awake period;
+     * `5`: Manually classified stage.
+     */
     stageType: Vital.VitalSleepStage[];
     timeZone?: string;
     sourceProvider: Vital.ClientFacingSleepCycleSourceProvider;
