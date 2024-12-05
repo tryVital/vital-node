@@ -16,35 +16,6 @@ export const Minerals: core.serialization.Schema<serializers.Minerals.Raw, Vital
     "zinc",
     "fluoride",
     "chloride",
-    "boron",
-    "cobalt",
-    "nickel",
-    "silicon",
-    "vanadium",
-    "lithium",
-    "rubidium",
-    "strontium",
-    "aluminum",
-    "arsenic",
-    "barium",
-    "beryllium",
-    "bismuth",
-    "cadmium",
-    "cesium",
-    "germanium",
-    "gold",
-    "lead",
-    "mercury",
-    "palladium",
-    "platinum",
-    "silver",
-    "thallium",
-    "thorium",
-    "tin",
-    "titanium",
-    "tungsten",
-    "uranium",
-    "zirconium",
 ]);
 
 export declare namespace Minerals {
@@ -57,34 +28,5 @@ export declare namespace Minerals {
         | "iron"
         | "zinc"
         | "fluoride"
-        | "chloride"
-        | "boron"
-        | "cobalt"
-        | "nickel"
-        | "silicon"
-        | "vanadium"
-        | "lithium"
-        | "rubidium"
-        | "strontium"
-        | "aluminum"
-        | "arsenic"
-        | "barium"
-        | "beryllium"
-        | "bismuth"
-        | "cadmium"
-        | "cesium"
-        | "germanium"
-        | "gold"
-        | "lead"
-        | "mercury"
-        | "palladium"
-        | "platinum"
-        | "silver"
-        | "thallium"
-        | "thorium"
-        | "tin"
-        | "titanium"
-        | "tungsten"
-        | "uranium"
-        | "zirconium";
+        | "chloride";
 }

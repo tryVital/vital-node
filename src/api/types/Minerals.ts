@@ -11,36 +11,7 @@ export type Minerals =
     | "iron"
     | "zinc"
     | "fluoride"
-    | "chloride"
-    | "boron"
-    | "cobalt"
-    | "nickel"
-    | "silicon"
-    | "vanadium"
-    | "lithium"
-    | "rubidium"
-    | "strontium"
-    | "aluminum"
-    | "arsenic"
-    | "barium"
-    | "beryllium"
-    | "bismuth"
-    | "cadmium"
-    | "cesium"
-    | "germanium"
-    | "gold"
-    | "lead"
-    | "mercury"
-    | "palladium"
-    | "platinum"
-    | "silver"
-    | "thallium"
-    | "thorium"
-    | "tin"
-    | "titanium"
-    | "tungsten"
-    | "uranium"
-    | "zirconium";
+    | "chloride";
 
 export const Minerals = {
     Sodium: "sodium",
@@ -52,33 +23,4 @@ export const Minerals = {
     Zinc: "zinc",
     Fluoride: "fluoride",
     Chloride: "chloride",
-    Boron: "boron",
-    Cobalt: "cobalt",
-    Nickel: "nickel",
-    Silicon: "silicon",
-    Vanadium: "vanadium",
-    Lithium: "lithium",
-    Rubidium: "rubidium",
-    Strontium: "strontium",
-    Aluminum: "aluminum",
-    Arsenic: "arsenic",
-    Barium: "barium",
-    Beryllium: "beryllium",
-    Bismuth: "bismuth",
-    Cadmium: "cadmium",
-    Cesium: "cesium",
-    Germanium: "germanium",
-    Gold: "gold",
-    Lead: "lead",
-    Mercury: "mercury",
-    Palladium: "palladium",
-    Platinum: "platinum",
-    Silver: "silver",
-    Thallium: "thallium",
-    Thorium: "thorium",
-    Tin: "tin",
-    Titanium: "titanium",
-    Tungsten: "tungsten",
-    Uranium: "uranium",
-    Zirconium: "zirconium",
 } as const;
