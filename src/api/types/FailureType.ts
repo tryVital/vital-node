@@ -12,7 +12,8 @@ export type FailureType =
     | "unknown_failure"
     | "patient_condition_failure"
     | "missing_result_calc_failure"
-    | "missing_demo_aoe_calc_failure";
+    | "missing_demo_aoe_calc_failure"
+    | "insufficient_volume";
 
 export const FailureType = {
     QuantityNotSufficientFailure: "quantity_not_sufficient_failure",
@@ -25,4 +26,5 @@ export const FailureType = {
     PatientConditionFailure: "patient_condition_failure",
     MissingResultCalcFailure: "missing_result_calc_failure",
     MissingDemoAoeCalcFailure: "missing_demo_aoe_calc_failure",
+    InsufficientVolume: "insufficient_volume",
 } as const;

@@ -18,6 +18,7 @@ export const FailureType: core.serialization.Schema<serializers.FailureType.Raw,
         "patient_condition_failure",
         "missing_result_calc_failure",
         "missing_demo_aoe_calc_failure",
+        "insufficient_volume",
     ]);
 
 export declare namespace FailureType {
@@ -31,5 +32,6 @@ export declare namespace FailureType {
         | "unknown_failure"
         | "patient_condition_failure"
         | "missing_result_calc_failure"
-        | "missing_demo_aoe_calc_failure";
+        | "missing_demo_aoe_calc_failure"
+        | "insufficient_volume";
 }
