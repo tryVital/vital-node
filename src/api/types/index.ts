@@ -241,6 +241,7 @@ export * from "./ParentBiomarkerData";
 export * from "./PasswordProviders";
 export * from "./PatientAddressCompatible";
 export * from "./PatientDetails";
+export * from "./PatientDetailsWithValidation";
 export * from "./PeriodUnit";
 export * from "./Period";
 export * from "./PersonDetailsOutput";
