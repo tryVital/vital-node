@@ -30,7 +30,7 @@ export class Aggregate {
 
     /**
      * @param {string} userId
-     * @param {Vital.Query} request
+     * @param {Vital.QueryBatch} request
      * @param {Aggregate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -44,7 +44,7 @@ export class Aggregate {
      *                 unit: "minute"
      *             }
      *         },
-     *         instructions: [{
+     *         queries: [{
      *                 select: [{
      *                         arg: {
      *                             sleep: "session_start"
@@ -56,20 +56,20 @@ export class Aggregate {
      */
     public async queryOne(
         userId: string,
-        request: Vital.Query,
+        request: Vital.QueryBatch,
         requestOptions?: Aggregate.RequestOptions
-    ): Promise<unknown> {
+    ): Promise<Vital.AggregationResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `aggregate/v1/query_one/${encodeURIComponent(userId)}`
+                `aggregate/v1/user/${encodeURIComponent(userId)}/query`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
@@ -77,13 +77,18 @@ export class Aggregate {
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.Query.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.QueryBatch.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return _response.body;
+            return serializers.AggregationResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {

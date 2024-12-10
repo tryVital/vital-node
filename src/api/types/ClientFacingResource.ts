@@ -41,6 +41,7 @@ export type ClientFacingResource =
     | "stress_level"
     | "menstrual_cycle"
     | "sleep_cycle"
+    | "electrocardiogram"
     | "electrocardiogram_voltage"
     | "afib_burden"
     | "heart_rate_alert"
@@ -89,6 +90,7 @@ export const ClientFacingResource = {
     StressLevel: "stress_level",
     MenstrualCycle: "menstrual_cycle",
     SleepCycle: "sleep_cycle",
+    Electrocardiogram: "electrocardiogram",
     ElectrocardiogramVoltage: "electrocardiogram_voltage",
     AfibBurden: "afib_burden",
     HeartRateAlert: "heart_rate_alert",

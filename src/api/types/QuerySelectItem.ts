@@ -4,7 +4,7 @@
 
 import * as Vital from "../index";
 
-export type QueryInstructionSelectItem =
+export type QuerySelectItem =
     | Vital.AggregateExpr
     | Vital.SleepColumnExpr
     | Vital.ActivityColumnExpr

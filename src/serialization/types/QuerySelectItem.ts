@@ -16,23 +16,21 @@ import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
 import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
 
-export const QueryInstructionSelectItem: core.serialization.Schema<
-    serializers.QueryInstructionSelectItem.Raw,
-    Vital.QueryInstructionSelectItem
-> = core.serialization.undiscriminatedUnion([
-    AggregateExpr,
-    SleepColumnExpr,
-    ActivityColumnExpr,
-    WorkoutColumnExpr,
-    BodyColumnExpr,
-    IndexColumnExpr,
-    GroupKeyColumnExpr,
-    SleepScoreValueMacroExpr,
-    ChronotypeValueMacroExpr,
-    UnrecognizedValueMacroExpr,
-]);
+export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectItem.Raw, Vital.QuerySelectItem> =
+    core.serialization.undiscriminatedUnion([
+        AggregateExpr,
+        SleepColumnExpr,
+        ActivityColumnExpr,
+        WorkoutColumnExpr,
+        BodyColumnExpr,
+        IndexColumnExpr,
+        GroupKeyColumnExpr,
+        SleepScoreValueMacroExpr,
+        ChronotypeValueMacroExpr,
+        UnrecognizedValueMacroExpr,
+    ]);
 
-export declare namespace QueryInstructionSelectItem {
+export declare namespace QuerySelectItem {
     type Raw =
         | AggregateExpr.Raw
         | SleepColumnExpr.Raw

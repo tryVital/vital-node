@@ -1,1 +1,1 @@
-export * from "./QueryTimeframe";
+export * from "./QueryBatchTimeframe";

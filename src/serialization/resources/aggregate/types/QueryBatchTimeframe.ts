@@ -8,9 +8,11 @@ import * as core from "../../../../core";
 import { RelativeTimeframe } from "../../../types/RelativeTimeframe";
 import { Placeholder } from "../../../types/Placeholder";
 
-export const QueryTimeframe: core.serialization.Schema<serializers.QueryTimeframe.Raw, Vital.QueryTimeframe> =
-    core.serialization.undiscriminatedUnion([RelativeTimeframe, Placeholder]);
+export const QueryBatchTimeframe: core.serialization.Schema<
+    serializers.QueryBatchTimeframe.Raw,
+    Vital.QueryBatchTimeframe
+> = core.serialization.undiscriminatedUnion([RelativeTimeframe, Placeholder]);
 
-export declare namespace QueryTimeframe {
+export declare namespace QueryBatchTimeframe {
     type Raw = RelativeTimeframe.Raw | Placeholder.Raw;
 }

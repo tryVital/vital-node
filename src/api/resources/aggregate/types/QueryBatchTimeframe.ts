@@ -4,4 +4,4 @@
 
 import * as Vital from "../../../index";
 
-export type QueryTimeframe = Vital.RelativeTimeframe | Vital.Placeholder;
+export type QueryBatchTimeframe = Vital.RelativeTimeframe | Vital.Placeholder;

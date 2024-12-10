@@ -1,1 +1,1 @@
-export { type Query } from "./Query";
+export { type QueryBatch } from "./QueryBatch";

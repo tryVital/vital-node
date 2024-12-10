@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const IndexColumnExprIndex: core.serialization.Schema<
     serializers.IndexColumnExprIndex.Raw,
     Vital.IndexColumnExprIndex
-> = core.serialization.enum_(["sleep", "activity", "workout", "body"]);
+> = core.serialization.enum_(["sleep", "activity", "workout", "body", "meal"]);
 
 export declare namespace IndexColumnExprIndex {
-    type Raw = "sleep" | "activity" | "workout" | "body";
+    type Raw = "sleep" | "activity" | "workout" | "body" | "meal";
 }

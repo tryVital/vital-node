@@ -29,7 +29,7 @@ export class SleepCycle {
     constructor(protected readonly _options: SleepCycle.Options = {}) {}
 
     /**
-     * Get Daily sleep cycle for user_id
+     * Get sleep cycle for user_id
      *
      * @param {string} userId
      * @param {Vital.SleepCycleGetRequest} request
@@ -67,8 +67,8 @@ export class SleepCycle {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

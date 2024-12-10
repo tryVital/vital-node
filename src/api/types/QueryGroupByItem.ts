@@ -4,4 +4,4 @@
 
 import * as Vital from "../index";
 
-export type QueryInstructionGroupByItem = Vital.DateTruncExpr | Vital.DatePartExpr;
+export type QueryGroupByItem = Vital.DateTruncExpr | Vital.DatePartExpr;

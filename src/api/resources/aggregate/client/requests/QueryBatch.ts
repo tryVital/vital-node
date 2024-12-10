@@ -14,7 +14,7 @@ import * as Vital from "../../../../index";
  *                 unit: "minute"
  *             }
  *         },
- *         instructions: [{
+ *         queries: [{
  *                 select: [{
  *                         arg: {
  *                             sleep: "session_start"
@@ -24,8 +24,8 @@ import * as Vital from "../../../../index";
  *             }]
  *     }
  */
-export interface Query {
-    timeframe: Vital.QueryTimeframe;
-    instructions: Vital.QueryInstruction[];
+export interface QueryBatch {
+    timeframe: Vital.QueryBatchTimeframe;
+    queries: Vital.Query[];
     config?: Vital.QueryConfig;
 }

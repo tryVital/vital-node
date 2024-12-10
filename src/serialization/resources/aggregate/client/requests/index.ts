@@ -1,1 +1,1 @@
-export { Query } from "./Query";
+export { QueryBatch } from "./QueryBatch";

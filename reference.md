@@ -945,7 +945,7 @@ await client.link.connectDemoProvider({
 <dl>
 <dd>
 
-Get Daily sleep cycle for user_id
+Get sleep cycle for user_id
 
 </dd>
 </dl>
@@ -1020,7 +1020,7 @@ await client.sleepCycle.get("user_id", {
 <dl>
 <dd>
 
-Get Daily profile for user_id
+Get profile for user_id
 
 </dd>
 </dl>
@@ -1091,7 +1091,7 @@ await client.profile.get("user_id");
 <dl>
 <dd>
 
-Get Daily profile for user_id
+Get raw profile for user_id
 
 </dd>
 </dl>
@@ -1237,7 +1237,7 @@ await client.devices.getRaw("user_id");
 <dl>
 <dd>
 
-Get Daily Activity for user_id
+Get activity summary for user_id
 
 </dd>
 </dl>
@@ -1310,7 +1310,7 @@ await client.activity.get("user_id", {
 <dl>
 <dd>
 
-Get Daily Activity for user_id
+Get raw activity summary for user_id
 
 </dd>
 </dl>
@@ -1385,7 +1385,7 @@ await client.activity.getRaw("user_id", {
 <dl>
 <dd>
 
-Get Daily workout for user_id
+Get workout summary for user_id
 
 </dd>
 </dl>
@@ -1458,7 +1458,7 @@ await client.workouts.get("user_id", {
 <dl>
 <dd>
 
-Get Daily workout for user_id
+Get raw workout summary for user_id
 
 </dd>
 </dl>
@@ -1581,7 +1581,7 @@ await client.workouts.getByWorkoutId("workout_id");
 <dl>
 <dd>
 
-Get Daily sleep for user_id
+Get sleep summary for user_id
 
 </dd>
 </dl>
@@ -1654,7 +1654,7 @@ await client.sleep.get("user_id", {
 <dl>
 <dd>
 
-Get Daily sleep stream for user_id
+Get sleep stream for user_id
 
 </dd>
 </dl>
@@ -1727,7 +1727,7 @@ await client.sleep.getStream("user_id", {
 <dl>
 <dd>
 
-Get Daily sleep for user_id
+Get raw sleep summary for user_id
 
 </dd>
 </dl>
@@ -1865,7 +1865,7 @@ await client.sleep.getStreamBySleepId("sleep_id");
 <dl>
 <dd>
 
-Get Daily Body data for user_id
+Get Body summary for user_id
 
 </dd>
 </dl>
@@ -1938,7 +1938,7 @@ await client.body.get("user_id", {
 <dl>
 <dd>
 
-Get Daily Body data for user_id
+Get raw Body summary for user_id
 
 </dd>
 </dl>
@@ -9373,7 +9373,7 @@ await client.insurance.searchDiagnosis({
 
 ## Aggregate
 
-<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">queryOne</a>(userId, { ...params }) -> unknown</code></summary>
+<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">queryOne</a>(userId, { ...params }) -> Vital.AggregationResponse</code></summary>
 <dl>
 <dd>
 
@@ -9394,7 +9394,7 @@ await client.aggregate.queryOne("user_id", {
             unit: "minute",
         },
     },
-    instructions: [
+    queries: [
         {
             select: [
                 {
@@ -9430,7 +9430,7 @@ await client.aggregate.queryOne("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.Query`
+**request:** `Vital.QueryBatch`
 
 </dd>
 </dl>

@@ -48,6 +48,7 @@ export const ClientFacingResource: core.serialization.Schema<
     "stress_level",
     "menstrual_cycle",
     "sleep_cycle",
+    "electrocardiogram",
     "electrocardiogram_voltage",
     "afib_burden",
     "heart_rate_alert",
@@ -98,6 +99,7 @@ export declare namespace ClientFacingResource {
         | "stress_level"
         | "menstrual_cycle"
         | "sleep_cycle"
+        | "electrocardiogram"
         | "electrocardiogram_voltage"
         | "afib_burden"
         | "heart_rate_alert"

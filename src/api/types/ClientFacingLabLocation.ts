@@ -8,4 +8,5 @@ export interface ClientFacingLabLocation {
     metadata: Vital.LabLocationMetadata;
     distance: number;
     siteCode: string;
+    supportedBillTypes: Vital.Billing[];
 }

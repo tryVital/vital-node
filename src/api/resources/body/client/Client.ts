@@ -29,7 +29,7 @@ export class Body {
     constructor(protected readonly _options: Body.Options = {}) {}
 
     /**
-     * Get Daily Body data for user_id
+     * Get Body summary for user_id
      *
      * @param {string} userId
      * @param {Vital.BodyGetRequest} request
@@ -67,8 +67,8 @@ export class Body {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -124,7 +124,7 @@ export class Body {
     }
 
     /**
-     * Get Daily Body data for user_id
+     * Get raw Body summary for user_id
      *
      * @param {string} userId
      * @param {Vital.BodyGetRawRequest} request
@@ -162,8 +162,8 @@ export class Body {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

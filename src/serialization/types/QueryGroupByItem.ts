@@ -8,11 +8,9 @@ import * as core from "../../core";
 import { DateTruncExpr } from "./DateTruncExpr";
 import { DatePartExpr } from "./DatePartExpr";
 
-export const QueryInstructionGroupByItem: core.serialization.Schema<
-    serializers.QueryInstructionGroupByItem.Raw,
-    Vital.QueryInstructionGroupByItem
-> = core.serialization.undiscriminatedUnion([DateTruncExpr, DatePartExpr]);
+export const QueryGroupByItem: core.serialization.Schema<serializers.QueryGroupByItem.Raw, Vital.QueryGroupByItem> =
+    core.serialization.undiscriminatedUnion([DateTruncExpr, DatePartExpr]);
 
-export declare namespace QueryInstructionGroupByItem {
+export declare namespace QueryGroupByItem {
     type Raw = DateTruncExpr.Raw | DatePartExpr.Raw;
 }

@@ -29,7 +29,7 @@ export class Sleep {
     constructor(protected readonly _options: Sleep.Options = {}) {}
 
     /**
-     * Get Daily sleep for user_id
+     * Get sleep summary for user_id
      *
      * @param {string} userId
      * @param {Vital.SleepGetRequest} request
@@ -67,8 +67,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -124,7 +124,7 @@ export class Sleep {
     }
 
     /**
-     * Get Daily sleep stream for user_id
+     * Get sleep stream for user_id
      *
      * @param {string} userId
      * @param {Vital.SleepGetStreamRequest} request
@@ -162,8 +162,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -219,7 +219,7 @@ export class Sleep {
     }
 
     /**
-     * Get Daily sleep for user_id
+     * Get raw sleep summary for user_id
      *
      * @param {string} userId
      * @param {Vital.SleepGetRawRequest} request
@@ -257,8 +257,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -337,8 +337,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.138",
-                "User-Agent": "@tryvital/vital-node/3.1.138",
+                "X-Fern-SDK-Version": "3.1.139",
+                "User-Agent": "@tryvital/vital-node/3.1.139",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
