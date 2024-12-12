@@ -4,7 +4,8 @@
 
 import * as Vital from "../index";
 
-export interface MenstrualCycle {
+export interface ClientFacingMenstrualCycle {
+    id: string;
     periodStart: string;
     periodEnd?: string;
     cycleEnd?: string;
@@ -19,5 +20,9 @@ export interface MenstrualCycle {
     homeProgesteroneTest?: Vital.HomeProgesteroneTestEntry[];
     sexualActivity?: Vital.SexualActivityEntry[];
     basalBodyTemperature?: Vital.BasalBodyTemperatureEntry[];
+    sourceProvider: Vital.ClientFacingMenstrualCycleSourceProvider;
+    sourceType: Vital.ClientFacingMenstrualCycleSourceType;
+    sourceAppId?: string;
+    userId: string;
     source: Vital.ClientFacingSource;
 }

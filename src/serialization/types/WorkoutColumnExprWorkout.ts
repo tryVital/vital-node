@@ -13,7 +13,6 @@ export const WorkoutColumnExprWorkout: core.serialization.Schema<
     "session_start",
     "session_end",
     "title",
-    "sport_id",
     "sport_name",
     "sport_slug",
     "duration_active_second",
@@ -49,7 +48,6 @@ export declare namespace WorkoutColumnExprWorkout {
         | "session_start"
         | "session_end"
         | "title"
-        | "sport_id"
         | "sport_name"
         | "sport_slug"
         | "duration_active_second"

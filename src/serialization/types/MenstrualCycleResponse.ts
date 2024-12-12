@@ -5,17 +5,17 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { MenstrualCycle } from "./MenstrualCycle";
+import { ClientFacingMenstrualCycle } from "./ClientFacingMenstrualCycle";
 
 export const MenstrualCycleResponse: core.serialization.ObjectSchema<
     serializers.MenstrualCycleResponse.Raw,
     Vital.MenstrualCycleResponse
 > = core.serialization.object({
-    menstrualCycle: core.serialization.property("menstrual_cycle", core.serialization.list(MenstrualCycle)),
+    menstrualCycle: core.serialization.property("menstrual_cycle", core.serialization.list(ClientFacingMenstrualCycle)),
 });
 
 export declare namespace MenstrualCycleResponse {
     interface Raw {
-        menstrual_cycle: MenstrualCycle.Raw[];
+        menstrual_cycle: ClientFacingMenstrualCycle.Raw[];
     }
 }

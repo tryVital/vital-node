@@ -4,6 +4,4 @@
 
 import * as Vital from "../index";
 
-export interface MenstrualCycleResponse {
-    menstrualCycle: Vital.ClientFacingMenstrualCycle[];
-}
+export type ClientFacingElectrocardiogramSourceProvider = Vital.Providers | Vital.Labs;

@@ -9,7 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Meal {
+export declare namespace Electrocardiogram {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey?: core.Supplier<string | undefined>;
@@ -25,43 +25,43 @@ export declare namespace Meal {
     }
 }
 
-export class Meal {
-    constructor(protected readonly _options: Meal.Options = {}) {}
+export class Electrocardiogram {
+    constructor(protected readonly _options: Electrocardiogram.Options = {}) {}
 
     /**
-     * Get user's meals
+     * Get electrocardiogram summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.MealGetRequest} request
-     * @param {Meal.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Vital.ElectrocardiogramGetRequest} request
+     * @param {Electrocardiogram.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.meal.get("user_id", {
+     *     await client.electrocardiogram.get("user_id", {
      *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.MealGetRequest,
-        requestOptions?: Meal.RequestOptions
-    ): Promise<Vital.ClientFacingMealResponse> {
-        const { provider, startDate, endDate } = request;
+        request: Vital.ElectrocardiogramGetRequest,
+        requestOptions?: Electrocardiogram.RequestOptions
+    ): Promise<Vital.ClientFacingElectrocardiogramResponse> {
+        const { startDate, endDate, provider } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (provider != null) {
-            _queryParams["provider"] = provider;
-        }
-
         _queryParams["start_date"] = startDate;
         if (endDate != null) {
             _queryParams["end_date"] = endDate;
         }
 
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/summary/meal/${encodeURIComponent(userId)}`
+                `v2/summary/electrocardiogram/${encodeURIComponent(userId)}`
             ),
             method: "GET",
             headers: {
@@ -81,7 +81,7 @@ export class Meal {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.ClientFacingMealResponse.parseOrThrow(_response.body, {
+            return serializers.ClientFacingElectrocardiogramResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

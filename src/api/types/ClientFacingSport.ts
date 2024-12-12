@@ -3,6 +3,7 @@
  */
 
 export interface ClientFacingSport {
+    /** This ID is unstable across environments. Use the slug instead. */
     id: number;
     /** Sport's name */
     name: string;

@@ -6,7 +6,6 @@ export type WorkoutColumnExprWorkout =
     | "session_start"
     | "session_end"
     | "title"
-    | "sport_id"
     | "sport_name"
     | "sport_slug"
     | "duration_active_second"
@@ -40,7 +39,6 @@ export const WorkoutColumnExprWorkout = {
     SessionStart: "session_start",
     SessionEnd: "session_end",
     Title: "title",
-    SportId: "sport_id",
     SportName: "sport_name",
     SportSlug: "sport_slug",
     DurationActiveSecond: "duration_active_second",
