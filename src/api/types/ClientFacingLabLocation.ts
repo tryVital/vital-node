@@ -9,4 +9,5 @@ export interface ClientFacingLabLocation {
     distance: number;
     siteCode: string;
     supportedBillTypes: Vital.Billing[];
+    location: Vital.LngLat;
 }
