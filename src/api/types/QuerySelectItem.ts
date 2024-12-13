@@ -6,12 +6,12 @@ import * as Vital from "../index";
 
 export type QuerySelectItem =
     | Vital.AggregateExpr
+    | Vital.GroupKeyColumnExpr
     | Vital.SleepColumnExpr
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr
     | Vital.IndexColumnExpr
-    | Vital.GroupKeyColumnExpr
     | Vital.SleepScoreValueMacroExpr
     | Vital.ChronotypeValueMacroExpr
     | Vital.UnrecognizedValueMacroExpr;
