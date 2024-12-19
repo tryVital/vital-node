@@ -5,16 +5,21 @@
 import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
+import { PayorCodeExternalProvider } from "../../../../types/PayorCodeExternalProvider";
 
 export const PayorSearchRequest: core.serialization.Schema<
     serializers.PayorSearchRequest.Raw,
     Vital.PayorSearchRequest
 > = core.serialization.object({
-    insuranceName: core.serialization.property("insurance_name", core.serialization.string()),
+    insuranceName: core.serialization.property("insurance_name", core.serialization.string().optional()),
+    provider: PayorCodeExternalProvider.optional(),
+    providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
 });
 
 export declare namespace PayorSearchRequest {
     interface Raw {
-        insurance_name: string;
+        insurance_name?: string | null;
+        provider?: PayorCodeExternalProvider.Raw | null;
+        provider_id?: string | null;
     }
 }

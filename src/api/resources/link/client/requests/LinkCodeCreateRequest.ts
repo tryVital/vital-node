@@ -10,5 +10,8 @@
  */
 export interface LinkCodeCreateRequest {
     userId: string;
+    /**
+     * When the link code should expire. Defaults to server time plus 1 hour.
+     */
     expiresAt?: Date;
 }

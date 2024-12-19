@@ -12,11 +12,13 @@ export const VitalTokenCreatedResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     code: core.serialization.string(),
     exchangeUrl: core.serialization.property("exchange_url", core.serialization.string()),
+    expiresAt: core.serialization.property("expires_at", core.serialization.string()),
 });
 
 export declare namespace VitalTokenCreatedResponse {
     interface Raw {
         code: string;
         exchange_url: string;
+        expires_at: string;
     }
 }

@@ -11,7 +11,10 @@ export interface ClientFacingProviderWithStatus {
     slug: string;
     /** URL for source logo */
     logo: string;
+    createdOn: string;
     /** Status of source, either error or connected */
     status: string;
+    /** Details of the terminal connection error — populated only when the status is `error`. */
+    errorDetails?: Vital.ClientFacingConnectionErrorDetails;
     resourceAvailability: Record<string, Vital.ResourceAvailability>;
 }

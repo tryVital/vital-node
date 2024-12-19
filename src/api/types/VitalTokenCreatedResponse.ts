@@ -5,4 +5,5 @@
 export interface VitalTokenCreatedResponse {
     code: string;
     exchangeUrl: string;
+    expiresAt: string;
 }

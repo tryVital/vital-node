@@ -35,12 +35,10 @@ export class Insurance {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.insurance.searchPayorInfo({
-     *         insuranceName: "insurance_name"
-     *     })
+     *     await client.insurance.searchPayorInfo()
      */
     public async searchPayorInfo(
-        request: Vital.PayorSearchRequest,
+        request: Vital.PayorSearchRequest = {},
         requestOptions?: Insurance.RequestOptions
     ): Promise<Vital.ClientFacingPayorSearchResponse[]> {
         const _response = await core.fetcher({
@@ -52,8 +50,8 @@ export class Insurance {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.149",
-                "User-Agent": "@tryvital/vital-node/3.1.149",
+                "X-Fern-SDK-Version": "3.1.150",
+                "User-Agent": "@tryvital/vital-node/3.1.150",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -135,8 +133,8 @@ export class Insurance {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.149",
-                "User-Agent": "@tryvital/vital-node/3.1.149",
+                "X-Fern-SDK-Version": "3.1.150",
+                "User-Agent": "@tryvital/vital-node/3.1.150",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

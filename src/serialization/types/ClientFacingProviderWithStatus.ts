@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { ClientFacingConnectionErrorDetails } from "./ClientFacingConnectionErrorDetails";
 import { ResourceAvailability } from "./ResourceAvailability";
 
 export const ClientFacingProviderWithStatus: core.serialization.ObjectSchema<
@@ -14,7 +15,9 @@ export const ClientFacingProviderWithStatus: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     slug: core.serialization.string(),
     logo: core.serialization.string(),
+    createdOn: core.serialization.property("created_on", core.serialization.string()),
     status: core.serialization.string(),
+    errorDetails: core.serialization.property("error_details", ClientFacingConnectionErrorDetails.optional()),
     resourceAvailability: core.serialization.property(
         "resource_availability",
         core.serialization.record(core.serialization.string(), ResourceAvailability)
@@ -26,7 +29,9 @@ export declare namespace ClientFacingProviderWithStatus {
         name: string;
         slug: string;
         logo: string;
+        created_on: string;
         status: string;
+        error_details?: ClientFacingConnectionErrorDetails.Raw | null;
         resource_availability: Record<string, ResourceAvailability.Raw>;
     }
 }

@@ -9359,9 +9359,7 @@ await client.testkit.createOrder({
 <dd>
 
 ```typescript
-await client.insurance.searchPayorInfo({
-    insuranceName: "insurance_name",
-});
+await client.insurance.searchPayorInfo();
 ```
 
 </dd>
