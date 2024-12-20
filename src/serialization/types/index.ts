@@ -111,6 +111,7 @@ export * from "./ClientFacingOrder";
 export * from "./ClientFacingOrderEvent";
 export * from "./ClientFacingPatientDetailsCompatible";
 export * from "./ClientFacingPayorSearchResponse";
+export * from "./ClientFacingPayorSearchResponseDeprecated";
 export * from "./ClientFacingPhysician";
 export * from "./ClientFacingProfile";
 export * from "./ClientFacingProvider";

@@ -9346,7 +9346,55 @@ await client.testkit.createOrder({
 
 ## Insurance
 
-<details><summary><code>client.insurance.<a href="/src/api/resources/insurance/client/Client.ts">searchPayorInfo</a>({ ...params }) -> Vital.ClientFacingPayorSearchResponse[]</code></summary>
+<details><summary><code>client.insurance.<a href="/src/api/resources/insurance/client/Client.ts">searchGetPayorInfo</a>({ ...params }) -> Vital.ClientFacingPayorSearchResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.insurance.searchGetPayorInfo();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.InsuranceSearchGetPayorInfoRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Insurance.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.insurance.<a href="/src/api/resources/insurance/client/Client.ts">searchPayorInfo</a>({ ...params }) -> Vital.ClientFacingPayorSearchResponseDeprecated[]</code></summary>
 <dl>
 <dd>
 

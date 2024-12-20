@@ -7,19 +7,19 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { Address } from "./Address";
 
-export const ClientFacingPayorSearchResponse: core.serialization.ObjectSchema<
-    serializers.ClientFacingPayorSearchResponse.Raw,
-    Vital.ClientFacingPayorSearchResponse
+export const ClientFacingPayorSearchResponseDeprecated: core.serialization.ObjectSchema<
+    serializers.ClientFacingPayorSearchResponseDeprecated.Raw,
+    Vital.ClientFacingPayorSearchResponseDeprecated
 > = core.serialization.object({
-    payorCode: core.serialization.property("payor_code", core.serialization.string()),
+    code: core.serialization.string(),
     name: core.serialization.string(),
     aliases: core.serialization.list(core.serialization.string()),
     orgAddress: core.serialization.property("org_address", Address),
 });
 
-export declare namespace ClientFacingPayorSearchResponse {
+export declare namespace ClientFacingPayorSearchResponseDeprecated {
     interface Raw {
-        payor_code: string;
+        code: string;
         name: string;
         aliases: string[];
         org_address: Address.Raw;

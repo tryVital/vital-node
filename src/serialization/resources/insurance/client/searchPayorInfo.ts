@@ -5,13 +5,13 @@
 import * as serializers from "../../../index";
 import * as Vital from "../../../../api/index";
 import * as core from "../../../../core";
-import { ClientFacingPayorSearchResponse } from "../../../types/ClientFacingPayorSearchResponse";
+import { ClientFacingPayorSearchResponseDeprecated } from "../../../types/ClientFacingPayorSearchResponseDeprecated";
 
 export const Response: core.serialization.Schema<
     serializers.insurance.searchPayorInfo.Response.Raw,
-    Vital.ClientFacingPayorSearchResponse[]
-> = core.serialization.list(ClientFacingPayorSearchResponse);
+    Vital.ClientFacingPayorSearchResponseDeprecated[]
+> = core.serialization.list(ClientFacingPayorSearchResponseDeprecated);
 
 export declare namespace Response {
-    type Raw = ClientFacingPayorSearchResponse.Raw[];
+    type Raw = ClientFacingPayorSearchResponseDeprecated.Raw[];
 }

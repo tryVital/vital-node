@@ -4,9 +4,9 @@
 
 import * as Vital from "../index";
 
-export interface ClientFacingPayorSearchResponse {
+export interface ClientFacingPayorSearchResponseDeprecated {
     /** Payor code returned for the insurance information. */
-    payorCode: string;
+    code: string;
     /** Insurance name returned for the insurance information. */
     name: string;
     /** Insurance name aliases returned for the insurance information. */
