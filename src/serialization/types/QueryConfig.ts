@@ -5,12 +5,10 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { QueryConfigWeekStartsOn } from "./QueryConfigWeekStartsOn";
 import { QueryConfigProviderPriorityOverridesItem } from "./QueryConfigProviderPriorityOverridesItem";
 
 export const QueryConfig: core.serialization.ObjectSchema<serializers.QueryConfig.Raw, Vital.QueryConfig> =
     core.serialization.object({
-        weekStartsOn: core.serialization.property("week_starts_on", QueryConfigWeekStartsOn.optional()),
         providerPriorityOverrides: core.serialization.property(
             "provider_priority_overrides",
             core.serialization.list(QueryConfigProviderPriorityOverridesItem).optional()
@@ -19,7 +17,6 @@ export const QueryConfig: core.serialization.ObjectSchema<serializers.QueryConfi
 
 export declare namespace QueryConfig {
     interface Raw {
-        week_starts_on?: QueryConfigWeekStartsOn.Raw | null;
         provider_priority_overrides?: QueryConfigProviderPriorityOverridesItem.Raw[] | null;
     }
 }
