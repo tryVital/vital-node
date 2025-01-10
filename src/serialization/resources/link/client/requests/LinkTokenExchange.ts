@@ -16,6 +16,7 @@ export const LinkTokenExchange: core.serialization.Schema<serializers.LinkTokenE
             "filter_on_providers",
             core.serialization.list(Providers).optional()
         ),
+        onError: core.serialization.property("on_error", core.serialization.stringLiteral("redirect").optional()),
     });
 
 export declare namespace LinkTokenExchange {
@@ -24,5 +25,6 @@ export declare namespace LinkTokenExchange {
         provider?: Providers.Raw | null;
         redirect_url?: string | null;
         filter_on_providers?: Providers.Raw[] | null;
+        on_error?: "redirect" | null;
     }
 }
