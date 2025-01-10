@@ -6,19 +6,19 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { SingleHistoricalPullStatistics } from "./SingleHistoricalPullStatistics";
-import { ClientFacingResource } from "./ClientFacingResource";
+import { Resource } from "./Resource";
 
 export const SingleProviderHistoricalPullResponse: core.serialization.ObjectSchema<
     serializers.SingleProviderHistoricalPullResponse.Raw,
     Vital.SingleProviderHistoricalPullResponse
 > = core.serialization.object({
     pulled: core.serialization.record(core.serialization.string(), SingleHistoricalPullStatistics),
-    notPulled: core.serialization.property("not_pulled", core.serialization.list(ClientFacingResource)),
+    notPulled: core.serialization.property("not_pulled", core.serialization.list(Resource)),
 });
 
 export declare namespace SingleProviderHistoricalPullResponse {
     interface Raw {
         pulled: Record<string, SingleHistoricalPullStatistics.Raw>;
-        not_pulled: ClientFacingResource.Raw[];
+        not_pulled: Resource.Raw[];
     }
 }

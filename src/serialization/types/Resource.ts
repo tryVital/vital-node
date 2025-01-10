@@ -6,10 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 
-export const ClientFacingResource: core.serialization.Schema<
-    serializers.ClientFacingResource.Raw,
-    Vital.ClientFacingResource
-> = core.serialization.enum_([
+export const Resource: core.serialization.Schema<serializers.Resource.Raw, Vital.Resource> = core.serialization.enum_([
     "profile",
     "activity",
     "sleep",
@@ -23,7 +20,6 @@ export const ClientFacingResource: core.serialization.Schema<
     "glucose",
     "heartrate",
     "hrv",
-    "hypnogram",
     "ige",
     "igg",
     "blood_oxygen",
@@ -57,9 +53,10 @@ export const ClientFacingResource: core.serialization.Schema<
     "carbohydrates",
     "note",
     "sleep_stream",
+    "hypnogram",
 ]);
 
-export declare namespace ClientFacingResource {
+export declare namespace Resource {
     type Raw =
         | "profile"
         | "activity"
@@ -74,7 +71,6 @@ export declare namespace ClientFacingResource {
         | "glucose"
         | "heartrate"
         | "hrv"
-        | "hypnogram"
         | "ige"
         | "igg"
         | "blood_oxygen"
@@ -107,5 +103,6 @@ export declare namespace ClientFacingResource {
         | "insulin_injection"
         | "carbohydrates"
         | "note"
-        | "sleep_stream";
+        | "sleep_stream"
+        | "hypnogram";
 }

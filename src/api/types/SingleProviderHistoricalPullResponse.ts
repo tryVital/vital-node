@@ -6,5 +6,5 @@ import * as Vital from "../index";
 
 export interface SingleProviderHistoricalPullResponse {
     pulled: Record<string, Vital.SingleHistoricalPullStatistics>;
-    notPulled: Vital.ClientFacingResource[];
+    notPulled: Vital.Resource[];
 }

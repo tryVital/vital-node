@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { SourceAuthType } from "./SourceAuthType";
-import { ClientFacingResource } from "./ClientFacingResource";
+import { Resource } from "./Resource";
 
 export const ClientFacingProviderDetailed: core.serialization.ObjectSchema<
     serializers.ClientFacingProviderDetailed.Raw,
@@ -19,7 +19,7 @@ export const ClientFacingProviderDetailed: core.serialization.ObjectSchema<
     authType: core.serialization.property("auth_type", SourceAuthType.optional()),
     supportedResources: core.serialization.property(
         "supported_resources",
-        core.serialization.list(ClientFacingResource).optional()
+        core.serialization.list(Resource).optional()
     ),
 });
 
@@ -30,6 +30,6 @@ export declare namespace ClientFacingProviderDetailed {
         description: string;
         logo?: string | null;
         auth_type?: SourceAuthType.Raw | null;
-        supported_resources?: ClientFacingResource.Raw[] | null;
+        supported_resources?: Resource.Raw[] | null;
     }
 }
