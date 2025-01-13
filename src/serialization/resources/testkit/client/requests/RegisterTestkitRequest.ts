@@ -15,7 +15,7 @@ export const RegisterTestkitRequest: core.serialization.Schema<
     serializers.RegisterTestkitRequest.Raw,
     Vital.RegisterTestkitRequest
 > = core.serialization.object({
-    userId: core.serialization.property("user_id", core.serialization.string()),
+    userId: core.serialization.property("user_id", core.serialization.string().optional()),
     sampleId: core.serialization.property("sample_id", core.serialization.string()),
     patientDetails: core.serialization.property("patient_details", PatientDetails),
     patientAddress: core.serialization.property("patient_address", PatientAddressCompatible),
@@ -26,7 +26,7 @@ export const RegisterTestkitRequest: core.serialization.Schema<
 
 export declare namespace RegisterTestkitRequest {
     interface Raw {
-        user_id: string;
+        user_id?: string | null;
         sample_id: string;
         patient_details: PatientDetails.Raw;
         patient_address: PatientAddressCompatible.Raw;

@@ -9217,7 +9217,6 @@ await client.labTests.getOrders();
 
 ```typescript
 await client.testkit.register({
-    userId: "user_id",
     sampleId: "sample_id",
     patientDetails: {
         firstName: "first_name",

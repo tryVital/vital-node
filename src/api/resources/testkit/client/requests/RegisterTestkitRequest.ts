@@ -7,7 +7,6 @@ import * as Vital from "../../../../index";
 /**
  * @example
  *     {
- *         userId: "user_id",
  *         sampleId: "sample_id",
  *         patientDetails: {
  *             firstName: "first_name",
@@ -27,7 +26,8 @@ import * as Vital from "../../../../index";
  *     }
  */
 export interface RegisterTestkitRequest {
-    userId: string;
+    /** The user ID of the patient. */
+    userId?: string;
     sampleId: string;
     patientDetails: Vital.PatientDetails;
     patientAddress: Vital.PatientAddressCompatible;
