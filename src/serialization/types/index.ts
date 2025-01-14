@@ -286,7 +286,7 @@ export * from "./RawSleep";
 export * from "./RawWorkout";
 export * from "./Region";
 export * from "./RelativeTimeframe";
-export * from "./Resource";
+export * from "./ClientFacingResource";
 export * from "./ResourceAvailability";
 export * from "./ResponsibleRelationship";
 export * from "./ResultType";

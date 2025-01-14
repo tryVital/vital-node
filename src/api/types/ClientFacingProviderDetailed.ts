@@ -14,5 +14,5 @@ export interface ClientFacingProviderDetailed {
     /** URL for source logo */
     logo?: string;
     authType?: Vital.SourceAuthType;
-    supportedResources?: Vital.Resource[];
+    supportedResources?: Vital.ClientFacingResource[];
 }
