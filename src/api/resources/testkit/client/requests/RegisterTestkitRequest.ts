@@ -29,8 +29,8 @@ export interface RegisterTestkitRequest {
     /** The user ID of the patient. */
     userId?: string;
     sampleId: string;
-    patientDetails: Vital.PatientDetails;
-    patientAddress: Vital.PatientAddressCompatible;
+    patientDetails: Vital.PatientDetailsWithValidation;
+    patientAddress: Vital.PatientAddressWithValidation;
     physician?: Vital.PhysicianCreateRequestBase;
     healthInsurance?: Vital.HealthInsuranceCreateRequest;
     consents?: Vital.Consent[];

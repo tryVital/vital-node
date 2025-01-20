@@ -23,6 +23,6 @@ import * as Vital from "../../../../index";
 export interface CreateRegistrableTestkitOrderRequest {
     userId: string;
     labTestId: string;
-    shippingDetails: Vital.ShippingAddress;
+    shippingDetails: Vital.ShippingAddressWithValidation;
     passthrough?: string;
 }

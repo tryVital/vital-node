@@ -5,7 +5,7 @@
 import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
-import { ShippingAddress } from "../../../../types/ShippingAddress";
+import { ShippingAddressWithValidation } from "../../../../types/ShippingAddressWithValidation";
 
 export const CreateRegistrableTestkitOrderRequest: core.serialization.Schema<
     serializers.CreateRegistrableTestkitOrderRequest.Raw,
@@ -13,7 +13,7 @@ export const CreateRegistrableTestkitOrderRequest: core.serialization.Schema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     labTestId: core.serialization.property("lab_test_id", core.serialization.string()),
-    shippingDetails: core.serialization.property("shipping_details", ShippingAddress),
+    shippingDetails: core.serialization.property("shipping_details", ShippingAddressWithValidation),
     passthrough: core.serialization.string().optional(),
 });
 
@@ -21,7 +21,7 @@ export declare namespace CreateRegistrableTestkitOrderRequest {
     interface Raw {
         user_id: string;
         lab_test_id: string;
-        shipping_details: ShippingAddress.Raw;
+        shipping_details: ShippingAddressWithValidation.Raw;
         passthrough?: string | null;
     }
 }

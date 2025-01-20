@@ -5,8 +5,8 @@
 import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
-import { PatientDetails } from "../../../../types/PatientDetails";
-import { PatientAddressCompatible } from "../../../../types/PatientAddressCompatible";
+import { PatientDetailsWithValidation } from "../../../../types/PatientDetailsWithValidation";
+import { PatientAddressWithValidation } from "../../../../types/PatientAddressWithValidation";
 import { PhysicianCreateRequestBase } from "../../../../types/PhysicianCreateRequestBase";
 import { HealthInsuranceCreateRequest } from "../../../../types/HealthInsuranceCreateRequest";
 import { Consent } from "../../../../types/Consent";
@@ -17,8 +17,8 @@ export const RegisterTestkitRequest: core.serialization.Schema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string().optional()),
     sampleId: core.serialization.property("sample_id", core.serialization.string()),
-    patientDetails: core.serialization.property("patient_details", PatientDetails),
-    patientAddress: core.serialization.property("patient_address", PatientAddressCompatible),
+    patientDetails: core.serialization.property("patient_details", PatientDetailsWithValidation),
+    patientAddress: core.serialization.property("patient_address", PatientAddressWithValidation),
     physician: PhysicianCreateRequestBase.optional(),
     healthInsurance: core.serialization.property("health_insurance", HealthInsuranceCreateRequest.optional()),
     consents: core.serialization.list(Consent).optional(),
@@ -28,8 +28,8 @@ export declare namespace RegisterTestkitRequest {
     interface Raw {
         user_id?: string | null;
         sample_id: string;
-        patient_details: PatientDetails.Raw;
-        patient_address: PatientAddressCompatible.Raw;
+        patient_details: PatientDetailsWithValidation.Raw;
+        patient_address: PatientAddressWithValidation.Raw;
         physician?: PhysicianCreateRequestBase.Raw | null;
         health_insurance?: HealthInsuranceCreateRequest.Raw | null;
         consents?: Consent.Raw[] | null;
