@@ -172,8 +172,6 @@ export * from "./ClientWorkoutResponse";
 export * from "./CompanyDetails";
 export * from "./ConnectedSourceClientFacing";
 export * from "./ConnectionRecipe";
-export * from "./ConnectionStatusState";
-export * from "./ConnectionStatus";
 export * from "./Consent";
 export * from "./ConsentType";
 export * from "./ContraceptiveEntryType";

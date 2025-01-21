@@ -318,7 +318,7 @@ await client.link.tokenState();
 </dl>
 </details>
 
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">emailAuth</a>({ ...params }) -> Vital.ConnectionStatus</code></summary>
+<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">emailAuth</a>({ ...params }) -> unknown</code></summary>
 <dl>
 <dd>
 
@@ -385,7 +385,7 @@ await client.link.emailAuth({
 </dl>
 </details>
 
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">passwordAuth</a>({ ...params }) -> Vital.ConnectionStatus</code></summary>
+<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">passwordAuth</a>({ ...params }) -> unknown</code></summary>
 <dl>
 <dd>
 
@@ -671,7 +671,7 @@ await client.link.completePasswordProviderMfa("whoop", {
 </dl>
 </details>
 
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">connectEmailAuthProvider</a>(provider, { ...params }) -> Vital.ConnectionStatus</code></summary>
+<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">connectEmailAuthProvider</a>(provider, { ...params }) -> unknown</code></summary>
 <dl>
 <dd>
 
