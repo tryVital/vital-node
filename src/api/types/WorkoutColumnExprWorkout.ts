@@ -30,7 +30,8 @@ export type WorkoutColumnExprWorkout =
     | "power_maximum"
     | "power_weighted_mean"
     | "steps"
-    | "map"
+    | "map_polyline"
+    | "map_summary_polyline"
     | "source_type"
     | "source_provider"
     | "source_app_id";
@@ -63,7 +64,8 @@ export const WorkoutColumnExprWorkout = {
     PowerMaximum: "power_maximum",
     PowerWeightedMean: "power_weighted_mean",
     Steps: "steps",
-    Map: "map",
+    MapPolyline: "map_polyline",
+    MapSummaryPolyline: "map_summary_polyline",
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",

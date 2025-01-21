@@ -37,7 +37,8 @@ export const WorkoutColumnExprWorkout: core.serialization.Schema<
     "power_maximum",
     "power_weighted_mean",
     "steps",
-    "map",
+    "map_polyline",
+    "map_summary_polyline",
     "source_type",
     "source_provider",
     "source_app_id",
@@ -72,7 +73,8 @@ export declare namespace WorkoutColumnExprWorkout {
         | "power_maximum"
         | "power_weighted_mean"
         | "steps"
-        | "map"
+        | "map_polyline"
+        | "map_summary_polyline"
         | "source_type"
         | "source_provider"
         | "source_app_id";

@@ -165,6 +165,7 @@ export * from "./ClientFacingWaterTimeseries";
 export * from "./ClientFacingWorkout";
 export * from "./ClientFacingWorkoutDurationSampleIntensity";
 export * from "./ClientFacingWorkoutDurationSample";
+export * from "./ClientFacingWorkoutMap";
 export * from "./ClientSleepCycleResponse";
 export * from "./ClientSleepResponse";
 export * from "./ClientUserIdConflict";

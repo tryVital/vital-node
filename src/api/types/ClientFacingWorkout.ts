@@ -52,8 +52,8 @@ export interface ClientFacingWorkout {
     weightedAverageWatts?: number;
     /** Number of steps accumulated during this workout::count */
     steps?: number;
-    /** Map of workouts encoded as polyline */
-    map?: Record<string, unknown>;
+    /** Map of the workout */
+    map?: Vital.ClientFacingWorkoutMap;
     /** Provider ID given for that specific workout */
     providerId: string;
     /** Source the data has come from. */

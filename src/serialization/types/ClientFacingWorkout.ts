@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingSport } from "./ClientFacingSport";
+import { ClientFacingWorkoutMap } from "./ClientFacingWorkoutMap";
 import { ClientFacingSource } from "./ClientFacingSource";
 
 export const ClientFacingWorkout: core.serialization.ObjectSchema<
@@ -36,7 +37,7 @@ export const ClientFacingWorkout: core.serialization.ObjectSchema<
     maxWatts: core.serialization.property("max_watts", core.serialization.number().optional()),
     weightedAverageWatts: core.serialization.property("weighted_average_watts", core.serialization.number().optional()),
     steps: core.serialization.number().optional(),
-    map: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    map: ClientFacingWorkoutMap.optional(),
     providerId: core.serialization.property("provider_id", core.serialization.string()),
     source: ClientFacingSource,
 });
@@ -67,7 +68,7 @@ export declare namespace ClientFacingWorkout {
         max_watts?: number | null;
         weighted_average_watts?: number | null;
         steps?: number | null;
-        map?: Record<string, unknown> | null;
+        map?: ClientFacingWorkoutMap.Raw | null;
         provider_id: string;
         source: ClientFacingSource.Raw;
     }
