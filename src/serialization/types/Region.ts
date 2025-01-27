@@ -9,16 +9,104 @@ import * as core from "../../core";
 export const Region: core.serialization.Schema<serializers.Region.Raw, Vital.Region> = core.serialization.enum_([
     "us",
     "eu",
-    "sg",
     "de",
-    "au",
-    "br",
-    "nl",
     "fr",
     "ca",
+    "br",
+    "ar",
+    "cl",
+    "co",
+    "mx",
+    "gb",
+    "ie",
+    "au",
+    "nz",
+    "nl",
+    "at",
+    "be",
+    "bh",
+    "ch",
+    "cz",
+    "dk",
+    "eg",
+    "es",
+    "fi",
+    "gr",
+    "hr",
+    "il",
+    "it",
+    "jo",
+    "kw",
+    "lb",
+    "lu",
+    "no",
+    "om",
+    "pl",
+    "pt",
+    "qa",
+    "sa",
+    "se",
+    "si",
+    "sk",
+    "tr",
+    "za",
     "in",
+    "sg",
+    "hk",
+    "kr",
+    "ph",
+    "tw",
 ]);
 
 export declare namespace Region {
-    type Raw = "us" | "eu" | "sg" | "de" | "au" | "br" | "nl" | "fr" | "ca" | "in";
+    type Raw =
+        | "us"
+        | "eu"
+        | "de"
+        | "fr"
+        | "ca"
+        | "br"
+        | "ar"
+        | "cl"
+        | "co"
+        | "mx"
+        | "gb"
+        | "ie"
+        | "au"
+        | "nz"
+        | "nl"
+        | "at"
+        | "be"
+        | "bh"
+        | "ch"
+        | "cz"
+        | "dk"
+        | "eg"
+        | "es"
+        | "fi"
+        | "gr"
+        | "hr"
+        | "il"
+        | "it"
+        | "jo"
+        | "kw"
+        | "lb"
+        | "lu"
+        | "no"
+        | "om"
+        | "pl"
+        | "pt"
+        | "qa"
+        | "sa"
+        | "se"
+        | "si"
+        | "sk"
+        | "tr"
+        | "za"
+        | "in"
+        | "sg"
+        | "hk"
+        | "kr"
+        | "ph"
+        | "tw";
 }
