@@ -1,3 +1,4 @@
+export { type BulkImportConnectionsBody } from "./BulkImportConnectionsBody";
 export { type LinkTokenExchange } from "./LinkTokenExchange";
 export { type LinkTokenValidationRequest } from "./LinkTokenValidationRequest";
 export { type LinkCodeCreateRequest } from "./LinkCodeCreateRequest";

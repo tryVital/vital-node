@@ -34,7 +34,7 @@ export * from "./BodyColumnExpr";
 export * from "./BodyV2InDb";
 export * from "./BulkExportConnectionsBody";
 export * from "./BulkExportConnectionsResponse";
-export * from "./BulkImportConnectionsBody";
+export * from "./BulkImportConnectionsResponse";
 export * from "./BulkPauseConnectionsBody";
 export * from "./BulkTriggerHistoricalPullBody";
 export * from "./CervicalMucusEntryQuality";

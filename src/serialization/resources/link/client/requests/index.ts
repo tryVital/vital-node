@@ -1,3 +1,4 @@
+export { BulkImportConnectionsBody } from "./BulkImportConnectionsBody";
 export { LinkTokenExchange } from "./LinkTokenExchange";
 export { LinkTokenValidationRequest } from "./LinkTokenValidationRequest";
 export { BeginLinkTokenRequest } from "./BeginLinkTokenRequest";
