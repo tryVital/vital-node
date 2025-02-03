@@ -21,7 +21,7 @@ export interface LabTestsGetPscInfoRequest {
      */
     labId: number;
     /**
-     * Radius in which to search. (meters)
+     * Radius in which to search in miles
      */
     radius?: Vital.AllowedRadius;
 }

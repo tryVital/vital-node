@@ -1,4 +1,5 @@
 export { BulkImportConnectionsBody } from "./BulkImportConnectionsBody";
+export { BulkTriggerHistoricalPullBody } from "./BulkTriggerHistoricalPullBody";
 export { LinkTokenExchange } from "./LinkTokenExchange";
 export { LinkTokenValidationRequest } from "./LinkTokenValidationRequest";
 export { BeginLinkTokenRequest } from "./BeginLinkTokenRequest";

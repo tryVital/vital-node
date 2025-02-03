@@ -36,7 +36,6 @@ export * from "./BulkExportConnectionsBody";
 export * from "./BulkExportConnectionsResponse";
 export * from "./BulkImportConnectionsResponse";
 export * from "./BulkPauseConnectionsBody";
-export * from "./BulkTriggerHistoricalPullBody";
 export * from "./CervicalMucusEntryQuality";
 export * from "./CervicalMucusEntry";
 export * from "./ChronotypeValueMacroExpr";
