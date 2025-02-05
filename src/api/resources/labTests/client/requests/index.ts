@@ -1,4 +1,6 @@
+export { type LabTestsGetRequest } from "./LabTestsGetRequest";
 export { type CreateLabTestRequest } from "./CreateLabTestRequest";
+export { type UpdateLabTestRequest } from "./UpdateLabTestRequest";
 export { type LabTestsGetMarkersRequest } from "./LabTestsGetMarkersRequest";
 export { type LabTestsGetMarkersForOrderSetRequest } from "./LabTestsGetMarkersForOrderSetRequest";
 export { type LabTestsGetMarkersForLabTestRequest } from "./LabTestsGetMarkersForLabTestRequest";

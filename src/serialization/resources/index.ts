@@ -13,5 +13,7 @@ export * from "./user/client/requests";
 export * from "./labTests/client/requests";
 export * as testkit from "./testkit";
 export * from "./testkit/client/requests";
+export * as order from "./order";
+export * from "./order/client/requests";
 export * from "./insurance/client/requests";
 export * from "./aggregate/client/requests";

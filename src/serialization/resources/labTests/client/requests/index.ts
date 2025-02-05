@@ -1,4 +1,5 @@
 export { CreateLabTestRequest } from "./CreateLabTestRequest";
+export { UpdateLabTestRequest } from "./UpdateLabTestRequest";
 export { RequestAppointmentRequest } from "./RequestAppointmentRequest";
 export { ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest } from "./ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest";
 export { VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest } from "./VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest";

@@ -1,5 +1,7 @@
 export { type BulkImportConnectionsBody } from "./BulkImportConnectionsBody";
 export { type BulkTriggerHistoricalPullBody } from "./BulkTriggerHistoricalPullBody";
+export { type BulkExportConnectionsBody } from "./BulkExportConnectionsBody";
+export { type BulkPauseConnectionsBody } from "./BulkPauseConnectionsBody";
 export { type LinkTokenExchange } from "./LinkTokenExchange";
 export { type LinkTokenValidationRequest } from "./LinkTokenValidationRequest";
 export { type LinkCodeCreateRequest } from "./LinkCodeCreateRequest";

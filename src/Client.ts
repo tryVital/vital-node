@@ -22,6 +22,7 @@ import { Providers } from "./api/resources/providers/client/Client";
 import { Introspect } from "./api/resources/introspect/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
+import { Order } from "./api/resources/order/client/Client";
 import { Insurance } from "./api/resources/insurance/client/Client";
 import { Aggregate } from "./api/resources/aggregate/client/Client";
 
@@ -150,6 +151,12 @@ export class VitalClient {
 
     public get testkit(): Testkit {
         return (this._testkit ??= new Testkit(this._options));
+    }
+
+    protected _order: Order | undefined;
+
+    public get order(): Order {
+        return (this._order ??= new Order(this._options));
     }
 
     protected _insurance: Insurance | undefined;
