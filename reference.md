@@ -9909,7 +9909,7 @@ await client.aggregate.queryOne("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getResultTableForContinuousQuery</a>(userId, queryId) -> Vital.AggregationResult</code></summary>
+<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getResultTableForContinuousQuery</a>(userId, queryIdOrSlug) -> Vital.AggregationResult</code></summary>
 <dl>
 <dd>
 
@@ -9922,7 +9922,7 @@ await client.aggregate.queryOne("user_id", {
 <dd>
 
 ```typescript
-await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id");
+await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_slug");
 ```
 
 </dd>
@@ -9946,7 +9946,7 @@ await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id");
 <dl>
 <dd>
 
-**queryId:** `string`
+**queryIdOrSlug:** `string`
 
 </dd>
 </dl>

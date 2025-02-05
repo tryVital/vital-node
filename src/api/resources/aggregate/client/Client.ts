@@ -68,8 +68,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.185",
-                "User-Agent": "@tryvital/vital-node/3.1.185",
+                "X-Fern-SDK-Version": "3.1.186",
+                "User-Agent": "@tryvital/vital-node/3.1.186",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
@@ -127,32 +127,32 @@ export class Aggregate {
 
     /**
      * @param {string} userId
-     * @param {string} queryId
+     * @param {string} queryIdOrSlug
      * @param {Aggregate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id")
+     *     await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_slug")
      */
     public async getResultTableForContinuousQuery(
         userId: string,
-        queryId: string,
+        queryIdOrSlug: string,
         requestOptions?: Aggregate.RequestOptions
     ): Promise<Vital.AggregationResult> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
                 `aggregate/v1/user/${encodeURIComponent(userId)}/continuous_query/${encodeURIComponent(
-                    queryId
+                    queryIdOrSlug
                 )}/result_table`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.185",
-                "User-Agent": "@tryvital/vital-node/3.1.185",
+                "X-Fern-SDK-Version": "3.1.186",
+                "User-Agent": "@tryvital/vital-node/3.1.186",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
