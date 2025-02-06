@@ -25,4 +25,18 @@ export interface LabTestsGetRequest {
      * Filter by the status of these lab tests.
      */
     status?: Vital.LabTestStatus;
+    /**
+     * Filter to only include lab tests containing these marker IDs.
+     */
+    markerIds?: number | number[];
+    /**
+     * Filter to only include lab tests containing these provider IDs.
+     */
+    providerIds?: string | string[];
+    /**
+     * Filter by the name of the lab test (a case-insensitive substring search).
+     */
+    name?: string;
+    orderKey?: Vital.LabTestsGetRequestOrderKey;
+    orderDirection?: Vital.LabTestsGetRequestOrderDirection;
 }
