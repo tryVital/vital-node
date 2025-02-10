@@ -11,11 +11,11 @@ export const GroupKeyColumnExpr: core.serialization.ObjectSchema<
     serializers.GroupKeyColumnExpr.Raw,
     Vital.GroupKeyColumnExpr
 > = core.serialization.object({
-    groupKey: core.serialization.property("group_key", GroupKeyColumnExprGroupKey.optional()),
+    groupKey: core.serialization.property("group_key", GroupKeyColumnExprGroupKey),
 });
 
 export declare namespace GroupKeyColumnExpr {
     interface Raw {
-        group_key?: GroupKeyColumnExprGroupKey.Raw | null;
+        group_key: GroupKeyColumnExprGroupKey.Raw;
     }
 }

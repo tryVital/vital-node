@@ -4,6 +4,7 @@ export { type UpdateLabTestRequest } from "./UpdateLabTestRequest";
 export { type LabTestsGetMarkersRequest } from "./LabTestsGetMarkersRequest";
 export { type LabTestsGetMarkersForOrderSetRequest } from "./LabTestsGetMarkersForOrderSetRequest";
 export { type LabTestsGetMarkersForLabTestRequest } from "./LabTestsGetMarkersForLabTestRequest";
+export { type LabTestsGetPaginatedRequest } from "./LabTestsGetPaginatedRequest";
 export { type LabTestsGetPhlebotomyAppointmentAvailabilityRequest } from "./LabTestsGetPhlebotomyAppointmentAvailabilityRequest";
 export { type RequestAppointmentRequest } from "./RequestAppointmentRequest";
 export { type ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest } from "./ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest";

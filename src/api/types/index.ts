@@ -222,6 +222,7 @@ export * from "./LabResultsRawResults";
 export * from "./LabResultsRaw";
 export * from "./LabTestCollectionMethod";
 export * from "./LabTestGenerationMethodFilter";
+export * from "./LabTestResourcesResponse";
 export * from "./LabTestSampleType";
 export * from "./LabTestStatus";
 export * from "./Labs";

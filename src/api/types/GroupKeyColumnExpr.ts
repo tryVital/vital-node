@@ -5,5 +5,5 @@
 import * as Vital from "../index";
 
 export interface GroupKeyColumnExpr {
-    groupKey?: Vital.GroupKeyColumnExprGroupKey;
+    groupKey: Vital.GroupKeyColumnExprGroupKey;
 }
