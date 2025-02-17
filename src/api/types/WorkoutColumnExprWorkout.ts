@@ -34,7 +34,9 @@ export type WorkoutColumnExprWorkout =
     | "map_summary_polyline"
     | "source_type"
     | "source_provider"
-    | "source_app_id";
+    | "source_app_id"
+    | "source_workout_id"
+    | "time_zone";
 
 export const WorkoutColumnExprWorkout = {
     SessionStart: "session_start",
@@ -69,4 +71,6 @@ export const WorkoutColumnExprWorkout = {
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",
+    SourceWorkoutId: "source_workout_id",
+    TimeZone: "time_zone",
 } as const;

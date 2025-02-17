@@ -12,7 +12,8 @@ export type BodyColumnExprBody =
     | "bone_mass_percentage"
     | "source_type"
     | "source_provider"
-    | "source_app_id";
+    | "source_app_id"
+    | "time_zone";
 
 export const BodyColumnExprBody = {
     MeasuredAt: "measured_at",
@@ -25,4 +26,5 @@ export const BodyColumnExprBody = {
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",
+    TimeZone: "time_zone",
 } as const;

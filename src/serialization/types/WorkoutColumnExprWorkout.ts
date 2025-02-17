@@ -42,6 +42,8 @@ export const WorkoutColumnExprWorkout: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
+    "source_workout_id",
+    "time_zone",
 ]);
 
 export declare namespace WorkoutColumnExprWorkout {
@@ -77,5 +79,7 @@ export declare namespace WorkoutColumnExprWorkout {
         | "map_summary_polyline"
         | "source_type"
         | "source_provider"
-        | "source_app_id";
+        | "source_app_id"
+        | "source_workout_id"
+        | "time_zone";
 }

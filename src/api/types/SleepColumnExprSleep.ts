@@ -22,12 +22,14 @@ export type SleepColumnExprSleep =
     | "efficiency"
     | "hrv_mean_rmssd"
     | "hrv_mean_sdnn"
+    | "skin_temperature"
     | "skin_temperature_delta"
     | "respiratory_rate"
     | "score"
     | "source_type"
     | "source_provider"
-    | "source_app_id";
+    | "source_app_id"
+    | "time_zone";
 
 export const SleepColumnExprSleep = {
     SessionStart: "session_start",
@@ -49,10 +51,12 @@ export const SleepColumnExprSleep = {
     Efficiency: "efficiency",
     HrvMeanRmssd: "hrv_mean_rmssd",
     HrvMeanSdnn: "hrv_mean_sdnn",
+    SkinTemperature: "skin_temperature",
     SkinTemperatureDelta: "skin_temperature_delta",
     RespiratoryRate: "respiratory_rate",
     Score: "score",
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",
+    TimeZone: "time_zone",
 } as const;

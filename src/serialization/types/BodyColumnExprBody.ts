@@ -20,6 +20,7 @@ export const BodyColumnExprBody: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
+    "time_zone",
 ]);
 
 export declare namespace BodyColumnExprBody {
@@ -33,5 +34,6 @@ export declare namespace BodyColumnExprBody {
         | "bone_mass_percentage"
         | "source_type"
         | "source_provider"
-        | "source_app_id";
+        | "source_app_id"
+        | "time_zone";
 }

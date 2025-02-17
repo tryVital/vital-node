@@ -28,6 +28,8 @@ export const ActivityColumnExprActivity: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
+    "time_zone",
+    "time_zone_offset",
 ]);
 
 export declare namespace ActivityColumnExprActivity {
@@ -49,5 +51,7 @@ export declare namespace ActivityColumnExprActivity {
         | "heart_rate_resting"
         | "source_type"
         | "source_provider"
-        | "source_app_id";
+        | "source_app_id"
+        | "time_zone"
+        | "time_zone_offset";
 }

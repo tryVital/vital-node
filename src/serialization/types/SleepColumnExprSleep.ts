@@ -29,12 +29,14 @@ export const SleepColumnExprSleep: core.serialization.Schema<
     "efficiency",
     "hrv_mean_rmssd",
     "hrv_mean_sdnn",
+    "skin_temperature",
     "skin_temperature_delta",
     "respiratory_rate",
     "score",
     "source_type",
     "source_provider",
     "source_app_id",
+    "time_zone",
 ]);
 
 export declare namespace SleepColumnExprSleep {
@@ -58,10 +60,12 @@ export declare namespace SleepColumnExprSleep {
         | "efficiency"
         | "hrv_mean_rmssd"
         | "hrv_mean_sdnn"
+        | "skin_temperature"
         | "skin_temperature_delta"
         | "respiratory_rate"
         | "score"
         | "source_type"
         | "source_provider"
-        | "source_app_id";
+        | "source_app_id"
+        | "time_zone";
 }

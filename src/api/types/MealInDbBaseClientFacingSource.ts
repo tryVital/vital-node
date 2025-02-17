@@ -7,8 +7,11 @@ import * as Vital from "../index";
 export interface MealInDbBaseClientFacingSource {
     id: string;
     userId: string;
+    /** This value has no meaning. */
     priorityId: number;
+    /** This value has no meaning. */
     sourceId: number;
+    /** This value is identical to `id`. */
     providerId: string;
     timestamp: string;
     name: string;
@@ -17,7 +20,9 @@ export interface MealInDbBaseClientFacingSource {
     micros?: Vital.Micros;
     data?: Record<string, Vital.ClientFacingFood>;
     source: Vital.ClientFacingSource;
+    /** This value is identical to `timestamp`. */
     createdAt: string;
+    /** This value is identical to `timestamp`. */
     updatedAt: string;
     sourceAppId?: string;
 }
