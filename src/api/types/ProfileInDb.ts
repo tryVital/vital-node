@@ -5,7 +5,7 @@
 import * as Vital from "../index";
 
 export interface ProfileInDb {
-    data?: unknown;
+    data: string;
     userId: string;
     sourceId: number;
     priorityId?: number;

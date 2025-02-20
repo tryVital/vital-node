@@ -11,8 +11,8 @@ export const ClientFacingWalkInTestOrder: core.serialization.ObjectSchema<
     Vital.ClientFacingWalkInTestOrder
 > = core.serialization.object({
     id: core.serialization.string(),
-    createdAt: core.serialization.property("created_at", core.serialization.string()),
-    updatedAt: core.serialization.property("updated_at", core.serialization.string()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
     appointmentId: core.serialization.property("appointment_id", core.serialization.string().optional()),
 });
 

@@ -6,6 +6,6 @@ import * as Vital from "../index";
 
 export interface ClientFacingOrderEvent {
     id: number;
-    createdAt: string;
+    createdAt: Date;
     status: Vital.OrderStatus;
 }

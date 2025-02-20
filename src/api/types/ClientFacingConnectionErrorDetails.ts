@@ -7,5 +7,5 @@ import * as Vital from "../index";
 export interface ClientFacingConnectionErrorDetails {
     errorType: Vital.ClientFacingConnectionErrorDetailsErrorType;
     errorMessage: string;
-    erroredAt: string;
+    erroredAt: Date;
 }

@@ -9,7 +9,7 @@ export interface ClientFacingBody {
     userId: string;
     id: string;
     /** Date of the specified record, formatted as ISO8601 datetime string in UTC 00:00. Deprecated in favour of calendar_date. */
-    date: string;
+    date: Date;
     /** Date of the summary in the YYYY-mm-dd format. */
     calendarDate: string;
     /** Weight in kg::kg */

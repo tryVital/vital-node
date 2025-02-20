@@ -13,7 +13,7 @@ export interface MealInDbBaseClientFacingSource {
     sourceId: number;
     /** This value is identical to `id`. */
     providerId: string;
-    timestamp: string;
+    timestamp: Date;
     name: string;
     energy?: Vital.Energy;
     macros?: Vital.Macros;
@@ -21,8 +21,8 @@ export interface MealInDbBaseClientFacingSource {
     data?: Record<string, Vital.ClientFacingFood>;
     source: Vital.ClientFacingSource;
     /** This value is identical to `timestamp`. */
-    createdAt: string;
+    createdAt: Date;
     /** This value is identical to `timestamp`. */
-    updatedAt: string;
+    updatedAt: Date;
     sourceAppId?: string;
 }

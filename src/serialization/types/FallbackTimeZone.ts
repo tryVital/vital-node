@@ -12,7 +12,7 @@ export const FallbackTimeZone: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     sourceSlug: core.serialization.property("source_slug", core.serialization.string()),
-    updatedAt: core.serialization.property("updated_at", core.serialization.string()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
 
 export declare namespace FallbackTimeZone {

@@ -13,8 +13,8 @@ export const ClientFacingTestkitOrder: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     shipment: ClientFacingShipment.optional(),
-    createdAt: core.serialization.property("created_at", core.serialization.string()),
-    updatedAt: core.serialization.property("updated_at", core.serialization.string()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
 
 export declare namespace ClientFacingTestkitOrder {

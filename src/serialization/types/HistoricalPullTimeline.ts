@@ -10,9 +10,9 @@ export const HistoricalPullTimeline: core.serialization.ObjectSchema<
     serializers.HistoricalPullTimeline.Raw,
     Vital.HistoricalPullTimeline
 > = core.serialization.object({
-    scheduledAt: core.serialization.property("scheduled_at", core.serialization.string()),
-    startedAt: core.serialization.property("started_at", core.serialization.string().optional()),
-    endedAt: core.serialization.property("ended_at", core.serialization.string().optional()),
+    scheduledAt: core.serialization.property("scheduled_at", core.serialization.date()),
+    startedAt: core.serialization.property("started_at", core.serialization.date().optional()),
+    endedAt: core.serialization.property("ended_at", core.serialization.date().optional()),
 });
 
 export declare namespace HistoricalPullTimeline {

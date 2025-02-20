@@ -16,7 +16,7 @@ export const BiomarkerResult: core.serialization.ObjectSchema<serializers.Biomar
         result: core.serialization.string(),
         type: ResultType,
         unit: core.serialization.string().optional(),
-        timestamp: core.serialization.string().optional(),
+        timestamp: core.serialization.date().optional(),
         notes: core.serialization.string().optional(),
         minRangeValue: core.serialization.property("min_range_value", core.serialization.number().optional()),
         maxRangeValue: core.serialization.property("max_range_value", core.serialization.number().optional()),

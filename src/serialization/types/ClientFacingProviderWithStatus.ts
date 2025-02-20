@@ -15,7 +15,7 @@ export const ClientFacingProviderWithStatus: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     slug: core.serialization.string(),
     logo: core.serialization.string(),
-    createdOn: core.serialization.property("created_on", core.serialization.string()),
+    createdOn: core.serialization.property("created_on", core.serialization.date()),
     status: core.serialization.string(),
     errorDetails: core.serialization.property("error_details", ClientFacingConnectionErrorDetails.optional()),
     resourceAvailability: core.serialization.property(

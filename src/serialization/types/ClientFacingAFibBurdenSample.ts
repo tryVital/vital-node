@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingAFibBurdenSample: core.serialization.ObjectSchema<
     serializers.ClientFacingAFibBurdenSample.Raw,
@@ -14,9 +15,10 @@ export const ClientFacingAFibBurdenSample: core.serialization.ObjectSchema<
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.stringLiteral("%"),
-    timestamp: core.serialization.string(),
-    start: core.serialization.string(),
-    end: core.serialization.string(),
+    grouping: ClientFacingSampleGroupingKeys.optional(),
+    timestamp: core.serialization.date(),
+    start: core.serialization.date(),
+    end: core.serialization.date(),
     value: core.serialization.number(),
 });
 
@@ -26,6 +28,7 @@ export declare namespace ClientFacingAFibBurdenSample {
         timezone_offset?: number | null;
         type?: string | null;
         unit: "%";
+        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

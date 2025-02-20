@@ -9,9 +9,9 @@ import * as core from "../../core";
 export const TimeSlot: core.serialization.ObjectSchema<serializers.TimeSlot.Raw, Vital.TimeSlot> =
     core.serialization.object({
         bookingKey: core.serialization.property("booking_key", core.serialization.string().optional()),
-        start: core.serialization.string(),
-        end: core.serialization.string(),
-        expiresAt: core.serialization.property("expires_at", core.serialization.string().optional()),
+        start: core.serialization.date(),
+        end: core.serialization.date(),
+        expiresAt: core.serialization.property("expires_at", core.serialization.date().optional()),
         price: core.serialization.number(),
         isPriority: core.serialization.property("is_priority", core.serialization.boolean()),
         numAppointmentsAvailable: core.serialization.property(

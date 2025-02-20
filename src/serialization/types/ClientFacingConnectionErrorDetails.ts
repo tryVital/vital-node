@@ -13,7 +13,7 @@ export const ClientFacingConnectionErrorDetails: core.serialization.ObjectSchema
 > = core.serialization.object({
     errorType: core.serialization.property("error_type", ClientFacingConnectionErrorDetailsErrorType),
     errorMessage: core.serialization.property("error_message", core.serialization.string()),
-    erroredAt: core.serialization.property("errored_at", core.serialization.string()),
+    erroredAt: core.serialization.property("errored_at", core.serialization.date()),
 });
 
 export declare namespace ClientFacingConnectionErrorDetails {

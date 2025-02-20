@@ -6,8 +6,8 @@ import * as Vital from "../index";
 
 export interface SingleHistoricalPullStatistics {
     status: Vital.HistoricalPullStatus;
-    rangeStart?: string;
-    rangeEnd?: string;
+    rangeStart?: Date;
+    rangeEnd?: Date;
     timeline: Vital.HistoricalPullTimeline;
     daysWithData?: number;
     release: string;

@@ -5,7 +5,7 @@
 import * as Vital from "../index";
 
 export interface ClientFacingAppointmentEvent {
-    createdAt: string;
+    createdAt: Date;
     status: Vital.AppointmentEventStatus;
     data?: Record<string, unknown>;
 }

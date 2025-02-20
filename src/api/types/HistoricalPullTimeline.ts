@@ -3,7 +3,7 @@
  */
 
 export interface HistoricalPullTimeline {
-    scheduledAt: string;
-    startedAt?: string;
-    endedAt?: string;
+    scheduledAt: Date;
+    startedAt?: Date;
+    endedAt?: Date;
 }

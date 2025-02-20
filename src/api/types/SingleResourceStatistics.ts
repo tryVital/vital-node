@@ -6,7 +6,7 @@ import * as Vital from "../index";
 
 export interface SingleResourceStatistics {
     lastAttempt?: Vital.LastAttempt;
-    oldestData?: string;
-    newestData?: string;
+    oldestData?: Date;
+    newestData?: Date;
     sentCount?: number;
 }

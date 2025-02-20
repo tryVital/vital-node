@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingBloodPressureTimeseries: core.serialization.ObjectSchema<
     serializers.ClientFacingBloodPressureTimeseries.Raw,
@@ -14,7 +15,8 @@ export const ClientFacingBloodPressureTimeseries: core.serialization.ObjectSchem
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.string(),
-    timestamp: core.serialization.string(),
+    grouping: ClientFacingSampleGroupingKeys.optional(),
+    timestamp: core.serialization.date(),
     systolic: core.serialization.number(),
     diastolic: core.serialization.number(),
 });
@@ -25,6 +27,7 @@ export declare namespace ClientFacingBloodPressureTimeseries {
         timezone_offset?: number | null;
         type?: string | null;
         unit: string;
+        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         systolic: number;
         diastolic: number;

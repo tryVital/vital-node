@@ -13,7 +13,7 @@ export const ClientFacingBody: core.serialization.ObjectSchema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
-    date: core.serialization.string(),
+    date: core.serialization.date(),
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
     weight: core.serialization.number().optional(),
     fat: core.serialization.number().optional(),

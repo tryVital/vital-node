@@ -13,8 +13,8 @@ export const SingleHistoricalPullStatistics: core.serialization.ObjectSchema<
     Vital.SingleHistoricalPullStatistics
 > = core.serialization.object({
     status: HistoricalPullStatus,
-    rangeStart: core.serialization.property("range_start", core.serialization.string().optional()),
-    rangeEnd: core.serialization.property("range_end", core.serialization.string().optional()),
+    rangeStart: core.serialization.property("range_start", core.serialization.date().optional()),
+    rangeEnd: core.serialization.property("range_end", core.serialization.date().optional()),
     timeline: HistoricalPullTimeline,
     daysWithData: core.serialization.property("days_with_data", core.serialization.number().optional()),
     release: core.serialization.string(),

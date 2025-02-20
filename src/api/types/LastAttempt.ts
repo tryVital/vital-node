@@ -5,6 +5,6 @@
 import * as Vital from "../index";
 
 export interface LastAttempt {
-    timestamp: string;
+    timestamp: Date;
     status: Vital.AttemptStatus;
 }

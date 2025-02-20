@@ -8,7 +8,7 @@ export interface ConnectedSourceClientFacing {
     /** The provider of this connected source. */
     provider: Vital.ClientFacingProvider;
     /** When your item is created */
-    createdOn: string;
+    createdOn: Date;
     /** Deprecated. Use `provider` instead. Subject to removal after 1 Jan 2024. */
     source: Vital.ClientFacingProvider;
 }

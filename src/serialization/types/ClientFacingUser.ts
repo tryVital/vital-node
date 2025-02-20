@@ -16,7 +16,7 @@ export const ClientFacingUser: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
-    createdOn: core.serialization.property("created_on", core.serialization.string()),
+    createdOn: core.serialization.property("created_on", core.serialization.date()),
     connectedSources: core.serialization.property(
         "connected_sources",
         core.serialization.list(ConnectedSourceClientFacing)

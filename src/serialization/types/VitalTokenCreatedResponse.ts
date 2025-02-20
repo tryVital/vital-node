@@ -12,7 +12,7 @@ export const VitalTokenCreatedResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     code: core.serialization.string(),
     exchangeUrl: core.serialization.property("exchange_url", core.serialization.string()),
-    expiresAt: core.serialization.property("expires_at", core.serialization.string()),
+    expiresAt: core.serialization.property("expires_at", core.serialization.date()),
 });
 
 export declare namespace VitalTokenCreatedResponse {

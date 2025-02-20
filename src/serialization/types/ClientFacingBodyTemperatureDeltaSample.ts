@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 import { ClientFacingBodyTemperatureDeltaSampleSensorLocation } from "./ClientFacingBodyTemperatureDeltaSampleSensorLocation";
 
 export const ClientFacingBodyTemperatureDeltaSample: core.serialization.ObjectSchema<
@@ -15,9 +16,10 @@ export const ClientFacingBodyTemperatureDeltaSample: core.serialization.ObjectSc
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.stringLiteral("\u00B0C"),
-    timestamp: core.serialization.string(),
-    start: core.serialization.string(),
-    end: core.serialization.string(),
+    grouping: ClientFacingSampleGroupingKeys.optional(),
+    timestamp: core.serialization.date(),
+    start: core.serialization.date(),
+    end: core.serialization.date(),
     value: core.serialization.number(),
     sensorLocation: core.serialization.property(
         "sensor_location",
@@ -31,6 +33,7 @@ export declare namespace ClientFacingBodyTemperatureDeltaSample {
         timezone_offset?: number | null;
         type?: string | null;
         unit: "\u00B0C";
+        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

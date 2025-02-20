@@ -23,9 +23,9 @@ export interface ClientFacingOrder {
     /** Notes associated with the order */
     notes?: string;
     /** When your order was created */
-    createdAt: string;
+    createdAt: Date;
     /** When your order was last updated. */
-    updatedAt: string;
+    updatedAt: Date;
     events: Vital.ClientFacingOrderEvent[];
     status?: Vital.OrderTopLevelStatus;
     physician?: Vital.ClientFacingPhysician;

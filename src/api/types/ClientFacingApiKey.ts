@@ -7,6 +7,6 @@ export interface ClientFacingApiKey {
     value: string;
     teamId?: string;
     id: string;
-    createdAt: string;
-    deletedAt?: string;
+    createdAt: Date;
+    deletedAt?: Date;
 }

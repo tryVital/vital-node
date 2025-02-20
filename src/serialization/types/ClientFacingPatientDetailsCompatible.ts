@@ -12,7 +12,7 @@ export const ClientFacingPatientDetailsCompatible: core.serialization.ObjectSche
 > = core.serialization.object({
     firstName: core.serialization.property("first_name", core.serialization.string().optional()),
     lastName: core.serialization.property("last_name", core.serialization.string().optional()),
-    dob: core.serialization.string(),
+    dob: core.serialization.date(),
     gender: core.serialization.string(),
     phoneNumber: core.serialization.property("phone_number", core.serialization.string().optional()),
     email: core.serialization.string().optional(),

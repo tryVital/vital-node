@@ -11,7 +11,7 @@ export const ClientFacingAppointmentEvent: core.serialization.ObjectSchema<
     serializers.ClientFacingAppointmentEvent.Raw,
     Vital.ClientFacingAppointmentEvent
 > = core.serialization.object({
-    createdAt: core.serialization.property("created_at", core.serialization.string()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
     status: AppointmentEventStatus,
     data: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });

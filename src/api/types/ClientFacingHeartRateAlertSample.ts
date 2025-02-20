@@ -11,11 +11,12 @@ export interface ClientFacingHeartRateAlertSample {
     timezoneOffset?: number;
     type: Vital.ClientFacingHeartRateAlertSampleType;
     unit: "count";
+    grouping?: Vital.ClientFacingSampleGroupingKeys;
     /** Depracated. The start time (inclusive) of the interval. */
-    timestamp: string;
+    timestamp: Date;
     /** The start time (inclusive) of the interval. */
-    start: string;
+    start: Date;
     /** The end time (exclusive) of the interval. */
-    end: string;
+    end: Date;
     value: number;
 }

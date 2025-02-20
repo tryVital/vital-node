@@ -10,5 +10,5 @@ export interface FallbackTimeZone {
     id: string;
     /** Slug for designated source */
     sourceSlug: string;
-    updatedAt: string;
+    updatedAt: Date;
 }

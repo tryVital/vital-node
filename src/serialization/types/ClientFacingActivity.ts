@@ -14,7 +14,7 @@ export const ClientFacingActivity: core.serialization.ObjectSchema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
-    date: core.serialization.string(),
+    date: core.serialization.date(),
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
     caloriesTotal: core.serialization.property("calories_total", core.serialization.number().optional()),
     caloriesActive: core.serialization.property("calories_active", core.serialization.number().optional()),

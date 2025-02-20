@@ -12,7 +12,7 @@ export const ConnectedSourceClientFacing: core.serialization.ObjectSchema<
     Vital.ConnectedSourceClientFacing
 > = core.serialization.object({
     provider: ClientFacingProvider,
-    createdOn: core.serialization.property("created_on", core.serialization.string()),
+    createdOn: core.serialization.property("created_on", core.serialization.date()),
     source: ClientFacingProvider,
 });
 

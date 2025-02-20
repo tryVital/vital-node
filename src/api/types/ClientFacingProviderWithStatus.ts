@@ -11,7 +11,7 @@ export interface ClientFacingProviderWithStatus {
     slug: string;
     /** URL for source logo */
     logo: string;
-    createdOn: string;
+    createdOn: Date;
     /** Status of source, either error or connected */
     status: string;
     /** Details of the terminal connection error — populated only when the status is `error`. */

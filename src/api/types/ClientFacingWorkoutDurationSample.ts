@@ -12,12 +12,13 @@ export interface ClientFacingWorkoutDurationSample {
     /** The reading type of the measurement. This is applicable only to Cholesterol, IGG, IGE and InsulinInjection. */
     type?: string;
     unit: "min";
+    grouping?: Vital.ClientFacingSampleGroupingKeys;
     /** Depracated. The start time (inclusive) of the interval. */
-    timestamp: string;
+    timestamp: Date;
     /** The start time (inclusive) of the interval. */
-    start: string;
+    start: Date;
     /** The end time (exclusive) of the interval. */
-    end: string;
+    end: Date;
     /** The recorded value for the interval. */
     value: number;
     /** Workout intensity. */

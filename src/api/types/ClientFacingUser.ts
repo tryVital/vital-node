@@ -12,7 +12,7 @@ export interface ClientFacingUser {
     /** A unique ID representing the end user. Typically this will be a user ID from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id. */
     clientUserId: string;
     /** When your item is created */
-    createdOn: string;
+    createdOn: Date;
     /** A list of the users connected sources. */
     connectedSources: Vital.ConnectedSourceClientFacing[];
     /**

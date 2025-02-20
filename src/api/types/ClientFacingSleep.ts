@@ -9,13 +9,13 @@ export interface ClientFacingSleep {
     userId: string;
     id: string;
     /** Date of the specified record, formatted as ISO8601 datetime string in UTC 00:00. Deprecated in favour of calendar_date. */
-    date: string;
+    date: Date;
     /** Date of the sleep summary in the YYYY-mm-dd format. This generally matches the sleep end date. */
     calendarDate: string;
     /** UTC Time when the sleep period started */
-    bedtimeStart: string;
+    bedtimeStart: Date;
     /** UTC Time when the sleep period ended */
-    bedtimeStop: string;
+    bedtimeStop: Date;
     /**
      * `long_sleep`: >=3 hours of sleep;
      * `short_sleep`: <3 hours of sleep;

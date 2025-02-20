@@ -14,6 +14,6 @@ export interface ClientFacingTestkitOrder {
     id: string;
     /** Shipment object */
     shipment?: Vital.ClientFacingShipment;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
 }

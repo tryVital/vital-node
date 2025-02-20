@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 import { ClientFacingWorkoutDurationSampleIntensity } from "./ClientFacingWorkoutDurationSampleIntensity";
 
 export const ClientFacingWorkoutDurationSample: core.serialization.ObjectSchema<
@@ -15,9 +16,10 @@ export const ClientFacingWorkoutDurationSample: core.serialization.ObjectSchema<
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.stringLiteral("min"),
-    timestamp: core.serialization.string(),
-    start: core.serialization.string(),
-    end: core.serialization.string(),
+    grouping: ClientFacingSampleGroupingKeys.optional(),
+    timestamp: core.serialization.date(),
+    start: core.serialization.date(),
+    end: core.serialization.date(),
     value: core.serialization.number(),
     intensity: ClientFacingWorkoutDurationSampleIntensity.optional(),
 });
@@ -28,6 +30,7 @@ export declare namespace ClientFacingWorkoutDurationSample {
         timezone_offset?: number | null;
         type?: string | null;
         unit: "min";
+        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

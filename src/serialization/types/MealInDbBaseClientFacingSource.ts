@@ -20,15 +20,15 @@ export const MealInDbBaseClientFacingSource: core.serialization.ObjectSchema<
     priorityId: core.serialization.property("priority_id", core.serialization.number()),
     sourceId: core.serialization.property("source_id", core.serialization.number()),
     providerId: core.serialization.property("provider_id", core.serialization.string()),
-    timestamp: core.serialization.string(),
+    timestamp: core.serialization.date(),
     name: core.serialization.string(),
     energy: Energy.optional(),
     macros: Macros.optional(),
     micros: Micros.optional(),
     data: core.serialization.record(core.serialization.string(), ClientFacingFood).optional(),
     source: ClientFacingSource,
-    createdAt: core.serialization.property("created_at", core.serialization.string()),
-    updatedAt: core.serialization.property("updated_at", core.serialization.string()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
     sourceAppId: core.serialization.property("source_app_id", core.serialization.string().optional()),
 });
 

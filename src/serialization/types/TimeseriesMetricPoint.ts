@@ -10,7 +10,7 @@ export const TimeseriesMetricPoint: core.serialization.ObjectSchema<
     serializers.TimeseriesMetricPoint.Raw,
     Vital.TimeseriesMetricPoint
 > = core.serialization.object({
-    date: core.serialization.string(),
+    date: core.serialization.date(),
     value: core.serialization.number(),
     all: core.serialization.number(),
 });

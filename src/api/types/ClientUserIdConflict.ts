@@ -6,5 +6,5 @@ export interface ClientUserIdConflict {
     errorType: string;
     errorMessage: string;
     userId: string;
-    createdOn: string;
+    createdOn: Date;
 }

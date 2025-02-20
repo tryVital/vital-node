@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingMindfulnessMinutesTimeseries: core.serialization.ObjectSchema<
     serializers.ClientFacingMindfulnessMinutesTimeseries.Raw,
@@ -14,9 +15,10 @@ export const ClientFacingMindfulnessMinutesTimeseries: core.serialization.Object
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.string(),
-    timestamp: core.serialization.string(),
-    start: core.serialization.string(),
-    end: core.serialization.string(),
+    grouping: ClientFacingSampleGroupingKeys.optional(),
+    timestamp: core.serialization.date(),
+    start: core.serialization.date(),
+    end: core.serialization.date(),
     value: core.serialization.number(),
 });
 
@@ -26,6 +28,7 @@ export declare namespace ClientFacingMindfulnessMinutesTimeseries {
         timezone_offset?: number | null;
         type?: string | null;
         unit: string;
+        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

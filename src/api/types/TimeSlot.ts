@@ -5,10 +5,10 @@
 export interface TimeSlot {
     bookingKey?: string;
     /** Time is in UTC */
-    start: string;
+    start: Date;
     /** Time is in UTC */
-    end: string;
-    expiresAt?: string;
+    end: Date;
+    expiresAt?: Date;
     price: number;
     isPriority: boolean;
     numAppointmentsAvailable: number;

@@ -14,8 +14,8 @@ export const ClientFacingApiKey: core.serialization.ObjectSchema<
     value: core.serialization.string(),
     teamId: core.serialization.property("team_id", core.serialization.string().optional()),
     id: core.serialization.string(),
-    createdAt: core.serialization.property("created_at", core.serialization.string()),
-    deletedAt: core.serialization.property("deleted_at", core.serialization.string().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    deletedAt: core.serialization.property("deleted_at", core.serialization.date().optional()),
 });
 
 export declare namespace ClientFacingApiKey {

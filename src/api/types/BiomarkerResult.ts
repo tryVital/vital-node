@@ -14,7 +14,7 @@ export interface BiomarkerResult {
     result: string;
     type: Vital.ResultType;
     unit?: string;
-    timestamp?: string;
+    timestamp?: Date;
     notes?: string;
     minRangeValue?: number;
     maxRangeValue?: number;

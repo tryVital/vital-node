@@ -16,10 +16,10 @@ export const ClientFacingSleep: core.serialization.ObjectSchema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
-    date: core.serialization.string(),
+    date: core.serialization.date(),
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
-    bedtimeStart: core.serialization.property("bedtime_start", core.serialization.string()),
-    bedtimeStop: core.serialization.property("bedtime_stop", core.serialization.string()),
+    bedtimeStart: core.serialization.property("bedtime_start", core.serialization.date()),
+    bedtimeStop: core.serialization.property("bedtime_stop", core.serialization.date()),
     type: SleepType,
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     duration: core.serialization.number(),

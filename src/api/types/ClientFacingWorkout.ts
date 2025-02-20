@@ -21,9 +21,9 @@ export interface ClientFacingWorkout {
     /** Date of the workout summary in the YYYY-mm-dd format. This generally matches the workout start date. */
     calendarDate: string;
     /** Start time of the workout::time */
-    timeStart: string;
+    timeStart: Date;
     /** End time of the workout::time */
-    timeEnd: string;
+    timeEnd: Date;
     /** Calories burned during the workout::kCal */
     calories?: number;
     /** Sport's name */

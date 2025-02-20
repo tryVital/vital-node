@@ -2422,7 +2422,7 @@ await client.menstrualCycle.get("user_id", {
 
 ## Vitals
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateAlertGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingHeartRateAlertSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateAlertGrouped</a>(userId, { ...params }) -> Vital.GroupedHeartRateAlertResponse</code></summary>
 <dl>
 <dd>
 
@@ -2480,7 +2480,7 @@ await client.vitals.heartRateAlertGrouped("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">afibBurdenGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingAFibBurdenSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">afibBurdenGrouped</a>(userId, { ...params }) -> Vital.GroupedAFibBurdenResponse</code></summary>
 <dl>
 <dd>
 
@@ -2538,7 +2538,7 @@ await client.vitals.afibBurdenGrouped("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutDurationGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingWorkoutDurationSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutDurationGrouped</a>(userId, { ...params }) -> Vital.GroupedWorkoutDurationResponse</code></summary>
 <dl>
 <dd>
 
@@ -3234,7 +3234,7 @@ await client.vitals.respiratoryRateGrouped("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">noteGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingNoteSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">noteGrouped</a>(userId, { ...params }) -> Vital.GroupedNoteResponse</code></summary>
 <dl>
 <dd>
 
@@ -3292,7 +3292,7 @@ await client.vitals.noteGrouped("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">insulinInjectionGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingInsulinInjectionSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">insulinInjectionGrouped</a>(userId, { ...params }) -> Vital.GroupedInsulinInjectionResponse</code></summary>
 <dl>
 <dd>
 
@@ -3756,7 +3756,7 @@ await client.vitals.cholesterolGrouped("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">carbohydratesGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingCarbohydratesSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">carbohydratesGrouped</a>(userId, { ...params }) -> Vital.GroupedCarbohydratesResponse</code></summary>
 <dl>
 <dd>
 
@@ -3814,7 +3814,7 @@ await client.vitals.carbohydratesGrouped("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureDeltaGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingBodyTemperatureDeltaSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureDeltaGrouped</a>(userId, { ...params }) -> Vital.GroupedBodyTemperatureDeltaResponse</code></summary>
 <dl>
 <dd>
 
@@ -3872,7 +3872,7 @@ await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureGrouped</a>(userId, { ...params }) -> Vital.ClientFacingGroupedTimeseriesResponseClientFacingBodyTemperatureSample</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureGrouped</a>(userId, { ...params }) -> Vital.GroupedBodyTemperatureResponse</code></summary>
 <dl>
 <dd>
 

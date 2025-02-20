@@ -12,8 +12,8 @@ export const SingleResourceStatistics: core.serialization.ObjectSchema<
     Vital.SingleResourceStatistics
 > = core.serialization.object({
     lastAttempt: core.serialization.property("last_attempt", LastAttempt.optional()),
-    oldestData: core.serialization.property("oldest_data", core.serialization.string().optional()),
-    newestData: core.serialization.property("newest_data", core.serialization.string().optional()),
+    oldestData: core.serialization.property("oldest_data", core.serialization.date().optional()),
+    newestData: core.serialization.property("newest_data", core.serialization.date().optional()),
     sentCount: core.serialization.property("sent_count", core.serialization.number().optional()),
 });
 

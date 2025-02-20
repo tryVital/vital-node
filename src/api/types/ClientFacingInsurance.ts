@@ -8,7 +8,7 @@ export interface ClientFacingInsurance {
     memberId: string;
     payorCode: string;
     relationship: Vital.ResponsibleRelationship;
-    insured: Vital.PersonDetailsOutput;
+    insured: Vital.VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails;
     company: Vital.CompanyDetails;
     groupId?: string;
     guarantor?: Vital.GuarantorDetails;

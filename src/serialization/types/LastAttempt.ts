@@ -9,7 +9,7 @@ import { AttemptStatus } from "./AttemptStatus";
 
 export const LastAttempt: core.serialization.ObjectSchema<serializers.LastAttempt.Raw, Vital.LastAttempt> =
     core.serialization.object({
-        timestamp: core.serialization.string(),
+        timestamp: core.serialization.date(),
         status: AttemptStatus,
     });
 

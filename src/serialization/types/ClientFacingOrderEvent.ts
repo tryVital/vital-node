@@ -12,7 +12,7 @@ export const ClientFacingOrderEvent: core.serialization.ObjectSchema<
     Vital.ClientFacingOrderEvent
 > = core.serialization.object({
     id: core.serialization.number(),
-    createdAt: core.serialization.property("created_at", core.serialization.string()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
     status: OrderStatus,
 });
 
