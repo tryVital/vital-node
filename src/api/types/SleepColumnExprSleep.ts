@@ -19,6 +19,7 @@ export type SleepColumnExprSleep =
     | "heart_rate_mean"
     | "heart_rate_maximum"
     | "heart_rate_dip"
+    | "heart_rate_resting"
     | "efficiency"
     | "hrv_mean_rmssd"
     | "hrv_mean_sdnn"
@@ -48,6 +49,7 @@ export const SleepColumnExprSleep = {
     HeartRateMean: "heart_rate_mean",
     HeartRateMaximum: "heart_rate_maximum",
     HeartRateDip: "heart_rate_dip",
+    HeartRateResting: "heart_rate_resting",
     Efficiency: "efficiency",
     HrvMeanRmssd: "hrv_mean_rmssd",
     HrvMeanSdnn: "hrv_mean_sdnn",

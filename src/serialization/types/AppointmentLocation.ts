@@ -16,6 +16,7 @@ export const AppointmentLocation: core.serialization.ObjectSchema<
     address: UsAddress,
     code: core.serialization.string(),
     name: core.serialization.string(),
+    ianaTimezone: core.serialization.property("iana_timezone", core.serialization.string().optional()),
 });
 
 export declare namespace AppointmentLocation {
@@ -24,5 +25,6 @@ export declare namespace AppointmentLocation {
         address: UsAddress.Raw;
         code: string;
         name: string;
+        iana_timezone?: string | null;
     }
 }

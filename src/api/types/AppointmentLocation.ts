@@ -9,4 +9,5 @@ export interface AppointmentLocation {
     address: Vital.UsAddress;
     code: string;
     name: string;
+    ianaTimezone?: string;
 }

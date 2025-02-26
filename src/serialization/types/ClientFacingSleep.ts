@@ -31,6 +31,7 @@ export const ClientFacingSleep: core.serialization.ObjectSchema<
     score: core.serialization.number().optional(),
     hrLowest: core.serialization.property("hr_lowest", core.serialization.number().optional()),
     hrAverage: core.serialization.property("hr_average", core.serialization.number().optional()),
+    hrResting: core.serialization.property("hr_resting", core.serialization.number().optional()),
     efficiency: core.serialization.number().optional(),
     latency: core.serialization.number().optional(),
     temperatureDelta: core.serialization.property("temperature_delta", core.serialization.number().optional()),
@@ -62,6 +63,7 @@ export declare namespace ClientFacingSleep {
         score?: number | null;
         hr_lowest?: number | null;
         hr_average?: number | null;
+        hr_resting?: number | null;
         efficiency?: number | null;
         latency?: number | null;
         temperature_delta?: number | null;

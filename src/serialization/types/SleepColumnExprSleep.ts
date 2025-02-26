@@ -26,6 +26,7 @@ export const SleepColumnExprSleep: core.serialization.Schema<
     "heart_rate_mean",
     "heart_rate_maximum",
     "heart_rate_dip",
+    "heart_rate_resting",
     "efficiency",
     "hrv_mean_rmssd",
     "hrv_mean_sdnn",
@@ -57,6 +58,7 @@ export declare namespace SleepColumnExprSleep {
         | "heart_rate_mean"
         | "heart_rate_maximum"
         | "heart_rate_dip"
+        | "heart_rate_resting"
         | "efficiency"
         | "hrv_mean_rmssd"
         | "hrv_mean_sdnn"
