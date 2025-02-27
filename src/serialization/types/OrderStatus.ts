@@ -10,6 +10,7 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
     core.serialization.enum_([
         "received.walk_in_test.ordered",
         "received.walk_in_test.requisition_created",
+        "received.walk_in_test.requisition_bypassed",
         "completed.walk_in_test.completed",
         "sample_with_lab.walk_in_test.partial_results",
         "failed.walk_in_test.sample_error",
@@ -19,6 +20,7 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "collecting_sample.walk_in_test.appointment_cancelled",
         "received.at_home_phlebotomy.ordered",
         "received.at_home_phlebotomy.requisition_created",
+        "received.at_home_phlebotomy.requisition_bypassed",
         "collecting_sample.at_home_phlebotomy.appointment_pending",
         "collecting_sample.at_home_phlebotomy.appointment_scheduled",
         "collecting_sample.at_home_phlebotomy.draw_completed",
@@ -30,6 +32,7 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "received.testkit.ordered",
         "received.testkit.awaiting_registration",
         "received.testkit.requisition_created",
+        "received.testkit.requisition_bypassed",
         "received.testkit.registered",
         "collecting_sample.testkit.transit_customer",
         "collecting_sample.testkit.out_for_delivery",
@@ -49,6 +52,7 @@ export declare namespace OrderStatus {
     type Raw =
         | "received.walk_in_test.ordered"
         | "received.walk_in_test.requisition_created"
+        | "received.walk_in_test.requisition_bypassed"
         | "completed.walk_in_test.completed"
         | "sample_with_lab.walk_in_test.partial_results"
         | "failed.walk_in_test.sample_error"
@@ -58,6 +62,7 @@ export declare namespace OrderStatus {
         | "collecting_sample.walk_in_test.appointment_cancelled"
         | "received.at_home_phlebotomy.ordered"
         | "received.at_home_phlebotomy.requisition_created"
+        | "received.at_home_phlebotomy.requisition_bypassed"
         | "collecting_sample.at_home_phlebotomy.appointment_pending"
         | "collecting_sample.at_home_phlebotomy.appointment_scheduled"
         | "collecting_sample.at_home_phlebotomy.draw_completed"
@@ -69,6 +74,7 @@ export declare namespace OrderStatus {
         | "received.testkit.ordered"
         | "received.testkit.awaiting_registration"
         | "received.testkit.requisition_created"
+        | "received.testkit.requisition_bypassed"
         | "received.testkit.registered"
         | "collecting_sample.testkit.transit_customer"
         | "collecting_sample.testkit.out_for_delivery"

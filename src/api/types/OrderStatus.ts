@@ -5,6 +5,7 @@
 export type OrderStatus =
     | "received.walk_in_test.ordered"
     | "received.walk_in_test.requisition_created"
+    | "received.walk_in_test.requisition_bypassed"
     | "completed.walk_in_test.completed"
     | "sample_with_lab.walk_in_test.partial_results"
     | "failed.walk_in_test.sample_error"
@@ -14,6 +15,7 @@ export type OrderStatus =
     | "collecting_sample.walk_in_test.appointment_cancelled"
     | "received.at_home_phlebotomy.ordered"
     | "received.at_home_phlebotomy.requisition_created"
+    | "received.at_home_phlebotomy.requisition_bypassed"
     | "collecting_sample.at_home_phlebotomy.appointment_pending"
     | "collecting_sample.at_home_phlebotomy.appointment_scheduled"
     | "collecting_sample.at_home_phlebotomy.draw_completed"
@@ -25,6 +27,7 @@ export type OrderStatus =
     | "received.testkit.ordered"
     | "received.testkit.awaiting_registration"
     | "received.testkit.requisition_created"
+    | "received.testkit.requisition_bypassed"
     | "received.testkit.registered"
     | "collecting_sample.testkit.transit_customer"
     | "collecting_sample.testkit.out_for_delivery"
@@ -42,6 +45,7 @@ export type OrderStatus =
 export const OrderStatus = {
     ReceivedWalkInTestOrdered: "received.walk_in_test.ordered",
     ReceivedWalkInTestRequisitionCreated: "received.walk_in_test.requisition_created",
+    ReceivedWalkInTestRequisitionBypassed: "received.walk_in_test.requisition_bypassed",
     CompletedWalkInTestCompleted: "completed.walk_in_test.completed",
     SampleWithLabWalkInTestPartialResults: "sample_with_lab.walk_in_test.partial_results",
     FailedWalkInTestSampleError: "failed.walk_in_test.sample_error",
@@ -51,6 +55,7 @@ export const OrderStatus = {
     CollectingSampleWalkInTestAppointmentCancelled: "collecting_sample.walk_in_test.appointment_cancelled",
     ReceivedAtHomePhlebotomyOrdered: "received.at_home_phlebotomy.ordered",
     ReceivedAtHomePhlebotomyRequisitionCreated: "received.at_home_phlebotomy.requisition_created",
+    ReceivedAtHomePhlebotomyRequisitionBypassed: "received.at_home_phlebotomy.requisition_bypassed",
     CollectingSampleAtHomePhlebotomyAppointmentPending: "collecting_sample.at_home_phlebotomy.appointment_pending",
     CollectingSampleAtHomePhlebotomyAppointmentScheduled: "collecting_sample.at_home_phlebotomy.appointment_scheduled",
     CollectingSampleAtHomePhlebotomyDrawCompleted: "collecting_sample.at_home_phlebotomy.draw_completed",
@@ -62,6 +67,7 @@ export const OrderStatus = {
     ReceivedTestkitOrdered: "received.testkit.ordered",
     ReceivedTestkitAwaitingRegistration: "received.testkit.awaiting_registration",
     ReceivedTestkitRequisitionCreated: "received.testkit.requisition_created",
+    ReceivedTestkitRequisitionBypassed: "received.testkit.requisition_bypassed",
     ReceivedTestkitRegistered: "received.testkit.registered",
     CollectingSampleTestkitTransitCustomer: "collecting_sample.testkit.transit_customer",
     CollectingSampleTestkitOutForDelivery: "collecting_sample.testkit.out_for_delivery",
