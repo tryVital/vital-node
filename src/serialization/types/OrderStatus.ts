@@ -46,6 +46,8 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "failed.testkit.lost",
         "cancelled.testkit.cancelled",
         "cancelled.testkit.do_not_process",
+        "collecting_sample.testkit.problem_in_transit_customer",
+        "collecting_sample.testkit.problem_in_transit_lab",
     ]);
 
 export declare namespace OrderStatus {
@@ -87,5 +89,7 @@ export declare namespace OrderStatus {
         | "failed.testkit.sample_error"
         | "failed.testkit.lost"
         | "cancelled.testkit.cancelled"
-        | "cancelled.testkit.do_not_process";
+        | "cancelled.testkit.do_not_process"
+        | "collecting_sample.testkit.problem_in_transit_customer"
+        | "collecting_sample.testkit.problem_in_transit_lab";
 }

@@ -40,7 +40,9 @@ export type OrderStatus =
     | "failed.testkit.sample_error"
     | "failed.testkit.lost"
     | "cancelled.testkit.cancelled"
-    | "cancelled.testkit.do_not_process";
+    | "cancelled.testkit.do_not_process"
+    | "collecting_sample.testkit.problem_in_transit_customer"
+    | "collecting_sample.testkit.problem_in_transit_lab";
 
 export const OrderStatus = {
     ReceivedWalkInTestOrdered: "received.walk_in_test.ordered",
@@ -81,4 +83,6 @@ export const OrderStatus = {
     FailedTestkitLost: "failed.testkit.lost",
     CancelledTestkitCancelled: "cancelled.testkit.cancelled",
     CancelledTestkitDoNotProcess: "cancelled.testkit.do_not_process",
+    CollectingSampleTestkitProblemInTransitCustomer: "collecting_sample.testkit.problem_in_transit_customer",
+    CollectingSampleTestkitProblemInTransitLab: "collecting_sample.testkit.problem_in_transit_lab",
 } as const;
