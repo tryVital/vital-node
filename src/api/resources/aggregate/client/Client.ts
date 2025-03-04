@@ -68,8 +68,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.215",
-                "User-Agent": "@tryvital/vital-node/3.1.215",
+                "X-Fern-SDK-Version": "3.1.216",
+                "User-Agent": "@tryvital/vital-node/3.1.216",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
@@ -151,8 +151,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.215",
-                "User-Agent": "@tryvital/vital-node/3.1.215",
+                "X-Fern-SDK-Version": "3.1.216",
+                "User-Agent": "@tryvital/vital-node/3.1.216",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
