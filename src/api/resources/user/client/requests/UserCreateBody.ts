@@ -19,8 +19,8 @@ export interface UserCreateBody {
     fallbackTimeZone?: string;
     /** Fallback date of birth of the user, in YYYY-mm-dd format. Used for calculating max heartrate for providers that don not provide users' age. */
     fallbackBirthDate?: string;
-    /** Starting bound for user data ingestion. Data older than this date will not be ingested. */
+    /** Starting bound for user [data ingestion bounds](https://docs.tryvital.io/wearables/providers/data-ingestion-bounds). */
     ingestionStart?: string;
-    /** Ending bound for user data ingestion. Data from this date or later will not be ingested and the connection will be deregistered. */
+    /** Ending bound for user [data ingestion bounds](https://docs.tryvital.io/wearables/providers/data-ingestion-bounds). */
     ingestionEnd?: string;
 }
