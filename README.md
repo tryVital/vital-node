@@ -30,6 +30,10 @@ const labTest = await vital.labTests.get('order-id');
 console.log('Received lab test', labTest);
 ```
 
+> **Please note**: To ensure future compatibility, we ask that you avoid exhaustive matching on enum values such as an order’s status. We may introduce new statuses (and other enum values) over time, and code that assumes all current values are exhaustive could break or fail to compile with SDK upgrades.
+>
+> To stay compatible and benefit from future enhancements, treat unknown values gracefully—for example, by using default cases or limiting checks to only the values your integration depends on.
+
 ## Handling Errors
 
 When the API returns a non-success status code (4xx or 5xx response), a subclass of [VitalError](./src/errors/VitalError.ts) will be thrown:
