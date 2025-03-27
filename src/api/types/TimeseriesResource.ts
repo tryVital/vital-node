@@ -34,6 +34,20 @@ export type TimeseriesResource =
     | "mindfulness_minutes"
     | "afib_burden"
     | "heart_rate_alert"
+    | "stand_hour"
+    | "stand_duration"
+    | "sleep_apnea_alert"
+    | "sleep_breathing_disturbance"
+    | "wheelchair_push"
+    | "forced_expiratory_volume_1"
+    | "forced_vital_capacity"
+    | "peak_expiratory_flow_rate"
+    | "inhaler_usage"
+    | "fall"
+    | "uv_exposure"
+    | "daylight_exposure"
+    | "handwashing"
+    | "basal_body_temperature"
     | "workout_duration"
     | "insulin_injection"
     | "carbohydrates"
@@ -71,6 +85,20 @@ export const TimeseriesResource = {
     MindfulnessMinutes: "mindfulness_minutes",
     AfibBurden: "afib_burden",
     HeartRateAlert: "heart_rate_alert",
+    StandHour: "stand_hour",
+    StandDuration: "stand_duration",
+    SleepApneaAlert: "sleep_apnea_alert",
+    SleepBreathingDisturbance: "sleep_breathing_disturbance",
+    WheelchairPush: "wheelchair_push",
+    ForcedExpiratoryVolume1: "forced_expiratory_volume_1",
+    ForcedVitalCapacity: "forced_vital_capacity",
+    PeakExpiratoryFlowRate: "peak_expiratory_flow_rate",
+    InhalerUsage: "inhaler_usage",
+    Fall: "fall",
+    UvExposure: "uv_exposure",
+    DaylightExposure: "daylight_exposure",
+    Handwashing: "handwashing",
+    BasalBodyTemperature: "basal_body_temperature",
     WorkoutDuration: "workout_duration",
     InsulinInjection: "insulin_injection",
     Carbohydrates: "carbohydrates",

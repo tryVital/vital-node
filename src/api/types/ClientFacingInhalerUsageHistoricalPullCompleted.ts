@@ -4,10 +4,10 @@
 
 import * as Vital from "../index";
 
-export interface ClientFacingCreatedChanged {
-    eventType: Vital.ClientFacingCreatedChangedEventType;
+export interface ClientFacingInhalerUsageHistoricalPullCompleted {
+    eventType: "historical.data.inhaler_usage.created";
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.ClientFacingAppointment;
+    data: Vital.HistoricalPullCompleted;
 }

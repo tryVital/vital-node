@@ -38,4 +38,6 @@ export interface ClientFacingActivity {
     timezoneOffset?: number;
     /** Heart rate daily summary. */
     heartRate?: Vital.ClientFacingHeartRate;
+    wheelchairUse?: boolean;
+    wheelchairPush?: number;
 }

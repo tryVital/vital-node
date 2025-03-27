@@ -25,6 +25,9 @@ export const ActivityColumnExprActivity: core.serialization.Schema<
     "heart_rate_minimum",
     "heart_rate_maximum",
     "heart_rate_resting",
+    "heart_rate_mean_walking",
+    "wheelchair_use",
+    "wheelchair_push",
     "source_type",
     "source_provider",
     "source_app_id",
@@ -49,6 +52,9 @@ export declare namespace ActivityColumnExprActivity {
         | "heart_rate_minimum"
         | "heart_rate_maximum"
         | "heart_rate_resting"
+        | "heart_rate_mean_walking"
+        | "wheelchair_use"
+        | "wheelchair_push"
         | "source_type"
         | "source_provider"
         | "source_app_id"

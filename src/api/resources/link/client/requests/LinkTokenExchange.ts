@@ -17,4 +17,5 @@ export interface LinkTokenExchange {
     redirectUrl?: string;
     filterOnProviders?: Vital.Providers[];
     onError?: "redirect";
+    onClose?: "redirect";
 }

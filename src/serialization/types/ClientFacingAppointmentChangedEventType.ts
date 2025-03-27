@@ -6,11 +6,11 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 
-export const ClientFacingCreatedChangedEventType: core.serialization.Schema<
-    serializers.ClientFacingCreatedChangedEventType.Raw,
-    Vital.ClientFacingCreatedChangedEventType
+export const ClientFacingAppointmentChangedEventType: core.serialization.Schema<
+    serializers.ClientFacingAppointmentChangedEventType.Raw,
+    Vital.ClientFacingAppointmentChangedEventType
 > = core.serialization.enum_(["labtest.appointment.created", "labtest.appointment.updated"]);
 
-export declare namespace ClientFacingCreatedChangedEventType {
+export declare namespace ClientFacingAppointmentChangedEventType {
     type Raw = "labtest.appointment.created" | "labtest.appointment.updated";
 }

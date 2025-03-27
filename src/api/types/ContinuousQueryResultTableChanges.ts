@@ -4,5 +4,6 @@
 
 export interface ContinuousQueryResultTableChanges {
     queryId: string;
+    querySlug: string;
     data: Record<string, unknown[]>;
 }

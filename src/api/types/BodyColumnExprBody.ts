@@ -10,6 +10,9 @@ export type BodyColumnExprBody =
     | "muscle_mass_percentage"
     | "visceral_fat_index"
     | "bone_mass_percentage"
+    | "body_mass_index"
+    | "lean_body_mass_kilogram"
+    | "waist_circumference_centimeter"
     | "source_type"
     | "source_provider"
     | "source_app_id"
@@ -23,6 +26,9 @@ export const BodyColumnExprBody = {
     MuscleMassPercentage: "muscle_mass_percentage",
     VisceralFatIndex: "visceral_fat_index",
     BoneMassPercentage: "bone_mass_percentage",
+    BodyMassIndex: "body_mass_index",
+    LeanBodyMassKilogram: "lean_body_mass_kilogram",
+    WaistCircumferenceCentimeter: "waist_circumference_centimeter",
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",

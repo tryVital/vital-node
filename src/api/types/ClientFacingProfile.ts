@@ -9,5 +9,7 @@ export interface ClientFacingProfile {
     userId: string;
     id: string;
     height?: number;
+    birthDate?: string;
+    wheelchairUse?: boolean;
     source: Vital.ClientFacingSource;
 }

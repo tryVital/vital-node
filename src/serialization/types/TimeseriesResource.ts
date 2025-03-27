@@ -41,6 +41,20 @@ export const TimeseriesResource: core.serialization.Schema<
     "mindfulness_minutes",
     "afib_burden",
     "heart_rate_alert",
+    "stand_hour",
+    "stand_duration",
+    "sleep_apnea_alert",
+    "sleep_breathing_disturbance",
+    "wheelchair_push",
+    "forced_expiratory_volume_1",
+    "forced_vital_capacity",
+    "peak_expiratory_flow_rate",
+    "inhaler_usage",
+    "fall",
+    "uv_exposure",
+    "daylight_exposure",
+    "handwashing",
+    "basal_body_temperature",
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
@@ -80,6 +94,20 @@ export declare namespace TimeseriesResource {
         | "mindfulness_minutes"
         | "afib_burden"
         | "heart_rate_alert"
+        | "stand_hour"
+        | "stand_duration"
+        | "sleep_apnea_alert"
+        | "sleep_breathing_disturbance"
+        | "wheelchair_push"
+        | "forced_expiratory_volume_1"
+        | "forced_vital_capacity"
+        | "peak_expiratory_flow_rate"
+        | "inhaler_usage"
+        | "fall"
+        | "uv_exposure"
+        | "daylight_exposure"
+        | "handwashing"
+        | "basal_body_temperature"
         | "workout_duration"
         | "insulin_injection"
         | "carbohydrates"

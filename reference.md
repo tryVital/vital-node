@@ -2422,6 +2422,818 @@ await client.menstrualCycle.get("user_id", {
 
 ## Vitals
 
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">basalBodyTemperatureGrouped</a>(userId, { ...params }) -> Vital.GroupedBasalBodyTemperatureResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.basalBodyTemperatureGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsBasalBodyTemperatureGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">handwashingGrouped</a>(userId, { ...params }) -> Vital.GroupedHandwashingResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.handwashingGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsHandwashingGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">daylightExposureGrouped</a>(userId, { ...params }) -> Vital.GroupedDaylightExposureResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.daylightExposureGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsDaylightExposureGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">uvExposureGrouped</a>(userId, { ...params }) -> Vital.GroupedUvExposureResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.uvExposureGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsUvExposureGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">fallGrouped</a>(userId, { ...params }) -> Vital.GroupedFallResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.fallGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsFallGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">inhalerUsageGrouped</a>(userId, { ...params }) -> Vital.GroupedInhalerUsageResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.inhalerUsageGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsInhalerUsageGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">peakExpiratoryFlowRateGrouped</a>(userId, { ...params }) -> Vital.GroupedPeakExpiratoryFlowRateResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsPeakExpiratoryFlowRateGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">forcedVitalCapacityGrouped</a>(userId, { ...params }) -> Vital.GroupedForcedVitalCapacityResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.forcedVitalCapacityGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsForcedVitalCapacityGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">forcedExpiratoryVolume1Grouped</a>(userId, { ...params }) -> Vital.GroupedForcedExpiratoryVolume1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsForcedExpiratoryVolume1GroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">wheelchairPushGrouped</a>(userId, { ...params }) -> Vital.GroupedWheelchairPushResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.wheelchairPushGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsWheelchairPushGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">sleepBreathingDisturbanceGrouped</a>(userId, { ...params }) -> Vital.GroupedSleepBreathingDisturbanceResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsSleepBreathingDisturbanceGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">sleepApneaAlertGrouped</a>(userId, { ...params }) -> Vital.GroupedSleepApneaAlertResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.sleepApneaAlertGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsSleepApneaAlertGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">standDurationGrouped</a>(userId, { ...params }) -> Vital.GroupedStandDurationResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.standDurationGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsStandDurationGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">standHourGrouped</a>(userId, { ...params }) -> Vital.GroupedStandHourResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vitals.standHourGrouped("user_id", {
+    startDate: "start_date",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.VitalsStandHourGroupedRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vitals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateAlertGrouped</a>(userId, { ...params }) -> Vital.GroupedHeartRateAlertResponse</code></summary>
 <dl>
 <dd>
@@ -9324,6 +10136,76 @@ await client.labTests.createOrder({
 <dd>
 
 **request:** `Vital.CreateOrderRequestCompatible`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LabTests.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">importOrder</a>({ ...params }) -> Vital.PostOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labTests.importOrder({
+    userId: "user_id",
+    billingType: "client_bill",
+    orderSet: {},
+    collectionMethod: "testkit",
+    patientDetails: {
+        firstName: "first_name",
+        lastName: "last_name",
+        dob: "2024-01-15T09:30:00Z",
+        gender: "female",
+        phoneNumber: "phone_number",
+        email: "email",
+    },
+    patientAddress: {
+        receiverName: "receiver_name",
+        firstLine: "first_line",
+        city: "city",
+        state: "state",
+        zip: "zip",
+        country: "country",
+    },
+    sampleId: "sample_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.ImportOrderBody`
 
 </dd>
 </dl>

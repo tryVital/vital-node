@@ -11,4 +11,5 @@ export interface ClientFacingHeartRate {
     maxBpm?: number;
     /** Resting heart rate::bpm */
     restingBpm?: number;
+    avgWalkingBpm?: number;
 }

@@ -11,12 +11,14 @@ export const ContinuousQueryResultTableChanges: core.serialization.ObjectSchema<
     Vital.ContinuousQueryResultTableChanges
 > = core.serialization.object({
     queryId: core.serialization.property("query_id", core.serialization.string()),
+    querySlug: core.serialization.property("query_slug", core.serialization.string()),
     data: core.serialization.record(core.serialization.string(), core.serialization.list(core.serialization.unknown())),
 });
 
 export declare namespace ContinuousQueryResultTableChanges {
     interface Raw {
         query_id: string;
+        query_slug: string;
         data: Record<string, unknown[]>;
     }
 }

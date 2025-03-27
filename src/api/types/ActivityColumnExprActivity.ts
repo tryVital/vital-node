@@ -18,6 +18,9 @@ export type ActivityColumnExprActivity =
     | "heart_rate_minimum"
     | "heart_rate_maximum"
     | "heart_rate_resting"
+    | "heart_rate_mean_walking"
+    | "wheelchair_use"
+    | "wheelchair_push"
     | "source_type"
     | "source_provider"
     | "source_app_id"
@@ -40,6 +43,9 @@ export const ActivityColumnExprActivity = {
     HeartRateMinimum: "heart_rate_minimum",
     HeartRateMaximum: "heart_rate_maximum",
     HeartRateResting: "heart_rate_resting",
+    HeartRateMeanWalking: "heart_rate_mean_walking",
+    WheelchairUse: "wheelchair_use",
+    WheelchairPush: "wheelchair_push",
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",

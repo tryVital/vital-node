@@ -14,6 +14,7 @@ export const ClientFacingHeartRate: core.serialization.ObjectSchema<
     minBpm: core.serialization.property("min_bpm", core.serialization.number().optional()),
     maxBpm: core.serialization.property("max_bpm", core.serialization.number().optional()),
     restingBpm: core.serialization.property("resting_bpm", core.serialization.number().optional()),
+    avgWalkingBpm: core.serialization.property("avg_walking_bpm", core.serialization.number().optional()),
 });
 
 export declare namespace ClientFacingHeartRate {
@@ -22,5 +23,6 @@ export declare namespace ClientFacingHeartRate {
         min_bpm?: number | null;
         max_bpm?: number | null;
         resting_bpm?: number | null;
+        avg_walking_bpm?: number | null;
     }
 }

@@ -30,6 +30,1420 @@ export class Vitals {
 
     /**
      * @param {string} userId
+     * @param {Vital.VitalsBasalBodyTemperatureGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.basalBodyTemperatureGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async basalBodyTemperatureGrouped(
+        userId: string,
+        request: Vital.VitalsBasalBodyTemperatureGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedBasalBodyTemperatureResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/basal_body_temperature/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedBasalBodyTemperatureResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsHandwashingGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.handwashingGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async handwashingGrouped(
+        userId: string,
+        request: Vital.VitalsHandwashingGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedHandwashingResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/handwashing/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedHandwashingResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsDaylightExposureGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.daylightExposureGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async daylightExposureGrouped(
+        userId: string,
+        request: Vital.VitalsDaylightExposureGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedDaylightExposureResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/daylight_exposure/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedDaylightExposureResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsUvExposureGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.uvExposureGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async uvExposureGrouped(
+        userId: string,
+        request: Vital.VitalsUvExposureGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedUvExposureResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/uv_exposure/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedUvExposureResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsFallGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.fallGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async fallGrouped(
+        userId: string,
+        request: Vital.VitalsFallGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedFallResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/fall/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedFallResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsInhalerUsageGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.inhalerUsageGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async inhalerUsageGrouped(
+        userId: string,
+        request: Vital.VitalsInhalerUsageGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedInhalerUsageResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/inhaler_usage/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedInhalerUsageResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsPeakExpiratoryFlowRateGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async peakExpiratoryFlowRateGrouped(
+        userId: string,
+        request: Vital.VitalsPeakExpiratoryFlowRateGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedPeakExpiratoryFlowRateResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/peak_expiratory_flow_rate/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedPeakExpiratoryFlowRateResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsForcedVitalCapacityGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.forcedVitalCapacityGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async forcedVitalCapacityGrouped(
+        userId: string,
+        request: Vital.VitalsForcedVitalCapacityGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedForcedVitalCapacityResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/forced_vital_capacity/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedForcedVitalCapacityResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsForcedExpiratoryVolume1GroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async forcedExpiratoryVolume1Grouped(
+        userId: string,
+        request: Vital.VitalsForcedExpiratoryVolume1GroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedForcedExpiratoryVolume1Response> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/forced_expiratory_volume_1/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedForcedExpiratoryVolume1Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsWheelchairPushGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.wheelchairPushGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async wheelchairPushGrouped(
+        userId: string,
+        request: Vital.VitalsWheelchairPushGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedWheelchairPushResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/wheelchair_push/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedWheelchairPushResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsSleepBreathingDisturbanceGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async sleepBreathingDisturbanceGrouped(
+        userId: string,
+        request: Vital.VitalsSleepBreathingDisturbanceGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedSleepBreathingDisturbanceResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/sleep_breathing_disturbance/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedSleepBreathingDisturbanceResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsSleepApneaAlertGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.sleepApneaAlertGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async sleepApneaAlertGrouped(
+        userId: string,
+        request: Vital.VitalsSleepApneaAlertGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedSleepApneaAlertResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/sleep_apnea_alert/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedSleepApneaAlertResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsStandDurationGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.standDurationGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async standDurationGrouped(
+        userId: string,
+        request: Vital.VitalsStandDurationGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedStandDurationResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/stand_duration/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedStandDurationResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {Vital.VitalsStandHourGroupedRequest} request
+     * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.vitals.standHourGrouped("user_id", {
+     *         startDate: "start_date"
+     *     })
+     */
+    public async standHourGrouped(
+        userId: string,
+        request: Vital.VitalsStandHourGroupedRequest,
+        requestOptions?: Vitals.RequestOptions
+    ): Promise<Vital.GroupedStandHourResponse> {
+        const { cursor, nextCursor, provider, startDate, endDate } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (cursor != null) {
+            _queryParams["cursor"] = cursor;
+        }
+
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (provider != null) {
+            _queryParams["provider"] = provider;
+        }
+
+        _queryParams["start_date"] = startDate;
+        if (endDate != null) {
+            _queryParams["end_date"] = endDate;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v2/timeseries/${encodeURIComponent(userId)}/stand_hour/grouped`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.GroupedStandHourResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
      * @param {Vital.VitalsHeartRateAlertGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -73,8 +1487,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -174,8 +1588,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -275,8 +1689,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -376,8 +1790,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -477,8 +1891,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -578,8 +1992,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -679,8 +2093,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -780,8 +2194,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -881,8 +2295,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -982,8 +2396,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1083,8 +2497,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1184,8 +2598,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1285,8 +2699,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1386,8 +2800,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1487,8 +2901,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1588,8 +3002,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1689,8 +3103,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1790,8 +3204,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1891,8 +3305,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1992,8 +3406,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2093,8 +3507,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2194,8 +3608,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2295,8 +3709,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2396,8 +3810,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2497,8 +3911,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2598,8 +4012,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2699,8 +4113,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2800,8 +4214,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2901,8 +4315,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3002,8 +4416,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3103,8 +4517,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3196,8 +4610,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3289,8 +4703,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3382,8 +4796,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3475,8 +4889,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3568,8 +4982,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3661,8 +5075,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3754,8 +5168,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3847,8 +5261,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3940,8 +5354,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4033,8 +5447,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4126,8 +5540,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4219,8 +5633,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4312,8 +5726,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4405,8 +5819,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4498,8 +5912,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4591,8 +6005,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4684,8 +6098,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4777,8 +6191,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4870,8 +6284,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4963,8 +6377,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5056,8 +6470,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5149,8 +6563,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5242,8 +6656,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5335,8 +6749,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5428,8 +6842,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5521,8 +6935,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5614,8 +7028,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.216",
-                "User-Agent": "@tryvital/vital-node/3.1.216",
+                "X-Fern-SDK-Version": "3.1.217",
+                "User-Agent": "@tryvital/vital-node/3.1.217",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

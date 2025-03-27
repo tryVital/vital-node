@@ -17,6 +17,9 @@ export const BodyColumnExprBody: core.serialization.Schema<
     "muscle_mass_percentage",
     "visceral_fat_index",
     "bone_mass_percentage",
+    "body_mass_index",
+    "lean_body_mass_kilogram",
+    "waist_circumference_centimeter",
     "source_type",
     "source_provider",
     "source_app_id",
@@ -32,6 +35,9 @@ export declare namespace BodyColumnExprBody {
         | "muscle_mass_percentage"
         | "visceral_fat_index"
         | "bone_mass_percentage"
+        | "body_mass_index"
+        | "lean_body_mass_kilogram"
+        | "waist_circumference_centimeter"
         | "source_type"
         | "source_provider"
         | "source_app_id"

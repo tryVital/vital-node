@@ -21,6 +21,15 @@ export const ClientFacingBody: core.serialization.ObjectSchema<
     muscleMassPercentage: core.serialization.property("muscle_mass_percentage", core.serialization.number().optional()),
     visceralFatIndex: core.serialization.property("visceral_fat_index", core.serialization.number().optional()),
     boneMassPercentage: core.serialization.property("bone_mass_percentage", core.serialization.number().optional()),
+    bodyMassIndex: core.serialization.property("body_mass_index", core.serialization.number().optional()),
+    leanBodyMassKilogram: core.serialization.property(
+        "lean_body_mass_kilogram",
+        core.serialization.number().optional()
+    ),
+    waistCircumferenceCentimeter: core.serialization.property(
+        "waist_circumference_centimeter",
+        core.serialization.number().optional()
+    ),
     source: ClientFacingSource,
 });
 
@@ -36,6 +45,9 @@ export declare namespace ClientFacingBody {
         muscle_mass_percentage?: number | null;
         visceral_fat_index?: number | null;
         bone_mass_percentage?: number | null;
+        body_mass_index?: number | null;
+        lean_body_mass_kilogram?: number | null;
+        waist_circumference_centimeter?: number | null;
         source: ClientFacingSource.Raw;
     }
 }

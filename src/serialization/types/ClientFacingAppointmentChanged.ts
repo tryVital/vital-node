@@ -5,23 +5,23 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { ClientFacingCreatedChangedEventType } from "./ClientFacingCreatedChangedEventType";
+import { ClientFacingAppointmentChangedEventType } from "./ClientFacingAppointmentChangedEventType";
 import { ClientFacingAppointment } from "./ClientFacingAppointment";
 
-export const ClientFacingCreatedChanged: core.serialization.ObjectSchema<
-    serializers.ClientFacingCreatedChanged.Raw,
-    Vital.ClientFacingCreatedChanged
+export const ClientFacingAppointmentChanged: core.serialization.ObjectSchema<
+    serializers.ClientFacingAppointmentChanged.Raw,
+    Vital.ClientFacingAppointmentChanged
 > = core.serialization.object({
-    eventType: core.serialization.property("event_type", ClientFacingCreatedChangedEventType),
+    eventType: core.serialization.property("event_type", ClientFacingAppointmentChangedEventType),
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
     data: ClientFacingAppointment,
 });
 
-export declare namespace ClientFacingCreatedChanged {
+export declare namespace ClientFacingAppointmentChanged {
     interface Raw {
-        event_type: ClientFacingCreatedChangedEventType.Raw;
+        event_type: ClientFacingAppointmentChangedEventType.Raw;
         user_id: string;
         client_user_id: string;
         team_id: string;

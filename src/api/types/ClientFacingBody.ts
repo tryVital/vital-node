@@ -24,5 +24,8 @@ export interface ClientFacingBody {
     visceralFatIndex?: number;
     /** Bone mass percentage in the body::perc */
     boneMassPercentage?: number;
+    bodyMassIndex?: number;
+    leanBodyMassKilogram?: number;
+    waistCircumferenceCentimeter?: number;
     source: Vital.ClientFacingSource;
 }

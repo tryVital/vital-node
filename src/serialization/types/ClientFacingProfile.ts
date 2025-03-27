@@ -14,6 +14,8 @@ export const ClientFacingProfile: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
     height: core.serialization.number().optional(),
+    birthDate: core.serialization.property("birth_date", core.serialization.string().optional()),
+    wheelchairUse: core.serialization.property("wheelchair_use", core.serialization.boolean().optional()),
     source: ClientFacingSource,
 });
 
@@ -22,6 +24,8 @@ export declare namespace ClientFacingProfile {
         user_id: string;
         id: string;
         height?: number | null;
+        birth_date?: string | null;
+        wheelchair_use?: boolean | null;
         source: ClientFacingSource.Raw;
     }
 }

@@ -1,3 +1,17 @@
+export { type VitalsBasalBodyTemperatureGroupedRequest } from "./VitalsBasalBodyTemperatureGroupedRequest";
+export { type VitalsHandwashingGroupedRequest } from "./VitalsHandwashingGroupedRequest";
+export { type VitalsDaylightExposureGroupedRequest } from "./VitalsDaylightExposureGroupedRequest";
+export { type VitalsUvExposureGroupedRequest } from "./VitalsUvExposureGroupedRequest";
+export { type VitalsFallGroupedRequest } from "./VitalsFallGroupedRequest";
+export { type VitalsInhalerUsageGroupedRequest } from "./VitalsInhalerUsageGroupedRequest";
+export { type VitalsPeakExpiratoryFlowRateGroupedRequest } from "./VitalsPeakExpiratoryFlowRateGroupedRequest";
+export { type VitalsForcedVitalCapacityGroupedRequest } from "./VitalsForcedVitalCapacityGroupedRequest";
+export { type VitalsForcedExpiratoryVolume1GroupedRequest } from "./VitalsForcedExpiratoryVolume1GroupedRequest";
+export { type VitalsWheelchairPushGroupedRequest } from "./VitalsWheelchairPushGroupedRequest";
+export { type VitalsSleepBreathingDisturbanceGroupedRequest } from "./VitalsSleepBreathingDisturbanceGroupedRequest";
+export { type VitalsSleepApneaAlertGroupedRequest } from "./VitalsSleepApneaAlertGroupedRequest";
+export { type VitalsStandDurationGroupedRequest } from "./VitalsStandDurationGroupedRequest";
+export { type VitalsStandHourGroupedRequest } from "./VitalsStandHourGroupedRequest";
 export { type VitalsHeartRateAlertGroupedRequest } from "./VitalsHeartRateAlertGroupedRequest";
 export { type VitalsAfibBurdenGroupedRequest } from "./VitalsAfibBurdenGroupedRequest";
 export { type VitalsWorkoutDurationGroupedRequest } from "./VitalsWorkoutDurationGroupedRequest";

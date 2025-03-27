@@ -15,5 +15,6 @@ export { type LabTestsGetLabelsPdfRequest } from "./LabTestsGetLabelsPdfRequest"
 export { type LabTestsGetPscAppointmentAvailabilityRequest } from "./LabTestsGetPscAppointmentAvailabilityRequest";
 export { type VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest } from "./VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest";
 export { type CreateOrderRequestCompatible } from "./CreateOrderRequestCompatible";
+export { type ImportOrderBody } from "./ImportOrderBody";
 export { type LabTestsSimulateOrderProcessRequest } from "./LabTestsSimulateOrderProcessRequest";
 export { type LabTestsGetOrdersRequest } from "./LabTestsGetOrdersRequest";
