@@ -1,3 +1,6 @@
+export { type VitalsWaistCircumferenceGroupedRequest } from "./VitalsWaistCircumferenceGroupedRequest";
+export { type VitalsLeanBodyMassGroupedRequest } from "./VitalsLeanBodyMassGroupedRequest";
+export { type VitalsBodyMassIndexGroupedRequest } from "./VitalsBodyMassIndexGroupedRequest";
 export { type VitalsBasalBodyTemperatureGroupedRequest } from "./VitalsBasalBodyTemperatureGroupedRequest";
 export { type VitalsHandwashingGroupedRequest } from "./VitalsHandwashingGroupedRequest";
 export { type VitalsDaylightExposureGroupedRequest } from "./VitalsDaylightExposureGroupedRequest";

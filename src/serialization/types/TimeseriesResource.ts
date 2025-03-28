@@ -55,6 +55,9 @@ export const TimeseriesResource: core.serialization.Schema<
     "daylight_exposure",
     "handwashing",
     "basal_body_temperature",
+    "body_mass_index",
+    "lean_body_mass",
+    "waist_circumference",
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
@@ -108,6 +111,9 @@ export declare namespace TimeseriesResource {
         | "daylight_exposure"
         | "handwashing"
         | "basal_body_temperature"
+        | "body_mass_index"
+        | "lean_body_mass"
+        | "waist_circumference"
         | "workout_duration"
         | "insulin_injection"
         | "carbohydrates"

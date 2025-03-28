@@ -14,7 +14,7 @@ export const ClientFacingSleepBreathingDisturbanceSample: core.serialization.Obj
 > = core.serialization.object({
     id: core.serialization.number().optional(),
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
-    type: ClientFacingSleepBreathingDisturbanceSampleType,
+    type: ClientFacingSleepBreathingDisturbanceSampleType.optional(),
     unit: core.serialization.stringLiteral("count"),
     grouping: ClientFacingSampleGroupingKeys.optional(),
     timestamp: core.serialization.date(),
@@ -27,7 +27,7 @@ export declare namespace ClientFacingSleepBreathingDisturbanceSample {
     interface Raw {
         id?: number | null;
         timezone_offset?: number | null;
-        type: ClientFacingSleepBreathingDisturbanceSampleType.Raw;
+        type?: ClientFacingSleepBreathingDisturbanceSampleType.Raw | null;
         unit: "count";
         grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;

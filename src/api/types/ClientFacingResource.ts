@@ -58,6 +58,9 @@ export type ClientFacingResource =
     | "daylight_exposure"
     | "handwashing"
     | "basal_body_temperature"
+    | "body_mass_index"
+    | "lean_body_mass"
+    | "waist_circumference"
     | "workout_duration"
     | "insulin_injection"
     | "carbohydrates"
@@ -121,6 +124,9 @@ export const ClientFacingResource = {
     DaylightExposure: "daylight_exposure",
     Handwashing: "handwashing",
     BasalBodyTemperature: "basal_body_temperature",
+    BodyMassIndex: "body_mass_index",
+    LeanBodyMass: "lean_body_mass",
+    WaistCircumference: "waist_circumference",
     WorkoutDuration: "workout_duration",
     InsulinInjection: "insulin_injection",
     Carbohydrates: "carbohydrates",
