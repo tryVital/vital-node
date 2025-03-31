@@ -6,7 +6,6 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingStandHourSampleType } from "./ClientFacingStandHourSampleType";
-import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingStandHourSample: core.serialization.ObjectSchema<
     serializers.ClientFacingStandHourSample.Raw,
@@ -16,7 +15,6 @@ export const ClientFacingStandHourSample: core.serialization.ObjectSchema<
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: ClientFacingStandHourSampleType,
     unit: core.serialization.stringLiteral("count"),
-    grouping: ClientFacingSampleGroupingKeys.optional(),
     timestamp: core.serialization.date(),
     start: core.serialization.date(),
     end: core.serialization.date(),
@@ -29,7 +27,6 @@ export declare namespace ClientFacingStandHourSample {
         timezone_offset?: number | null;
         type: ClientFacingStandHourSampleType.Raw;
         unit: "count";
-        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

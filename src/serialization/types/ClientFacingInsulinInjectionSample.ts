@@ -6,7 +6,6 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingInsulinInjectionSampleType } from "./ClientFacingInsulinInjectionSampleType";
-import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingInsulinInjectionSample: core.serialization.ObjectSchema<
     serializers.ClientFacingInsulinInjectionSample.Raw,
@@ -16,7 +15,6 @@ export const ClientFacingInsulinInjectionSample: core.serialization.ObjectSchema
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: ClientFacingInsulinInjectionSampleType,
     unit: core.serialization.stringLiteral("unit"),
-    grouping: ClientFacingSampleGroupingKeys.optional(),
     timestamp: core.serialization.date(),
     start: core.serialization.date(),
     end: core.serialization.date(),
@@ -29,7 +27,6 @@ export declare namespace ClientFacingInsulinInjectionSample {
         timezone_offset?: number | null;
         type: ClientFacingInsulinInjectionSampleType.Raw;
         unit: "unit";
-        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

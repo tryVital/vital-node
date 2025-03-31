@@ -11,7 +11,6 @@ export interface ClientFacingSleepBreathingDisturbanceSample {
     timezoneOffset?: number;
     type?: Vital.ClientFacingSleepBreathingDisturbanceSampleType;
     unit: "count";
-    grouping?: Vital.ClientFacingSampleGroupingKeys;
     /** Depracated. The start time (inclusive) of the interval. */
     timestamp: Date;
     /** The start time (inclusive) of the interval. */

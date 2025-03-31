@@ -6,7 +6,6 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingSleepBreathingDisturbanceSampleType } from "./ClientFacingSleepBreathingDisturbanceSampleType";
-import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingSleepBreathingDisturbanceSample: core.serialization.ObjectSchema<
     serializers.ClientFacingSleepBreathingDisturbanceSample.Raw,
@@ -16,7 +15,6 @@ export const ClientFacingSleepBreathingDisturbanceSample: core.serialization.Obj
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: ClientFacingSleepBreathingDisturbanceSampleType.optional(),
     unit: core.serialization.stringLiteral("count"),
-    grouping: ClientFacingSampleGroupingKeys.optional(),
     timestamp: core.serialization.date(),
     start: core.serialization.date(),
     end: core.serialization.date(),
@@ -29,7 +27,6 @@ export declare namespace ClientFacingSleepBreathingDisturbanceSample {
         timezone_offset?: number | null;
         type?: ClientFacingSleepBreathingDisturbanceSampleType.Raw | null;
         unit: "count";
-        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

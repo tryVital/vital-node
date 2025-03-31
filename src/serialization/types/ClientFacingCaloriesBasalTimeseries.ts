@@ -5,7 +5,6 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingCaloriesBasalTimeseries: core.serialization.ObjectSchema<
     serializers.ClientFacingCaloriesBasalTimeseries.Raw,
@@ -15,7 +14,6 @@ export const ClientFacingCaloriesBasalTimeseries: core.serialization.ObjectSchem
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.stringLiteral("kcal"),
-    grouping: ClientFacingSampleGroupingKeys.optional(),
     timestamp: core.serialization.date(),
     value: core.serialization.number(),
 });
@@ -26,7 +24,6 @@ export declare namespace ClientFacingCaloriesBasalTimeseries {
         timezone_offset?: number | null;
         type?: string | null;
         unit: "kcal";
-        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         value: number;
     }

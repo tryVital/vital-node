@@ -5,7 +5,6 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingPeakExpiratoryFlowRateSample: core.serialization.ObjectSchema<
     serializers.ClientFacingPeakExpiratoryFlowRateSample.Raw,
@@ -15,7 +14,6 @@ export const ClientFacingPeakExpiratoryFlowRateSample: core.serialization.Object
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.stringLiteral("L/min"),
-    grouping: ClientFacingSampleGroupingKeys.optional(),
     timestamp: core.serialization.date(),
     start: core.serialization.date(),
     end: core.serialization.date(),
@@ -28,7 +26,6 @@ export declare namespace ClientFacingPeakExpiratoryFlowRateSample {
         timezone_offset?: number | null;
         type?: string | null;
         unit: "L/min";
-        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;

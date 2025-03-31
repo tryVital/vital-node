@@ -12,7 +12,6 @@ export interface ClientFacingInsulinInjectionSample {
     /** Insulin type: rapid vs long acting */
     type: Vital.ClientFacingInsulinInjectionSampleType;
     unit: "unit";
-    grouping?: Vital.ClientFacingSampleGroupingKeys;
     /** Depracated. The start time (inclusive) of the interval. */
     timestamp: Date;
     /** The start time (inclusive) of the interval. */

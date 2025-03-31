@@ -13,7 +13,6 @@ export interface ClientFacingNoteSample {
     type?: string;
     /** User notes as text. */
     unit: string;
-    grouping?: Vital.ClientFacingSampleGroupingKeys;
     /** Depracated. The start time (inclusive) of the interval. */
     timestamp: Date;
     /** The start time (inclusive) of the interval. */

@@ -5,7 +5,6 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { ClientFacingSampleGroupingKeys } from "./ClientFacingSampleGroupingKeys";
 
 export const ClientFacingBasalBodyTemperatureSample: core.serialization.ObjectSchema<
     serializers.ClientFacingBasalBodyTemperatureSample.Raw,
@@ -15,7 +14,6 @@ export const ClientFacingBasalBodyTemperatureSample: core.serialization.ObjectSc
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     type: core.serialization.string().optional(),
     unit: core.serialization.stringLiteral("\u00B0C"),
-    grouping: ClientFacingSampleGroupingKeys.optional(),
     timestamp: core.serialization.date(),
     start: core.serialization.date(),
     end: core.serialization.date(),
@@ -28,7 +26,6 @@ export declare namespace ClientFacingBasalBodyTemperatureSample {
         timezone_offset?: number | null;
         type?: string | null;
         unit: "\u00B0C";
-        grouping?: ClientFacingSampleGroupingKeys.Raw | null;
         timestamp: string;
         start: string;
         end: string;
