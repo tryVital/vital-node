@@ -6,35 +6,35 @@ export interface ConnectionRecipe {
     /** Vital User ID. The user must be created ahead of the bulk import operation. */
     userId: string;
     /**
-     * - OAuth 2.0 providers (Fitbit, etc): The latest Access Token.
-     * - OAuth 1.0 providers (Garmin): The Access Token.
+     * * OAuth 2.0 providers (Fitbit, etc): The latest Access Token.
+     * * OAuth 1.0 providers (Garmin): The Access Token.
      */
     accessToken: string;
     /**
-     * - OAuth 2.0 providers (Fitbit, etc): The latest Refresh Token.
-     * - OAuth 1.0 providers (Garmin): The Token Secret.
+     * * OAuth 2.0 providers (Fitbit, etc): The latest Refresh Token.
+     * * OAuth 1.0 providers (Garmin): The Token Secret.
      */
     refreshToken: string;
     /**
      * User ID of the data provider.
      *
-     * - Fitbit: 6-character Fitbit User ID
-     * - Garmin: 36-character Garmin User ID
+     * * Fitbit: 6-character Fitbit User ID
+     * * Garmin: 36-character Garmin User ID
      */
     providerId: string;
     /**
      * Access token expiry date, in terms of UNIX epoch seconds.
      *
-     * - OAuth 2.0 providers (Fitbit, etc): The latest expiry date on your record.
-     * - OAuth 1.0 providers (Garmin): Use the constant value `2147483647`.
+     * * OAuth 2.0 providers (Fitbit, etc): The latest expiry date on your record.
+     * * OAuth 1.0 providers (Garmin): Use the constant value `2147483647`.
      */
     expiresAt: number;
     /**
      * OAuth scopes of the data provider. Specify `null` if you do not
      * have any scopes on record.
      *
-     * - Fitbit: Has scopes
-     * - Garmin: No scope
+     * * Fitbit: Has scopes
+     * * Garmin: No scope
      */
     oauthScopes?: string[];
 }
