@@ -1,3 +1,4 @@
+export { type LinkListBulkOpsRequest } from "./LinkListBulkOpsRequest";
 export { type BulkImportConnectionsBody } from "./BulkImportConnectionsBody";
 export { type BulkTriggerHistoricalPullBody } from "./BulkTriggerHistoricalPullBody";
 export { type BulkExportConnectionsBody } from "./BulkExportConnectionsBody";
