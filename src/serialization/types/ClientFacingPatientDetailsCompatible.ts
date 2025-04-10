@@ -5,6 +5,11 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { GuarantorDetails } from "./GuarantorDetails";
+import { Race } from "./Race";
+import { Ethnicity } from "./Ethnicity";
+import { SexualOrientation } from "./SexualOrientation";
+import { GenderIdentity } from "./GenderIdentity";
 
 export const ClientFacingPatientDetailsCompatible: core.serialization.ObjectSchema<
     serializers.ClientFacingPatientDetailsCompatible.Raw,
@@ -16,6 +21,11 @@ export const ClientFacingPatientDetailsCompatible: core.serialization.ObjectSche
     gender: core.serialization.string(),
     phoneNumber: core.serialization.property("phone_number", core.serialization.string().optional()),
     email: core.serialization.string().optional(),
+    medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
+    race: Race.optional(),
+    ethnicity: Ethnicity.optional(),
+    sexualOrientation: core.serialization.property("sexual_orientation", SexualOrientation.optional()),
+    genderIdentity: core.serialization.property("gender_identity", GenderIdentity.optional()),
 });
 
 export declare namespace ClientFacingPatientDetailsCompatible {
@@ -26,5 +36,10 @@ export declare namespace ClientFacingPatientDetailsCompatible {
         gender: string;
         phone_number?: string | null;
         email?: string | null;
+        medical_proxy?: GuarantorDetails.Raw | null;
+        race?: Race.Raw | null;
+        ethnicity?: Ethnicity.Raw | null;
+        sexual_orientation?: SexualOrientation.Raw | null;
+        gender_identity?: GenderIdentity.Raw | null;
     }
 }

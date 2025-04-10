@@ -6,6 +6,11 @@ import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
 import { Address } from "../../../../types/Address";
+import { GuarantorDetails } from "../../../../types/GuarantorDetails";
+import { Race } from "../../../../types/Race";
+import { Ethnicity } from "../../../../types/Ethnicity";
+import { SexualOrientation } from "../../../../types/SexualOrientation";
+import { GenderIdentity } from "../../../../types/GenderIdentity";
 
 export const UserInfoCreateRequest: core.serialization.Schema<
     serializers.UserInfoCreateRequest.Raw,
@@ -18,6 +23,11 @@ export const UserInfoCreateRequest: core.serialization.Schema<
     gender: core.serialization.string(),
     dob: core.serialization.string(),
     address: Address,
+    medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
+    race: Race.optional(),
+    ethnicity: Ethnicity.optional(),
+    sexualOrientation: core.serialization.property("sexual_orientation", SexualOrientation.optional()),
+    genderIdentity: core.serialization.property("gender_identity", GenderIdentity.optional()),
 });
 
 export declare namespace UserInfoCreateRequest {
@@ -29,5 +39,10 @@ export declare namespace UserInfoCreateRequest {
         gender: string;
         dob: string;
         address: Address.Raw;
+        medical_proxy?: GuarantorDetails.Raw | null;
+        race?: Race.Raw | null;
+        ethnicity?: Ethnicity.Raw | null;
+        sexual_orientation?: SexualOrientation.Raw | null;
+        gender_identity?: GenderIdentity.Raw | null;
     }
 }

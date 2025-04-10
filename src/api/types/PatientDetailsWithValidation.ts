@@ -14,4 +14,14 @@ export interface PatientDetailsWithValidation {
     gender: Vital.Gender;
     phoneNumber: string;
     email: string;
+    /** Parent/medical_proxy details. Required if patient is a minor. */
+    medicalProxy?: Vital.GuarantorDetails;
+    /** If not provided, will be set to 'Not Specified' */
+    race?: Vital.Race;
+    /** If not provided, will be set to 'Not Specified' */
+    ethnicity?: Vital.Ethnicity;
+    /** If not provided, will be set to 'Not Specified' */
+    sexualOrientation?: Vital.SexualOrientation;
+    /** If not provided, will be set to 'Not Specified' */
+    genderIdentity?: Vital.GenderIdentity;
 }

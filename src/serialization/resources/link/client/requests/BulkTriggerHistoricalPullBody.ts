@@ -13,11 +13,13 @@ export const BulkTriggerHistoricalPullBody: core.serialization.Schema<
 > = core.serialization.object({
     userIds: core.serialization.property("user_ids", core.serialization.list(core.serialization.string())),
     provider: OAuthProviders,
+    waitForCompletion: core.serialization.property("wait_for_completion", core.serialization.boolean().optional()),
 });
 
 export declare namespace BulkTriggerHistoricalPullBody {
     interface Raw {
         user_ids: string[];
         provider: OAuthProviders.Raw;
+        wait_for_completion?: boolean | null;
     }
 }

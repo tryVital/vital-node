@@ -9,5 +9,7 @@ export interface GuarantorDetails {
     lastName: string;
     address: Vital.Address;
     phoneNumber: string;
+    householdIncome?: number;
+    householdSize?: number;
     email?: string;
 }

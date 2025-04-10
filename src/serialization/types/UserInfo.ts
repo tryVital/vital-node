@@ -6,6 +6,11 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { Address } from "./Address";
+import { GuarantorDetails } from "./GuarantorDetails";
+import { Race } from "./Race";
+import { Ethnicity } from "./Ethnicity";
+import { SexualOrientation } from "./SexualOrientation";
+import { GenderIdentity } from "./GenderIdentity";
 
 export const UserInfo: core.serialization.ObjectSchema<serializers.UserInfo.Raw, Vital.UserInfo> =
     core.serialization.object({
@@ -16,6 +21,11 @@ export const UserInfo: core.serialization.ObjectSchema<serializers.UserInfo.Raw,
         gender: core.serialization.string(),
         dob: core.serialization.string(),
         address: Address,
+        medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
+        race: Race.optional(),
+        ethnicity: Ethnicity.optional(),
+        sexualOrientation: core.serialization.property("sexual_orientation", SexualOrientation.optional()),
+        genderIdentity: core.serialization.property("gender_identity", GenderIdentity.optional()),
     });
 
 export declare namespace UserInfo {
@@ -27,5 +37,10 @@ export declare namespace UserInfo {
         gender: string;
         dob: string;
         address: Address.Raw;
+        medical_proxy?: GuarantorDetails.Raw | null;
+        race?: Race.Raw | null;
+        ethnicity?: Ethnicity.Raw | null;
+        sexual_orientation?: SexualOrientation.Raw | null;
+        gender_identity?: GenderIdentity.Raw | null;
     }
 }

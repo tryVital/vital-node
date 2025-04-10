@@ -15,6 +15,8 @@ export const GuarantorDetails: core.serialization.ObjectSchema<
     lastName: core.serialization.property("last_name", core.serialization.string()),
     address: Address,
     phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
+    householdIncome: core.serialization.property("household_income", core.serialization.number().optional()),
+    householdSize: core.serialization.property("household_size", core.serialization.number().optional()),
     email: core.serialization.string().optional(),
 });
 
@@ -24,6 +26,8 @@ export declare namespace GuarantorDetails {
         last_name: string;
         address: Address.Raw;
         phone_number: string;
+        household_income?: number | null;
+        household_size?: number | null;
         email?: string | null;
     }
 }

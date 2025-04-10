@@ -6,6 +6,11 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { Gender } from "./Gender";
+import { GuarantorDetails } from "./GuarantorDetails";
+import { Race } from "./Race";
+import { Ethnicity } from "./Ethnicity";
+import { SexualOrientation } from "./SexualOrientation";
+import { GenderIdentity } from "./GenderIdentity";
 
 export const PatientDetailsWithValidation: core.serialization.ObjectSchema<
     serializers.PatientDetailsWithValidation.Raw,
@@ -17,6 +22,11 @@ export const PatientDetailsWithValidation: core.serialization.ObjectSchema<
     gender: Gender,
     phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
     email: core.serialization.string(),
+    medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
+    race: Race.optional(),
+    ethnicity: Ethnicity.optional(),
+    sexualOrientation: core.serialization.property("sexual_orientation", SexualOrientation.optional()),
+    genderIdentity: core.serialization.property("gender_identity", GenderIdentity.optional()),
 });
 
 export declare namespace PatientDetailsWithValidation {
@@ -27,5 +37,10 @@ export declare namespace PatientDetailsWithValidation {
         gender: Gender.Raw;
         phone_number: string;
         email: string;
+        medical_proxy?: GuarantorDetails.Raw | null;
+        race?: Race.Raw | null;
+        ethnicity?: Ethnicity.Raw | null;
+        sexual_orientation?: SexualOrientation.Raw | null;
+        gender_identity?: GenderIdentity.Raw | null;
     }
 }

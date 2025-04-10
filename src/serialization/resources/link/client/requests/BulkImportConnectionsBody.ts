@@ -14,11 +14,13 @@ export const BulkImportConnectionsBody: core.serialization.Schema<
 > = core.serialization.object({
     provider: OAuthProviders,
     connections: core.serialization.list(ConnectionRecipe),
+    waitForCompletion: core.serialization.property("wait_for_completion", core.serialization.boolean().optional()),
 });
 
 export declare namespace BulkImportConnectionsBody {
     interface Raw {
         provider: OAuthProviders.Raw;
         connections: ConnectionRecipe.Raw[];
+        wait_for_completion?: boolean | null;
     }
 }

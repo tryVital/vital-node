@@ -12,4 +12,9 @@ export interface UserInfo {
     gender: string;
     dob: string;
     address: Vital.Address;
+    medicalProxy?: Vital.GuarantorDetails;
+    race?: Vital.Race;
+    ethnicity?: Vital.Ethnicity;
+    sexualOrientation?: Vital.SexualOrientation;
+    genderIdentity?: Vital.GenderIdentity;
 }
