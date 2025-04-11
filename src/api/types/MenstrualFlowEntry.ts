@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface MenstrualFlowEntry {
     date: string;
+    /** ℹ️ This enum is non-exhaustive. */
     flow: Vital.MenstrualFlowEntryFlow;
 }

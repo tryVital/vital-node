@@ -15,7 +15,30 @@ export interface LinkTokenExchange {
     userId: string;
     provider?: Vital.Providers;
     redirectUrl?: string;
+    /**
+     * An allowlist of providers dictating what Vital Link Widget should show to the end user.
+     * If unspecified, all linkable providers are shown.
+     *
+     * This has no effect on programmatic Vital Link API usage.
+     */
     filterOnProviders?: Vital.Providers[];
+    /**
+     * By default, Vital Link Widget input forms for password and email providers have in-built error handling.
+     *
+     * Specifying `on_error=redirect` disables this Vital Link Widget UI behaviour — it would
+     * instead redirect to your `redirect_url`, with Link Error parameters injected.
+     *
+     * This has no effect on OAuth providers — they always redirect to your `redirect_url`. This also has
+     * no effect on programmatic Vital Link API usage.
+     */
     onError?: "redirect";
+    /**
+     * By default, Vital Link Widget closes the window or tab when the user taps the Close button.
+     *
+     * Specifying `on_close=redirect` would change the Close button behaviour to redirect to your `redirect_url`
+     * with the `user_cancelled` error specified.
+     *
+     * This has no effect on programmatic Vital Link API usage.
+     */
     onClose?: "redirect";
 }

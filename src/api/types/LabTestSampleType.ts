@@ -3,7 +3,7 @@
  */
 
 /**
- * The type of sample used to perform a lab test.
+ * The type of sample used to perform a lab test. ℹ️ This enum is non-exhaustive.
  */
 export type LabTestSampleType = "dried_blood_spot" | "arm_collector" | "serum" | "saliva" | "urine";
 

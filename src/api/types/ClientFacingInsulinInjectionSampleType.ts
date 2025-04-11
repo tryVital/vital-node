@@ -3,7 +3,7 @@
  */
 
 /**
- * Insulin type: rapid vs long acting
+ * Insulin type: rapid vs long acting ℹ️ This enum is non-exhaustive.
  */
 export type ClientFacingInsulinInjectionSampleType = "rapid_acting" | "long_acting";
 

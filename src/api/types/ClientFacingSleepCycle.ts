@@ -23,6 +23,7 @@ export interface ClientFacingSleepCycle {
     stageType: Vital.VitalSleepStage[];
     timeZone?: string;
     sourceProvider: Vital.ClientFacingSleepCycleSourceProvider;
+    /** ℹ️ This enum is non-exhaustive. */
     sourceType: Vital.ClientFacingSleepCycleSourceType;
     sourceAppId?: string;
     userId: string;

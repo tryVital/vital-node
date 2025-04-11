@@ -5,6 +5,7 @@
 import * as Vital from "../index";
 
 export interface ProviderMfaRequest {
+    /** ℹ️ This enum is non-exhaustive. */
     method: Vital.ProviderMfaRequestMethod;
     hint: string;
 }

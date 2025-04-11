@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface HomePregnancyTestEntry {
     date: string;
+    /** ℹ️ This enum is non-exhaustive. */
     testResult: Vital.HomePregnancyTestEntryTestResult;
 }

@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface DetectedDeviationEntry {
     date: string;
+    /** ℹ️ This enum is non-exhaustive. */
     deviation: Vital.DetectedDeviationEntryDeviation;
 }

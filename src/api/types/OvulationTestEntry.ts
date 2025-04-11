@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface OvulationTestEntry {
     date: string;
+    /** ℹ️ This enum is non-exhaustive. */
     testResult: Vital.OvulationTestEntryTestResult;
 }

@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface ContraceptiveEntry {
     date: string;
+    /** ℹ️ This enum is non-exhaustive. */
     type: Vital.ContraceptiveEntryType;
 }

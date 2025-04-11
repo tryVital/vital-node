@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { ProviderConnectionErrorErrorType } from "./ProviderConnectionErrorErrorType";
 
 export const ProviderConnectionError: core.serialization.ObjectSchema<
     serializers.ProviderConnectionError.Raw,
@@ -13,7 +14,7 @@ export const ProviderConnectionError: core.serialization.ObjectSchema<
     provider: core.serialization.string(),
     userId: core.serialization.property("user_id", core.serialization.string()),
     message: core.serialization.string(),
-    errorType: core.serialization.property("error_type", core.serialization.string()),
+    errorType: core.serialization.property("error_type", ProviderConnectionErrorErrorType),
     errorDetails: core.serialization.property("error_details", core.serialization.string()),
 });
 
@@ -22,7 +23,7 @@ export declare namespace ProviderConnectionError {
         provider: string;
         user_id: string;
         message: string;
-        error_type: string;
+        error_type: ProviderConnectionErrorErrorType.Raw;
         error_details: string;
     }
 }

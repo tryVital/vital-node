@@ -5,6 +5,7 @@
 import * as Vital from "../index";
 
 export interface EventDestinationPreferences {
+    /** ℹ️ This enum is non-exhaustive. */
     preferred: Vital.EventDestinationPreferencesPreferred;
     enabled: Vital.EventDestinationPreferencesEnabledItem[];
 }

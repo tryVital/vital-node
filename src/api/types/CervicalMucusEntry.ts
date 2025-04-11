@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface CervicalMucusEntry {
     date: string;
+    /** ℹ️ This enum is non-exhaustive. */
     quality: Vital.CervicalMucusEntryQuality;
 }

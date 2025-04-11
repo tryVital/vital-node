@@ -5,6 +5,7 @@
 import * as Vital from "../index";
 
 export interface ClientFacingConnectionErrorDetails {
+    /** ℹ️ This enum is non-exhaustive. */
     errorType: Vital.ClientFacingConnectionErrorDetailsErrorType;
     errorMessage: string;
     erroredAt: Date;

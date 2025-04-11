@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface Period {
     value?: number;
+    /** ℹ️ This enum is non-exhaustive. */
     unit: Vital.PeriodUnit;
 }

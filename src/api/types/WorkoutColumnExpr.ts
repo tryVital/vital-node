@@ -5,5 +5,6 @@
 import * as Vital from "../index";
 
 export interface WorkoutColumnExpr {
+    /** ℹ️ This enum is non-exhaustive. */
     workout: Vital.WorkoutColumnExprWorkout;
 }

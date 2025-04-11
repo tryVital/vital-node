@@ -16,6 +16,7 @@ export interface ClientFacingElectrocardiogram {
     algorithmVersion?: string;
     timeZone?: string;
     sourceProvider: Vital.ClientFacingElectrocardiogramSourceProvider;
+    /** ℹ️ This enum is non-exhaustive. */
     sourceType: Vital.ClientFacingElectrocardiogramSourceType;
     sourceAppId?: string;
     sourceDeviceModel?: string;

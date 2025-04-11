@@ -5,5 +5,6 @@
 import * as Vital from "../index";
 
 export interface SleepColumnExpr {
+    /** ℹ️ This enum is non-exhaustive. */
     sleep: Vital.SleepColumnExprSleep;
 }

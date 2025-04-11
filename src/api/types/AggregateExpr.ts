@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface AggregateExpr {
     arg: Vital.AggregateExprArg;
+    /** ℹ️ This enum is non-exhaustive. */
     func: Vital.AggregateExprFunc;
 }

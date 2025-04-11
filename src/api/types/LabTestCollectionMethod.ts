@@ -3,7 +3,7 @@
  */
 
 /**
- * The method used to perform a lab test.
+ * The method used to perform a lab test. ℹ️ This enum is non-exhaustive.
  */
 export type LabTestCollectionMethod = "testkit" | "walk_in_test" | "at_home_phlebotomy";
 

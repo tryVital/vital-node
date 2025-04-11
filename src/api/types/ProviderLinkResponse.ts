@@ -5,6 +5,7 @@
 import * as Vital from "../index";
 
 export interface ProviderLinkResponse {
+    /** ℹ️ This enum is non-exhaustive. */
     state: Vital.ProviderLinkResponseState;
     redirectUrl?: string;
     errorType?: string;

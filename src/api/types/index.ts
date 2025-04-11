@@ -284,6 +284,7 @@ export * from "./Png";
 export * from "./PostOrderResponse";
 export * from "./ProfileInDb";
 export * from "./ProviderConnectionCreated";
+export * from "./ProviderConnectionErrorErrorType";
 export * from "./ProviderConnectionError";
 export * from "./ProviderLinkResponseState";
 export * from "./ProviderLinkResponse";

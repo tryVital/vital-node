@@ -5,7 +5,9 @@
 import * as Vital from "../index";
 
 export interface BulkOp {
+    /** ℹ️ This enum is non-exhaustive. */
     type: Vital.BulkOpType;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.BulkOpStatus;
     provider: Vital.Providers;
     pending: number;

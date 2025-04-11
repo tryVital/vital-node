@@ -5,7 +5,7 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type ClientFacingConnectionErrorDetailsErrorType =
+export type ProviderConnectionErrorErrorType =
     | "token_refresh_failed"
     | "webhook_registration_failed"
     | "user_not_found"
@@ -14,7 +14,7 @@ export type ClientFacingConnectionErrorDetailsErrorType =
     | "provider_credential_error"
     | "unknown";
 
-export const ClientFacingConnectionErrorDetailsErrorType = {
+export const ProviderConnectionErrorErrorType = {
     TokenRefreshFailed: "token_refresh_failed",
     WebhookRegistrationFailed: "webhook_registration_failed",
     UserNotFound: "user_not_found",

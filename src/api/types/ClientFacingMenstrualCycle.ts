@@ -21,6 +21,7 @@ export interface ClientFacingMenstrualCycle {
     sexualActivity?: Vital.SexualActivityEntry[];
     basalBodyTemperature?: Vital.BasalBodyTemperatureEntry[];
     sourceProvider: Vital.ClientFacingMenstrualCycleSourceProvider;
+    /** ℹ️ This enum is non-exhaustive. */
     sourceType: Vital.ClientFacingMenstrualCycleSourceType;
     sourceAppId?: string;
     userId: string;
