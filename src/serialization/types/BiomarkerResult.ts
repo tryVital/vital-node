@@ -30,6 +30,11 @@ export const BiomarkerResult: core.serialization.ObjectSchema<serializers.Biomar
             "source_markers",
             core.serialization.list(ParentBiomarkerData).optional()
         ),
+        performingLaboratory: core.serialization.property(
+            "performing_laboratory",
+            core.serialization.string().optional()
+        ),
+        sourceSampleId: core.serialization.property("source_sample_id", core.serialization.string().optional()),
     });
 
 export declare namespace BiomarkerResult {
@@ -51,5 +56,7 @@ export declare namespace BiomarkerResult {
         loinc_slug?: string | null;
         provider_id?: string | null;
         source_markers?: ParentBiomarkerData.Raw[] | null;
+        performing_laboratory?: string | null;
+        source_sample_id?: string | null;
     }
 }

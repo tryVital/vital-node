@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { LabResultsMetadata } from "./LabResultsMetadata";
 import { LabResultsRawResults } from "./LabResultsRawResults";
 import { MissingBiomarkerResult } from "./MissingBiomarkerResult";
+import { SampleData } from "./SampleData";
 
 export const LabResultsRaw: core.serialization.ObjectSchema<serializers.LabResultsRaw.Raw, Vital.LabResultsRaw> =
     core.serialization.object({
@@ -17,6 +18,10 @@ export const LabResultsRaw: core.serialization.ObjectSchema<serializers.LabResul
             "missing_results",
             core.serialization.list(MissingBiomarkerResult).optional()
         ),
+        sampleInformation: core.serialization.property(
+            "sample_information",
+            core.serialization.record(core.serialization.string(), SampleData.optional()).optional()
+        ),
     });
 
 export declare namespace LabResultsRaw {
@@ -24,5 +29,6 @@ export declare namespace LabResultsRaw {
         metadata: LabResultsMetadata.Raw;
         results: LabResultsRawResults.Raw;
         missing_results?: MissingBiomarkerResult.Raw[] | null;
+        sample_information?: Record<string, SampleData.Raw | null | undefined> | null;
     }
 }

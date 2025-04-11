@@ -25,4 +25,6 @@ export interface BiomarkerResult {
     loincSlug?: string;
     providerId?: string;
     sourceMarkers?: Vital.ParentBiomarkerData[];
+    performingLaboratory?: string;
+    sourceSampleId?: string;
 }

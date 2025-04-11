@@ -8,4 +8,5 @@ export interface LabResultsRaw {
     metadata: Vital.LabResultsMetadata;
     results: Vital.LabResultsRawResults;
     missingResults?: Vital.MissingBiomarkerResult[];
+    sampleInformation?: Record<string, Vital.SampleData | undefined>;
 }
