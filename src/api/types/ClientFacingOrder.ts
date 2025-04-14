@@ -42,4 +42,6 @@ export interface ClientFacingOrder {
     passthrough?: string;
     billingType?: Vital.Billing;
     icdCodes?: string[];
+    /** Defines whether the order has an Advanced Beneficiary Notice (ABN) form or not. */
+    hasAbn: boolean;
 }

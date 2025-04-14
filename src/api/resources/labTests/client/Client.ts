@@ -109,8 +109,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -191,8 +191,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -271,8 +271,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -350,8 +350,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -456,8 +456,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -546,8 +546,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -637,8 +637,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -719,8 +719,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -792,8 +792,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -925,8 +925,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -998,8 +998,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1087,8 +1087,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1172,8 +1172,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1262,8 +1262,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1346,8 +1346,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1430,8 +1430,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1509,8 +1509,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1579,8 +1579,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1675,8 +1675,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1764,8 +1764,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1850,8 +1850,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1920,8 +1920,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1996,8 +1996,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2072,8 +2072,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2152,8 +2152,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2251,8 +2251,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2333,8 +2333,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2415,8 +2415,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2497,8 +2497,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2573,8 +2573,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2640,8 +2640,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2712,8 +2712,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2780,8 +2780,73 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            requestType: "json",
+            responseType: "streaming",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return _response.body;
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * GET requisition pdf for an order
+     * @throws {@link Vital.UnprocessableEntityError}
+     */
+    public async getOrderAbnPdf(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<stream.Readable> {
+        const _response = await core.fetcher<stream.Readable>({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `v3/order/${encodeURIComponent(orderId)}/abn_pdf`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2852,8 +2917,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2948,8 +3013,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3048,8 +3113,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3128,8 +3193,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3219,8 +3284,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3366,8 +3431,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.237",
-                "User-Agent": "@tryvital/vital-node/3.1.237",
+                "X-Fern-SDK-Version": "3.1.238",
+                "User-Agent": "@tryvital/vital-node/3.1.238",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
