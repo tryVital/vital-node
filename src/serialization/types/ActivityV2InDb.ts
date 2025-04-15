@@ -17,6 +17,8 @@ export const ActivityV2InDb: core.serialization.ObjectSchema<serializers.Activit
         priorityId: core.serialization.property("priority_id", core.serialization.number()),
         id: core.serialization.string(),
         source: ClientFacingProvider,
+        createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
+        updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
     });
 
 export declare namespace ActivityV2InDb {
@@ -29,5 +31,7 @@ export declare namespace ActivityV2InDb {
         priority_id: number;
         id: string;
         source: ClientFacingProvider.Raw;
+        created_at?: string | null;
+        updated_at?: string | null;
     }
 }

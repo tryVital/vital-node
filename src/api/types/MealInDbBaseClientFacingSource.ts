@@ -20,9 +20,7 @@ export interface MealInDbBaseClientFacingSource {
     micros?: Vital.Micros;
     data?: Record<string, Vital.ClientFacingFood>;
     source: Vital.ClientFacingSource;
-    /** This value is identical to `timestamp`. */
     createdAt: Date;
-    /** This value is identical to `timestamp`. */
     updatedAt: Date;
     sourceAppId?: string;
 }

@@ -18,6 +18,8 @@ export const SleepV2InDb: core.serialization.ObjectSchema<serializers.SleepV2InD
         id: core.serialization.string(),
         source: ClientFacingProvider,
         priority: core.serialization.number().optional(),
+        createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
+        updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
     });
 
 export declare namespace SleepV2InDb {
@@ -31,5 +33,7 @@ export declare namespace SleepV2InDb {
         id: string;
         source: ClientFacingProvider.Raw;
         priority?: number | null;
+        created_at?: string | null;
+        updated_at?: string | null;
     }
 }

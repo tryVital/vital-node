@@ -31,6 +31,8 @@ export const ClientFacingSleepCycle: core.serialization.ObjectSchema<
     sourceProvider: core.serialization.property("source_provider", ClientFacingSleepCycleSourceProvider),
     sourceType: core.serialization.property("source_type", ClientFacingSleepCycleSourceType),
     sourceAppId: core.serialization.property("source_app_id", core.serialization.string().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
     userId: core.serialization.property("user_id", core.serialization.string()),
     source: ClientFacingSource,
 });
@@ -48,6 +50,8 @@ export declare namespace ClientFacingSleepCycle {
         source_provider: ClientFacingSleepCycleSourceProvider.Raw;
         source_type: ClientFacingSleepCycleSourceType.Raw;
         source_app_id?: string | null;
+        created_at?: string | null;
+        updated_at?: string | null;
         user_id: string;
         source: ClientFacingSource.Raw;
     }

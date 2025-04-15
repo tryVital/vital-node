@@ -20,6 +20,8 @@ export interface ClientFacingElectrocardiogram {
     sourceType: Vital.ClientFacingElectrocardiogramSourceType;
     sourceAppId?: string;
     sourceDeviceModel?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
     userId: string;
     source: Vital.ClientFacingSource;
 }

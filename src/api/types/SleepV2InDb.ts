@@ -14,4 +14,6 @@ export interface SleepV2InDb {
     id: string;
     source: Vital.ClientFacingProvider;
     priority?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

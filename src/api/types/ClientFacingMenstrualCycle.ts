@@ -24,6 +24,8 @@ export interface ClientFacingMenstrualCycle {
     /** ℹ️ This enum is non-exhaustive. */
     sourceType: Vital.ClientFacingMenstrualCycleSourceType;
     sourceAppId?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
     userId: string;
     source: Vital.ClientFacingSource;
 }

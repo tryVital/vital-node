@@ -13,4 +13,6 @@ export interface ActivityV2InDb {
     priorityId: number;
     id: string;
     source: Vital.ClientFacingProvider;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
