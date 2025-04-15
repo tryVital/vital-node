@@ -29,8 +29,26 @@ export interface LabTestsGetOrdersRequest {
      * Date to YYYY-MM-DD or ISO formatted date time. If a date is provided without a time, the time will be set to 00:00:00
      */
     updatedEndDate?: Date;
+    /**
+     * Filter by low level status.
+     */
+    status?: Vital.OrderLowLevelStatus | Vital.OrderLowLevelStatus[];
+    /**
+     * Order key to sort by.
+     */
     orderKey?: Vital.LabTestsGetOrdersRequestOrderKey;
+    /**
+     * Order direction to sort by.
+     */
     orderDirection?: Vital.LabTestsGetOrdersRequestOrderDirection;
+    /**
+     * Filter by method used to perform the lab test.
+     */
+    orderType?: Vital.LabTestCollectionMethod | Vital.LabTestCollectionMethod[];
+    /**
+     * Filter by activation type.
+     */
+    orderActivationTypes?: Vital.OrderActivationType | Vital.OrderActivationType[];
     /**
      * Filter by user ID.
      */

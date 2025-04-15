@@ -257,6 +257,8 @@ export * from "./Micros";
 export * from "./Minerals";
 export * from "./MissingBiomarkerResult";
 export * from "./OAuthProviders";
+export * from "./OrderActivationType";
+export * from "./OrderLowLevelStatus";
 export * from "./OrderSetRequest";
 export * from "./OrderStatus";
 export * from "./OrderTopLevelStatus";
