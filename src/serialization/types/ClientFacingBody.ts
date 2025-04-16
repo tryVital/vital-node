@@ -11,8 +11,8 @@ export const ClientFacingBody: core.serialization.ObjectSchema<
     serializers.ClientFacingBody.Raw,
     Vital.ClientFacingBody
 > = core.serialization.object({
-    userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
+    userId: core.serialization.property("user_id", core.serialization.string()),
     date: core.serialization.date(),
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
     weight: core.serialization.number().optional(),
@@ -31,12 +31,14 @@ export const ClientFacingBody: core.serialization.ObjectSchema<
         core.serialization.number().optional()
     ),
     source: ClientFacingSource,
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
 
 export declare namespace ClientFacingBody {
     interface Raw {
-        user_id: string;
         id: string;
+        user_id: string;
         date: string;
         calendar_date: string;
         weight?: number | null;
@@ -49,5 +51,7 @@ export declare namespace ClientFacingBody {
         lean_body_mass_kilogram?: number | null;
         waist_circumference_centimeter?: number | null;
         source: ClientFacingSource.Raw;
+        created_at: string;
+        updated_at: string;
     }
 }

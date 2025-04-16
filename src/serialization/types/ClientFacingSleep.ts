@@ -14,8 +14,8 @@ export const ClientFacingSleep: core.serialization.ObjectSchema<
     serializers.ClientFacingSleep.Raw,
     Vital.ClientFacingSleep
 > = core.serialization.object({
-    userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
+    userId: core.serialization.property("user_id", core.serialization.string()),
     date: core.serialization.date(),
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
     bedtimeStart: core.serialization.property("bedtime_start", core.serialization.date()),
@@ -42,12 +42,14 @@ export const ClientFacingSleep: core.serialization.ObjectSchema<
     respiratoryRate: core.serialization.property("respiratory_rate", core.serialization.number().optional()),
     source: ClientFacingSource,
     sleepStream: core.serialization.property("sleep_stream", ClientFacingSleepStream.optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
 
 export declare namespace ClientFacingSleep {
     interface Raw {
-        user_id: string;
         id: string;
+        user_id: string;
         date: string;
         calendar_date: string;
         bedtime_start: string;
@@ -74,5 +76,7 @@ export declare namespace ClientFacingSleep {
         respiratory_rate?: number | null;
         source: ClientFacingSource.Raw;
         sleep_stream?: ClientFacingSleepStream.Raw | null;
+        created_at: string;
+        updated_at: string;
     }
 }

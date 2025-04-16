@@ -5,9 +5,9 @@
 import * as Vital from "../index";
 
 export interface ClientFacingSleep {
+    id: string;
     /** User id returned by vital create user request. This id should be stored in your database against the user and used for all interactions with the vital api. */
     userId: string;
-    id: string;
     /** Date of the specified record, formatted as ISO8601 datetime string in UTC 00:00. Deprecated in favour of calendar_date. */
     date: Date;
     /** Date of the sleep summary in the YYYY-mm-dd format. This generally matches the sleep end date. */
@@ -64,4 +64,6 @@ export interface ClientFacingSleep {
     /** Source the data has come from. */
     source: Vital.ClientFacingSource;
     sleepStream?: Vital.ClientFacingSleepStream;
+    createdAt: Date;
+    updatedAt: Date;
 }

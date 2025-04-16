@@ -32,8 +32,8 @@ export const ClientFacingElectrocardiogram: core.serialization.ObjectSchema<
     sourceType: core.serialization.property("source_type", ClientFacingElectrocardiogramSourceType),
     sourceAppId: core.serialization.property("source_app_id", core.serialization.string().optional()),
     sourceDeviceModel: core.serialization.property("source_device_model", core.serialization.string().optional()),
-    createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
-    updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
     userId: core.serialization.property("user_id", core.serialization.string()),
     source: ClientFacingSource,
 });
@@ -54,8 +54,8 @@ export declare namespace ClientFacingElectrocardiogram {
         source_type: ClientFacingElectrocardiogramSourceType.Raw;
         source_app_id?: string | null;
         source_device_model?: string | null;
-        created_at?: string | null;
-        updated_at?: string | null;
+        created_at: string;
+        updated_at: string;
         user_id: string;
         source: ClientFacingSource.Raw;
     }

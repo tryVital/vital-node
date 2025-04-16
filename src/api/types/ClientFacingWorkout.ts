@@ -5,9 +5,9 @@
 import * as Vital from "../index";
 
 export interface ClientFacingWorkout {
+    id: string;
     /** User id returned by vital create user request. This id should be stored in your database against the user and used for all interactions with the vital api. */
     userId: string;
-    id: string;
     /** Title given for the workout */
     title?: string;
     /** Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds */
@@ -58,4 +58,6 @@ export interface ClientFacingWorkout {
     providerId: string;
     /** Source the data has come from. */
     source: Vital.ClientFacingSource;
+    createdAt: Date;
+    updatedAt: Date;
 }

@@ -5,9 +5,9 @@
 import * as Vital from "../index";
 
 export interface ClientFacingBody {
+    id: string;
     /** User id returned by vital create user request. This id should be stored in your database against the user and used for all interactions with the vital api. */
     userId: string;
-    id: string;
     /** Date of the specified record, formatted as ISO8601 datetime string in UTC 00:00. Deprecated in favour of calendar_date. */
     date: Date;
     /** Date of the summary in the YYYY-mm-dd format. */
@@ -28,4 +28,6 @@ export interface ClientFacingBody {
     leanBodyMassKilogram?: number;
     waistCircumferenceCentimeter?: number;
     source: Vital.ClientFacingSource;
+    createdAt: Date;
+    updatedAt: Date;
 }

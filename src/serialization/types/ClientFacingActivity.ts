@@ -12,8 +12,8 @@ export const ClientFacingActivity: core.serialization.ObjectSchema<
     serializers.ClientFacingActivity.Raw,
     Vital.ClientFacingActivity
 > = core.serialization.object({
-    userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
+    userId: core.serialization.property("user_id", core.serialization.string()),
     date: core.serialization.date(),
     calendarDate: core.serialization.property("calendar_date", core.serialization.string()),
     caloriesTotal: core.serialization.property("calories_total", core.serialization.number().optional()),
@@ -31,12 +31,14 @@ export const ClientFacingActivity: core.serialization.ObjectSchema<
     heartRate: core.serialization.property("heart_rate", ClientFacingHeartRate.optional()),
     wheelchairUse: core.serialization.property("wheelchair_use", core.serialization.boolean().optional()),
     wheelchairPush: core.serialization.property("wheelchair_push", core.serialization.number().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
 
 export declare namespace ClientFacingActivity {
     interface Raw {
-        user_id: string;
         id: string;
+        user_id: string;
         date: string;
         calendar_date: string;
         calories_total?: number | null;
@@ -54,5 +56,7 @@ export declare namespace ClientFacingActivity {
         heart_rate?: ClientFacingHeartRate.Raw | null;
         wheelchair_use?: boolean | null;
         wheelchair_push?: number | null;
+        created_at: string;
+        updated_at: string;
     }
 }

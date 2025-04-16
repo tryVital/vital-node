@@ -13,8 +13,8 @@ export const ClientFacingWorkout: core.serialization.ObjectSchema<
     serializers.ClientFacingWorkout.Raw,
     Vital.ClientFacingWorkout
 > = core.serialization.object({
-    userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
+    userId: core.serialization.property("user_id", core.serialization.string()),
     title: core.serialization.string().optional(),
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     averageHr: core.serialization.property("average_hr", core.serialization.number().optional()),
@@ -40,12 +40,14 @@ export const ClientFacingWorkout: core.serialization.ObjectSchema<
     map: ClientFacingWorkoutMap.optional(),
     providerId: core.serialization.property("provider_id", core.serialization.string()),
     source: ClientFacingSource,
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
 
 export declare namespace ClientFacingWorkout {
     interface Raw {
-        user_id: string;
         id: string;
+        user_id: string;
         title?: string | null;
         timezone_offset?: number | null;
         average_hr?: number | null;
@@ -71,5 +73,7 @@ export declare namespace ClientFacingWorkout {
         map?: ClientFacingWorkoutMap.Raw | null;
         provider_id: string;
         source: ClientFacingSource.Raw;
+        created_at: string;
+        updated_at: string;
     }
 }
