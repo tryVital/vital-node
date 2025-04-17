@@ -8,4 +8,5 @@
  */
 export interface LinkListBulkOpsRequest {
     nextCursor?: string;
+    pageSize?: number;
 }
