@@ -5,11 +5,13 @@
 import * as Vital from "../index";
 
 export interface ClientFacingProfile {
+    id: string;
     /** User id returned by vital create user request. This id should be stored in your database against the user and used for all interactions with the vital api. */
     userId: string;
-    id: string;
     height?: number;
     birthDate?: string;
     wheelchairUse?: boolean;
     source: Vital.ClientFacingSource;
+    createdAt: Date;
+    updatedAt: Date;
 }

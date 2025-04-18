@@ -5,11 +5,12 @@
 import * as Vital from "../index";
 
 export interface ProfileInDb {
-    data: string;
+    id: string;
+    data?: unknown;
     userId: string;
     sourceId: number;
     priorityId?: number;
-    id: string;
     source: Vital.ClientFacingProvider;
+    createdAt?: Date;
     updatedAt?: Date;
 }

@@ -10129,7 +10129,7 @@ await client.labTests.createOrder({
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2024-01-15T09:30:00Z",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
         email: "email",
@@ -10197,7 +10197,7 @@ await client.labTests.importOrder({
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2024-01-15T09:30:00Z",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
         email: "email",
@@ -10463,7 +10463,7 @@ await client.testkit.register({
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2024-01-15T09:30:00Z",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
         email: "email",

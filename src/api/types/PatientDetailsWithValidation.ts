@@ -10,7 +10,7 @@ import * as Vital from "../index";
 export interface PatientDetailsWithValidation {
     firstName: string;
     lastName: string;
-    dob: Date;
+    dob: string;
     gender: Vital.Gender;
     phoneNumber: string;
     email: string;

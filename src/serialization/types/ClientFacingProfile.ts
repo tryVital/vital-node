@@ -11,21 +11,25 @@ export const ClientFacingProfile: core.serialization.ObjectSchema<
     serializers.ClientFacingProfile.Raw,
     Vital.ClientFacingProfile
 > = core.serialization.object({
-    userId: core.serialization.property("user_id", core.serialization.string()),
     id: core.serialization.string(),
+    userId: core.serialization.property("user_id", core.serialization.string()),
     height: core.serialization.number().optional(),
     birthDate: core.serialization.property("birth_date", core.serialization.string().optional()),
     wheelchairUse: core.serialization.property("wheelchair_use", core.serialization.boolean().optional()),
     source: ClientFacingSource,
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    updatedAt: core.serialization.property("updated_at", core.serialization.date()),
 });
 
 export declare namespace ClientFacingProfile {
     interface Raw {
-        user_id: string;
         id: string;
+        user_id: string;
         height?: number | null;
         birth_date?: string | null;
         wheelchair_use?: boolean | null;
         source: ClientFacingSource.Raw;
+        created_at: string;
+        updated_at: string;
     }
 }

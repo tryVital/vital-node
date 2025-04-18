@@ -18,7 +18,7 @@ export const PatientDetailsWithValidation: core.serialization.ObjectSchema<
 > = core.serialization.object({
     firstName: core.serialization.property("first_name", core.serialization.string()),
     lastName: core.serialization.property("last_name", core.serialization.string()),
-    dob: core.serialization.date(),
+    dob: core.serialization.string(),
     gender: Gender,
     phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
     email: core.serialization.string(),

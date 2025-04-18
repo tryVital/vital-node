@@ -7,7 +7,7 @@ import * as Vital from "../index";
 export interface ClientFacingPatientDetailsCompatible {
     firstName?: string;
     lastName?: string;
-    dob: Date;
+    dob: string;
     gender: string;
     phoneNumber?: string;
     email?: string;
