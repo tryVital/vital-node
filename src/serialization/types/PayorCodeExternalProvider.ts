@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const PayorCodeExternalProvider: core.serialization.Schema<
     serializers.PayorCodeExternalProvider.Raw,
     Vital.PayorCodeExternalProvider
-> = core.serialization.enum_(["change_healthcare", "availity"]);
+> = core.serialization.enum_(["change_healthcare", "availity", "stedi"]);
 
 export declare namespace PayorCodeExternalProvider {
-    type Raw = "change_healthcare" | "availity";
+    type Raw = "change_healthcare" | "availity" | "stedi";
 }

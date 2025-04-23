@@ -22,6 +22,8 @@ export const LabResultsMetadata: core.serialization.ObjectSchema<
     dateReceived: core.serialization.property("date_received", core.serialization.string().optional()),
     status: core.serialization.string().optional(),
     interpretation: core.serialization.string().optional(),
+    patientId: core.serialization.property("patient_id", core.serialization.string().optional()),
+    accountId: core.serialization.property("account_id", core.serialization.string().optional()),
 });
 
 export declare namespace LabResultsMetadata {
@@ -38,5 +40,7 @@ export declare namespace LabResultsMetadata {
         date_received?: string | null;
         status?: string | null;
         interpretation?: string | null;
+        patient_id?: string | null;
+        account_id?: string | null;
     }
 }

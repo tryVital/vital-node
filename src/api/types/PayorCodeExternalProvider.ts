@@ -5,9 +5,10 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type PayorCodeExternalProvider = "change_healthcare" | "availity";
+export type PayorCodeExternalProvider = "change_healthcare" | "availity" | "stedi";
 
 export const PayorCodeExternalProvider = {
     ChangeHealthcare: "change_healthcare",
     Availity: "availity",
+    Stedi: "stedi",
 } as const;

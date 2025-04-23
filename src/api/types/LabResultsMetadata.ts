@@ -15,4 +15,6 @@ export interface LabResultsMetadata {
     dateReceived?: string;
     status?: string;
     interpretation?: string;
+    patientId?: string;
+    accountId?: string;
 }
