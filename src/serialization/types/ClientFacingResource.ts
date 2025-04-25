@@ -65,9 +65,12 @@ export const ClientFacingResource: core.serialization.Schema<
     "daylight_exposure",
     "handwashing",
     "basal_body_temperature",
+    "heart_rate_recovery_one_minute",
     "body_mass_index",
     "lean_body_mass",
     "waist_circumference",
+    "workout_distance",
+    "workout_swimming_stroke",
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
@@ -133,9 +136,12 @@ export declare namespace ClientFacingResource {
         | "daylight_exposure"
         | "handwashing"
         | "basal_body_temperature"
+        | "heart_rate_recovery_one_minute"
         | "body_mass_index"
         | "lean_body_mass"
         | "waist_circumference"
+        | "workout_distance"
+        | "workout_swimming_stroke"
         | "workout_duration"
         | "insulin_injection"
         | "carbohydrates"

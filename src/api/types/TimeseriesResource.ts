@@ -54,6 +54,9 @@ export type TimeseriesResource =
     | "body_mass_index"
     | "lean_body_mass"
     | "waist_circumference"
+    | "heart_rate_recovery_one_minute"
+    | "workout_distance"
+    | "workout_swimming_stroke"
     | "workout_duration"
     | "insulin_injection"
     | "carbohydrates"
@@ -108,6 +111,9 @@ export const TimeseriesResource = {
     BodyMassIndex: "body_mass_index",
     LeanBodyMass: "lean_body_mass",
     WaistCircumference: "waist_circumference",
+    HeartRateRecoveryOneMinute: "heart_rate_recovery_one_minute",
+    WorkoutDistance: "workout_distance",
+    WorkoutSwimmingStroke: "workout_swimming_stroke",
     WorkoutDuration: "workout_duration",
     InsulinInjection: "insulin_injection",
     Carbohydrates: "carbohydrates",

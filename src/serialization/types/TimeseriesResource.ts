@@ -58,6 +58,9 @@ export const TimeseriesResource: core.serialization.Schema<
     "body_mass_index",
     "lean_body_mass",
     "waist_circumference",
+    "heart_rate_recovery_one_minute",
+    "workout_distance",
+    "workout_swimming_stroke",
     "workout_duration",
     "insulin_injection",
     "carbohydrates",
@@ -114,6 +117,9 @@ export declare namespace TimeseriesResource {
         | "body_mass_index"
         | "lean_body_mass"
         | "waist_circumference"
+        | "heart_rate_recovery_one_minute"
+        | "workout_distance"
+        | "workout_swimming_stroke"
         | "workout_duration"
         | "insulin_injection"
         | "carbohydrates"

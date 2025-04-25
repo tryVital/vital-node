@@ -1,3 +1,6 @@
+export { type VitalsWorkoutSwimmingStrokeGroupedRequest } from "./VitalsWorkoutSwimmingStrokeGroupedRequest";
+export { type VitalsWorkoutDistanceGroupedRequest } from "./VitalsWorkoutDistanceGroupedRequest";
+export { type VitalsHeartRateRecoveryOneMinuteGroupedRequest } from "./VitalsHeartRateRecoveryOneMinuteGroupedRequest";
 export { type VitalsWaistCircumferenceGroupedRequest } from "./VitalsWaistCircumferenceGroupedRequest";
 export { type VitalsLeanBodyMassGroupedRequest } from "./VitalsLeanBodyMassGroupedRequest";
 export { type VitalsBodyMassIndexGroupedRequest } from "./VitalsBodyMassIndexGroupedRequest";
