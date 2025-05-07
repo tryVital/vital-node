@@ -14,6 +14,15 @@ export interface ClientFacingProviderWithStatus {
     createdOn: Date;
     /** Status of source, either error or connected */
     status: string;
+    /**
+     * The unique identifier of the associated external data provider user.
+     *
+     * * OAuth Providers: User unique identifier; provider-specific formats
+     * * Password Providers: Username
+     * * Email Providers: Email
+     * * Junction Mobile SDK Providers: `null` (not available)
+     */
+    externalUserId?: string;
     /** Details of the terminal connection error — populated only when the status is `error`. */
     errorDetails?: Vital.ClientFacingConnectionErrorDetails;
     resourceAvailability: Record<string, Vital.ResourceAvailability>;

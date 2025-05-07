@@ -17,6 +17,7 @@ export const ClientFacingProviderWithStatus: core.serialization.ObjectSchema<
     logo: core.serialization.string(),
     createdOn: core.serialization.property("created_on", core.serialization.date()),
     status: core.serialization.string(),
+    externalUserId: core.serialization.property("external_user_id", core.serialization.string().optional()),
     errorDetails: core.serialization.property("error_details", ClientFacingConnectionErrorDetails.optional()),
     resourceAvailability: core.serialization.property(
         "resource_availability",
@@ -31,6 +32,7 @@ export declare namespace ClientFacingProviderWithStatus {
         logo: string;
         created_on: string;
         status: string;
+        external_user_id?: string | null;
         error_details?: ClientFacingConnectionErrorDetails.Raw | null;
         resource_availability: Record<string, ResourceAvailability.Raw>;
     }

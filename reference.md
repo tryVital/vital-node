@@ -11105,3 +11105,67 @@ await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_
 </dd>
 </dl>
 </details>
+
+<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getTaskHistoryForContinuousQuery</a>(userId, queryIdOrSlug, { ...params }) -> Vital.ContinuousQueryTaskHistoryResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**userId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**queryIdOrSlug:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.AggregateGetTaskHistoryForContinuousQueryRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Aggregate.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>

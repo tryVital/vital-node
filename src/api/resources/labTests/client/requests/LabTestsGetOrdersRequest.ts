@@ -46,6 +46,10 @@ export interface LabTestsGetOrdersRequest {
      */
     orderType?: Vital.LabTestCollectionMethod | Vital.LabTestCollectionMethod[];
     /**
+     * Filter by critical order status.
+     */
+    isCritical?: boolean;
+    /**
      * Filter by activation type.
      */
     orderActivationTypes?: Vital.OrderActivationType | Vital.OrderActivationType[];

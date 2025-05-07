@@ -7,6 +7,7 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { HistoricalPullStatus } from "./HistoricalPullStatus";
 import { HistoricalPullTimeline } from "./HistoricalPullTimeline";
+import { SingleHistoricalPullStatisticsErrorDetails } from "./SingleHistoricalPullStatisticsErrorDetails";
 
 export const SingleHistoricalPullStatistics: core.serialization.ObjectSchema<
     serializers.SingleHistoricalPullStatistics.Raw,
@@ -19,6 +20,7 @@ export const SingleHistoricalPullStatistics: core.serialization.ObjectSchema<
     daysWithData: core.serialization.property("days_with_data", core.serialization.number().optional()),
     release: core.serialization.string(),
     traceId: core.serialization.property("trace_id", core.serialization.string().optional()),
+    errorDetails: core.serialization.property("error_details", SingleHistoricalPullStatisticsErrorDetails.optional()),
 });
 
 export declare namespace SingleHistoricalPullStatistics {
@@ -30,5 +32,6 @@ export declare namespace SingleHistoricalPullStatistics {
         days_with_data?: number | null;
         release: string;
         trace_id?: string | null;
+        error_details?: SingleHistoricalPullStatisticsErrorDetails.Raw | null;
     }
 }

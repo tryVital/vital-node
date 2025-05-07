@@ -9,5 +9,14 @@ export interface ProviderConnectionCreated {
     /** Deprecated. Use `provider` instead. Subject to removal after 1 Jan 2024. */
     source: Vital.ClientFacingProvider;
     provider: Vital.ClientFacingProvider;
+    /**
+     * The unique identifier of the associated external data provider user.
+     *
+     * * OAuth Providers: User unique identifier; provider-specific formats
+     * * Password Providers: Username
+     * * Email Providers: Email
+     * * Junction Mobile SDK Providers: `null` (not available)
+     */
+    externalUserId?: string;
     resourceAvailability: Record<string, Vital.ResourceAvailability>;
 }

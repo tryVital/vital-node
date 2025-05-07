@@ -68,8 +68,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.254",
-                "User-Agent": "@tryvital/vital-node/3.1.254",
+                "X-Fern-SDK-Version": "3.1.255",
+                "User-Agent": "@tryvital/vital-node/3.1.255",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
@@ -151,8 +151,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.254",
-                "User-Agent": "@tryvital/vital-node/3.1.254",
+                "X-Fern-SDK-Version": "3.1.255",
+                "User-Agent": "@tryvital/vital-node/3.1.255",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
@@ -166,6 +166,100 @@ export class Aggregate {
         });
         if (_response.ok) {
             return serializers.AggregationResult.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new Vital.UnprocessableEntityError(
+                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.VitalError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VitalError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VitalTimeoutError();
+            case "unknown":
+                throw new errors.VitalError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} userId
+     * @param {string} queryIdOrSlug
+     * @param {Vital.AggregateGetTaskHistoryForContinuousQueryRequest} request
+     * @param {Aggregate.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vital.UnprocessableEntityError}
+     *
+     * @example
+     *     await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug")
+     */
+    public async getTaskHistoryForContinuousQuery(
+        userId: string,
+        queryIdOrSlug: string,
+        request: Vital.AggregateGetTaskHistoryForContinuousQueryRequest = {},
+        requestOptions?: Aggregate.RequestOptions
+    ): Promise<Vital.ContinuousQueryTaskHistoryResponse> {
+        const { nextCursor, limit } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (nextCursor != null) {
+            _queryParams["next_cursor"] = nextCursor;
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
+                `aggregate/v1/user/${encodeURIComponent(userId)}/continuous_query/${encodeURIComponent(
+                    queryIdOrSlug
+                )}/task_history`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@tryvital/vital-node",
+                "X-Fern-SDK-Version": "3.1.255",
+                "User-Agent": "@tryvital/vital-node/3.1.255",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.ContinuousQueryTaskHistoryResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

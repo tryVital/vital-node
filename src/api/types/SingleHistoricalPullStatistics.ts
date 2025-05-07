@@ -12,4 +12,5 @@ export interface SingleHistoricalPullStatistics {
     daysWithData?: number;
     release: string;
     traceId?: string;
+    errorDetails?: Vital.SingleHistoricalPullStatisticsErrorDetails;
 }
