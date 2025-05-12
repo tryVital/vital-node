@@ -17,6 +17,7 @@ export const Labs: core.serialization.Schema<serializers.Labs.Raw, Vital.Labs> =
     "manual",
     "sanocardio",
     "ihd",
+    "nexus",
 ]);
 
 export declare namespace Labs {
@@ -30,5 +31,6 @@ export declare namespace Labs {
         | "us_biotek"
         | "manual"
         | "sanocardio"
-        | "ihd";
+        | "ihd"
+        | "nexus";
 }

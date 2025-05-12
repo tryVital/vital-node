@@ -15,7 +15,8 @@ export type Labs =
     | "us_biotek"
     | "manual"
     | "sanocardio"
-    | "ihd";
+    | "ihd"
+    | "nexus";
 
 export const Labs = {
     Ayumetrix: "ayumetrix",
@@ -28,4 +29,5 @@ export const Labs = {
     Manual: "manual",
     Sanocardio: "sanocardio",
     Ihd: "ihd",
+    Nexus: "nexus",
 } as const;
