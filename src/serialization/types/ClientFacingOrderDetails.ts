@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { ClientFacingWalkInOrderDetails } from "./ClientFacingWalkInOrderDetails";
 import { ClientFacingTestKitOrderDetails } from "./ClientFacingTestKitOrderDetails";
 import { ClientFacingAtHomePhlebotomyOrderDetails } from "./ClientFacingAtHomePhlebotomyOrderDetails";
+import { ClientFacingOnSiteCollectionOrderDetails } from "./ClientFacingOnSiteCollectionOrderDetails";
 
 export const ClientFacingOrderDetails: core.serialization.Schema<
     serializers.ClientFacingOrderDetails.Raw,
@@ -17,6 +18,7 @@ export const ClientFacingOrderDetails: core.serialization.Schema<
         walk_in_test: ClientFacingWalkInOrderDetails,
         testkit: ClientFacingTestKitOrderDetails,
         at_home_phlebotomy: ClientFacingAtHomePhlebotomyOrderDetails,
+        on_site_collection: ClientFacingOnSiteCollectionOrderDetails,
     })
     .transform<Vital.ClientFacingOrderDetails>({
         transform: (value) => value,
@@ -27,7 +29,8 @@ export declare namespace ClientFacingOrderDetails {
     type Raw =
         | ClientFacingOrderDetails.WalkInTest
         | ClientFacingOrderDetails.Testkit
-        | ClientFacingOrderDetails.AtHomePhlebotomy;
+        | ClientFacingOrderDetails.AtHomePhlebotomy
+        | ClientFacingOrderDetails.OnSiteCollection;
 
     interface WalkInTest extends ClientFacingWalkInOrderDetails.Raw {
         type: "walk_in_test";
@@ -39,5 +42,9 @@ export declare namespace ClientFacingOrderDetails {
 
     interface AtHomePhlebotomy extends ClientFacingAtHomePhlebotomyOrderDetails.Raw {
         type: "at_home_phlebotomy";
+    }
+
+    interface OnSiteCollection extends ClientFacingOnSiteCollectionOrderDetails.Raw {
+        type: "on_site_collection";
     }
 }

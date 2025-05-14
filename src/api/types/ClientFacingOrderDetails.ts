@@ -7,7 +7,8 @@ import * as Vital from "../index";
 export type ClientFacingOrderDetails =
     | Vital.ClientFacingOrderDetails.WalkInTest
     | Vital.ClientFacingOrderDetails.Testkit
-    | Vital.ClientFacingOrderDetails.AtHomePhlebotomy;
+    | Vital.ClientFacingOrderDetails.AtHomePhlebotomy
+    | Vital.ClientFacingOrderDetails.OnSiteCollection;
 
 export declare namespace ClientFacingOrderDetails {
     interface WalkInTest extends Vital.ClientFacingWalkInOrderDetails {
@@ -20,5 +21,9 @@ export declare namespace ClientFacingOrderDetails {
 
     interface AtHomePhlebotomy extends Vital.ClientFacingAtHomePhlebotomyOrderDetails {
         type: "at_home_phlebotomy";
+    }
+
+    interface OnSiteCollection extends Vital.ClientFacingOnSiteCollectionOrderDetails {
+        type: "on_site_collection";
     }
 }

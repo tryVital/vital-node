@@ -5,10 +5,11 @@
 /**
  * The method used to perform a lab test. ℹ️ This enum is non-exhaustive.
  */
-export type LabTestCollectionMethod = "testkit" | "walk_in_test" | "at_home_phlebotomy";
+export type LabTestCollectionMethod = "testkit" | "walk_in_test" | "at_home_phlebotomy" | "on_site_collection";
 
 export const LabTestCollectionMethod = {
     Testkit: "testkit",
     WalkInTest: "walk_in_test",
     AtHomePhlebotomy: "at_home_phlebotomy",
+    OnSiteCollection: "on_site_collection",
 } as const;

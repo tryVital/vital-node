@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const LabTestCollectionMethod: core.serialization.Schema<
     serializers.LabTestCollectionMethod.Raw,
     Vital.LabTestCollectionMethod
-> = core.serialization.enum_(["testkit", "walk_in_test", "at_home_phlebotomy"]);
+> = core.serialization.enum_(["testkit", "walk_in_test", "at_home_phlebotomy", "on_site_collection"]);
 
 export declare namespace LabTestCollectionMethod {
-    type Raw = "testkit" | "walk_in_test" | "at_home_phlebotomy";
+    type Raw = "testkit" | "walk_in_test" | "at_home_phlebotomy" | "on_site_collection";
 }

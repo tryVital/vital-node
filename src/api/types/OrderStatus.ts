@@ -45,7 +45,15 @@ export type OrderStatus =
     | "cancelled.testkit.cancelled"
     | "cancelled.testkit.do_not_process"
     | "collecting_sample.testkit.problem_in_transit_customer"
-    | "collecting_sample.testkit.problem_in_transit_lab";
+    | "collecting_sample.testkit.problem_in_transit_lab"
+    | "received.on_site_collection.ordered"
+    | "received.on_site_collection.requisition_created"
+    | "received.on_site_collection.requisition_bypassed"
+    | "sample_with_lab.on_site_collection.draw_completed"
+    | "completed.on_site_collection.completed"
+    | "cancelled.on_site_collection.cancelled"
+    | "sample_with_lab.on_site_collection.partial_results"
+    | "failed.on_site_collection.sample_error";
 
 export const OrderStatus = {
     ReceivedWalkInTestOrdered: "received.walk_in_test.ordered",
@@ -88,4 +96,12 @@ export const OrderStatus = {
     CancelledTestkitDoNotProcess: "cancelled.testkit.do_not_process",
     CollectingSampleTestkitProblemInTransitCustomer: "collecting_sample.testkit.problem_in_transit_customer",
     CollectingSampleTestkitProblemInTransitLab: "collecting_sample.testkit.problem_in_transit_lab",
+    ReceivedOnSiteCollectionOrdered: "received.on_site_collection.ordered",
+    ReceivedOnSiteCollectionRequisitionCreated: "received.on_site_collection.requisition_created",
+    ReceivedOnSiteCollectionRequisitionBypassed: "received.on_site_collection.requisition_bypassed",
+    SampleWithLabOnSiteCollectionDrawCompleted: "sample_with_lab.on_site_collection.draw_completed",
+    CompletedOnSiteCollectionCompleted: "completed.on_site_collection.completed",
+    CancelledOnSiteCollectionCancelled: "cancelled.on_site_collection.cancelled",
+    SampleWithLabOnSiteCollectionPartialResults: "sample_with_lab.on_site_collection.partial_results",
+    FailedOnSiteCollectionSampleError: "failed.on_site_collection.sample_error",
 } as const;

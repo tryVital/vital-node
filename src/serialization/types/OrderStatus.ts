@@ -48,6 +48,14 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "cancelled.testkit.do_not_process",
         "collecting_sample.testkit.problem_in_transit_customer",
         "collecting_sample.testkit.problem_in_transit_lab",
+        "received.on_site_collection.ordered",
+        "received.on_site_collection.requisition_created",
+        "received.on_site_collection.requisition_bypassed",
+        "sample_with_lab.on_site_collection.draw_completed",
+        "completed.on_site_collection.completed",
+        "cancelled.on_site_collection.cancelled",
+        "sample_with_lab.on_site_collection.partial_results",
+        "failed.on_site_collection.sample_error",
     ]);
 
 export declare namespace OrderStatus {
@@ -91,5 +99,13 @@ export declare namespace OrderStatus {
         | "cancelled.testkit.cancelled"
         | "cancelled.testkit.do_not_process"
         | "collecting_sample.testkit.problem_in_transit_customer"
-        | "collecting_sample.testkit.problem_in_transit_lab";
+        | "collecting_sample.testkit.problem_in_transit_lab"
+        | "received.on_site_collection.ordered"
+        | "received.on_site_collection.requisition_created"
+        | "received.on_site_collection.requisition_bypassed"
+        | "sample_with_lab.on_site_collection.draw_completed"
+        | "completed.on_site_collection.completed"
+        | "cancelled.on_site_collection.cancelled"
+        | "sample_with_lab.on_site_collection.partial_results"
+        | "failed.on_site_collection.sample_error";
 }

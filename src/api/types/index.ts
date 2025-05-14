@@ -115,6 +115,8 @@ export * from "./ClientFacingMenstrualCycle";
 export * from "./ClientFacingMindfulnessMinutesTimeseries";
 export * from "./ClientFacingNoteSampleTagsItem";
 export * from "./ClientFacingNoteSample";
+export * from "./ClientFacingOnSiteCollectionOrder";
+export * from "./ClientFacingOnSiteCollectionOrderDetails";
 export * from "./ClientFacingOrderDetails";
 export * from "./ClientFacingOrder";
 export * from "./ClientFacingOrderEvent";
