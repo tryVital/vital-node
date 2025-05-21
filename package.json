@@ -1,6 +1,6 @@
 {
     "name": "@tryvital/vital-node",
-    "version": "3.1.268",
+    "version": "3.1.269",
     "private": false,
     "repository": "https://github.com/tryVital/vital-node",
     "main": "./index.js",
