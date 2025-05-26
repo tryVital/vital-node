@@ -24,4 +24,8 @@ export interface PatientDetailsWithValidation {
     sexualOrientation?: Vital.SexualOrientation;
     /** If not provided, will be set to 'Not Specified' */
     genderIdentity?: Vital.GenderIdentity;
+    /** Household income in USD. If not provided, will be set to None */
+    householdIncome?: number;
+    /** Household size. If not provided, will be set to None */
+    householdSize?: number;
 }

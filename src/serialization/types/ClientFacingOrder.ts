@@ -14,6 +14,7 @@ import { OrderTopLevelStatus } from "./OrderTopLevelStatus";
 import { ClientFacingPhysician } from "./ClientFacingPhysician";
 import { ShippingAddress } from "./ShippingAddress";
 import { Billing } from "./Billing";
+import { Interpretation } from "./Interpretation";
 
 export const ClientFacingOrder: core.serialization.ObjectSchema<
     serializers.ClientFacingOrder.Raw,
@@ -42,6 +43,7 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
     billingType: core.serialization.property("billing_type", Billing.optional()),
     icdCodes: core.serialization.property("icd_codes", core.serialization.list(core.serialization.string()).optional()),
     hasAbn: core.serialization.property("has_abn", core.serialization.boolean()),
+    interpretation: Interpretation.optional(),
 });
 
 export declare namespace ClientFacingOrder {
@@ -69,5 +71,6 @@ export declare namespace ClientFacingOrder {
         billing_type?: Billing.Raw | null;
         icd_codes?: string[] | null;
         has_abn: boolean;
+        interpretation?: Interpretation.Raw | null;
     }
 }

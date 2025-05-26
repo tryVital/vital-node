@@ -44,4 +44,6 @@ export interface ClientFacingOrder {
     icdCodes?: string[];
     /** Defines whether the order has an Advanced Beneficiary Notice (ABN) form or not. */
     hasAbn: boolean;
+    /** Interpretation of the order result. Can be one of (normal, abnormal, critical). */
+    interpretation?: Vital.Interpretation;
 }

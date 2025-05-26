@@ -9,7 +9,7 @@ export interface ClientFacingCriticalResult {
     sampleId: string;
     /** The current results status, can be either (final, partial). */
     status: string;
-    /** The results interpretation, can be either (normal, abnormal, critical). */
+    /** The results interpretation, can be one of (normal, abnormal, critical). */
     interpretation: string;
     /** Your team id. */
     teamId: string;

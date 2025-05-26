@@ -11,7 +11,6 @@ export const ContinuousQueryTaskHistoryEntry: core.serialization.ObjectSchema<
     serializers.ContinuousQueryTaskHistoryEntry.Raw,
     Vital.ContinuousQueryTaskHistoryEntry
 > = core.serialization.object({
-    taskerTodoId: core.serialization.property("tasker_todo_id", core.serialization.number()),
     queryId: core.serialization.property("query_id", core.serialization.string()),
     userId: core.serialization.property("user_id", core.serialization.string()),
     status: ContinuousQueryTaskStatus,
@@ -23,7 +22,6 @@ export const ContinuousQueryTaskHistoryEntry: core.serialization.ObjectSchema<
 
 export declare namespace ContinuousQueryTaskHistoryEntry {
     interface Raw {
-        tasker_todo_id: number;
         query_id: string;
         user_id: string;
         status: ContinuousQueryTaskStatus.Raw;

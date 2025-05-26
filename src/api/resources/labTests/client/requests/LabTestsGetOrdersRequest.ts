@@ -50,6 +50,10 @@ export interface LabTestsGetOrdersRequest {
      */
     isCritical?: boolean;
     /**
+     * Filter by result interpretation of the lab test.
+     */
+    interpretation?: Vital.Interpretation;
+    /**
      * Filter by activation type.
      */
     orderActivationTypes?: Vital.OrderActivationType | Vital.OrderActivationType[];

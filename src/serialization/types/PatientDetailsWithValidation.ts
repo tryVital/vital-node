@@ -27,6 +27,8 @@ export const PatientDetailsWithValidation: core.serialization.ObjectSchema<
     ethnicity: Ethnicity.optional(),
     sexualOrientation: core.serialization.property("sexual_orientation", SexualOrientation.optional()),
     genderIdentity: core.serialization.property("gender_identity", GenderIdentity.optional()),
+    householdIncome: core.serialization.property("household_income", core.serialization.number().optional()),
+    householdSize: core.serialization.property("household_size", core.serialization.number().optional()),
 });
 
 export declare namespace PatientDetailsWithValidation {
@@ -42,5 +44,7 @@ export declare namespace PatientDetailsWithValidation {
         ethnicity?: Ethnicity.Raw | null;
         sexual_orientation?: SexualOrientation.Raw | null;
         gender_identity?: GenderIdentity.Raw | null;
+        household_income?: number | null;
+        household_size?: number | null;
     }
 }

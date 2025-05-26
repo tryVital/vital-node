@@ -240,6 +240,7 @@ export * from "./HomeProgesteroneTestEntry";
 export * from "./IndexColumnExprIndex";
 export * from "./IndexColumnExpr";
 export * from "./IntermenstrualBleedingEntry";
+export * from "./Interpretation";
 export * from "./Jpeg";
 export * from "./LabLocationMetadata";
 export * from "./LabResultsMetadata";

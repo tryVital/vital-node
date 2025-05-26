@@ -5,7 +5,6 @@
 import * as Vital from "../index";
 
 export interface ContinuousQueryTaskHistoryEntry {
-    taskerTodoId: number;
     queryId: string;
     userId: string;
     status: Vital.ContinuousQueryTaskStatus;
