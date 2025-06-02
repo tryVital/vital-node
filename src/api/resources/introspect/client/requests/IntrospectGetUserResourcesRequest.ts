@@ -9,6 +9,9 @@ import * as Vital from "../../../../index";
  *     {}
  */
 export interface IntrospectGetUserResourcesRequest {
+    /**
+     * Filter by user ID.
+     */
     userId?: string;
     provider?: Vital.Providers;
     userLimit?: number;
