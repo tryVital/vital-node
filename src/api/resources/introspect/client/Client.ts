@@ -72,8 +72,8 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.279",
-                "User-Agent": "@tryvital/vital-node/3.1.279",
+                "X-Fern-SDK-Version": "3.1.280",
+                "User-Agent": "@tryvital/vital-node/3.1.280",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -172,8 +172,8 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.279",
-                "User-Agent": "@tryvital/vital-node/3.1.279",
+                "X-Fern-SDK-Version": "3.1.280",
+                "User-Agent": "@tryvital/vital-node/3.1.280",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
