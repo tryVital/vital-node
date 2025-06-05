@@ -67,8 +67,8 @@ export class SleepCycle {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.281",
-                "User-Agent": "@tryvital/vital-node/3.1.281",
+                "X-Fern-SDK-Version": "3.1.282",
+                "User-Agent": "@tryvital/vital-node/3.1.282",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

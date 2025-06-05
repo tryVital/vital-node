@@ -32,6 +32,8 @@ export const ClientFacingLabTest: core.serialization.ObjectSchema<
         "has_collection_instructions",
         core.serialization.boolean().optional()
     ),
+    commonTatDays: core.serialization.property("common_tat_days", core.serialization.number().optional()),
+    worstCaseTatDays: core.serialization.property("worst_case_tat_days", core.serialization.number().optional()),
 });
 
 export declare namespace ClientFacingLabTest {
@@ -50,5 +52,7 @@ export declare namespace ClientFacingLabTest {
         is_delegated?: boolean | null;
         auto_generated?: boolean | null;
         has_collection_instructions?: boolean | null;
+        common_tat_days?: number | null;
+        worst_case_tat_days?: number | null;
     }
 }

@@ -16,4 +16,6 @@ export interface ClientFacingMarker {
     price?: string;
     aoe?: Vital.AoE;
     aLaCarteEnabled?: boolean;
+    commonTatDays?: number;
+    worstCaseTatDays?: number;
 }

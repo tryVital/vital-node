@@ -46,4 +46,8 @@ export interface ClientFacingOrder {
     hasAbn: boolean;
     /** Interpretation of the order result. Can be one of (normal, abnormal, critical). */
     interpretation?: Vital.Interpretation;
+    /** The common-case date by which the order result is expected to be available. */
+    expectedResultByDate?: string;
+    /** The latest date by which the order result is expected to be available. */
+    worstCaseResultByDate?: string;
 }
