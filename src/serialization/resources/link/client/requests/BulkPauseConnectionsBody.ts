@@ -9,7 +9,7 @@ import { OAuthProviders } from "../../../../types/OAuthProviders";
 
 export const BulkPauseConnectionsBody: core.serialization.Schema<
     serializers.BulkPauseConnectionsBody.Raw,
-    Vital.BulkPauseConnectionsBody
+    Omit<Vital.BulkPauseConnectionsBody, "teamId">
 > = core.serialization.object({
     userIds: core.serialization.property("user_ids", core.serialization.list(core.serialization.string())),
     provider: OAuthProviders,

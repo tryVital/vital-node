@@ -12,6 +12,7 @@ import * as Vital from "../../../../index";
  *     }
  */
 export interface BulkPauseConnectionsBody {
+    teamId?: Vital.LinkBulkPauseRequestTeamId;
     userIds: string[];
     provider: Vital.OAuthProviders;
 }

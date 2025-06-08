@@ -41,7 +41,7 @@ export class Link {
         request: Vital.LinkListBulkOpsRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.BulkOpsResponse> {
-        const { nextCursor, pageSize } = request;
+        const { nextCursor, pageSize, teamId } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (nextCursor != null) {
             _queryParams["next_cursor"] = nextCursor;
@@ -49,6 +49,10 @@ export class Link {
 
         if (pageSize != null) {
             _queryParams["page_size"] = pageSize.toString();
+        }
+
+        if (teamId != null) {
+            _queryParams["team_id"] = teamId;
         }
 
         const _response = await core.fetcher({
@@ -60,8 +64,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -138,6 +142,12 @@ export class Link {
         request: Vital.BulkImportConnectionsBody,
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.BulkImportConnectionsResponse> {
+        const { teamId, ..._body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (teamId != null) {
+            _queryParams["team_id"] = teamId;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -147,15 +157,16 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.BulkImportConnectionsBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkImportConnectionsBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -219,6 +230,12 @@ export class Link {
         request: Vital.BulkTriggerHistoricalPullBody,
         requestOptions?: Link.RequestOptions
     ): Promise<unknown> {
+        const { teamId, ..._body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (teamId != null) {
+            _queryParams["team_id"] = teamId;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -228,15 +245,16 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.BulkTriggerHistoricalPullBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkTriggerHistoricalPullBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -294,6 +312,12 @@ export class Link {
         request: Vital.BulkExportConnectionsBody,
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.BulkExportConnectionsResponse> {
+        const { teamId, ..._body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (teamId != null) {
+            _queryParams["team_id"] = teamId;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -303,15 +327,16 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.BulkExportConnectionsBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkExportConnectionsBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -375,6 +400,12 @@ export class Link {
         request: Vital.BulkPauseConnectionsBody,
         requestOptions?: Link.RequestOptions
     ): Promise<unknown> {
+        const { teamId, ..._body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (teamId != null) {
+            _queryParams["team_id"] = teamId;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -384,15 +415,16 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.BulkPauseConnectionsBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkPauseConnectionsBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -466,8 +498,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -546,8 +578,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -635,8 +667,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -719,8 +751,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -801,8 +833,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -883,8 +915,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -962,8 +994,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -1041,8 +1073,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -1127,8 +1159,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -1215,8 +1247,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -1301,8 +1333,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -1378,8 +1410,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -1460,8 +1492,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1543,8 +1575,8 @@ export class Link {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.286",
-                "User-Agent": "@tryvital/vital-node/3.1.286",
+                "X-Fern-SDK-Version": "3.1.287",
+                "User-Agent": "@tryvital/vital-node/3.1.287",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -1,8 +1,9 @@
+export * as link from "./link";
+export * from "./link/types";
 export * as labTests from "./labTests";
 export * from "./labTests/types";
 export * as aggregate from "./aggregate";
 export * from "./aggregate/types";
-export * as link from "./link";
 export * as electrocardiogram from "./electrocardiogram";
 export * as sleepCycle from "./sleepCycle";
 export * as profile from "./profile";

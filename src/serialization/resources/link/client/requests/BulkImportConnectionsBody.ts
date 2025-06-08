@@ -10,7 +10,7 @@ import { ConnectionRecipe } from "../../../../types/ConnectionRecipe";
 
 export const BulkImportConnectionsBody: core.serialization.Schema<
     serializers.BulkImportConnectionsBody.Raw,
-    Vital.BulkImportConnectionsBody
+    Omit<Vital.BulkImportConnectionsBody, "teamId">
 > = core.serialization.object({
     provider: OAuthProviders,
     connections: core.serialization.list(ConnectionRecipe),
