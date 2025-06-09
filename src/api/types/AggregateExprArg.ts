@@ -12,4 +12,10 @@ export type AggregateExprArg =
     | Vital.IndexColumnExpr
     | Vital.SleepScoreValueMacroExpr
     | Vital.ChronotypeValueMacroExpr
-    | Vital.UnrecognizedValueMacroExpr;
+    | Vital.UnrecognizedValueMacroExpr
+    | Vital.DiscreteTimeseriesExpr
+    | Vital.IntervalTimeseriesExpr
+    | Vital.BloodPressureTimeseriesExpr
+    | Vital.TemperatureTimeseriesExpr
+    | Vital.WorkoutDurationTimeseriesExpr
+    | Vital.NoteTimeseriesExpr;

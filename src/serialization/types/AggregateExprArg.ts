@@ -13,6 +13,12 @@ import { IndexColumnExpr } from "./IndexColumnExpr";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
 import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
+import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr";
+import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr";
+import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr";
+import { TemperatureTimeseriesExpr } from "./TemperatureTimeseriesExpr";
+import { WorkoutDurationTimeseriesExpr } from "./WorkoutDurationTimeseriesExpr";
+import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr";
 
 export const AggregateExprArg: core.serialization.Schema<serializers.AggregateExprArg.Raw, Vital.AggregateExprArg> =
     core.serialization.undiscriminatedUnion([
@@ -24,6 +30,12 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
         UnrecognizedValueMacroExpr,
+        DiscreteTimeseriesExpr,
+        IntervalTimeseriesExpr,
+        BloodPressureTimeseriesExpr,
+        TemperatureTimeseriesExpr,
+        WorkoutDurationTimeseriesExpr,
+        NoteTimeseriesExpr,
     ]);
 
 export declare namespace AggregateExprArg {
@@ -35,5 +47,11 @@ export declare namespace AggregateExprArg {
         | IndexColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
-        | UnrecognizedValueMacroExpr.Raw;
+        | UnrecognizedValueMacroExpr.Raw
+        | DiscreteTimeseriesExpr.Raw
+        | IntervalTimeseriesExpr.Raw
+        | BloodPressureTimeseriesExpr.Raw
+        | TemperatureTimeseriesExpr.Raw
+        | WorkoutDurationTimeseriesExpr.Raw
+        | NoteTimeseriesExpr.Raw;
 }

@@ -5,7 +5,7 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type IndexColumnExprIndex = "sleep" | "activity" | "workout" | "body" | "meal";
+export type IndexColumnExprIndex = "sleep" | "activity" | "workout" | "body" | "meal" | "timeseries";
 
 export const IndexColumnExprIndex = {
     Sleep: "sleep",
@@ -13,4 +13,5 @@ export const IndexColumnExprIndex = {
     Workout: "workout",
     Body: "body",
     Meal: "meal",
+    Timeseries: "timeseries",
 } as const;
