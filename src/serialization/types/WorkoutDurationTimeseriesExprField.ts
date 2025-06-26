@@ -12,6 +12,7 @@ export const WorkoutDurationTimeseriesExprField: core.serialization.Schema<
 > = core.serialization.enum_([
     "source_provider",
     "source_type",
+    "source_app_id",
     "source_workout_id",
     "source_sport",
     "timezone_offset",
@@ -25,6 +26,7 @@ export declare namespace WorkoutDurationTimeseriesExprField {
     type Raw =
         | "source_provider"
         | "source_type"
+        | "source_app_id"
         | "source_workout_id"
         | "source_sport"
         | "timezone_offset"

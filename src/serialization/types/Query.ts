@@ -11,13 +11,11 @@ import { QueryGroupByItem } from "./QueryGroupByItem";
 export const Query: core.serialization.ObjectSchema<serializers.Query.Raw, Vital.Query> = core.serialization.object({
     select: core.serialization.list(QuerySelectItem),
     groupBy: core.serialization.property("group_by", core.serialization.list(QueryGroupByItem).optional()),
-    splitBySource: core.serialization.property("split_by_source", core.serialization.boolean().optional()),
 });
 
 export declare namespace Query {
     interface Raw {
         select: QuerySelectItem.Raw[];
         group_by?: QueryGroupByItem.Raw[] | null;
-        split_by_source?: boolean | null;
     }
 }

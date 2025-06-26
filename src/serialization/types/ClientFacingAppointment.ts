@@ -29,6 +29,7 @@ export const ClientFacingAppointment: core.serialization.ObjectSchema<
     provider: AppointmentProvider,
     status: AppointmentStatus,
     providerId: core.serialization.property("provider_id", core.serialization.string()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     canReschedule: core.serialization.property("can_reschedule", core.serialization.boolean()),
     eventStatus: core.serialization.property("event_status", AppointmentEventStatus),
     eventData: core.serialization.property(
@@ -52,6 +53,7 @@ export declare namespace ClientFacingAppointment {
         provider: AppointmentProvider.Raw;
         status: AppointmentStatus.Raw;
         provider_id: string;
+        external_id?: string | null;
         can_reschedule: boolean;
         event_status: AppointmentEventStatus.Raw;
         event_data?: Record<string, unknown> | null;

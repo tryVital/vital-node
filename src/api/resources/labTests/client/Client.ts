@@ -2973,8 +2973,6 @@ export class LabTests {
     }
 
     /**
-     * POST create new order
-     *
      * @param {Vital.CreateOrderRequestCompatible} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -3258,14 +3256,16 @@ export class LabTests {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.simulateOrderProcess("order_id")
+     *     await client.labTests.simulateOrderProcess("order_id", {
+     *         body: undefined
+     *     })
      */
     public async simulateOrderProcess(
         orderId: string,
         request: Vital.LabTestsSimulateOrderProcessRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<unknown> {
-        const { finalStatus, delay } = request;
+        const { finalStatus, delay, body: _body } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (finalStatus != null) {
             _queryParams["final_status"] = finalStatus;
@@ -3293,6 +3293,12 @@ export class LabTests {
             contentType: "application/json",
             queryParameters: _queryParams,
             requestType: "json",
+            body:
+                _body != null
+                    ? serializers.labTests.simulateOrderProcess.Request.jsonOrThrow(_body, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

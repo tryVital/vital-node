@@ -6,9 +6,12 @@ import * as Vital from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         body: undefined
+ *     }
  */
 export interface LabTestsSimulateOrderProcessRequest {
     finalStatus?: Vital.OrderStatus;
     delay?: number;
+    body?: Vital.SimulationFlags;
 }

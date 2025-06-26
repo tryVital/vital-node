@@ -9,7 +9,7 @@ export type AggregateExprArg =
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr
-    | Vital.IndexColumnExpr
+    | Vital.MealColumnExpr
     | Vital.SleepScoreValueMacroExpr
     | Vital.ChronotypeValueMacroExpr
     | Vital.UnrecognizedValueMacroExpr
@@ -18,4 +18,5 @@ export type AggregateExprArg =
     | Vital.BloodPressureTimeseriesExpr
     | Vital.TemperatureTimeseriesExpr
     | Vital.WorkoutDurationTimeseriesExpr
-    | Vital.NoteTimeseriesExpr;
+    | Vital.NoteTimeseriesExpr
+    | Vital.IndexColumnExpr;

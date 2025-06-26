@@ -12,6 +12,7 @@ export const NoteTimeseriesExprField: core.serialization.Schema<
 > = core.serialization.enum_([
     "source_provider",
     "source_type",
+    "source_app_id",
     "source_workout_id",
     "source_sport",
     "timezone_offset",
@@ -24,6 +25,7 @@ export declare namespace NoteTimeseriesExprField {
     type Raw =
         | "source_provider"
         | "source_type"
+        | "source_app_id"
         | "source_workout_id"
         | "source_sport"
         | "timezone_offset"

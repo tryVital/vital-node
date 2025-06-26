@@ -23,6 +23,7 @@ export const ClientFacingSleepCycleSourceType: core.serialization.Schema<
     "chest_strap",
     "ring",
     "lab",
+    "exercise_machine",
 ]);
 
 export declare namespace ClientFacingSleepCycleSourceType {
@@ -39,5 +40,6 @@ export declare namespace ClientFacingSleepCycleSourceType {
         | "scale"
         | "chest_strap"
         | "ring"
-        | "lab";
+        | "lab"
+        | "exercise_machine";
 }

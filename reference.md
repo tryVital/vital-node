@@ -10274,21 +10274,6 @@ await client.labTests.getOrder("order_id");
 <dl>
 <dd>
 
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-POST create new order
-
-</dd>
-</dl>
-</dd>
-</dl>
-
 #### 🔌 Usage
 
 <dl>
@@ -10511,7 +10496,9 @@ Get available test kits.
 <dd>
 
 ```typescript
-await client.labTests.simulateOrderProcess("order_id");
+await client.labTests.simulateOrderProcess("order_id", {
+    body: undefined,
+});
 ```
 
 </dd>

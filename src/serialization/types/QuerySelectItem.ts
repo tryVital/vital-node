@@ -11,7 +11,7 @@ import { SleepColumnExpr } from "./SleepColumnExpr";
 import { ActivityColumnExpr } from "./ActivityColumnExpr";
 import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
 import { BodyColumnExpr } from "./BodyColumnExpr";
-import { IndexColumnExpr } from "./IndexColumnExpr";
+import { MealColumnExpr } from "./MealColumnExpr";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
 import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
@@ -21,6 +21,8 @@ import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr";
 import { TemperatureTimeseriesExpr } from "./TemperatureTimeseriesExpr";
 import { WorkoutDurationTimeseriesExpr } from "./WorkoutDurationTimeseriesExpr";
 import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr";
+import { IndexColumnExpr } from "./IndexColumnExpr";
+import { SourceColumnExpr } from "./SourceColumnExpr";
 
 export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectItem.Raw, Vital.QuerySelectItem> =
     core.serialization.undiscriminatedUnion([
@@ -30,7 +32,7 @@ export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectI
         ActivityColumnExpr,
         WorkoutColumnExpr,
         BodyColumnExpr,
-        IndexColumnExpr,
+        MealColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
         UnrecognizedValueMacroExpr,
@@ -40,6 +42,8 @@ export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectI
         TemperatureTimeseriesExpr,
         WorkoutDurationTimeseriesExpr,
         NoteTimeseriesExpr,
+        IndexColumnExpr,
+        SourceColumnExpr,
     ]);
 
 export declare namespace QuerySelectItem {
@@ -50,7 +54,7 @@ export declare namespace QuerySelectItem {
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
-        | IndexColumnExpr.Raw
+        | MealColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw
@@ -59,5 +63,7 @@ export declare namespace QuerySelectItem {
         | BloodPressureTimeseriesExpr.Raw
         | TemperatureTimeseriesExpr.Raw
         | WorkoutDurationTimeseriesExpr.Raw
-        | NoteTimeseriesExpr.Raw;
+        | NoteTimeseriesExpr.Raw
+        | IndexColumnExpr.Raw
+        | SourceColumnExpr.Raw;
 }

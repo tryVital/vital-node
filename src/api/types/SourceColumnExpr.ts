@@ -4,7 +4,6 @@
 
 import * as Vital from "../index";
 
-export interface Query {
-    select: Vital.QuerySelectItem[];
-    groupBy?: Vital.QueryGroupByItem[];
+export interface SourceColumnExpr {
+    source: Vital.SourceColumnExprSource;
 }

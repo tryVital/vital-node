@@ -5,6 +5,7 @@
 export type NoteTimeseriesExprField =
     | "source_provider"
     | "source_type"
+    | "source_app_id"
     | "source_workout_id"
     | "source_sport"
     | "timezone_offset"
@@ -15,6 +16,7 @@ export type NoteTimeseriesExprField =
 export const NoteTimeseriesExprField = {
     SourceProvider: "source_provider",
     SourceType: "source_type",
+    SourceAppId: "source_app_id",
     SourceWorkoutId: "source_workout_id",
     SourceSport: "source_sport",
     TimezoneOffset: "timezone_offset",

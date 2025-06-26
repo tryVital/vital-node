@@ -42,7 +42,7 @@ export const WorkoutColumnExprWorkout: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
-    "source_workout_id",
+    "external_id",
     "time_zone",
 ]);
 
@@ -80,6 +80,6 @@ export declare namespace WorkoutColumnExprWorkout {
         | "source_type"
         | "source_provider"
         | "source_app_id"
-        | "source_workout_id"
+        | "external_id"
         | "time_zone";
 }

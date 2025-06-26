@@ -7,10 +7,60 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { DateTruncExpr } from "./DateTruncExpr";
 import { DatePartExpr } from "./DatePartExpr";
+import { SleepColumnExpr } from "./SleepColumnExpr";
+import { ActivityColumnExpr } from "./ActivityColumnExpr";
+import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
+import { BodyColumnExpr } from "./BodyColumnExpr";
+import { MealColumnExpr } from "./MealColumnExpr";
+import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
+import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
+import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
+import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr";
+import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr";
+import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr";
+import { TemperatureTimeseriesExpr } from "./TemperatureTimeseriesExpr";
+import { WorkoutDurationTimeseriesExpr } from "./WorkoutDurationTimeseriesExpr";
+import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr";
+import { SourceColumnExpr } from "./SourceColumnExpr";
 
 export const QueryGroupByItem: core.serialization.Schema<serializers.QueryGroupByItem.Raw, Vital.QueryGroupByItem> =
-    core.serialization.undiscriminatedUnion([DateTruncExpr, DatePartExpr]);
+    core.serialization.undiscriminatedUnion([
+        DateTruncExpr,
+        DatePartExpr,
+        SleepColumnExpr,
+        ActivityColumnExpr,
+        WorkoutColumnExpr,
+        BodyColumnExpr,
+        MealColumnExpr,
+        SleepScoreValueMacroExpr,
+        ChronotypeValueMacroExpr,
+        UnrecognizedValueMacroExpr,
+        DiscreteTimeseriesExpr,
+        IntervalTimeseriesExpr,
+        BloodPressureTimeseriesExpr,
+        TemperatureTimeseriesExpr,
+        WorkoutDurationTimeseriesExpr,
+        NoteTimeseriesExpr,
+        SourceColumnExpr,
+    ]);
 
 export declare namespace QueryGroupByItem {
-    type Raw = DateTruncExpr.Raw | DatePartExpr.Raw;
+    type Raw =
+        | DateTruncExpr.Raw
+        | DatePartExpr.Raw
+        | SleepColumnExpr.Raw
+        | ActivityColumnExpr.Raw
+        | WorkoutColumnExpr.Raw
+        | BodyColumnExpr.Raw
+        | MealColumnExpr.Raw
+        | SleepScoreValueMacroExpr.Raw
+        | ChronotypeValueMacroExpr.Raw
+        | UnrecognizedValueMacroExpr.Raw
+        | DiscreteTimeseriesExpr.Raw
+        | IntervalTimeseriesExpr.Raw
+        | BloodPressureTimeseriesExpr.Raw
+        | TemperatureTimeseriesExpr.Raw
+        | WorkoutDurationTimeseriesExpr.Raw
+        | NoteTimeseriesExpr.Raw
+        | SourceColumnExpr.Raw;
 }

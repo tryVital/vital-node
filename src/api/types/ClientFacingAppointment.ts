@@ -19,6 +19,7 @@ export interface ClientFacingAppointment {
     provider: Vital.AppointmentProvider;
     status: Vital.AppointmentStatus;
     providerId: string;
+    externalId?: string;
     canReschedule: boolean;
     eventStatus: Vital.AppointmentEventStatus;
     eventData?: Record<string, unknown>;

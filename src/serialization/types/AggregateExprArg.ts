@@ -9,7 +9,7 @@ import { SleepColumnExpr } from "./SleepColumnExpr";
 import { ActivityColumnExpr } from "./ActivityColumnExpr";
 import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
 import { BodyColumnExpr } from "./BodyColumnExpr";
-import { IndexColumnExpr } from "./IndexColumnExpr";
+import { MealColumnExpr } from "./MealColumnExpr";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
 import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
@@ -19,6 +19,7 @@ import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr";
 import { TemperatureTimeseriesExpr } from "./TemperatureTimeseriesExpr";
 import { WorkoutDurationTimeseriesExpr } from "./WorkoutDurationTimeseriesExpr";
 import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr";
+import { IndexColumnExpr } from "./IndexColumnExpr";
 
 export const AggregateExprArg: core.serialization.Schema<serializers.AggregateExprArg.Raw, Vital.AggregateExprArg> =
     core.serialization.undiscriminatedUnion([
@@ -26,7 +27,7 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         ActivityColumnExpr,
         WorkoutColumnExpr,
         BodyColumnExpr,
-        IndexColumnExpr,
+        MealColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
         UnrecognizedValueMacroExpr,
@@ -36,6 +37,7 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         TemperatureTimeseriesExpr,
         WorkoutDurationTimeseriesExpr,
         NoteTimeseriesExpr,
+        IndexColumnExpr,
     ]);
 
 export declare namespace AggregateExprArg {
@@ -44,7 +46,7 @@ export declare namespace AggregateExprArg {
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
-        | IndexColumnExpr.Raw
+        | MealColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw
@@ -53,5 +55,6 @@ export declare namespace AggregateExprArg {
         | BloodPressureTimeseriesExpr.Raw
         | TemperatureTimeseriesExpr.Raw
         | WorkoutDurationTimeseriesExpr.Raw
-        | NoteTimeseriesExpr.Raw;
+        | NoteTimeseriesExpr.Raw
+        | IndexColumnExpr.Raw;
 }
