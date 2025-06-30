@@ -16,6 +16,7 @@ export type OrderStatus =
     | "collecting_sample.walk_in_test.appointment_pending"
     | "collecting_sample.walk_in_test.appointment_scheduled"
     | "collecting_sample.walk_in_test.appointment_cancelled"
+    | "collecting_sample.walk_in_test.redraw_available"
     | "received.at_home_phlebotomy.ordered"
     | "received.at_home_phlebotomy.requisition_created"
     | "received.at_home_phlebotomy.requisition_bypassed"
@@ -66,6 +67,7 @@ export const OrderStatus = {
     CollectingSampleWalkInTestAppointmentPending: "collecting_sample.walk_in_test.appointment_pending",
     CollectingSampleWalkInTestAppointmentScheduled: "collecting_sample.walk_in_test.appointment_scheduled",
     CollectingSampleWalkInTestAppointmentCancelled: "collecting_sample.walk_in_test.appointment_cancelled",
+    CollectingSampleWalkInTestRedrawAvailable: "collecting_sample.walk_in_test.redraw_available",
     ReceivedAtHomePhlebotomyOrdered: "received.at_home_phlebotomy.ordered",
     ReceivedAtHomePhlebotomyRequisitionCreated: "received.at_home_phlebotomy.requisition_created",
     ReceivedAtHomePhlebotomyRequisitionBypassed: "received.at_home_phlebotomy.requisition_bypassed",

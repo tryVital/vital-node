@@ -18,6 +18,7 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "collecting_sample.walk_in_test.appointment_pending",
         "collecting_sample.walk_in_test.appointment_scheduled",
         "collecting_sample.walk_in_test.appointment_cancelled",
+        "collecting_sample.walk_in_test.redraw_available",
         "received.at_home_phlebotomy.ordered",
         "received.at_home_phlebotomy.requisition_created",
         "received.at_home_phlebotomy.requisition_bypassed",
@@ -70,6 +71,7 @@ export declare namespace OrderStatus {
         | "collecting_sample.walk_in_test.appointment_pending"
         | "collecting_sample.walk_in_test.appointment_scheduled"
         | "collecting_sample.walk_in_test.appointment_cancelled"
+        | "collecting_sample.walk_in_test.redraw_available"
         | "received.at_home_phlebotomy.ordered"
         | "received.at_home_phlebotomy.requisition_created"
         | "received.at_home_phlebotomy.requisition_bypassed"

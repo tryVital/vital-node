@@ -29,7 +29,8 @@ export type OrderLowLevelStatus =
     | "do_not_process"
     | "partial_results"
     | "awaiting_registration"
-    | "registered";
+    | "registered"
+    | "redraw_available";
 
 export const OrderLowLevelStatus = {
     Ordered: "ordered",
@@ -56,4 +57,5 @@ export const OrderLowLevelStatus = {
     PartialResults: "partial_results",
     AwaitingRegistration: "awaiting_registration",
     Registered: "registered",
+    RedrawAvailable: "redraw_available",
 } as const;

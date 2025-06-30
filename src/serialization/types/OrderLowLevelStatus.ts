@@ -34,6 +34,7 @@ export const OrderLowLevelStatus: core.serialization.Schema<
     "partial_results",
     "awaiting_registration",
     "registered",
+    "redraw_available",
 ]);
 
 export declare namespace OrderLowLevelStatus {
@@ -61,5 +62,6 @@ export declare namespace OrderLowLevelStatus {
         | "do_not_process"
         | "partial_results"
         | "awaiting_registration"
-        | "registered";
+        | "registered"
+        | "redraw_available";
 }
