@@ -20,6 +20,7 @@ export const WorkoutV2InDb: core.serialization.ObjectSchema<serializers.WorkoutV
         sportId: core.serialization.property("sport_id", core.serialization.number()),
         source: ClientFacingProvider,
         sport: ClientFacingSport,
+        sourceDeviceId: core.serialization.property("source_device_id", core.serialization.string().optional()),
         createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
         updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
     });
@@ -36,6 +37,7 @@ export declare namespace WorkoutV2InDb {
         sport_id: number;
         source: ClientFacingProvider.Raw;
         sport: ClientFacingSport.Raw;
+        source_device_id?: string | null;
         created_at?: string | null;
         updated_at?: string | null;
     }

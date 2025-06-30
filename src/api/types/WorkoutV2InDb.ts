@@ -15,6 +15,7 @@ export interface WorkoutV2InDb {
     sportId: number;
     source: Vital.ClientFacingProvider;
     sport: Vital.ClientFacingSport;
+    sourceDeviceId?: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
