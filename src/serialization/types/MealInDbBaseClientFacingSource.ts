@@ -30,6 +30,7 @@ export const MealInDbBaseClientFacingSource: core.serialization.ObjectSchema<
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     updatedAt: core.serialization.property("updated_at", core.serialization.date()),
     sourceAppId: core.serialization.property("source_app_id", core.serialization.string().optional()),
+    sourceDeviceId: core.serialization.property("source_device_id", core.serialization.string().optional()),
 });
 
 export declare namespace MealInDbBaseClientFacingSource {
@@ -49,5 +50,6 @@ export declare namespace MealInDbBaseClientFacingSource {
         created_at: string;
         updated_at: string;
         source_app_id?: string | null;
+        source_device_id?: string | null;
     }
 }

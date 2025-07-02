@@ -23,6 +23,7 @@ export const BodyColumnExprBody: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
+    "source_device_id",
     "time_zone",
 ]);
 
@@ -41,5 +42,6 @@ export declare namespace BodyColumnExprBody {
         | "source_type"
         | "source_provider"
         | "source_app_id"
+        | "source_device_id"
         | "time_zone";
 }

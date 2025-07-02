@@ -52,7 +52,8 @@ export type MealColumnExprMeal =
     | "name"
     | "source_type"
     | "source_provider"
-    | "source_app_id";
+    | "source_app_id"
+    | "source_device_id";
 
 export const MealColumnExprMeal = {
     Calories: "calories",
@@ -102,4 +103,5 @@ export const MealColumnExprMeal = {
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",
+    SourceDeviceId: "source_device_id",
 } as const;

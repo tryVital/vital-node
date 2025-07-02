@@ -14,6 +14,7 @@ export interface BodyV2InDb {
     id: string;
     source?: Vital.ClientFacingProvider;
     priority?: number;
+    sourceDeviceId?: string;
     createdAt?: Date;
     updatedAt?: Date;
 }

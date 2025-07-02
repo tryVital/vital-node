@@ -23,4 +23,5 @@ export interface MealInDbBaseClientFacingSource {
     createdAt: Date;
     updatedAt: Date;
     sourceAppId?: string;
+    sourceDeviceId?: string;
 }

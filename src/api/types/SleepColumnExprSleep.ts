@@ -33,6 +33,7 @@ export type SleepColumnExprSleep =
     | "source_type"
     | "source_provider"
     | "source_app_id"
+    | "source_device_id"
     | "time_zone";
 
 export const SleepColumnExprSleep = {
@@ -63,5 +64,6 @@ export const SleepColumnExprSleep = {
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",
+    SourceDeviceId: "source_device_id",
     TimeZone: "time_zone",
 } as const;

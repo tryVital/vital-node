@@ -57,6 +57,7 @@ export const MealColumnExprMeal: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
+    "source_device_id",
 ]);
 
 export declare namespace MealColumnExprMeal {
@@ -107,5 +108,6 @@ export declare namespace MealColumnExprMeal {
         | "name"
         | "source_type"
         | "source_provider"
-        | "source_app_id";
+        | "source_app_id"
+        | "source_device_id";
 }

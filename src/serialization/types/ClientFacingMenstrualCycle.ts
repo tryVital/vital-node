@@ -68,6 +68,7 @@ export const ClientFacingMenstrualCycle: core.serialization.ObjectSchema<
     sourceProvider: core.serialization.property("source_provider", ClientFacingMenstrualCycleSourceProvider),
     sourceType: core.serialization.property("source_type", ClientFacingMenstrualCycleSourceType),
     sourceAppId: core.serialization.property("source_app_id", core.serialization.string().optional()),
+    sourceDeviceId: core.serialization.property("source_device_id", core.serialization.string().optional()),
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     updatedAt: core.serialization.property("updated_at", core.serialization.date()),
     userId: core.serialization.property("user_id", core.serialization.string()),
@@ -94,6 +95,7 @@ export declare namespace ClientFacingMenstrualCycle {
         source_provider: ClientFacingMenstrualCycleSourceProvider.Raw;
         source_type: ClientFacingMenstrualCycleSourceType.Raw;
         source_app_id?: string | null;
+        source_device_id?: string | null;
         created_at: string;
         updated_at: string;
         user_id: string;

@@ -31,6 +31,7 @@ export const ActivityColumnExprActivity: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
+    "source_device_id",
     "time_zone",
     "time_zone_offset",
 ]);
@@ -58,6 +59,7 @@ export declare namespace ActivityColumnExprActivity {
         | "source_type"
         | "source_provider"
         | "source_app_id"
+        | "source_device_id"
         | "time_zone"
         | "time_zone_offset";
 }

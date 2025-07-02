@@ -37,6 +37,7 @@ export const SleepColumnExprSleep: core.serialization.Schema<
     "source_type",
     "source_provider",
     "source_app_id",
+    "source_device_id",
     "time_zone",
 ]);
 
@@ -69,5 +70,6 @@ export declare namespace SleepColumnExprSleep {
         | "source_type"
         | "source_provider"
         | "source_app_id"
+        | "source_device_id"
         | "time_zone";
 }
