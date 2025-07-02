@@ -16,6 +16,7 @@ export interface BiomarkerResult {
     unit?: string;
     timestamp?: Date;
     notes?: string;
+    referenceRange?: string;
     minRangeValue?: number;
     maxRangeValue?: number;
     isAboveMaxRange?: boolean;
