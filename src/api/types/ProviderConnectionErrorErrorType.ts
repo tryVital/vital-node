@@ -12,6 +12,7 @@ export type ProviderConnectionErrorErrorType =
     | "deregistered_per_provider"
     | "required_scopes_not_granted"
     | "provider_credential_error"
+    | "provider_password_expired"
     | "unknown";
 
 export const ProviderConnectionErrorErrorType = {
@@ -21,5 +22,6 @@ export const ProviderConnectionErrorErrorType = {
     DeregisteredPerProvider: "deregistered_per_provider",
     RequiredScopesNotGranted: "required_scopes_not_granted",
     ProviderCredentialError: "provider_credential_error",
+    ProviderPasswordExpired: "provider_password_expired",
     Unknown: "unknown",
 } as const;

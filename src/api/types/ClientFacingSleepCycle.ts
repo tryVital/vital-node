@@ -26,6 +26,7 @@ export interface ClientFacingSleepCycle {
     /** ℹ️ This enum is non-exhaustive. */
     sourceType: Vital.ClientFacingSleepCycleSourceType;
     sourceAppId?: string;
+    sourceDeviceId?: string;
     createdAt: Date;
     updatedAt: Date;
     userId: string;

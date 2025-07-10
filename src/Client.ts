@@ -24,6 +24,7 @@ import { LabTests } from "./api/resources/labTests/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
 import { Order } from "./api/resources/order/client/Client";
 import { Insurance } from "./api/resources/insurance/client/Client";
+import { Payor } from "./api/resources/payor/client/Client";
 import { Aggregate } from "./api/resources/aggregate/client/Client";
 
 export declare namespace VitalClient {
@@ -163,6 +164,12 @@ export class VitalClient {
 
     public get insurance(): Insurance {
         return (this._insurance ??= new Insurance(this._options));
+    }
+
+    protected _payor: Payor | undefined;
+
+    public get payor(): Payor {
+        return (this._payor ??= new Payor(this._options));
     }
 
     protected _aggregate: Aggregate | undefined;

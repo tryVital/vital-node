@@ -17,5 +17,6 @@ export interface IndividualProviderData {
     username: string;
     /** Password for provider */
     password: string;
+    /** Provider region to authenticate against. Only applicable to specific providers. */
     region?: Vital.Region;
 }

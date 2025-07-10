@@ -16,6 +16,7 @@ export const ProviderConnectionErrorErrorType: core.serialization.Schema<
     "deregistered_per_provider",
     "required_scopes_not_granted",
     "provider_credential_error",
+    "provider_password_expired",
     "unknown",
 ]);
 
@@ -27,5 +28,6 @@ export declare namespace ProviderConnectionErrorErrorType {
         | "deregistered_per_provider"
         | "required_scopes_not_granted"
         | "provider_credential_error"
+        | "provider_password_expired"
         | "unknown";
 }

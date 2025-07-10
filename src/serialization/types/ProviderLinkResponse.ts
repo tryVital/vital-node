@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ProviderLinkResponseState } from "./ProviderLinkResponseState";
+import { ProviderLinkResponseErrorType } from "./ProviderLinkResponseErrorType";
 import { ProviderMfaRequest } from "./ProviderMfaRequest";
 import { PasswordProviders } from "./PasswordProviders";
 
@@ -15,7 +16,7 @@ export const ProviderLinkResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     state: ProviderLinkResponseState,
     redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),
-    errorType: core.serialization.property("error_type", core.serialization.string().optional()),
+    errorType: core.serialization.property("error_type", ProviderLinkResponseErrorType.optional()),
     error: core.serialization.string().optional(),
     providerMfa: core.serialization.property("provider_mfa", ProviderMfaRequest.optional()),
     provider: PasswordProviders,
@@ -27,7 +28,7 @@ export declare namespace ProviderLinkResponse {
     interface Raw {
         state: ProviderLinkResponseState.Raw;
         redirect_url?: string | null;
-        error_type?: string | null;
+        error_type?: ProviderLinkResponseErrorType.Raw | null;
         error?: string | null;
         provider_mfa?: ProviderMfaRequest.Raw | null;
         provider: PasswordProviders.Raw;

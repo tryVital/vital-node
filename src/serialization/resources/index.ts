@@ -17,4 +17,6 @@ export * from "./testkit/client/requests";
 export * as order from "./order";
 export * from "./order/client/requests";
 export * from "./insurance/client/requests";
+export * as payor from "./payor";
+export * from "./payor/client/requests";
 export * from "./aggregate/client/requests";

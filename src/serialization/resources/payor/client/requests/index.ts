@@ -1,0 +1,1 @@
+export { CreatePayorBody } from "./CreatePayorBody";

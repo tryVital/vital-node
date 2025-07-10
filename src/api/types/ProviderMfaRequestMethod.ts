@@ -3,7 +3,7 @@
  */
 
 /**
- * ℹ️ This enum is non-exhaustive.
+ * The MFA method requested by the password provider to complete authentication. ℹ️ This enum is non-exhaustive.
  */
 export type ProviderMfaRequestMethod = "sms" | "email";
 

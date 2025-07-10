@@ -7,9 +7,13 @@ import * as Vital from "../index";
 export interface ProviderLinkResponse {
     /** ℹ️ This enum is non-exhaustive. */
     state: Vital.ProviderLinkResponseState;
+    /** The redirect URL you supplied when creating the Link Token (via `POST /v2/link/token`). */
     redirectUrl?: string;
-    errorType?: string;
+    /** The Link Error Type. This field is populated only when state is `error`. */
+    errorType?: Vital.ProviderLinkResponseErrorType;
+    /** A developer-readable debug description of the Link Error. This field is populated only when state is `error`. */
     error?: string;
+    /** The provider MFA request. This field is populated only when state is `pending_provider_mfa`. */
     providerMfa?: Vital.ProviderMfaRequest;
     provider: Vital.PasswordProviders;
     connected: boolean;

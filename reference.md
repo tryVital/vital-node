@@ -11022,6 +11022,65 @@ await client.insurance.searchDiagnosis({
 </dl>
 </details>
 
+## Payor
+
+<details><summary><code>client.payor.<a href="/src/api/resources/payor/client/Client.ts">createPayor</a>({ ...params }) -> Vital.ClientFacingPayor</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payor.createPayor({
+    name: "name",
+    address: {
+        firstLine: "first_line",
+        country: "country",
+        zip: "zip",
+        city: "city",
+        state: "state",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.CreatePayorBody`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Payor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Aggregate
 
 <details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">queryOne</a>(userId, { ...params }) -> Vital.AggregationResponse</code></summary>
