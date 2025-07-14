@@ -5,5 +5,6 @@
 import * as Vital from "../index";
 
 export interface SourceColumnExpr {
+    /** ℹ️ This enum is non-exhaustive. */
     source: Vital.SourceColumnExprSource;
 }

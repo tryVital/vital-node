@@ -20,6 +20,6 @@ export interface ClientFacingBodyTemperatureSample {
     end: Date;
     /** The recorded value for the interval. */
     value: number;
-    /** Location of the temperature sensor. */
+    /** Location of the temperature sensor. ℹ️ This enum is non-exhaustive. */
     sensorLocation?: Vital.ClientFacingBodyTemperatureSampleSensorLocation;
 }

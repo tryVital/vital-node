@@ -348,6 +348,7 @@ export * from "./SampleDataDateReported";
 export * from "./SampleData";
 export * from "./ScopeRequirementsGrants";
 export * from "./ScopeRequirementsStr";
+export * from "./Sex";
 export * from "./SexualActivityEntry";
 export * from "./SexualOrientation";
 export * from "./ShippingAddress";

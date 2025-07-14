@@ -20,6 +20,6 @@ export interface ClientFacingWorkoutDurationSample {
     end: Date;
     /** The recorded value for the interval. */
     value: number;
-    /** Workout intensity. */
+    /** Workout intensity. ℹ️ This enum is non-exhaustive. */
     intensity?: Vital.ClientFacingWorkoutDurationSampleIntensity;
 }

@@ -9,7 +9,7 @@ export interface ProviderLinkResponse {
     state: Vital.ProviderLinkResponseState;
     /** The redirect URL you supplied when creating the Link Token (via `POST /v2/link/token`). */
     redirectUrl?: string;
-    /** The Link Error Type. This field is populated only when state is `error`. */
+    /** The Link Error Type. This field is populated only when state is `error`. ℹ️ This enum is non-exhaustive. */
     errorType?: Vital.ProviderLinkResponseErrorType;
     /** A developer-readable debug description of the Link Error. This field is populated only when state is `error`. */
     error?: string;

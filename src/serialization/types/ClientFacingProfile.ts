@@ -5,6 +5,8 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { Gender } from "./Gender";
+import { Sex } from "./Sex";
 import { ClientFacingSource } from "./ClientFacingSource";
 
 export const ClientFacingProfile: core.serialization.ObjectSchema<
@@ -16,6 +18,8 @@ export const ClientFacingProfile: core.serialization.ObjectSchema<
     height: core.serialization.number().optional(),
     birthDate: core.serialization.property("birth_date", core.serialization.string().optional()),
     wheelchairUse: core.serialization.property("wheelchair_use", core.serialization.boolean().optional()),
+    gender: Gender.optional(),
+    sex: Sex.optional(),
     source: ClientFacingSource,
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     updatedAt: core.serialization.property("updated_at", core.serialization.date()),
@@ -28,6 +32,8 @@ export declare namespace ClientFacingProfile {
         height?: number | null;
         birth_date?: string | null;
         wheelchair_use?: boolean | null;
+        gender?: Gender.Raw | null;
+        sex?: Sex.Raw | null;
         source: ClientFacingSource.Raw;
         created_at: string;
         updated_at: string;

@@ -11,6 +11,8 @@ export interface ClientFacingProfile {
     height?: number;
     birthDate?: string;
     wheelchairUse?: boolean;
+    gender?: Vital.Gender;
+    sex?: Vital.Sex;
     source: Vital.ClientFacingSource;
     createdAt: Date;
     updatedAt: Date;

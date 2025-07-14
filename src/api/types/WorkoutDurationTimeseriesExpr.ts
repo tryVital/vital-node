@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface WorkoutDurationTimeseriesExpr {
     timeseries: "workout_duration";
+    /** ℹ️ This enum is non-exhaustive. */
     field: Vital.WorkoutDurationTimeseriesExprField;
 }

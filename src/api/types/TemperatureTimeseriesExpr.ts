@@ -7,5 +7,6 @@ import * as Vital from "../index";
 export interface TemperatureTimeseriesExpr {
     /** ℹ️ This enum is non-exhaustive. */
     timeseries: Vital.TemperatureTimeseriesExprTimeseries;
+    /** ℹ️ This enum is non-exhaustive. */
     field: Vital.TemperatureTimeseriesExprField;
 }

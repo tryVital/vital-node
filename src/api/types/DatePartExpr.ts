@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface DatePartExpr {
     arg: Vital.DatePartExprArg;
+    /** ℹ️ This enum is non-exhaustive. */
     datePart: Vital.DatePartExprDatePart;
 }

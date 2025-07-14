@@ -11,7 +11,9 @@ export interface ClientFacingElectrocardiogram {
     voltageSampleCount: number;
     heartRateMean?: number;
     samplingFrequencyHz?: number;
+    /** ℹ️ This enum is non-exhaustive. */
     classification?: Vital.ClientFacingElectrocardiogramClassification;
+    /** ℹ️ This enum is non-exhaustive. */
     inconclusiveCause?: Vital.ClientFacingElectrocardiogramInconclusiveCause;
     algorithmVersion?: string;
     timeZone?: string;

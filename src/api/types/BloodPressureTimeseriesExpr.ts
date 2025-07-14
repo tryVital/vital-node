@@ -6,5 +6,6 @@ import * as Vital from "../index";
 
 export interface BloodPressureTimeseriesExpr {
     timeseries: "blood_pressure";
+    /** ℹ️ This enum is non-exhaustive. */
     field: Vital.BloodPressureTimeseriesExprField;
 }
