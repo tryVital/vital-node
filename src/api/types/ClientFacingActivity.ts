@@ -32,7 +32,7 @@ export interface ClientFacingActivity {
     source: Vital.ClientFacingSource;
     /** Number of floors climbed by the user::count */
     floorsClimbed?: number;
-    /** [DEPRECATED] The time zone full identifier for the data. Example: 'Europe/London'. */
+    /** The IANA time zone identifier. Example: 'Europe/London'. */
     timeZone?: string;
     /** Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds */
     timezoneOffset?: number;
