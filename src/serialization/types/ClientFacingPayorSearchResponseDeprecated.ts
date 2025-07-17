@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { Address } from "./Address";
+import { ClientFacingPayorCodeSource } from "./ClientFacingPayorCodeSource";
 
 export const ClientFacingPayorSearchResponseDeprecated: core.serialization.ObjectSchema<
     serializers.ClientFacingPayorSearchResponseDeprecated.Raw,
@@ -15,6 +16,7 @@ export const ClientFacingPayorSearchResponseDeprecated: core.serialization.Objec
     name: core.serialization.string(),
     aliases: core.serialization.list(core.serialization.string()),
     orgAddress: core.serialization.property("org_address", Address),
+    source: ClientFacingPayorCodeSource,
 });
 
 export declare namespace ClientFacingPayorSearchResponseDeprecated {
@@ -23,5 +25,6 @@ export declare namespace ClientFacingPayorSearchResponseDeprecated {
         name: string;
         aliases: string[];
         org_address: Address.Raw;
+        source: ClientFacingPayorCodeSource.Raw;
     }
 }

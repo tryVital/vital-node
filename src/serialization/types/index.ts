@@ -124,6 +124,7 @@ export * from "./ClientFacingOrder";
 export * from "./ClientFacingOrderEvent";
 export * from "./ClientFacingPatientDetailsCompatible";
 export * from "./ClientFacingPayor";
+export * from "./ClientFacingPayorCodeSource";
 export * from "./ClientFacingPayorSearchResponse";
 export * from "./ClientFacingPayorSearchResponseDeprecated";
 export * from "./ClientFacingPeakExpiratoryFlowRateSample";

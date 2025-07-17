@@ -44,6 +44,7 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
     icdCodes: core.serialization.property("icd_codes", core.serialization.list(core.serialization.string()).optional()),
     hasAbn: core.serialization.property("has_abn", core.serialization.boolean()),
     interpretation: Interpretation.optional(),
+    hasMissingResults: core.serialization.property("has_missing_results", core.serialization.boolean().optional()),
     expectedResultByDate: core.serialization.property(
         "expected_result_by_date",
         core.serialization.string().optional()
@@ -80,6 +81,7 @@ export declare namespace ClientFacingOrder {
         icd_codes?: string[] | null;
         has_abn: boolean;
         interpretation?: Interpretation.Raw | null;
+        has_missing_results?: boolean | null;
         expected_result_by_date?: string | null;
         worst_case_result_by_date?: string | null;
     }

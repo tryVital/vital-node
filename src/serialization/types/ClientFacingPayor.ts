@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { Address } from "./Address";
+import { ClientFacingPayorCodeSource } from "./ClientFacingPayorCodeSource";
 
 export const ClientFacingPayor: core.serialization.ObjectSchema<
     serializers.ClientFacingPayor.Raw,
@@ -15,6 +16,7 @@ export const ClientFacingPayor: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     aliases: core.serialization.list(core.serialization.string()),
     orgAddress: core.serialization.property("org_address", Address),
+    source: ClientFacingPayorCodeSource,
 });
 
 export declare namespace ClientFacingPayor {
@@ -23,5 +25,6 @@ export declare namespace ClientFacingPayor {
         name: string;
         aliases: string[];
         org_address: Address.Raw;
+        source: ClientFacingPayorCodeSource.Raw;
     }
 }
