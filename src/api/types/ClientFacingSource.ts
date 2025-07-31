@@ -13,6 +13,8 @@ export interface ClientFacingSource {
     type?: string;
     /** The identifier of the app which recorded this summary. This is only applicable to multi-source providers like Apple Health and Android Health Connect. */
     appId?: string;
+    /** The identifier of the device which recorded this summary. */
+    deviceId?: string;
     /**
      * For workout stream timeseries, this is the standard sport slug of the workout with which the timeseries data are associated.
      *

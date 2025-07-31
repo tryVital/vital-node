@@ -13,6 +13,7 @@ export const ClientFacingSource: core.serialization.ObjectSchema<
     provider: core.serialization.string(),
     type: core.serialization.string().optional(),
     appId: core.serialization.property("app_id", core.serialization.string().optional()),
+    deviceId: core.serialization.property("device_id", core.serialization.string().optional()),
     sport: core.serialization.string().optional(),
     workoutId: core.serialization.property("workout_id", core.serialization.string().optional()),
     name: core.serialization.string().optional(),
@@ -25,6 +26,7 @@ export declare namespace ClientFacingSource {
         provider: string;
         type?: string | null;
         app_id?: string | null;
+        device_id?: string | null;
         sport?: string | null;
         workout_id?: string | null;
         name?: string | null;

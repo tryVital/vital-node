@@ -67,103 +67,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.311",
-                "User-Agent": "@tryvital/vital-node/3.1.311",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return serializers.ClientSleepResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VitalError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VitalTimeoutError();
-            case "unknown":
-                throw new errors.VitalError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Get sleep stream for user_id
-     *
-     * @param {string} userId
-     * @param {Vital.SleepGetStreamRequest} request
-     * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.sleep.getStream("user_id", {
-     *         startDate: "start_date"
-     *     })
-     */
-    public async getStream(
-        userId: string,
-        request: Vital.SleepGetStreamRequest,
-        requestOptions?: Sleep.RequestOptions
-    ): Promise<Vital.ClientSleepResponse> {
-        const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (provider != null) {
-            _queryParams["provider"] = provider;
-        }
-
-        _queryParams["start_date"] = startDate;
-        if (endDate != null) {
-            _queryParams["end_date"] = endDate;
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/summary/sleep/${encodeURIComponent(userId)}/stream`
-            ),
-            method: "GET",
-            headers: {
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.311",
-                "User-Agent": "@tryvital/vital-node/3.1.311",
+                "X-Fern-SDK-Version": "3.1.312",
+                "User-Agent": "@tryvital/vital-node/3.1.312",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -257,8 +162,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.311",
-                "User-Agent": "@tryvital/vital-node/3.1.311",
+                "X-Fern-SDK-Version": "3.1.312",
+                "User-Agent": "@tryvital/vital-node/3.1.312",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -337,8 +242,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.311",
-                "User-Agent": "@tryvital/vital-node/3.1.311",
+                "X-Fern-SDK-Version": "3.1.312",
+                "User-Agent": "@tryvital/vital-node/3.1.312",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

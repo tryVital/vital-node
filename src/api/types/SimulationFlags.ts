@@ -7,4 +7,5 @@ import * as Vital from "../index";
 export interface SimulationFlags {
     interpretation?: Vital.Interpretation;
     resultTypes?: Vital.ResultType[];
+    hasMissingResults?: boolean;
 }

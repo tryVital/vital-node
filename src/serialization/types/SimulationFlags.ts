@@ -12,11 +12,13 @@ export const SimulationFlags: core.serialization.ObjectSchema<serializers.Simula
     core.serialization.object({
         interpretation: Interpretation.optional(),
         resultTypes: core.serialization.property("result_types", core.serialization.list(ResultType).optional()),
+        hasMissingResults: core.serialization.property("has_missing_results", core.serialization.boolean().optional()),
     });
 
 export declare namespace SimulationFlags {
     interface Raw {
         interpretation?: Interpretation.Raw | null;
         result_types?: ResultType.Raw[] | null;
+        has_missing_results?: boolean | null;
     }
 }
