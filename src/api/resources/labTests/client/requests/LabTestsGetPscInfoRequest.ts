@@ -24,4 +24,8 @@ export interface LabTestsGetPscInfoRequest {
      * Radius in which to search in miles
      */
     radius?: Vital.AllowedRadius;
+    /**
+     * Filter for only locations with certain capabilities
+     */
+    capabilities?: Vital.LabLocationCapability | Vital.LabLocationCapability[];
 }

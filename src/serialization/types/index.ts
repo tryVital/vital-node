@@ -252,6 +252,7 @@ export * from "./IntervalTimeseriesExprTimeseries";
 export * from "./IntervalTimeseriesExprField";
 export * from "./IntervalTimeseriesExpr";
 export * from "./Jpeg";
+export * from "./LabLocationCapability";
 export * from "./LabLocationMetadata";
 export * from "./LabResultsMetadata";
 export * from "./LabResultsRawResults";

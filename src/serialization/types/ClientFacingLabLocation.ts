@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { LabLocationMetadata } from "./LabLocationMetadata";
 import { Billing } from "./Billing";
 import { LngLat } from "./LngLat";
+import { LabLocationCapability } from "./LabLocationCapability";
 
 export const ClientFacingLabLocation: core.serialization.ObjectSchema<
     serializers.ClientFacingLabLocation.Raw,
@@ -18,6 +19,7 @@ export const ClientFacingLabLocation: core.serialization.ObjectSchema<
     siteCode: core.serialization.property("site_code", core.serialization.string()),
     supportedBillTypes: core.serialization.property("supported_bill_types", core.serialization.list(Billing)),
     location: LngLat,
+    capabilities: core.serialization.list(LabLocationCapability),
 });
 
 export declare namespace ClientFacingLabLocation {
@@ -27,5 +29,6 @@ export declare namespace ClientFacingLabLocation {
         site_code: string;
         supported_bill_types: Billing.Raw[];
         location: LngLat.Raw;
+        capabilities: LabLocationCapability.Raw[];
     }
 }

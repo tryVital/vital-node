@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
+import { LabLocationCapability } from "./LabLocationCapability";
 
 export const PscAreaInfoDetails: core.serialization.ObjectSchema<
     serializers.PscAreaInfoDetails.Raw,
@@ -13,6 +14,7 @@ export const PscAreaInfoDetails: core.serialization.ObjectSchema<
     appointmentWithVital: core.serialization.property("appointment_with_vital", core.serialization.boolean()),
     withinRadius: core.serialization.property("within_radius", core.serialization.number()),
     radius: core.serialization.string(),
+    capabilities: core.serialization.list(LabLocationCapability).optional(),
 });
 
 export declare namespace PscAreaInfoDetails {
@@ -20,5 +22,6 @@ export declare namespace PscAreaInfoDetails {
         appointment_with_vital: boolean;
         within_radius: number;
         radius: string;
+        capabilities?: LabLocationCapability.Raw[] | null;
     }
 }
