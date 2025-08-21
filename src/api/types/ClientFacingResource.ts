@@ -25,6 +25,7 @@ export type ClientFacingResource =
     | "blood_pressure"
     | "cholesterol"
     | "device"
+    | "device_legacy"
     | "weight"
     | "fat"
     | "body_temperature"
@@ -94,6 +95,7 @@ export const ClientFacingResource = {
     BloodPressure: "blood_pressure",
     Cholesterol: "cholesterol",
     Device: "device",
+    DeviceLegacy: "device_legacy",
     Weight: "weight",
     Fat: "fat",
     BodyTemperature: "body_temperature",
