@@ -26,6 +26,7 @@ export const ClientFacingMarkerComplete: core.serialization.ObjectSchema<
     aLaCarteEnabled: core.serialization.property("a_la_carte_enabled", core.serialization.boolean().optional()),
     commonTatDays: core.serialization.property("common_tat_days", core.serialization.number().optional()),
     worstCaseTatDays: core.serialization.property("worst_case_tat_days", core.serialization.number().optional()),
+    isOrderable: core.serialization.property("is_orderable", core.serialization.boolean().optional()),
     expectedResults: core.serialization.property("expected_results", core.serialization.list(ClientFacingResult)),
 });
 
@@ -44,6 +45,7 @@ export declare namespace ClientFacingMarkerComplete {
         a_la_carte_enabled?: boolean | null;
         common_tat_days?: number | null;
         worst_case_tat_days?: number | null;
+        is_orderable?: boolean | null;
         expected_results: ClientFacingResult.Raw[];
     }
 }

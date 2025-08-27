@@ -18,4 +18,5 @@ export interface ClientFacingMarker {
     aLaCarteEnabled?: boolean;
     commonTatDays?: number;
     worstCaseTatDays?: number;
+    isOrderable?: boolean;
 }

@@ -18,5 +18,6 @@ export interface ClientFacingMarkerComplete {
     aLaCarteEnabled?: boolean;
     commonTatDays?: number;
     worstCaseTatDays?: number;
+    isOrderable?: boolean;
     expectedResults: Vital.ClientFacingResult[];
 }

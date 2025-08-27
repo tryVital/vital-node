@@ -25,6 +25,7 @@ export const ClientFacingMarker: core.serialization.ObjectSchema<
     aLaCarteEnabled: core.serialization.property("a_la_carte_enabled", core.serialization.boolean().optional()),
     commonTatDays: core.serialization.property("common_tat_days", core.serialization.number().optional()),
     worstCaseTatDays: core.serialization.property("worst_case_tat_days", core.serialization.number().optional()),
+    isOrderable: core.serialization.property("is_orderable", core.serialization.boolean().optional()),
 });
 
 export declare namespace ClientFacingMarker {
@@ -42,5 +43,6 @@ export declare namespace ClientFacingMarker {
         a_la_carte_enabled?: boolean | null;
         common_tat_days?: number | null;
         worst_case_tat_days?: number | null;
+        is_orderable?: boolean | null;
     }
 }
