@@ -52,8 +52,8 @@ export class Order {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.355",
-                "User-Agent": "@tryvital/vital-node/3.1.355",
+                "X-Fern-SDK-Version": "3.1.356",
+                "User-Agent": "@tryvital/vital-node/3.1.356",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
