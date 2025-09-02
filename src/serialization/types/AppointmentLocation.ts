@@ -13,6 +13,7 @@ export const AppointmentLocation: core.serialization.ObjectSchema<
     Vital.AppointmentLocation
 > = core.serialization.object({
     location: LngLat,
+    distance: core.serialization.number().optional(),
     address: UsAddress,
     code: core.serialization.string(),
     name: core.serialization.string(),
@@ -22,6 +23,7 @@ export const AppointmentLocation: core.serialization.ObjectSchema<
 export declare namespace AppointmentLocation {
     interface Raw {
         location: LngLat.Raw;
+        distance?: number | null;
         address: UsAddress.Raw;
         code: string;
         name: string;

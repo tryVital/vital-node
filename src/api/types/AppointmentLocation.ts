@@ -6,6 +6,7 @@ import * as Vital from "../index";
 
 export interface AppointmentLocation {
     location: Vital.LngLat;
+    distance?: number;
     address: Vital.UsAddress;
     code: string;
     name: string;
