@@ -7,8 +7,8 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 
 export const AppointmentStatus: core.serialization.Schema<serializers.AppointmentStatus.Raw, Vital.AppointmentStatus> =
-    core.serialization.enum_(["confirmed", "pending", "in_progress", "completed", "cancelled"]);
+    core.serialization.enum_(["confirmed", "pending", "reserved", "in_progress", "completed", "cancelled"]);
 
 export declare namespace AppointmentStatus {
-    type Raw = "confirmed" | "pending" | "in_progress" | "completed" | "cancelled";
+    type Raw = "confirmed" | "pending" | "reserved" | "in_progress" | "completed" | "cancelled";
 }

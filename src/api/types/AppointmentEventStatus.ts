@@ -5,10 +5,11 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type AppointmentEventStatus = "pending" | "scheduled" | "completed" | "cancelled" | "in_progress";
+export type AppointmentEventStatus = "pending" | "reserved" | "scheduled" | "completed" | "cancelled" | "in_progress";
 
 export const AppointmentEventStatus = {
     Pending: "pending",
+    Reserved: "reserved",
     Scheduled: "scheduled",
     Completed: "completed",
     Cancelled: "cancelled",
