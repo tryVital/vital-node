@@ -11,7 +11,7 @@ export interface BiomarkerResult {
     name: string;
     slug?: string;
     /** Deprecated: Use 'result' (string) and `type` (enum) instead. */
-    value: number;
+    value?: number;
     result: string;
     type: Vital.ResultType;
     unit?: string;

@@ -12,7 +12,7 @@ export const BiomarkerResult: core.serialization.ObjectSchema<serializers.Biomar
     core.serialization.object({
         name: core.serialization.string(),
         slug: core.serialization.string().optional(),
-        value: core.serialization.number(),
+        value: core.serialization.number().optional(),
         result: core.serialization.string(),
         type: ResultType,
         unit: core.serialization.string().optional(),
@@ -42,7 +42,7 @@ export declare namespace BiomarkerResult {
     interface Raw {
         name: string;
         slug?: string | null;
-        value: number;
+        value?: number | null;
         result: string;
         type: ResultType.Raw;
         unit?: string | null;
