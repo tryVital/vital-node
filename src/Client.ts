@@ -5,6 +5,8 @@
 import * as environments from "./environments";
 import * as core from "./core";
 import { Link } from "./api/resources/link/client/Client";
+import { User } from "./api/resources/user/client/Client";
+import { Providers } from "./api/resources/providers/client/Client";
 import { Electrocardiogram } from "./api/resources/electrocardiogram/client/Client";
 import { SleepCycle } from "./api/resources/sleepCycle/client/Client";
 import { Profile } from "./api/resources/profile/client/Client";
@@ -15,14 +17,12 @@ import { Sleep } from "./api/resources/sleep/client/Client";
 import { Body } from "./api/resources/body/client/Client";
 import { Meal } from "./api/resources/meal/client/Client";
 import { MenstrualCycle } from "./api/resources/menstrualCycle/client/Client";
-import { Vitals } from "./api/resources/vitals/client/Client";
-import { User } from "./api/resources/user/client/Client";
-import { Team } from "./api/resources/team/client/Client";
-import { Providers } from "./api/resources/providers/client/Client";
-import { Introspect } from "./api/resources/introspect/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
 import { Order } from "./api/resources/order/client/Client";
+import { Team } from "./api/resources/team/client/Client";
+import { Vitals } from "./api/resources/vitals/client/Client";
+import { Introspect } from "./api/resources/introspect/client/Client";
 import { Insurance } from "./api/resources/insurance/client/Client";
 import { Payor } from "./api/resources/payor/client/Client";
 import { Aggregate } from "./api/resources/aggregate/client/Client";
@@ -50,6 +50,18 @@ export class VitalClient {
 
     public get link(): Link {
         return (this._link ??= new Link(this._options));
+    }
+
+    protected _user: User | undefined;
+
+    public get user(): User {
+        return (this._user ??= new User(this._options));
+    }
+
+    protected _providers: Providers | undefined;
+
+    public get providers(): Providers {
+        return (this._providers ??= new Providers(this._options));
     }
 
     protected _electrocardiogram: Electrocardiogram | undefined;
@@ -112,36 +124,6 @@ export class VitalClient {
         return (this._menstrualCycle ??= new MenstrualCycle(this._options));
     }
 
-    protected _vitals: Vitals | undefined;
-
-    public get vitals(): Vitals {
-        return (this._vitals ??= new Vitals(this._options));
-    }
-
-    protected _user: User | undefined;
-
-    public get user(): User {
-        return (this._user ??= new User(this._options));
-    }
-
-    protected _team: Team | undefined;
-
-    public get team(): Team {
-        return (this._team ??= new Team(this._options));
-    }
-
-    protected _providers: Providers | undefined;
-
-    public get providers(): Providers {
-        return (this._providers ??= new Providers(this._options));
-    }
-
-    protected _introspect: Introspect | undefined;
-
-    public get introspect(): Introspect {
-        return (this._introspect ??= new Introspect(this._options));
-    }
-
     protected _labTests: LabTests | undefined;
 
     public get labTests(): LabTests {
@@ -158,6 +140,24 @@ export class VitalClient {
 
     public get order(): Order {
         return (this._order ??= new Order(this._options));
+    }
+
+    protected _team: Team | undefined;
+
+    public get team(): Team {
+        return (this._team ??= new Team(this._options));
+    }
+
+    protected _vitals: Vitals | undefined;
+
+    public get vitals(): Vitals {
+        return (this._vitals ??= new Vitals(this._options));
+    }
+
+    protected _introspect: Introspect | undefined;
+
+    public get introspect(): Introspect {
+        return (this._introspect ??= new Introspect(this._options));
     }
 
     protected _insurance: Insurance | undefined;
