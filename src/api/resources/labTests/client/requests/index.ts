@@ -1,9 +1,3 @@
-export { type LabTestsGetRequest } from "./LabTestsGetRequest";
-export { type CreateLabTestRequest } from "./CreateLabTestRequest";
-export { type UpdateLabTestRequest } from "./UpdateLabTestRequest";
-export { type LabTestsGetMarkersRequest } from "./LabTestsGetMarkersRequest";
-export { type LabTestsGetMarkersForOrderSetRequest } from "./LabTestsGetMarkersForOrderSetRequest";
-export { type LabTestsGetMarkersForLabTestRequest } from "./LabTestsGetMarkersForLabTestRequest";
 export { type LabTestsGetPhlebotomyAppointmentAvailabilityRequest } from "./LabTestsGetPhlebotomyAppointmentAvailabilityRequest";
 export { type RequestAppointmentRequest } from "./RequestAppointmentRequest";
 export { type ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest } from "./ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest";
@@ -17,4 +11,10 @@ export { type CreateOrderRequestCompatible } from "./CreateOrderRequestCompatibl
 export { type ImportOrderBody } from "./ImportOrderBody";
 export { type LabTestsSimulateOrderProcessRequest } from "./LabTestsSimulateOrderProcessRequest";
 export { type LabTestsGetOrdersRequest } from "./LabTestsGetOrdersRequest";
+export { type LabTestsGetRequest } from "./LabTestsGetRequest";
+export { type CreateLabTestRequest } from "./CreateLabTestRequest";
+export { type UpdateLabTestRequest } from "./UpdateLabTestRequest";
+export { type LabTestsGetMarkersRequest } from "./LabTestsGetMarkersRequest";
+export { type LabTestsGetMarkersForOrderSetRequest } from "./LabTestsGetMarkersForOrderSetRequest";
+export { type LabTestsGetMarkersForLabTestRequest } from "./LabTestsGetMarkersForLabTestRequest";
 export { type LabTestsGetPaginatedRequest } from "./LabTestsGetPaginatedRequest";
