@@ -1,3 +1,4 @@
+export { type LabTestsGetOrdersRequest } from "./LabTestsGetOrdersRequest";
 export { type LabTestsGetPhlebotomyAppointmentAvailabilityRequest } from "./LabTestsGetPhlebotomyAppointmentAvailabilityRequest";
 export { type RequestAppointmentRequest } from "./RequestAppointmentRequest";
 export { type ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest } from "./ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest";
@@ -10,7 +11,6 @@ export { type VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest } fro
 export { type CreateOrderRequestCompatible } from "./CreateOrderRequestCompatible";
 export { type ImportOrderBody } from "./ImportOrderBody";
 export { type LabTestsSimulateOrderProcessRequest } from "./LabTestsSimulateOrderProcessRequest";
-export { type LabTestsGetOrdersRequest } from "./LabTestsGetOrdersRequest";
 export { type LabTestsGetRequest } from "./LabTestsGetRequest";
 export { type CreateLabTestRequest } from "./CreateLabTestRequest";
 export { type UpdateLabTestRequest } from "./UpdateLabTestRequest";
