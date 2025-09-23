@@ -17,7 +17,7 @@ import * as Vital from "../../../../index";
  *         queries: [{
  *                 select: [{
  *                         arg: {
- *                             sleep: "session_start"
+ *                             sleep: "id"
  *                         },
  *                         func: "mean"
  *                     }]

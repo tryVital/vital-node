@@ -10,6 +10,7 @@ export const SleepColumnExprSleep: core.serialization.Schema<
     serializers.SleepColumnExprSleep.Raw,
     Vital.SleepColumnExprSleep
 > = core.serialization.enum_([
+    "id",
     "session_start",
     "session_end",
     "state",
@@ -43,6 +44,7 @@ export const SleepColumnExprSleep: core.serialization.Schema<
 
 export declare namespace SleepColumnExprSleep {
     type Raw =
+        | "id"
         | "session_start"
         | "session_end"
         | "state"

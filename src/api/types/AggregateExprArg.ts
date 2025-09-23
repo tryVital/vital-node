@@ -12,6 +12,8 @@ export type AggregateExprArg =
     | Vital.MealColumnExpr
     | Vital.SleepScoreValueMacroExpr
     | Vital.ChronotypeValueMacroExpr
+    | Vital.AsleepAtValueMacroExpr
+    | Vital.AwakeAtValueMacroExpr
     | Vital.UnrecognizedValueMacroExpr
     | Vital.DiscreteTimeseriesExpr
     | Vital.IntervalTimeseriesExpr

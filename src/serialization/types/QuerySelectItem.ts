@@ -14,6 +14,8 @@ import { BodyColumnExpr } from "./BodyColumnExpr";
 import { MealColumnExpr } from "./MealColumnExpr";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
+import { AsleepAtValueMacroExpr } from "./AsleepAtValueMacroExpr";
+import { AwakeAtValueMacroExpr } from "./AwakeAtValueMacroExpr";
 import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
 import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr";
@@ -35,6 +37,8 @@ export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectI
         MealColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
+        AsleepAtValueMacroExpr,
+        AwakeAtValueMacroExpr,
         UnrecognizedValueMacroExpr,
         DiscreteTimeseriesExpr,
         IntervalTimeseriesExpr,
@@ -57,6 +61,8 @@ export declare namespace QuerySelectItem {
         | MealColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
+        | AsleepAtValueMacroExpr.Raw
+        | AwakeAtValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw
         | DiscreteTimeseriesExpr.Raw
         | IntervalTimeseriesExpr.Raw

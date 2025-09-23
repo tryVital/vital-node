@@ -6,6 +6,7 @@
  * ℹ️ This enum is non-exhaustive.
  */
 export type SleepColumnExprSleep =
+    | "id"
     | "session_start"
     | "session_end"
     | "state"
@@ -37,6 +38,7 @@ export type SleepColumnExprSleep =
     | "time_zone";
 
 export const SleepColumnExprSleep = {
+    Id: "id",
     SessionStart: "session_start",
     SessionEnd: "session_end",
     State: "state",

@@ -12,6 +12,8 @@ import { BodyColumnExpr } from "./BodyColumnExpr";
 import { MealColumnExpr } from "./MealColumnExpr";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
+import { AsleepAtValueMacroExpr } from "./AsleepAtValueMacroExpr";
+import { AwakeAtValueMacroExpr } from "./AwakeAtValueMacroExpr";
 import { UnrecognizedValueMacroExpr } from "./UnrecognizedValueMacroExpr";
 import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr";
@@ -30,6 +32,8 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         MealColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
+        AsleepAtValueMacroExpr,
+        AwakeAtValueMacroExpr,
         UnrecognizedValueMacroExpr,
         DiscreteTimeseriesExpr,
         IntervalTimeseriesExpr,
@@ -49,6 +53,8 @@ export declare namespace AggregateExprArg {
         | MealColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
+        | AsleepAtValueMacroExpr.Raw
+        | AwakeAtValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw
         | DiscreteTimeseriesExpr.Raw
         | IntervalTimeseriesExpr.Raw
