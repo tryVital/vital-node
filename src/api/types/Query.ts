@@ -7,4 +7,12 @@ import * as Vital from "../index";
 export interface Query {
     select: Vital.QuerySelectItem[];
     groupBy?: Vital.QueryGroupByItem[];
+    /**
+     * A WHERE clause filtering the input data. If a GROUP BY clause is present, filtering happens prior to GROUP BY evaluation.
+     *
+     * WHERE clause uses SQL Expression syntax to describe the filtering criteria:
+     * * Available operators: `>`, `>=`, `<`, `<=`, `=`, `!=`, `NOT`, `AND` and `OR`.
+     * * Parentheses is supported.
+     */
+    where?: string;
 }
