@@ -4,20 +4,20 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Link } from "./api/resources/link/client/Client";
 import { User } from "./api/resources/user/client/Client";
+import { Sleep } from "./api/resources/sleep/client/Client";
+import { Workouts } from "./api/resources/workouts/client/Client";
+import { Vitals } from "./api/resources/vitals/client/Client";
 import { Electrocardiogram } from "./api/resources/electrocardiogram/client/Client";
 import { SleepCycle } from "./api/resources/sleepCycle/client/Client";
 import { Profile } from "./api/resources/profile/client/Client";
 import { Devices } from "./api/resources/devices/client/Client";
 import { Activity } from "./api/resources/activity/client/Client";
-import { Workouts } from "./api/resources/workouts/client/Client";
-import { Sleep } from "./api/resources/sleep/client/Client";
 import { Body } from "./api/resources/body/client/Client";
 import { Meal } from "./api/resources/meal/client/Client";
 import { MenstrualCycle } from "./api/resources/menstrualCycle/client/Client";
 import { Providers } from "./api/resources/providers/client/Client";
-import { Vitals } from "./api/resources/vitals/client/Client";
+import { Link } from "./api/resources/link/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
 import { Order } from "./api/resources/order/client/Client";
@@ -46,16 +46,28 @@ export declare namespace VitalClient {
 export class VitalClient {
     constructor(protected readonly _options: VitalClient.Options = {}) {}
 
-    protected _link: Link | undefined;
-
-    public get link(): Link {
-        return (this._link ??= new Link(this._options));
-    }
-
     protected _user: User | undefined;
 
     public get user(): User {
         return (this._user ??= new User(this._options));
+    }
+
+    protected _sleep: Sleep | undefined;
+
+    public get sleep(): Sleep {
+        return (this._sleep ??= new Sleep(this._options));
+    }
+
+    protected _workouts: Workouts | undefined;
+
+    public get workouts(): Workouts {
+        return (this._workouts ??= new Workouts(this._options));
+    }
+
+    protected _vitals: Vitals | undefined;
+
+    public get vitals(): Vitals {
+        return (this._vitals ??= new Vitals(this._options));
     }
 
     protected _electrocardiogram: Electrocardiogram | undefined;
@@ -88,18 +100,6 @@ export class VitalClient {
         return (this._activity ??= new Activity(this._options));
     }
 
-    protected _workouts: Workouts | undefined;
-
-    public get workouts(): Workouts {
-        return (this._workouts ??= new Workouts(this._options));
-    }
-
-    protected _sleep: Sleep | undefined;
-
-    public get sleep(): Sleep {
-        return (this._sleep ??= new Sleep(this._options));
-    }
-
     protected _body: Body | undefined;
 
     public get body(): Body {
@@ -124,10 +124,10 @@ export class VitalClient {
         return (this._providers ??= new Providers(this._options));
     }
 
-    protected _vitals: Vitals | undefined;
+    protected _link: Link | undefined;
 
-    public get vitals(): Vitals {
-        return (this._vitals ??= new Vitals(this._options));
+    public get link(): Link {
+        return (this._link ??= new Link(this._options));
     }
 
     protected _testkit: Testkit | undefined;
