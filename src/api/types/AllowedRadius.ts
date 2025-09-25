@@ -5,11 +5,12 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type AllowedRadius = "10" | "20" | "25" | "50";
+export type AllowedRadius = "10" | "20" | "25" | "50" | "100";
 
 export const AllowedRadius = {
     Ten: "10",
     Twenty: "20",
     TwentyFive: "25",
     Fifty: "50",
+    OneHundred: "100",
 } as const;
