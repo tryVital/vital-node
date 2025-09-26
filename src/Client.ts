@@ -4,8 +4,6 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Link } from "./api/resources/link/client/Client";
-import { Providers } from "./api/resources/providers/client/Client";
 import { User } from "./api/resources/user/client/Client";
 import { Electrocardiogram } from "./api/resources/electrocardiogram/client/Client";
 import { SleepCycle } from "./api/resources/sleepCycle/client/Client";
@@ -17,10 +15,12 @@ import { Sleep } from "./api/resources/sleep/client/Client";
 import { Body } from "./api/resources/body/client/Client";
 import { Meal } from "./api/resources/meal/client/Client";
 import { MenstrualCycle } from "./api/resources/menstrualCycle/client/Client";
+import { Link } from "./api/resources/link/client/Client";
+import { Vitals } from "./api/resources/vitals/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
 import { Order } from "./api/resources/order/client/Client";
-import { Vitals } from "./api/resources/vitals/client/Client";
+import { Providers } from "./api/resources/providers/client/Client";
 import { Team } from "./api/resources/team/client/Client";
 import { Introspect } from "./api/resources/introspect/client/Client";
 import { Insurance } from "./api/resources/insurance/client/Client";
@@ -45,18 +45,6 @@ export declare namespace VitalClient {
 
 export class VitalClient {
     constructor(protected readonly _options: VitalClient.Options = {}) {}
-
-    protected _link: Link | undefined;
-
-    public get link(): Link {
-        return (this._link ??= new Link(this._options));
-    }
-
-    protected _providers: Providers | undefined;
-
-    public get providers(): Providers {
-        return (this._providers ??= new Providers(this._options));
-    }
 
     protected _user: User | undefined;
 
@@ -124,6 +112,18 @@ export class VitalClient {
         return (this._menstrualCycle ??= new MenstrualCycle(this._options));
     }
 
+    protected _link: Link | undefined;
+
+    public get link(): Link {
+        return (this._link ??= new Link(this._options));
+    }
+
+    protected _vitals: Vitals | undefined;
+
+    public get vitals(): Vitals {
+        return (this._vitals ??= new Vitals(this._options));
+    }
+
     protected _testkit: Testkit | undefined;
 
     public get testkit(): Testkit {
@@ -142,10 +142,10 @@ export class VitalClient {
         return (this._order ??= new Order(this._options));
     }
 
-    protected _vitals: Vitals | undefined;
+    protected _providers: Providers | undefined;
 
-    public get vitals(): Vitals {
-        return (this._vitals ??= new Vitals(this._options));
+    public get providers(): Providers {
+        return (this._providers ??= new Providers(this._options));
     }
 
     protected _team: Team | undefined;
