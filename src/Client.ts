@@ -5,9 +5,9 @@
 import * as environments from "./environments";
 import * as core from "./core";
 import { User } from "./api/resources/user/client/Client";
-import { Team } from "./api/resources/team/client/Client";
 import { Link } from "./api/resources/link/client/Client";
 import { Providers } from "./api/resources/providers/client/Client";
+import { Team } from "./api/resources/team/client/Client";
 import { Electrocardiogram } from "./api/resources/electrocardiogram/client/Client";
 import { SleepCycle } from "./api/resources/sleepCycle/client/Client";
 import { Profile } from "./api/resources/profile/client/Client";
@@ -52,12 +52,6 @@ export class VitalClient {
         return (this._user ??= new User(this._options));
     }
 
-    protected _team: Team | undefined;
-
-    public get team(): Team {
-        return (this._team ??= new Team(this._options));
-    }
-
     protected _link: Link | undefined;
 
     public get link(): Link {
@@ -68,6 +62,12 @@ export class VitalClient {
 
     public get providers(): Providers {
         return (this._providers ??= new Providers(this._options));
+    }
+
+    protected _team: Team | undefined;
+
+    public get team(): Team {
+        return (this._team ??= new Team(this._options));
     }
 
     protected _electrocardiogram: Electrocardiogram | undefined;
