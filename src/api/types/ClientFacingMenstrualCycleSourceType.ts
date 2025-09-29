@@ -19,7 +19,8 @@ export type ClientFacingMenstrualCycleSourceType =
     | "chest_strap"
     | "ring"
     | "lab"
-    | "exercise_machine";
+    | "exercise_machine"
+    | "earphone";
 
 export const ClientFacingMenstrualCycleSourceType = {
     Unknown: "unknown",
@@ -36,4 +37,5 @@ export const ClientFacingMenstrualCycleSourceType = {
     Ring: "ring",
     Lab: "lab",
     ExerciseMachine: "exercise_machine",
+    Earphone: "earphone",
 } as const;

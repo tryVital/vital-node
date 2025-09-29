@@ -24,6 +24,7 @@ export const ClientFacingElectrocardiogramSourceType: core.serialization.Schema<
     "ring",
     "lab",
     "exercise_machine",
+    "earphone",
 ]);
 
 export declare namespace ClientFacingElectrocardiogramSourceType {
@@ -41,5 +42,6 @@ export declare namespace ClientFacingElectrocardiogramSourceType {
         | "chest_strap"
         | "ring"
         | "lab"
-        | "exercise_machine";
+        | "exercise_machine"
+        | "earphone";
 }

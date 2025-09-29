@@ -24,6 +24,7 @@ export const ClientFacingMenstrualCycleSourceType: core.serialization.Schema<
     "ring",
     "lab",
     "exercise_machine",
+    "earphone",
 ]);
 
 export declare namespace ClientFacingMenstrualCycleSourceType {
@@ -41,5 +42,6 @@ export declare namespace ClientFacingMenstrualCycleSourceType {
         | "chest_strap"
         | "ring"
         | "lab"
-        | "exercise_machine";
+        | "exercise_machine"
+        | "earphone";
 }

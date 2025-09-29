@@ -19,7 +19,8 @@ export type ClientFacingSleepCycleSourceType =
     | "chest_strap"
     | "ring"
     | "lab"
-    | "exercise_machine";
+    | "exercise_machine"
+    | "earphone";
 
 export const ClientFacingSleepCycleSourceType = {
     Unknown: "unknown",
@@ -36,4 +37,5 @@ export const ClientFacingSleepCycleSourceType = {
     Ring: "ring",
     Lab: "lab",
     ExerciseMachine: "exercise_machine",
+    Earphone: "earphone",
 } as const;
