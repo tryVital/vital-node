@@ -4,8 +4,8 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Providers } from "./api/resources/providers/client/Client";
 import { User } from "./api/resources/user/client/Client";
+import { Providers } from "./api/resources/providers/client/Client";
 import { Link } from "./api/resources/link/client/Client";
 import { Electrocardiogram } from "./api/resources/electrocardiogram/client/Client";
 import { SleepCycle } from "./api/resources/sleepCycle/client/Client";
@@ -46,16 +46,16 @@ export declare namespace VitalClient {
 export class VitalClient {
     constructor(protected readonly _options: VitalClient.Options = {}) {}
 
-    protected _providers: Providers | undefined;
-
-    public get providers(): Providers {
-        return (this._providers ??= new Providers(this._options));
-    }
-
     protected _user: User | undefined;
 
     public get user(): User {
         return (this._user ??= new User(this._options));
+    }
+
+    protected _providers: Providers | undefined;
+
+    public get providers(): Providers {
+        return (this._providers ??= new Providers(this._options));
     }
 
     protected _link: Link | undefined;

@@ -5,4 +5,10 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type LabLocationCapability = "stat";
+export type LabLocationCapability = "stat" | "appointment_scheduling_via_junction" | "appointment_scheduling_with_lab";
+
+export const LabLocationCapability = {
+    Stat: "stat",
+    AppointmentSchedulingViaJunction: "appointment_scheduling_via_junction",
+    AppointmentSchedulingWithLab: "appointment_scheduling_with_lab",
+} as const;

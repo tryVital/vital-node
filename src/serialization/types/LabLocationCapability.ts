@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const LabLocationCapability: core.serialization.Schema<
     serializers.LabLocationCapability.Raw,
     Vital.LabLocationCapability
-> = core.serialization.stringLiteral("stat");
+> = core.serialization.enum_(["stat", "appointment_scheduling_via_junction", "appointment_scheduling_with_lab"]);
 
 export declare namespace LabLocationCapability {
-    type Raw = "stat";
+    type Raw = "stat" | "appointment_scheduling_via_junction" | "appointment_scheduling_with_lab";
 }
