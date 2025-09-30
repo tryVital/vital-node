@@ -4,10 +4,9 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
+import { Providers } from "./api/resources/providers/client/Client";
 import { User } from "./api/resources/user/client/Client";
 import { Link } from "./api/resources/link/client/Client";
-import { Providers } from "./api/resources/providers/client/Client";
-import { Team } from "./api/resources/team/client/Client";
 import { Electrocardiogram } from "./api/resources/electrocardiogram/client/Client";
 import { SleepCycle } from "./api/resources/sleepCycle/client/Client";
 import { Profile } from "./api/resources/profile/client/Client";
@@ -19,6 +18,7 @@ import { Body } from "./api/resources/body/client/Client";
 import { Meal } from "./api/resources/meal/client/Client";
 import { MenstrualCycle } from "./api/resources/menstrualCycle/client/Client";
 import { Vitals } from "./api/resources/vitals/client/Client";
+import { Team } from "./api/resources/team/client/Client";
 import { Introspect } from "./api/resources/introspect/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
 import { Testkit } from "./api/resources/testkit/client/Client";
@@ -46,6 +46,12 @@ export declare namespace VitalClient {
 export class VitalClient {
     constructor(protected readonly _options: VitalClient.Options = {}) {}
 
+    protected _providers: Providers | undefined;
+
+    public get providers(): Providers {
+        return (this._providers ??= new Providers(this._options));
+    }
+
     protected _user: User | undefined;
 
     public get user(): User {
@@ -56,18 +62,6 @@ export class VitalClient {
 
     public get link(): Link {
         return (this._link ??= new Link(this._options));
-    }
-
-    protected _providers: Providers | undefined;
-
-    public get providers(): Providers {
-        return (this._providers ??= new Providers(this._options));
-    }
-
-    protected _team: Team | undefined;
-
-    public get team(): Team {
-        return (this._team ??= new Team(this._options));
     }
 
     protected _electrocardiogram: Electrocardiogram | undefined;
@@ -134,6 +128,12 @@ export class VitalClient {
 
     public get vitals(): Vitals {
         return (this._vitals ??= new Vitals(this._options));
+    }
+
+    protected _team: Team | undefined;
+
+    public get team(): Team {
+        return (this._team ??= new Team(this._options));
     }
 
     protected _introspect: Introspect | undefined;
