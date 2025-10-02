@@ -4,6 +4,7 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
+import { User } from "./api/resources/user/client/Client";
 import { Providers } from "./api/resources/providers/client/Client";
 import { Link } from "./api/resources/link/client/Client";
 import { Electrocardiogram } from "./api/resources/electrocardiogram/client/Client";
@@ -17,7 +18,6 @@ import { Body } from "./api/resources/body/client/Client";
 import { Meal } from "./api/resources/meal/client/Client";
 import { MenstrualCycle } from "./api/resources/menstrualCycle/client/Client";
 import { Vitals } from "./api/resources/vitals/client/Client";
-import { User } from "./api/resources/user/client/Client";
 import { Team } from "./api/resources/team/client/Client";
 import { Introspect } from "./api/resources/introspect/client/Client";
 import { LabTests } from "./api/resources/labTests/client/Client";
@@ -45,6 +45,12 @@ export declare namespace VitalClient {
 
 export class VitalClient {
     constructor(protected readonly _options: VitalClient.Options = {}) {}
+
+    protected _user: User | undefined;
+
+    public get user(): User {
+        return (this._user ??= new User(this._options));
+    }
 
     protected _providers: Providers | undefined;
 
@@ -122,12 +128,6 @@ export class VitalClient {
 
     public get vitals(): Vitals {
         return (this._vitals ??= new Vitals(this._options));
-    }
-
-    protected _user: User | undefined;
-
-    public get user(): User {
-        return (this._user ??= new User(this._options));
     }
 
     protected _team: Team | undefined;

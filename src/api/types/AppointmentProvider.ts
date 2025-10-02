@@ -5,11 +5,10 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type AppointmentProvider = "getlabs" | "axlehealth" | "phlebfinders" | "quest";
+export type AppointmentProvider = "getlabs" | "phlebfinders" | "quest";
 
 export const AppointmentProvider = {
     Getlabs: "getlabs",
-    Axlehealth: "axlehealth",
     Phlebfinders: "phlebfinders",
     Quest: "quest",
 } as const;
