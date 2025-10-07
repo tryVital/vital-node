@@ -39,4 +39,5 @@ export interface ImportOrderBody {
     patientDetails: Vital.PatientDetailsWithValidation;
     patientAddress: Vital.PatientAddress;
     sampleId: string;
+    labAccountId?: string;
 }

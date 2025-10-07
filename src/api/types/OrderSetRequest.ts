@@ -7,4 +7,5 @@ import * as Vital from "../index";
 export interface OrderSetRequest {
     labTestIds?: string[];
     addOn?: Vital.AddOnOrder;
+    labAccountId?: string;
 }

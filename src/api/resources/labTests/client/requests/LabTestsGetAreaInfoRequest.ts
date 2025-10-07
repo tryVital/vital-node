@@ -27,4 +27,8 @@ export interface LabTestsGetAreaInfoRequest {
      * List of labs to check for PSCs
      */
     labs?: Vital.ClientFacingLabs | Vital.ClientFacingLabs[];
+    /**
+     * Lab Account ID to use for availability checks
+     */
+    labAccountId?: string;
 }

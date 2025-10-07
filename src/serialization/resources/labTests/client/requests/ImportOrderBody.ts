@@ -22,6 +22,7 @@ export const ImportOrderBody: core.serialization.Schema<serializers.ImportOrderB
         patientDetails: core.serialization.property("patient_details", PatientDetailsWithValidation),
         patientAddress: core.serialization.property("patient_address", PatientAddress),
         sampleId: core.serialization.property("sample_id", core.serialization.string()),
+        labAccountId: core.serialization.property("lab_account_id", core.serialization.string().optional()),
     });
 
 export declare namespace ImportOrderBody {
@@ -34,5 +35,6 @@ export declare namespace ImportOrderBody {
         patient_details: PatientDetailsWithValidation.Raw;
         patient_address: PatientAddress.Raw;
         sample_id: string;
+        lab_account_id?: string | null;
     }
 }

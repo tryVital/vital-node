@@ -28,4 +28,8 @@ export interface LabTestsGetPscInfoRequest {
      * Filter for only locations with certain capabilities
      */
     capabilities?: Vital.LabLocationCapability | Vital.LabLocationCapability[];
+    /**
+     * Lab Account ID to use for availability checks
+     */
+    labAccountId?: string;
 }

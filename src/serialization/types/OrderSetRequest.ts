@@ -14,11 +14,13 @@ export const OrderSetRequest: core.serialization.ObjectSchema<serializers.OrderS
             core.serialization.list(core.serialization.string()).optional()
         ),
         addOn: core.serialization.property("add_on", AddOnOrder.optional()),
+        labAccountId: core.serialization.property("lab_account_id", core.serialization.string().optional()),
     });
 
 export declare namespace OrderSetRequest {
     interface Raw {
         lab_test_ids?: string[] | null;
         add_on?: AddOnOrder.Raw | null;
+        lab_account_id?: string | null;
     }
 }

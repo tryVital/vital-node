@@ -16,6 +16,10 @@ export interface LabTestsGetMarkersRequest {
      */
     name?: string;
     aLaCarteEnabled?: boolean;
+    /**
+     * The lab account ID. This lab account is used to determine the availability of markers and lab tests.
+     */
+    labAccountId?: string;
     page?: number;
     size?: number;
 }
