@@ -29,4 +29,5 @@ export interface ClientFacingTeam {
     labTestsPatientEmailCommunicationEnabled: boolean;
     logoUrl?: string;
     delegatedFlow: Vital.DelegatedFlowType;
+    criticalResultNotificationEmail?: string;
 }

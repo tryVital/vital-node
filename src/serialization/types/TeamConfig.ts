@@ -25,6 +25,14 @@ export const TeamConfig: core.serialization.ObjectSchema<serializers.TeamConfig.
             "sdk_per_device_activity_timeseries",
             core.serialization.boolean().optional()
         ),
+        partialWebhooksEnabled: core.serialization.property(
+            "partial_webhooks_enabled",
+            core.serialization.boolean().optional()
+        ),
+        minorOrderingEnabled: core.serialization.property(
+            "minor_ordering_enabled",
+            core.serialization.boolean().optional()
+        ),
         edsPreferences: core.serialization.property("eds_preferences", EventDestinationPreferences.optional()),
         eventTypePrefixes: core.serialization.property(
             "event_type_prefixes",
@@ -40,6 +48,8 @@ export declare namespace TeamConfig {
         provider_raw_data?: boolean | null;
         reject_duplicate_connection?: boolean | null;
         sdk_per_device_activity_timeseries?: boolean | null;
+        partial_webhooks_enabled?: boolean | null;
+        minor_ordering_enabled?: boolean | null;
         eds_preferences?: EventDestinationPreferences.Raw | null;
         event_type_prefixes?: string[] | null;
     }

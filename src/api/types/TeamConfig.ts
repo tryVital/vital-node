@@ -11,6 +11,8 @@ export interface TeamConfig {
     providerRawData?: boolean;
     rejectDuplicateConnection?: boolean;
     sdkPerDeviceActivityTimeseries?: boolean;
+    partialWebhooksEnabled?: boolean;
+    minorOrderingEnabled?: boolean;
     edsPreferences?: Vital.EventDestinationPreferences;
     eventTypePrefixes?: string[];
 }
