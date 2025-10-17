@@ -12,7 +12,7 @@ export const ClientFacingIgeTimeseries: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.number().optional(),
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
-    type: core.serialization.string().optional(),
+    type: core.serialization.string(),
     unit: core.serialization.string(),
     timestamp: core.serialization.date(),
     value: core.serialization.number(),
@@ -22,7 +22,7 @@ export declare namespace ClientFacingIgeTimeseries {
     interface Raw {
         id?: number | null;
         timezone_offset?: number | null;
-        type?: string | null;
+        type: string;
         unit: string;
         timestamp: string;
         value: number;

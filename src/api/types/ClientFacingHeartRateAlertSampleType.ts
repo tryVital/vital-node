@@ -3,7 +3,7 @@
  */
 
 /**
- * ℹ️ This enum is non-exhaustive.
+ * The type of heart rate alert. ℹ️ This enum is non-exhaustive.
  */
 export type ClientFacingHeartRateAlertSampleType = "low_heart_rate" | "high_heart_rate" | "irregular_rhythm";
 

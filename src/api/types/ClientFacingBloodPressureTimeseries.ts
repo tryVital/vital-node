@@ -9,7 +9,7 @@ export interface ClientFacingBloodPressureTimeseries {
     id?: number;
     /** Time zone UTC offset in seconds. Positive offset indicates east of UTC; negative offset indicates west of UTC; and null indicates the time zone information is unavailable at source. */
     timezoneOffset?: number;
-    /** The reading type of the measurement. This is applicable only to Cholesterol, IGG, IGE and InsulinInjection. */
+    /** Type is always null for this resource. */
     type?: string;
     /** The unit of the value. We use SI units where possible, e.g. mmol/L for glucose/cholesterol, bpm for heart rate, etc. */
     unit: string;

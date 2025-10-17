@@ -3,7 +3,7 @@
  */
 
 /**
- * ℹ️ This enum is non-exhaustive.
+ * The type of stand hour. ℹ️ This enum is non-exhaustive.
  */
 export type ClientFacingStandHourSampleType = "stood" | "idle";
 
