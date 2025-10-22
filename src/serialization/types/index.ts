@@ -202,6 +202,7 @@ export * from "./ContinuousQueryTaskHistoryResponse";
 export * from "./ContinuousQueryTaskStatus";
 export * from "./ContraceptiveEntryType";
 export * from "./ContraceptiveEntry";
+export * from "./CreateUserPortalUrlResponse";
 export * from "./DatePartExprArg";
 export * from "./DatePartExprDatePart";
 export * from "./DatePartExpr";

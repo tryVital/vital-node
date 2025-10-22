@@ -1,11 +1,12 @@
 export * as link from "./link";
 export * from "./link/types";
+export * as user from "./user";
+export * from "./user/types";
 export * as labTests from "./labTests";
 export * from "./labTests/types";
 export * as aggregate from "./aggregate";
 export * from "./aggregate/types";
 export * as vitals from "./vitals";
-export * as user from "./user";
 export * as team from "./team";
 export * as providers from "./providers";
 export * as insurance from "./insurance";

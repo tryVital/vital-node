@@ -1,5 +1,7 @@
 export * as link from "./link";
 export * from "./link/types";
+export * as user from "./user";
+export * from "./user/types";
 export * as labTests from "./labTests";
 export * from "./labTests/types";
 export * as aggregate from "./aggregate";
@@ -15,7 +17,6 @@ export * as body from "./body";
 export * as meal from "./meal";
 export * as menstrualCycle from "./menstrualCycle";
 export * as vitals from "./vitals";
-export * as user from "./user";
 export * as team from "./team";
 export * as providers from "./providers";
 export * as introspect from "./introspect";
