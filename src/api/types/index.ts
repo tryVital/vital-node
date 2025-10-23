@@ -1,3 +1,4 @@
+export * from "./NotFoundErrorBody";
 export * from "./ActivityColumnExprActivity";
 export * from "./ActivityColumnExpr";
 export * from "./ActivityV2InDb";
