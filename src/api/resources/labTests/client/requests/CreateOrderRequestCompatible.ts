@@ -43,6 +43,7 @@ export interface CreateOrderRequestCompatible {
     aoeAnswers?: Vital.AoEAnswer[];
     passthrough?: string;
     labAccountId?: string;
+    creatorMemberId?: string;
     patientDetails: Vital.PatientDetailsWithValidation;
     patientAddress: Vital.PatientAddressWithValidation;
 }
