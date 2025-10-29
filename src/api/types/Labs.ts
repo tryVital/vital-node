@@ -16,7 +16,8 @@ export type Labs =
     | "manual"
     | "sanocardio"
     | "ihd"
-    | "nexus";
+    | "nexus"
+    | "my_uti";
 
 export const Labs = {
     Ayumetrix: "ayumetrix",
@@ -30,4 +31,5 @@ export const Labs = {
     Sanocardio: "sanocardio",
     Ihd: "ihd",
     Nexus: "nexus",
+    MyUti: "my_uti",
 } as const;

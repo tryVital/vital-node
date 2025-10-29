@@ -18,6 +18,7 @@ export const Labs: core.serialization.Schema<serializers.Labs.Raw, Vital.Labs> =
     "sanocardio",
     "ihd",
     "nexus",
+    "my_uti",
 ]);
 
 export declare namespace Labs {
@@ -32,5 +33,6 @@ export declare namespace Labs {
         | "manual"
         | "sanocardio"
         | "ihd"
-        | "nexus";
+        | "nexus"
+        | "my_uti";
 }
