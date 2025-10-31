@@ -12,11 +12,13 @@ export const ClientFacingDiagnosisInformation: core.serialization.ObjectSchema<
 > = core.serialization.object({
     diagnosisCode: core.serialization.property("diagnosis_code", core.serialization.string()),
     description: core.serialization.string(),
+    isSecondary: core.serialization.property("is_secondary", core.serialization.boolean().optional()),
 });
 
 export declare namespace ClientFacingDiagnosisInformation {
     interface Raw {
         diagnosis_code: string;
         description: string;
+        is_secondary?: boolean | null;
     }
 }

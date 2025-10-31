@@ -17,7 +17,7 @@ import { PatientAddressWithValidation } from "../../../../types/PatientAddressWi
 
 export const CreateOrderRequestCompatible: core.serialization.Schema<
     serializers.CreateOrderRequestCompatible.Raw,
-    Omit<Vital.CreateOrderRequestCompatible, "idempotencyKey">
+    Omit<Vital.CreateOrderRequestCompatible, "idempotencyKey" | "idempotencyError">
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     labTestId: core.serialization.property("lab_test_id", core.serialization.string().optional()),

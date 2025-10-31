@@ -7,4 +7,5 @@ export interface ClientFacingDiagnosisInformation {
     diagnosisCode: string;
     /** Diagnosis description insurance information. */
     description: string;
+    isSecondary?: boolean;
 }

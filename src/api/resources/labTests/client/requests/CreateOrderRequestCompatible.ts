@@ -27,6 +27,7 @@ import * as Vital from "../../../../index";
  */
 export interface CreateOrderRequestCompatible {
     idempotencyKey?: string;
+    idempotencyError?: "no-cache";
     userId: string;
     labTestId?: string;
     orderSet?: Vital.OrderSetRequest;

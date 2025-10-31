@@ -20,3 +20,4 @@ export { type VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest } fro
 export { type CreateOrderRequestCompatible } from "./CreateOrderRequestCompatible";
 export { type ImportOrderBody } from "./ImportOrderBody";
 export { type LabTestsSimulateOrderProcessRequest } from "./LabTestsSimulateOrderProcessRequest";
+export { type ValidateIcdCodesBody } from "./ValidateIcdCodesBody";

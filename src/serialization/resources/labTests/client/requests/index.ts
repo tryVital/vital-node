@@ -5,3 +5,4 @@ export { ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelReques
 export { VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest } from "./VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest";
 export { CreateOrderRequestCompatible } from "./CreateOrderRequestCompatible";
 export { ImportOrderBody } from "./ImportOrderBody";
+export { ValidateIcdCodesBody } from "./ValidateIcdCodesBody";
