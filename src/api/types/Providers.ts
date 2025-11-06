@@ -42,7 +42,8 @@ export type Providers =
     | "whoop_v2"
     | "ultrahuman"
     | "my_fitness_pal_v2"
-    | "map_my_fitness";
+    | "map_my_fitness"
+    | "runkeeper";
 
 export const Providers = {
     Oura: "oura",
@@ -82,4 +83,5 @@ export const Providers = {
     Ultrahuman: "ultrahuman",
     MyFitnessPalV2: "my_fitness_pal_v2",
     MapMyFitness: "map_my_fitness",
+    Runkeeper: "runkeeper",
 } as const;
