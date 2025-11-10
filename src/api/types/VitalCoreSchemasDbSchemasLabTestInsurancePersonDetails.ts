@@ -8,7 +8,7 @@ export interface VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails {
     firstName: string;
     lastName: string;
     gender: Vital.Gender;
-    address: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress;
+    address: Vital.VitalCoreSchemasDbSchemasLabTestInsuranceAddress;
     dob: string;
     email: string;
     phoneNumber: string;

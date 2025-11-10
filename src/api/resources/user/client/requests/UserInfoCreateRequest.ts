@@ -29,7 +29,7 @@ export interface UserInfoCreateRequest {
     phoneNumber: string;
     gender: string;
     dob: string;
-    address: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress;
+    address: Vital.VitalCoreSchemasDbSchemasLabTestInsuranceAddress;
     medicalProxy?: Vital.GuarantorDetails;
     race?: Vital.Race;
     ethnicity?: Vital.Ethnicity;

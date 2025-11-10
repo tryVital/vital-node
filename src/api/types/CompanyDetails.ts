@@ -6,5 +6,5 @@ import * as Vital from "../index";
 
 export interface CompanyDetails {
     name: string;
-    address: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress;
+    address: Vital.VitalCoreSchemasDbSchemasLabTestInsuranceAddress;
 }

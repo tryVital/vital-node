@@ -5,17 +5,17 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress } from "./VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress";
+import { VitalCoreSchemasDbSchemasLabTestInsuranceAddress } from "./VitalCoreSchemasDbSchemasLabTestInsuranceAddress";
 
 export const CompanyDetails: core.serialization.ObjectSchema<serializers.CompanyDetails.Raw, Vital.CompanyDetails> =
     core.serialization.object({
         name: core.serialization.string(),
-        address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress,
+        address: VitalCoreSchemasDbSchemasLabTestInsuranceAddress,
     });
 
 export declare namespace CompanyDetails {
     interface Raw {
         name: string;
-        address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress.Raw;
+        address: VitalCoreSchemasDbSchemasLabTestInsuranceAddress.Raw;
     }
 }

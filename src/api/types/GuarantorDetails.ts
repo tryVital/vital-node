@@ -7,7 +7,7 @@ import * as Vital from "../index";
 export interface GuarantorDetails {
     firstName: string;
     lastName: string;
-    address: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress;
+    address: Vital.VitalCoreSchemasDbSchemasLabTestInsuranceAddress;
     phoneNumber: string;
     householdIncome?: number;
     householdSize?: number;
