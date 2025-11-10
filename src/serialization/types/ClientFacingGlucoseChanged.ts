@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingGlucoseChangedEventType } from "./ClientFacingGlucoseChangedEventType";
-import { GroupedGlucose } from "./GroupedGlucose";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingGlucoseTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingGlucoseTimeseries";
 
 export const ClientFacingGlucoseChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingGlucoseChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingGlucoseChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedGlucose,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingGlucoseTimeseries,
 });
 
 export declare namespace ClientFacingGlucoseChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingGlucoseChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedGlucose.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingGlucoseTimeseries.Raw;
     }
 }

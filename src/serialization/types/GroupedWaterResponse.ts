@@ -5,20 +5,28 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedWater } from "./GroupedWater";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries";
 
 export const GroupedWaterResponse: core.serialization.ObjectSchema<
     serializers.GroupedWaterResponse.Raw,
     Vital.GroupedWaterResponse
 > = core.serialization.object({
-    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedWater)),
+    groups: core.serialization.record(
+        core.serialization.string(),
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries
+        )
+    ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedWaterResponse {
     interface Raw {
-        groups: Record<string, GroupedWater.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

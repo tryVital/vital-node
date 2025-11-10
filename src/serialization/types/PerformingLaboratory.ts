@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { Address } from "./Address";
+import { VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress } from "./VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress";
 
 export const PerformingLaboratory: core.serialization.ObjectSchema<
     serializers.PerformingLaboratory.Raw,
@@ -14,7 +14,7 @@ export const PerformingLaboratory: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     phoneNumber: core.serialization.property("phone_number", core.serialization.string().optional()),
     medicalDirector: core.serialization.property("medical_director", core.serialization.string().optional()),
-    address: Address.optional(),
+    address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress.optional(),
 });
 
 export declare namespace PerformingLaboratory {
@@ -22,6 +22,6 @@ export declare namespace PerformingLaboratory {
         name: string;
         phone_number?: string | null;
         medical_director?: string | null;
-        address?: Address.Raw | null;
+        address?: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress.Raw | null;
     }
 }

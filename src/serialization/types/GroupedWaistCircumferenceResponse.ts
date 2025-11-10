@@ -5,20 +5,28 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedWaistCircumference } from "./GroupedWaistCircumference";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample";
 
 export const GroupedWaistCircumferenceResponse: core.serialization.ObjectSchema<
     serializers.GroupedWaistCircumferenceResponse.Raw,
     Vital.GroupedWaistCircumferenceResponse
 > = core.serialization.object({
-    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedWaistCircumference)),
+    groups: core.serialization.record(
+        core.serialization.string(),
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample
+        )
+    ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedWaistCircumferenceResponse {
     interface Raw {
-        groups: Record<string, GroupedWaistCircumference.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingDaylightExposureChangedEventType } from "./ClientFacingDaylightExposureChangedEventType";
-import { GroupedDaylightExposure } from "./GroupedDaylightExposure";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample";
 
 export const ClientFacingDaylightExposureChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingDaylightExposureChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingDaylightExposureChanged: core.serialization.ObjectSchem
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedDaylightExposure,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample,
 });
 
 export declare namespace ClientFacingDaylightExposureChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingDaylightExposureChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedDaylightExposure.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample.Raw;
     }
 }

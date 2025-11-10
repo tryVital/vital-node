@@ -9,5 +9,5 @@ export interface ClientFacingNoteChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedNote;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingNoteSample;
 }

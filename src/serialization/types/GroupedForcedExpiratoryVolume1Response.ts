@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedForcedExpiratoryVolume1 } from "./GroupedForcedExpiratoryVolume1";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingForcedExpiratoryVolume1Sample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingForcedExpiratoryVolume1Sample";
 
 export const GroupedForcedExpiratoryVolume1Response: core.serialization.ObjectSchema<
     serializers.GroupedForcedExpiratoryVolume1Response.Raw,
@@ -13,7 +13,9 @@ export const GroupedForcedExpiratoryVolume1Response: core.serialization.ObjectSc
 > = core.serialization.object({
     groups: core.serialization.record(
         core.serialization.string(),
-        core.serialization.list(GroupedForcedExpiratoryVolume1)
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingForcedExpiratoryVolume1Sample
+        )
     ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
@@ -21,7 +23,10 @@ export const GroupedForcedExpiratoryVolume1Response: core.serialization.ObjectSc
 
 export declare namespace GroupedForcedExpiratoryVolume1Response {
     interface Raw {
-        groups: Record<string, GroupedForcedExpiratoryVolume1.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingForcedExpiratoryVolume1Sample.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

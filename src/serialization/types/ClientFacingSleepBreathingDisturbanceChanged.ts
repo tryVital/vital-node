@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingSleepBreathingDisturbanceChangedEventType } from "./ClientFacingSleepBreathingDisturbanceChangedEventType";
-import { GroupedSleepBreathingDisturbance } from "./GroupedSleepBreathingDisturbance";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample";
 
 export const ClientFacingSleepBreathingDisturbanceChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingSleepBreathingDisturbanceChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingSleepBreathingDisturbanceChanged: core.serialization.Ob
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedSleepBreathingDisturbance,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample,
 });
 
 export declare namespace ClientFacingSleepBreathingDisturbanceChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingSleepBreathingDisturbanceChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedSleepBreathingDisturbance.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample.Raw;
     }
 }

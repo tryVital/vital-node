@@ -9,5 +9,5 @@ export interface ClientFacingForcedExpiratoryVolume1Changed {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedForcedExpiratoryVolume1;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingForcedExpiratoryVolume1Sample;
 }

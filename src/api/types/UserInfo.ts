@@ -11,7 +11,7 @@ export interface UserInfo {
     phoneNumber: string;
     gender: string;
     dob: string;
-    address: Vital.Address;
+    address: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress;
     medicalProxy?: Vital.GuarantorDetails;
     race?: Vital.Race;
     ethnicity?: Vital.Ethnicity;

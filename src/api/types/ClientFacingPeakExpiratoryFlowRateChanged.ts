@@ -9,5 +9,5 @@ export interface ClientFacingPeakExpiratoryFlowRateChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedPeakExpiratoryFlowRate;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingPeakExpiratoryFlowRateSample;
 }

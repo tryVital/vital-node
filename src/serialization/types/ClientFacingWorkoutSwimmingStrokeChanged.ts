@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingWorkoutSwimmingStrokeChangedEventType } from "./ClientFacingWorkoutSwimmingStrokeChangedEventType";
-import { GroupedWorkoutSwimmingStroke } from "./GroupedWorkoutSwimmingStroke";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample";
 
 export const ClientFacingWorkoutSwimmingStrokeChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingWorkoutSwimmingStrokeChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingWorkoutSwimmingStrokeChanged: core.serialization.Object
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedWorkoutSwimmingStroke,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample,
 });
 
 export declare namespace ClientFacingWorkoutSwimmingStrokeChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingWorkoutSwimmingStrokeChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedWorkoutSwimmingStroke.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample.Raw;
     }
 }

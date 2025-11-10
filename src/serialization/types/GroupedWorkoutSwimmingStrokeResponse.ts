@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedWorkoutSwimmingStroke } from "./GroupedWorkoutSwimmingStroke";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample";
 
 export const GroupedWorkoutSwimmingStrokeResponse: core.serialization.ObjectSchema<
     serializers.GroupedWorkoutSwimmingStrokeResponse.Raw,
@@ -13,7 +13,9 @@ export const GroupedWorkoutSwimmingStrokeResponse: core.serialization.ObjectSche
 > = core.serialization.object({
     groups: core.serialization.record(
         core.serialization.string(),
-        core.serialization.list(GroupedWorkoutSwimmingStroke)
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample
+        )
     ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
@@ -21,7 +23,10 @@ export const GroupedWorkoutSwimmingStrokeResponse: core.serialization.ObjectSche
 
 export declare namespace GroupedWorkoutSwimmingStrokeResponse {
     interface Raw {
-        groups: Record<string, GroupedWorkoutSwimmingStroke.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

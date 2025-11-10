@@ -9,5 +9,5 @@ export interface ClientFacingHrvChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedHrv;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHrvTimeseries;
 }

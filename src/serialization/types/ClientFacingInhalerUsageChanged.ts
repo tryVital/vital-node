@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingInhalerUsageChangedEventType } from "./ClientFacingInhalerUsageChangedEventType";
-import { GroupedInhalerUsage } from "./GroupedInhalerUsage";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInhalerUsageSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInhalerUsageSample";
 
 export const ClientFacingInhalerUsageChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingInhalerUsageChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingInhalerUsageChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedInhalerUsage,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInhalerUsageSample,
 });
 
 export declare namespace ClientFacingInhalerUsageChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingInhalerUsageChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedInhalerUsage.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInhalerUsageSample.Raw;
     }
 }

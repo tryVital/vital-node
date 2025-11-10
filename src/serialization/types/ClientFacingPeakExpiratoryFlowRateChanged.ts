@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingPeakExpiratoryFlowRateChangedEventType } from "./ClientFacingPeakExpiratoryFlowRateChangedEventType";
-import { GroupedPeakExpiratoryFlowRate } from "./GroupedPeakExpiratoryFlowRate";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingPeakExpiratoryFlowRateSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingPeakExpiratoryFlowRateSample";
 
 export const ClientFacingPeakExpiratoryFlowRateChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingPeakExpiratoryFlowRateChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingPeakExpiratoryFlowRateChanged: core.serialization.Objec
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedPeakExpiratoryFlowRate,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingPeakExpiratoryFlowRateSample,
 });
 
 export declare namespace ClientFacingPeakExpiratoryFlowRateChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingPeakExpiratoryFlowRateChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedPeakExpiratoryFlowRate.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingPeakExpiratoryFlowRateSample.Raw;
     }
 }

@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingElectrocardiogramVoltageChangedEventType } from "./ClientFacingElectrocardiogramVoltageChangedEventType";
-import { GroupedElectrocardiogramVoltage } from "./GroupedElectrocardiogramVoltage";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries";
 
 export const ClientFacingElectrocardiogramVoltageChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingElectrocardiogramVoltageChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingElectrocardiogramVoltageChanged: core.serialization.Obj
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedElectrocardiogramVoltage,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries,
 });
 
 export declare namespace ClientFacingElectrocardiogramVoltageChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingElectrocardiogramVoltageChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedElectrocardiogramVoltage.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries.Raw;
     }
 }

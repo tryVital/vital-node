@@ -9,5 +9,5 @@ export interface ClientFacingInsulinInjectionChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedInsulinInjection;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample;
 }

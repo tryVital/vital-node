@@ -6,7 +6,10 @@ import * as Vital from "../index";
 
 export interface GroupedMindfulnessMinutesResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
-    groups: Record<string, Vital.GroupedMindfulnessMinutes[]>;
+    groups: Record<
+        string,
+        Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingMindfulnessMinutesTimeseries[]
+    >;
     /** The cursor for fetching the next page, or `null` if there is no more data. */
     next?: string;
     /** The cursor for fetching the next page, or `null` if there is no more data. */

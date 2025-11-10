@@ -5,20 +5,28 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedWheelchairPush } from "./GroupedWheelchairPush";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample";
 
 export const GroupedWheelchairPushResponse: core.serialization.ObjectSchema<
     serializers.GroupedWheelchairPushResponse.Raw,
     Vital.GroupedWheelchairPushResponse
 > = core.serialization.object({
-    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedWheelchairPush)),
+    groups: core.serialization.record(
+        core.serialization.string(),
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample
+        )
+    ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedWheelchairPushResponse {
     interface Raw {
-        groups: Record<string, GroupedWheelchairPush.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

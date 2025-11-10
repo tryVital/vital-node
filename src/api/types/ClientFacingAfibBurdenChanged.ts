@@ -9,5 +9,5 @@ export interface ClientFacingAfibBurdenChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedAFibBurden;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingAFibBurdenSample;
 }

@@ -5,20 +5,28 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedInsulinInjection } from "./GroupedInsulinInjection";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample";
 
 export const GroupedInsulinInjectionResponse: core.serialization.ObjectSchema<
     serializers.GroupedInsulinInjectionResponse.Raw,
     Vital.GroupedInsulinInjectionResponse
 > = core.serialization.object({
-    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedInsulinInjection)),
+    groups: core.serialization.record(
+        core.serialization.string(),
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample
+        )
+    ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedInsulinInjectionResponse {
     interface Raw {
-        groups: Record<string, GroupedInsulinInjection.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

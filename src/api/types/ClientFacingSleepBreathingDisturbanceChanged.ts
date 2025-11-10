@@ -9,5 +9,5 @@ export interface ClientFacingSleepBreathingDisturbanceChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedSleepBreathingDisturbance;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample;
 }

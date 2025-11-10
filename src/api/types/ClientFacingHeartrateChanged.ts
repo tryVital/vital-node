@@ -9,5 +9,5 @@ export interface ClientFacingHeartrateChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedHeartRate;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateTimeseries;
 }

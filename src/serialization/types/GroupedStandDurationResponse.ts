@@ -5,20 +5,28 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedStandDuration } from "./GroupedStandDuration";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandDurationSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandDurationSample";
 
 export const GroupedStandDurationResponse: core.serialization.ObjectSchema<
     serializers.GroupedStandDurationResponse.Raw,
     Vital.GroupedStandDurationResponse
 > = core.serialization.object({
-    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedStandDuration)),
+    groups: core.serialization.record(
+        core.serialization.string(),
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandDurationSample
+        )
+    ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedStandDurationResponse {
     interface Raw {
-        groups: Record<string, GroupedStandDuration.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandDurationSample.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

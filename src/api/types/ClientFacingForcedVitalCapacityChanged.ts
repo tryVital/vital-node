@@ -9,5 +9,5 @@ export interface ClientFacingForcedVitalCapacityChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedForcedVitalCapacity;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingForcedVitalCapacitySample;
 }

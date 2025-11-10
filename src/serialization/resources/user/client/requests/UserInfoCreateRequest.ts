@@ -5,7 +5,7 @@
 import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
-import { Address } from "../../../../types/Address";
+import { VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress } from "../../../../types/VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress";
 import { GuarantorDetails } from "../../../../types/GuarantorDetails";
 import { Race } from "../../../../types/Race";
 import { Ethnicity } from "../../../../types/Ethnicity";
@@ -22,7 +22,7 @@ export const UserInfoCreateRequest: core.serialization.Schema<
     phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
     gender: core.serialization.string(),
     dob: core.serialization.string(),
-    address: Address,
+    address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress,
     medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
     race: Race.optional(),
     ethnicity: Ethnicity.optional(),
@@ -38,7 +38,7 @@ export declare namespace UserInfoCreateRequest {
         phone_number: string;
         gender: string;
         dob: string;
-        address: Address.Raw;
+        address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress.Raw;
         medical_proxy?: GuarantorDetails.Raw | null;
         race?: Race.Raw | null;
         ethnicity?: Ethnicity.Raw | null;

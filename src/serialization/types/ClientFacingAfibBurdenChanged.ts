@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingAfibBurdenChangedEventType } from "./ClientFacingAfibBurdenChangedEventType";
-import { GroupedAFibBurden } from "./GroupedAFibBurden";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingAFibBurdenSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingAFibBurdenSample";
 
 export const ClientFacingAfibBurdenChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingAfibBurdenChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingAfibBurdenChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedAFibBurden,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingAFibBurdenSample,
 });
 
 export declare namespace ClientFacingAfibBurdenChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingAfibBurdenChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedAFibBurden.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingAFibBurdenSample.Raw;
     }
 }

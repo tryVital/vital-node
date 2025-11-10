@@ -7,7 +7,7 @@ import * as Vital from "../index";
 export interface VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails {
     firstName: string;
     lastName: string;
-    address: Vital.Address;
+    address: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress;
     phoneNumber: string;
     phoneType?: string;
 }

@@ -9,5 +9,5 @@ export interface ClientFacingDaylightExposureChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedDaylightExposure;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample;
 }

@@ -9,5 +9,5 @@ export interface ClientFacingCholesterolChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedCholesterol;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCholesterolTimeseries;
 }

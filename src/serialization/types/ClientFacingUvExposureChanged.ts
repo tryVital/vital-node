@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingUvExposureChangedEventType } from "./ClientFacingUvExposureChangedEventType";
-import { GroupedUvExposure } from "./GroupedUvExposure";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingUvExposureSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingUvExposureSample";
 
 export const ClientFacingUvExposureChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingUvExposureChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingUvExposureChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedUvExposure,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingUvExposureSample,
 });
 
 export declare namespace ClientFacingUvExposureChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingUvExposureChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedUvExposure.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingUvExposureSample.Raw;
     }
 }

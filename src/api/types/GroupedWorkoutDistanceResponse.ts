@@ -6,7 +6,10 @@ import * as Vital from "../index";
 
 export interface GroupedWorkoutDistanceResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
-    groups: Record<string, Vital.GroupedWorkoutDistance[]>;
+    groups: Record<
+        string,
+        Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutDistanceSample[]
+    >;
     /** The cursor for fetching the next page, or `null` if there is no more data. */
     next?: string;
     /** The cursor for fetching the next page, or `null` if there is no more data. */

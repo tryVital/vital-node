@@ -9,5 +9,5 @@ export interface ClientFacingHandwashingChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedHandwashing;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample;
 }

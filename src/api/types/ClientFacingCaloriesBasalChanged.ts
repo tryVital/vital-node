@@ -9,5 +9,5 @@ export interface ClientFacingCaloriesBasalChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedCaloriesBasal;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCaloriesBasalTimeseries;
 }

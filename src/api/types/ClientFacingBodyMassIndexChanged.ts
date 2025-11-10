@@ -9,5 +9,5 @@ export interface ClientFacingBodyMassIndexChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedBodyMassIndex;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBodyMassIndexSample;
 }

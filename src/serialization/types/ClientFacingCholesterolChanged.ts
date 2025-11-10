@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingCholesterolChangedEventType } from "./ClientFacingCholesterolChangedEventType";
-import { GroupedCholesterol } from "./GroupedCholesterol";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCholesterolTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCholesterolTimeseries";
 
 export const ClientFacingCholesterolChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingCholesterolChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingCholesterolChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedCholesterol,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCholesterolTimeseries,
 });
 
 export declare namespace ClientFacingCholesterolChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingCholesterolChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedCholesterol.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCholesterolTimeseries.Raw;
     }
 }

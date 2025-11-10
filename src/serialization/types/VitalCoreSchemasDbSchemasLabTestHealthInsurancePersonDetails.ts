@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { Address } from "./Address";
+import { VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress } from "./VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress";
 
 export const VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails: core.serialization.ObjectSchema<
     serializers.VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails.Raw,
@@ -13,7 +13,7 @@ export const VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails: core.
 > = core.serialization.object({
     firstName: core.serialization.property("first_name", core.serialization.string()),
     lastName: core.serialization.property("last_name", core.serialization.string()),
-    address: Address,
+    address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress,
     phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
     phoneType: core.serialization.property("phone_type", core.serialization.string().optional()),
 });
@@ -22,7 +22,7 @@ export declare namespace VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDe
     interface Raw {
         first_name: string;
         last_name: string;
-        address: Address.Raw;
+        address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress.Raw;
         phone_number: string;
         phone_type?: string | null;
     }

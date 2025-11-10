@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingBloodOxygenChangedEventType } from "./ClientFacingBloodOxygenChangedEventType";
-import { GroupedBloodOxygen } from "./GroupedBloodOxygen";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodOxygenTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodOxygenTimeseries";
 
 export const ClientFacingBloodOxygenChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingBloodOxygenChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingBloodOxygenChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedBloodOxygen,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodOxygenTimeseries,
 });
 
 export declare namespace ClientFacingBloodOxygenChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingBloodOxygenChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedBloodOxygen.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodOxygenTimeseries.Raw;
     }
 }

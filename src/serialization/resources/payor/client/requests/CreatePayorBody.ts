@@ -5,13 +5,13 @@
 import * as serializers from "../../../../index";
 import * as Vital from "../../../../../api/index";
 import * as core from "../../../../../core";
-import { Address } from "../../../../types/Address";
+import { VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress } from "../../../../types/VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress";
 import { PayorCodeExternalProvider } from "../../../../types/PayorCodeExternalProvider";
 
 export const CreatePayorBody: core.serialization.Schema<serializers.CreatePayorBody.Raw, Vital.CreatePayorBody> =
     core.serialization.object({
         name: core.serialization.string(),
-        address: Address,
+        address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress,
         provider: PayorCodeExternalProvider.optional(),
         providerPayorId: core.serialization.property("provider_payor_id", core.serialization.string().optional()),
     });
@@ -19,7 +19,7 @@ export const CreatePayorBody: core.serialization.Schema<serializers.CreatePayorB
 export declare namespace CreatePayorBody {
     interface Raw {
         name: string;
-        address: Address.Raw;
+        address: VitalCoreSchemasDbSchemasLabTestHealthInsuranceAddress.Raw;
         provider?: PayorCodeExternalProvider.Raw | null;
         provider_payor_id?: string | null;
     }

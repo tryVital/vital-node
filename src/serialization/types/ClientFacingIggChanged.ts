@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingIggChangedEventType } from "./ClientFacingIggChangedEventType";
-import { GroupedIgg } from "./GroupedIgg";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingIggTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingIggTimeseries";
 
 export const ClientFacingIggChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingIggChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingIggChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedIgg,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingIggTimeseries,
 });
 
 export declare namespace ClientFacingIggChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingIggChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedIgg.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingIggTimeseries.Raw;
     }
 }

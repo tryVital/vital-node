@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingHeartRateAlertChangedEventType } from "./ClientFacingHeartRateAlertChangedEventType";
-import { GroupedHeartRateAlert } from "./GroupedHeartRateAlert";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateAlertSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateAlertSample";
 
 export const ClientFacingHeartRateAlertChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingHeartRateAlertChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingHeartRateAlertChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedHeartRateAlert,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateAlertSample,
 });
 
 export declare namespace ClientFacingHeartRateAlertChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingHeartRateAlertChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedHeartRateAlert.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateAlertSample.Raw;
     }
 }

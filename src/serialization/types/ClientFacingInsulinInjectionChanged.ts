@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingInsulinInjectionChangedEventType } from "./ClientFacingInsulinInjectionChangedEventType";
-import { GroupedInsulinInjection } from "./GroupedInsulinInjection";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample";
 
 export const ClientFacingInsulinInjectionChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingInsulinInjectionChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingInsulinInjectionChanged: core.serialization.ObjectSchem
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedInsulinInjection,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample,
 });
 
 export declare namespace ClientFacingInsulinInjectionChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingInsulinInjectionChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedInsulinInjection.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInsulinInjectionSample.Raw;
     }
 }

@@ -9,5 +9,5 @@ export interface ClientFacingWorkoutSwimmingStrokeChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedWorkoutSwimmingStroke;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWorkoutSwimmingStrokeSample;
 }

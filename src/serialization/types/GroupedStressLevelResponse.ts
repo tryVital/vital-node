@@ -5,20 +5,28 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { GroupedStressLevel } from "./GroupedStressLevel";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries";
 
 export const GroupedStressLevelResponse: core.serialization.ObjectSchema<
     serializers.GroupedStressLevelResponse.Raw,
     Vital.GroupedStressLevelResponse
 > = core.serialization.object({
-    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedStressLevel)),
+    groups: core.serialization.record(
+        core.serialization.string(),
+        core.serialization.list(
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries
+        )
+    ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedStressLevelResponse {
     interface Raw {
-        groups: Record<string, GroupedStressLevel.Raw[]>;
+        groups: Record<
+            string,
+            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries.Raw[]
+        >;
         next?: string | null;
         next_cursor?: string | null;
     }

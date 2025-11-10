@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingFloorsClimbedChangedEventType } from "./ClientFacingFloorsClimbedChangedEventType";
-import { GroupedFloorsClimbed } from "./GroupedFloorsClimbed";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingFloorsClimbedTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingFloorsClimbedTimeseries";
 
 export const ClientFacingFloorsClimbedChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingFloorsClimbedChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingFloorsClimbedChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedFloorsClimbed,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingFloorsClimbedTimeseries,
 });
 
 export declare namespace ClientFacingFloorsClimbedChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingFloorsClimbedChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedFloorsClimbed.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingFloorsClimbedTimeseries.Raw;
     }
 }

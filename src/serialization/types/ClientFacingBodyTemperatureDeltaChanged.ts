@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingBodyTemperatureDeltaChangedEventType } from "./ClientFacingBodyTemperatureDeltaChangedEventType";
-import { GroupedBodyTemperatureDelta } from "./GroupedBodyTemperatureDelta";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBodyTemperatureDeltaSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBodyTemperatureDeltaSample";
 
 export const ClientFacingBodyTemperatureDeltaChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingBodyTemperatureDeltaChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingBodyTemperatureDeltaChanged: core.serialization.ObjectS
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedBodyTemperatureDelta,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBodyTemperatureDeltaSample,
 });
 
 export declare namespace ClientFacingBodyTemperatureDeltaChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingBodyTemperatureDeltaChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedBodyTemperatureDelta.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBodyTemperatureDeltaSample.Raw;
     }
 }

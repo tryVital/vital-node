@@ -9,5 +9,5 @@ export interface ClientFacingStressLevelChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.GroupedStressLevel;
+    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries;
 }

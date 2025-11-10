@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingMindfulnessMinutesChangedEventType } from "./ClientFacingMindfulnessMinutesChangedEventType";
-import { GroupedMindfulnessMinutes } from "./GroupedMindfulnessMinutes";
+import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingMindfulnessMinutesTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingMindfulnessMinutesTimeseries";
 
 export const ClientFacingMindfulnessMinutesChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingMindfulnessMinutesChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingMindfulnessMinutesChanged: core.serialization.ObjectSch
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: GroupedMindfulnessMinutes,
+    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingMindfulnessMinutesTimeseries,
 });
 
 export declare namespace ClientFacingMindfulnessMinutesChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingMindfulnessMinutesChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: GroupedMindfulnessMinutes.Raw;
+        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingMindfulnessMinutesTimeseries.Raw;
     }
 }
