@@ -9,5 +9,5 @@ export interface ClientFacingBodyTemperatureDeltaChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBodyTemperatureDeltaSample;
+    data: Vital.GroupedBodyTemperatureDelta;
 }

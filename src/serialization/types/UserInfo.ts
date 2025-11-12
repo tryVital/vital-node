@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasDbSchemasLabTestInsuranceAddress } from "./VitalCoreSchemasDbSchemasLabTestInsuranceAddress";
+import { Address } from "./Address";
 import { GuarantorDetails } from "./GuarantorDetails";
 import { Race } from "./Race";
 import { Ethnicity } from "./Ethnicity";
@@ -20,7 +20,7 @@ export const UserInfo: core.serialization.ObjectSchema<serializers.UserInfo.Raw,
         phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
         gender: core.serialization.string(),
         dob: core.serialization.string(),
-        address: VitalCoreSchemasDbSchemasLabTestInsuranceAddress,
+        address: Address,
         medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
         race: Race.optional(),
         ethnicity: Ethnicity.optional(),
@@ -36,7 +36,7 @@ export declare namespace UserInfo {
         phone_number: string;
         gender: string;
         dob: string;
-        address: VitalCoreSchemasDbSchemasLabTestInsuranceAddress.Raw;
+        address: Address.Raw;
         medical_proxy?: GuarantorDetails.Raw | null;
         race?: Race.Raw | null;
         ethnicity?: Ethnicity.Raw | null;

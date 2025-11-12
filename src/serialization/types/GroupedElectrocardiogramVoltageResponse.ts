@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries";
+import { GroupedElectrocardiogramVoltage } from "./GroupedElectrocardiogramVoltage";
 
 export const GroupedElectrocardiogramVoltageResponse: core.serialization.ObjectSchema<
     serializers.GroupedElectrocardiogramVoltageResponse.Raw,
@@ -13,9 +13,7 @@ export const GroupedElectrocardiogramVoltageResponse: core.serialization.ObjectS
 > = core.serialization.object({
     groups: core.serialization.record(
         core.serialization.string(),
-        core.serialization.list(
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries
-        )
+        core.serialization.list(GroupedElectrocardiogramVoltage)
     ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
@@ -23,10 +21,7 @@ export const GroupedElectrocardiogramVoltageResponse: core.serialization.ObjectS
 
 export declare namespace GroupedElectrocardiogramVoltageResponse {
     interface Raw {
-        groups: Record<
-            string,
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries.Raw[]
-        >;
+        groups: Record<string, GroupedElectrocardiogramVoltage.Raw[]>;
         next?: string | null;
         next_cursor?: string | null;
     }

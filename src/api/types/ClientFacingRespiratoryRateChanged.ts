@@ -9,5 +9,5 @@ export interface ClientFacingRespiratoryRateChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingRespiratoryRateTimeseries;
+    data: Vital.GroupedRespiratoryRate;
 }

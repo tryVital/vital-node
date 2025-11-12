@@ -6,10 +6,7 @@ import * as Vital from "../index";
 
 export interface GroupedHrvResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
-    groups: Record<
-        string,
-        Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHrvTimeseries[]
-    >;
+    groups: Record<string, Vital.GroupedHrv[]>;
     /** The cursor for fetching the next page, or `null` if there is no more data. */
     next?: string;
     /** The cursor for fetching the next page, or `null` if there is no more data. */

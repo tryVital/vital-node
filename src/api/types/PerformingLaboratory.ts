@@ -8,5 +8,5 @@ export interface PerformingLaboratory {
     name: string;
     phoneNumber?: string;
     medicalDirector?: string;
-    address?: Vital.VitalCoreSchemasDbSchemasLabTestInsuranceAddress;
+    address?: Vital.Address;
 }

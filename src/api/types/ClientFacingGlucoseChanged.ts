@@ -9,5 +9,5 @@ export interface ClientFacingGlucoseChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingGlucoseTimeseries;
+    data: Vital.GroupedGlucose;
 }

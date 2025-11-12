@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingDistanceChangedEventType } from "./ClientFacingDistanceChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDistanceTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDistanceTimeseries";
+import { GroupedDistance } from "./GroupedDistance";
 
 export const ClientFacingDistanceChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingDistanceChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingDistanceChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDistanceTimeseries,
+    data: GroupedDistance,
 });
 
 export declare namespace ClientFacingDistanceChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingDistanceChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDistanceTimeseries.Raw;
+        data: GroupedDistance.Raw;
     }
 }

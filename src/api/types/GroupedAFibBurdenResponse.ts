@@ -6,10 +6,7 @@ import * as Vital from "../index";
 
 export interface GroupedAFibBurdenResponse {
     /** For each matching provider or lab, a list of grouped timeseries values. */
-    groups: Record<
-        string,
-        Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingAFibBurdenSample[]
-    >;
+    groups: Record<string, Vital.GroupedAFibBurden[]>;
     /** The cursor for fetching the next page, or `null` if there is no more data. */
     next?: string;
     /** The cursor for fetching the next page, or `null` if there is no more data. */

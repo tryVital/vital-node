@@ -5,28 +5,20 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample";
+import { GroupedHandwashing } from "./GroupedHandwashing";
 
 export const GroupedHandwashingResponse: core.serialization.ObjectSchema<
     serializers.GroupedHandwashingResponse.Raw,
     Vital.GroupedHandwashingResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample
-        )
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedHandwashing)),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedHandwashingResponse {
     interface Raw {
-        groups: Record<
-            string,
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample.Raw[]
-        >;
+        groups: Record<string, GroupedHandwashing.Raw[]>;
         next?: string | null;
         next_cursor?: string | null;
     }

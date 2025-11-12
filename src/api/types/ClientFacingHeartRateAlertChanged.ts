@@ -9,5 +9,5 @@ export interface ClientFacingHeartRateAlertChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateAlertSample;
+    data: Vital.GroupedHeartRateAlert;
 }

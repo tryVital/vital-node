@@ -9,5 +9,5 @@ export interface ClientFacingUvExposureChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingUvExposureSample;
+    data: Vital.GroupedUvExposure;
 }

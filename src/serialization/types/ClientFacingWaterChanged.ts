@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingWaterChangedEventType } from "./ClientFacingWaterChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries";
+import { GroupedWater } from "./GroupedWater";
 
 export const ClientFacingWaterChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingWaterChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingWaterChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries,
+    data: GroupedWater,
 });
 
 export declare namespace ClientFacingWaterChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingWaterChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries.Raw;
+        data: GroupedWater.Raw;
     }
 }

@@ -9,5 +9,5 @@ export interface ClientFacingStandHourChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandHourSample;
+    data: Vital.GroupedStandHour;
 }

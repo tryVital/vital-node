@@ -9,5 +9,5 @@ export interface ClientFacingBloodPressureChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodPressureTimeseries;
+    data: Vital.GroupedBloodPressure;
 }

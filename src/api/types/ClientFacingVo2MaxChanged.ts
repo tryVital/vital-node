@@ -9,5 +9,5 @@ export interface ClientFacingVo2MaxChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries;
+    data: Vital.GroupedVo2Max;
 }

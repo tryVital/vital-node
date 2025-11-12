@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample";
+import { GroupedSleepBreathingDisturbance } from "./GroupedSleepBreathingDisturbance";
 
 export const GroupedSleepBreathingDisturbanceResponse: core.serialization.ObjectSchema<
     serializers.GroupedSleepBreathingDisturbanceResponse.Raw,
@@ -13,9 +13,7 @@ export const GroupedSleepBreathingDisturbanceResponse: core.serialization.Object
 > = core.serialization.object({
     groups: core.serialization.record(
         core.serialization.string(),
-        core.serialization.list(
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample
-        )
+        core.serialization.list(GroupedSleepBreathingDisturbance)
     ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
@@ -23,10 +21,7 @@ export const GroupedSleepBreathingDisturbanceResponse: core.serialization.Object
 
 export declare namespace GroupedSleepBreathingDisturbanceResponse {
     interface Raw {
-        groups: Record<
-            string,
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepBreathingDisturbanceSample.Raw[]
-        >;
+        groups: Record<string, GroupedSleepBreathingDisturbance.Raw[]>;
         next?: string | null;
         next_cursor?: string | null;
     }

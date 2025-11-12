@@ -9,5 +9,5 @@ export interface ClientFacingWaterChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaterTimeseries;
+    data: Vital.GroupedWater;
 }

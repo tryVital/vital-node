@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingStandHourChangedEventType } from "./ClientFacingStandHourChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandHourSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandHourSample";
+import { GroupedStandHour } from "./GroupedStandHour";
 
 export const ClientFacingStandHourChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingStandHourChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingStandHourChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandHourSample,
+    data: GroupedStandHour,
 });
 
 export declare namespace ClientFacingStandHourChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingStandHourChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStandHourSample.Raw;
+        data: GroupedStandHour.Raw;
     }
 }

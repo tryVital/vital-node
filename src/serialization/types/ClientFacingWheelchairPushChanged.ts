@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingWheelchairPushChangedEventType } from "./ClientFacingWheelchairPushChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample";
+import { GroupedWheelchairPush } from "./GroupedWheelchairPush";
 
 export const ClientFacingWheelchairPushChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingWheelchairPushChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingWheelchairPushChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample,
+    data: GroupedWheelchairPush,
 });
 
 export declare namespace ClientFacingWheelchairPushChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingWheelchairPushChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample.Raw;
+        data: GroupedWheelchairPush.Raw;
     }
 }

@@ -9,5 +9,5 @@ export interface ClientFacingBloodOxygenChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodOxygenTimeseries;
+    data: Vital.GroupedBloodOxygen;
 }

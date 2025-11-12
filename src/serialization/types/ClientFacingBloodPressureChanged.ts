@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingBloodPressureChangedEventType } from "./ClientFacingBloodPressureChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodPressureTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodPressureTimeseries";
+import { GroupedBloodPressure } from "./GroupedBloodPressure";
 
 export const ClientFacingBloodPressureChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingBloodPressureChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingBloodPressureChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodPressureTimeseries,
+    data: GroupedBloodPressure,
 });
 
 export declare namespace ClientFacingBloodPressureChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingBloodPressureChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBloodPressureTimeseries.Raw;
+        data: GroupedBloodPressure.Raw;
     }
 }

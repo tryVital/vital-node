@@ -9,5 +9,5 @@ export interface ClientFacingCarbohydratesChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCarbohydratesSample;
+    data: Vital.GroupedCarbohydrates;
 }

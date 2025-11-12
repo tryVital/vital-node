@@ -9,5 +9,5 @@ export interface ClientFacingSleepApneaAlertChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingSleepApneaAlertSample;
+    data: Vital.GroupedSleepApneaAlert;
 }

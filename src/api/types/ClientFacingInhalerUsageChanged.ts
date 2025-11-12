@@ -9,5 +9,5 @@ export interface ClientFacingInhalerUsageChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingInhalerUsageSample;
+    data: Vital.GroupedInhalerUsage;
 }

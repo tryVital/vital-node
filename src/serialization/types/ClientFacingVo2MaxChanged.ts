@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingVo2MaxChangedEventType } from "./ClientFacingVo2MaxChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries";
+import { GroupedVo2Max } from "./GroupedVo2Max";
 
 export const ClientFacingVo2MaxChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingVo2MaxChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingVo2MaxChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries,
+    data: GroupedVo2Max,
 });
 
 export declare namespace ClientFacingVo2MaxChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingVo2MaxChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries.Raw;
+        data: GroupedVo2Max.Raw;
     }
 }

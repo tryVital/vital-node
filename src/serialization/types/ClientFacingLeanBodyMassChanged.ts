@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingLeanBodyMassChangedEventType } from "./ClientFacingLeanBodyMassChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingLeanBodyMassSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingLeanBodyMassSample";
+import { GroupedLeanBodyMass } from "./GroupedLeanBodyMass";
 
 export const ClientFacingLeanBodyMassChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingLeanBodyMassChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingLeanBodyMassChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingLeanBodyMassSample,
+    data: GroupedLeanBodyMass,
 });
 
 export declare namespace ClientFacingLeanBodyMassChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingLeanBodyMassChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingLeanBodyMassSample.Raw;
+        data: GroupedLeanBodyMass.Raw;
     }
 }

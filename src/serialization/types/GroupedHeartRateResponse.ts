@@ -5,28 +5,20 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateTimeseries";
+import { GroupedHeartRate } from "./GroupedHeartRate";
 
 export const GroupedHeartRateResponse: core.serialization.ObjectSchema<
     serializers.GroupedHeartRateResponse.Raw,
     Vital.GroupedHeartRateResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateTimeseries
-        )
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedHeartRate)),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedHeartRateResponse {
     interface Raw {
-        groups: Record<
-            string,
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHeartRateTimeseries.Raw[]
-        >;
+        groups: Record<string, GroupedHeartRate.Raw[]>;
         next?: string | null;
         next_cursor?: string | null;
     }

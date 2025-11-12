@@ -9,5 +9,5 @@ export interface ClientFacingCaffeineChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCaffeineTimeseries;
+    data: Vital.GroupedCaffeine;
 }

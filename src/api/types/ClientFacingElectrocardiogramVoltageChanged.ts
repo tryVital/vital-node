@@ -9,5 +9,5 @@ export interface ClientFacingElectrocardiogramVoltageChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingElectrocardiogramVoltageTimeseries;
+    data: Vital.GroupedElectrocardiogramVoltage;
 }

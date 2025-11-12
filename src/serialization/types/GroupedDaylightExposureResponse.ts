@@ -5,28 +5,20 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample";
+import { GroupedDaylightExposure } from "./GroupedDaylightExposure";
 
 export const GroupedDaylightExposureResponse: core.serialization.ObjectSchema<
     serializers.GroupedDaylightExposureResponse.Raw,
     Vital.GroupedDaylightExposureResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample
-        )
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedDaylightExposure)),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedDaylightExposureResponse {
     interface Raw {
-        groups: Record<
-            string,
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDaylightExposureSample.Raw[]
-        >;
+        groups: Record<string, GroupedDaylightExposure.Raw[]>;
         next?: string | null;
         next_cursor?: string | null;
     }

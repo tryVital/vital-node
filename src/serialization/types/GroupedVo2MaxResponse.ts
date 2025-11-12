@@ -5,28 +5,20 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries";
+import { GroupedVo2Max } from "./GroupedVo2Max";
 
 export const GroupedVo2MaxResponse: core.serialization.ObjectSchema<
     serializers.GroupedVo2MaxResponse.Raw,
     Vital.GroupedVo2MaxResponse
 > = core.serialization.object({
-    groups: core.serialization.record(
-        core.serialization.string(),
-        core.serialization.list(
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries
-        )
-    ),
+    groups: core.serialization.record(core.serialization.string(), core.serialization.list(GroupedVo2Max)),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
 });
 
 export declare namespace GroupedVo2MaxResponse {
     interface Raw {
-        groups: Record<
-            string,
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingVo2MaxTimeseries.Raw[]
-        >;
+        groups: Record<string, GroupedVo2Max.Raw[]>;
         next?: string | null;
         next_cursor?: string | null;
     }

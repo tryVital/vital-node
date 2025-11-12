@@ -9,5 +9,5 @@ export interface ClientFacingFloorsClimbedChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingFloorsClimbedTimeseries;
+    data: Vital.GroupedFloorsClimbed;
 }

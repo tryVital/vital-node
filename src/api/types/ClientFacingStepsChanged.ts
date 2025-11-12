@@ -9,5 +9,5 @@ export interface ClientFacingStepsChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStepsTimeseries;
+    data: Vital.GroupedSteps;
 }

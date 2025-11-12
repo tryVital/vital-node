@@ -9,5 +9,5 @@ export interface ClientFacingWaistCircumferenceChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample;
+    data: Vital.GroupedWaistCircumference;
 }

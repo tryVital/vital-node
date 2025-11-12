@@ -9,5 +9,5 @@ export interface ClientFacingMindfulnessMinutesChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingMindfulnessMinutesTimeseries;
+    data: Vital.GroupedMindfulnessMinutes;
 }

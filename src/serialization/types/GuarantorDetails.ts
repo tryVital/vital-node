@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasDbSchemasLabTestInsuranceAddress } from "./VitalCoreSchemasDbSchemasLabTestInsuranceAddress";
+import { Address } from "./Address";
 
 export const GuarantorDetails: core.serialization.ObjectSchema<
     serializers.GuarantorDetails.Raw,
@@ -13,7 +13,7 @@ export const GuarantorDetails: core.serialization.ObjectSchema<
 > = core.serialization.object({
     firstName: core.serialization.property("first_name", core.serialization.string()),
     lastName: core.serialization.property("last_name", core.serialization.string()),
-    address: VitalCoreSchemasDbSchemasLabTestInsuranceAddress,
+    address: Address,
     phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
     householdIncome: core.serialization.property("household_income", core.serialization.number().optional()),
     householdSize: core.serialization.property("household_size", core.serialization.number().optional()),
@@ -24,7 +24,7 @@ export declare namespace GuarantorDetails {
     interface Raw {
         first_name: string;
         last_name: string;
-        address: VitalCoreSchemasDbSchemasLabTestInsuranceAddress.Raw;
+        address: Address.Raw;
         phone_number: string;
         household_income?: number | null;
         household_size?: number | null;

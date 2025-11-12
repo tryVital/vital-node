@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBasalBodyTemperatureSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBasalBodyTemperatureSample";
+import { GroupedBasalBodyTemperature } from "./GroupedBasalBodyTemperature";
 
 export const GroupedBasalBodyTemperatureResponse: core.serialization.ObjectSchema<
     serializers.GroupedBasalBodyTemperatureResponse.Raw,
@@ -13,9 +13,7 @@ export const GroupedBasalBodyTemperatureResponse: core.serialization.ObjectSchem
 > = core.serialization.object({
     groups: core.serialization.record(
         core.serialization.string(),
-        core.serialization.list(
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBasalBodyTemperatureSample
-        )
+        core.serialization.list(GroupedBasalBodyTemperature)
     ),
     next: core.serialization.string().optional(),
     nextCursor: core.serialization.property("next_cursor", core.serialization.string().optional()),
@@ -23,10 +21,7 @@ export const GroupedBasalBodyTemperatureResponse: core.serialization.ObjectSchem
 
 export declare namespace GroupedBasalBodyTemperatureResponse {
     interface Raw {
-        groups: Record<
-            string,
-            VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBasalBodyTemperatureSample.Raw[]
-        >;
+        groups: Record<string, GroupedBasalBodyTemperature.Raw[]>;
         next?: string | null;
         next_cursor?: string | null;
     }

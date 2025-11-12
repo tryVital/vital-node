@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingHandwashingChangedEventType } from "./ClientFacingHandwashingChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample";
+import { GroupedHandwashing } from "./GroupedHandwashing";
 
 export const ClientFacingHandwashingChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingHandwashingChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingHandwashingChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample,
+    data: GroupedHandwashing,
 });
 
 export declare namespace ClientFacingHandwashingChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingHandwashingChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHandwashingSample.Raw;
+        data: GroupedHandwashing.Raw;
     }
 }

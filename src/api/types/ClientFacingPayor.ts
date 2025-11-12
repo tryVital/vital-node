@@ -12,7 +12,7 @@ export interface ClientFacingPayor {
     /** Insurance name aliases returned for the insurance information. */
     aliases: string[];
     /** Insurance business address returned for the insurance information. */
-    orgAddress: Vital.VitalCoreSchemasDbSchemasLabTestInsuranceAddress;
+    orgAddress: Vital.Address;
     /** The source of the payor, can be one of (platform, team). */
     source: Vital.ClientFacingPayorCodeSource;
 }

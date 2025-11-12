@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingStressLevelChangedEventType } from "./ClientFacingStressLevelChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries";
+import { GroupedStressLevel } from "./GroupedStressLevel";
 
 export const ClientFacingStressLevelChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingStressLevelChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingStressLevelChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries,
+    data: GroupedStressLevel,
 });
 
 export declare namespace ClientFacingStressLevelChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingStressLevelChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingStressLevelTimeseries.Raw;
+        data: GroupedStressLevel.Raw;
     }
 }

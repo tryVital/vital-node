@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingWaistCircumferenceChangedEventType } from "./ClientFacingWaistCircumferenceChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample";
+import { GroupedWaistCircumference } from "./GroupedWaistCircumference";
 
 export const ClientFacingWaistCircumferenceChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingWaistCircumferenceChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingWaistCircumferenceChanged: core.serialization.ObjectSch
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample,
+    data: GroupedWaistCircumference,
 });
 
 export declare namespace ClientFacingWaistCircumferenceChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingWaistCircumferenceChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWaistCircumferenceSample.Raw;
+        data: GroupedWaistCircumference.Raw;
     }
 }

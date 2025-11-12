@@ -9,5 +9,5 @@ export interface ClientFacingFatChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingBodyFatTimeseries;
+    data: Vital.GroupedBodyFat;
 }

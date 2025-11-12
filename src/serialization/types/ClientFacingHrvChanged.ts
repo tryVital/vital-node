@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingHrvChangedEventType } from "./ClientFacingHrvChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHrvTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHrvTimeseries";
+import { GroupedHrv } from "./GroupedHrv";
 
 export const ClientFacingHrvChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingHrvChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingHrvChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHrvTimeseries,
+    data: GroupedHrv,
 });
 
 export declare namespace ClientFacingHrvChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingHrvChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingHrvTimeseries.Raw;
+        data: GroupedHrv.Raw;
     }
 }

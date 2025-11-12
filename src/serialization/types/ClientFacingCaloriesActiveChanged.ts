@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vital from "../../api/index";
 import * as core from "../../core";
 import { ClientFacingCaloriesActiveChangedEventType } from "./ClientFacingCaloriesActiveChangedEventType";
-import { VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCaloriesActiveTimeseries } from "./VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCaloriesActiveTimeseries";
+import { GroupedCaloriesActive } from "./GroupedCaloriesActive";
 
 export const ClientFacingCaloriesActiveChanged: core.serialization.ObjectSchema<
     serializers.ClientFacingCaloriesActiveChanged.Raw,
@@ -16,7 +16,7 @@ export const ClientFacingCaloriesActiveChanged: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     clientUserId: core.serialization.property("client_user_id", core.serialization.string()),
     teamId: core.serialization.property("team_id", core.serialization.string()),
-    data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCaloriesActiveTimeseries,
+    data: GroupedCaloriesActive,
 });
 
 export declare namespace ClientFacingCaloriesActiveChanged {
@@ -25,6 +25,6 @@ export declare namespace ClientFacingCaloriesActiveChanged {
         user_id: string;
         client_user_id: string;
         team_id: string;
-        data: VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingCaloriesActiveTimeseries.Raw;
+        data: GroupedCaloriesActive.Raw;
     }
 }

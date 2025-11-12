@@ -9,5 +9,5 @@ export interface ClientFacingWheelchairPushChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingWheelchairPushSample;
+    data: Vital.GroupedWheelchairPush;
 }

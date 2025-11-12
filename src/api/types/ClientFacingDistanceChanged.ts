@@ -9,5 +9,5 @@ export interface ClientFacingDistanceChanged {
     userId: string;
     clientUserId: string;
     teamId: string;
-    data: Vital.VitalCoreSchemasResponseSchemasTimeseriesClientFacingTimeseriesGroupClientFacingDistanceTimeseries;
+    data: Vital.GroupedDistance;
 }

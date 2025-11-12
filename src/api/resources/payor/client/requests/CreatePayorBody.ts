@@ -19,7 +19,7 @@ import * as Vital from "../../../../index";
  */
 export interface CreatePayorBody {
     name: string;
-    address: Vital.VitalCoreSchemasDbSchemasLabTestInsuranceAddress;
+    address: Vital.Address;
     provider?: Vital.PayorCodeExternalProvider;
     providerPayorId?: string;
 }
