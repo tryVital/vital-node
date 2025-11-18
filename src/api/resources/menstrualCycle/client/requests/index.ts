@@ -1,1 +1,1 @@
-export { type MenstrualCycleGetRequest } from "./MenstrualCycleGetRequest";
+export { type GetMenstrualCycleRequest } from "./GetMenstrualCycleRequest";

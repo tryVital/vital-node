@@ -1,1 +1,1 @@
-export { type SleepCycleGetRequest } from "./SleepCycleGetRequest";
+export { type GetSleepCycleRequest } from "./GetSleepCycleRequest";

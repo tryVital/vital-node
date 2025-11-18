@@ -9,7 +9,7 @@ import * as Vital from "../../../../index";
  *     {
  *         timeframe: {
  *             type: "relative",
- *             anchor: "anchor",
+ *             anchor: "2023-01-15",
  *             past: {
  *                 unit: "minute"
  *             }

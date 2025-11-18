@@ -32,7 +32,7 @@ export class Profile {
      * Get profile for user_id
      *
      * @param {string} userId
-     * @param {Vital.ProfileGetRequest} request
+     * @param {Vital.GetProfileRequest} request
      * @param {Profile.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -42,7 +42,7 @@ export class Profile {
      */
     public async get(
         userId: string,
-        request: Vital.ProfileGetRequest = {},
+        request: Vital.GetProfileRequest = {},
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.ClientFacingProfile> {
         const { provider } = request;
@@ -60,8 +60,8 @@ export class Profile {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -120,7 +120,7 @@ export class Profile {
      * Get raw profile for user_id
      *
      * @param {string} userId
-     * @param {Vital.ProfileGetRawRequest} request
+     * @param {Vital.GetRawProfileRequest} request
      * @param {Profile.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -130,7 +130,7 @@ export class Profile {
      */
     public async getRaw(
         userId: string,
-        request: Vital.ProfileGetRawRequest = {},
+        request: Vital.GetRawProfileRequest = {},
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.RawProfile> {
         const { provider } = request;
@@ -148,8 +148,8 @@ export class Profile {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

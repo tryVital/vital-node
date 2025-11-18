@@ -1,2 +1,2 @@
-export { type ProfileGetRequest } from "./ProfileGetRequest";
-export { type ProfileGetRawRequest } from "./ProfileGetRawRequest";
+export { type GetProfileRequest } from "./GetProfileRequest";
+export { type GetRawProfileRequest } from "./GetRawProfileRequest";

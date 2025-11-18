@@ -32,7 +32,7 @@ export class Workouts {
      * Get workout summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.WorkoutsGetRequest} request
+     * @param {Vital.GetWorkoutsRequest} request
      * @param {Workouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -44,7 +44,7 @@ export class Workouts {
      */
     public async get(
         userId: string,
-        request: Vital.WorkoutsGetRequest,
+        request: Vital.GetWorkoutsRequest,
         requestOptions?: Workouts.RequestOptions
     ): Promise<Vital.ClientWorkoutResponse> {
         const { provider, startDate, endDate } = request;
@@ -67,8 +67,8 @@ export class Workouts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -127,7 +127,7 @@ export class Workouts {
      * Get raw workout summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.WorkoutsGetRawRequest} request
+     * @param {Vital.GetRawWorkoutsRequest} request
      * @param {Workouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -139,7 +139,7 @@ export class Workouts {
      */
     public async getRaw(
         userId: string,
-        request: Vital.WorkoutsGetRawRequest,
+        request: Vital.GetRawWorkoutsRequest,
         requestOptions?: Workouts.RequestOptions
     ): Promise<Vital.RawWorkout> {
         const { provider, startDate, endDate } = request;
@@ -162,8 +162,8 @@ export class Workouts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -220,6 +220,7 @@ export class Workouts {
 
     /**
      * @param {string} workoutId - The Vital ID for the workout
+     * @param {Vital.GetByWorkoutIdWorkoutsRequest} request
      * @param {Workouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -229,6 +230,7 @@ export class Workouts {
      */
     public async getByWorkoutId(
         workoutId: string,
+        request: Vital.GetByWorkoutIdWorkoutsRequest = {},
         requestOptions?: Workouts.RequestOptions
     ): Promise<Vital.ClientFacingStream> {
         const _response = await core.fetcher({
@@ -240,8 +242,8 @@ export class Workouts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

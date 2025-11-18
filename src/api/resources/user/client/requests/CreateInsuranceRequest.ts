@@ -21,7 +21,7 @@ import * as Vital from "../../../../index";
  *                 city: "city",
  *                 state: "state"
  *             },
- *             dob: "dob",
+ *             dob: "2023-01-15",
  *             email: "email",
  *             phoneNumber: "phone_number"
  *         }

@@ -39,7 +39,7 @@ export class Aggregate {
      *     await client.aggregate.queryOne("user_id", {
      *         timeframe: {
      *             type: "relative",
-     *             anchor: "anchor",
+     *             anchor: "2023-01-15",
      *             past: {
      *                 unit: "minute"
      *             }
@@ -68,8 +68,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
@@ -128,6 +128,7 @@ export class Aggregate {
     /**
      * @param {string} userId
      * @param {string} queryIdOrSlug
+     * @param {Vital.GetResultTableForContinuousQueryAggregateRequest} request
      * @param {Aggregate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -138,6 +139,7 @@ export class Aggregate {
     public async getResultTableForContinuousQuery(
         userId: string,
         queryIdOrSlug: string,
+        request: Vital.GetResultTableForContinuousQueryAggregateRequest = {},
         requestOptions?: Aggregate.RequestOptions
     ): Promise<Vital.AggregationResult> {
         const _response = await core.fetcher({
@@ -151,8 +153,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 accept: "*/*",
@@ -210,7 +212,7 @@ export class Aggregate {
     /**
      * @param {string} userId
      * @param {string} queryIdOrSlug
-     * @param {Vital.AggregateGetTaskHistoryForContinuousQueryRequest} request
+     * @param {Vital.GetTaskHistoryForContinuousQueryAggregateRequest} request
      * @param {Aggregate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -221,7 +223,7 @@ export class Aggregate {
     public async getTaskHistoryForContinuousQuery(
         userId: string,
         queryIdOrSlug: string,
-        request: Vital.AggregateGetTaskHistoryForContinuousQueryRequest = {},
+        request: Vital.GetTaskHistoryForContinuousQueryAggregateRequest = {},
         requestOptions?: Aggregate.RequestOptions
     ): Promise<Vital.ContinuousQueryTaskHistoryResponse> {
         const { nextCursor, limit } = request;
@@ -245,8 +247,8 @@ export class Aggregate {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

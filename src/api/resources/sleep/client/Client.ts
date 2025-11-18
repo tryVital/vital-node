@@ -32,7 +32,7 @@ export class Sleep {
      * Get sleep summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.SleepGetRequest} request
+     * @param {Vital.GetSleepRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -44,7 +44,7 @@ export class Sleep {
      */
     public async get(
         userId: string,
-        request: Vital.SleepGetRequest,
+        request: Vital.GetSleepRequest,
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientSleepResponse> {
         const { provider, startDate, endDate } = request;
@@ -67,8 +67,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -127,7 +127,7 @@ export class Sleep {
      * Get raw sleep summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.SleepGetRawRequest} request
+     * @param {Vital.GetRawSleepRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -139,7 +139,7 @@ export class Sleep {
      */
     public async getRaw(
         userId: string,
-        request: Vital.SleepGetRawRequest,
+        request: Vital.GetRawSleepRequest,
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.RawSleep> {
         const { provider, startDate, endDate } = request;
@@ -162,8 +162,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -222,6 +222,7 @@ export class Sleep {
      * Get Sleep stream for a user_id
      *
      * @param {string} sleepId - The Vital Sleep ID
+     * @param {Vital.GetStreamBySleepIdSleepRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -231,6 +232,7 @@ export class Sleep {
      */
     public async getStreamBySleepId(
         sleepId: string,
+        request: Vital.GetStreamBySleepIdSleepRequest = {},
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientFacingSleepStream> {
         const _response = await core.fetcher({
@@ -242,8 +244,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

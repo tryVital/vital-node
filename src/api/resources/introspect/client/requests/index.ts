@@ -1,2 +1,2 @@
-export { type IntrospectGetUserResourcesRequest } from "./IntrospectGetUserResourcesRequest";
-export { type IntrospectGetUserHistoricalPullsRequest } from "./IntrospectGetUserHistoricalPullsRequest";
+export { type GetUserResourcesIntrospectRequest } from "./GetUserResourcesIntrospectRequest";
+export { type GetUserHistoricalPullsIntrospectRequest } from "./GetUserHistoricalPullsIntrospectRequest";

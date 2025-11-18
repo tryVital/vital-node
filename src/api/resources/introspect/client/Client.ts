@@ -29,7 +29,7 @@ export class Introspect {
     constructor(protected readonly _options: Introspect.Options = {}) {}
 
     /**
-     * @param {Vital.IntrospectGetUserResourcesRequest} request
+     * @param {Vital.GetUserResourcesIntrospectRequest} request
      * @param {Introspect.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -38,7 +38,7 @@ export class Introspect {
      *     await client.introspect.getUserResources()
      */
     public async getUserResources(
-        request: Vital.IntrospectGetUserResourcesRequest = {},
+        request: Vital.GetUserResourcesIntrospectRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserResourcesResponse> {
         const { userId, provider, userLimit, cursor, nextCursor } = request;
@@ -72,8 +72,8 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -129,7 +129,7 @@ export class Introspect {
     }
 
     /**
-     * @param {Vital.IntrospectGetUserHistoricalPullsRequest} request
+     * @param {Vital.GetUserHistoricalPullsIntrospectRequest} request
      * @param {Introspect.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -138,7 +138,7 @@ export class Introspect {
      *     await client.introspect.getUserHistoricalPulls()
      */
     public async getUserHistoricalPulls(
-        request: Vital.IntrospectGetUserHistoricalPullsRequest = {},
+        request: Vital.GetUserHistoricalPullsIntrospectRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserHistoricalPullsResponse> {
         const { userId, provider, userLimit, cursor, nextCursor } = request;
@@ -148,7 +148,7 @@ export class Introspect {
         }
 
         if (provider != null) {
-            _queryParams["provider"] = provider;
+            _queryParams["provider"] = typeof provider === "string" ? provider : JSON.stringify(provider);
         }
 
         if (userLimit != null) {
@@ -172,8 +172,8 @@ export class Introspect {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

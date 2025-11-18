@@ -14,7 +14,7 @@ import * as Vital from "../../../../index";
  *         patientDetails: {
  *             firstName: "first_name",
  *             lastName: "last_name",
- *             dob: "dob",
+ *             dob: "2023-01-15",
  *             gender: "female",
  *             phoneNumber: "phone_number",
  *             email: "email"

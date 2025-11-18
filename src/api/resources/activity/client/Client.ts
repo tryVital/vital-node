@@ -32,7 +32,7 @@ export class Activity {
      * Get activity summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.ActivityGetRequest} request
+     * @param {Vital.GetActivityRequest} request
      * @param {Activity.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -44,7 +44,7 @@ export class Activity {
      */
     public async get(
         userId: string,
-        request: Vital.ActivityGetRequest,
+        request: Vital.GetActivityRequest,
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.ClientActivityResponse> {
         const { provider, startDate, endDate } = request;
@@ -67,8 +67,8 @@ export class Activity {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -127,7 +127,7 @@ export class Activity {
      * Get raw activity summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.ActivityGetRawRequest} request
+     * @param {Vital.GetRawActivityRequest} request
      * @param {Activity.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -139,7 +139,7 @@ export class Activity {
      */
     public async getRaw(
         userId: string,
-        request: Vital.ActivityGetRawRequest,
+        request: Vital.GetRawActivityRequest,
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.RawActivity> {
         const { provider, startDate, endDate } = request;
@@ -162,8 +162,8 @@ export class Activity {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.481",
-                "User-Agent": "@tryvital/vital-node/3.1.481",
+                "X-Fern-SDK-Version": "3.1.482",
+                "User-Agent": "@tryvital/vital-node/3.1.482",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
