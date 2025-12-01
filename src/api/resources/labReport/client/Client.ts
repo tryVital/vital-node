@@ -5,11 +5,13 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vital from "../../../index";
+import * as fs from "fs";
+import { Blob } from "buffer";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Sleep {
+export declare namespace LabReport {
     interface Options {
         environment?: core.Supplier<environments.VitalEnvironment | string>;
         apiKey?: core.Supplier<string | undefined>;
@@ -25,45 +27,40 @@ export declare namespace Sleep {
     }
 }
 
-export class Sleep {
-    constructor(protected readonly _options: Sleep.Options = {}) {}
+export class LabReport {
+    constructor(protected readonly _options: LabReport.Options = {}) {}
 
     /**
-     * Get sleep summary for user_id
+     * Creates a parse job, uploads the file to provider, persists the job row,
+     * and starts the ParseLabReport. Returns a generated job_id.
      *
-     * @param {string} userId
-     * @param {Vital.GetSleepRequest} request
-     * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {File | fs.ReadStream | Blob} file
+     * @param {Vital.BodyCreateLabReportParserJob} request
+     * @param {LabReport.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.sleep.get("user_id", {
-     *         startDate: "start_date"
-     *     })
+     *     await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file"), {})
      */
-    public async get(
-        userId: string,
-        request: Vital.GetSleepRequest,
-        requestOptions?: Sleep.RequestOptions
-    ): Promise<Vital.ClientSleepResponse> {
-        const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (provider != null) {
-            _queryParams["provider"] = provider;
+    public async parserCreateJob(
+        file: File | fs.ReadStream | Blob,
+        request: Vital.BodyCreateLabReportParserJob,
+        requestOptions?: LabReport.RequestOptions
+    ): Promise<Vital.ParsingJob> {
+        const _request = await core.newFormData();
+        await _request.appendFile("file", file);
+        if (request.needsHumanReview != null) {
+            await _request.append("needs_human_review", request.needsHumanReview.toString());
         }
 
-        _queryParams["start_date"] = startDate;
-        if (endDate != null) {
-            _queryParams["end_date"] = endDate;
-        }
-
+        const _maybeEncodedRequest = await _request.getRequest();
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/summary/sleep/${encodeURIComponent(userId)}`
+                "lab_report/v1/parser/job"
             ),
-            method: "GET",
+            method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
@@ -72,16 +69,17 @@ export class Sleep {
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
+                ..._maybeEncodedRequest.headers,
             },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            requestType: "file",
+            duplex: _maybeEncodedRequest.duplex,
+            body: _maybeEncodedRequest.body,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.ClientSleepResponse.parseOrThrow(_response.body, {
+            return serializers.ParsingJob.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -124,121 +122,29 @@ export class Sleep {
     }
 
     /**
-     * Get raw sleep summary for user_id
+     * Retrieves the parse job status and stored result if completed.
      *
-     * @param {string} userId
-     * @param {Vital.GetRawSleepRequest} request
-     * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
+     * Returns:
+     *     ParseLabResultJobResponse with job status and parsed data (if complete)
      *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.sleep.getRaw("user_id", {
-     *         startDate: "start_date"
-     *     })
-     */
-    public async getRaw(
-        userId: string,
-        request: Vital.GetRawSleepRequest,
-        requestOptions?: Sleep.RequestOptions
-    ): Promise<Vital.RawSleep> {
-        const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (provider != null) {
-            _queryParams["provider"] = provider;
-        }
-
-        _queryParams["start_date"] = startDate;
-        if (endDate != null) {
-            _queryParams["end_date"] = endDate;
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/summary/sleep/${encodeURIComponent(userId)}/raw`
-            ),
-            method: "GET",
-            headers: {
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.492",
-                "User-Agent": "@tryvital/vital-node/3.1.492",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return serializers.RawSleep.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VitalError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VitalTimeoutError();
-            case "unknown":
-                throw new errors.VitalError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Get Sleep stream for a user_id
-     *
-     * @param {string} sleepId - The Vital Sleep ID
-     * @param {Vital.GetStreamBySleepIdSleepRequest} request
-     * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} jobId
+     * @param {Vital.ParserGetJobLabReportRequest} request
+     * @param {LabReport.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.sleep.getStreamBySleepId("sleep_id")
+     *     await client.labReport.parserGetJob("job_id")
      */
-    public async getStreamBySleepId(
-        sleepId: string,
-        request: Vital.GetStreamBySleepIdSleepRequest = {},
-        requestOptions?: Sleep.RequestOptions
-    ): Promise<Vital.ClientFacingSleepStream> {
+    public async parserGetJob(
+        jobId: string,
+        request: Vital.ParserGetJobLabReportRequest = {},
+        requestOptions?: LabReport.RequestOptions
+    ): Promise<Vital.ParsingJob> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
-                `v2/timeseries/sleep/${encodeURIComponent(sleepId)}/stream`
+                `lab_report/v1/parser/job/${encodeURIComponent(jobId)}`
             ),
             method: "GET",
             headers: {
@@ -257,7 +163,7 @@ export class Sleep {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.ClientFacingSleepStream.parseOrThrow(_response.body, {
+            return serializers.ParsingJob.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

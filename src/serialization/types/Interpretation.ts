@@ -7,8 +7,8 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 
 export const Interpretation: core.serialization.Schema<serializers.Interpretation.Raw, Vital.Interpretation> =
-    core.serialization.enum_(["normal", "abnormal", "critical"]);
+    core.serialization.enum_(["normal", "abnormal", "critical", "unknown"]);
 
 export declare namespace Interpretation {
-    type Raw = "normal" | "abnormal" | "critical";
+    type Raw = "normal" | "abnormal" | "critical" | "unknown";
 }

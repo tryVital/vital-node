@@ -11810,6 +11810,154 @@ await client.payor.createPayor({
 </dl>
 </details>
 
+## LabReport
+
+<details><summary><code>client.labReport.<a href="/src/api/resources/labReport/client/Client.ts">parserCreateJob</a>(file, { ...params }) -> Vital.ParsingJob</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a parse job, uploads the file to provider, persists the job row,
+and starts the ParseLabReport. Returns a generated job_id.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file"), {});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**file:** `File | fs.ReadStream | Blob`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.BodyCreateLabReportParserJob`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LabReport.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labReport.<a href="/src/api/resources/labReport/client/Client.ts">parserGetJob</a>(jobId, { ...params }) -> Vital.ParsingJob</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves the parse job status and stored result if completed.
+
+Returns:
+ParseLabResultJobResponse with job status and parsed data (if complete)
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labReport.parserGetJob("job_id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**jobId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.ParserGetJobLabReportRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LabReport.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Aggregate
 
 <details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">queryOne</a>(userId, { ...params }) -> Vital.AggregationResponse</code></summary>

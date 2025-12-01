@@ -5,10 +5,11 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type Interpretation = "normal" | "abnormal" | "critical";
+export type Interpretation = "normal" | "abnormal" | "critical" | "unknown";
 
 export const Interpretation = {
     Normal: "normal",
     Abnormal: "abnormal",
     Critical: "critical",
+    Unknown: "unknown",
 } as const;
