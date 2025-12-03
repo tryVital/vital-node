@@ -64,8 +64,8 @@ export class LabReport {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -128,7 +128,6 @@ export class LabReport {
      *     ParseLabResultJobResponse with job status and parsed data (if complete)
      *
      * @param {string} jobId
-     * @param {Vital.ParserGetJobLabReportRequest} request
      * @param {LabReport.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -136,11 +135,7 @@ export class LabReport {
      * @example
      *     await client.labReport.parserGetJob("job_id")
      */
-    public async parserGetJob(
-        jobId: string,
-        request: Vital.ParserGetJobLabReportRequest = {},
-        requestOptions?: LabReport.RequestOptions
-    ): Promise<Vital.ParsingJob> {
+    public async parserGetJob(jobId: string, requestOptions?: LabReport.RequestOptions): Promise<Vital.ParsingJob> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -150,8 +145,8 @@ export class LabReport {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

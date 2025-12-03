@@ -32,19 +32,21 @@ export class Sleep {
      * Get sleep summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetSleepRequest} request
+     * @param {Vital.SleepGetRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.sleep.get("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetSleepRequest,
+        request: Vital.SleepGetRequest,
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientSleepResponse> {
         const { provider, startDate, endDate } = request;
@@ -67,8 +69,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -127,19 +129,21 @@ export class Sleep {
      * Get raw sleep summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetRawSleepRequest} request
+     * @param {Vital.SleepGetRawRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.sleep.getRaw("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.GetRawSleepRequest,
+        request: Vital.SleepGetRawRequest,
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.RawSleep> {
         const { provider, startDate, endDate } = request;
@@ -162,8 +166,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -222,7 +226,6 @@ export class Sleep {
      * Get Sleep stream for a user_id
      *
      * @param {string} sleepId - The Vital Sleep ID
-     * @param {Vital.GetStreamBySleepIdSleepRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -232,7 +235,6 @@ export class Sleep {
      */
     public async getStreamBySleepId(
         sleepId: string,
-        request: Vital.GetStreamBySleepIdSleepRequest = {},
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientFacingSleepStream> {
         const _response = await core.fetcher({
@@ -244,8 +246,8 @@ export class Sleep {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

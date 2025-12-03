@@ -32,16 +32,24 @@ export class LabTests {
     /**
      * GET all the lab tests the team has access to.
      *
-     * @param {Vital.GetLabTestsRequest} request
+     * @param {Vital.LabTestsGetRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.get()
+     *     await client.labTests.get({
+     *         generationMethod: "auto",
+     *         labSlug: "lab_slug",
+     *         collectionMethod: "testkit",
+     *         status: "active",
+     *         name: "name",
+     *         orderKey: "price",
+     *         orderDirection: "asc"
+     *     })
      */
     public async get(
-        request: Vital.GetLabTestsRequest = {},
+        request: Vital.LabTestsGetRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingLabTest[]> {
         const {
@@ -73,11 +81,19 @@ export class LabTests {
         }
 
         if (markerIds != null) {
-            _queryParams["marker_ids"] = JSON.stringify(markerIds);
+            if (Array.isArray(markerIds)) {
+                _queryParams["marker_ids"] = markerIds.map((item) => item.toString());
+            } else {
+                _queryParams["marker_ids"] = markerIds.toString();
+            }
         }
 
         if (providerIds != null) {
-            _queryParams["provider_ids"] = JSON.stringify(providerIds);
+            if (Array.isArray(providerIds)) {
+                _queryParams["provider_ids"] = providerIds.map((item) => item);
+            } else {
+                _queryParams["provider_ids"] = providerIds;
+            }
         }
 
         if (name != null) {
@@ -101,8 +117,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -183,8 +199,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -243,17 +259,19 @@ export class LabTests {
      * GET all the lab tests the team has access to.
      *
      * @param {string} labTestId
-     * @param {Vital.GetByIdLabTestsRequest} request
+     * @param {Vital.LabTestsGetByIdRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getById("lab_test_id")
+     *     await client.labTests.getById("lab_test_id", {
+     *         labAccountId: "lab_account_id"
+     *     })
      */
     public async getById(
         labTestId: string,
-        request: Vital.GetByIdLabTestsRequest = {},
+        request: Vital.LabTestsGetByIdRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingLabTest> {
         const { labAccountId } = request;
@@ -271,8 +289,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -351,8 +369,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -410,22 +428,32 @@ export class LabTests {
     /**
      * GET all the markers for the given lab.
      *
-     * @param {Vital.GetMarkersLabTestsRequest} request
+     * @param {Vital.LabTestsGetMarkersRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getMarkers()
+     *     await client.labTests.getMarkers({
+     *         name: "name",
+     *         aLaCarteEnabled: true,
+     *         labAccountId: "lab_account_id",
+     *         page: 1,
+     *         size: 1
+     *     })
      */
     public async getMarkers(
-        request: Vital.GetMarkersLabTestsRequest = {},
+        request: Vital.LabTestsGetMarkersRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.GetMarkersResponse> {
         const { labId, name, aLaCarteEnabled, labAccountId, page, size } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (labId != null) {
-            _queryParams["lab_id"] = JSON.stringify(labId);
+            if (Array.isArray(labId)) {
+                _queryParams["lab_id"] = labId.map((item) => item.toString());
+            } else {
+                _queryParams["lab_id"] = labId.toString();
+            }
         }
 
         if (name != null) {
@@ -457,8 +485,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -514,18 +542,20 @@ export class LabTests {
     }
 
     /**
-     * @param {Vital.GetMarkersForOrderSetLabTestsRequest} request
+     * @param {Vital.LabTestsGetMarkersForOrderSetRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.getMarkersForOrderSet({
+     *         page: 1,
+     *         size: 1,
      *         body: {}
      *     })
      */
     public async getMarkersForOrderSet(
-        request: Vital.GetMarkersForOrderSetLabTestsRequest,
+        request: Vital.LabTestsGetMarkersForOrderSetRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.GetMarkersResponse> {
         const { page, size, body: _body } = request;
@@ -547,8 +577,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -606,17 +636,21 @@ export class LabTests {
 
     /**
      * @param {string} labTestId
-     * @param {Vital.GetMarkersForLabTestLabTestsRequest} request
+     * @param {Vital.LabTestsGetMarkersForLabTestRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getMarkersForLabTest("lab_test_id")
+     *     await client.labTests.getMarkersForLabTest("lab_test_id", {
+     *         labAccountId: "lab_account_id",
+     *         page: 1,
+     *         size: 1
+     *     })
      */
     public async getMarkersForLabTest(
         labTestId: string,
-        request: Vital.GetMarkersForLabTestLabTestsRequest = {},
+        request: Vital.LabTestsGetMarkersForLabTestRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.GetMarkersResponse> {
         const { labAccountId, page, size } = request;
@@ -642,8 +676,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -703,18 +737,20 @@ export class LabTests {
      *
      * @param {number} labId
      * @param {string} providerId
-     * @param {Vital.GetMarkersByLabAndProviderIdLabTestsRequest} request
+     * @param {Vital.LabTestsGetMarkersByLabAndProviderIdRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getMarkersByLabAndProviderId(1, "provider_id")
+     *     await client.labTests.getMarkersByLabAndProviderId(1, "provider_id", {
+     *         labAccountId: "lab_account_id"
+     *     })
      */
     public async getMarkersByLabAndProviderId(
         labId: number,
         providerId: string,
-        request: Vital.GetMarkersByLabAndProviderIdLabTestsRequest = {},
+        request: Vital.LabTestsGetMarkersByLabAndProviderIdRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingMarker> {
         const { labAccountId } = request;
@@ -732,8 +768,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -806,8 +842,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -852,16 +888,26 @@ export class LabTests {
     /**
      * GET lab tests the team has access to as a paginated list.
      *
-     * @param {Vital.GetPaginatedLabTestsRequest} request
+     * @param {Vital.LabTestsGetPaginatedRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getPaginated()
+     *     await client.labTests.getPaginated({
+     *         labTestLimit: 1,
+     *         nextCursor: "next_cursor",
+     *         generationMethod: "auto",
+     *         labSlug: "lab_slug",
+     *         collectionMethod: "testkit",
+     *         status: "active",
+     *         name: "name",
+     *         orderKey: "price",
+     *         orderDirection: "asc"
+     *     })
      */
     public async getPaginated(
-        request: Vital.GetPaginatedLabTestsRequest = {},
+        request: Vital.LabTestsGetPaginatedRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.LabTestResourcesResponse> {
         const {
@@ -903,11 +949,19 @@ export class LabTests {
         }
 
         if (markerIds != null) {
-            _queryParams["marker_ids"] = JSON.stringify(markerIds);
+            if (Array.isArray(markerIds)) {
+                _queryParams["marker_ids"] = markerIds.map((item) => item.toString());
+            } else {
+                _queryParams["marker_ids"] = markerIds.toString();
+            }
         }
 
         if (providerIds != null) {
-            _queryParams["provider_ids"] = JSON.stringify(providerIds);
+            if (Array.isArray(providerIds)) {
+                _queryParams["provider_ids"] = providerIds.map((item) => item);
+            } else {
+                _queryParams["provider_ids"] = providerIds;
+            }
         }
 
         if (name != null) {
@@ -931,8 +985,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -992,7 +1046,6 @@ export class LabTests {
      */
     public async getLabTestCollectionInstructionPdf(
         labTestId: string,
-        request: Vital.GetLabTestCollectionInstructionPdfLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<stream.Readable> {
         const _response = await core.fetcher<stream.Readable>({
@@ -1004,8 +1057,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1058,16 +1111,31 @@ export class LabTests {
     /**
      * GET many orders with filters.
      *
-     * @param {Vital.GetOrdersLabTestsRequest} request
+     * @param {Vital.LabTestsGetOrdersRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getOrders()
+     *     await client.labTests.getOrders({
+     *         searchInput: "search_input",
+     *         startDate: "2024-01-15T09:30:00Z",
+     *         endDate: "2024-01-15T09:30:00Z",
+     *         updatedStartDate: "2024-01-15T09:30:00Z",
+     *         updatedEndDate: "2024-01-15T09:30:00Z",
+     *         orderKey: "created_at",
+     *         orderDirection: "asc",
+     *         isCritical: true,
+     *         interpretation: "normal",
+     *         userId: "user_id",
+     *         patientName: "patient_name",
+     *         shippingRecipientName: "shipping_recipient_name",
+     *         page: 1,
+     *         size: 1
+     *     })
      */
     public async getOrders(
-        request: Vital.GetOrdersLabTestsRequest = {},
+        request: Vital.LabTestsGetOrdersRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.GetOrdersResponse> {
         const {
@@ -1112,7 +1180,11 @@ export class LabTests {
         }
 
         if (status != null) {
-            _queryParams["status"] = JSON.stringify(status);
+            if (Array.isArray(status)) {
+                _queryParams["status"] = status.map((item) => item);
+            } else {
+                _queryParams["status"] = status;
+            }
         }
 
         if (orderKey != null) {
@@ -1124,7 +1196,11 @@ export class LabTests {
         }
 
         if (orderType != null) {
-            _queryParams["order_type"] = JSON.stringify(orderType);
+            if (Array.isArray(orderType)) {
+                _queryParams["order_type"] = orderType.map((item) => item);
+            } else {
+                _queryParams["order_type"] = orderType;
+            }
         }
 
         if (isCritical != null) {
@@ -1136,7 +1212,11 @@ export class LabTests {
         }
 
         if (orderActivationTypes != null) {
-            _queryParams["order_activation_types"] = JSON.stringify(orderActivationTypes);
+            if (Array.isArray(orderActivationTypes)) {
+                _queryParams["order_activation_types"] = orderActivationTypes.map((item) => item);
+            } else {
+                _queryParams["order_activation_types"] = orderActivationTypes;
+            }
         }
 
         if (userId != null) {
@@ -1152,7 +1232,11 @@ export class LabTests {
         }
 
         if (orderIds != null) {
-            _queryParams["order_ids"] = JSON.stringify(orderIds);
+            if (Array.isArray(orderIds)) {
+                _queryParams["order_ids"] = orderIds.map((item) => item);
+            } else {
+                _queryParams["order_ids"] = orderIds;
+            }
         }
 
         if (page != null) {
@@ -1172,8 +1256,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1232,13 +1316,14 @@ export class LabTests {
      * Return the available time slots to book an appointment with a phlebotomist
      * for the given address and order.
      *
-     * @param {Vital.GetPhlebotomyAppointmentAvailabilityLabTestsRequest} request
+     * @param {Vital.LabTestsGetPhlebotomyAppointmentAvailabilityRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.getPhlebotomyAppointmentAvailability({
+     *         startDate: "start_date",
      *         body: {
      *             firstLine: "first_line",
      *             city: "city",
@@ -1248,7 +1333,7 @@ export class LabTests {
      *     })
      */
     public async getPhlebotomyAppointmentAvailability(
-        request: Vital.GetPhlebotomyAppointmentAvailabilityLabTestsRequest,
+        request: Vital.LabTestsGetPhlebotomyAppointmentAvailabilityRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.AppointmentAvailabilitySlots> {
         const { startDate, body: _body } = request;
@@ -1266,8 +1351,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1327,21 +1412,19 @@ export class LabTests {
      * Book an at-home phlebotomy appointment.
      *
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.BookPhlebotomyAppointmentLabTestsRequest} request
+     * @param {Vital.AppointmentBookingRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.bookPhlebotomyAppointment("order_id", {
-     *         body: {
-     *             bookingKey: "booking_key"
-     *         }
+     *         bookingKey: "booking_key"
      *     })
      */
     public async bookPhlebotomyAppointment(
         orderId: string,
-        request: Vital.BookPhlebotomyAppointmentLabTestsRequest,
+        request: Vital.AppointmentBookingRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingAppointment> {
         const _response = await core.fetcher({
@@ -1353,8 +1436,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1443,8 +1526,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1503,21 +1586,19 @@ export class LabTests {
      * Reschedule a previously booked at-home phlebotomy appointment.
      *
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.ReschedulePhlebotomyAppointmentLabTestsRequest} request
+     * @param {Vital.AppointmentRescheduleRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.reschedulePhlebotomyAppointment("order_id", {
-     *         body: {
-     *             bookingKey: "booking_key"
-     *         }
+     *         bookingKey: "booking_key"
      *     })
      */
     public async reschedulePhlebotomyAppointment(
         orderId: string,
-        request: Vital.ReschedulePhlebotomyAppointmentLabTestsRequest,
+        request: Vital.AppointmentRescheduleRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingAppointment> {
         const _response = await core.fetcher({
@@ -1529,8 +1610,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1613,8 +1694,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1692,8 +1773,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1742,7 +1823,6 @@ export class LabTests {
      * Get the appointment associated with an order.
      *
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.GetPhlebotomyAppointmentLabTestsRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -1752,7 +1832,6 @@ export class LabTests {
      */
     public async getPhlebotomyAppointment(
         orderId: string,
-        request: Vital.GetPhlebotomyAppointmentLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingAppointment> {
         const _response = await core.fetcher({
@@ -1764,8 +1843,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1826,18 +1905,21 @@ export class LabTests {
      * * Whether a given zip code is served by our Phlebotomy network.
      * * List of Lab locations in the area.
      *
-     * @param {Vital.GetAreaInfoLabTestsRequest} request
+     * @param {Vital.LabTestsGetAreaInfoRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.getAreaInfo({
-     *         zipCode: "zip_code"
+     *         zipCode: "zip_code",
+     *         radius: "10",
+     *         lab: "quest",
+     *         labAccountId: "lab_account_id"
      *     })
      */
     public async getAreaInfo(
-        request: Vital.GetAreaInfoLabTestsRequest,
+        request: Vital.LabTestsGetAreaInfoRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.AreaInfo> {
         const { zipCode, radius, lab, labs, labAccountId } = request;
@@ -1852,7 +1934,11 @@ export class LabTests {
         }
 
         if (labs != null) {
-            _queryParams["labs"] = JSON.stringify(labs);
+            if (Array.isArray(labs)) {
+                _queryParams["labs"] = labs.map((item) => item);
+            } else {
+                _queryParams["labs"] = labs;
+            }
         }
 
         if (labAccountId != null) {
@@ -1868,8 +1954,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1925,7 +2011,7 @@ export class LabTests {
     }
 
     /**
-     * @param {Vital.GetPscInfoLabTestsRequest} request
+     * @param {Vital.LabTestsGetPscInfoRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -1933,11 +2019,13 @@ export class LabTests {
      * @example
      *     await client.labTests.getPscInfo({
      *         zipCode: "zip_code",
-     *         labId: 1
+     *         labId: 1,
+     *         radius: "10",
+     *         labAccountId: "lab_account_id"
      *     })
      */
     public async getPscInfo(
-        request: Vital.GetPscInfoLabTestsRequest,
+        request: Vital.LabTestsGetPscInfoRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.PscInfo> {
         const { zipCode, labId, radius, capabilities, labAccountId } = request;
@@ -1949,7 +2037,11 @@ export class LabTests {
         }
 
         if (capabilities != null) {
-            _queryParams["capabilities"] = JSON.stringify(capabilities);
+            if (Array.isArray(capabilities)) {
+                _queryParams["capabilities"] = capabilities.map((item) => item);
+            } else {
+                _queryParams["capabilities"] = capabilities;
+            }
         }
 
         if (labAccountId != null) {
@@ -1965,8 +2057,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2023,17 +2115,19 @@ export class LabTests {
 
     /**
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.GetOrderPscInfoLabTestsRequest} request
+     * @param {Vital.LabTestsGetOrderPscInfoRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getOrderPscInfo("order_id")
+     *     await client.labTests.getOrderPscInfo("order_id", {
+     *         radius: "10"
+     *     })
      */
     public async getOrderPscInfo(
         orderId: string,
-        request: Vital.GetOrderPscInfoLabTestsRequest = {},
+        request: Vital.LabTestsGetOrderPscInfoRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.PscInfo> {
         const { radius, capabilities } = request;
@@ -2043,7 +2137,11 @@ export class LabTests {
         }
 
         if (capabilities != null) {
-            _queryParams["capabilities"] = JSON.stringify(capabilities);
+            if (Array.isArray(capabilities)) {
+                _queryParams["capabilities"] = capabilities.map((item) => item);
+            } else {
+                _queryParams["capabilities"] = capabilities;
+            }
         }
 
         const _response = await core.fetcher({
@@ -2055,8 +2153,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2115,11 +2213,7 @@ export class LabTests {
      * This endpoint returns the lab results for the order.
      * @throws {@link Vital.UnprocessableEntityError}
      */
-    public async getResultPdf(
-        orderId: string,
-        request: Vital.GetResultPdfLabTestsRequest = {},
-        requestOptions?: LabTests.RequestOptions
-    ): Promise<stream.Readable> {
+    public async getResultPdf(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<stream.Readable> {
         const _response = await core.fetcher<stream.Readable>({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -2129,8 +2223,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2185,7 +2279,6 @@ export class LabTests {
      * provider and sample dates.
      *
      * @param {string} orderId
-     * @param {Vital.GetResultMetadataLabTestsRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -2195,7 +2288,6 @@ export class LabTests {
      */
     public async getResultMetadata(
         orderId: string,
-        request: Vital.GetResultMetadataLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.LabResultsMetadata> {
         const _response = await core.fetcher({
@@ -2207,8 +2299,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2266,7 +2358,6 @@ export class LabTests {
      * Return both metadata and raw json test data
      *
      * @param {string} orderId
-     * @param {Vital.GetResultRawLabTestsRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -2274,11 +2365,7 @@ export class LabTests {
      * @example
      *     await client.labTests.getResultRaw("order_id")
      */
-    public async getResultRaw(
-        orderId: string,
-        request: Vital.GetResultRawLabTestsRequest = {},
-        requestOptions?: LabTests.RequestOptions
-    ): Promise<Vital.LabResultsRaw> {
+    public async getResultRaw(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<Vital.LabResultsRaw> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -2288,8 +2375,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2349,7 +2436,7 @@ export class LabTests {
      */
     public async getLabelsPdf(
         orderId: string,
-        request: Vital.GetLabelsPdfLabTestsRequest,
+        request: Vital.LabTestsGetLabelsPdfRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<stream.Readable> {
         const { numberOfLabels, collectionDate } = request;
@@ -2368,8 +2455,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2421,7 +2508,7 @@ export class LabTests {
     }
 
     /**
-     * @param {Vital.GetPscAppointmentAvailabilityLabTestsRequest} request
+     * @param {Vital.LabTestsGetPscAppointmentAvailabilityRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.NotFoundError}
@@ -2429,11 +2516,14 @@ export class LabTests {
      *
      * @example
      *     await client.labTests.getPscAppointmentAvailability({
-     *         lab: "quest"
+     *         lab: "quest",
+     *         startDate: "start_date",
+     *         zipCode: "zip_code",
+     *         radius: "10"
      *     })
      */
     public async getPscAppointmentAvailability(
-        request: Vital.GetPscAppointmentAvailabilityLabTestsRequest,
+        request: Vital.LabTestsGetPscAppointmentAvailabilityRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.AppointmentAvailabilitySlots> {
         const { lab, startDate, siteCodes, zipCode, radius } = request;
@@ -2444,7 +2534,11 @@ export class LabTests {
         }
 
         if (siteCodes != null) {
-            _queryParams["site_codes"] = JSON.stringify(siteCodes);
+            if (Array.isArray(siteCodes)) {
+                _queryParams["site_codes"] = siteCodes.map((item) => item);
+            } else {
+                _queryParams["site_codes"] = siteCodes;
+            }
         }
 
         if (zipCode != null) {
@@ -2464,8 +2558,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2531,21 +2625,19 @@ export class LabTests {
 
     /**
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.BookPscAppointmentLabTestsRequest} request
+     * @param {Vital.AppointmentBookingRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.bookPscAppointment("order_id", {
-     *         body: {
-     *             bookingKey: "booking_key"
-     *         }
+     *         bookingKey: "booking_key"
      *     })
      */
     public async bookPscAppointment(
         orderId: string,
-        request: Vital.BookPscAppointmentLabTestsRequest,
+        request: Vital.AppointmentBookingRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingAppointment> {
         const _response = await core.fetcher({
@@ -2557,8 +2649,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2615,21 +2707,19 @@ export class LabTests {
 
     /**
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.ReschedulePscAppointmentLabTestsRequest} request
+     * @param {Vital.AppointmentRescheduleRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.reschedulePscAppointment("order_id", {
-     *         body: {
-     *             bookingKey: "booking_key"
-     *         }
+     *         bookingKey: "booking_key"
      *     })
      */
     public async reschedulePscAppointment(
         orderId: string,
-        request: Vital.ReschedulePscAppointmentLabTestsRequest,
+        request: Vital.AppointmentRescheduleRequest,
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingAppointment> {
         const _response = await core.fetcher({
@@ -2641,8 +2731,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2723,8 +2813,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2799,8 +2889,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2846,7 +2936,6 @@ export class LabTests {
      * Get the appointment associated with an order.
      *
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.GetPscAppointmentLabTestsRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -2856,7 +2945,6 @@ export class LabTests {
      */
     public async getPscAppointment(
         orderId: string,
-        request: Vital.GetPscAppointmentLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.ClientFacingAppointment> {
         const _response = await core.fetcher({
@@ -2868,8 +2956,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2929,7 +3017,6 @@ export class LabTests {
      */
     public async getOrderCollectionInstructionPdf(
         orderId: string,
-        request: Vital.GetOrderCollectionInstructionPdfLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<stream.Readable> {
         const _response = await core.fetcher<stream.Readable>({
@@ -2941,8 +3028,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2998,7 +3085,6 @@ export class LabTests {
      */
     public async getOrderRequistionPdf(
         orderId: string,
-        request: Vital.GetOrderRequistionPdfLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<stream.Readable> {
         const _response = await core.fetcher<stream.Readable>({
@@ -3010,8 +3096,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3065,11 +3151,7 @@ export class LabTests {
      * GET ABN pdf for an order
      * @throws {@link Vital.UnprocessableEntityError}
      */
-    public async getOrderAbnPdf(
-        orderId: string,
-        request: Vital.GetOrderAbnPdfLabTestsRequest = {},
-        requestOptions?: LabTests.RequestOptions
-    ): Promise<stream.Readable> {
+    public async getOrderAbnPdf(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<stream.Readable> {
         const _response = await core.fetcher<stream.Readable>({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -3079,8 +3161,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3134,7 +3216,6 @@ export class LabTests {
      * GET individual order by ID.
      *
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.GetOrderLabTestsRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -3142,11 +3223,7 @@ export class LabTests {
      * @example
      *     await client.labTests.getOrder("order_id")
      */
-    public async getOrder(
-        orderId: string,
-        request: Vital.GetOrderLabTestsRequest = {},
-        requestOptions?: LabTests.RequestOptions
-    ): Promise<Vital.ClientFacingOrder> {
+    public async getOrder(orderId: string, requestOptions?: LabTests.RequestOptions): Promise<Vital.ClientFacingOrder> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -3156,8 +3233,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3219,11 +3296,13 @@ export class LabTests {
      *
      * @example
      *     await client.labTests.createOrder({
+     *         idempotencyKey: "X-Idempotency-Key",
+     *         idempotencyError: "no-cache",
      *         userId: "user_id",
      *         patientDetails: {
      *             firstName: "first_name",
      *             lastName: "last_name",
-     *             dob: "2023-01-15",
+     *             dob: "dob",
      *             gender: "female",
      *             phoneNumber: "phone_number",
      *             email: "email"
@@ -3251,8 +3330,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "X-Idempotency-Key": idempotencyKey != null ? idempotencyKey : undefined,
@@ -3324,7 +3403,7 @@ export class LabTests {
      *         patientDetails: {
      *             firstName: "first_name",
      *             lastName: "last_name",
-     *             dob: "2023-01-15",
+     *             dob: "dob",
      *             gender: "female",
      *             phoneNumber: "phone_number",
      *             email: "email"
@@ -3353,8 +3432,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3413,7 +3492,6 @@ export class LabTests {
      * POST cancel order
      *
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.CancelOrderLabTestsRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -3423,7 +3501,6 @@ export class LabTests {
      */
     public async cancelOrder(
         orderId: string,
-        request: Vital.CancelOrderLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.PostOrderResponse> {
         const _response = await core.fetcher({
@@ -3435,8 +3512,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3494,19 +3571,21 @@ export class LabTests {
      * Get available test kits.
      *
      * @param {string} orderId
-     * @param {Vital.SimulateOrderProcessLabTestsRequest} request
+     * @param {Vital.LabTestsSimulateOrderProcessRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.simulateOrderProcess("order_id", {
+     *         finalStatus: "received.walk_in_test.ordered",
+     *         delay: 1,
      *         body: {}
      *     })
      */
     public async simulateOrderProcess(
         orderId: string,
-        request: Vital.SimulateOrderProcessLabTestsRequest = {},
+        request: Vital.LabTestsSimulateOrderProcessRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<unknown> {
         const { finalStatus, delay, body: _body } = request;
@@ -3528,8 +3607,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3589,7 +3668,6 @@ export class LabTests {
      * PATCH update on site collection order when draw is completed
      *
      * @param {string} orderId - Your Order ID.
-     * @param {Vital.UpdateOnSiteCollectionOrderDrawCompletedLabTestsRequest} request
      * @param {LabTests.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -3599,7 +3677,6 @@ export class LabTests {
      */
     public async updateOnSiteCollectionOrderDrawCompleted(
         orderId: string,
-        request: Vital.UpdateOnSiteCollectionOrderDrawCompletedLabTestsRequest = {},
         requestOptions?: LabTests.RequestOptions
     ): Promise<Vital.PostOrderResponse> {
         const _response = await core.fetcher({
@@ -3611,8 +3688,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3690,8 +3767,8 @@ export class LabTests {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

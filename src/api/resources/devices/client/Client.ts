@@ -32,17 +32,19 @@ export class Devices {
      * Get Devices for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetRawDevicesRequest} request
+     * @param {Vital.DevicesGetRawRequest} request
      * @param {Devices.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.devices.getRaw("user_id")
+     *     await client.devices.getRaw("user_id", {
+     *         provider: "provider"
+     *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.GetRawDevicesRequest = {},
+        request: Vital.DevicesGetRawRequest = {},
         requestOptions?: Devices.RequestOptions
     ): Promise<Vital.RawDevices> {
         const { provider } = request;
@@ -60,8 +62,8 @@ export class Devices {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

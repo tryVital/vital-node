@@ -30,19 +30,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.WorkoutSwimmingStrokeGroupedVitalsRequest} request
+     * @param {Vital.VitalsWorkoutSwimmingStrokeGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.workoutSwimmingStrokeGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async workoutSwimmingStrokeGrouped(
         userId: string,
-        request: Vital.WorkoutSwimmingStrokeGroupedVitalsRequest,
+        request: Vital.VitalsWorkoutSwimmingStrokeGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedWorkoutSwimmingStrokeResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -73,8 +77,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -131,19 +135,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.WorkoutDistanceGroupedVitalsRequest} request
+     * @param {Vital.VitalsWorkoutDistanceGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.workoutDistanceGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async workoutDistanceGrouped(
         userId: string,
-        request: Vital.WorkoutDistanceGroupedVitalsRequest,
+        request: Vital.VitalsWorkoutDistanceGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedWorkoutDistanceResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -174,8 +182,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -232,19 +240,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HeartRateRecoveryOneMinuteGroupedVitalsRequest} request
+     * @param {Vital.VitalsHeartRateRecoveryOneMinuteGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.heartRateRecoveryOneMinuteGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async heartRateRecoveryOneMinuteGrouped(
         userId: string,
-        request: Vital.HeartRateRecoveryOneMinuteGroupedVitalsRequest,
+        request: Vital.VitalsHeartRateRecoveryOneMinuteGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedHeartRateRecoveryOneMinuteResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -275,8 +287,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -333,19 +345,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.WaistCircumferenceGroupedVitalsRequest} request
+     * @param {Vital.VitalsWaistCircumferenceGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.waistCircumferenceGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async waistCircumferenceGrouped(
         userId: string,
-        request: Vital.WaistCircumferenceGroupedVitalsRequest,
+        request: Vital.VitalsWaistCircumferenceGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedWaistCircumferenceResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -376,8 +392,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -434,19 +450,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.LeanBodyMassGroupedVitalsRequest} request
+     * @param {Vital.VitalsLeanBodyMassGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.leanBodyMassGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async leanBodyMassGrouped(
         userId: string,
-        request: Vital.LeanBodyMassGroupedVitalsRequest,
+        request: Vital.VitalsLeanBodyMassGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedLeanBodyMassResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -477,8 +497,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -535,19 +555,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BodyMassIndexGroupedVitalsRequest} request
+     * @param {Vital.VitalsBodyMassIndexGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bodyMassIndexGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bodyMassIndexGrouped(
         userId: string,
-        request: Vital.BodyMassIndexGroupedVitalsRequest,
+        request: Vital.VitalsBodyMassIndexGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBodyMassIndexResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -578,8 +602,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -636,19 +660,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BasalBodyTemperatureGroupedVitalsRequest} request
+     * @param {Vital.VitalsBasalBodyTemperatureGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.basalBodyTemperatureGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async basalBodyTemperatureGrouped(
         userId: string,
-        request: Vital.BasalBodyTemperatureGroupedVitalsRequest,
+        request: Vital.VitalsBasalBodyTemperatureGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBasalBodyTemperatureResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -679,8 +707,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -737,19 +765,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HandwashingGroupedVitalsRequest} request
+     * @param {Vital.VitalsHandwashingGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.handwashingGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async handwashingGrouped(
         userId: string,
-        request: Vital.HandwashingGroupedVitalsRequest,
+        request: Vital.VitalsHandwashingGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedHandwashingResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -780,8 +812,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -838,19 +870,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.DaylightExposureGroupedVitalsRequest} request
+     * @param {Vital.VitalsDaylightExposureGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.daylightExposureGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async daylightExposureGrouped(
         userId: string,
-        request: Vital.DaylightExposureGroupedVitalsRequest,
+        request: Vital.VitalsDaylightExposureGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedDaylightExposureResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -881,8 +917,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -939,19 +975,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.UvExposureGroupedVitalsRequest} request
+     * @param {Vital.VitalsUvExposureGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.uvExposureGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async uvExposureGrouped(
         userId: string,
-        request: Vital.UvExposureGroupedVitalsRequest,
+        request: Vital.VitalsUvExposureGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedUvExposureResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -982,8 +1022,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1040,19 +1080,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.FallGroupedVitalsRequest} request
+     * @param {Vital.VitalsFallGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.fallGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async fallGrouped(
         userId: string,
-        request: Vital.FallGroupedVitalsRequest,
+        request: Vital.VitalsFallGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedFallResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1083,8 +1127,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1141,19 +1185,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.InhalerUsageGroupedVitalsRequest} request
+     * @param {Vital.VitalsInhalerUsageGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.inhalerUsageGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async inhalerUsageGrouped(
         userId: string,
-        request: Vital.InhalerUsageGroupedVitalsRequest,
+        request: Vital.VitalsInhalerUsageGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedInhalerUsageResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1184,8 +1232,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1242,19 +1290,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.PeakExpiratoryFlowRateGroupedVitalsRequest} request
+     * @param {Vital.VitalsPeakExpiratoryFlowRateGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async peakExpiratoryFlowRateGrouped(
         userId: string,
-        request: Vital.PeakExpiratoryFlowRateGroupedVitalsRequest,
+        request: Vital.VitalsPeakExpiratoryFlowRateGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedPeakExpiratoryFlowRateResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1285,8 +1337,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1343,19 +1395,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.ForcedVitalCapacityGroupedVitalsRequest} request
+     * @param {Vital.VitalsForcedVitalCapacityGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.forcedVitalCapacityGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async forcedVitalCapacityGrouped(
         userId: string,
-        request: Vital.ForcedVitalCapacityGroupedVitalsRequest,
+        request: Vital.VitalsForcedVitalCapacityGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedForcedVitalCapacityResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1386,8 +1442,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1444,19 +1500,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.ForcedExpiratoryVolume1GroupedVitalsRequest} request
+     * @param {Vital.VitalsForcedExpiratoryVolume1GroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async forcedExpiratoryVolume1Grouped(
         userId: string,
-        request: Vital.ForcedExpiratoryVolume1GroupedVitalsRequest,
+        request: Vital.VitalsForcedExpiratoryVolume1GroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedForcedExpiratoryVolume1Response> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1487,8 +1547,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1545,19 +1605,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.WheelchairPushGroupedVitalsRequest} request
+     * @param {Vital.VitalsWheelchairPushGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.wheelchairPushGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async wheelchairPushGrouped(
         userId: string,
-        request: Vital.WheelchairPushGroupedVitalsRequest,
+        request: Vital.VitalsWheelchairPushGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedWheelchairPushResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1588,8 +1652,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1646,19 +1710,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.SleepBreathingDisturbanceGroupedVitalsRequest} request
+     * @param {Vital.VitalsSleepBreathingDisturbanceGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async sleepBreathingDisturbanceGrouped(
         userId: string,
-        request: Vital.SleepBreathingDisturbanceGroupedVitalsRequest,
+        request: Vital.VitalsSleepBreathingDisturbanceGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedSleepBreathingDisturbanceResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1689,8 +1757,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1747,19 +1815,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.SleepApneaAlertGroupedVitalsRequest} request
+     * @param {Vital.VitalsSleepApneaAlertGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.sleepApneaAlertGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async sleepApneaAlertGrouped(
         userId: string,
-        request: Vital.SleepApneaAlertGroupedVitalsRequest,
+        request: Vital.VitalsSleepApneaAlertGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedSleepApneaAlertResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1790,8 +1862,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1848,19 +1920,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.StandDurationGroupedVitalsRequest} request
+     * @param {Vital.VitalsStandDurationGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.standDurationGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async standDurationGrouped(
         userId: string,
-        request: Vital.StandDurationGroupedVitalsRequest,
+        request: Vital.VitalsStandDurationGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedStandDurationResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1891,8 +1967,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1949,19 +2025,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.StandHourGroupedVitalsRequest} request
+     * @param {Vital.VitalsStandHourGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.standHourGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async standHourGrouped(
         userId: string,
-        request: Vital.StandHourGroupedVitalsRequest,
+        request: Vital.VitalsStandHourGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedStandHourResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -1992,8 +2072,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2050,19 +2130,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HeartRateAlertGroupedVitalsRequest} request
+     * @param {Vital.VitalsHeartRateAlertGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.heartRateAlertGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async heartRateAlertGrouped(
         userId: string,
-        request: Vital.HeartRateAlertGroupedVitalsRequest,
+        request: Vital.VitalsHeartRateAlertGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedHeartRateAlertResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2093,8 +2177,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2151,19 +2235,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.AfibBurdenGroupedVitalsRequest} request
+     * @param {Vital.VitalsAfibBurdenGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.afibBurdenGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async afibBurdenGrouped(
         userId: string,
-        request: Vital.AfibBurdenGroupedVitalsRequest,
+        request: Vital.VitalsAfibBurdenGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedAFibBurdenResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2194,8 +2282,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2252,19 +2340,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.WorkoutDurationGroupedVitalsRequest} request
+     * @param {Vital.VitalsWorkoutDurationGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.workoutDurationGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async workoutDurationGrouped(
         userId: string,
-        request: Vital.WorkoutDurationGroupedVitalsRequest,
+        request: Vital.VitalsWorkoutDurationGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedWorkoutDurationResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2295,8 +2387,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2353,19 +2445,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.Vo2MaxGroupedVitalsRequest} request
+     * @param {Vital.VitalsVo2MaxGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.vo2MaxGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async vo2MaxGrouped(
         userId: string,
-        request: Vital.Vo2MaxGroupedVitalsRequest,
+        request: Vital.VitalsVo2MaxGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedVo2MaxResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2396,8 +2492,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2454,19 +2550,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.StressLevelGroupedVitalsRequest} request
+     * @param {Vital.VitalsStressLevelGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.stressLevelGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async stressLevelGrouped(
         userId: string,
-        request: Vital.StressLevelGroupedVitalsRequest,
+        request: Vital.VitalsStressLevelGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedStressLevelResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2497,8 +2597,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2555,19 +2655,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.MindfulnessMinutesGroupedVitalsRequest} request
+     * @param {Vital.VitalsMindfulnessMinutesGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.mindfulnessMinutesGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async mindfulnessMinutesGrouped(
         userId: string,
-        request: Vital.MindfulnessMinutesGroupedVitalsRequest,
+        request: Vital.VitalsMindfulnessMinutesGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedMindfulnessMinutesResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2598,8 +2702,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2656,19 +2760,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CaffeineGroupedVitalsRequest} request
+     * @param {Vital.VitalsCaffeineGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.caffeineGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async caffeineGrouped(
         userId: string,
-        request: Vital.CaffeineGroupedVitalsRequest,
+        request: Vital.VitalsCaffeineGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedCaffeineResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2699,8 +2807,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2757,19 +2865,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.WaterGroupedVitalsRequest} request
+     * @param {Vital.VitalsWaterGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.waterGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async waterGrouped(
         userId: string,
-        request: Vital.WaterGroupedVitalsRequest,
+        request: Vital.VitalsWaterGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedWaterResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2800,8 +2912,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2858,19 +2970,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.StepsGroupedVitalsRequest} request
+     * @param {Vital.VitalsStepsGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.stepsGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async stepsGrouped(
         userId: string,
-        request: Vital.StepsGroupedVitalsRequest,
+        request: Vital.VitalsStepsGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedStepsResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -2901,8 +3017,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -2959,19 +3075,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.FloorsClimbedGroupedVitalsRequest} request
+     * @param {Vital.VitalsFloorsClimbedGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.floorsClimbedGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async floorsClimbedGrouped(
         userId: string,
-        request: Vital.FloorsClimbedGroupedVitalsRequest,
+        request: Vital.VitalsFloorsClimbedGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedFloorsClimbedResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3002,8 +3122,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3060,19 +3180,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.DistanceGroupedVitalsRequest} request
+     * @param {Vital.VitalsDistanceGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.distanceGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async distanceGrouped(
         userId: string,
-        request: Vital.DistanceGroupedVitalsRequest,
+        request: Vital.VitalsDistanceGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedDistanceResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3103,8 +3227,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3161,19 +3285,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CaloriesBasalGroupedVitalsRequest} request
+     * @param {Vital.VitalsCaloriesBasalGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.caloriesBasalGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async caloriesBasalGrouped(
         userId: string,
-        request: Vital.CaloriesBasalGroupedVitalsRequest,
+        request: Vital.VitalsCaloriesBasalGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedCaloriesBasalResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3204,8 +3332,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3262,19 +3390,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CaloriesActiveGroupedVitalsRequest} request
+     * @param {Vital.VitalsCaloriesActiveGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.caloriesActiveGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async caloriesActiveGrouped(
         userId: string,
-        request: Vital.CaloriesActiveGroupedVitalsRequest,
+        request: Vital.VitalsCaloriesActiveGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedCaloriesActiveResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3305,8 +3437,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3363,19 +3495,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.RespiratoryRateGroupedVitalsRequest} request
+     * @param {Vital.VitalsRespiratoryRateGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.respiratoryRateGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async respiratoryRateGrouped(
         userId: string,
-        request: Vital.RespiratoryRateGroupedVitalsRequest,
+        request: Vital.VitalsRespiratoryRateGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedRespiratoryRateResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3406,8 +3542,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3464,19 +3600,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.NoteGroupedVitalsRequest} request
+     * @param {Vital.VitalsNoteGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.noteGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async noteGrouped(
         userId: string,
-        request: Vital.NoteGroupedVitalsRequest,
+        request: Vital.VitalsNoteGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedNoteResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3507,8 +3647,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3565,19 +3705,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.InsulinInjectionGroupedVitalsRequest} request
+     * @param {Vital.VitalsInsulinInjectionGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.insulinInjectionGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async insulinInjectionGrouped(
         userId: string,
-        request: Vital.InsulinInjectionGroupedVitalsRequest,
+        request: Vital.VitalsInsulinInjectionGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedInsulinInjectionResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3608,8 +3752,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3666,19 +3810,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.IgeGroupedVitalsRequest} request
+     * @param {Vital.VitalsIgeGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.igeGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async igeGrouped(
         userId: string,
-        request: Vital.IgeGroupedVitalsRequest,
+        request: Vital.VitalsIgeGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedIgeResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3709,8 +3857,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3767,19 +3915,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.IggGroupedVitalsRequest} request
+     * @param {Vital.VitalsIggGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.iggGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async iggGrouped(
         userId: string,
-        request: Vital.IggGroupedVitalsRequest,
+        request: Vital.VitalsIggGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedIggResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3810,8 +3962,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3868,19 +4020,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HypnogramGroupedVitalsRequest} request
+     * @param {Vital.VitalsHypnogramGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.hypnogramGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async hypnogramGrouped(
         userId: string,
-        request: Vital.HypnogramGroupedVitalsRequest,
+        request: Vital.VitalsHypnogramGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedHypnogramResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -3911,8 +4067,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -3969,19 +4125,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HrvGroupedVitalsRequest} request
+     * @param {Vital.VitalsHrvGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.hrvGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async hrvGrouped(
         userId: string,
-        request: Vital.HrvGroupedVitalsRequest,
+        request: Vital.VitalsHrvGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedHrvResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4012,8 +4172,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4070,19 +4230,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HeartrateGroupedVitalsRequest} request
+     * @param {Vital.VitalsHeartrateGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.heartrateGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async heartrateGrouped(
         userId: string,
-        request: Vital.HeartrateGroupedVitalsRequest,
+        request: Vital.VitalsHeartrateGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedHeartRateResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4113,8 +4277,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4171,19 +4335,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.GlucoseGroupedVitalsRequest} request
+     * @param {Vital.VitalsGlucoseGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.glucoseGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async glucoseGrouped(
         userId: string,
-        request: Vital.GlucoseGroupedVitalsRequest,
+        request: Vital.VitalsGlucoseGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedGlucoseResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4214,8 +4382,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4272,19 +4440,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CholesterolGroupedVitalsRequest} request
+     * @param {Vital.VitalsCholesterolGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.cholesterolGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async cholesterolGrouped(
         userId: string,
-        request: Vital.CholesterolGroupedVitalsRequest,
+        request: Vital.VitalsCholesterolGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedCholesterolResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4315,8 +4487,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4373,19 +4545,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CarbohydratesGroupedVitalsRequest} request
+     * @param {Vital.VitalsCarbohydratesGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.carbohydratesGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async carbohydratesGrouped(
         userId: string,
-        request: Vital.CarbohydratesGroupedVitalsRequest,
+        request: Vital.VitalsCarbohydratesGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedCarbohydratesResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4416,8 +4592,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4474,19 +4650,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BodyTemperatureDeltaGroupedVitalsRequest} request
+     * @param {Vital.VitalsBodyTemperatureDeltaGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bodyTemperatureDeltaGrouped(
         userId: string,
-        request: Vital.BodyTemperatureDeltaGroupedVitalsRequest,
+        request: Vital.VitalsBodyTemperatureDeltaGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBodyTemperatureDeltaResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4517,8 +4697,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4575,19 +4755,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BodyTemperatureGroupedVitalsRequest} request
+     * @param {Vital.VitalsBodyTemperatureGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bodyTemperatureGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bodyTemperatureGrouped(
         userId: string,
-        request: Vital.BodyTemperatureGroupedVitalsRequest,
+        request: Vital.VitalsBodyTemperatureGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBodyTemperatureResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4618,8 +4802,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4676,19 +4860,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BodyWeightGroupedVitalsRequest} request
+     * @param {Vital.VitalsBodyWeightGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bodyWeightGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bodyWeightGrouped(
         userId: string,
-        request: Vital.BodyWeightGroupedVitalsRequest,
+        request: Vital.VitalsBodyWeightGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBodyWeightResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4719,8 +4907,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4777,19 +4965,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BodyFatGroupedVitalsRequest} request
+     * @param {Vital.VitalsBodyFatGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bodyFatGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bodyFatGrouped(
         userId: string,
-        request: Vital.BodyFatGroupedVitalsRequest,
+        request: Vital.VitalsBodyFatGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBodyFatResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4820,8 +5012,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4878,19 +5070,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BloodOxygenGroupedVitalsRequest} request
+     * @param {Vital.VitalsBloodOxygenGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bloodOxygenGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bloodOxygenGrouped(
         userId: string,
-        request: Vital.BloodOxygenGroupedVitalsRequest,
+        request: Vital.VitalsBloodOxygenGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBloodOxygenResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -4921,8 +5117,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -4979,19 +5175,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.ElectrocardiogramVoltageGroupedVitalsRequest} request
+     * @param {Vital.VitalsElectrocardiogramVoltageGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.electrocardiogramVoltageGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async electrocardiogramVoltageGrouped(
         userId: string,
-        request: Vital.ElectrocardiogramVoltageGroupedVitalsRequest,
+        request: Vital.VitalsElectrocardiogramVoltageGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedElectrocardiogramVoltageResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -5022,8 +5222,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5080,19 +5280,23 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BloodPressureGroupedVitalsRequest} request
+     * @param {Vital.VitalsBloodPressureGroupedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bloodPressureGrouped("user_id", {
-     *         startDate: "start_date"
+     *         cursor: "cursor",
+     *         nextCursor: "next_cursor",
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bloodPressureGrouped(
         userId: string,
-        request: Vital.BloodPressureGroupedVitalsRequest,
+        request: Vital.VitalsBloodPressureGroupedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.GroupedBloodPressureResponse> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
@@ -5123,8 +5327,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5181,19 +5385,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.Vo2MaxVitalsRequest} request
+     * @param {Vital.VitalsVo2MaxRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.vo2Max("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async vo2Max(
         userId: string,
-        request: Vital.Vo2MaxVitalsRequest,
+        request: Vital.VitalsVo2MaxRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingVo2MaxTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5216,8 +5422,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5274,19 +5480,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.StressLevelVitalsRequest} request
+     * @param {Vital.VitalsStressLevelRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.stressLevel("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async stressLevel(
         userId: string,
-        request: Vital.StressLevelVitalsRequest,
+        request: Vital.VitalsStressLevelRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingStressLevelTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5309,8 +5517,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5367,19 +5575,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.MindfulnessMinutesVitalsRequest} request
+     * @param {Vital.VitalsMindfulnessMinutesRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.mindfulnessMinutes("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async mindfulnessMinutes(
         userId: string,
-        request: Vital.MindfulnessMinutesVitalsRequest,
+        request: Vital.VitalsMindfulnessMinutesRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingMindfulnessMinutesTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5402,8 +5612,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5460,19 +5670,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CaffeineVitalsRequest} request
+     * @param {Vital.VitalsCaffeineRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.caffeine("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async caffeine(
         userId: string,
-        request: Vital.CaffeineVitalsRequest,
+        request: Vital.VitalsCaffeineRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCaffeineTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5495,8 +5707,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5553,19 +5765,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.WaterVitalsRequest} request
+     * @param {Vital.VitalsWaterRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.water("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async water(
         userId: string,
-        request: Vital.WaterVitalsRequest,
+        request: Vital.VitalsWaterRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingWaterTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5588,8 +5802,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5646,19 +5860,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.StepsVitalsRequest} request
+     * @param {Vital.VitalsStepsRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.steps("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async steps(
         userId: string,
-        request: Vital.StepsVitalsRequest,
+        request: Vital.VitalsStepsRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingStepsTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5681,8 +5897,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5739,19 +5955,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.FloorsClimbedVitalsRequest} request
+     * @param {Vital.VitalsFloorsClimbedRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.floorsClimbed("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async floorsClimbed(
         userId: string,
-        request: Vital.FloorsClimbedVitalsRequest,
+        request: Vital.VitalsFloorsClimbedRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingFloorsClimbedTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5774,8 +5992,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5832,19 +6050,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.DistanceVitalsRequest} request
+     * @param {Vital.VitalsDistanceRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.distance("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async distance(
         userId: string,
-        request: Vital.DistanceVitalsRequest,
+        request: Vital.VitalsDistanceRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingDistanceTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5867,8 +6087,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -5925,19 +6145,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CaloriesBasalVitalsRequest} request
+     * @param {Vital.VitalsCaloriesBasalRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.caloriesBasal("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async caloriesBasal(
         userId: string,
-        request: Vital.CaloriesBasalVitalsRequest,
+        request: Vital.VitalsCaloriesBasalRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCaloriesBasalTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -5960,8 +6182,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6018,19 +6240,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CaloriesActiveVitalsRequest} request
+     * @param {Vital.VitalsCaloriesActiveRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.caloriesActive("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async caloriesActive(
         userId: string,
-        request: Vital.CaloriesActiveVitalsRequest,
+        request: Vital.VitalsCaloriesActiveRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCaloriesActiveTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6053,8 +6277,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6111,19 +6335,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.RespiratoryRateVitalsRequest} request
+     * @param {Vital.VitalsRespiratoryRateRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.respiratoryRate("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async respiratoryRate(
         userId: string,
-        request: Vital.RespiratoryRateVitalsRequest,
+        request: Vital.VitalsRespiratoryRateRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingRespiratoryRateTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6146,8 +6372,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6204,19 +6430,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.IgeVitalsRequest} request
+     * @param {Vital.VitalsIgeRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.ige("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async ige(
         userId: string,
-        request: Vital.IgeVitalsRequest,
+        request: Vital.VitalsIgeRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingIgeTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6239,8 +6467,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6297,19 +6525,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.IggVitalsRequest} request
+     * @param {Vital.VitalsIggRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.igg("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async igg(
         userId: string,
-        request: Vital.IggVitalsRequest,
+        request: Vital.VitalsIggRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingIggTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6332,8 +6562,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6390,19 +6620,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HypnogramVitalsRequest} request
+     * @param {Vital.VitalsHypnogramRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.hypnogram("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async hypnogram(
         userId: string,
-        request: Vital.HypnogramVitalsRequest,
+        request: Vital.VitalsHypnogramRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingHypnogramTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6425,8 +6657,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6483,19 +6715,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HrvVitalsRequest} request
+     * @param {Vital.VitalsHrvRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.hrv("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async hrv(
         userId: string,
-        request: Vital.HrvVitalsRequest,
+        request: Vital.VitalsHrvRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingHrvTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6518,8 +6752,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6576,19 +6810,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.HeartrateVitalsRequest} request
+     * @param {Vital.VitalsHeartrateRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.heartrate("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async heartrate(
         userId: string,
-        request: Vital.HeartrateVitalsRequest,
+        request: Vital.VitalsHeartrateRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingHeartRateTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6611,8 +6847,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6669,19 +6905,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.GlucoseVitalsRequest} request
+     * @param {Vital.VitalsGlucoseRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.glucose("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async glucose(
         userId: string,
-        request: Vital.GlucoseVitalsRequest,
+        request: Vital.VitalsGlucoseRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingGlucoseTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6704,8 +6942,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6762,19 +7000,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CholesterolTriglyceridesVitalsRequest} request
+     * @param {Vital.VitalsCholesterolTriglyceridesRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.cholesterolTriglycerides("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async cholesterolTriglycerides(
         userId: string,
-        request: Vital.CholesterolTriglyceridesVitalsRequest,
+        request: Vital.VitalsCholesterolTriglyceridesRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6797,8 +7037,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6855,19 +7095,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CholesterolTotalVitalsRequest} request
+     * @param {Vital.VitalsCholesterolTotalRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.cholesterolTotal("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async cholesterolTotal(
         userId: string,
-        request: Vital.CholesterolTotalVitalsRequest,
+        request: Vital.VitalsCholesterolTotalRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6890,8 +7132,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -6948,19 +7190,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CholesterolLdlVitalsRequest} request
+     * @param {Vital.VitalsCholesterolLdlRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.cholesterolLdl("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async cholesterolLdl(
         userId: string,
-        request: Vital.CholesterolLdlVitalsRequest,
+        request: Vital.VitalsCholesterolLdlRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -6983,8 +7227,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -7041,19 +7285,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CholesterolHdlVitalsRequest} request
+     * @param {Vital.VitalsCholesterolHdlRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.cholesterolHdl("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async cholesterolHdl(
         userId: string,
-        request: Vital.CholesterolHdlVitalsRequest,
+        request: Vital.VitalsCholesterolHdlRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -7076,8 +7322,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -7134,19 +7380,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.CholesterolVitalsRequest} request
+     * @param {Vital.VitalsCholesterolRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.cholesterol("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async cholesterol(
         userId: string,
-        request: Vital.CholesterolVitalsRequest,
+        request: Vital.VitalsCholesterolRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingCholesterolTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -7169,8 +7417,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -7227,19 +7475,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BodyWeightVitalsRequest} request
+     * @param {Vital.VitalsBodyWeightRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bodyWeight("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bodyWeight(
         userId: string,
-        request: Vital.BodyWeightVitalsRequest,
+        request: Vital.VitalsBodyWeightRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingBodyWeightTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -7262,8 +7512,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -7320,19 +7570,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BodyFatVitalsRequest} request
+     * @param {Vital.VitalsBodyFatRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bodyFat("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bodyFat(
         userId: string,
-        request: Vital.BodyFatVitalsRequest,
+        request: Vital.VitalsBodyFatRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingBodyFatTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -7355,8 +7607,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -7413,19 +7665,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BloodOxygenVitalsRequest} request
+     * @param {Vital.VitalsBloodOxygenRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bloodOxygen("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bloodOxygen(
         userId: string,
-        request: Vital.BloodOxygenVitalsRequest,
+        request: Vital.VitalsBloodOxygenRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingBloodOxygenTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -7448,8 +7702,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -7506,19 +7760,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.ElectrocardiogramVoltageVitalsRequest} request
+     * @param {Vital.VitalsElectrocardiogramVoltageRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.electrocardiogramVoltage("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async electrocardiogramVoltage(
         userId: string,
-        request: Vital.ElectrocardiogramVoltageVitalsRequest,
+        request: Vital.VitalsElectrocardiogramVoltageRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingElectrocardiogramVoltageTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -7541,8 +7797,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -7599,19 +7855,21 @@ export class Vitals {
 
     /**
      * @param {string} userId
-     * @param {Vital.BloodPressureVitalsRequest} request
+     * @param {Vital.VitalsBloodPressureRequest} request
      * @param {Vitals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.vitals.bloodPressure("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async bloodPressure(
         userId: string,
-        request: Vital.BloodPressureVitalsRequest,
+        request: Vital.VitalsBloodPressureRequest,
         requestOptions?: Vitals.RequestOptions
     ): Promise<Vital.ClientFacingBloodPressureTimeseries[]> {
         const { provider, startDate, endDate } = request;
@@ -7634,8 +7892,8 @@ export class Vitals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

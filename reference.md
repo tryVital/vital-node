@@ -15,7 +15,11 @@
 <dd>
 
 ```typescript
-await client.link.listBulkOps();
+await client.link.listBulkOps({
+    nextCursor: "next_cursor",
+    pageSize: 1,
+    teamId: "infer_from_context",
+});
 ```
 
 </dd>
@@ -31,7 +35,7 @@ await client.link.listBulkOps();
 <dl>
 <dd>
 
-**request:** `Vital.ListBulkOpsLinkRequest`
+**request:** `Vital.LinkListBulkOpsRequest`
 
 </dd>
 </dl>
@@ -64,6 +68,7 @@ await client.link.listBulkOps();
 
 ```typescript
 await client.link.bulkImport({
+    teamId: "infer_from_context",
     provider: "oura",
     connections: [
         {
@@ -123,6 +128,7 @@ await client.link.bulkImport({
 
 ```typescript
 await client.link.bulkTriggerHistoricalPull({
+    teamId: "infer_from_context",
     userIds: ["user_ids"],
     provider: "oura",
 });
@@ -174,6 +180,7 @@ await client.link.bulkTriggerHistoricalPull({
 
 ```typescript
 await client.link.bulkExport({
+    teamId: "infer_from_context",
     provider: "oura",
 });
 ```
@@ -224,6 +231,7 @@ await client.link.bulkExport({
 
 ```typescript
 await client.link.bulkPause({
+    teamId: "infer_from_context",
     userIds: ["user_ids"],
     provider: "oura",
 });
@@ -411,6 +419,7 @@ Generate a token to invite a user of Vital mobile app to your team
 ```typescript
 await client.link.codeCreate({
     userId: "user_id",
+    expiresAt: "2024-01-15T09:30:00Z",
 });
 ```
 
@@ -427,7 +436,7 @@ await client.link.codeCreate({
 <dl>
 <dd>
 
-**request:** `Vital.CodeCreateLinkRequest`
+**request:** `Vital.LinkCodeCreateRequest`
 
 </dd>
 </dl>
@@ -542,7 +551,9 @@ Check link token state - can be hit continuously used as heartbeat
 <dd>
 
 ```typescript
-await client.link.tokenState();
+await client.link.tokenState({
+    vitalLinkToken: "x-vital-link-token",
+});
 ```
 
 </dd>
@@ -558,7 +569,7 @@ await client.link.tokenState();
 <dl>
 <dd>
 
-**request:** `Vital.TokenStateLinkRequest`
+**request:** `Vital.LinkTokenStateRequest`
 
 </dd>
 </dl>
@@ -606,6 +617,7 @@ Deprecated. Use `POST /v2/link/provider/email/{provider}` instead.
 
 ```typescript
 await client.link.emailAuth({
+    vitalLinkToken: "x-vital-link-token",
     email: "email",
     provider: "oura",
     authType: "password",
@@ -673,6 +685,7 @@ Deprecated. Use `POST /v2/link/provider/password/{provider}` instead.
 
 ```typescript
 await client.link.passwordAuth({
+    vitalLinkToken: "x-vital-link-token",
     username: "username",
     password: "password",
     provider: "oura",
@@ -740,7 +753,9 @@ This endpoint generates an OAuth link for oauth provider
 <dd>
 
 ```typescript
-await client.link.generateOauthLink("oura");
+await client.link.generateOauthLink("oura", {
+    vitalLinkToken: "x-vital-link-token",
+});
 ```
 
 </dd>
@@ -764,7 +779,7 @@ await client.link.generateOauthLink("oura");
 <dl>
 <dd>
 
-**request:** `Vital.GenerateOauthLinkLinkRequest`
+**request:** `Vital.LinkGenerateOauthLinkRequest`
 
 </dd>
 </dl>
@@ -812,6 +827,7 @@ This connects auth providers that are password based.
 
 ```typescript
 await client.link.connectPasswordProvider("whoop", {
+    vitalLinkToken: "x-vital-link-token",
     username: "username",
     password: "password",
 });
@@ -886,6 +902,7 @@ This connects auth providers that are password based.
 
 ```typescript
 await client.link.completePasswordProviderMfa("whoop", {
+    vitalLinkToken: "x-vital-link-token",
     mfaCode: "mfa_code",
 });
 ```
@@ -959,6 +976,7 @@ This connects auth providers that are email based.
 
 ```typescript
 await client.link.connectEmailAuthProvider("freestyle_libre", {
+    vitalLinkToken: "x-vital-link-token",
     email: "email",
 });
 ```
@@ -1031,7 +1049,9 @@ GET List of all available providers given the generated link token.
 <dd>
 
 ```typescript
-await client.link.getAllProviders();
+await client.link.getAllProviders({
+    vitalLinkToken: "x-vital-link-token",
+});
 ```
 
 </dd>
@@ -1047,7 +1067,7 @@ await client.link.getAllProviders();
 <dl>
 <dd>
 
-**request:** `Vital.GetAllProvidersLinkRequest`
+**request:** `Vital.LinkGetAllProvidersRequest`
 
 </dd>
 </dl>
@@ -1221,7 +1241,9 @@ Get electrocardiogram summary for user_id
 
 ```typescript
 await client.electrocardiogram.get("user_id", {
-    startDate: "2023-01-15",
+    startDate: "start_date",
+    endDate: "end_date",
+    provider: "provider",
 });
 ```
 
@@ -1246,7 +1268,7 @@ await client.electrocardiogram.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetElectrocardiogramRequest`
+**request:** `Vital.ElectrocardiogramGetRequest`
 
 </dd>
 </dl>
@@ -1296,7 +1318,9 @@ Get sleep cycle for user_id
 
 ```typescript
 await client.sleepCycle.get("user_id", {
-    startDate: "2023-01-15",
+    startDate: "start_date",
+    endDate: "end_date",
+    provider: "provider",
 });
 ```
 
@@ -1321,7 +1345,7 @@ await client.sleepCycle.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetSleepCycleRequest`
+**request:** `Vital.SleepCycleGetRequest`
 
 </dd>
 </dl>
@@ -1370,7 +1394,9 @@ Get profile for user_id
 <dd>
 
 ```typescript
-await client.profile.get("user_id");
+await client.profile.get("user_id", {
+    provider: "provider",
+});
 ```
 
 </dd>
@@ -1394,7 +1420,7 @@ await client.profile.get("user_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetProfileRequest`
+**request:** `Vital.ProfileGetRequest`
 
 </dd>
 </dl>
@@ -1441,7 +1467,9 @@ Get raw profile for user_id
 <dd>
 
 ```typescript
-await client.profile.getRaw("user_id");
+await client.profile.getRaw("user_id", {
+    provider: "provider",
+});
 ```
 
 </dd>
@@ -1465,7 +1493,7 @@ await client.profile.getRaw("user_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetRawProfileRequest`
+**request:** `Vital.ProfileGetRawRequest`
 
 </dd>
 </dl>
@@ -1514,7 +1542,9 @@ Get Devices for user_id
 <dd>
 
 ```typescript
-await client.devices.getRaw("user_id");
+await client.devices.getRaw("user_id", {
+    provider: "provider",
+});
 ```
 
 </dd>
@@ -1538,7 +1568,7 @@ await client.devices.getRaw("user_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetRawDevicesRequest`
+**request:** `Vital.DevicesGetRawRequest`
 
 </dd>
 </dl>
@@ -1588,7 +1618,9 @@ Get activity summary for user_id
 
 ```typescript
 await client.activity.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -1613,7 +1645,7 @@ await client.activity.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetActivityRequest`
+**request:** `Vital.ActivityGetRequest`
 
 </dd>
 </dl>
@@ -1661,7 +1693,9 @@ Get raw activity summary for user_id
 
 ```typescript
 await client.activity.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -1686,7 +1720,7 @@ await client.activity.getRaw("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetRawActivityRequest`
+**request:** `Vital.ActivityGetRawRequest`
 
 </dd>
 </dl>
@@ -1736,7 +1770,9 @@ Get workout summary for user_id
 
 ```typescript
 await client.workouts.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -1761,7 +1797,7 @@ await client.workouts.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetWorkoutsRequest`
+**request:** `Vital.WorkoutsGetRequest`
 
 </dd>
 </dl>
@@ -1809,7 +1845,9 @@ Get raw workout summary for user_id
 
 ```typescript
 await client.workouts.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -1834,7 +1872,7 @@ await client.workouts.getRaw("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetRawWorkoutsRequest`
+**request:** `Vital.WorkoutsGetRawRequest`
 
 </dd>
 </dl>
@@ -1853,7 +1891,7 @@ await client.workouts.getRaw("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getByWorkoutId</a>(workoutId, { ...params }) -> Vital.ClientFacingStream</code></summary>
+<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getByWorkoutId</a>(workoutId) -> Vital.ClientFacingStream</code></summary>
 <dl>
 <dd>
 
@@ -1883,14 +1921,6 @@ await client.workouts.getByWorkoutId("workout_id");
 <dd>
 
 **workoutId:** `string` — The Vital ID for the workout
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetByWorkoutIdWorkoutsRequest`
 
 </dd>
 </dl>
@@ -1940,7 +1970,9 @@ Get sleep summary for user_id
 
 ```typescript
 await client.sleep.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -1965,7 +1997,7 @@ await client.sleep.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetSleepRequest`
+**request:** `Vital.SleepGetRequest`
 
 </dd>
 </dl>
@@ -2013,7 +2045,9 @@ Get raw sleep summary for user_id
 
 ```typescript
 await client.sleep.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2038,7 +2072,7 @@ await client.sleep.getRaw("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetRawSleepRequest`
+**request:** `Vital.SleepGetRawRequest`
 
 </dd>
 </dl>
@@ -2057,7 +2091,7 @@ await client.sleep.getRaw("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getStreamBySleepId</a>(sleepId, { ...params }) -> Vital.ClientFacingSleepStream</code></summary>
+<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getStreamBySleepId</a>(sleepId) -> Vital.ClientFacingSleepStream</code></summary>
 <dl>
 <dd>
 
@@ -2109,14 +2143,6 @@ await client.sleep.getStreamBySleepId("sleep_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetStreamBySleepIdSleepRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `Sleep.RequestOptions`
 
 </dd>
@@ -2159,7 +2185,9 @@ Get Body summary for user_id
 
 ```typescript
 await client.body.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2184,7 +2212,7 @@ await client.body.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetBodyRequest`
+**request:** `Vital.BodyGetRequest`
 
 </dd>
 </dl>
@@ -2232,7 +2260,9 @@ Get raw Body summary for user_id
 
 ```typescript
 await client.body.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2257,7 +2287,7 @@ await client.body.getRaw("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetRawBodyRequest`
+**request:** `Vital.BodyGetRawRequest`
 
 </dd>
 </dl>
@@ -2307,7 +2337,9 @@ Get user's meals
 
 ```typescript
 await client.meal.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2332,7 +2364,7 @@ await client.meal.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetMealRequest`
+**request:** `Vital.MealGetRequest`
 
 </dd>
 </dl>
@@ -2367,7 +2399,9 @@ await client.meal.get("user_id", {
 
 ```typescript
 await client.menstrualCycle.get("user_id", {
-    startDate: "2023-01-15",
+    provider: "provider",
+    startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2392,7 +2426,7 @@ await client.menstrualCycle.get("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetMenstrualCycleRequest`
+**request:** `Vital.MenstrualCycleGetRequest`
 
 </dd>
 </dl>
@@ -2427,7 +2461,11 @@ await client.menstrualCycle.get("user_id", {
 
 ```typescript
 await client.vitals.workoutSwimmingStrokeGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2452,7 +2490,7 @@ await client.vitals.workoutSwimmingStrokeGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.WorkoutSwimmingStrokeGroupedVitalsRequest`
+**request:** `Vital.VitalsWorkoutSwimmingStrokeGroupedRequest`
 
 </dd>
 </dl>
@@ -2485,7 +2523,11 @@ await client.vitals.workoutSwimmingStrokeGrouped("user_id", {
 
 ```typescript
 await client.vitals.workoutDistanceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2510,7 +2552,7 @@ await client.vitals.workoutDistanceGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.WorkoutDistanceGroupedVitalsRequest`
+**request:** `Vital.VitalsWorkoutDistanceGroupedRequest`
 
 </dd>
 </dl>
@@ -2543,7 +2585,11 @@ await client.vitals.workoutDistanceGrouped("user_id", {
 
 ```typescript
 await client.vitals.heartRateRecoveryOneMinuteGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2568,7 +2614,7 @@ await client.vitals.heartRateRecoveryOneMinuteGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HeartRateRecoveryOneMinuteGroupedVitalsRequest`
+**request:** `Vital.VitalsHeartRateRecoveryOneMinuteGroupedRequest`
 
 </dd>
 </dl>
@@ -2601,7 +2647,11 @@ await client.vitals.heartRateRecoveryOneMinuteGrouped("user_id", {
 
 ```typescript
 await client.vitals.waistCircumferenceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2626,7 +2676,7 @@ await client.vitals.waistCircumferenceGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.WaistCircumferenceGroupedVitalsRequest`
+**request:** `Vital.VitalsWaistCircumferenceGroupedRequest`
 
 </dd>
 </dl>
@@ -2659,7 +2709,11 @@ await client.vitals.waistCircumferenceGrouped("user_id", {
 
 ```typescript
 await client.vitals.leanBodyMassGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2684,7 +2738,7 @@ await client.vitals.leanBodyMassGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.LeanBodyMassGroupedVitalsRequest`
+**request:** `Vital.VitalsLeanBodyMassGroupedRequest`
 
 </dd>
 </dl>
@@ -2717,7 +2771,11 @@ await client.vitals.leanBodyMassGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyMassIndexGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2742,7 +2800,7 @@ await client.vitals.bodyMassIndexGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BodyMassIndexGroupedVitalsRequest`
+**request:** `Vital.VitalsBodyMassIndexGroupedRequest`
 
 </dd>
 </dl>
@@ -2775,7 +2833,11 @@ await client.vitals.bodyMassIndexGrouped("user_id", {
 
 ```typescript
 await client.vitals.basalBodyTemperatureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2800,7 +2862,7 @@ await client.vitals.basalBodyTemperatureGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BasalBodyTemperatureGroupedVitalsRequest`
+**request:** `Vital.VitalsBasalBodyTemperatureGroupedRequest`
 
 </dd>
 </dl>
@@ -2833,7 +2895,11 @@ await client.vitals.basalBodyTemperatureGrouped("user_id", {
 
 ```typescript
 await client.vitals.handwashingGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2858,7 +2924,7 @@ await client.vitals.handwashingGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HandwashingGroupedVitalsRequest`
+**request:** `Vital.VitalsHandwashingGroupedRequest`
 
 </dd>
 </dl>
@@ -2891,7 +2957,11 @@ await client.vitals.handwashingGrouped("user_id", {
 
 ```typescript
 await client.vitals.daylightExposureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2916,7 +2986,7 @@ await client.vitals.daylightExposureGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.DaylightExposureGroupedVitalsRequest`
+**request:** `Vital.VitalsDaylightExposureGroupedRequest`
 
 </dd>
 </dl>
@@ -2949,7 +3019,11 @@ await client.vitals.daylightExposureGrouped("user_id", {
 
 ```typescript
 await client.vitals.uvExposureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -2974,7 +3048,7 @@ await client.vitals.uvExposureGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.UvExposureGroupedVitalsRequest`
+**request:** `Vital.VitalsUvExposureGroupedRequest`
 
 </dd>
 </dl>
@@ -3007,7 +3081,11 @@ await client.vitals.uvExposureGrouped("user_id", {
 
 ```typescript
 await client.vitals.fallGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3032,7 +3110,7 @@ await client.vitals.fallGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.FallGroupedVitalsRequest`
+**request:** `Vital.VitalsFallGroupedRequest`
 
 </dd>
 </dl>
@@ -3065,7 +3143,11 @@ await client.vitals.fallGrouped("user_id", {
 
 ```typescript
 await client.vitals.inhalerUsageGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3090,7 +3172,7 @@ await client.vitals.inhalerUsageGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.InhalerUsageGroupedVitalsRequest`
+**request:** `Vital.VitalsInhalerUsageGroupedRequest`
 
 </dd>
 </dl>
@@ -3123,7 +3205,11 @@ await client.vitals.inhalerUsageGrouped("user_id", {
 
 ```typescript
 await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3148,7 +3234,7 @@ await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.PeakExpiratoryFlowRateGroupedVitalsRequest`
+**request:** `Vital.VitalsPeakExpiratoryFlowRateGroupedRequest`
 
 </dd>
 </dl>
@@ -3181,7 +3267,11 @@ await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
 
 ```typescript
 await client.vitals.forcedVitalCapacityGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3206,7 +3296,7 @@ await client.vitals.forcedVitalCapacityGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.ForcedVitalCapacityGroupedVitalsRequest`
+**request:** `Vital.VitalsForcedVitalCapacityGroupedRequest`
 
 </dd>
 </dl>
@@ -3239,7 +3329,11 @@ await client.vitals.forcedVitalCapacityGrouped("user_id", {
 
 ```typescript
 await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3264,7 +3358,7 @@ await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.ForcedExpiratoryVolume1GroupedVitalsRequest`
+**request:** `Vital.VitalsForcedExpiratoryVolume1GroupedRequest`
 
 </dd>
 </dl>
@@ -3297,7 +3391,11 @@ await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
 
 ```typescript
 await client.vitals.wheelchairPushGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3322,7 +3420,7 @@ await client.vitals.wheelchairPushGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.WheelchairPushGroupedVitalsRequest`
+**request:** `Vital.VitalsWheelchairPushGroupedRequest`
 
 </dd>
 </dl>
@@ -3355,7 +3453,11 @@ await client.vitals.wheelchairPushGrouped("user_id", {
 
 ```typescript
 await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3380,7 +3482,7 @@ await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.SleepBreathingDisturbanceGroupedVitalsRequest`
+**request:** `Vital.VitalsSleepBreathingDisturbanceGroupedRequest`
 
 </dd>
 </dl>
@@ -3413,7 +3515,11 @@ await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
 
 ```typescript
 await client.vitals.sleepApneaAlertGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3438,7 +3544,7 @@ await client.vitals.sleepApneaAlertGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.SleepApneaAlertGroupedVitalsRequest`
+**request:** `Vital.VitalsSleepApneaAlertGroupedRequest`
 
 </dd>
 </dl>
@@ -3471,7 +3577,11 @@ await client.vitals.sleepApneaAlertGrouped("user_id", {
 
 ```typescript
 await client.vitals.standDurationGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3496,7 +3606,7 @@ await client.vitals.standDurationGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.StandDurationGroupedVitalsRequest`
+**request:** `Vital.VitalsStandDurationGroupedRequest`
 
 </dd>
 </dl>
@@ -3529,7 +3639,11 @@ await client.vitals.standDurationGrouped("user_id", {
 
 ```typescript
 await client.vitals.standHourGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3554,7 +3668,7 @@ await client.vitals.standHourGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.StandHourGroupedVitalsRequest`
+**request:** `Vital.VitalsStandHourGroupedRequest`
 
 </dd>
 </dl>
@@ -3587,7 +3701,11 @@ await client.vitals.standHourGrouped("user_id", {
 
 ```typescript
 await client.vitals.heartRateAlertGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3612,7 +3730,7 @@ await client.vitals.heartRateAlertGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HeartRateAlertGroupedVitalsRequest`
+**request:** `Vital.VitalsHeartRateAlertGroupedRequest`
 
 </dd>
 </dl>
@@ -3645,7 +3763,11 @@ await client.vitals.heartRateAlertGrouped("user_id", {
 
 ```typescript
 await client.vitals.afibBurdenGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3670,7 +3792,7 @@ await client.vitals.afibBurdenGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.AfibBurdenGroupedVitalsRequest`
+**request:** `Vital.VitalsAfibBurdenGroupedRequest`
 
 </dd>
 </dl>
@@ -3703,7 +3825,11 @@ await client.vitals.afibBurdenGrouped("user_id", {
 
 ```typescript
 await client.vitals.workoutDurationGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3728,7 +3854,7 @@ await client.vitals.workoutDurationGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.WorkoutDurationGroupedVitalsRequest`
+**request:** `Vital.VitalsWorkoutDurationGroupedRequest`
 
 </dd>
 </dl>
@@ -3761,7 +3887,11 @@ await client.vitals.workoutDurationGrouped("user_id", {
 
 ```typescript
 await client.vitals.vo2MaxGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3786,7 +3916,7 @@ await client.vitals.vo2MaxGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.Vo2MaxGroupedVitalsRequest`
+**request:** `Vital.VitalsVo2MaxGroupedRequest`
 
 </dd>
 </dl>
@@ -3819,7 +3949,11 @@ await client.vitals.vo2MaxGrouped("user_id", {
 
 ```typescript
 await client.vitals.stressLevelGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3844,7 +3978,7 @@ await client.vitals.stressLevelGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.StressLevelGroupedVitalsRequest`
+**request:** `Vital.VitalsStressLevelGroupedRequest`
 
 </dd>
 </dl>
@@ -3877,7 +4011,11 @@ await client.vitals.stressLevelGrouped("user_id", {
 
 ```typescript
 await client.vitals.mindfulnessMinutesGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3902,7 +4040,7 @@ await client.vitals.mindfulnessMinutesGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.MindfulnessMinutesGroupedVitalsRequest`
+**request:** `Vital.VitalsMindfulnessMinutesGroupedRequest`
 
 </dd>
 </dl>
@@ -3935,7 +4073,11 @@ await client.vitals.mindfulnessMinutesGrouped("user_id", {
 
 ```typescript
 await client.vitals.caffeineGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -3960,7 +4102,7 @@ await client.vitals.caffeineGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CaffeineGroupedVitalsRequest`
+**request:** `Vital.VitalsCaffeineGroupedRequest`
 
 </dd>
 </dl>
@@ -3993,7 +4135,11 @@ await client.vitals.caffeineGrouped("user_id", {
 
 ```typescript
 await client.vitals.waterGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4018,7 +4164,7 @@ await client.vitals.waterGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.WaterGroupedVitalsRequest`
+**request:** `Vital.VitalsWaterGroupedRequest`
 
 </dd>
 </dl>
@@ -4051,7 +4197,11 @@ await client.vitals.waterGrouped("user_id", {
 
 ```typescript
 await client.vitals.stepsGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4076,7 +4226,7 @@ await client.vitals.stepsGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.StepsGroupedVitalsRequest`
+**request:** `Vital.VitalsStepsGroupedRequest`
 
 </dd>
 </dl>
@@ -4109,7 +4259,11 @@ await client.vitals.stepsGrouped("user_id", {
 
 ```typescript
 await client.vitals.floorsClimbedGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4134,7 +4288,7 @@ await client.vitals.floorsClimbedGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.FloorsClimbedGroupedVitalsRequest`
+**request:** `Vital.VitalsFloorsClimbedGroupedRequest`
 
 </dd>
 </dl>
@@ -4167,7 +4321,11 @@ await client.vitals.floorsClimbedGrouped("user_id", {
 
 ```typescript
 await client.vitals.distanceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4192,7 +4350,7 @@ await client.vitals.distanceGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.DistanceGroupedVitalsRequest`
+**request:** `Vital.VitalsDistanceGroupedRequest`
 
 </dd>
 </dl>
@@ -4225,7 +4383,11 @@ await client.vitals.distanceGrouped("user_id", {
 
 ```typescript
 await client.vitals.caloriesBasalGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4250,7 +4412,7 @@ await client.vitals.caloriesBasalGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesBasalGroupedVitalsRequest`
+**request:** `Vital.VitalsCaloriesBasalGroupedRequest`
 
 </dd>
 </dl>
@@ -4283,7 +4445,11 @@ await client.vitals.caloriesBasalGrouped("user_id", {
 
 ```typescript
 await client.vitals.caloriesActiveGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4308,7 +4474,7 @@ await client.vitals.caloriesActiveGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesActiveGroupedVitalsRequest`
+**request:** `Vital.VitalsCaloriesActiveGroupedRequest`
 
 </dd>
 </dl>
@@ -4341,7 +4507,11 @@ await client.vitals.caloriesActiveGrouped("user_id", {
 
 ```typescript
 await client.vitals.respiratoryRateGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4366,7 +4536,7 @@ await client.vitals.respiratoryRateGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.RespiratoryRateGroupedVitalsRequest`
+**request:** `Vital.VitalsRespiratoryRateGroupedRequest`
 
 </dd>
 </dl>
@@ -4399,7 +4569,11 @@ await client.vitals.respiratoryRateGrouped("user_id", {
 
 ```typescript
 await client.vitals.noteGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4424,7 +4598,7 @@ await client.vitals.noteGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.NoteGroupedVitalsRequest`
+**request:** `Vital.VitalsNoteGroupedRequest`
 
 </dd>
 </dl>
@@ -4457,7 +4631,11 @@ await client.vitals.noteGrouped("user_id", {
 
 ```typescript
 await client.vitals.insulinInjectionGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4482,7 +4660,7 @@ await client.vitals.insulinInjectionGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.InsulinInjectionGroupedVitalsRequest`
+**request:** `Vital.VitalsInsulinInjectionGroupedRequest`
 
 </dd>
 </dl>
@@ -4515,7 +4693,11 @@ await client.vitals.insulinInjectionGrouped("user_id", {
 
 ```typescript
 await client.vitals.igeGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4540,7 +4722,7 @@ await client.vitals.igeGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.IgeGroupedVitalsRequest`
+**request:** `Vital.VitalsIgeGroupedRequest`
 
 </dd>
 </dl>
@@ -4573,7 +4755,11 @@ await client.vitals.igeGrouped("user_id", {
 
 ```typescript
 await client.vitals.iggGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4598,7 +4784,7 @@ await client.vitals.iggGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.IggGroupedVitalsRequest`
+**request:** `Vital.VitalsIggGroupedRequest`
 
 </dd>
 </dl>
@@ -4631,7 +4817,11 @@ await client.vitals.iggGrouped("user_id", {
 
 ```typescript
 await client.vitals.hypnogramGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4656,7 +4846,7 @@ await client.vitals.hypnogramGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HypnogramGroupedVitalsRequest`
+**request:** `Vital.VitalsHypnogramGroupedRequest`
 
 </dd>
 </dl>
@@ -4689,7 +4879,11 @@ await client.vitals.hypnogramGrouped("user_id", {
 
 ```typescript
 await client.vitals.hrvGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4714,7 +4908,7 @@ await client.vitals.hrvGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HrvGroupedVitalsRequest`
+**request:** `Vital.VitalsHrvGroupedRequest`
 
 </dd>
 </dl>
@@ -4747,7 +4941,11 @@ await client.vitals.hrvGrouped("user_id", {
 
 ```typescript
 await client.vitals.heartrateGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4772,7 +4970,7 @@ await client.vitals.heartrateGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HeartrateGroupedVitalsRequest`
+**request:** `Vital.VitalsHeartrateGroupedRequest`
 
 </dd>
 </dl>
@@ -4805,7 +5003,11 @@ await client.vitals.heartrateGrouped("user_id", {
 
 ```typescript
 await client.vitals.glucoseGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4830,7 +5032,7 @@ await client.vitals.glucoseGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GlucoseGroupedVitalsRequest`
+**request:** `Vital.VitalsGlucoseGroupedRequest`
 
 </dd>
 </dl>
@@ -4863,7 +5065,11 @@ await client.vitals.glucoseGrouped("user_id", {
 
 ```typescript
 await client.vitals.cholesterolGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4888,7 +5094,7 @@ await client.vitals.cholesterolGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolGroupedVitalsRequest`
+**request:** `Vital.VitalsCholesterolGroupedRequest`
 
 </dd>
 </dl>
@@ -4921,7 +5127,11 @@ await client.vitals.cholesterolGrouped("user_id", {
 
 ```typescript
 await client.vitals.carbohydratesGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -4946,7 +5156,7 @@ await client.vitals.carbohydratesGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CarbohydratesGroupedVitalsRequest`
+**request:** `Vital.VitalsCarbohydratesGroupedRequest`
 
 </dd>
 </dl>
@@ -4979,7 +5189,11 @@ await client.vitals.carbohydratesGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5004,7 +5218,7 @@ await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BodyTemperatureDeltaGroupedVitalsRequest`
+**request:** `Vital.VitalsBodyTemperatureDeltaGroupedRequest`
 
 </dd>
 </dl>
@@ -5037,7 +5251,11 @@ await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyTemperatureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5062,7 +5280,7 @@ await client.vitals.bodyTemperatureGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BodyTemperatureGroupedVitalsRequest`
+**request:** `Vital.VitalsBodyTemperatureGroupedRequest`
 
 </dd>
 </dl>
@@ -5095,7 +5313,11 @@ await client.vitals.bodyTemperatureGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyWeightGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5120,7 +5342,7 @@ await client.vitals.bodyWeightGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BodyWeightGroupedVitalsRequest`
+**request:** `Vital.VitalsBodyWeightGroupedRequest`
 
 </dd>
 </dl>
@@ -5153,7 +5375,11 @@ await client.vitals.bodyWeightGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyFatGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5178,7 +5404,7 @@ await client.vitals.bodyFatGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BodyFatGroupedVitalsRequest`
+**request:** `Vital.VitalsBodyFatGroupedRequest`
 
 </dd>
 </dl>
@@ -5211,7 +5437,11 @@ await client.vitals.bodyFatGrouped("user_id", {
 
 ```typescript
 await client.vitals.bloodOxygenGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5236,7 +5466,7 @@ await client.vitals.bloodOxygenGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BloodOxygenGroupedVitalsRequest`
+**request:** `Vital.VitalsBloodOxygenGroupedRequest`
 
 </dd>
 </dl>
@@ -5269,7 +5499,11 @@ await client.vitals.bloodOxygenGrouped("user_id", {
 
 ```typescript
 await client.vitals.electrocardiogramVoltageGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5294,7 +5528,7 @@ await client.vitals.electrocardiogramVoltageGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.ElectrocardiogramVoltageGroupedVitalsRequest`
+**request:** `Vital.VitalsElectrocardiogramVoltageGroupedRequest`
 
 </dd>
 </dl>
@@ -5327,7 +5561,11 @@ await client.vitals.electrocardiogramVoltageGrouped("user_id", {
 
 ```typescript
 await client.vitals.bloodPressureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5352,7 +5590,7 @@ await client.vitals.bloodPressureGrouped("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BloodPressureGroupedVitalsRequest`
+**request:** `Vital.VitalsBloodPressureGroupedRequest`
 
 </dd>
 </dl>
@@ -5385,7 +5623,9 @@ await client.vitals.bloodPressureGrouped("user_id", {
 
 ```typescript
 await client.vitals.vo2Max("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5410,7 +5650,7 @@ await client.vitals.vo2Max("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.Vo2MaxVitalsRequest`
+**request:** `Vital.VitalsVo2MaxRequest`
 
 </dd>
 </dl>
@@ -5443,7 +5683,9 @@ await client.vitals.vo2Max("user_id", {
 
 ```typescript
 await client.vitals.stressLevel("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5468,7 +5710,7 @@ await client.vitals.stressLevel("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.StressLevelVitalsRequest`
+**request:** `Vital.VitalsStressLevelRequest`
 
 </dd>
 </dl>
@@ -5501,7 +5743,9 @@ await client.vitals.stressLevel("user_id", {
 
 ```typescript
 await client.vitals.mindfulnessMinutes("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5526,7 +5770,7 @@ await client.vitals.mindfulnessMinutes("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.MindfulnessMinutesVitalsRequest`
+**request:** `Vital.VitalsMindfulnessMinutesRequest`
 
 </dd>
 </dl>
@@ -5559,7 +5803,9 @@ await client.vitals.mindfulnessMinutes("user_id", {
 
 ```typescript
 await client.vitals.caffeine("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5584,7 +5830,7 @@ await client.vitals.caffeine("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CaffeineVitalsRequest`
+**request:** `Vital.VitalsCaffeineRequest`
 
 </dd>
 </dl>
@@ -5617,7 +5863,9 @@ await client.vitals.caffeine("user_id", {
 
 ```typescript
 await client.vitals.water("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5642,7 +5890,7 @@ await client.vitals.water("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.WaterVitalsRequest`
+**request:** `Vital.VitalsWaterRequest`
 
 </dd>
 </dl>
@@ -5675,7 +5923,9 @@ await client.vitals.water("user_id", {
 
 ```typescript
 await client.vitals.steps("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5700,7 +5950,7 @@ await client.vitals.steps("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.StepsVitalsRequest`
+**request:** `Vital.VitalsStepsRequest`
 
 </dd>
 </dl>
@@ -5733,7 +5983,9 @@ await client.vitals.steps("user_id", {
 
 ```typescript
 await client.vitals.floorsClimbed("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5758,7 +6010,7 @@ await client.vitals.floorsClimbed("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.FloorsClimbedVitalsRequest`
+**request:** `Vital.VitalsFloorsClimbedRequest`
 
 </dd>
 </dl>
@@ -5791,7 +6043,9 @@ await client.vitals.floorsClimbed("user_id", {
 
 ```typescript
 await client.vitals.distance("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5816,7 +6070,7 @@ await client.vitals.distance("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.DistanceVitalsRequest`
+**request:** `Vital.VitalsDistanceRequest`
 
 </dd>
 </dl>
@@ -5849,7 +6103,9 @@ await client.vitals.distance("user_id", {
 
 ```typescript
 await client.vitals.caloriesBasal("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5874,7 +6130,7 @@ await client.vitals.caloriesBasal("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesBasalVitalsRequest`
+**request:** `Vital.VitalsCaloriesBasalRequest`
 
 </dd>
 </dl>
@@ -5907,7 +6163,9 @@ await client.vitals.caloriesBasal("user_id", {
 
 ```typescript
 await client.vitals.caloriesActive("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5932,7 +6190,7 @@ await client.vitals.caloriesActive("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesActiveVitalsRequest`
+**request:** `Vital.VitalsCaloriesActiveRequest`
 
 </dd>
 </dl>
@@ -5965,7 +6223,9 @@ await client.vitals.caloriesActive("user_id", {
 
 ```typescript
 await client.vitals.respiratoryRate("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -5990,7 +6250,7 @@ await client.vitals.respiratoryRate("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.RespiratoryRateVitalsRequest`
+**request:** `Vital.VitalsRespiratoryRateRequest`
 
 </dd>
 </dl>
@@ -6023,7 +6283,9 @@ await client.vitals.respiratoryRate("user_id", {
 
 ```typescript
 await client.vitals.ige("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6048,7 +6310,7 @@ await client.vitals.ige("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.IgeVitalsRequest`
+**request:** `Vital.VitalsIgeRequest`
 
 </dd>
 </dl>
@@ -6081,7 +6343,9 @@ await client.vitals.ige("user_id", {
 
 ```typescript
 await client.vitals.igg("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6106,7 +6370,7 @@ await client.vitals.igg("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.IggVitalsRequest`
+**request:** `Vital.VitalsIggRequest`
 
 </dd>
 </dl>
@@ -6139,7 +6403,9 @@ await client.vitals.igg("user_id", {
 
 ```typescript
 await client.vitals.hypnogram("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6164,7 +6430,7 @@ await client.vitals.hypnogram("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HypnogramVitalsRequest`
+**request:** `Vital.VitalsHypnogramRequest`
 
 </dd>
 </dl>
@@ -6197,7 +6463,9 @@ await client.vitals.hypnogram("user_id", {
 
 ```typescript
 await client.vitals.hrv("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6222,7 +6490,7 @@ await client.vitals.hrv("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HrvVitalsRequest`
+**request:** `Vital.VitalsHrvRequest`
 
 </dd>
 </dl>
@@ -6255,7 +6523,9 @@ await client.vitals.hrv("user_id", {
 
 ```typescript
 await client.vitals.heartrate("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6280,7 +6550,7 @@ await client.vitals.heartrate("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.HeartrateVitalsRequest`
+**request:** `Vital.VitalsHeartrateRequest`
 
 </dd>
 </dl>
@@ -6313,7 +6583,9 @@ await client.vitals.heartrate("user_id", {
 
 ```typescript
 await client.vitals.glucose("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6338,7 +6610,7 @@ await client.vitals.glucose("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GlucoseVitalsRequest`
+**request:** `Vital.VitalsGlucoseRequest`
 
 </dd>
 </dl>
@@ -6371,7 +6643,9 @@ await client.vitals.glucose("user_id", {
 
 ```typescript
 await client.vitals.cholesterolTriglycerides("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6396,7 +6670,7 @@ await client.vitals.cholesterolTriglycerides("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolTriglyceridesVitalsRequest`
+**request:** `Vital.VitalsCholesterolTriglyceridesRequest`
 
 </dd>
 </dl>
@@ -6429,7 +6703,9 @@ await client.vitals.cholesterolTriglycerides("user_id", {
 
 ```typescript
 await client.vitals.cholesterolTotal("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6454,7 +6730,7 @@ await client.vitals.cholesterolTotal("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolTotalVitalsRequest`
+**request:** `Vital.VitalsCholesterolTotalRequest`
 
 </dd>
 </dl>
@@ -6487,7 +6763,9 @@ await client.vitals.cholesterolTotal("user_id", {
 
 ```typescript
 await client.vitals.cholesterolLdl("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6512,7 +6790,7 @@ await client.vitals.cholesterolLdl("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolLdlVitalsRequest`
+**request:** `Vital.VitalsCholesterolLdlRequest`
 
 </dd>
 </dl>
@@ -6545,7 +6823,9 @@ await client.vitals.cholesterolLdl("user_id", {
 
 ```typescript
 await client.vitals.cholesterolHdl("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6570,7 +6850,7 @@ await client.vitals.cholesterolHdl("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolHdlVitalsRequest`
+**request:** `Vital.VitalsCholesterolHdlRequest`
 
 </dd>
 </dl>
@@ -6603,7 +6883,9 @@ await client.vitals.cholesterolHdl("user_id", {
 
 ```typescript
 await client.vitals.cholesterol("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6628,7 +6910,7 @@ await client.vitals.cholesterol("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolVitalsRequest`
+**request:** `Vital.VitalsCholesterolRequest`
 
 </dd>
 </dl>
@@ -6661,7 +6943,9 @@ await client.vitals.cholesterol("user_id", {
 
 ```typescript
 await client.vitals.bodyWeight("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6686,7 +6970,7 @@ await client.vitals.bodyWeight("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BodyWeightVitalsRequest`
+**request:** `Vital.VitalsBodyWeightRequest`
 
 </dd>
 </dl>
@@ -6719,7 +7003,9 @@ await client.vitals.bodyWeight("user_id", {
 
 ```typescript
 await client.vitals.bodyFat("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6744,7 +7030,7 @@ await client.vitals.bodyFat("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BodyFatVitalsRequest`
+**request:** `Vital.VitalsBodyFatRequest`
 
 </dd>
 </dl>
@@ -6777,7 +7063,9 @@ await client.vitals.bodyFat("user_id", {
 
 ```typescript
 await client.vitals.bloodOxygen("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6802,7 +7090,7 @@ await client.vitals.bloodOxygen("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BloodOxygenVitalsRequest`
+**request:** `Vital.VitalsBloodOxygenRequest`
 
 </dd>
 </dl>
@@ -6835,7 +7123,9 @@ await client.vitals.bloodOxygen("user_id", {
 
 ```typescript
 await client.vitals.electrocardiogramVoltage("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6860,7 +7150,7 @@ await client.vitals.electrocardiogramVoltage("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.ElectrocardiogramVoltageVitalsRequest`
+**request:** `Vital.VitalsElectrocardiogramVoltageRequest`
 
 </dd>
 </dl>
@@ -6893,7 +7183,9 @@ await client.vitals.electrocardiogramVoltage("user_id", {
 
 ```typescript
 await client.vitals.bloodPressure("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date",
 });
 ```
 
@@ -6918,7 +7210,7 @@ await client.vitals.bloodPressure("user_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BloodPressureVitalsRequest`
+**request:** `Vital.VitalsBloodPressureRequest`
 
 </dd>
 </dl>
@@ -6967,7 +7259,10 @@ GET All users for team.
 <dd>
 
 ```typescript
-await client.user.getAll();
+await client.user.getAll({
+    offset: 1,
+    limit: 1,
+});
 ```
 
 </dd>
@@ -6983,7 +7278,7 @@ await client.user.getAll();
 <dl>
 <dd>
 
-**request:** `Vital.GetAllUserRequest`
+**request:** `Vital.UserGetAllRequest`
 
 </dd>
 </dl>
@@ -7122,7 +7417,7 @@ await client.user.getTeamMetrics();
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getConnectedProviders</a>(userId, { ...params }) -> Record<string, Vital.ClientFacingProviderWithStatus[]></code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getConnectedProviders</a>(userId) -> Record<string, Vital.ClientFacingProviderWithStatus[]></code></summary>
 <dl>
 <dd>
 
@@ -7174,14 +7469,6 @@ await client.user.getConnectedProviders("user_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetConnectedProvidersUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `User.RequestOptions`
 
 </dd>
@@ -7193,7 +7480,7 @@ await client.user.getConnectedProviders("user_id");
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestUserInfo</a>(userId, { ...params }) -> Vital.UserInfo</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestUserInfo</a>(userId) -> Vital.UserInfo</code></summary>
 <dl>
 <dd>
 
@@ -7223,14 +7510,6 @@ await client.user.getLatestUserInfo("user_id");
 <dd>
 
 **userId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetLatestUserInfoUserRequest`
 
 </dd>
 </dl>
@@ -7277,7 +7556,7 @@ await client.user.createInsurance("user_id", {
             city: "city",
             state: "state",
         },
-        dob: "2023-01-15",
+        dob: "dob",
         email: "email",
         phoneNumber: "phone_number",
     },
@@ -7324,7 +7603,7 @@ await client.user.createInsurance("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestInsurance</a>(userId, { ...params }) -> Vital.ClientFacingInsurance</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestInsurance</a>(userId) -> Vital.ClientFacingInsurance</code></summary>
 <dl>
 <dd>
 
@@ -7354,14 +7633,6 @@ await client.user.getLatestInsurance("user_id");
 <dd>
 
 **userId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetLatestInsuranceUserRequest`
 
 </dd>
 </dl>
@@ -7399,7 +7670,7 @@ await client.user.upsertUserInfo("user_id", {
     email: "email",
     phoneNumber: "phone_number",
     gender: "gender",
-    dob: "2023-01-15",
+    dob: "dob",
     address: {
         firstLine: "first_line",
         country: "country",
@@ -7450,7 +7721,7 @@ await client.user.upsertUserInfo("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getByClientUserId</a>(clientUserId, { ...params }) -> Vital.ClientFacingUser</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getByClientUserId</a>(clientUserId) -> Vital.ClientFacingUser</code></summary>
 <dl>
 <dd>
 
@@ -7502,14 +7773,6 @@ await client.user.getByClientUserId("client_user_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetByClientUserIdUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `User.RequestOptions`
 
 </dd>
@@ -7521,7 +7784,7 @@ await client.user.getByClientUserId("client_user_id");
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">deregisterProvider</a>(userId, provider, { ...params }) -> Vital.UserSuccessResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">deregisterProvider</a>(userId, provider) -> Vital.UserSuccessResponse</code></summary>
 <dl>
 <dd>
 
@@ -7566,14 +7829,6 @@ await client.user.deregisterProvider("user_id", "oura");
 <dl>
 <dd>
 
-**request:** `Vital.DeregisterProviderUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `User.RequestOptions`
 
 </dd>
@@ -7585,7 +7840,7 @@ await client.user.deregisterProvider("user_id", "oura");
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientFacingUser</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">get</a>(userId) -> Vital.ClientFacingUser</code></summary>
 <dl>
 <dd>
 
@@ -7622,14 +7877,6 @@ await client.user.get("user_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `User.RequestOptions`
 
 </dd>
@@ -7641,7 +7888,7 @@ await client.user.get("user_id");
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">delete</a>(userId, { ...params }) -> Vital.UserSuccessResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">delete</a>(userId) -> Vital.UserSuccessResponse</code></summary>
 <dl>
 <dd>
 
@@ -7671,14 +7918,6 @@ await client.user.delete("user_id");
 <dd>
 
 **userId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.DeleteUserRequest`
 
 </dd>
 </dl>
@@ -7766,7 +8005,10 @@ await client.user.patch("user_id");
 <dd>
 
 ```typescript
-await client.user.undoDelete();
+await client.user.undoDelete({
+    userId: "user_id",
+    clientUserId: "client_user_id",
+});
 ```
 
 </dd>
@@ -7782,7 +8024,7 @@ await client.user.undoDelete();
 <dl>
 <dd>
 
-**request:** `Vital.UndoDeleteUserRequest`
+**request:** `Vital.UserUndoDeleteRequest`
 
 </dd>
 </dl>
@@ -7829,7 +8071,9 @@ Trigger a manual refresh for a specific user
 <dd>
 
 ```typescript
-await client.user.refresh("user_id");
+await client.user.refresh("user_id", {
+    timeout: 1.1,
+});
 ```
 
 </dd>
@@ -7853,7 +8097,7 @@ await client.user.refresh("user_id");
 <dl>
 <dd>
 
-**request:** `Vital.RefreshUserRequest`
+**request:** `Vital.UserRefreshRequest`
 
 </dd>
 </dl>
@@ -7872,7 +8116,7 @@ await client.user.refresh("user_id");
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevices</a>(userId, { ...params }) -> Vital.ClientFacingDevice[]</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevices</a>(userId) -> Vital.ClientFacingDevice[]</code></summary>
 <dl>
 <dd>
 
@@ -7909,14 +8153,6 @@ await client.user.getDevices("user_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetDevicesUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `User.RequestOptions`
 
 </dd>
@@ -7928,7 +8164,7 @@ await client.user.getDevices("user_id");
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevice</a>(userId, deviceId, { ...params }) -> Vital.ClientFacingDevice</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevice</a>(userId, deviceId) -> Vital.ClientFacingDevice</code></summary>
 <dl>
 <dd>
 
@@ -7973,14 +8209,6 @@ await client.user.getDevice("user_id", "device_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetDeviceUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `User.RequestOptions`
 
 </dd>
@@ -7992,7 +8220,7 @@ await client.user.getDevice("user_id", "device_id");
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getUserSignInToken</a>(userId, { ...params }) -> Vital.UserSignInTokenResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getUserSignInToken</a>(userId) -> Vital.UserSignInTokenResponse</code></summary>
 <dl>
 <dd>
 
@@ -8022,14 +8250,6 @@ await client.user.getUserSignInToken("user_id");
 <dd>
 
 **userId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetUserSignInTokenUserRequest`
 
 </dd>
 </dl>
@@ -8136,7 +8356,9 @@ Post teams.
 <dd>
 
 ```typescript
-await client.team.getLinkConfig();
+await client.team.getLinkConfig({
+    vitalLinkToken: "x-vital-link-token",
+});
 ```
 
 </dd>
@@ -8152,7 +8374,7 @@ await client.team.getLinkConfig();
 <dl>
 <dd>
 
-**request:** `Vital.GetLinkConfigTeamRequest`
+**request:** `Vital.TeamGetLinkConfigRequest`
 
 </dd>
 </dl>
@@ -8171,7 +8393,7 @@ await client.team.getLinkConfig();
 </dl>
 </details>
 
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">get</a>(teamId, { ...params }) -> Vital.ClientFacingTeam</code></summary>
+<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">get</a>(teamId) -> Vital.ClientFacingTeam</code></summary>
 <dl>
 <dd>
 
@@ -8223,14 +8445,6 @@ await client.team.get("team_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetTeamRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `Team.RequestOptions`
 
 </dd>
@@ -8270,7 +8484,9 @@ Search team users by user_id
 <dd>
 
 ```typescript
-await client.team.getUserById();
+await client.team.getUserById({
+    queryId: "query_id",
+});
 ```
 
 </dd>
@@ -8286,7 +8502,7 @@ await client.team.getUserById();
 <dl>
 <dd>
 
-**request:** `Vital.GetUserByIdTeamRequest`
+**request:** `Vital.TeamGetUserByIdRequest`
 
 </dd>
 </dl>
@@ -8373,7 +8589,9 @@ GET source priorities.
 <dd>
 
 ```typescript
-await client.team.getSourcePriorities();
+await client.team.getSourcePriorities({
+    dataType: "workouts",
+});
 ```
 
 </dd>
@@ -8389,7 +8607,7 @@ await client.team.getSourcePriorities();
 <dl>
 <dd>
 
-**request:** `Vital.GetSourcePrioritiesTeamRequest`
+**request:** `Vital.TeamGetSourcePrioritiesRequest`
 
 </dd>
 </dl>
@@ -8463,7 +8681,7 @@ await client.team.updateSourcePriorities();
 </dl>
 </details>
 
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getPhysicians</a>(teamId, { ...params }) -> Vital.ClientFacingPhysician[]</code></summary>
+<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getPhysicians</a>(teamId) -> Vital.ClientFacingPhysician[]</code></summary>
 <dl>
 <dd>
 
@@ -8493,14 +8711,6 @@ await client.team.getPhysicians("team_id");
 <dd>
 
 **teamId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetPhysiciansTeamRequest`
 
 </dd>
 </dl>
@@ -8549,7 +8759,9 @@ Get Provider list
 <dd>
 
 ```typescript
-await client.providers.getAll();
+await client.providers.getAll({
+    sourceType: "source_type",
+});
 ```
 
 </dd>
@@ -8565,7 +8777,7 @@ await client.providers.getAll();
 <dl>
 <dd>
 
-**request:** `Vital.GetAllProvidersRequest`
+**request:** `Vital.ProvidersGetAllRequest`
 
 </dd>
 </dl>
@@ -8599,7 +8811,13 @@ await client.providers.getAll();
 <dd>
 
 ```typescript
-await client.introspect.getUserResources();
+await client.introspect.getUserResources({
+    userId: "user_id",
+    provider: "oura",
+    userLimit: 1,
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+});
 ```
 
 </dd>
@@ -8615,7 +8833,7 @@ await client.introspect.getUserResources();
 <dl>
 <dd>
 
-**request:** `Vital.GetUserResourcesIntrospectRequest`
+**request:** `Vital.IntrospectGetUserResourcesRequest`
 
 </dd>
 </dl>
@@ -8647,7 +8865,13 @@ await client.introspect.getUserResources();
 <dd>
 
 ```typescript
-await client.introspect.getUserHistoricalPulls();
+await client.introspect.getUserHistoricalPulls({
+    userId: "user_id",
+    provider: "oura",
+    userLimit: 1,
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+});
 ```
 
 </dd>
@@ -8663,7 +8887,7 @@ await client.introspect.getUserHistoricalPulls();
 <dl>
 <dd>
 
-**request:** `Vital.GetUserHistoricalPullsIntrospectRequest`
+**request:** `Vital.IntrospectGetUserHistoricalPullsRequest`
 
 </dd>
 </dl>
@@ -8712,7 +8936,15 @@ GET all the lab tests the team has access to.
 <dd>
 
 ```typescript
-await client.labTests.get();
+await client.labTests.get({
+    generationMethod: "auto",
+    labSlug: "lab_slug",
+    collectionMethod: "testkit",
+    status: "active",
+    name: "name",
+    orderKey: "price",
+    orderDirection: "asc",
+});
 ```
 
 </dd>
@@ -8728,7 +8960,7 @@ await client.labTests.get();
 <dl>
 <dd>
 
-**request:** `Vital.GetLabTestsRequest`
+**request:** `Vital.LabTestsGetRequest`
 
 </dd>
 </dl>
@@ -8827,7 +9059,9 @@ GET all the lab tests the team has access to.
 <dd>
 
 ```typescript
-await client.labTests.getById("lab_test_id");
+await client.labTests.getById("lab_test_id", {
+    labAccountId: "lab_account_id",
+});
 ```
 
 </dd>
@@ -8851,7 +9085,7 @@ await client.labTests.getById("lab_test_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetByIdLabTestsRequest`
+**request:** `Vital.LabTestsGetByIdRequest`
 
 </dd>
 </dl>
@@ -8954,7 +9188,13 @@ GET all the markers for the given lab.
 <dd>
 
 ```typescript
-await client.labTests.getMarkers();
+await client.labTests.getMarkers({
+    name: "name",
+    aLaCarteEnabled: true,
+    labAccountId: "lab_account_id",
+    page: 1,
+    size: 1,
+});
 ```
 
 </dd>
@@ -8970,7 +9210,7 @@ await client.labTests.getMarkers();
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersLabTestsRequest`
+**request:** `Vital.LabTestsGetMarkersRequest`
 
 </dd>
 </dl>
@@ -9003,6 +9243,8 @@ await client.labTests.getMarkers();
 
 ```typescript
 await client.labTests.getMarkersForOrderSet({
+    page: 1,
+    size: 1,
     body: {},
 });
 ```
@@ -9020,7 +9262,7 @@ await client.labTests.getMarkersForOrderSet({
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersForOrderSetLabTestsRequest`
+**request:** `Vital.LabTestsGetMarkersForOrderSetRequest`
 
 </dd>
 </dl>
@@ -9052,7 +9294,11 @@ await client.labTests.getMarkersForOrderSet({
 <dd>
 
 ```typescript
-await client.labTests.getMarkersForLabTest("lab_test_id");
+await client.labTests.getMarkersForLabTest("lab_test_id", {
+    labAccountId: "lab_account_id",
+    page: 1,
+    size: 1,
+});
 ```
 
 </dd>
@@ -9076,7 +9322,7 @@ await client.labTests.getMarkersForLabTest("lab_test_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersForLabTestLabTestsRequest`
+**request:** `Vital.LabTestsGetMarkersForLabTestRequest`
 
 </dd>
 </dl>
@@ -9123,7 +9369,9 @@ GET a specific marker for the given lab and provider_id
 <dd>
 
 ```typescript
-await client.labTests.getMarkersByLabAndProviderId(1, "provider_id");
+await client.labTests.getMarkersByLabAndProviderId(1, "provider_id", {
+    labAccountId: "lab_account_id",
+});
 ```
 
 </dd>
@@ -9155,7 +9403,7 @@ await client.labTests.getMarkersByLabAndProviderId(1, "provider_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersByLabAndProviderIdLabTestsRequest`
+**request:** `Vital.LabTestsGetMarkersByLabAndProviderIdRequest`
 
 </dd>
 </dl>
@@ -9257,7 +9505,17 @@ GET lab tests the team has access to as a paginated list.
 <dd>
 
 ```typescript
-await client.labTests.getPaginated();
+await client.labTests.getPaginated({
+    labTestLimit: 1,
+    nextCursor: "next_cursor",
+    generationMethod: "auto",
+    labSlug: "lab_slug",
+    collectionMethod: "testkit",
+    status: "active",
+    name: "name",
+    orderKey: "price",
+    orderDirection: "asc",
+});
 ```
 
 </dd>
@@ -9273,7 +9531,7 @@ await client.labTests.getPaginated();
 <dl>
 <dd>
 
-**request:** `Vital.GetPaginatedLabTestsRequest`
+**request:** `Vital.LabTestsGetPaginatedRequest`
 
 </dd>
 </dl>
@@ -9292,7 +9550,7 @@ await client.labTests.getPaginated();
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getLabTestCollectionInstructionPdf</a>(labTestId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getLabTestCollectionInstructionPdf</a>(labTestId) -> stream.Readable</code></summary>
 <dl>
 <dd>
 
@@ -9322,14 +9580,6 @@ await client.labTests.getLabTestCollectionInstructionPdf("lab_test_id");
 <dd>
 
 **labTestId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetLabTestCollectionInstructionPdfLabTestsRequest`
 
 </dd>
 </dl>
@@ -9376,7 +9626,22 @@ GET many orders with filters.
 <dd>
 
 ```typescript
-await client.labTests.getOrders();
+await client.labTests.getOrders({
+    searchInput: "search_input",
+    startDate: "2024-01-15T09:30:00Z",
+    endDate: "2024-01-15T09:30:00Z",
+    updatedStartDate: "2024-01-15T09:30:00Z",
+    updatedEndDate: "2024-01-15T09:30:00Z",
+    orderKey: "created_at",
+    orderDirection: "asc",
+    isCritical: true,
+    interpretation: "normal",
+    userId: "user_id",
+    patientName: "patient_name",
+    shippingRecipientName: "shipping_recipient_name",
+    page: 1,
+    size: 1,
+});
 ```
 
 </dd>
@@ -9392,7 +9657,7 @@ await client.labTests.getOrders();
 <dl>
 <dd>
 
-**request:** `Vital.GetOrdersLabTestsRequest`
+**request:** `Vital.LabTestsGetOrdersRequest`
 
 </dd>
 </dl>
@@ -9441,6 +9706,7 @@ for the given address and order.
 
 ```typescript
 await client.labTests.getPhlebotomyAppointmentAvailability({
+    startDate: "start_date",
     body: {
         firstLine: "first_line",
         city: "city",
@@ -9463,7 +9729,7 @@ await client.labTests.getPhlebotomyAppointmentAvailability({
 <dl>
 <dd>
 
-**request:** `Vital.GetPhlebotomyAppointmentAvailabilityLabTestsRequest`
+**request:** `Vital.LabTestsGetPhlebotomyAppointmentAvailabilityRequest`
 
 </dd>
 </dl>
@@ -9511,9 +9777,7 @@ Book an at-home phlebotomy appointment.
 
 ```typescript
 await client.labTests.bookPhlebotomyAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key",
 });
 ```
 
@@ -9538,7 +9802,7 @@ await client.labTests.bookPhlebotomyAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BookPhlebotomyAppointmentLabTestsRequest`
+**request:** `Vital.AppointmentBookingRequest`
 
 </dd>
 </dl>
@@ -9665,9 +9929,7 @@ Reschedule a previously booked at-home phlebotomy appointment.
 
 ```typescript
 await client.labTests.reschedulePhlebotomyAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key",
 });
 ```
 
@@ -9692,7 +9954,7 @@ await client.labTests.reschedulePhlebotomyAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.ReschedulePhlebotomyAppointmentLabTestsRequest`
+**request:** `Vital.AppointmentRescheduleRequest`
 
 </dd>
 </dl>
@@ -9839,7 +10101,7 @@ await client.labTests.getPhlebotomyAppointmentCancellationReason();
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPhlebotomyAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPhlebotomyAppointment</a>(orderId) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -9884,14 +10146,6 @@ await client.labTests.getPhlebotomyAppointment("order_id");
 <dd>
 
 **orderId:** `string` — Your Order ID.
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetPhlebotomyAppointmentLabTestsRequest`
 
 </dd>
 </dl>
@@ -9944,6 +10198,9 @@ Information returned:
 ```typescript
 await client.labTests.getAreaInfo({
     zipCode: "zip_code",
+    radius: "10",
+    lab: "quest",
+    labAccountId: "lab_account_id",
 });
 ```
 
@@ -9960,7 +10217,7 @@ await client.labTests.getAreaInfo({
 <dl>
 <dd>
 
-**request:** `Vital.GetAreaInfoLabTestsRequest`
+**request:** `Vital.LabTestsGetAreaInfoRequest`
 
 </dd>
 </dl>
@@ -9995,6 +10252,8 @@ await client.labTests.getAreaInfo({
 await client.labTests.getPscInfo({
     zipCode: "zip_code",
     labId: 1,
+    radius: "10",
+    labAccountId: "lab_account_id",
 });
 ```
 
@@ -10011,7 +10270,7 @@ await client.labTests.getPscInfo({
 <dl>
 <dd>
 
-**request:** `Vital.GetPscInfoLabTestsRequest`
+**request:** `Vital.LabTestsGetPscInfoRequest`
 
 </dd>
 </dl>
@@ -10043,7 +10302,9 @@ await client.labTests.getPscInfo({
 <dd>
 
 ```typescript
-await client.labTests.getOrderPscInfo("order_id");
+await client.labTests.getOrderPscInfo("order_id", {
+    radius: "10",
+});
 ```
 
 </dd>
@@ -10067,7 +10328,7 @@ await client.labTests.getOrderPscInfo("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderPscInfoLabTestsRequest`
+**request:** `Vital.LabTestsGetOrderPscInfoRequest`
 
 </dd>
 </dl>
@@ -10086,7 +10347,7 @@ await client.labTests.getOrderPscInfo("order_id");
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultPdf</a>(orderId) -> stream.Readable</code></summary>
 <dl>
 <dd>
 
@@ -10138,14 +10399,6 @@ await client.labTests.getResultPdf("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetResultPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -10157,7 +10410,7 @@ await client.labTests.getResultPdf("order_id");
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultMetadata</a>(orderId, { ...params }) -> Vital.LabResultsMetadata</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultMetadata</a>(orderId) -> Vital.LabResultsMetadata</code></summary>
 <dl>
 <dd>
 
@@ -10210,14 +10463,6 @@ await client.labTests.getResultMetadata("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetResultMetadataLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -10229,7 +10474,7 @@ await client.labTests.getResultMetadata("order_id");
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultRaw</a>(orderId, { ...params }) -> Vital.LabResultsRaw</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultRaw</a>(orderId) -> Vital.LabResultsRaw</code></summary>
 <dl>
 <dd>
 
@@ -10274,14 +10519,6 @@ await client.labTests.getResultRaw("order_id");
 <dd>
 
 **orderId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.GetResultRawLabTestsRequest`
 
 </dd>
 </dl>
@@ -10354,7 +10591,7 @@ await client.labTests.getLabelsPdf("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.GetLabelsPdfLabTestsRequest`
+**request:** `Vital.LabTestsGetLabelsPdfRequest`
 
 </dd>
 </dl>
@@ -10388,6 +10625,9 @@ await client.labTests.getLabelsPdf("order_id", {
 ```typescript
 await client.labTests.getPscAppointmentAvailability({
     lab: "quest",
+    startDate: "start_date",
+    zipCode: "zip_code",
+    radius: "10",
 });
 ```
 
@@ -10404,7 +10644,7 @@ await client.labTests.getPscAppointmentAvailability({
 <dl>
 <dd>
 
-**request:** `Vital.GetPscAppointmentAvailabilityLabTestsRequest`
+**request:** `Vital.LabTestsGetPscAppointmentAvailabilityRequest`
 
 </dd>
 </dl>
@@ -10437,9 +10677,7 @@ await client.labTests.getPscAppointmentAvailability({
 
 ```typescript
 await client.labTests.bookPscAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key",
 });
 ```
 
@@ -10464,7 +10702,7 @@ await client.labTests.bookPscAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.BookPscAppointmentLabTestsRequest`
+**request:** `Vital.AppointmentBookingRequest`
 
 </dd>
 </dl>
@@ -10497,9 +10735,7 @@ await client.labTests.bookPscAppointment("order_id", {
 
 ```typescript
 await client.labTests.reschedulePscAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key",
 });
 ```
 
@@ -10524,7 +10760,7 @@ await client.labTests.reschedulePscAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.ReschedulePscAppointmentLabTestsRequest`
+**request:** `Vital.AppointmentRescheduleRequest`
 
 </dd>
 </dl>
@@ -10641,7 +10877,7 @@ await client.labTests.getPscAppointmentCancellationReason();
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPscAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPscAppointment</a>(orderId) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -10693,14 +10929,6 @@ await client.labTests.getPscAppointment("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetPscAppointmentLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -10712,7 +10940,7 @@ await client.labTests.getPscAppointment("order_id");
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderCollectionInstructionPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderCollectionInstructionPdf</a>(orderId) -> stream.Readable</code></summary>
 <dl>
 <dd>
 
@@ -10764,14 +10992,6 @@ await client.labTests.getOrderCollectionInstructionPdf("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderCollectionInstructionPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -10783,7 +11003,7 @@ await client.labTests.getOrderCollectionInstructionPdf("order_id");
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderRequistionPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderRequistionPdf</a>(orderId) -> stream.Readable</code></summary>
 <dl>
 <dd>
 
@@ -10835,14 +11055,6 @@ await client.labTests.getOrderRequistionPdf("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderRequistionPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -10854,7 +11066,7 @@ await client.labTests.getOrderRequistionPdf("order_id");
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderAbnPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderAbnPdf</a>(orderId) -> stream.Readable</code></summary>
 <dl>
 <dd>
 
@@ -10906,14 +11118,6 @@ await client.labTests.getOrderAbnPdf("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderAbnPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -10925,7 +11129,7 @@ await client.labTests.getOrderAbnPdf("order_id");
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrder</a>(orderId, { ...params }) -> Vital.ClientFacingOrder</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrder</a>(orderId) -> Vital.ClientFacingOrder</code></summary>
 <dl>
 <dd>
 
@@ -10977,14 +11181,6 @@ await client.labTests.getOrder("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -11010,11 +11206,13 @@ await client.labTests.getOrder("order_id");
 
 ```typescript
 await client.labTests.createOrder({
+    idempotencyKey: "X-Idempotency-Key",
+    idempotencyError: "no-cache",
     userId: "user_id",
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2023-01-15",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
         email: "email",
@@ -11082,7 +11280,7 @@ await client.labTests.importOrder({
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2023-01-15",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
         email: "email",
@@ -11131,7 +11329,7 @@ await client.labTests.importOrder({
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelOrder</a>(orderId, { ...params }) -> Vital.PostOrderResponse</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelOrder</a>(orderId) -> Vital.PostOrderResponse</code></summary>
 <dl>
 <dd>
 
@@ -11183,14 +11381,6 @@ await client.labTests.cancelOrder("order_id");
 <dl>
 <dd>
 
-**request:** `Vital.CancelOrderLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabTests.RequestOptions`
 
 </dd>
@@ -11231,6 +11421,8 @@ Get available test kits.
 
 ```typescript
 await client.labTests.simulateOrderProcess("order_id", {
+    finalStatus: "received.walk_in_test.ordered",
+    delay: 1,
     body: {},
 });
 ```
@@ -11256,7 +11448,7 @@ await client.labTests.simulateOrderProcess("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.SimulateOrderProcessLabTestsRequest`
+**request:** `Vital.LabTestsSimulateOrderProcessRequest`
 
 </dd>
 </dl>
@@ -11275,7 +11467,7 @@ await client.labTests.simulateOrderProcess("order_id", {
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">updateOnSiteCollectionOrderDrawCompleted</a>(orderId, { ...params }) -> Vital.PostOrderResponse</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">updateOnSiteCollectionOrderDrawCompleted</a>(orderId) -> Vital.PostOrderResponse</code></summary>
 <dl>
 <dd>
 
@@ -11320,14 +11512,6 @@ await client.labTests.updateOnSiteCollectionOrderDrawCompleted("order_id");
 <dd>
 
 **orderId:** `string` — Your Order ID.
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.UpdateOnSiteCollectionOrderDrawCompletedLabTestsRequest`
 
 </dd>
 </dl>
@@ -11416,7 +11600,7 @@ await client.testkit.register({
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2023-01-15",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
         email: "email",
@@ -11618,7 +11802,11 @@ await client.order.resendEvents();
 <dd>
 
 ```typescript
-await client.insurance.searchGetPayorInfo();
+await client.insurance.searchGetPayorInfo({
+    insuranceName: "insurance_name",
+    provider: "change_healthcare",
+    providerPayorId: "provider_payor_id",
+});
 ```
 
 </dd>
@@ -11634,7 +11822,7 @@ await client.insurance.searchGetPayorInfo();
 <dl>
 <dd>
 
-**request:** `Vital.SearchGetPayorInfoInsuranceRequest`
+**request:** `Vital.InsuranceSearchGetPayorInfoRequest`
 
 </dd>
 </dl>
@@ -11732,7 +11920,7 @@ await client.insurance.searchDiagnosis({
 <dl>
 <dd>
 
-**request:** `Vital.SearchDiagnosisInsuranceRequest`
+**request:** `Vital.InsuranceSearchDiagnosisRequest`
 
 </dd>
 </dl>
@@ -11884,7 +12072,7 @@ await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file")
 </dl>
 </details>
 
-<details><summary><code>client.labReport.<a href="/src/api/resources/labReport/client/Client.ts">parserGetJob</a>(jobId, { ...params }) -> Vital.ParsingJob</code></summary>
+<details><summary><code>client.labReport.<a href="/src/api/resources/labReport/client/Client.ts">parserGetJob</a>(jobId) -> Vital.ParsingJob</code></summary>
 <dl>
 <dd>
 
@@ -11939,14 +12127,6 @@ await client.labReport.parserGetJob("job_id");
 <dl>
 <dd>
 
-**request:** `Vital.ParserGetJobLabReportRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `LabReport.RequestOptions`
 
 </dd>
@@ -11976,7 +12156,7 @@ await client.labReport.parserGetJob("job_id");
 await client.aggregate.queryOne("user_id", {
     timeframe: {
         type: "relative",
-        anchor: "2023-01-15",
+        anchor: "anchor",
         past: {
             unit: "minute",
         },
@@ -12036,7 +12216,7 @@ await client.aggregate.queryOne("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getResultTableForContinuousQuery</a>(userId, queryIdOrSlug, { ...params }) -> Vital.AggregationResult</code></summary>
+<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getResultTableForContinuousQuery</a>(userId, queryIdOrSlug) -> Vital.AggregationResult</code></summary>
 <dl>
 <dd>
 
@@ -12081,14 +12261,6 @@ await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_
 <dl>
 <dd>
 
-**request:** `Vital.GetResultTableForContinuousQueryAggregateRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **requestOptions:** `Aggregate.RequestOptions`
 
 </dd>
@@ -12113,7 +12285,10 @@ await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_
 <dd>
 
 ```typescript
-await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug");
+await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug", {
+    nextCursor: "next_cursor",
+    limit: 1,
+});
 ```
 
 </dd>
@@ -12145,7 +12320,7 @@ await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_
 <dl>
 <dd>
 
-**request:** `Vital.GetTaskHistoryForContinuousQueryAggregateRequest`
+**request:** `Vital.AggregateGetTaskHistoryForContinuousQueryRequest`
 
 </dd>
 </dl>

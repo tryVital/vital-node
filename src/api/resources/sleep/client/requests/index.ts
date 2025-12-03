@@ -1,3 +1,2 @@
-export { type GetSleepRequest } from "./GetSleepRequest";
-export { type GetRawSleepRequest } from "./GetRawSleepRequest";
-export { type GetStreamBySleepIdSleepRequest } from "./GetStreamBySleepIdSleepRequest";
+export { type SleepGetRequest } from "./SleepGetRequest";
+export { type SleepGetRawRequest } from "./SleepGetRawRequest";

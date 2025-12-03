@@ -2,8 +2,6 @@ export * as link from "./link";
 export * from "./link/types";
 export * as user from "./user";
 export * from "./user/types";
-export * as introspect from "./introspect";
-export * from "./introspect/types";
 export * as labTests from "./labTests";
 export * from "./labTests/types";
 export * as aggregate from "./aggregate";

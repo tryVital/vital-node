@@ -32,19 +32,21 @@ export class Body {
      * Get Body summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetBodyRequest} request
+     * @param {Vital.BodyGetRequest} request
      * @param {Body.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.body.get("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetBodyRequest,
+        request: Vital.BodyGetRequest,
         requestOptions?: Body.RequestOptions
     ): Promise<Vital.ClientBodyResponse> {
         const { provider, startDate, endDate } = request;
@@ -67,8 +69,8 @@ export class Body {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -127,19 +129,21 @@ export class Body {
      * Get raw Body summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetRawBodyRequest} request
+     * @param {Vital.BodyGetRawRequest} request
      * @param {Body.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.body.getRaw("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.GetRawBodyRequest,
+        request: Vital.BodyGetRawRequest,
         requestOptions?: Body.RequestOptions
     ): Promise<Vital.RawBody> {
         const { provider, startDate, endDate } = request;
@@ -162,8 +166,8 @@ export class Body {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

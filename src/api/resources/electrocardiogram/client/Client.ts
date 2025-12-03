@@ -32,19 +32,21 @@ export class Electrocardiogram {
      * Get electrocardiogram summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetElectrocardiogramRequest} request
+     * @param {Vital.ElectrocardiogramGetRequest} request
      * @param {Electrocardiogram.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.electrocardiogram.get("user_id", {
-     *         startDate: "2023-01-15"
+     *         startDate: "start_date",
+     *         endDate: "end_date",
+     *         provider: "provider"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetElectrocardiogramRequest,
+        request: Vital.ElectrocardiogramGetRequest,
         requestOptions?: Electrocardiogram.RequestOptions
     ): Promise<Vital.ClientFacingElectrocardiogramResponse> {
         const { startDate, endDate, provider } = request;
@@ -67,8 +69,8 @@ export class Electrocardiogram {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

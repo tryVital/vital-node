@@ -7,12 +7,13 @@ import * as Vital from "../../../../index";
 /**
  * @example
  *     {
+ *         teamId: "infer_from_context",
  *         userIds: ["user_ids"],
  *         provider: "oura"
  *     }
  */
 export interface BulkTriggerHistoricalPullBody {
-    teamId?: Vital.BulkTriggerHistoricalPullLinkRequestTeamId;
+    teamId?: Vital.LinkBulkTriggerHistoricalPullRequestTeamId;
     userIds: string[];
     provider: Vital.OAuthProviders;
     /**

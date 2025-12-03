@@ -7,6 +7,7 @@ import * as Vital from "../../../../index";
 /**
  * @example
  *     {
+ *         vitalLinkToken: "x-vital-link-token",
  *         email: "email",
  *         provider: "oura",
  *         authType: "password"

@@ -29,16 +29,20 @@ export class Insurance {
     constructor(protected readonly _options: Insurance.Options = {}) {}
 
     /**
-     * @param {Vital.SearchGetPayorInfoInsuranceRequest} request
+     * @param {Vital.InsuranceSearchGetPayorInfoRequest} request
      * @param {Insurance.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.insurance.searchGetPayorInfo()
+     *     await client.insurance.searchGetPayorInfo({
+     *         insuranceName: "insurance_name",
+     *         provider: "change_healthcare",
+     *         providerPayorId: "provider_payor_id"
+     *     })
      */
     public async searchGetPayorInfo(
-        request: Vital.SearchGetPayorInfoInsuranceRequest = {},
+        request: Vital.InsuranceSearchGetPayorInfoRequest = {},
         requestOptions?: Insurance.RequestOptions
     ): Promise<Vital.ClientFacingPayorSearchResponse[]> {
         const { insuranceName, provider, providerPayorId } = request;
@@ -64,8 +68,8 @@ export class Insurance {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -142,8 +146,8 @@ export class Insurance {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -199,7 +203,7 @@ export class Insurance {
     }
 
     /**
-     * @param {Vital.SearchDiagnosisInsuranceRequest} request
+     * @param {Vital.InsuranceSearchDiagnosisRequest} request
      * @param {Insurance.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -210,7 +214,7 @@ export class Insurance {
      *     })
      */
     public async searchDiagnosis(
-        request: Vital.SearchDiagnosisInsuranceRequest,
+        request: Vital.InsuranceSearchDiagnosisRequest,
         requestOptions?: Insurance.RequestOptions
     ): Promise<Vital.ClientFacingDiagnosisInformation[]> {
         const { diagnosisQuery } = request;
@@ -225,8 +229,8 @@ export class Insurance {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

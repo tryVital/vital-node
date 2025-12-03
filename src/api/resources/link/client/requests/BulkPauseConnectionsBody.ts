@@ -7,12 +7,13 @@ import * as Vital from "../../../../index";
 /**
  * @example
  *     {
+ *         teamId: "infer_from_context",
  *         userIds: ["user_ids"],
  *         provider: "oura"
  *     }
  */
 export interface BulkPauseConnectionsBody {
-    teamId?: Vital.BulkPauseLinkRequestTeamId;
+    teamId?: Vital.LinkBulkPauseRequestTeamId;
     userIds: string[];
     provider: Vital.OAuthProviders;
 }

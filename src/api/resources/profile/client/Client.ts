@@ -32,17 +32,19 @@ export class Profile {
      * Get profile for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetProfileRequest} request
+     * @param {Vital.ProfileGetRequest} request
      * @param {Profile.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.profile.get("user_id")
+     *     await client.profile.get("user_id", {
+     *         provider: "provider"
+     *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetProfileRequest = {},
+        request: Vital.ProfileGetRequest = {},
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.ClientFacingProfile> {
         const { provider } = request;
@@ -60,8 +62,8 @@ export class Profile {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -120,17 +122,19 @@ export class Profile {
      * Get raw profile for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetRawProfileRequest} request
+     * @param {Vital.ProfileGetRawRequest} request
      * @param {Profile.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.profile.getRaw("user_id")
+     *     await client.profile.getRaw("user_id", {
+     *         provider: "provider"
+     *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.GetRawProfileRequest = {},
+        request: Vital.ProfileGetRawRequest = {},
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.RawProfile> {
         const { provider } = request;
@@ -148,8 +152,8 @@ export class Profile {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

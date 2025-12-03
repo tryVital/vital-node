@@ -32,19 +32,21 @@ export class Activity {
      * Get activity summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetActivityRequest} request
+     * @param {Vital.ActivityGetRequest} request
      * @param {Activity.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.activity.get("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetActivityRequest,
+        request: Vital.ActivityGetRequest,
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.ClientActivityResponse> {
         const { provider, startDate, endDate } = request;
@@ -67,8 +69,8 @@ export class Activity {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -127,19 +129,21 @@ export class Activity {
      * Get raw activity summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetRawActivityRequest} request
+     * @param {Vital.ActivityGetRawRequest} request
      * @param {Activity.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.activity.getRaw("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.GetRawActivityRequest,
+        request: Vital.ActivityGetRawRequest,
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.RawActivity> {
         const { provider, startDate, endDate } = request;
@@ -162,8 +166,8 @@ export class Activity {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

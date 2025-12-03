@@ -32,19 +32,21 @@ export class Meal {
      * Get user's meals
      *
      * @param {string} userId
-     * @param {Vital.GetMealRequest} request
+     * @param {Vital.MealGetRequest} request
      * @param {Meal.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.meal.get("user_id", {
-     *         startDate: "start_date"
+     *         provider: "provider",
+     *         startDate: "start_date",
+     *         endDate: "end_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetMealRequest,
+        request: Vital.MealGetRequest,
         requestOptions?: Meal.RequestOptions
     ): Promise<Vital.ClientFacingMealResponse> {
         const { provider, startDate, endDate } = request;
@@ -67,8 +69,8 @@ export class Meal {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

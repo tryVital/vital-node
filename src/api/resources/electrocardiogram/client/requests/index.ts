@@ -1,1 +1,1 @@
-export { type GetElectrocardiogramRequest } from "./GetElectrocardiogramRequest";
+export { type ElectrocardiogramGetRequest } from "./ElectrocardiogramGetRequest";

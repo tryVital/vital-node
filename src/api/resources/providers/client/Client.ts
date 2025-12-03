@@ -31,16 +31,18 @@ export class Providers {
     /**
      * Get Provider list
      *
-     * @param {Vital.GetAllProvidersRequest} request
+     * @param {Vital.ProvidersGetAllRequest} request
      * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.providers.getAll()
+     *     await client.providers.getAll({
+     *         sourceType: "source_type"
+     *     })
      */
     public async getAll(
-        request: Vital.GetAllProvidersRequest = {},
+        request: Vital.ProvidersGetAllRequest = {},
         requestOptions?: Providers.RequestOptions
     ): Promise<Vital.ClientFacingProviderDetailed[]> {
         const { sourceType } = request;
@@ -58,8 +60,8 @@ export class Providers {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.500",
-                "User-Agent": "@tryvital/vital-node/3.1.500",
+                "X-Fern-SDK-Version": "3.1.501",
+                "User-Agent": "@tryvital/vital-node/3.1.501",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
