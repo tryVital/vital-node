@@ -32,21 +32,19 @@ export class Sleep {
      * Get sleep summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.SleepGetRequest} request
+     * @param {Vital.GetSleepRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.sleep.get("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.SleepGetRequest,
+        request: Vital.GetSleepRequest,
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientSleepResponse> {
         const { provider, startDate, endDate } = request;
@@ -129,21 +127,19 @@ export class Sleep {
      * Get raw sleep summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.SleepGetRawRequest} request
+     * @param {Vital.GetRawSleepRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.sleep.getRaw("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.SleepGetRawRequest,
+        request: Vital.GetRawSleepRequest,
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.RawSleep> {
         const { provider, startDate, endDate } = request;
@@ -226,6 +222,7 @@ export class Sleep {
      * Get Sleep stream for a user_id
      *
      * @param {string} sleepId - The Vital Sleep ID
+     * @param {Vital.GetStreamBySleepIdSleepRequest} request
      * @param {Sleep.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -235,6 +232,7 @@ export class Sleep {
      */
     public async getStreamBySleepId(
         sleepId: string,
+        request: Vital.GetStreamBySleepIdSleepRequest = {},
         requestOptions?: Sleep.RequestOptions
     ): Promise<Vital.ClientFacingSleepStream> {
         const _response = await core.fetcher({

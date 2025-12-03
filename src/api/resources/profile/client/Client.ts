@@ -32,19 +32,17 @@ export class Profile {
      * Get profile for user_id
      *
      * @param {string} userId
-     * @param {Vital.ProfileGetRequest} request
+     * @param {Vital.GetProfileRequest} request
      * @param {Profile.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.profile.get("user_id", {
-     *         provider: "provider"
-     *     })
+     *     await client.profile.get("user_id")
      */
     public async get(
         userId: string,
-        request: Vital.ProfileGetRequest = {},
+        request: Vital.GetProfileRequest = {},
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.ClientFacingProfile> {
         const { provider } = request;
@@ -122,19 +120,17 @@ export class Profile {
      * Get raw profile for user_id
      *
      * @param {string} userId
-     * @param {Vital.ProfileGetRawRequest} request
+     * @param {Vital.GetRawProfileRequest} request
      * @param {Profile.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.profile.getRaw("user_id", {
-     *         provider: "provider"
-     *     })
+     *     await client.profile.getRaw("user_id")
      */
     public async getRaw(
         userId: string,
-        request: Vital.ProfileGetRawRequest = {},
+        request: Vital.GetRawProfileRequest = {},
         requestOptions?: Profile.RequestOptions
     ): Promise<Vital.RawProfile> {
         const { provider } = request;

@@ -32,21 +32,19 @@ export class Meal {
      * Get user's meals
      *
      * @param {string} userId
-     * @param {Vital.MealGetRequest} request
+     * @param {Vital.GetMealRequest} request
      * @param {Meal.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.meal.get("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.MealGetRequest,
+        request: Vital.GetMealRequest,
         requestOptions?: Meal.RequestOptions
     ): Promise<Vital.ClientFacingMealResponse> {
         const { provider, startDate, endDate } = request;

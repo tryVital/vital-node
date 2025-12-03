@@ -1,1 +1,1 @@
-export { type ProvidersGetAllRequest } from "./ProvidersGetAllRequest";
+export { type GetAllProvidersRequest } from "./GetAllProvidersRequest";

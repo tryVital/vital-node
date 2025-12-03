@@ -7,12 +7,11 @@ import * as Vital from "../../../../index";
 /**
  * @example
  *     {
- *         teamId: "infer_from_context",
  *         provider: "oura"
  *     }
  */
 export interface BulkExportConnectionsBody {
-    teamId?: Vital.LinkBulkExportRequestTeamId;
+    teamId?: Vital.BulkExportLinkRequestTeamId;
     userIds?: string[];
     provider: Vital.OAuthProviders;
     nextToken?: string;

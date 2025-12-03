@@ -32,19 +32,17 @@ export class Devices {
      * Get Devices for user_id
      *
      * @param {string} userId
-     * @param {Vital.DevicesGetRawRequest} request
+     * @param {Vital.GetRawDevicesRequest} request
      * @param {Devices.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.devices.getRaw("user_id", {
-     *         provider: "provider"
-     *     })
+     *     await client.devices.getRaw("user_id")
      */
     public async getRaw(
         userId: string,
-        request: Vital.DevicesGetRawRequest = {},
+        request: Vital.GetRawDevicesRequest = {},
         requestOptions?: Devices.RequestOptions
     ): Promise<Vital.RawDevices> {
         const { provider } = request;

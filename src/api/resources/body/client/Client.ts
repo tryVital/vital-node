@@ -32,21 +32,19 @@ export class Body {
      * Get Body summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.BodyGetRequest} request
+     * @param {Vital.GetBodyRequest} request
      * @param {Body.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.body.get("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.BodyGetRequest,
+        request: Vital.GetBodyRequest,
         requestOptions?: Body.RequestOptions
     ): Promise<Vital.ClientBodyResponse> {
         const { provider, startDate, endDate } = request;
@@ -129,21 +127,19 @@ export class Body {
      * Get raw Body summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.BodyGetRawRequest} request
+     * @param {Vital.GetRawBodyRequest} request
      * @param {Body.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.body.getRaw("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.BodyGetRawRequest,
+        request: Vital.GetRawBodyRequest,
         requestOptions?: Body.RequestOptions
     ): Promise<Vital.RawBody> {
         const { provider, startDate, endDate } = request;

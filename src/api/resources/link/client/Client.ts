@@ -29,20 +29,16 @@ export class Link {
     constructor(protected readonly _options: Link.Options = {}) {}
 
     /**
-     * @param {Vital.LinkListBulkOpsRequest} request
+     * @param {Vital.ListBulkOpsLinkRequest} request
      * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.listBulkOps({
-     *         nextCursor: "next_cursor",
-     *         pageSize: 1,
-     *         teamId: "infer_from_context"
-     *     })
+     *     await client.link.listBulkOps()
      */
     public async listBulkOps(
-        request: Vital.LinkListBulkOpsRequest = {},
+        request: Vital.ListBulkOpsLinkRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.BulkOpsResponse> {
         const { nextCursor, pageSize, teamId } = request;
@@ -132,7 +128,6 @@ export class Link {
      *
      * @example
      *     await client.link.bulkImport({
-     *         teamId: "infer_from_context",
      *         provider: "oura",
      *         connections: [{
      *                 userId: "user_id",
@@ -227,7 +222,6 @@ export class Link {
      *
      * @example
      *     await client.link.bulkTriggerHistoricalPull({
-     *         teamId: "infer_from_context",
      *         userIds: ["user_ids"],
      *         provider: "oura"
      *     })
@@ -311,7 +305,6 @@ export class Link {
      *
      * @example
      *     await client.link.bulkExport({
-     *         teamId: "infer_from_context",
      *         provider: "oura"
      *     })
      */
@@ -399,7 +392,6 @@ export class Link {
      *
      * @example
      *     await client.link.bulkPause({
-     *         teamId: "infer_from_context",
      *         userIds: ["user_ids"],
      *         provider: "oura"
      *     })
@@ -645,19 +637,18 @@ export class Link {
     /**
      * Generate a token to invite a user of Vital mobile app to your team
      *
-     * @param {Vital.LinkCodeCreateRequest} request
+     * @param {Vital.CodeCreateLinkRequest} request
      * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.link.codeCreate({
-     *         userId: "user_id",
-     *         expiresAt: "2024-01-15T09:30:00Z"
+     *         userId: "user_id"
      *     })
      */
     public async codeCreate(
-        request: Vital.LinkCodeCreateRequest,
+        request: Vital.CodeCreateLinkRequest,
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.VitalTokenCreatedResponse> {
         const { userId, expiresAt } = request;
@@ -820,18 +811,16 @@ export class Link {
      * REQUEST_SOURCE: VITAL-LINK
      * Check link token state - can be hit continuously used as heartbeat
      *
-     * @param {Vital.LinkTokenStateRequest} request
+     * @param {Vital.TokenStateLinkRequest} request
      * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.tokenState({
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.tokenState()
      */
     public async tokenState(
-        request: Vital.LinkTokenStateRequest = {},
+        request: Vital.TokenStateLinkRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Record<string, unknown>> {
         const { vitalLinkToken } = request;
@@ -910,7 +899,6 @@ export class Link {
      *
      * @example
      *     await client.link.emailAuth({
-     *         vitalLinkToken: "x-vital-link-token",
      *         email: "email",
      *         provider: "oura",
      *         authType: "password"
@@ -989,7 +977,6 @@ export class Link {
      *
      * @example
      *     await client.link.passwordAuth({
-     *         vitalLinkToken: "x-vital-link-token",
      *         username: "username",
      *         password: "password",
      *         provider: "oura",
@@ -1063,19 +1050,17 @@ export class Link {
      * This endpoint generates an OAuth link for oauth provider
      *
      * @param {Vital.OAuthProviders} oauthProvider
-     * @param {Vital.LinkGenerateOauthLinkRequest} request
+     * @param {Vital.GenerateOauthLinkLinkRequest} request
      * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.generateOauthLink("oura", {
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.generateOauthLink("oura")
      */
     public async generateOauthLink(
         oauthProvider: Vital.OAuthProviders,
-        request: Vital.LinkGenerateOauthLinkRequest = {},
+        request: Vital.GenerateOauthLinkLinkRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.Source> {
         const { vitalLinkToken } = request;
@@ -1155,7 +1140,6 @@ export class Link {
      *
      * @example
      *     await client.link.connectPasswordProvider("whoop", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         username: "username",
      *         password: "password"
      *     })
@@ -1243,7 +1227,6 @@ export class Link {
      *
      * @example
      *     await client.link.completePasswordProviderMfa("whoop", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         mfaCode: "mfa_code"
      *     })
      */
@@ -1332,7 +1315,6 @@ export class Link {
      *
      * @example
      *     await client.link.connectEmailAuthProvider("freestyle_libre", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         email: "email"
      *     })
      */
@@ -1406,18 +1388,16 @@ export class Link {
     /**
      * GET List of all available providers given the generated link token.
      *
-     * @param {Vital.LinkGetAllProvidersRequest} request
+     * @param {Vital.GetAllProvidersLinkRequest} request
      * @param {Link.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.getAllProviders({
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.getAllProviders()
      */
     public async getAllProviders(
-        request: Vital.LinkGetAllProvidersRequest = {},
+        request: Vital.GetAllProvidersLinkRequest = {},
         requestOptions?: Link.RequestOptions
     ): Promise<Vital.SourceLink[]> {
         const { vitalLinkToken } = request;

@@ -1,1 +1,1 @@
-export { type MealGetRequest } from "./MealGetRequest";
+export { type GetMealRequest } from "./GetMealRequest";

@@ -39,7 +39,7 @@ export class Aggregate {
      *     await client.aggregate.queryOne("user_id", {
      *         timeframe: {
      *             type: "relative",
-     *             anchor: "anchor",
+     *             anchor: "2023-01-15",
      *             past: {
      *                 unit: "minute"
      *             }
@@ -128,6 +128,7 @@ export class Aggregate {
     /**
      * @param {string} userId
      * @param {string} queryIdOrSlug
+     * @param {Vital.GetResultTableForContinuousQueryAggregateRequest} request
      * @param {Aggregate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -138,6 +139,7 @@ export class Aggregate {
     public async getResultTableForContinuousQuery(
         userId: string,
         queryIdOrSlug: string,
+        request: Vital.GetResultTableForContinuousQueryAggregateRequest = {},
         requestOptions?: Aggregate.RequestOptions
     ): Promise<Vital.AggregationResult> {
         const _response = await core.fetcher({
@@ -210,21 +212,18 @@ export class Aggregate {
     /**
      * @param {string} userId
      * @param {string} queryIdOrSlug
-     * @param {Vital.AggregateGetTaskHistoryForContinuousQueryRequest} request
+     * @param {Vital.GetTaskHistoryForContinuousQueryAggregateRequest} request
      * @param {Aggregate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug", {
-     *         nextCursor: "next_cursor",
-     *         limit: 1
-     *     })
+     *     await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug")
      */
     public async getTaskHistoryForContinuousQuery(
         userId: string,
         queryIdOrSlug: string,
-        request: Vital.AggregateGetTaskHistoryForContinuousQueryRequest = {},
+        request: Vital.GetTaskHistoryForContinuousQueryAggregateRequest = {},
         requestOptions?: Aggregate.RequestOptions
     ): Promise<Vital.ContinuousQueryTaskHistoryResponse> {
         const { nextCursor, limit } = request;

@@ -31,18 +31,16 @@ export class Providers {
     /**
      * Get Provider list
      *
-     * @param {Vital.ProvidersGetAllRequest} request
+     * @param {Vital.GetAllProvidersRequest} request
      * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.providers.getAll({
-     *         sourceType: "source_type"
-     *     })
+     *     await client.providers.getAll()
      */
     public async getAll(
-        request: Vital.ProvidersGetAllRequest = {},
+        request: Vital.GetAllProvidersRequest = {},
         requestOptions?: Providers.RequestOptions
     ): Promise<Vital.ClientFacingProviderDetailed[]> {
         const { sourceType } = request;

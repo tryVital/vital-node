@@ -32,21 +32,19 @@ export class Activity {
      * Get activity summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.ActivityGetRequest} request
+     * @param {Vital.GetActivityRequest} request
      * @param {Activity.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.activity.get("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.ActivityGetRequest,
+        request: Vital.GetActivityRequest,
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.ClientActivityResponse> {
         const { provider, startDate, endDate } = request;
@@ -129,21 +127,19 @@ export class Activity {
      * Get raw activity summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.ActivityGetRawRequest} request
+     * @param {Vital.GetRawActivityRequest} request
      * @param {Activity.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.activity.getRaw("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.ActivityGetRawRequest,
+        request: Vital.GetRawActivityRequest,
         requestOptions?: Activity.RequestOptions
     ): Promise<Vital.RawActivity> {
         const { provider, startDate, endDate } = request;

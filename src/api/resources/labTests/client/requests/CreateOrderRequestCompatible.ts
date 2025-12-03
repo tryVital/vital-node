@@ -7,13 +7,11 @@ import * as Vital from "../../../../index";
 /**
  * @example
  *     {
- *         idempotencyKey: "X-Idempotency-Key",
- *         idempotencyError: "no-cache",
  *         userId: "user_id",
  *         patientDetails: {
  *             firstName: "first_name",
  *             lastName: "last_name",
- *             dob: "dob",
+ *             dob: "2023-01-15",
  *             gender: "female",
  *             phoneNumber: "phone_number",
  *             email: "email"

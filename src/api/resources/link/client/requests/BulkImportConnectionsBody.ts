@@ -7,7 +7,6 @@ import * as Vital from "../../../../index";
 /**
  * @example
  *     {
- *         teamId: "infer_from_context",
  *         provider: "oura",
  *         connections: [{
  *                 userId: "user_id",
@@ -19,7 +18,7 @@ import * as Vital from "../../../../index";
  *     }
  */
 export interface BulkImportConnectionsBody {
-    teamId?: Vital.LinkBulkImportRequestTeamId;
+    teamId?: Vital.BulkImportLinkRequestTeamId;
     provider: Vital.OAuthProviders;
     connections: Vital.ConnectionRecipe[];
     /**

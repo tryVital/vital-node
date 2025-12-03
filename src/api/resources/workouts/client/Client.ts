@@ -32,21 +32,19 @@ export class Workouts {
      * Get workout summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.WorkoutsGetRequest} request
+     * @param {Vital.GetWorkoutsRequest} request
      * @param {Workouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.workouts.get("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.WorkoutsGetRequest,
+        request: Vital.GetWorkoutsRequest,
         requestOptions?: Workouts.RequestOptions
     ): Promise<Vital.ClientWorkoutResponse> {
         const { provider, startDate, endDate } = request;
@@ -129,21 +127,19 @@ export class Workouts {
      * Get raw workout summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.WorkoutsGetRawRequest} request
+     * @param {Vital.GetRawWorkoutsRequest} request
      * @param {Workouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.workouts.getRaw("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "start_date"
      *     })
      */
     public async getRaw(
         userId: string,
-        request: Vital.WorkoutsGetRawRequest,
+        request: Vital.GetRawWorkoutsRequest,
         requestOptions?: Workouts.RequestOptions
     ): Promise<Vital.RawWorkout> {
         const { provider, startDate, endDate } = request;
@@ -224,6 +220,7 @@ export class Workouts {
 
     /**
      * @param {string} workoutId - The Vital ID for the workout
+     * @param {Vital.GetByWorkoutIdWorkoutsRequest} request
      * @param {Workouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -233,6 +230,7 @@ export class Workouts {
      */
     public async getByWorkoutId(
         workoutId: string,
+        request: Vital.GetByWorkoutIdWorkoutsRequest = {},
         requestOptions?: Workouts.RequestOptions
     ): Promise<Vital.ClientFacingStream> {
         const _response = await core.fetcher({

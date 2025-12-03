@@ -32,21 +32,19 @@ export class SleepCycle {
      * Get sleep cycle for user_id
      *
      * @param {string} userId
-     * @param {Vital.SleepCycleGetRequest} request
+     * @param {Vital.GetSleepCycleRequest} request
      * @param {SleepCycle.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.sleepCycle.get("user_id", {
-     *         startDate: "start_date",
-     *         endDate: "end_date",
-     *         provider: "provider"
+     *         startDate: "2023-01-15"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.SleepCycleGetRequest,
+        request: Vital.GetSleepCycleRequest,
         requestOptions?: SleepCycle.RequestOptions
     ): Promise<Vital.ClientSleepCycleResponse> {
         const { startDate, endDate, provider } = request;

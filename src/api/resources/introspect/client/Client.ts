@@ -29,22 +29,16 @@ export class Introspect {
     constructor(protected readonly _options: Introspect.Options = {}) {}
 
     /**
-     * @param {Vital.IntrospectGetUserResourcesRequest} request
+     * @param {Vital.GetUserResourcesIntrospectRequest} request
      * @param {Introspect.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.introspect.getUserResources({
-     *         userId: "user_id",
-     *         provider: "oura",
-     *         userLimit: 1,
-     *         cursor: "cursor",
-     *         nextCursor: "next_cursor"
-     *     })
+     *     await client.introspect.getUserResources()
      */
     public async getUserResources(
-        request: Vital.IntrospectGetUserResourcesRequest = {},
+        request: Vital.GetUserResourcesIntrospectRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserResourcesResponse> {
         const { userId, provider, userLimit, cursor, nextCursor } = request;
@@ -135,22 +129,16 @@ export class Introspect {
     }
 
     /**
-     * @param {Vital.IntrospectGetUserHistoricalPullsRequest} request
+     * @param {Vital.GetUserHistoricalPullsIntrospectRequest} request
      * @param {Introspect.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.introspect.getUserHistoricalPulls({
-     *         userId: "user_id",
-     *         provider: "oura",
-     *         userLimit: 1,
-     *         cursor: "cursor",
-     *         nextCursor: "next_cursor"
-     *     })
+     *     await client.introspect.getUserHistoricalPulls()
      */
     public async getUserHistoricalPulls(
-        request: Vital.IntrospectGetUserHistoricalPullsRequest = {},
+        request: Vital.GetUserHistoricalPullsIntrospectRequest = {},
         requestOptions?: Introspect.RequestOptions
     ): Promise<Vital.UserHistoricalPullsResponse> {
         const { userId, provider, userLimit, cursor, nextCursor } = request;
@@ -160,7 +148,7 @@ export class Introspect {
         }
 
         if (provider != null) {
-            _queryParams["provider"] = provider;
+            _queryParams["provider"] = typeof provider === "string" ? provider : JSON.stringify(provider);
         }
 
         if (userLimit != null) {

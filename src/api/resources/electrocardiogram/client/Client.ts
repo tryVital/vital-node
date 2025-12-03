@@ -32,21 +32,19 @@ export class Electrocardiogram {
      * Get electrocardiogram summary for user_id
      *
      * @param {string} userId
-     * @param {Vital.ElectrocardiogramGetRequest} request
+     * @param {Vital.GetElectrocardiogramRequest} request
      * @param {Electrocardiogram.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.electrocardiogram.get("user_id", {
-     *         startDate: "start_date",
-     *         endDate: "end_date",
-     *         provider: "provider"
+     *         startDate: "2023-01-15"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.ElectrocardiogramGetRequest,
+        request: Vital.GetElectrocardiogramRequest,
         requestOptions?: Electrocardiogram.RequestOptions
     ): Promise<Vital.ClientFacingElectrocardiogramResponse> {
         const { startDate, endDate, provider } = request;

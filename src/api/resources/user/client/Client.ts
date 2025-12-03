@@ -31,19 +31,16 @@ export class User {
     /**
      * GET All users for team.
      *
-     * @param {Vital.UserGetAllRequest} request
+     * @param {Vital.GetAllUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.user.getAll({
-     *         offset: 1,
-     *         limit: 1
-     *     })
+     *     await client.user.getAll()
      */
     public async getAll(
-        request: Vital.UserGetAllRequest = {},
+        request: Vital.GetAllUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.PaginatedUsersResponse> {
         const { offset, limit } = request;
@@ -271,6 +268,7 @@ export class User {
      * GET Users connected providers
      *
      * @param {string} userId
+     * @param {Vital.GetConnectedProvidersUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -280,6 +278,7 @@ export class User {
      */
     public async getConnectedProviders(
         userId: string,
+        request: Vital.GetConnectedProvidersUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Record<string, Vital.ClientFacingProviderWithStatus[]>> {
         const _response = await core.fetcher({
@@ -348,6 +347,7 @@ export class User {
 
     /**
      * @param {string} userId
+     * @param {Vital.GetLatestUserInfoUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -355,7 +355,11 @@ export class User {
      * @example
      *     await client.user.getLatestUserInfo("user_id")
      */
-    public async getLatestUserInfo(userId: string, requestOptions?: User.RequestOptions): Promise<Vital.UserInfo> {
+    public async getLatestUserInfo(
+        userId: string,
+        request: Vital.GetLatestUserInfoUserRequest = {},
+        requestOptions?: User.RequestOptions
+    ): Promise<Vital.UserInfo> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -443,7 +447,7 @@ export class User {
      *                 city: "city",
      *                 state: "state"
      *             },
-     *             dob: "dob",
+     *             dob: "2023-01-15",
      *             email: "email",
      *             phoneNumber: "phone_number"
      *         }
@@ -521,6 +525,7 @@ export class User {
 
     /**
      * @param {string} userId
+     * @param {Vital.GetLatestInsuranceUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -530,6 +535,7 @@ export class User {
      */
     public async getLatestInsurance(
         userId: string,
+        request: Vital.GetLatestInsuranceUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.ClientFacingInsurance> {
         const _response = await core.fetcher({
@@ -610,7 +616,7 @@ export class User {
      *         email: "email",
      *         phoneNumber: "phone_number",
      *         gender: "gender",
-     *         dob: "dob",
+     *         dob: "2023-01-15",
      *         address: {
      *             firstLine: "first_line",
      *             country: "country",
@@ -694,6 +700,7 @@ export class User {
      * GET user_id from client_user_id.
      *
      * @param {string} clientUserId - A unique ID representing the end user. Typically this will be a user ID number from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id.
+     * @param {Vital.GetByClientUserIdUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -703,6 +710,7 @@ export class User {
      */
     public async getByClientUserId(
         clientUserId: string,
+        request: Vital.GetByClientUserIdUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.ClientFacingUser> {
         const _response = await core.fetcher({
@@ -772,6 +780,7 @@ export class User {
     /**
      * @param {string} userId
      * @param {Vital.Providers} provider - Provider slug. e.g., `oura`, `fitbit`, `garmin`.
+     * @param {Vital.DeregisterProviderUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -782,6 +791,7 @@ export class User {
     public async deregisterProvider(
         userId: string,
         provider: Vital.Providers,
+        request: Vital.DeregisterProviderUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.UserSuccessResponse> {
         const _response = await core.fetcher({
@@ -852,6 +862,7 @@ export class User {
 
     /**
      * @param {string} userId
+     * @param {Vital.GetUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -859,7 +870,11 @@ export class User {
      * @example
      *     await client.user.get("user_id")
      */
-    public async get(userId: string, requestOptions?: User.RequestOptions): Promise<Vital.ClientFacingUser> {
+    public async get(
+        userId: string,
+        request: Vital.GetUserRequest = {},
+        requestOptions?: User.RequestOptions
+    ): Promise<Vital.ClientFacingUser> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -926,6 +941,7 @@ export class User {
 
     /**
      * @param {string} userId
+     * @param {Vital.DeleteUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -933,7 +949,11 @@ export class User {
      * @example
      *     await client.user.delete("user_id")
      */
-    public async delete(userId: string, requestOptions?: User.RequestOptions): Promise<Vital.UserSuccessResponse> {
+    public async delete(
+        userId: string,
+        request: Vital.DeleteUserRequest = {},
+        requestOptions?: User.RequestOptions
+    ): Promise<Vital.UserSuccessResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -1074,19 +1094,16 @@ export class User {
     }
 
     /**
-     * @param {Vital.UserUndoDeleteRequest} request
+     * @param {Vital.UndoDeleteUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.user.undoDelete({
-     *         userId: "user_id",
-     *         clientUserId: "client_user_id"
-     *     })
+     *     await client.user.undoDelete()
      */
     public async undoDelete(
-        request: Vital.UserUndoDeleteRequest = {},
+        request: Vital.UndoDeleteUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.UserSuccessResponse> {
         const { userId, clientUserId } = request;
@@ -1168,20 +1185,18 @@ export class User {
      * Trigger a manual refresh for a specific user
      *
      * @param {string} userId
-     * @param {Vital.UserRefreshRequest} request
+     * @param {Vital.RefreshUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.BadRequestError}
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.user.refresh("user_id", {
-     *         timeout: 1.1
-     *     })
+     *     await client.user.refresh("user_id")
      */
     public async refresh(
         userId: string,
-        request: Vital.UserRefreshRequest = {},
+        request: Vital.RefreshUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.UserRefreshSuccessResponse> {
         const { timeout } = request;
@@ -1259,6 +1274,7 @@ export class User {
 
     /**
      * @param {string} userId
+     * @param {Vital.GetDevicesUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -1266,7 +1282,11 @@ export class User {
      * @example
      *     await client.user.getDevices("user_id")
      */
-    public async getDevices(userId: string, requestOptions?: User.RequestOptions): Promise<Vital.ClientFacingDevice[]> {
+    public async getDevices(
+        userId: string,
+        request: Vital.GetDevicesUserRequest = {},
+        requestOptions?: User.RequestOptions
+    ): Promise<Vital.ClientFacingDevice[]> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -1334,6 +1354,7 @@ export class User {
     /**
      * @param {string} userId
      * @param {string} deviceId
+     * @param {Vital.GetDeviceUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -1344,6 +1365,7 @@ export class User {
     public async getDevice(
         userId: string,
         deviceId: string,
+        request: Vital.GetDeviceUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.ClientFacingDevice> {
         const _response = await core.fetcher({
@@ -1412,6 +1434,7 @@ export class User {
 
     /**
      * @param {string} userId
+     * @param {Vital.GetUserSignInTokenUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -1421,6 +1444,7 @@ export class User {
      */
     public async getUserSignInToken(
         userId: string,
+        request: Vital.GetUserSignInTokenUserRequest = {},
         requestOptions?: User.RequestOptions
     ): Promise<Vital.UserSignInTokenResponse> {
         const _response = await core.fetcher({

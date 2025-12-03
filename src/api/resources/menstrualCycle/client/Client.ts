@@ -30,21 +30,19 @@ export class MenstrualCycle {
 
     /**
      * @param {string} userId
-     * @param {Vital.MenstrualCycleGetRequest} request
+     * @param {Vital.GetMenstrualCycleRequest} request
      * @param {MenstrualCycle.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.menstrualCycle.get("user_id", {
-     *         provider: "provider",
-     *         startDate: "start_date",
-     *         endDate: "end_date"
+     *         startDate: "2023-01-15"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.MenstrualCycleGetRequest,
+        request: Vital.GetMenstrualCycleRequest,
         requestOptions?: MenstrualCycle.RequestOptions
     ): Promise<Vital.MenstrualCycleResponse> {
         const { provider, startDate, endDate } = request;

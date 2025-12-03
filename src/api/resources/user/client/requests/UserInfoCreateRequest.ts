@@ -12,7 +12,7 @@ import * as Vital from "../../../../index";
  *         email: "email",
  *         phoneNumber: "phone_number",
  *         gender: "gender",
- *         dob: "dob",
+ *         dob: "2023-01-15",
  *         address: {
  *             firstLine: "first_line",
  *             country: "country",
