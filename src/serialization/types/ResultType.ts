@@ -7,8 +7,8 @@ import * as Vital from "../../api/index";
 import * as core from "../../core";
 
 export const ResultType: core.serialization.Schema<serializers.ResultType.Raw, Vital.ResultType> =
-    core.serialization.enum_(["numeric", "range", "comment"]);
+    core.serialization.enum_(["numeric", "range", "comment", "coded_value"]);
 
 export declare namespace ResultType {
-    type Raw = "numeric" | "range" | "comment";
+    type Raw = "numeric" | "range" | "comment" | "coded_value";
 }

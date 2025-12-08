@@ -5,10 +5,11 @@
 /**
  * ℹ️ This enum is non-exhaustive.
  */
-export type ResultType = "numeric" | "range" | "comment";
+export type ResultType = "numeric" | "range" | "comment" | "coded_value";
 
 export const ResultType = {
     Numeric: "numeric",
     Range: "range",
     Comment: "comment",
+    CodedValue: "coded_value",
 } as const;
