@@ -41,7 +41,9 @@ export class LabReport {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file"), {})
+     *     await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file"), {
+     *         userId: "user_id"
+     *     })
      */
     public async parserCreateJob(
         file: File | fs.ReadStream | Blob,
@@ -50,6 +52,7 @@ export class LabReport {
     ): Promise<Vital.ParsingJob> {
         const _request = await core.newFormData();
         await _request.appendFile("file", file);
+        await _request.append("user_id", request.userId);
         if (request.needsHumanReview != null) {
             await _request.append("needs_human_review", request.needsHumanReview.toString());
         }
@@ -64,8 +67,8 @@ export class LabReport {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.505",
-                "User-Agent": "@tryvital/vital-node/3.1.505",
+                "X-Fern-SDK-Version": "3.1.506",
+                "User-Agent": "@tryvital/vital-node/3.1.506",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -150,8 +153,8 @@ export class LabReport {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.505",
-                "User-Agent": "@tryvital/vital-node/3.1.505",
+                "X-Fern-SDK-Version": "3.1.506",
+                "User-Agent": "@tryvital/vital-node/3.1.506",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -10,6 +10,7 @@ import { ParsedLabReportData } from "./ParsedLabReportData";
 
 export const ParsingJob: core.serialization.ObjectSchema<serializers.ParsingJob.Raw, Vital.ParsingJob> =
     core.serialization.object({
+        id: core.serialization.string(),
         jobId: core.serialization.property("job_id", core.serialization.string()),
         status: ParsingJobStatus,
         data: ParsedLabReportData.optional(),
@@ -19,6 +20,7 @@ export const ParsingJob: core.serialization.ObjectSchema<serializers.ParsingJob.
 
 export declare namespace ParsingJob {
     interface Raw {
+        id: string;
         job_id: string;
         status: ParsingJobStatus.Raw;
         data?: ParsedLabReportData.Raw | null;
