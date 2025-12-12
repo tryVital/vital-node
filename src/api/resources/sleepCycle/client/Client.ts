@@ -32,19 +32,19 @@ export class SleepCycle {
      * Get sleep cycle for user_id
      *
      * @param {string} userId
-     * @param {Vital.GetSleepCycleRequest} request
+     * @param {Vital.SleepCycleGetRequest} request
      * @param {SleepCycle.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.sleepCycle.get("user_id", {
-     *         startDate: "2023-01-15"
+     *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetSleepCycleRequest,
+        request: Vital.SleepCycleGetRequest,
         requestOptions?: SleepCycle.RequestOptions
     ): Promise<Vital.ClientSleepCycleResponse> {
         const { startDate, endDate, provider } = request;
@@ -67,8 +67,8 @@ export class SleepCycle {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

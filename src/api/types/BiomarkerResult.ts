@@ -10,6 +10,8 @@ import * as Vital from "../index";
 export interface BiomarkerResult {
     name: string;
     slug?: string;
+    /** Deprecated: Use 'result' (string) and `type` (enum) instead. */
+    value?: number;
     result: string;
     type: Vital.ResultType;
     unit?: string;

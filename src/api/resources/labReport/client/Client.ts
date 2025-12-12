@@ -41,9 +41,7 @@ export class LabReport {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file"), {
-     *         userId: "user_id"
-     *     })
+     *     await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file"), {})
      */
     public async parserCreateJob(
         file: File | fs.ReadStream | Blob,
@@ -52,7 +50,6 @@ export class LabReport {
     ): Promise<Vital.ParsingJob> {
         const _request = await core.newFormData();
         await _request.appendFile("file", file);
-        await _request.append("user_id", request.userId);
         if (request.needsHumanReview != null) {
             await _request.append("needs_human_review", request.needsHumanReview.toString());
         }
@@ -67,8 +64,8 @@ export class LabReport {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -131,7 +128,6 @@ export class LabReport {
      *     ParseLabResultJobResponse with job status and parsed data (if complete)
      *
      * @param {string} jobId
-     * @param {Vital.ParserGetJobLabReportRequest} request
      * @param {LabReport.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -139,11 +135,7 @@ export class LabReport {
      * @example
      *     await client.labReport.parserGetJob("job_id")
      */
-    public async parserGetJob(
-        jobId: string,
-        request: Vital.ParserGetJobLabReportRequest = {},
-        requestOptions?: LabReport.RequestOptions
-    ): Promise<Vital.ParsingJob> {
+    public async parserGetJob(jobId: string, requestOptions?: LabReport.RequestOptions): Promise<Vital.ParsingJob> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -153,8 +145,8 @@ export class LabReport {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

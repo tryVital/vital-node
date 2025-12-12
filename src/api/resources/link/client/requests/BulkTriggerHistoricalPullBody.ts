@@ -12,7 +12,7 @@ import * as Vital from "../../../../index";
  *     }
  */
 export interface BulkTriggerHistoricalPullBody {
-    teamId?: Vital.BulkTriggerHistoricalPullLinkRequestTeamId;
+    teamId?: Vital.LinkBulkTriggerHistoricalPullRequestTeamId;
     userIds: string[];
     provider: Vital.OAuthProviders;
     /**
