@@ -31,7 +31,7 @@ export class Team {
     /**
      * Post teams.
      *
-     * @param {Vital.GetLinkConfigTeamRequest} request
+     * @param {Vital.TeamGetLinkConfigRequest} request
      * @param {Team.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -40,7 +40,7 @@ export class Team {
      *     await client.team.getLinkConfig()
      */
     public async getLinkConfig(
-        request: Vital.GetLinkConfigTeamRequest = {},
+        request: Vital.TeamGetLinkConfigRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Record<string, unknown>> {
         const { vitalLinkToken } = request;
@@ -53,8 +53,8 @@ export class Team {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 "x-vital-link-token": vitalLinkToken != null ? vitalLinkToken : undefined,
@@ -113,7 +113,6 @@ export class Team {
      * Get team.
      *
      * @param {string} teamId
-     * @param {Vital.GetTeamRequest} request
      * @param {Team.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -121,11 +120,7 @@ export class Team {
      * @example
      *     await client.team.get("team_id")
      */
-    public async get(
-        teamId: string,
-        request: Vital.GetTeamRequest = {},
-        requestOptions?: Team.RequestOptions
-    ): Promise<Vital.ClientFacingTeam> {
+    public async get(teamId: string, requestOptions?: Team.RequestOptions): Promise<Vital.ClientFacingTeam> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.VitalEnvironment.Production,
@@ -135,8 +130,8 @@ export class Team {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -193,7 +188,7 @@ export class Team {
     /**
      * Search team users by user_id
      *
-     * @param {Vital.GetUserByIdTeamRequest} request
+     * @param {Vital.TeamGetUserByIdRequest} request
      * @param {Team.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -202,7 +197,7 @@ export class Team {
      *     await client.team.getUserById()
      */
     public async getUserById(
-        request: Vital.GetUserByIdTeamRequest = {},
+        request: Vital.TeamGetUserByIdRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Vital.ClientFacingUser[]> {
         const { queryId } = request;
@@ -220,8 +215,8 @@ export class Team {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -292,8 +287,8 @@ export class Team {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -338,7 +333,7 @@ export class Team {
     /**
      * GET source priorities.
      *
-     * @param {Vital.GetSourcePrioritiesTeamRequest} request
+     * @param {Vital.TeamGetSourcePrioritiesRequest} request
      * @param {Team.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -347,7 +342,7 @@ export class Team {
      *     await client.team.getSourcePriorities()
      */
     public async getSourcePriorities(
-        request: Vital.GetSourcePrioritiesTeamRequest = {},
+        request: Vital.TeamGetSourcePrioritiesRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Record<string, unknown>[]> {
         const { dataType } = request;
@@ -365,8 +360,8 @@ export class Team {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -439,8 +434,8 @@ export class Team {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -484,7 +479,6 @@ export class Team {
 
     /**
      * @param {string} teamId
-     * @param {Vital.GetPhysiciansTeamRequest} request
      * @param {Team.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
@@ -494,7 +488,6 @@ export class Team {
      */
     public async getPhysicians(
         teamId: string,
-        request: Vital.GetPhysiciansTeamRequest = {},
         requestOptions?: Team.RequestOptions
     ): Promise<Vital.ClientFacingPhysician[]> {
         const _response = await core.fetcher({
@@ -506,8 +499,8 @@ export class Team {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

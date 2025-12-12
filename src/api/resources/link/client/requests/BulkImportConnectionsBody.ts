@@ -18,7 +18,7 @@ import * as Vital from "../../../../index";
  *     }
  */
 export interface BulkImportConnectionsBody {
-    teamId?: Vital.BulkImportLinkRequestTeamId;
+    teamId?: Vital.LinkBulkImportRequestTeamId;
     provider: Vital.OAuthProviders;
     connections: Vital.ConnectionRecipe[];
     /**

@@ -10,8 +10,11 @@ export const LoincMatch: core.serialization.ObjectSchema<serializers.LoincMatch.
     core.serialization.object({
         loincCode: core.serialization.property("loinc_code", core.serialization.string()),
         loincName: core.serialization.property("loinc_name", core.serialization.string()),
-        displayName: core.serialization.property("display_name", core.serialization.string().optional()),
-        aliases: core.serialization.list(core.serialization.string()).optional(),
+        loincComponent: core.serialization.property("loinc_component", core.serialization.string()),
+        sampleType: core.serialization.property(
+            "sample_type",
+            core.serialization.list(core.serialization.string()).optional()
+        ),
         confidenceScore: core.serialization.property("confidence_score", core.serialization.number()),
     });
 
@@ -19,8 +22,8 @@ export declare namespace LoincMatch {
     interface Raw {
         loinc_code: string;
         loinc_name: string;
-        display_name?: string | null;
-        aliases?: string[] | null;
+        loinc_component: string;
+        sample_type?: string[] | null;
         confidence_score: number;
     }
 }

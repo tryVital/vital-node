@@ -5,7 +5,6 @@
 import * as Vital from "../index";
 
 export interface ParsingJob {
-    id: string;
     jobId: string;
     status: Vital.ParsingJobStatus;
     data?: Vital.ParsedLabReportData;

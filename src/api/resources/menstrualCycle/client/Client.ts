@@ -30,19 +30,19 @@ export class MenstrualCycle {
 
     /**
      * @param {string} userId
-     * @param {Vital.GetMenstrualCycleRequest} request
+     * @param {Vital.MenstrualCycleGetRequest} request
      * @param {MenstrualCycle.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.menstrualCycle.get("user_id", {
-     *         startDate: "2023-01-15"
+     *         startDate: "start_date"
      *     })
      */
     public async get(
         userId: string,
-        request: Vital.GetMenstrualCycleRequest,
+        request: Vital.MenstrualCycleGetRequest,
         requestOptions?: MenstrualCycle.RequestOptions
     ): Promise<Vital.MenstrualCycleResponse> {
         const { provider, startDate, endDate } = request;
@@ -65,8 +65,8 @@ export class MenstrualCycle {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@tryvital/vital-node",
-                "X-Fern-SDK-Version": "3.1.511",
-                "User-Agent": "@tryvital/vital-node/3.1.511",
+                "X-Fern-SDK-Version": "3.1.512",
+                "User-Agent": "@tryvital/vital-node/3.1.512",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

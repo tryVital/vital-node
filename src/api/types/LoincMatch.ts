@@ -5,7 +5,7 @@
 export interface LoincMatch {
     loincCode: string;
     loincName: string;
-    displayName?: string;
-    aliases?: string[];
+    loincComponent: string;
+    sampleType?: string[];
     confidenceScore: number;
 }

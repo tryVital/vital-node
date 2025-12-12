@@ -1,2 +1,2 @@
-export { type GetBodyRequest } from "./GetBodyRequest";
-export { type GetRawBodyRequest } from "./GetRawBodyRequest";
+export { type BodyGetRequest } from "./BodyGetRequest";
+export { type BodyGetRawRequest } from "./BodyGetRawRequest";

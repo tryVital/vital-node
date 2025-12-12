@@ -4,11 +4,8 @@
 
 /**
  * @example
- *     {
- *         userId: "user_id"
- *     }
+ *     {}
  */
 export interface BodyCreateLabReportParserJob {
-    userId: string;
     needsHumanReview?: boolean;
 }
