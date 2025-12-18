@@ -517,6 +517,8 @@ export * from "./Placeholder";
 export * from "./Png";
 export * from "./PostOrderResponse";
 export * from "./PriorityResource";
+export * from "./ProfileColumnExprProfile";
+export * from "./ProfileColumnExpr";
 export * from "./ProfileInDb";
 export * from "./ProviderConnectionCreated";
 export * from "./ProviderConnectionErrorErrorType";

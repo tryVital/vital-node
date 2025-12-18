@@ -12,6 +12,7 @@ import { ActivityColumnExpr } from "./ActivityColumnExpr";
 import { WorkoutColumnExpr } from "./WorkoutColumnExpr";
 import { BodyColumnExpr } from "./BodyColumnExpr";
 import { MealColumnExpr } from "./MealColumnExpr";
+import { ProfileColumnExpr } from "./ProfileColumnExpr";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr";
 import { AsleepAtValueMacroExpr } from "./AsleepAtValueMacroExpr";
@@ -35,6 +36,7 @@ export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectI
         WorkoutColumnExpr,
         BodyColumnExpr,
         MealColumnExpr,
+        ProfileColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
         AsleepAtValueMacroExpr,
@@ -59,6 +61,7 @@ export declare namespace QuerySelectItem {
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
         | MealColumnExpr.Raw
+        | ProfileColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
         | AsleepAtValueMacroExpr.Raw
