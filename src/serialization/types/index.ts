@@ -618,6 +618,8 @@ export * from "./Placeholder.js";
 export * from "./Png.js";
 export * from "./PostOrderResponse.js";
 export * from "./PriorityResource.js";
+export * from "./ProfileColumnExpr.js";
+export * from "./ProfileColumnExprProfile.js";
 export * from "./ProfileInDb.js";
 export * from "./ProviderConnectionCreated.js";
 export * from "./ProviderConnectionError.js";

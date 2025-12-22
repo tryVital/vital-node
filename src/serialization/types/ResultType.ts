@@ -5,8 +5,8 @@ import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
 
 export const ResultType: core.serialization.Schema<serializers.ResultType.Raw, Vital.ResultType> =
-    core.serialization.enum_(["numeric", "range", "comment"]);
+    core.serialization.enum_(["numeric", "range", "comment", "coded_value"]);
 
 export declare namespace ResultType {
-    export type Raw = "numeric" | "range" | "comment";
+    export type Raw = "numeric" | "range" | "comment" | "coded_value";
 }

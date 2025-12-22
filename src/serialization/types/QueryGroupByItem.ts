@@ -15,6 +15,7 @@ import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr.js";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr.js";
 import { MealColumnExpr } from "./MealColumnExpr.js";
 import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr.js";
+import { ProfileColumnExpr } from "./ProfileColumnExpr.js";
 import { SleepColumnExpr } from "./SleepColumnExpr.js";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr.js";
 import { SourceColumnExpr } from "./SourceColumnExpr.js";
@@ -32,6 +33,7 @@ export const QueryGroupByItem: core.serialization.Schema<serializers.QueryGroupB
         WorkoutColumnExpr,
         BodyColumnExpr,
         MealColumnExpr,
+        ProfileColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
         AsleepAtValueMacroExpr,
@@ -55,6 +57,7 @@ export declare namespace QueryGroupByItem {
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
         | MealColumnExpr.Raw
+        | ProfileColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
         | AsleepAtValueMacroExpr.Raw

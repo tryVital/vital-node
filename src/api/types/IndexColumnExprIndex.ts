@@ -7,6 +7,7 @@ export const IndexColumnExprIndex = {
     Workout: "workout",
     Body: "body",
     Meal: "meal",
+    Profile: "profile",
     Timeseries: "timeseries",
 } as const;
 export type IndexColumnExprIndex = (typeof IndexColumnExprIndex)[keyof typeof IndexColumnExprIndex];

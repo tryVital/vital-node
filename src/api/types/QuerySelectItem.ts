@@ -10,6 +10,7 @@ export type QuerySelectItem =
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr
     | Vital.MealColumnExpr
+    | Vital.ProfileColumnExpr
     | Vital.SleepScoreValueMacroExpr
     | Vital.ChronotypeValueMacroExpr
     | Vital.AsleepAtValueMacroExpr

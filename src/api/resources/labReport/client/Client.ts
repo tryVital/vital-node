@@ -35,7 +35,9 @@ export class LabReportClient {
      *
      * @example
      *     import { createReadStream } from "fs";
-     *     await client.labReport.parserCreateJob(createReadStream("path/to/file"), {})
+     *     await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
+     *         userId: "user_id"
+     *     })
      */
     public parserCreateJob(
         file: core.file.Uploadable,
@@ -52,6 +54,7 @@ export class LabReportClient {
     ): Promise<core.WithRawResponse<Vital.ParsingJob>> {
         const _request = await core.newFormData();
         await _request.appendFile("file", file);
+        _request.append("user_id", request.userId);
         if (request.needsHumanReview != null) {
             _request.append("needs_human_review", request.needsHumanReview.toString());
         }

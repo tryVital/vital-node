@@ -12127,7 +12127,9 @@ and starts the ParseLabReport. Returns a generated job_id.
 <dd>
 
 ```typescript
-await client.labReport.parserCreateJob(createReadStream("path/to/file"), {});
+await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
+    userId: "user_id"
+});
 
 ```
 </dd>

@@ -10,6 +10,7 @@ describe("LabReportClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            id: "id",
             job_id: "job_id",
             status: "upload_pending",
             data: {
@@ -37,6 +38,7 @@ describe("LabReportClient", () => {
 
         const response = await client.labReport.parserGetJob("job_id");
         expect(response).toEqual({
+            id: "id",
             jobId: "job_id",
             status: "upload_pending",
             data: {

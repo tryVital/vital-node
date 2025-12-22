@@ -3,7 +3,7 @@
 export interface LoincMatch {
     loincCode: string;
     loincName: string;
-    loincComponent: string;
-    sampleType?: string[];
+    displayName?: string;
+    aliases?: string[];
     confidenceScore: number;
 }

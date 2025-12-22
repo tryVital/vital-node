@@ -3,6 +3,7 @@
 import type * as Vital from "../index.js";
 
 export interface ParsingJob {
+    id: string;
     jobId: string;
     status: Vital.ParsingJobStatus;
     data?: Vital.ParsedLabReportData;

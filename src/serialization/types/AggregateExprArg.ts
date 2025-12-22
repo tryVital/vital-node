@@ -14,6 +14,7 @@ import { IndexColumnExpr } from "./IndexColumnExpr.js";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr.js";
 import { MealColumnExpr } from "./MealColumnExpr.js";
 import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr.js";
+import { ProfileColumnExpr } from "./ProfileColumnExpr.js";
 import { SleepColumnExpr } from "./SleepColumnExpr.js";
 import { SleepScoreValueMacroExpr } from "./SleepScoreValueMacroExpr.js";
 import { TemperatureTimeseriesExpr } from "./TemperatureTimeseriesExpr.js";
@@ -28,6 +29,7 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         WorkoutColumnExpr,
         BodyColumnExpr,
         MealColumnExpr,
+        ProfileColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
         AsleepAtValueMacroExpr,
@@ -49,6 +51,7 @@ export declare namespace AggregateExprArg {
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
         | MealColumnExpr.Raw
+        | ProfileColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
         | AsleepAtValueMacroExpr.Raw

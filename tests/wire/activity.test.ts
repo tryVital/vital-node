@@ -12,7 +12,7 @@ describe("ActivityClient", () => {
         const rawResponseBody = {
             activity: [
                 {
-                    id: "id",
+                    id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                     user_id: "1449752e-0d8a-40e0-9206-91ab099b2537",
                     date: "2023-03-22T00:00:00Z",
                     calendar_date: "2023-03-22",
@@ -52,7 +52,7 @@ describe("ActivityClient", () => {
         expect(response).toEqual({
             activity: [
                 {
-                    id: "id",
+                    id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                     userId: "1449752e-0d8a-40e0-9206-91ab099b2537",
                     date: new Date("2023-03-22T00:00:00.000Z"),
                     calendarDate: "2023-03-22",

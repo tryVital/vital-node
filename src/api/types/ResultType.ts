@@ -5,5 +5,6 @@ export const ResultType = {
     Numeric: "numeric",
     Range: "range",
     Comment: "comment",
+    CodedValue: "coded_value",
 } as const;
 export type ResultType = (typeof ResultType)[keyof typeof ResultType];
