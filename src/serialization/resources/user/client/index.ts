@@ -1,3 +1,3 @@
-export * as getConnectedProviders from "./getConnectedProviders";
-export * as getDevices from "./getDevices";
-export * from "./requests";
+export * as getConnectedProviders from "./getConnectedProviders.js";
+export * as getDevices from "./getDevices.js";
+export * from "./requests/index.js";
