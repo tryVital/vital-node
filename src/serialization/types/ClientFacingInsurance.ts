@@ -21,6 +21,7 @@ export const ClientFacingInsurance: core.serialization.ObjectSchema<
     company: CompanyDetails,
     groupId: core.serialization.property("group_id", core.serialization.string().optional()),
     guarantor: GuarantorDetails.optional(),
+    isPrimary: core.serialization.property("is_primary", core.serialization.boolean().optional()),
 });
 
 export declare namespace ClientFacingInsurance {
@@ -32,5 +33,6 @@ export declare namespace ClientFacingInsurance {
         company: CompanyDetails.Raw;
         group_id?: string | null;
         guarantor?: GuarantorDetails.Raw | null;
+        is_primary?: boolean | null;
     }
 }

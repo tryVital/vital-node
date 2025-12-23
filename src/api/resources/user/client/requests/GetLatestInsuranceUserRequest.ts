@@ -6,4 +6,6 @@
  * @example
  *     {}
  */
-export interface GetLatestInsuranceUserRequest {}
+export interface GetLatestInsuranceUserRequest {
+    isPrimary?: boolean;
+}
