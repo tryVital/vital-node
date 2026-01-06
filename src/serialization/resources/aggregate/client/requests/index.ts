@@ -1,1 +1,1 @@
-export { QueryBatch } from "./QueryBatch";
+export { QueryBatch } from "./QueryBatch.js";
