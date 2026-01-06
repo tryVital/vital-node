@@ -1,3 +1,3 @@
-export { type SearchGetPayorInfoInsuranceRequest } from "./SearchGetPayorInfoInsuranceRequest";
-export { type PayorSearchRequest } from "./PayorSearchRequest";
-export { type SearchDiagnosisInsuranceRequest } from "./SearchDiagnosisInsuranceRequest";
+export type { InsuranceSearchDiagnosisRequest } from "./InsuranceSearchDiagnosisRequest.js";
+export type { InsuranceSearchGetPayorInfoRequest } from "./InsuranceSearchGetPayorInfoRequest.js";
+export type { PayorSearchRequest } from "./PayorSearchRequest.js";

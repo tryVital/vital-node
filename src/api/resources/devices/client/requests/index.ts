@@ -1,1 +1,1 @@
-export { type GetRawDevicesRequest } from "./GetRawDevicesRequest";
+export type { DevicesGetRawRequest } from "./DevicesGetRawRequest.js";
