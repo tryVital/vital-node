@@ -32,4 +32,5 @@ export interface CreateInsuranceRequest {
     relationship: Vital.ResponsibleRelationship;
     insured: Vital.VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails;
     guarantor?: Vital.GuarantorDetails;
+    isPrimary?: boolean;
 }

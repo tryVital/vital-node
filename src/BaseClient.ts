@@ -51,8 +51,8 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
         {
             "X-Fern-Language": "JavaScript",
             "X-Fern-SDK-Name": "@tryvital/vital-node",
-            "X-Fern-SDK-Version": "3.1.529",
-            "User-Agent": "@tryvital/vital-node/3.1.529",
+            "X-Fern-SDK-Version": "3.1.544",
+            "User-Agent": "@tryvital/vital-node/3.1.544",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
         },

@@ -17,6 +17,7 @@ export const CreateInsuranceRequest: core.serialization.Schema<
     relationship: ResponsibleRelationship,
     insured: VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails,
     guarantor: GuarantorDetails.optional(),
+    isPrimary: core.serialization.property("is_primary", core.serialization.boolean().optional()),
 });
 
 export declare namespace CreateInsuranceRequest {
@@ -27,5 +28,6 @@ export declare namespace CreateInsuranceRequest {
         relationship: ResponsibleRelationship.Raw;
         insured: VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails.Raw;
         guarantor?: GuarantorDetails.Raw | null;
+        is_primary?: boolean | null;
     }
 }

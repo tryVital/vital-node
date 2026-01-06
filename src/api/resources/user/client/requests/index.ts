@@ -2,6 +2,7 @@ export type { CreateInsuranceRequest } from "./CreateInsuranceRequest.js";
 export type { CreateUserPortalUrlBody } from "./CreateUserPortalUrlBody.js";
 export type { UserCreateBody } from "./UserCreateBody.js";
 export type { UserGetAllRequest } from "./UserGetAllRequest.js";
+export type { UserGetLatestInsuranceRequest } from "./UserGetLatestInsuranceRequest.js";
 export type { UserInfoCreateRequest } from "./UserInfoCreateRequest.js";
 export type { UserPatchBody } from "./UserPatchBody.js";
 export type { UserRefreshRequest } from "./UserRefreshRequest.js";

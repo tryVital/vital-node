@@ -7676,7 +7676,7 @@ await client.user.createInsurance("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestInsurance</a>(user_id) -> Vital.ClientFacingInsurance</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestInsurance</a>(user_id, { ...params }) -> Vital.ClientFacingInsurance</code></summary>
 <dl>
 <dd>
 
@@ -7689,7 +7689,9 @@ await client.user.createInsurance("user_id", {
 <dd>
 
 ```typescript
-await client.user.getLatestInsurance("user_id");
+await client.user.getLatestInsurance("user_id", {
+    isPrimary: true
+});
 
 ```
 </dd>
@@ -7706,6 +7708,14 @@ await client.user.getLatestInsurance("user_id");
 <dd>
 
 **user_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vital.UserGetLatestInsuranceRequest` 
     
 </dd>
 </dl>

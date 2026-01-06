@@ -532,24 +532,35 @@ export class UserClient {
 
     /**
      * @param {string} user_id
+     * @param {Vital.UserGetLatestInsuranceRequest} request
      * @param {UserClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.user.getLatestInsurance("user_id")
+     *     await client.user.getLatestInsurance("user_id", {
+     *         isPrimary: true
+     *     })
      */
     public getLatestInsurance(
         user_id: string,
+        request: Vital.UserGetLatestInsuranceRequest = {},
         requestOptions?: UserClient.RequestOptions,
     ): core.HttpResponsePromise<Vital.ClientFacingInsurance> {
-        return core.HttpResponsePromise.fromPromise(this.__getLatestInsurance(user_id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getLatestInsurance(user_id, request, requestOptions));
     }
 
     private async __getLatestInsurance(
         user_id: string,
+        request: Vital.UserGetLatestInsuranceRequest = {},
         requestOptions?: UserClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingInsurance>> {
+        const { isPrimary } = request;
+        const _queryParams: Record<string, unknown> = {};
+        if (isPrimary != null) {
+            _queryParams.is_primary = isPrimary;
+        }
+
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -565,7 +576,7 @@ export class UserClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
