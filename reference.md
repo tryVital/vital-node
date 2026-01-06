@@ -9439,7 +9439,7 @@ await client.labTests.getMarkersForLabTest("lab_test_id", {
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getMarkersByLabAndProviderId</a>(lab_id, provider_id, { ...params }) -> Vital.ClientFacingMarker</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getMarkersByLabAndProviderId</a>(provider_id, lab_id, { ...params }) -> Vital.ClientFacingMarker</code></summary>
 <dl>
 <dd>
 
@@ -9466,7 +9466,7 @@ GET a specific marker for the given lab and provider_id
 <dd>
 
 ```typescript
-await client.labTests.getMarkersByLabAndProviderId(1, "provider_id", {
+await client.labTests.getMarkersByLabAndProviderId("provider_id", 1, {
     labAccountId: "lab_account_id"
 });
 
@@ -9484,7 +9484,7 @@ await client.labTests.getMarkersByLabAndProviderId(1, "provider_id", {
 <dl>
 <dd>
 
-**lab_id:** `number` 
+**provider_id:** `string` 
     
 </dd>
 </dl>
@@ -9492,7 +9492,7 @@ await client.labTests.getMarkersByLabAndProviderId(1, "provider_id", {
 <dl>
 <dd>
 
-**provider_id:** `string` 
+**lab_id:** `number` 
     
 </dd>
 </dl>

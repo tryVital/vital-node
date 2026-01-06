@@ -758,32 +758,32 @@ export class LabTestsClient {
     /**
      * GET a specific marker for the given lab and provider_id
      *
-     * @param {number} lab_id
      * @param {string} provider_id
+     * @param {number} lab_id
      * @param {Vital.LabTestsGetMarkersByLabAndProviderIdRequest} request
      * @param {LabTestsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.labTests.getMarkersByLabAndProviderId(1, "provider_id", {
+     *     await client.labTests.getMarkersByLabAndProviderId("provider_id", 1, {
      *         labAccountId: "lab_account_id"
      *     })
      */
     public getMarkersByLabAndProviderId(
-        lab_id: number,
         provider_id: string,
+        lab_id: number,
         request: Vital.LabTestsGetMarkersByLabAndProviderIdRequest = {},
         requestOptions?: LabTestsClient.RequestOptions,
     ): core.HttpResponsePromise<Vital.ClientFacingMarker> {
         return core.HttpResponsePromise.fromPromise(
-            this.__getMarkersByLabAndProviderId(lab_id, provider_id, request, requestOptions),
+            this.__getMarkersByLabAndProviderId(provider_id, lab_id, request, requestOptions),
         );
     }
 
     private async __getMarkersByLabAndProviderId(
-        lab_id: number,
         provider_id: string,
+        lab_id: number,
         request: Vital.LabTestsGetMarkersByLabAndProviderIdRequest = {},
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingMarker>> {
