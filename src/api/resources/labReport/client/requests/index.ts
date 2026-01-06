@@ -1,2 +1,1 @@
-export { type BodyCreateLabReportParserJob } from "./BodyCreateLabReportParserJob";
-export { type ParserGetJobLabReportRequest } from "./ParserGetJobLabReportRequest";
+export type { BodyCreateLabReportParserJob } from "./BodyCreateLabReportParserJob.js";
