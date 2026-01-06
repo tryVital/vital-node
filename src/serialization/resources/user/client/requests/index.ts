@@ -1,5 +1,5 @@
-export { UserCreateBody } from "./UserCreateBody";
-export { CreateInsuranceRequest } from "./CreateInsuranceRequest";
-export { UserInfoCreateRequest } from "./UserInfoCreateRequest";
-export { UserPatchBody } from "./UserPatchBody";
-export { CreateUserPortalUrlBody } from "./CreateUserPortalUrlBody";
+export { CreateInsuranceRequest } from "./CreateInsuranceRequest.js";
+export { CreateUserPortalUrlBody } from "./CreateUserPortalUrlBody.js";
+export { UserCreateBody } from "./UserCreateBody.js";
+export { UserInfoCreateRequest } from "./UserInfoCreateRequest.js";
+export { UserPatchBody } from "./UserPatchBody.js";

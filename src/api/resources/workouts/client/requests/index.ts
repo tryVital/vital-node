@@ -1,3 +1,2 @@
-export { type GetWorkoutsRequest } from "./GetWorkoutsRequest";
-export { type GetRawWorkoutsRequest } from "./GetRawWorkoutsRequest";
-export { type GetByWorkoutIdWorkoutsRequest } from "./GetByWorkoutIdWorkoutsRequest";
+export type { WorkoutsGetRawRequest } from "./WorkoutsGetRawRequest.js";
+export type { WorkoutsGetRequest } from "./WorkoutsGetRequest.js";
