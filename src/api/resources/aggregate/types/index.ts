@@ -1,1 +1,1 @@
-export * from "./QueryBatchTimeframe";
+export * from "./QueryBatchTimeframe.js";
