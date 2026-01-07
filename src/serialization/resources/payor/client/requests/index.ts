@@ -1,1 +1,1 @@
-export { CreatePayorBody } from "./CreatePayorBody";
+export { CreatePayorBody } from "./CreatePayorBody.js";

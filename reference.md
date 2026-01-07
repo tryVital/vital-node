@@ -1,7 +1,5 @@
 # Reference
-
 ## Link
-
 <details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">listBulkOps</a>({ ...params }) -> Vital.BulkOpsResponse</code></summary>
 <dl>
 <dd>
@@ -15,9 +13,13 @@
 <dd>
 
 ```typescript
-await client.link.listBulkOps();
-```
+await client.link.listBulkOps({
+    nextCursor: "next_cursor",
+    pageSize: 1,
+    teamId: "infer_from_context"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -31,20 +33,21 @@ await client.link.listBulkOps();
 <dl>
 <dd>
 
-**request:** `Vital.ListBulkOpsLinkRequest`
-
+**request:** `Vital.LinkListBulkOpsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -64,19 +67,18 @@ await client.link.listBulkOps();
 
 ```typescript
 await client.link.bulkImport({
+    teamId: "infer_from_context",
     provider: "oura",
-    connections: [
-        {
+    connections: [{
             userId: "user_id",
             accessToken: "access_token",
             refreshToken: "refresh_token",
             providerId: "provider_id",
-            expiresAt: 1,
-        },
-    ],
+            expiresAt: 1
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -90,20 +92,21 @@ await client.link.bulkImport({
 <dl>
 <dd>
 
-**request:** `Vital.BulkImportConnectionsBody`
-
+**request:** `Vital.BulkImportConnectionsBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -123,11 +126,12 @@ await client.link.bulkImport({
 
 ```typescript
 await client.link.bulkTriggerHistoricalPull({
+    teamId: "infer_from_context",
     userIds: ["user_ids"],
-    provider: "oura",
+    provider: "oura"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -141,20 +145,21 @@ await client.link.bulkTriggerHistoricalPull({
 <dl>
 <dd>
 
-**request:** `Vital.BulkTriggerHistoricalPullBody`
-
+**request:** `Vital.BulkTriggerHistoricalPullBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -174,10 +179,11 @@ await client.link.bulkTriggerHistoricalPull({
 
 ```typescript
 await client.link.bulkExport({
-    provider: "oura",
+    teamId: "infer_from_context",
+    provider: "oura"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -191,20 +197,21 @@ await client.link.bulkExport({
 <dl>
 <dd>
 
-**request:** `Vital.BulkExportConnectionsBody`
-
+**request:** `Vital.BulkExportConnectionsBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -224,11 +231,12 @@ await client.link.bulkExport({
 
 ```typescript
 await client.link.bulkPause({
+    teamId: "infer_from_context",
     userIds: ["user_ids"],
-    provider: "oura",
+    provider: "oura"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -242,20 +250,21 @@ await client.link.bulkPause({
 <dl>
 <dd>
 
-**request:** `Vital.BulkPauseConnectionsBody`
-
+**request:** `Vital.BulkPauseConnectionsBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -279,7 +288,6 @@ expires after 10 minutes. If you would like vital-link widget to launch
 with a specific provider, pass in a provider in the body. If you would
 like to redirect to a custom url after successful or error connection,
 pass in your own custom redirect_url parameter.
-
 </dd>
 </dl>
 </dd>
@@ -295,10 +303,10 @@ pass in your own custom redirect_url parameter.
 
 ```typescript
 await client.link.token({
-    userId: "user_id",
+    userId: "user_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -312,20 +320,21 @@ await client.link.token({
 <dl>
 <dd>
 
-**request:** `Vital.LinkTokenExchange`
-
+**request:** `Vital.LinkTokenExchange` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -345,10 +354,10 @@ await client.link.token({
 
 ```typescript
 await client.link.isTokenValid({
-    token: "token",
+    token: "token"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -362,20 +371,21 @@ await client.link.isTokenValid({
 <dl>
 <dd>
 
-**request:** `Vital.LinkTokenValidationRequest`
-
+**request:** `Vital.LinkTokenValidationRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -394,7 +404,6 @@ await client.link.isTokenValid({
 <dd>
 
 Generate a token to invite a user of Vital mobile app to your team
-
 </dd>
 </dl>
 </dd>
@@ -411,9 +420,10 @@ Generate a token to invite a user of Vital mobile app to your team
 ```typescript
 await client.link.codeCreate({
     userId: "user_id",
+    expiresAt: new Date("2024-01-15T09:30:00.000Z")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -427,20 +437,21 @@ await client.link.codeCreate({
 <dl>
 <dd>
 
-**request:** `Vital.CodeCreateLinkRequest`
-
+**request:** `Vital.LinkCodeCreateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -460,7 +471,6 @@ await client.link.codeCreate({
 
 REQUEST_SOURCE: VITAL-LINK
 Start link token process
-
 </dd>
 </dl>
 </dd>
@@ -477,10 +487,10 @@ Start link token process
 ```typescript
 await client.link.startConnect({
     linkToken: "link_token",
-    provider: "oura",
+    provider: "oura"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -494,20 +504,21 @@ await client.link.startConnect({
 <dl>
 <dd>
 
-**request:** `Vital.BeginLinkTokenRequest`
-
+**request:** `Vital.BeginLinkTokenRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -527,7 +538,6 @@ await client.link.startConnect({
 
 REQUEST_SOURCE: VITAL-LINK
 Check link token state - can be hit continuously used as heartbeat
-
 </dd>
 </dl>
 </dd>
@@ -542,9 +552,11 @@ Check link token state - can be hit continuously used as heartbeat
 <dd>
 
 ```typescript
-await client.link.tokenState();
-```
+await client.link.tokenState({
+    vitalLinkToken: "x-vital-link-token"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -558,20 +570,21 @@ await client.link.tokenState();
 <dl>
 <dd>
 
-**request:** `Vital.TokenStateLinkRequest`
-
+**request:** `Vital.LinkTokenStateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -590,7 +603,6 @@ await client.link.tokenState();
 <dd>
 
 Deprecated. Use `POST /v2/link/provider/email/{provider}` instead.
-
 </dd>
 </dl>
 </dd>
@@ -606,12 +618,13 @@ Deprecated. Use `POST /v2/link/provider/email/{provider}` instead.
 
 ```typescript
 await client.link.emailAuth({
+    vitalLinkToken: "x-vital-link-token",
     email: "email",
     provider: "oura",
-    authType: "password",
+    authType: "password"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -625,20 +638,21 @@ await client.link.emailAuth({
 <dl>
 <dd>
 
-**request:** `Vital.EmailAuthLink`
-
+**request:** `Vital.EmailAuthLink` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -657,7 +671,6 @@ await client.link.emailAuth({
 <dd>
 
 Deprecated. Use `POST /v2/link/provider/password/{provider}` instead.
-
 </dd>
 </dl>
 </dd>
@@ -673,13 +686,14 @@ Deprecated. Use `POST /v2/link/provider/password/{provider}` instead.
 
 ```typescript
 await client.link.passwordAuth({
+    vitalLinkToken: "x-vital-link-token",
     username: "username",
     password: "password",
     provider: "oura",
-    authType: "password",
+    authType: "password"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -693,26 +707,27 @@ await client.link.passwordAuth({
 <dl>
 <dd>
 
-**request:** `Vital.PasswordAuthLink`
-
+**request:** `Vital.PasswordAuthLink` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">generateOauthLink</a>(oauthProvider, { ...params }) -> Vital.Source</code></summary>
+<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">generateOauthLink</a>(oauth_provider, { ...params }) -> Vital.Source</code></summary>
 <dl>
 <dd>
 
@@ -725,7 +740,6 @@ await client.link.passwordAuth({
 <dd>
 
 This endpoint generates an OAuth link for oauth provider
-
 </dd>
 </dl>
 </dd>
@@ -740,9 +754,11 @@ This endpoint generates an OAuth link for oauth provider
 <dd>
 
 ```typescript
-await client.link.generateOauthLink("oura");
-```
+await client.link.generateOauthLink("oura", {
+    vitalLinkToken: "x-vital-link-token"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -756,28 +772,29 @@ await client.link.generateOauthLink("oura");
 <dl>
 <dd>
 
-**oauthProvider:** `Vital.OAuthProviders`
-
+**oauth_provider:** `Vital.OAuthProviders` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GenerateOauthLinkLinkRequest`
-
+**request:** `Vital.LinkGenerateOauthLinkRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -796,7 +813,6 @@ await client.link.generateOauthLink("oura");
 <dd>
 
 This connects auth providers that are password based.
-
 </dd>
 </dl>
 </dd>
@@ -812,11 +828,12 @@ This connects auth providers that are password based.
 
 ```typescript
 await client.link.connectPasswordProvider("whoop", {
+    vitalLinkToken: "x-vital-link-token",
     username: "username",
-    password: "password",
+    password: "password"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -830,28 +847,29 @@ await client.link.connectPasswordProvider("whoop", {
 <dl>
 <dd>
 
-**provider:** `Vital.PasswordProviders`
-
+**provider:** `Vital.PasswordProviders` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.IndividualProviderData`
-
+**request:** `Vital.IndividualProviderData` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -870,7 +888,6 @@ await client.link.connectPasswordProvider("whoop", {
 <dd>
 
 This connects auth providers that are password based.
-
 </dd>
 </dl>
 </dd>
@@ -886,10 +903,11 @@ This connects auth providers that are password based.
 
 ```typescript
 await client.link.completePasswordProviderMfa("whoop", {
-    mfaCode: "mfa_code",
+    vitalLinkToken: "x-vital-link-token",
+    mfaCode: "mfa_code"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -903,28 +921,29 @@ await client.link.completePasswordProviderMfa("whoop", {
 <dl>
 <dd>
 
-**provider:** `Vital.PasswordProviders`
-
+**provider:** `Vital.PasswordProviders` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CompletePasswordProviderMfaBody`
-
+**request:** `Vital.CompletePasswordProviderMfaBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -943,7 +962,6 @@ await client.link.completePasswordProviderMfa("whoop", {
 <dd>
 
 This connects auth providers that are email based.
-
 </dd>
 </dl>
 </dd>
@@ -959,10 +977,11 @@ This connects auth providers that are email based.
 
 ```typescript
 await client.link.connectEmailAuthProvider("freestyle_libre", {
-    email: "email",
+    vitalLinkToken: "x-vital-link-token",
+    email: "email"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -976,28 +995,29 @@ await client.link.connectEmailAuthProvider("freestyle_libre", {
 <dl>
 <dd>
 
-**provider:** `Vital.EmailProviders`
-
+**provider:** `Vital.EmailProviders` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.EmailProviderAuthLink`
-
+**request:** `Vital.EmailProviderAuthLink` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1016,7 +1036,6 @@ await client.link.connectEmailAuthProvider("freestyle_libre", {
 <dd>
 
 GET List of all available providers given the generated link token.
-
 </dd>
 </dl>
 </dd>
@@ -1031,9 +1050,11 @@ GET List of all available providers given the generated link token.
 <dd>
 
 ```typescript
-await client.link.getAllProviders();
-```
+await client.link.getAllProviders({
+    vitalLinkToken: "x-vital-link-token"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -1047,20 +1068,21 @@ await client.link.getAllProviders();
 <dl>
 <dd>
 
-**request:** `Vital.GetAllProvidersLinkRequest`
-
+**request:** `Vital.LinkGetAllProvidersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1080,10 +1102,10 @@ await client.link.getAllProviders();
 
 ```typescript
 await client.link.connectManualProvider("beurer_ble", {
-    userId: "user_id",
+    userId: "user_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1097,28 +1119,29 @@ await client.link.connectManualProvider("beurer_ble", {
 <dl>
 <dd>
 
-**provider:** `Vital.ManualProviders`
-
+**provider:** `Vital.ManualProviders` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ManualConnectionData`
-
+**request:** `Vital.ManualConnectionData` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1137,7 +1160,6 @@ await client.link.connectManualProvider("beurer_ble", {
 <dd>
 
 POST Connect the given Vital user to a demo provider.
-
 </dd>
 </dl>
 </dd>
@@ -1154,10 +1176,10 @@ POST Connect the given Vital user to a demo provider.
 ```typescript
 await client.link.connectDemoProvider({
     userId: "user_id",
-    provider: "apple_health_kit",
+    provider: "apple_health_kit"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1171,28 +1193,28 @@ await client.link.connectDemoProvider({
 <dl>
 <dd>
 
-**request:** `Vital.DemoConnectionCreationPayload`
-
+**request:** `Vital.DemoConnectionCreationPayload` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Link.RequestOptions`
+**requestOptions:** `LinkClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Electrocardiogram
-
-<details><summary><code>client.electrocardiogram.<a href="/src/api/resources/electrocardiogram/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientFacingElectrocardiogramResponse</code></summary>
+<details><summary><code>client.electrocardiogram.<a href="/src/api/resources/electrocardiogram/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientFacingElectrocardiogramResponse</code></summary>
 <dl>
 <dd>
 
@@ -1205,7 +1227,6 @@ await client.link.connectDemoProvider({
 <dd>
 
 Get electrocardiogram summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1221,10 +1242,12 @@ Get electrocardiogram summary for user_id
 
 ```typescript
 await client.electrocardiogram.get("user_id", {
-    startDate: "2023-01-15",
+    startDate: "start_date",
+    endDate: "end_date",
+    provider: "provider"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1238,36 +1261,36 @@ await client.electrocardiogram.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetElectrocardiogramRequest`
-
+**request:** `Vital.ElectrocardiogramGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Electrocardiogram.RequestOptions`
+**requestOptions:** `ElectrocardiogramClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## SleepCycle
-
-<details><summary><code>client.sleepCycle.<a href="/src/api/resources/sleepCycle/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientSleepCycleResponse</code></summary>
+<details><summary><code>client.sleepCycle.<a href="/src/api/resources/sleepCycle/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientSleepCycleResponse</code></summary>
 <dl>
 <dd>
 
@@ -1280,7 +1303,6 @@ await client.electrocardiogram.get("user_id", {
 <dd>
 
 Get sleep cycle for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1296,10 +1318,12 @@ Get sleep cycle for user_id
 
 ```typescript
 await client.sleepCycle.get("user_id", {
-    startDate: "2023-01-15",
+    startDate: "start_date",
+    endDate: "end_date",
+    provider: "provider"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1313,36 +1337,36 @@ await client.sleepCycle.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetSleepCycleRequest`
-
+**request:** `Vital.SleepCycleGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `SleepCycle.RequestOptions`
+**requestOptions:** `SleepCycleClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Profile
-
-<details><summary><code>client.profile.<a href="/src/api/resources/profile/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientFacingProfile</code></summary>
+<details><summary><code>client.profile.<a href="/src/api/resources/profile/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientFacingProfile</code></summary>
 <dl>
 <dd>
 
@@ -1355,7 +1379,6 @@ await client.sleepCycle.get("user_id", {
 <dd>
 
 Get profile for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1370,9 +1393,11 @@ Get profile for user_id
 <dd>
 
 ```typescript
-await client.profile.get("user_id");
-```
+await client.profile.get("user_id", {
+    provider: "provider"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -1386,34 +1411,35 @@ await client.profile.get("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetProfileRequest`
-
+**request:** `Vital.ProfileGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Profile.RequestOptions`
+**requestOptions:** `ProfileClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.profile.<a href="/src/api/resources/profile/client/Client.ts">getRaw</a>(userId, { ...params }) -> Vital.RawProfile</code></summary>
+<details><summary><code>client.profile.<a href="/src/api/resources/profile/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawProfile</code></summary>
 <dl>
 <dd>
 
@@ -1426,7 +1452,6 @@ await client.profile.get("user_id");
 <dd>
 
 Get raw profile for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1441,9 +1466,11 @@ Get raw profile for user_id
 <dd>
 
 ```typescript
-await client.profile.getRaw("user_id");
-```
+await client.profile.getRaw("user_id", {
+    provider: "provider"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -1457,36 +1484,36 @@ await client.profile.getRaw("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetRawProfileRequest`
-
+**request:** `Vital.ProfileGetRawRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Profile.RequestOptions`
+**requestOptions:** `ProfileClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Devices
-
-<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">getRaw</a>(userId, { ...params }) -> Vital.RawDevices</code></summary>
+<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawDevices</code></summary>
 <dl>
 <dd>
 
@@ -1499,7 +1526,6 @@ await client.profile.getRaw("user_id");
 <dd>
 
 Get Devices for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1514,9 +1540,11 @@ Get Devices for user_id
 <dd>
 
 ```typescript
-await client.devices.getRaw("user_id");
-```
+await client.devices.getRaw("user_id", {
+    provider: "provider"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -1530,36 +1558,36 @@ await client.devices.getRaw("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetRawDevicesRequest`
-
+**request:** `Vital.DevicesGetRawRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Devices.RequestOptions`
+**requestOptions:** `DevicesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Activity
-
-<details><summary><code>client.activity.<a href="/src/api/resources/activity/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientActivityResponse</code></summary>
+<details><summary><code>client.activity.<a href="/src/api/resources/activity/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientActivityResponse</code></summary>
 <dl>
 <dd>
 
@@ -1572,7 +1600,6 @@ await client.devices.getRaw("user_id");
 <dd>
 
 Get activity summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1588,10 +1615,12 @@ Get activity summary for user_id
 
 ```typescript
 await client.activity.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1605,34 +1634,35 @@ await client.activity.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetActivityRequest`
-
+**request:** `Vital.ActivityGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Activity.RequestOptions`
+**requestOptions:** `ActivityClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.activity.<a href="/src/api/resources/activity/client/Client.ts">getRaw</a>(userId, { ...params }) -> Vital.RawActivity</code></summary>
+<details><summary><code>client.activity.<a href="/src/api/resources/activity/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawActivity</code></summary>
 <dl>
 <dd>
 
@@ -1645,7 +1675,6 @@ await client.activity.get("user_id", {
 <dd>
 
 Get raw activity summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1661,10 +1690,12 @@ Get raw activity summary for user_id
 
 ```typescript
 await client.activity.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1678,36 +1709,36 @@ await client.activity.getRaw("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetRawActivityRequest`
-
+**request:** `Vital.ActivityGetRawRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Activity.RequestOptions`
+**requestOptions:** `ActivityClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Workouts
-
-<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientWorkoutResponse</code></summary>
+<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientWorkoutResponse</code></summary>
 <dl>
 <dd>
 
@@ -1720,7 +1751,6 @@ await client.activity.getRaw("user_id", {
 <dd>
 
 Get workout summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1736,10 +1766,12 @@ Get workout summary for user_id
 
 ```typescript
 await client.workouts.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1753,34 +1785,35 @@ await client.workouts.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetWorkoutsRequest`
-
+**request:** `Vital.WorkoutsGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Workouts.RequestOptions`
+**requestOptions:** `WorkoutsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getRaw</a>(userId, { ...params }) -> Vital.RawWorkout</code></summary>
+<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawWorkout</code></summary>
 <dl>
 <dd>
 
@@ -1793,7 +1826,6 @@ await client.workouts.get("user_id", {
 <dd>
 
 Get raw workout summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1809,10 +1841,12 @@ Get raw workout summary for user_id
 
 ```typescript
 await client.workouts.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1826,34 +1860,35 @@ await client.workouts.getRaw("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetRawWorkoutsRequest`
-
+**request:** `Vital.WorkoutsGetRawRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Workouts.RequestOptions`
+**requestOptions:** `WorkoutsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getByWorkoutId</a>(workoutId, { ...params }) -> Vital.ClientFacingStream</code></summary>
+<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getByWorkoutId</a>(workout_id) -> Vital.ClientFacingStream</code></summary>
 <dl>
 <dd>
 
@@ -1867,8 +1902,8 @@ await client.workouts.getRaw("user_id", {
 
 ```typescript
 await client.workouts.getByWorkoutId("workout_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1882,36 +1917,28 @@ await client.workouts.getByWorkoutId("workout_id");
 <dl>
 <dd>
 
-**workoutId:** `string` — The Vital ID for the workout
-
+**workout_id:** `string` — The Vital ID for the workout
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetByWorkoutIdWorkoutsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Workouts.RequestOptions`
-
+**requestOptions:** `WorkoutsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Sleep
-
-<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientSleepResponse</code></summary>
+<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientSleepResponse</code></summary>
 <dl>
 <dd>
 
@@ -1924,7 +1951,6 @@ await client.workouts.getByWorkoutId("workout_id");
 <dd>
 
 Get sleep summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -1940,10 +1966,12 @@ Get sleep summary for user_id
 
 ```typescript
 await client.sleep.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1957,34 +1985,35 @@ await client.sleep.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetSleepRequest`
-
+**request:** `Vital.SleepGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Sleep.RequestOptions`
+**requestOptions:** `SleepClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getRaw</a>(userId, { ...params }) -> Vital.RawSleep</code></summary>
+<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawSleep</code></summary>
 <dl>
 <dd>
 
@@ -1997,7 +2026,6 @@ await client.sleep.get("user_id", {
 <dd>
 
 Get raw sleep summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -2013,10 +2041,12 @@ Get raw sleep summary for user_id
 
 ```typescript
 await client.sleep.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2030,34 +2060,35 @@ await client.sleep.getRaw("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetRawSleepRequest`
-
+**request:** `Vital.SleepGetRawRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Sleep.RequestOptions`
+**requestOptions:** `SleepClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getStreamBySleepId</a>(sleepId, { ...params }) -> Vital.ClientFacingSleepStream</code></summary>
+<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getStreamBySleepId</a>(sleep_id) -> Vital.ClientFacingSleepStream</code></summary>
 <dl>
 <dd>
 
@@ -2070,7 +2101,6 @@ await client.sleep.getRaw("user_id", {
 <dd>
 
 Get Sleep stream for a user_id
-
 </dd>
 </dl>
 </dd>
@@ -2086,8 +2116,8 @@ Get Sleep stream for a user_id
 
 ```typescript
 await client.sleep.getStreamBySleepId("sleep_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2101,36 +2131,28 @@ await client.sleep.getStreamBySleepId("sleep_id");
 <dl>
 <dd>
 
-**sleepId:** `string` — The Vital Sleep ID
-
+**sleep_id:** `string` — The Vital Sleep ID
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetStreamBySleepIdSleepRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Sleep.RequestOptions`
-
+**requestOptions:** `SleepClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Body
-
-<details><summary><code>client.body.<a href="/src/api/resources/body/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientBodyResponse</code></summary>
+<details><summary><code>client.body.<a href="/src/api/resources/body/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientBodyResponse</code></summary>
 <dl>
 <dd>
 
@@ -2143,7 +2165,6 @@ await client.sleep.getStreamBySleepId("sleep_id");
 <dd>
 
 Get Body summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -2159,10 +2180,12 @@ Get Body summary for user_id
 
 ```typescript
 await client.body.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2176,34 +2199,35 @@ await client.body.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetBodyRequest`
-
+**request:** `Vital.BodyGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Body.RequestOptions`
+**requestOptions:** `BodyClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.body.<a href="/src/api/resources/body/client/Client.ts">getRaw</a>(userId, { ...params }) -> Vital.RawBody</code></summary>
+<details><summary><code>client.body.<a href="/src/api/resources/body/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawBody</code></summary>
 <dl>
 <dd>
 
@@ -2216,7 +2240,6 @@ await client.body.get("user_id", {
 <dd>
 
 Get raw Body summary for user_id
-
 </dd>
 </dl>
 </dd>
@@ -2232,10 +2255,12 @@ Get raw Body summary for user_id
 
 ```typescript
 await client.body.getRaw("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2249,36 +2274,36 @@ await client.body.getRaw("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetRawBodyRequest`
-
+**request:** `Vital.BodyGetRawRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Body.RequestOptions`
+**requestOptions:** `BodyClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Meal
-
-<details><summary><code>client.meal.<a href="/src/api/resources/meal/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientFacingMealResponse</code></summary>
+<details><summary><code>client.meal.<a href="/src/api/resources/meal/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.ClientFacingMealResponse</code></summary>
 <dl>
 <dd>
 
@@ -2291,7 +2316,6 @@ await client.body.getRaw("user_id", {
 <dd>
 
 Get user's meals
-
 </dd>
 </dl>
 </dd>
@@ -2307,10 +2331,12 @@ Get user's meals
 
 ```typescript
 await client.meal.get("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2324,36 +2350,36 @@ await client.meal.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetMealRequest`
-
+**request:** `Vital.MealGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Meal.RequestOptions`
+**requestOptions:** `MealClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## MenstrualCycle
-
-<details><summary><code>client.menstrualCycle.<a href="/src/api/resources/menstrualCycle/client/Client.ts">get</a>(userId, { ...params }) -> Vital.MenstrualCycleResponse</code></summary>
+<details><summary><code>client.menstrualCycle.<a href="/src/api/resources/menstrualCycle/client/Client.ts">get</a>(user_id, { ...params }) -> Vital.MenstrualCycleResponse</code></summary>
 <dl>
 <dd>
 
@@ -2367,10 +2393,12 @@ await client.meal.get("user_id", {
 
 ```typescript
 await client.menstrualCycle.get("user_id", {
-    startDate: "2023-01-15",
+    provider: "provider",
+    startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2384,36 +2412,36 @@ await client.menstrualCycle.get("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetMenstrualCycleRequest`
-
+**request:** `Vital.MenstrualCycleGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `MenstrualCycle.RequestOptions`
+**requestOptions:** `MenstrualCycleClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Vitals
-
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutSwimmingStrokeGrouped</a>(userId, { ...params }) -> Vital.GroupedWorkoutSwimmingStrokeResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutSwimmingStrokeGrouped</a>(user_id, { ...params }) -> Vital.GroupedWorkoutSwimmingStrokeResponse</code></summary>
 <dl>
 <dd>
 
@@ -2427,10 +2455,14 @@ await client.menstrualCycle.get("user_id", {
 
 ```typescript
 await client.vitals.workoutSwimmingStrokeGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2444,34 +2476,35 @@ await client.vitals.workoutSwimmingStrokeGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.WorkoutSwimmingStrokeGroupedVitalsRequest`
-
+**request:** `Vital.VitalsWorkoutSwimmingStrokeGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutDistanceGrouped</a>(userId, { ...params }) -> Vital.GroupedWorkoutDistanceResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutDistanceGrouped</a>(user_id, { ...params }) -> Vital.GroupedWorkoutDistanceResponse</code></summary>
 <dl>
 <dd>
 
@@ -2485,10 +2518,14 @@ await client.vitals.workoutSwimmingStrokeGrouped("user_id", {
 
 ```typescript
 await client.vitals.workoutDistanceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2502,34 +2539,35 @@ await client.vitals.workoutDistanceGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.WorkoutDistanceGroupedVitalsRequest`
-
+**request:** `Vital.VitalsWorkoutDistanceGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateRecoveryOneMinuteGrouped</a>(userId, { ...params }) -> Vital.GroupedHeartRateRecoveryOneMinuteResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateRecoveryOneMinuteGrouped</a>(user_id, { ...params }) -> Vital.GroupedHeartRateRecoveryOneMinuteResponse</code></summary>
 <dl>
 <dd>
 
@@ -2543,10 +2581,14 @@ await client.vitals.workoutDistanceGrouped("user_id", {
 
 ```typescript
 await client.vitals.heartRateRecoveryOneMinuteGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2560,34 +2602,35 @@ await client.vitals.heartRateRecoveryOneMinuteGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HeartRateRecoveryOneMinuteGroupedVitalsRequest`
-
+**request:** `Vital.VitalsHeartRateRecoveryOneMinuteGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">waistCircumferenceGrouped</a>(userId, { ...params }) -> Vital.GroupedWaistCircumferenceResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">waistCircumferenceGrouped</a>(user_id, { ...params }) -> Vital.GroupedWaistCircumferenceResponse</code></summary>
 <dl>
 <dd>
 
@@ -2601,10 +2644,14 @@ await client.vitals.heartRateRecoveryOneMinuteGrouped("user_id", {
 
 ```typescript
 await client.vitals.waistCircumferenceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2618,34 +2665,35 @@ await client.vitals.waistCircumferenceGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.WaistCircumferenceGroupedVitalsRequest`
-
+**request:** `Vital.VitalsWaistCircumferenceGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">leanBodyMassGrouped</a>(userId, { ...params }) -> Vital.GroupedLeanBodyMassResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">leanBodyMassGrouped</a>(user_id, { ...params }) -> Vital.GroupedLeanBodyMassResponse</code></summary>
 <dl>
 <dd>
 
@@ -2659,10 +2707,14 @@ await client.vitals.waistCircumferenceGrouped("user_id", {
 
 ```typescript
 await client.vitals.leanBodyMassGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2676,34 +2728,35 @@ await client.vitals.leanBodyMassGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.LeanBodyMassGroupedVitalsRequest`
-
+**request:** `Vital.VitalsLeanBodyMassGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyMassIndexGrouped</a>(userId, { ...params }) -> Vital.GroupedBodyMassIndexResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyMassIndexGrouped</a>(user_id, { ...params }) -> Vital.GroupedBodyMassIndexResponse</code></summary>
 <dl>
 <dd>
 
@@ -2717,10 +2770,14 @@ await client.vitals.leanBodyMassGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyMassIndexGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2734,34 +2791,35 @@ await client.vitals.bodyMassIndexGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyMassIndexGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBodyMassIndexGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">basalBodyTemperatureGrouped</a>(userId, { ...params }) -> Vital.GroupedBasalBodyTemperatureResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">basalBodyTemperatureGrouped</a>(user_id, { ...params }) -> Vital.GroupedBasalBodyTemperatureResponse</code></summary>
 <dl>
 <dd>
 
@@ -2775,10 +2833,14 @@ await client.vitals.bodyMassIndexGrouped("user_id", {
 
 ```typescript
 await client.vitals.basalBodyTemperatureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2792,34 +2854,35 @@ await client.vitals.basalBodyTemperatureGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BasalBodyTemperatureGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBasalBodyTemperatureGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">handwashingGrouped</a>(userId, { ...params }) -> Vital.GroupedHandwashingResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">handwashingGrouped</a>(user_id, { ...params }) -> Vital.GroupedHandwashingResponse</code></summary>
 <dl>
 <dd>
 
@@ -2833,10 +2896,14 @@ await client.vitals.basalBodyTemperatureGrouped("user_id", {
 
 ```typescript
 await client.vitals.handwashingGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2850,34 +2917,35 @@ await client.vitals.handwashingGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HandwashingGroupedVitalsRequest`
-
+**request:** `Vital.VitalsHandwashingGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">daylightExposureGrouped</a>(userId, { ...params }) -> Vital.GroupedDaylightExposureResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">daylightExposureGrouped</a>(user_id, { ...params }) -> Vital.GroupedDaylightExposureResponse</code></summary>
 <dl>
 <dd>
 
@@ -2891,10 +2959,14 @@ await client.vitals.handwashingGrouped("user_id", {
 
 ```typescript
 await client.vitals.daylightExposureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2908,34 +2980,35 @@ await client.vitals.daylightExposureGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.DaylightExposureGroupedVitalsRequest`
-
+**request:** `Vital.VitalsDaylightExposureGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">uvExposureGrouped</a>(userId, { ...params }) -> Vital.GroupedUvExposureResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">uvExposureGrouped</a>(user_id, { ...params }) -> Vital.GroupedUvExposureResponse</code></summary>
 <dl>
 <dd>
 
@@ -2949,10 +3022,14 @@ await client.vitals.daylightExposureGrouped("user_id", {
 
 ```typescript
 await client.vitals.uvExposureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2966,34 +3043,35 @@ await client.vitals.uvExposureGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.UvExposureGroupedVitalsRequest`
-
+**request:** `Vital.VitalsUvExposureGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">fallGrouped</a>(userId, { ...params }) -> Vital.GroupedFallResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">fallGrouped</a>(user_id, { ...params }) -> Vital.GroupedFallResponse</code></summary>
 <dl>
 <dd>
 
@@ -3007,10 +3085,14 @@ await client.vitals.uvExposureGrouped("user_id", {
 
 ```typescript
 await client.vitals.fallGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3024,34 +3106,35 @@ await client.vitals.fallGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.FallGroupedVitalsRequest`
-
+**request:** `Vital.VitalsFallGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">inhalerUsageGrouped</a>(userId, { ...params }) -> Vital.GroupedInhalerUsageResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">inhalerUsageGrouped</a>(user_id, { ...params }) -> Vital.GroupedInhalerUsageResponse</code></summary>
 <dl>
 <dd>
 
@@ -3065,10 +3148,14 @@ await client.vitals.fallGrouped("user_id", {
 
 ```typescript
 await client.vitals.inhalerUsageGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3082,34 +3169,35 @@ await client.vitals.inhalerUsageGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.InhalerUsageGroupedVitalsRequest`
-
+**request:** `Vital.VitalsInhalerUsageGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">peakExpiratoryFlowRateGrouped</a>(userId, { ...params }) -> Vital.GroupedPeakExpiratoryFlowRateResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">peakExpiratoryFlowRateGrouped</a>(user_id, { ...params }) -> Vital.GroupedPeakExpiratoryFlowRateResponse</code></summary>
 <dl>
 <dd>
 
@@ -3123,10 +3211,14 @@ await client.vitals.inhalerUsageGrouped("user_id", {
 
 ```typescript
 await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3140,34 +3232,35 @@ await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.PeakExpiratoryFlowRateGroupedVitalsRequest`
-
+**request:** `Vital.VitalsPeakExpiratoryFlowRateGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">forcedVitalCapacityGrouped</a>(userId, { ...params }) -> Vital.GroupedForcedVitalCapacityResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">forcedVitalCapacityGrouped</a>(user_id, { ...params }) -> Vital.GroupedForcedVitalCapacityResponse</code></summary>
 <dl>
 <dd>
 
@@ -3181,10 +3274,14 @@ await client.vitals.peakExpiratoryFlowRateGrouped("user_id", {
 
 ```typescript
 await client.vitals.forcedVitalCapacityGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3198,34 +3295,35 @@ await client.vitals.forcedVitalCapacityGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ForcedVitalCapacityGroupedVitalsRequest`
-
+**request:** `Vital.VitalsForcedVitalCapacityGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">forcedExpiratoryVolume1Grouped</a>(userId, { ...params }) -> Vital.GroupedForcedExpiratoryVolume1Response</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">forcedExpiratoryVolume1Grouped</a>(user_id, { ...params }) -> Vital.GroupedForcedExpiratoryVolume1Response</code></summary>
 <dl>
 <dd>
 
@@ -3239,10 +3337,14 @@ await client.vitals.forcedVitalCapacityGrouped("user_id", {
 
 ```typescript
 await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3256,34 +3358,35 @@ await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ForcedExpiratoryVolume1GroupedVitalsRequest`
-
+**request:** `Vital.VitalsForcedExpiratoryVolume1GroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">wheelchairPushGrouped</a>(userId, { ...params }) -> Vital.GroupedWheelchairPushResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">wheelchairPushGrouped</a>(user_id, { ...params }) -> Vital.GroupedWheelchairPushResponse</code></summary>
 <dl>
 <dd>
 
@@ -3297,10 +3400,14 @@ await client.vitals.forcedExpiratoryVolume1Grouped("user_id", {
 
 ```typescript
 await client.vitals.wheelchairPushGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3314,34 +3421,35 @@ await client.vitals.wheelchairPushGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.WheelchairPushGroupedVitalsRequest`
-
+**request:** `Vital.VitalsWheelchairPushGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">sleepBreathingDisturbanceGrouped</a>(userId, { ...params }) -> Vital.GroupedSleepBreathingDisturbanceResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">sleepBreathingDisturbanceGrouped</a>(user_id, { ...params }) -> Vital.GroupedSleepBreathingDisturbanceResponse</code></summary>
 <dl>
 <dd>
 
@@ -3355,10 +3463,14 @@ await client.vitals.wheelchairPushGrouped("user_id", {
 
 ```typescript
 await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3372,34 +3484,35 @@ await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.SleepBreathingDisturbanceGroupedVitalsRequest`
-
+**request:** `Vital.VitalsSleepBreathingDisturbanceGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">sleepApneaAlertGrouped</a>(userId, { ...params }) -> Vital.GroupedSleepApneaAlertResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">sleepApneaAlertGrouped</a>(user_id, { ...params }) -> Vital.GroupedSleepApneaAlertResponse</code></summary>
 <dl>
 <dd>
 
@@ -3413,10 +3526,14 @@ await client.vitals.sleepBreathingDisturbanceGrouped("user_id", {
 
 ```typescript
 await client.vitals.sleepApneaAlertGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3430,34 +3547,35 @@ await client.vitals.sleepApneaAlertGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.SleepApneaAlertGroupedVitalsRequest`
-
+**request:** `Vital.VitalsSleepApneaAlertGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">standDurationGrouped</a>(userId, { ...params }) -> Vital.GroupedStandDurationResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">standDurationGrouped</a>(user_id, { ...params }) -> Vital.GroupedStandDurationResponse</code></summary>
 <dl>
 <dd>
 
@@ -3471,10 +3589,14 @@ await client.vitals.sleepApneaAlertGrouped("user_id", {
 
 ```typescript
 await client.vitals.standDurationGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3488,34 +3610,35 @@ await client.vitals.standDurationGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.StandDurationGroupedVitalsRequest`
-
+**request:** `Vital.VitalsStandDurationGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">standHourGrouped</a>(userId, { ...params }) -> Vital.GroupedStandHourResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">standHourGrouped</a>(user_id, { ...params }) -> Vital.GroupedStandHourResponse</code></summary>
 <dl>
 <dd>
 
@@ -3529,10 +3652,14 @@ await client.vitals.standDurationGrouped("user_id", {
 
 ```typescript
 await client.vitals.standHourGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3546,34 +3673,35 @@ await client.vitals.standHourGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.StandHourGroupedVitalsRequest`
-
+**request:** `Vital.VitalsStandHourGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateAlertGrouped</a>(userId, { ...params }) -> Vital.GroupedHeartRateAlertResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartRateAlertGrouped</a>(user_id, { ...params }) -> Vital.GroupedHeartRateAlertResponse</code></summary>
 <dl>
 <dd>
 
@@ -3587,10 +3715,14 @@ await client.vitals.standHourGrouped("user_id", {
 
 ```typescript
 await client.vitals.heartRateAlertGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3604,34 +3736,35 @@ await client.vitals.heartRateAlertGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HeartRateAlertGroupedVitalsRequest`
-
+**request:** `Vital.VitalsHeartRateAlertGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">afibBurdenGrouped</a>(userId, { ...params }) -> Vital.GroupedAFibBurdenResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">afibBurdenGrouped</a>(user_id, { ...params }) -> Vital.GroupedAFibBurdenResponse</code></summary>
 <dl>
 <dd>
 
@@ -3645,10 +3778,14 @@ await client.vitals.heartRateAlertGrouped("user_id", {
 
 ```typescript
 await client.vitals.afibBurdenGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3662,34 +3799,35 @@ await client.vitals.afibBurdenGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.AfibBurdenGroupedVitalsRequest`
-
+**request:** `Vital.VitalsAfibBurdenGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutDurationGrouped</a>(userId, { ...params }) -> Vital.GroupedWorkoutDurationResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">workoutDurationGrouped</a>(user_id, { ...params }) -> Vital.GroupedWorkoutDurationResponse</code></summary>
 <dl>
 <dd>
 
@@ -3703,10 +3841,14 @@ await client.vitals.afibBurdenGrouped("user_id", {
 
 ```typescript
 await client.vitals.workoutDurationGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3720,34 +3862,35 @@ await client.vitals.workoutDurationGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.WorkoutDurationGroupedVitalsRequest`
-
+**request:** `Vital.VitalsWorkoutDurationGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">vo2MaxGrouped</a>(userId, { ...params }) -> Vital.GroupedVo2MaxResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">vo2MaxGrouped</a>(user_id, { ...params }) -> Vital.GroupedVo2MaxResponse</code></summary>
 <dl>
 <dd>
 
@@ -3761,10 +3904,14 @@ await client.vitals.workoutDurationGrouped("user_id", {
 
 ```typescript
 await client.vitals.vo2MaxGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3778,34 +3925,35 @@ await client.vitals.vo2MaxGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.Vo2MaxGroupedVitalsRequest`
-
+**request:** `Vital.VitalsVo2MaxGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">stressLevelGrouped</a>(userId, { ...params }) -> Vital.GroupedStressLevelResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">stressLevelGrouped</a>(user_id, { ...params }) -> Vital.GroupedStressLevelResponse</code></summary>
 <dl>
 <dd>
 
@@ -3819,10 +3967,14 @@ await client.vitals.vo2MaxGrouped("user_id", {
 
 ```typescript
 await client.vitals.stressLevelGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3836,34 +3988,35 @@ await client.vitals.stressLevelGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.StressLevelGroupedVitalsRequest`
-
+**request:** `Vital.VitalsStressLevelGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">mindfulnessMinutesGrouped</a>(userId, { ...params }) -> Vital.GroupedMindfulnessMinutesResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">mindfulnessMinutesGrouped</a>(user_id, { ...params }) -> Vital.GroupedMindfulnessMinutesResponse</code></summary>
 <dl>
 <dd>
 
@@ -3877,10 +4030,14 @@ await client.vitals.stressLevelGrouped("user_id", {
 
 ```typescript
 await client.vitals.mindfulnessMinutesGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3894,34 +4051,35 @@ await client.vitals.mindfulnessMinutesGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.MindfulnessMinutesGroupedVitalsRequest`
-
+**request:** `Vital.VitalsMindfulnessMinutesGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caffeineGrouped</a>(userId, { ...params }) -> Vital.GroupedCaffeineResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caffeineGrouped</a>(user_id, { ...params }) -> Vital.GroupedCaffeineResponse</code></summary>
 <dl>
 <dd>
 
@@ -3935,10 +4093,14 @@ await client.vitals.mindfulnessMinutesGrouped("user_id", {
 
 ```typescript
 await client.vitals.caffeineGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3952,34 +4114,35 @@ await client.vitals.caffeineGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CaffeineGroupedVitalsRequest`
-
+**request:** `Vital.VitalsCaffeineGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">waterGrouped</a>(userId, { ...params }) -> Vital.GroupedWaterResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">waterGrouped</a>(user_id, { ...params }) -> Vital.GroupedWaterResponse</code></summary>
 <dl>
 <dd>
 
@@ -3993,10 +4156,14 @@ await client.vitals.caffeineGrouped("user_id", {
 
 ```typescript
 await client.vitals.waterGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4010,34 +4177,35 @@ await client.vitals.waterGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.WaterGroupedVitalsRequest`
-
+**request:** `Vital.VitalsWaterGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">stepsGrouped</a>(userId, { ...params }) -> Vital.GroupedStepsResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">stepsGrouped</a>(user_id, { ...params }) -> Vital.GroupedStepsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4051,10 +4219,14 @@ await client.vitals.waterGrouped("user_id", {
 
 ```typescript
 await client.vitals.stepsGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4068,34 +4240,35 @@ await client.vitals.stepsGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.StepsGroupedVitalsRequest`
-
+**request:** `Vital.VitalsStepsGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">floorsClimbedGrouped</a>(userId, { ...params }) -> Vital.GroupedFloorsClimbedResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">floorsClimbedGrouped</a>(user_id, { ...params }) -> Vital.GroupedFloorsClimbedResponse</code></summary>
 <dl>
 <dd>
 
@@ -4109,10 +4282,14 @@ await client.vitals.stepsGrouped("user_id", {
 
 ```typescript
 await client.vitals.floorsClimbedGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4126,34 +4303,35 @@ await client.vitals.floorsClimbedGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.FloorsClimbedGroupedVitalsRequest`
-
+**request:** `Vital.VitalsFloorsClimbedGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">distanceGrouped</a>(userId, { ...params }) -> Vital.GroupedDistanceResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">distanceGrouped</a>(user_id, { ...params }) -> Vital.GroupedDistanceResponse</code></summary>
 <dl>
 <dd>
 
@@ -4167,10 +4345,14 @@ await client.vitals.floorsClimbedGrouped("user_id", {
 
 ```typescript
 await client.vitals.distanceGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4184,34 +4366,35 @@ await client.vitals.distanceGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.DistanceGroupedVitalsRequest`
-
+**request:** `Vital.VitalsDistanceGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesBasalGrouped</a>(userId, { ...params }) -> Vital.GroupedCaloriesBasalResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesBasalGrouped</a>(user_id, { ...params }) -> Vital.GroupedCaloriesBasalResponse</code></summary>
 <dl>
 <dd>
 
@@ -4225,10 +4408,14 @@ await client.vitals.distanceGrouped("user_id", {
 
 ```typescript
 await client.vitals.caloriesBasalGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4242,34 +4429,35 @@ await client.vitals.caloriesBasalGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesBasalGroupedVitalsRequest`
-
+**request:** `Vital.VitalsCaloriesBasalGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesActiveGrouped</a>(userId, { ...params }) -> Vital.GroupedCaloriesActiveResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesActiveGrouped</a>(user_id, { ...params }) -> Vital.GroupedCaloriesActiveResponse</code></summary>
 <dl>
 <dd>
 
@@ -4283,10 +4471,14 @@ await client.vitals.caloriesBasalGrouped("user_id", {
 
 ```typescript
 await client.vitals.caloriesActiveGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4300,34 +4492,35 @@ await client.vitals.caloriesActiveGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesActiveGroupedVitalsRequest`
-
+**request:** `Vital.VitalsCaloriesActiveGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">respiratoryRateGrouped</a>(userId, { ...params }) -> Vital.GroupedRespiratoryRateResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">respiratoryRateGrouped</a>(user_id, { ...params }) -> Vital.GroupedRespiratoryRateResponse</code></summary>
 <dl>
 <dd>
 
@@ -4341,10 +4534,14 @@ await client.vitals.caloriesActiveGrouped("user_id", {
 
 ```typescript
 await client.vitals.respiratoryRateGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4358,34 +4555,35 @@ await client.vitals.respiratoryRateGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.RespiratoryRateGroupedVitalsRequest`
-
+**request:** `Vital.VitalsRespiratoryRateGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">noteGrouped</a>(userId, { ...params }) -> Vital.GroupedNoteResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">noteGrouped</a>(user_id, { ...params }) -> Vital.GroupedNoteResponse</code></summary>
 <dl>
 <dd>
 
@@ -4399,10 +4597,14 @@ await client.vitals.respiratoryRateGrouped("user_id", {
 
 ```typescript
 await client.vitals.noteGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4416,34 +4618,35 @@ await client.vitals.noteGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.NoteGroupedVitalsRequest`
-
+**request:** `Vital.VitalsNoteGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">insulinInjectionGrouped</a>(userId, { ...params }) -> Vital.GroupedInsulinInjectionResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">insulinInjectionGrouped</a>(user_id, { ...params }) -> Vital.GroupedInsulinInjectionResponse</code></summary>
 <dl>
 <dd>
 
@@ -4457,10 +4660,14 @@ await client.vitals.noteGrouped("user_id", {
 
 ```typescript
 await client.vitals.insulinInjectionGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4474,34 +4681,35 @@ await client.vitals.insulinInjectionGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.InsulinInjectionGroupedVitalsRequest`
-
+**request:** `Vital.VitalsInsulinInjectionGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">igeGrouped</a>(userId, { ...params }) -> Vital.GroupedIgeResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">igeGrouped</a>(user_id, { ...params }) -> Vital.GroupedIgeResponse</code></summary>
 <dl>
 <dd>
 
@@ -4515,10 +4723,14 @@ await client.vitals.insulinInjectionGrouped("user_id", {
 
 ```typescript
 await client.vitals.igeGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4532,34 +4744,35 @@ await client.vitals.igeGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.IgeGroupedVitalsRequest`
-
+**request:** `Vital.VitalsIgeGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">iggGrouped</a>(userId, { ...params }) -> Vital.GroupedIggResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">iggGrouped</a>(user_id, { ...params }) -> Vital.GroupedIggResponse</code></summary>
 <dl>
 <dd>
 
@@ -4573,10 +4786,14 @@ await client.vitals.igeGrouped("user_id", {
 
 ```typescript
 await client.vitals.iggGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4590,34 +4807,35 @@ await client.vitals.iggGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.IggGroupedVitalsRequest`
-
+**request:** `Vital.VitalsIggGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hypnogramGrouped</a>(userId, { ...params }) -> Vital.GroupedHypnogramResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hypnogramGrouped</a>(user_id, { ...params }) -> Vital.GroupedHypnogramResponse</code></summary>
 <dl>
 <dd>
 
@@ -4631,10 +4849,14 @@ await client.vitals.iggGrouped("user_id", {
 
 ```typescript
 await client.vitals.hypnogramGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4648,34 +4870,35 @@ await client.vitals.hypnogramGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HypnogramGroupedVitalsRequest`
-
+**request:** `Vital.VitalsHypnogramGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hrvGrouped</a>(userId, { ...params }) -> Vital.GroupedHrvResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hrvGrouped</a>(user_id, { ...params }) -> Vital.GroupedHrvResponse</code></summary>
 <dl>
 <dd>
 
@@ -4689,10 +4912,14 @@ await client.vitals.hypnogramGrouped("user_id", {
 
 ```typescript
 await client.vitals.hrvGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4706,34 +4933,35 @@ await client.vitals.hrvGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HrvGroupedVitalsRequest`
-
+**request:** `Vital.VitalsHrvGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartrateGrouped</a>(userId, { ...params }) -> Vital.GroupedHeartRateResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartrateGrouped</a>(user_id, { ...params }) -> Vital.GroupedHeartRateResponse</code></summary>
 <dl>
 <dd>
 
@@ -4747,10 +4975,14 @@ await client.vitals.hrvGrouped("user_id", {
 
 ```typescript
 await client.vitals.heartrateGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4764,34 +4996,35 @@ await client.vitals.heartrateGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HeartrateGroupedVitalsRequest`
-
+**request:** `Vital.VitalsHeartrateGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">glucoseGrouped</a>(userId, { ...params }) -> Vital.GroupedGlucoseResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">glucoseGrouped</a>(user_id, { ...params }) -> Vital.GroupedGlucoseResponse</code></summary>
 <dl>
 <dd>
 
@@ -4805,10 +5038,14 @@ await client.vitals.heartrateGrouped("user_id", {
 
 ```typescript
 await client.vitals.glucoseGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4822,34 +5059,35 @@ await client.vitals.glucoseGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GlucoseGroupedVitalsRequest`
-
+**request:** `Vital.VitalsGlucoseGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolGrouped</a>(userId, { ...params }) -> Vital.GroupedCholesterolResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolGrouped</a>(user_id, { ...params }) -> Vital.GroupedCholesterolResponse</code></summary>
 <dl>
 <dd>
 
@@ -4863,10 +5101,14 @@ await client.vitals.glucoseGrouped("user_id", {
 
 ```typescript
 await client.vitals.cholesterolGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4880,34 +5122,35 @@ await client.vitals.cholesterolGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolGroupedVitalsRequest`
-
+**request:** `Vital.VitalsCholesterolGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">carbohydratesGrouped</a>(userId, { ...params }) -> Vital.GroupedCarbohydratesResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">carbohydratesGrouped</a>(user_id, { ...params }) -> Vital.GroupedCarbohydratesResponse</code></summary>
 <dl>
 <dd>
 
@@ -4921,10 +5164,14 @@ await client.vitals.cholesterolGrouped("user_id", {
 
 ```typescript
 await client.vitals.carbohydratesGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4938,34 +5185,35 @@ await client.vitals.carbohydratesGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CarbohydratesGroupedVitalsRequest`
-
+**request:** `Vital.VitalsCarbohydratesGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureDeltaGrouped</a>(userId, { ...params }) -> Vital.GroupedBodyTemperatureDeltaResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureDeltaGrouped</a>(user_id, { ...params }) -> Vital.GroupedBodyTemperatureDeltaResponse</code></summary>
 <dl>
 <dd>
 
@@ -4979,10 +5227,14 @@ await client.vitals.carbohydratesGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4996,34 +5248,35 @@ await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyTemperatureDeltaGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBodyTemperatureDeltaGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureGrouped</a>(userId, { ...params }) -> Vital.GroupedBodyTemperatureResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyTemperatureGrouped</a>(user_id, { ...params }) -> Vital.GroupedBodyTemperatureResponse</code></summary>
 <dl>
 <dd>
 
@@ -5037,10 +5290,14 @@ await client.vitals.bodyTemperatureDeltaGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyTemperatureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5054,34 +5311,35 @@ await client.vitals.bodyTemperatureGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyTemperatureGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBodyTemperatureGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyWeightGrouped</a>(userId, { ...params }) -> Vital.GroupedBodyWeightResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyWeightGrouped</a>(user_id, { ...params }) -> Vital.GroupedBodyWeightResponse</code></summary>
 <dl>
 <dd>
 
@@ -5095,10 +5353,14 @@ await client.vitals.bodyTemperatureGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyWeightGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5112,34 +5374,35 @@ await client.vitals.bodyWeightGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyWeightGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBodyWeightGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyFatGrouped</a>(userId, { ...params }) -> Vital.GroupedBodyFatResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyFatGrouped</a>(user_id, { ...params }) -> Vital.GroupedBodyFatResponse</code></summary>
 <dl>
 <dd>
 
@@ -5153,10 +5416,14 @@ await client.vitals.bodyWeightGrouped("user_id", {
 
 ```typescript
 await client.vitals.bodyFatGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5170,34 +5437,35 @@ await client.vitals.bodyFatGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyFatGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBodyFatGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodOxygenGrouped</a>(userId, { ...params }) -> Vital.GroupedBloodOxygenResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodOxygenGrouped</a>(user_id, { ...params }) -> Vital.GroupedBloodOxygenResponse</code></summary>
 <dl>
 <dd>
 
@@ -5211,10 +5479,14 @@ await client.vitals.bodyFatGrouped("user_id", {
 
 ```typescript
 await client.vitals.bloodOxygenGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5228,34 +5500,35 @@ await client.vitals.bloodOxygenGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BloodOxygenGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBloodOxygenGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">electrocardiogramVoltageGrouped</a>(userId, { ...params }) -> Vital.GroupedElectrocardiogramVoltageResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">electrocardiogramVoltageGrouped</a>(user_id, { ...params }) -> Vital.GroupedElectrocardiogramVoltageResponse</code></summary>
 <dl>
 <dd>
 
@@ -5269,10 +5542,14 @@ await client.vitals.bloodOxygenGrouped("user_id", {
 
 ```typescript
 await client.vitals.electrocardiogramVoltageGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5286,34 +5563,35 @@ await client.vitals.electrocardiogramVoltageGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ElectrocardiogramVoltageGroupedVitalsRequest`
-
+**request:** `Vital.VitalsElectrocardiogramVoltageGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodPressureGrouped</a>(userId, { ...params }) -> Vital.GroupedBloodPressureResponse</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodPressureGrouped</a>(user_id, { ...params }) -> Vital.GroupedBloodPressureResponse</code></summary>
 <dl>
 <dd>
 
@@ -5327,10 +5605,14 @@ await client.vitals.electrocardiogramVoltageGrouped("user_id", {
 
 ```typescript
 await client.vitals.bloodPressureGrouped("user_id", {
+    cursor: "cursor",
+    nextCursor: "next_cursor",
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5344,34 +5626,35 @@ await client.vitals.bloodPressureGrouped("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BloodPressureGroupedVitalsRequest`
-
+**request:** `Vital.VitalsBloodPressureGroupedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">vo2Max</a>(userId, { ...params }) -> Vital.ClientFacingVo2MaxTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">vo2Max</a>(user_id, { ...params }) -> Vital.ClientFacingVo2MaxTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5385,10 +5668,12 @@ await client.vitals.bloodPressureGrouped("user_id", {
 
 ```typescript
 await client.vitals.vo2Max("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5402,34 +5687,35 @@ await client.vitals.vo2Max("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.Vo2MaxVitalsRequest`
-
+**request:** `Vital.VitalsVo2MaxRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">stressLevel</a>(userId, { ...params }) -> Vital.ClientFacingStressLevelTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">stressLevel</a>(user_id, { ...params }) -> Vital.ClientFacingStressLevelTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5443,10 +5729,12 @@ await client.vitals.vo2Max("user_id", {
 
 ```typescript
 await client.vitals.stressLevel("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5460,34 +5748,35 @@ await client.vitals.stressLevel("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.StressLevelVitalsRequest`
-
+**request:** `Vital.VitalsStressLevelRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">mindfulnessMinutes</a>(userId, { ...params }) -> Vital.ClientFacingMindfulnessMinutesTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">mindfulnessMinutes</a>(user_id, { ...params }) -> Vital.ClientFacingMindfulnessMinutesTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5501,10 +5790,12 @@ await client.vitals.stressLevel("user_id", {
 
 ```typescript
 await client.vitals.mindfulnessMinutes("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5518,34 +5809,35 @@ await client.vitals.mindfulnessMinutes("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.MindfulnessMinutesVitalsRequest`
-
+**request:** `Vital.VitalsMindfulnessMinutesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caffeine</a>(userId, { ...params }) -> Vital.ClientFacingCaffeineTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caffeine</a>(user_id, { ...params }) -> Vital.ClientFacingCaffeineTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5559,10 +5851,12 @@ await client.vitals.mindfulnessMinutes("user_id", {
 
 ```typescript
 await client.vitals.caffeine("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5576,34 +5870,35 @@ await client.vitals.caffeine("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CaffeineVitalsRequest`
-
+**request:** `Vital.VitalsCaffeineRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">water</a>(userId, { ...params }) -> Vital.ClientFacingWaterTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">water</a>(user_id, { ...params }) -> Vital.ClientFacingWaterTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5617,10 +5912,12 @@ await client.vitals.caffeine("user_id", {
 
 ```typescript
 await client.vitals.water("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5634,34 +5931,35 @@ await client.vitals.water("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.WaterVitalsRequest`
-
+**request:** `Vital.VitalsWaterRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">steps</a>(userId, { ...params }) -> Vital.ClientFacingStepsTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">steps</a>(user_id, { ...params }) -> Vital.ClientFacingStepsTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5675,10 +5973,12 @@ await client.vitals.water("user_id", {
 
 ```typescript
 await client.vitals.steps("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5692,34 +5992,35 @@ await client.vitals.steps("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.StepsVitalsRequest`
-
+**request:** `Vital.VitalsStepsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">floorsClimbed</a>(userId, { ...params }) -> Vital.ClientFacingFloorsClimbedTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">floorsClimbed</a>(user_id, { ...params }) -> Vital.ClientFacingFloorsClimbedTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5733,10 +6034,12 @@ await client.vitals.steps("user_id", {
 
 ```typescript
 await client.vitals.floorsClimbed("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5750,34 +6053,35 @@ await client.vitals.floorsClimbed("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.FloorsClimbedVitalsRequest`
-
+**request:** `Vital.VitalsFloorsClimbedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">distance</a>(userId, { ...params }) -> Vital.ClientFacingDistanceTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">distance</a>(user_id, { ...params }) -> Vital.ClientFacingDistanceTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5791,10 +6095,12 @@ await client.vitals.floorsClimbed("user_id", {
 
 ```typescript
 await client.vitals.distance("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5808,34 +6114,35 @@ await client.vitals.distance("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.DistanceVitalsRequest`
-
+**request:** `Vital.VitalsDistanceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesBasal</a>(userId, { ...params }) -> Vital.ClientFacingCaloriesBasalTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesBasal</a>(user_id, { ...params }) -> Vital.ClientFacingCaloriesBasalTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5849,10 +6156,12 @@ await client.vitals.distance("user_id", {
 
 ```typescript
 await client.vitals.caloriesBasal("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5866,34 +6175,35 @@ await client.vitals.caloriesBasal("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesBasalVitalsRequest`
-
+**request:** `Vital.VitalsCaloriesBasalRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesActive</a>(userId, { ...params }) -> Vital.ClientFacingCaloriesActiveTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">caloriesActive</a>(user_id, { ...params }) -> Vital.ClientFacingCaloriesActiveTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5907,10 +6217,12 @@ await client.vitals.caloriesBasal("user_id", {
 
 ```typescript
 await client.vitals.caloriesActive("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5924,34 +6236,35 @@ await client.vitals.caloriesActive("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CaloriesActiveVitalsRequest`
-
+**request:** `Vital.VitalsCaloriesActiveRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">respiratoryRate</a>(userId, { ...params }) -> Vital.ClientFacingRespiratoryRateTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">respiratoryRate</a>(user_id, { ...params }) -> Vital.ClientFacingRespiratoryRateTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -5965,10 +6278,12 @@ await client.vitals.caloriesActive("user_id", {
 
 ```typescript
 await client.vitals.respiratoryRate("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5982,34 +6297,35 @@ await client.vitals.respiratoryRate("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.RespiratoryRateVitalsRequest`
-
+**request:** `Vital.VitalsRespiratoryRateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">ige</a>(userId, { ...params }) -> Vital.ClientFacingIgeTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">ige</a>(user_id, { ...params }) -> Vital.ClientFacingIgeTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6023,10 +6339,12 @@ await client.vitals.respiratoryRate("user_id", {
 
 ```typescript
 await client.vitals.ige("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6040,34 +6358,35 @@ await client.vitals.ige("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.IgeVitalsRequest`
-
+**request:** `Vital.VitalsIgeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">igg</a>(userId, { ...params }) -> Vital.ClientFacingIggTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">igg</a>(user_id, { ...params }) -> Vital.ClientFacingIggTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6081,10 +6400,12 @@ await client.vitals.ige("user_id", {
 
 ```typescript
 await client.vitals.igg("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6098,34 +6419,35 @@ await client.vitals.igg("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.IggVitalsRequest`
-
+**request:** `Vital.VitalsIggRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hypnogram</a>(userId, { ...params }) -> Vital.ClientFacingHypnogramTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hypnogram</a>(user_id, { ...params }) -> Vital.ClientFacingHypnogramTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6139,10 +6461,12 @@ await client.vitals.igg("user_id", {
 
 ```typescript
 await client.vitals.hypnogram("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6156,34 +6480,35 @@ await client.vitals.hypnogram("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HypnogramVitalsRequest`
-
+**request:** `Vital.VitalsHypnogramRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hrv</a>(userId, { ...params }) -> Vital.ClientFacingHrvTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">hrv</a>(user_id, { ...params }) -> Vital.ClientFacingHrvTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6197,10 +6522,12 @@ await client.vitals.hypnogram("user_id", {
 
 ```typescript
 await client.vitals.hrv("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6214,34 +6541,35 @@ await client.vitals.hrv("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HrvVitalsRequest`
-
+**request:** `Vital.VitalsHrvRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartrate</a>(userId, { ...params }) -> Vital.ClientFacingHeartRateTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">heartrate</a>(user_id, { ...params }) -> Vital.ClientFacingHeartRateTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6255,10 +6583,12 @@ await client.vitals.hrv("user_id", {
 
 ```typescript
 await client.vitals.heartrate("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6272,34 +6602,35 @@ await client.vitals.heartrate("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.HeartrateVitalsRequest`
-
+**request:** `Vital.VitalsHeartrateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">glucose</a>(userId, { ...params }) -> Vital.ClientFacingGlucoseTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">glucose</a>(user_id, { ...params }) -> Vital.ClientFacingGlucoseTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6313,10 +6644,12 @@ await client.vitals.heartrate("user_id", {
 
 ```typescript
 await client.vitals.glucose("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6330,34 +6663,35 @@ await client.vitals.glucose("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GlucoseVitalsRequest`
-
+**request:** `Vital.VitalsGlucoseRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolTriglycerides</a>(userId, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolTriglycerides</a>(user_id, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6371,10 +6705,12 @@ await client.vitals.glucose("user_id", {
 
 ```typescript
 await client.vitals.cholesterolTriglycerides("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6388,34 +6724,35 @@ await client.vitals.cholesterolTriglycerides("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolTriglyceridesVitalsRequest`
-
+**request:** `Vital.VitalsCholesterolTriglyceridesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolTotal</a>(userId, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolTotal</a>(user_id, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6429,10 +6766,12 @@ await client.vitals.cholesterolTriglycerides("user_id", {
 
 ```typescript
 await client.vitals.cholesterolTotal("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6446,34 +6785,35 @@ await client.vitals.cholesterolTotal("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolTotalVitalsRequest`
-
+**request:** `Vital.VitalsCholesterolTotalRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolLdl</a>(userId, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolLdl</a>(user_id, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6487,10 +6827,12 @@ await client.vitals.cholesterolTotal("user_id", {
 
 ```typescript
 await client.vitals.cholesterolLdl("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6504,34 +6846,35 @@ await client.vitals.cholesterolLdl("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolLdlVitalsRequest`
-
+**request:** `Vital.VitalsCholesterolLdlRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolHdl</a>(userId, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterolHdl</a>(user_id, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6545,10 +6888,12 @@ await client.vitals.cholesterolLdl("user_id", {
 
 ```typescript
 await client.vitals.cholesterolHdl("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6562,34 +6907,35 @@ await client.vitals.cholesterolHdl("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolHdlVitalsRequest`
-
+**request:** `Vital.VitalsCholesterolHdlRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterol</a>(userId, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">cholesterol</a>(user_id, { ...params }) -> Vital.ClientFacingCholesterolTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6603,10 +6949,12 @@ await client.vitals.cholesterolHdl("user_id", {
 
 ```typescript
 await client.vitals.cholesterol("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6620,34 +6968,35 @@ await client.vitals.cholesterol("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CholesterolVitalsRequest`
-
+**request:** `Vital.VitalsCholesterolRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyWeight</a>(userId, { ...params }) -> Vital.ClientFacingBodyWeightTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyWeight</a>(user_id, { ...params }) -> Vital.ClientFacingBodyWeightTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6661,10 +7010,12 @@ await client.vitals.cholesterol("user_id", {
 
 ```typescript
 await client.vitals.bodyWeight("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6678,34 +7029,35 @@ await client.vitals.bodyWeight("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyWeightVitalsRequest`
-
+**request:** `Vital.VitalsBodyWeightRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyFat</a>(userId, { ...params }) -> Vital.ClientFacingBodyFatTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bodyFat</a>(user_id, { ...params }) -> Vital.ClientFacingBodyFatTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6719,10 +7071,12 @@ await client.vitals.bodyWeight("user_id", {
 
 ```typescript
 await client.vitals.bodyFat("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6736,34 +7090,35 @@ await client.vitals.bodyFat("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyFatVitalsRequest`
-
+**request:** `Vital.VitalsBodyFatRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodOxygen</a>(userId, { ...params }) -> Vital.ClientFacingBloodOxygenTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodOxygen</a>(user_id, { ...params }) -> Vital.ClientFacingBloodOxygenTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6777,10 +7132,12 @@ await client.vitals.bodyFat("user_id", {
 
 ```typescript
 await client.vitals.bloodOxygen("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6794,34 +7151,35 @@ await client.vitals.bloodOxygen("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BloodOxygenVitalsRequest`
-
+**request:** `Vital.VitalsBloodOxygenRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">electrocardiogramVoltage</a>(userId, { ...params }) -> Vital.ClientFacingElectrocardiogramVoltageTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">electrocardiogramVoltage</a>(user_id, { ...params }) -> Vital.ClientFacingElectrocardiogramVoltageTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6835,10 +7193,12 @@ await client.vitals.bloodOxygen("user_id", {
 
 ```typescript
 await client.vitals.electrocardiogramVoltage("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6852,34 +7212,35 @@ await client.vitals.electrocardiogramVoltage("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ElectrocardiogramVoltageVitalsRequest`
-
+**request:** `Vital.VitalsElectrocardiogramVoltageRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodPressure</a>(userId, { ...params }) -> Vital.ClientFacingBloodPressureTimeseries[]</code></summary>
+<details><summary><code>client.vitals.<a href="/src/api/resources/vitals/client/Client.ts">bloodPressure</a>(user_id, { ...params }) -> Vital.ClientFacingBloodPressureTimeseries[]</code></summary>
 <dl>
 <dd>
 
@@ -6893,10 +7254,12 @@ await client.vitals.electrocardiogramVoltage("user_id", {
 
 ```typescript
 await client.vitals.bloodPressure("user_id", {
+    provider: "provider",
     startDate: "start_date",
+    endDate: "end_date"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6910,35 +7273,35 @@ await client.vitals.bloodPressure("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BloodPressureVitalsRequest`
-
+**request:** `Vital.VitalsBloodPressureRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vitals.RequestOptions`
+**requestOptions:** `VitalsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## User
-
 <details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getAll</a>({ ...params }) -> Vital.PaginatedUsersResponse</code></summary>
 <dl>
 <dd>
@@ -6952,7 +7315,6 @@ await client.vitals.bloodPressure("user_id", {
 <dd>
 
 GET All users for team.
-
 </dd>
 </dl>
 </dd>
@@ -6967,9 +7329,12 @@ GET All users for team.
 <dd>
 
 ```typescript
-await client.user.getAll();
-```
+await client.user.getAll({
+    offset: 1,
+    limit: 1
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -6983,20 +7348,21 @@ await client.user.getAll();
 <dl>
 <dd>
 
-**request:** `Vital.GetAllUserRequest`
-
+**request:** `Vital.UserGetAllRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7015,7 +7381,6 @@ await client.user.getAll();
 <dd>
 
 POST Create a Vital user given a client_user_id and returns the user_id.
-
 </dd>
 </dl>
 </dd>
@@ -7031,10 +7396,10 @@ POST Create a Vital user given a client_user_id and returns the user_id.
 
 ```typescript
 await client.user.create({
-    clientUserId: "client_user_id",
+    clientUserId: "client_user_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7048,20 +7413,21 @@ await client.user.create({
 <dl>
 <dd>
 
-**request:** `Vital.UserCreateBody`
-
+**request:** `Vital.UserCreateBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7080,7 +7446,6 @@ await client.user.create({
 <dd>
 
 GET metrics for team.
-
 </dd>
 </dl>
 </dd>
@@ -7096,8 +7461,8 @@ GET metrics for team.
 
 ```typescript
 await client.user.getTeamMetrics();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7111,18 +7476,19 @@ await client.user.getTeamMetrics();
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getConnectedProviders</a>(userId, { ...params }) -> Record<string, Vital.ClientFacingProviderWithStatus[]></code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getConnectedProviders</a>(user_id) -> Record<string, Vital.ClientFacingProviderWithStatus[]></code></summary>
 <dl>
 <dd>
 
@@ -7135,7 +7501,6 @@ await client.user.getTeamMetrics();
 <dd>
 
 GET Users connected providers
-
 </dd>
 </dl>
 </dd>
@@ -7151,8 +7516,8 @@ GET Users connected providers
 
 ```typescript
 await client.user.getConnectedProviders("user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7166,34 +7531,27 @@ await client.user.getConnectedProviders("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetConnectedProvidersUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestUserInfo</a>(userId, { ...params }) -> Vital.UserInfo</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestUserInfo</a>(user_id) -> Vital.UserInfo</code></summary>
 <dl>
 <dd>
 
@@ -7207,8 +7565,8 @@ await client.user.getConnectedProviders("user_id");
 
 ```typescript
 await client.user.getLatestUserInfo("user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7222,34 +7580,27 @@ await client.user.getLatestUserInfo("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetLatestUserInfoUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">createInsurance</a>(userId, { ...params }) -> Vital.ClientFacingInsurance</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">createInsurance</a>(user_id, { ...params }) -> Vital.ClientFacingInsurance</code></summary>
 <dl>
 <dd>
 
@@ -7275,15 +7626,15 @@ await client.user.createInsurance("user_id", {
             country: "country",
             zip: "zip",
             city: "city",
-            state: "state",
+            state: "state"
         },
-        dob: "2023-01-15",
+        dob: "dob",
         email: "email",
-        phoneNumber: "phone_number",
-    },
+        phoneNumber: "phone_number"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7297,34 +7648,35 @@ await client.user.createInsurance("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CreateInsuranceRequest`
-
+**request:** `Vital.CreateInsuranceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestInsurance</a>(userId, { ...params }) -> Vital.ClientFacingInsurance</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getLatestInsurance</a>(user_id, { ...params }) -> Vital.ClientFacingInsurance</code></summary>
 <dl>
 <dd>
 
@@ -7337,9 +7689,11 @@ await client.user.createInsurance("user_id", {
 <dd>
 
 ```typescript
-await client.user.getLatestInsurance("user_id");
-```
+await client.user.getLatestInsurance("user_id", {
+    isPrimary: true
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -7353,34 +7707,35 @@ await client.user.getLatestInsurance("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetLatestInsuranceUserRequest`
-
+**request:** `Vital.UserGetLatestInsuranceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">upsertUserInfo</a>(userId, { ...params }) -> Vital.UserInfo</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">upsertUserInfo</a>(user_id, { ...params }) -> Vital.UserInfo</code></summary>
 <dl>
 <dd>
 
@@ -7399,17 +7754,17 @@ await client.user.upsertUserInfo("user_id", {
     email: "email",
     phoneNumber: "phone_number",
     gender: "gender",
-    dob: "2023-01-15",
+    dob: "dob",
     address: {
         firstLine: "first_line",
         country: "country",
         zip: "zip",
         city: "city",
-        state: "state",
-    },
+        state: "state"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7423,34 +7778,35 @@ await client.user.upsertUserInfo("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.UserInfoCreateRequest`
-
+**request:** `Vital.UserInfoCreateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getByClientUserId</a>(clientUserId, { ...params }) -> Vital.ClientFacingUser</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getByClientUserId</a>(client_user_id) -> Vital.ClientFacingUser</code></summary>
 <dl>
 <dd>
 
@@ -7463,7 +7819,6 @@ await client.user.upsertUserInfo("user_id", {
 <dd>
 
 GET user_id from client_user_id.
-
 </dd>
 </dl>
 </dd>
@@ -7479,8 +7834,8 @@ GET user_id from client_user_id.
 
 ```typescript
 await client.user.getByClientUserId("client_user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7494,34 +7849,27 @@ await client.user.getByClientUserId("client_user_id");
 <dl>
 <dd>
 
-**clientUserId:** `string` — A unique ID representing the end user. Typically this will be a user ID number from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id.
-
+**client_user_id:** `string` — A unique ID representing the end user. Typically this will be a user ID number from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetByClientUserIdUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">deregisterProvider</a>(userId, provider, { ...params }) -> Vital.UserSuccessResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">deregisterProvider</a>(user_id, provider) -> Vital.UserSuccessResponse</code></summary>
 <dl>
 <dd>
 
@@ -7535,8 +7883,8 @@ await client.user.getByClientUserId("client_user_id");
 
 ```typescript
 await client.user.deregisterProvider("user_id", "oura");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7550,8 +7898,8 @@ await client.user.deregisterProvider("user_id", "oura");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
@@ -7559,33 +7907,26 @@ await client.user.deregisterProvider("user_id", "oura");
 <dd>
 
 **provider:** `Vital.Providers` — Provider slug. e.g., `oura`, `fitbit`, `garmin`.
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.DeregisterProviderUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">get</a>(userId, { ...params }) -> Vital.ClientFacingUser</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">get</a>(user_id) -> Vital.ClientFacingUser</code></summary>
 <dl>
 <dd>
 
@@ -7599,8 +7940,8 @@ await client.user.deregisterProvider("user_id", "oura");
 
 ```typescript
 await client.user.get("user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7614,34 +7955,27 @@ await client.user.get("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">delete</a>(userId, { ...params }) -> Vital.UserSuccessResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">delete</a>(user_id) -> Vital.UserSuccessResponse</code></summary>
 <dl>
 <dd>
 
@@ -7655,8 +7989,8 @@ await client.user.get("user_id");
 
 ```typescript
 await client.user.delete("user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7670,34 +8004,27 @@ await client.user.delete("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.DeleteUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">patch</a>(userId, { ...params }) -> void</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">patch</a>(user_id, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -7711,8 +8038,8 @@ await client.user.delete("user_id");
 
 ```typescript
 await client.user.patch("user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7726,28 +8053,29 @@ await client.user.patch("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.UserPatchBody`
-
+**request:** `Vital.UserPatchBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7766,9 +8094,12 @@ await client.user.patch("user_id");
 <dd>
 
 ```typescript
-await client.user.undoDelete();
-```
+await client.user.undoDelete({
+    userId: "user_id",
+    clientUserId: "client_user_id"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -7782,26 +8113,27 @@ await client.user.undoDelete();
 <dl>
 <dd>
 
-**request:** `Vital.UndoDeleteUserRequest`
-
+**request:** `Vital.UserUndoDeleteRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">refresh</a>(userId, { ...params }) -> Vital.UserRefreshSuccessResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">refresh</a>(user_id, { ...params }) -> Vital.UserRefreshSuccessResponse</code></summary>
 <dl>
 <dd>
 
@@ -7814,7 +8146,6 @@ await client.user.undoDelete();
 <dd>
 
 Trigger a manual refresh for a specific user
-
 </dd>
 </dl>
 </dd>
@@ -7829,9 +8160,11 @@ Trigger a manual refresh for a specific user
 <dd>
 
 ```typescript
-await client.user.refresh("user_id");
-```
+await client.user.refresh("user_id", {
+    timeout: 1.1
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -7845,34 +8178,35 @@ await client.user.refresh("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.RefreshUserRequest`
-
+**request:** `Vital.UserRefreshRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevices</a>(userId, { ...params }) -> Vital.ClientFacingDevice[]</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevices</a>(user_id) -> Vital.ClientFacingDevice[]</code></summary>
 <dl>
 <dd>
 
@@ -7886,8 +8220,8 @@ await client.user.refresh("user_id");
 
 ```typescript
 await client.user.getDevices("user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7901,34 +8235,27 @@ await client.user.getDevices("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetDevicesUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevice</a>(userId, deviceId, { ...params }) -> Vital.ClientFacingDevice</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getDevice</a>(user_id, device_id) -> Vital.ClientFacingDevice</code></summary>
 <dl>
 <dd>
 
@@ -7942,8 +8269,8 @@ await client.user.getDevices("user_id");
 
 ```typescript
 await client.user.getDevice("user_id", "device_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7957,42 +8284,35 @@ await client.user.getDevice("user_id", "device_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**deviceId:** `string`
-
+**device_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetDeviceUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getUserSignInToken</a>(userId, { ...params }) -> Vital.UserSignInTokenResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getUserSignInToken</a>(user_id) -> Vital.UserSignInTokenResponse</code></summary>
 <dl>
 <dd>
 
@@ -8006,8 +8326,8 @@ await client.user.getDevice("user_id", "device_id");
 
 ```typescript
 await client.user.getUserSignInToken("user_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8021,34 +8341,27 @@ await client.user.getUserSignInToken("user_id");
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetUserSignInTokenUserRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
+**requestOptions:** `UserClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">createPortalUrl</a>(userId, { ...params }) -> Vital.CreateUserPortalUrlResponse</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">createPortalUrl</a>(user_id, { ...params }) -> Vital.CreateUserPortalUrlResponse</code></summary>
 <dl>
 <dd>
 
@@ -8062,10 +8375,10 @@ await client.user.getUserSignInToken("user_id");
 
 ```typescript
 await client.user.createPortalUrl("user_id", {
-    context: "launch",
+    context: "launch"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8079,35 +8392,35 @@ await client.user.createPortalUrl("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CreateUserPortalUrlBody`
-
+**request:** `Vital.CreateUserPortalUrlBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `User.RequestOptions`
+**requestOptions:** `UserClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Team
-
 <details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getLinkConfig</a>({ ...params }) -> Record<string, unknown></code></summary>
 <dl>
 <dd>
@@ -8121,7 +8434,6 @@ await client.user.createPortalUrl("user_id", {
 <dd>
 
 Post teams.
-
 </dd>
 </dl>
 </dd>
@@ -8136,9 +8448,11 @@ Post teams.
 <dd>
 
 ```typescript
-await client.team.getLinkConfig();
-```
+await client.team.getLinkConfig({
+    vitalLinkToken: "x-vital-link-token"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8152,26 +8466,27 @@ await client.team.getLinkConfig();
 <dl>
 <dd>
 
-**request:** `Vital.GetLinkConfigTeamRequest`
-
+**request:** `Vital.TeamGetLinkConfigRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `TeamClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">get</a>(teamId, { ...params }) -> Vital.ClientFacingTeam</code></summary>
+<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">get</a>(team_id) -> Vital.ClientFacingTeam</code></summary>
 <dl>
 <dd>
 
@@ -8184,7 +8499,6 @@ await client.team.getLinkConfig();
 <dd>
 
 Get team.
-
 </dd>
 </dl>
 </dd>
@@ -8200,8 +8514,8 @@ Get team.
 
 ```typescript
 await client.team.get("team_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8215,28 +8529,21 @@ await client.team.get("team_id");
 <dl>
 <dd>
 
-**teamId:** `string`
-
+**team_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetTeamRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Team.RequestOptions`
-
+**requestOptions:** `TeamClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
@@ -8255,7 +8562,6 @@ await client.team.get("team_id");
 <dd>
 
 Search team users by user_id
-
 </dd>
 </dl>
 </dd>
@@ -8270,9 +8576,11 @@ Search team users by user_id
 <dd>
 
 ```typescript
-await client.team.getUserById();
-```
+await client.team.getUserById({
+    queryId: "query_id"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8286,20 +8594,21 @@ await client.team.getUserById();
 <dl>
 <dd>
 
-**request:** `Vital.GetUserByIdTeamRequest`
-
+**request:** `Vital.TeamGetUserByIdRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `TeamClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8319,8 +8628,8 @@ await client.team.getUserById();
 
 ```typescript
 await client.team.getSvixUrl();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8334,12 +8643,13 @@ await client.team.getSvixUrl();
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `TeamClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8358,7 +8668,6 @@ await client.team.getSvixUrl();
 <dd>
 
 GET source priorities.
-
 </dd>
 </dl>
 </dd>
@@ -8373,9 +8682,11 @@ GET source priorities.
 <dd>
 
 ```typescript
-await client.team.getSourcePriorities();
-```
+await client.team.getSourcePriorities({
+    dataType: "workouts"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8389,20 +8700,21 @@ await client.team.getSourcePriorities();
 <dl>
 <dd>
 
-**request:** `Vital.GetSourcePrioritiesTeamRequest`
-
+**request:** `Vital.TeamGetSourcePrioritiesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `TeamClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8421,7 +8733,6 @@ await client.team.getSourcePriorities();
 <dd>
 
 Patch source priorities.
-
 </dd>
 </dl>
 </dd>
@@ -8437,8 +8748,8 @@ Patch source priorities.
 
 ```typescript
 await client.team.updateSourcePriorities();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8452,18 +8763,19 @@ await client.team.updateSourcePriorities();
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `TeamClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getPhysicians</a>(teamId, { ...params }) -> Vital.ClientFacingPhysician[]</code></summary>
+<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getPhysicians</a>(team_id) -> Vital.ClientFacingPhysician[]</code></summary>
 <dl>
 <dd>
 
@@ -8477,8 +8789,8 @@ await client.team.updateSourcePriorities();
 
 ```typescript
 await client.team.getPhysicians("team_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8492,35 +8804,27 @@ await client.team.getPhysicians("team_id");
 <dl>
 <dd>
 
-**teamId:** `string`
-
+**team_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetPhysiciansTeamRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Team.RequestOptions`
-
+**requestOptions:** `TeamClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Providers
-
 <details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">getAll</a>({ ...params }) -> Vital.ClientFacingProviderDetailed[]</code></summary>
 <dl>
 <dd>
@@ -8534,7 +8838,6 @@ await client.team.getPhysicians("team_id");
 <dd>
 
 Get Provider list
-
 </dd>
 </dl>
 </dd>
@@ -8549,9 +8852,11 @@ Get Provider list
 <dd>
 
 ```typescript
-await client.providers.getAll();
-```
+await client.providers.getAll({
+    sourceType: "source_type"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8565,27 +8870,27 @@ await client.providers.getAll();
 <dl>
 <dd>
 
-**request:** `Vital.GetAllProvidersRequest`
-
+**request:** `Vital.ProvidersGetAllRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Providers.RequestOptions`
+**requestOptions:** `ProvidersClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Introspect
-
 <details><summary><code>client.introspect.<a href="/src/api/resources/introspect/client/Client.ts">getUserResources</a>({ ...params }) -> Vital.UserResourcesResponse</code></summary>
 <dl>
 <dd>
@@ -8599,9 +8904,15 @@ await client.providers.getAll();
 <dd>
 
 ```typescript
-await client.introspect.getUserResources();
-```
+await client.introspect.getUserResources({
+    userId: "user_id",
+    provider: "oura",
+    userLimit: 1,
+    cursor: "cursor",
+    nextCursor: "next_cursor"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8615,20 +8926,21 @@ await client.introspect.getUserResources();
 <dl>
 <dd>
 
-**request:** `Vital.GetUserResourcesIntrospectRequest`
-
+**request:** `Vital.IntrospectGetUserResourcesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Introspect.RequestOptions`
+**requestOptions:** `IntrospectClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8647,9 +8959,15 @@ await client.introspect.getUserResources();
 <dd>
 
 ```typescript
-await client.introspect.getUserHistoricalPulls();
-```
+await client.introspect.getUserHistoricalPulls({
+    userId: "user_id",
+    provider: "oura",
+    userLimit: 1,
+    cursor: "cursor",
+    nextCursor: "next_cursor"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8663,27 +8981,27 @@ await client.introspect.getUserHistoricalPulls();
 <dl>
 <dd>
 
-**request:** `Vital.GetUserHistoricalPullsIntrospectRequest`
-
+**request:** `Vital.IntrospectGetUserHistoricalPullsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Introspect.RequestOptions`
+**requestOptions:** `IntrospectClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## LabTests
-
 <details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">get</a>({ ...params }) -> Vital.ClientFacingLabTest[]</code></summary>
 <dl>
 <dd>
@@ -8697,7 +9015,6 @@ await client.introspect.getUserHistoricalPulls();
 <dd>
 
 GET all the lab tests the team has access to.
-
 </dd>
 </dl>
 </dd>
@@ -8712,9 +9029,17 @@ GET all the lab tests the team has access to.
 <dd>
 
 ```typescript
-await client.labTests.get();
-```
+await client.labTests.get({
+    generationMethod: "auto",
+    labSlug: "lab_slug",
+    collectionMethod: "testkit",
+    status: "active",
+    name: "name",
+    orderKey: "price",
+    orderDirection: "asc"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8728,20 +9053,21 @@ await client.labTests.get();
 <dl>
 <dd>
 
-**request:** `Vital.GetLabTestsRequest`
-
+**request:** `Vital.LabTestsGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8763,10 +9089,10 @@ await client.labTests.get();
 await client.labTests.create({
     name: "name",
     method: "testkit",
-    description: "description",
+    description: "description"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8780,26 +9106,27 @@ await client.labTests.create({
 <dl>
 <dd>
 
-**request:** `Vital.CreateLabTestRequest`
-
+**request:** `Vital.CreateLabTestRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getById</a>(labTestId, { ...params }) -> Vital.ClientFacingLabTest</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getById</a>(lab_test_id, { ...params }) -> Vital.ClientFacingLabTest</code></summary>
 <dl>
 <dd>
 
@@ -8812,7 +9139,6 @@ await client.labTests.create({
 <dd>
 
 GET all the lab tests the team has access to.
-
 </dd>
 </dl>
 </dd>
@@ -8827,9 +9153,11 @@ GET all the lab tests the team has access to.
 <dd>
 
 ```typescript
-await client.labTests.getById("lab_test_id");
-```
+await client.labTests.getById("lab_test_id", {
+    labAccountId: "lab_account_id"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8843,34 +9171,35 @@ await client.labTests.getById("lab_test_id");
 <dl>
 <dd>
 
-**labTestId:** `string`
-
+**lab_test_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetByIdLabTestsRequest`
-
+**request:** `Vital.LabTestsGetByIdRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">updateLabTest</a>(labTestId, { ...params }) -> Vital.ClientFacingLabTest</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">updateLabTest</a>(lab_test_id, { ...params }) -> Vital.ClientFacingLabTest</code></summary>
 <dl>
 <dd>
 
@@ -8884,8 +9213,8 @@ await client.labTests.getById("lab_test_id");
 
 ```typescript
 await client.labTests.updateLabTest("lab_test_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8899,28 +9228,29 @@ await client.labTests.updateLabTest("lab_test_id");
 <dl>
 <dd>
 
-**labTestId:** `string`
-
+**lab_test_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.UpdateLabTestRequest`
-
+**request:** `Vital.UpdateLabTestRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8939,7 +9269,6 @@ await client.labTests.updateLabTest("lab_test_id");
 <dd>
 
 GET all the markers for the given lab.
-
 </dd>
 </dl>
 </dd>
@@ -8954,9 +9283,15 @@ GET all the markers for the given lab.
 <dd>
 
 ```typescript
-await client.labTests.getMarkers();
-```
+await client.labTests.getMarkers({
+    name: "name",
+    aLaCarteEnabled: true,
+    labAccountId: "lab_account_id",
+    page: 1,
+    size: 1
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -8970,20 +9305,21 @@ await client.labTests.getMarkers();
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersLabTestsRequest`
-
+**request:** `Vital.LabTestsGetMarkersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9003,10 +9339,12 @@ await client.labTests.getMarkers();
 
 ```typescript
 await client.labTests.getMarkersForOrderSet({
-    body: {},
+    page: 1,
+    size: 1,
+    body: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9020,26 +9358,27 @@ await client.labTests.getMarkersForOrderSet({
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersForOrderSetLabTestsRequest`
-
+**request:** `Vital.LabTestsGetMarkersForOrderSetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getMarkersForLabTest</a>(labTestId, { ...params }) -> Vital.GetMarkersResponse</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getMarkersForLabTest</a>(lab_test_id, { ...params }) -> Vital.GetMarkersResponse</code></summary>
 <dl>
 <dd>
 
@@ -9052,9 +9391,13 @@ await client.labTests.getMarkersForOrderSet({
 <dd>
 
 ```typescript
-await client.labTests.getMarkersForLabTest("lab_test_id");
-```
+await client.labTests.getMarkersForLabTest("lab_test_id", {
+    labAccountId: "lab_account_id",
+    page: 1,
+    size: 1
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -9068,34 +9411,35 @@ await client.labTests.getMarkersForLabTest("lab_test_id");
 <dl>
 <dd>
 
-**labTestId:** `string`
-
+**lab_test_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersForLabTestLabTestsRequest`
-
+**request:** `Vital.LabTestsGetMarkersForLabTestRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getMarkersByLabAndProviderId</a>(labId, providerId, { ...params }) -> Vital.ClientFacingMarker</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getMarkersByLabAndProviderId</a>(provider_id, lab_id, { ...params }) -> Vital.ClientFacingMarker</code></summary>
 <dl>
 <dd>
 
@@ -9108,7 +9452,6 @@ await client.labTests.getMarkersForLabTest("lab_test_id");
 <dd>
 
 GET a specific marker for the given lab and provider_id
-
 </dd>
 </dl>
 </dd>
@@ -9123,9 +9466,11 @@ GET a specific marker for the given lab and provider_id
 <dd>
 
 ```typescript
-await client.labTests.getMarkersByLabAndProviderId(1, "provider_id");
-```
+await client.labTests.getMarkersByLabAndProviderId("provider_id", 1, {
+    labAccountId: "lab_account_id"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -9139,36 +9484,37 @@ await client.labTests.getMarkersByLabAndProviderId(1, "provider_id");
 <dl>
 <dd>
 
-**labId:** `number`
-
+**provider_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**providerId:** `string`
-
+**lab_id:** `number` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetMarkersByLabAndProviderIdLabTestsRequest`
-
+**request:** `Vital.LabTestsGetMarkersByLabAndProviderIdRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9187,7 +9533,6 @@ await client.labTests.getMarkersByLabAndProviderId(1, "provider_id");
 <dd>
 
 GET all the labs.
-
 </dd>
 </dl>
 </dd>
@@ -9203,8 +9548,8 @@ GET all the labs.
 
 ```typescript
 await client.labTests.getLabs();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9218,12 +9563,13 @@ await client.labTests.getLabs();
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9242,7 +9588,6 @@ await client.labTests.getLabs();
 <dd>
 
 GET lab tests the team has access to as a paginated list.
-
 </dd>
 </dl>
 </dd>
@@ -9257,9 +9602,19 @@ GET lab tests the team has access to as a paginated list.
 <dd>
 
 ```typescript
-await client.labTests.getPaginated();
-```
+await client.labTests.getPaginated({
+    labTestLimit: 1,
+    nextCursor: "next_cursor",
+    generationMethod: "auto",
+    labSlug: "lab_slug",
+    collectionMethod: "testkit",
+    status: "active",
+    name: "name",
+    orderKey: "price",
+    orderDirection: "asc"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -9273,26 +9628,27 @@ await client.labTests.getPaginated();
 <dl>
 <dd>
 
-**request:** `Vital.GetPaginatedLabTestsRequest`
-
+**request:** `Vital.LabTestsGetPaginatedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getLabTestCollectionInstructionPdf</a>(labTestId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getLabTestCollectionInstructionPdf</a>(lab_test_id) -> core.BinaryResponse</code></summary>
 <dl>
 <dd>
 
@@ -9306,8 +9662,8 @@ await client.labTests.getPaginated();
 
 ```typescript
 await client.labTests.getLabTestCollectionInstructionPdf("lab_test_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9321,28 +9677,21 @@ await client.labTests.getLabTestCollectionInstructionPdf("lab_test_id");
 <dl>
 <dd>
 
-**labTestId:** `string`
-
+**lab_test_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetLabTestCollectionInstructionPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
@@ -9361,7 +9710,6 @@ await client.labTests.getLabTestCollectionInstructionPdf("lab_test_id");
 <dd>
 
 GET many orders with filters.
-
 </dd>
 </dl>
 </dd>
@@ -9376,9 +9724,24 @@ GET many orders with filters.
 <dd>
 
 ```typescript
-await client.labTests.getOrders();
-```
+await client.labTests.getOrders({
+    searchInput: "search_input",
+    startDate: new Date("2024-01-15T09:30:00.000Z"),
+    endDate: new Date("2024-01-15T09:30:00.000Z"),
+    updatedStartDate: new Date("2024-01-15T09:30:00.000Z"),
+    updatedEndDate: new Date("2024-01-15T09:30:00.000Z"),
+    orderKey: "created_at",
+    orderDirection: "asc",
+    isCritical: true,
+    interpretation: "normal",
+    userId: "user_id",
+    patientName: "patient_name",
+    shippingRecipientName: "shipping_recipient_name",
+    page: 1,
+    size: 1
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -9392,20 +9755,21 @@ await client.labTests.getOrders();
 <dl>
 <dd>
 
-**request:** `Vital.GetOrdersLabTestsRequest`
-
+**request:** `Vital.LabTestsGetOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9425,7 +9789,6 @@ await client.labTests.getOrders();
 
 Return the available time slots to book an appointment with a phlebotomist
 for the given address and order.
-
 </dd>
 </dl>
 </dd>
@@ -9441,15 +9804,16 @@ for the given address and order.
 
 ```typescript
 await client.labTests.getPhlebotomyAppointmentAvailability({
+    startDate: "start_date",
     body: {
         firstLine: "first_line",
         city: "city",
         state: "state",
-        zipCode: "zip_code",
-    },
+        zipCode: "zip_code"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9463,26 +9827,27 @@ await client.labTests.getPhlebotomyAppointmentAvailability({
 <dl>
 <dd>
 
-**request:** `Vital.GetPhlebotomyAppointmentAvailabilityLabTestsRequest`
-
+**request:** `Vital.LabTestsGetPhlebotomyAppointmentAvailabilityRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">bookPhlebotomyAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">bookPhlebotomyAppointment</a>(order_id, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -9495,7 +9860,6 @@ await client.labTests.getPhlebotomyAppointmentAvailability({
 <dd>
 
 Book an at-home phlebotomy appointment.
-
 </dd>
 </dl>
 </dd>
@@ -9511,12 +9875,10 @@ Book an at-home phlebotomy appointment.
 
 ```typescript
 await client.labTests.bookPhlebotomyAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9530,34 +9892,35 @@ await client.labTests.bookPhlebotomyAppointment("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BookPhlebotomyAppointmentLabTestsRequest`
-
+**request:** `Vital.AppointmentBookingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">requestPhlebotomyAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">requestPhlebotomyAppointment</a>(order_id, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -9570,7 +9933,6 @@ await client.labTests.bookPhlebotomyAppointment("order_id", {
 <dd>
 
 Request an at-home phlebotomy appointment.
-
 </dd>
 </dl>
 </dd>
@@ -9590,12 +9952,12 @@ await client.labTests.requestPhlebotomyAppointment("order_id", {
         firstLine: "first_line",
         city: "city",
         state: "state",
-        zipCode: "zip_code",
+        zipCode: "zip_code"
     },
-    provider: "getlabs",
+    provider: "getlabs"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9609,34 +9971,35 @@ await client.labTests.requestPhlebotomyAppointment("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.RequestAppointmentRequest`
-
+**request:** `Vital.RequestAppointmentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">reschedulePhlebotomyAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">reschedulePhlebotomyAppointment</a>(order_id, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -9649,7 +10012,6 @@ await client.labTests.requestPhlebotomyAppointment("order_id", {
 <dd>
 
 Reschedule a previously booked at-home phlebotomy appointment.
-
 </dd>
 </dl>
 </dd>
@@ -9665,12 +10027,10 @@ Reschedule a previously booked at-home phlebotomy appointment.
 
 ```typescript
 await client.labTests.reschedulePhlebotomyAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9684,34 +10044,35 @@ await client.labTests.reschedulePhlebotomyAppointment("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ReschedulePhlebotomyAppointmentLabTestsRequest`
-
+**request:** `Vital.AppointmentRescheduleRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelPhlebotomyAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelPhlebotomyAppointment</a>(order_id, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -9724,7 +10085,6 @@ await client.labTests.reschedulePhlebotomyAppointment("order_id", {
 <dd>
 
 Cancel a previously booked at-home phlebotomy appointment.
-
 </dd>
 </dl>
 </dd>
@@ -9740,10 +10100,10 @@ Cancel a previously booked at-home phlebotomy appointment.
 
 ```typescript
 await client.labTests.cancelPhlebotomyAppointment("order_id", {
-    cancellationReasonId: "cancellation_reason_id",
+    cancellationReasonId: "cancellation_reason_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9757,28 +10117,29 @@ await client.labTests.cancelPhlebotomyAppointment("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest`
-
+**request:** `Vital.ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9797,7 +10158,6 @@ await client.labTests.cancelPhlebotomyAppointment("order_id", {
 <dd>
 
 Get the list of reasons for cancelling an at-home phlebotomy appointment.
-
 </dd>
 </dl>
 </dd>
@@ -9813,8 +10173,8 @@ Get the list of reasons for cancelling an at-home phlebotomy appointment.
 
 ```typescript
 await client.labTests.getPhlebotomyAppointmentCancellationReason();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9828,18 +10188,19 @@ await client.labTests.getPhlebotomyAppointmentCancellationReason();
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPhlebotomyAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPhlebotomyAppointment</a>(order_id) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -9852,7 +10213,6 @@ await client.labTests.getPhlebotomyAppointmentCancellationReason();
 <dd>
 
 Get the appointment associated with an order.
-
 </dd>
 </dl>
 </dd>
@@ -9868,8 +10228,8 @@ Get the appointment associated with an order.
 
 ```typescript
 await client.labTests.getPhlebotomyAppointment("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9883,28 +10243,21 @@ await client.labTests.getPhlebotomyAppointment("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetPhlebotomyAppointmentLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
@@ -9925,9 +10278,8 @@ await client.labTests.getPhlebotomyAppointment("order_id");
 GET information about an area with respect to lab-testing.
 
 Information returned:
-
--   Whether a given zip code is served by our Phlebotomy network.
--   List of Lab locations in the area.
+* Whether a given zip code is served by our Phlebotomy network.
+* List of Lab locations in the area.
 </dd>
 </dl>
 </dd>
@@ -9944,9 +10296,12 @@ Information returned:
 ```typescript
 await client.labTests.getAreaInfo({
     zipCode: "zip_code",
+    radius: "10",
+    lab: "quest",
+    labAccountId: "lab_account_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9960,20 +10315,21 @@ await client.labTests.getAreaInfo({
 <dl>
 <dd>
 
-**request:** `Vital.GetAreaInfoLabTestsRequest`
-
+**request:** `Vital.LabTestsGetAreaInfoRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9995,9 +10351,11 @@ await client.labTests.getAreaInfo({
 await client.labTests.getPscInfo({
     zipCode: "zip_code",
     labId: 1,
+    radius: "10",
+    labAccountId: "lab_account_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10011,26 +10369,27 @@ await client.labTests.getPscInfo({
 <dl>
 <dd>
 
-**request:** `Vital.GetPscInfoLabTestsRequest`
-
+**request:** `Vital.LabTestsGetPscInfoRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderPscInfo</a>(orderId, { ...params }) -> Vital.PscInfo</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderPscInfo</a>(order_id, { ...params }) -> Vital.PscInfo</code></summary>
 <dl>
 <dd>
 
@@ -10043,9 +10402,11 @@ await client.labTests.getPscInfo({
 <dd>
 
 ```typescript
-await client.labTests.getOrderPscInfo("order_id");
-```
+await client.labTests.getOrderPscInfo("order_id", {
+    radius: "10"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -10059,34 +10420,35 @@ await client.labTests.getOrderPscInfo("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderPscInfoLabTestsRequest`
-
+**request:** `Vital.LabTestsGetOrderPscInfoRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultPdf</a>(order_id) -> core.BinaryResponse</code></summary>
 <dl>
 <dd>
 
@@ -10099,7 +10461,6 @@ await client.labTests.getOrderPscInfo("order_id");
 <dd>
 
 This endpoint returns the lab results for the order.
-
 </dd>
 </dl>
 </dd>
@@ -10115,8 +10476,8 @@ This endpoint returns the lab results for the order.
 
 ```typescript
 await client.labTests.getResultPdf("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10130,34 +10491,27 @@ await client.labTests.getResultPdf("order_id");
 <dl>
 <dd>
 
-**orderId:** `string`
-
+**order_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetResultPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultMetadata</a>(orderId, { ...params }) -> Vital.LabResultsMetadata</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultMetadata</a>(order_id) -> Vital.LabResultsMetadata</code></summary>
 <dl>
 <dd>
 
@@ -10171,7 +10525,6 @@ await client.labTests.getResultPdf("order_id");
 
 Return metadata related to order results, such as lab metadata,
 provider and sample dates.
-
 </dd>
 </dl>
 </dd>
@@ -10187,8 +10540,8 @@ provider and sample dates.
 
 ```typescript
 await client.labTests.getResultMetadata("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10202,34 +10555,27 @@ await client.labTests.getResultMetadata("order_id");
 <dl>
 <dd>
 
-**orderId:** `string`
-
+**order_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetResultMetadataLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultRaw</a>(orderId, { ...params }) -> Vital.LabResultsRaw</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getResultRaw</a>(order_id) -> Vital.LabResultsRaw</code></summary>
 <dl>
 <dd>
 
@@ -10242,7 +10588,6 @@ await client.labTests.getResultMetadata("order_id");
 <dd>
 
 Return both metadata and raw json test data
-
 </dd>
 </dl>
 </dd>
@@ -10258,8 +10603,8 @@ Return both metadata and raw json test data
 
 ```typescript
 await client.labTests.getResultRaw("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10273,34 +10618,27 @@ await client.labTests.getResultRaw("order_id");
 <dl>
 <dd>
 
-**orderId:** `string`
-
+**order_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetResultRawLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getLabelsPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getLabelsPdf</a>(order_id, { ...params }) -> core.BinaryResponse</code></summary>
 <dl>
 <dd>
 
@@ -10313,7 +10651,6 @@ await client.labTests.getResultRaw("order_id");
 <dd>
 
 This endpoint returns the printed labels for the order.
-
 </dd>
 </dl>
 </dd>
@@ -10329,10 +10666,10 @@ This endpoint returns the printed labels for the order.
 
 ```typescript
 await client.labTests.getLabelsPdf("order_id", {
-    collectionDate: "2024-01-15T09:30:00Z",
+    collectionDate: new Date("2024-01-15T09:30:00.000Z")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10346,28 +10683,29 @@ await client.labTests.getLabelsPdf("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string`
-
+**order_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetLabelsPdfLabTestsRequest`
-
+**request:** `Vital.LabTestsGetLabelsPdfRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10388,9 +10726,12 @@ await client.labTests.getLabelsPdf("order_id", {
 ```typescript
 await client.labTests.getPscAppointmentAvailability({
     lab: "quest",
+    startDate: "start_date",
+    zipCode: "zip_code",
+    radius: "10"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10404,26 +10745,27 @@ await client.labTests.getPscAppointmentAvailability({
 <dl>
 <dd>
 
-**request:** `Vital.GetPscAppointmentAvailabilityLabTestsRequest`
-
+**request:** `Vital.LabTestsGetPscAppointmentAvailabilityRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">bookPscAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">bookPscAppointment</a>(order_id, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -10437,12 +10779,10 @@ await client.labTests.getPscAppointmentAvailability({
 
 ```typescript
 await client.labTests.bookPscAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10456,34 +10796,35 @@ await client.labTests.bookPscAppointment("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BookPscAppointmentLabTestsRequest`
-
+**request:** `Vital.AppointmentBookingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">reschedulePscAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">reschedulePscAppointment</a>(order_id, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -10497,12 +10838,10 @@ await client.labTests.bookPscAppointment("order_id", {
 
 ```typescript
 await client.labTests.reschedulePscAppointment("order_id", {
-    body: {
-        bookingKey: "booking_key",
-    },
+    bookingKey: "booking_key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10516,34 +10855,35 @@ await client.labTests.reschedulePscAppointment("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ReschedulePscAppointmentLabTestsRequest`
-
+**request:** `Vital.AppointmentRescheduleRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelPscAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelPscAppointment</a>(order_id, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -10557,10 +10897,10 @@ await client.labTests.reschedulePscAppointment("order_id", {
 
 ```typescript
 await client.labTests.cancelPscAppointment("order_id", {
-    cancellationReasonId: "cancellationReasonId",
+    cancellationReasonId: "cancellationReasonId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10574,28 +10914,29 @@ await client.labTests.cancelPscAppointment("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest`
-
+**request:** `Vital.VitalCoreClientsLabTestGetlabsSchemaAppointmentCancelRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10615,8 +10956,8 @@ await client.labTests.cancelPscAppointment("order_id", {
 
 ```typescript
 await client.labTests.getPscAppointmentCancellationReason();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10630,18 +10971,19 @@ await client.labTests.getPscAppointmentCancellationReason();
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPscAppointment</a>(orderId, { ...params }) -> Vital.ClientFacingAppointment</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getPscAppointment</a>(order_id) -> Vital.ClientFacingAppointment</code></summary>
 <dl>
 <dd>
 
@@ -10654,7 +10996,6 @@ await client.labTests.getPscAppointmentCancellationReason();
 <dd>
 
 Get the appointment associated with an order.
-
 </dd>
 </dl>
 </dd>
@@ -10670,8 +11011,8 @@ Get the appointment associated with an order.
 
 ```typescript
 await client.labTests.getPscAppointment("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10685,34 +11026,27 @@ await client.labTests.getPscAppointment("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetPscAppointmentLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderCollectionInstructionPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderCollectionInstructionPdf</a>(order_id) -> core.BinaryResponse</code></summary>
 <dl>
 <dd>
 
@@ -10725,7 +11059,6 @@ await client.labTests.getPscAppointment("order_id");
 <dd>
 
 GET collection instructions for an order
-
 </dd>
 </dl>
 </dd>
@@ -10741,8 +11074,8 @@ GET collection instructions for an order
 
 ```typescript
 await client.labTests.getOrderCollectionInstructionPdf("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10756,34 +11089,27 @@ await client.labTests.getOrderCollectionInstructionPdf("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderCollectionInstructionPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderRequistionPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderRequistionPdf</a>(order_id) -> core.BinaryResponse</code></summary>
 <dl>
 <dd>
 
@@ -10796,7 +11122,6 @@ await client.labTests.getOrderCollectionInstructionPdf("order_id");
 <dd>
 
 GET requisition pdf for an order
-
 </dd>
 </dl>
 </dd>
@@ -10812,8 +11137,8 @@ GET requisition pdf for an order
 
 ```typescript
 await client.labTests.getOrderRequistionPdf("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10827,34 +11152,27 @@ await client.labTests.getOrderRequistionPdf("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderRequistionPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderAbnPdf</a>(orderId, { ...params }) -> stream.Readable</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrderAbnPdf</a>(order_id) -> core.BinaryResponse</code></summary>
 <dl>
 <dd>
 
@@ -10867,7 +11185,6 @@ await client.labTests.getOrderRequistionPdf("order_id");
 <dd>
 
 GET ABN pdf for an order
-
 </dd>
 </dl>
 </dd>
@@ -10883,8 +11200,8 @@ GET ABN pdf for an order
 
 ```typescript
 await client.labTests.getOrderAbnPdf("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10898,34 +11215,27 @@ await client.labTests.getOrderAbnPdf("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderAbnPdfLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrder</a>(orderId, { ...params }) -> Vital.ClientFacingOrder</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getOrder</a>(order_id) -> Vital.ClientFacingOrder</code></summary>
 <dl>
 <dd>
 
@@ -10938,7 +11248,6 @@ await client.labTests.getOrderAbnPdf("order_id");
 <dd>
 
 GET individual order by ID.
-
 </dd>
 </dl>
 </dd>
@@ -10954,8 +11263,8 @@ GET individual order by ID.
 
 ```typescript
 await client.labTests.getOrder("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10969,28 +11278,21 @@ await client.labTests.getOrder("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetOrderLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
@@ -11010,25 +11312,27 @@ await client.labTests.getOrder("order_id");
 
 ```typescript
 await client.labTests.createOrder({
+    idempotencyKey: "X-Idempotency-Key",
+    idempotencyError: "no-cache",
     userId: "user_id",
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2023-01-15",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
-        email: "email",
+        email: "email"
     },
     patientAddress: {
         firstLine: "first_line",
         city: "city",
         state: "state",
         zip: "zip",
-        country: "country",
-    },
+        country: "country"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11042,20 +11346,21 @@ await client.labTests.createOrder({
 <dl>
 <dd>
 
-**request:** `Vital.CreateOrderRequestCompatible`
-
+**request:** `Vital.CreateOrderRequestCompatible` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11082,10 +11387,10 @@ await client.labTests.importOrder({
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2023-01-15",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
-        email: "email",
+        email: "email"
     },
     patientAddress: {
         receiverName: "receiver_name",
@@ -11093,12 +11398,12 @@ await client.labTests.importOrder({
         city: "city",
         state: "state",
         zip: "zip",
-        country: "country",
+        country: "country"
     },
-    sampleId: "sample_id",
+    sampleId: "sample_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11112,26 +11417,27 @@ await client.labTests.importOrder({
 <dl>
 <dd>
 
-**request:** `Vital.ImportOrderBody`
-
+**request:** `Vital.ImportOrderBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelOrder</a>(orderId, { ...params }) -> Vital.PostOrderResponse</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">cancelOrder</a>(order_id) -> Vital.PostOrderResponse</code></summary>
 <dl>
 <dd>
 
@@ -11144,7 +11450,6 @@ await client.labTests.importOrder({
 <dd>
 
 POST cancel order
-
 </dd>
 </dl>
 </dd>
@@ -11160,8 +11465,8 @@ POST cancel order
 
 ```typescript
 await client.labTests.cancelOrder("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11175,34 +11480,27 @@ await client.labTests.cancelOrder("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.CancelOrderLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">simulateOrderProcess</a>(orderId, { ...params }) -> unknown</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">simulateOrderProcess</a>(order_id, { ...params }) -> unknown</code></summary>
 <dl>
 <dd>
 
@@ -11215,7 +11513,6 @@ await client.labTests.cancelOrder("order_id");
 <dd>
 
 Get available test kits.
-
 </dd>
 </dl>
 </dd>
@@ -11231,10 +11528,12 @@ Get available test kits.
 
 ```typescript
 await client.labTests.simulateOrderProcess("order_id", {
-    body: {},
+    finalStatus: "received.walk_in_test.ordered",
+    delay: 1,
+    body: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11248,34 +11547,35 @@ await client.labTests.simulateOrderProcess("order_id", {
 <dl>
 <dd>
 
-**orderId:** `string`
-
+**order_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.SimulateOrderProcessLabTestsRequest`
-
+**request:** `Vital.LabTestsSimulateOrderProcessRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">updateOnSiteCollectionOrderDrawCompleted</a>(orderId, { ...params }) -> Vital.PostOrderResponse</code></summary>
+<details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">updateOnSiteCollectionOrderDrawCompleted</a>(order_id) -> Vital.PostOrderResponse</code></summary>
 <dl>
 <dd>
 
@@ -11288,7 +11588,6 @@ await client.labTests.simulateOrderProcess("order_id", {
 <dd>
 
 PATCH update on site collection order when draw is completed
-
 </dd>
 </dl>
 </dd>
@@ -11304,8 +11603,8 @@ PATCH update on site collection order when draw is completed
 
 ```typescript
 await client.labTests.updateOnSiteCollectionOrderDrawCompleted("order_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11319,28 +11618,21 @@ await client.labTests.updateOnSiteCollectionOrderDrawCompleted("order_id");
 <dl>
 <dd>
 
-**orderId:** `string` — Your Order ID.
-
+**order_id:** `string` — Your Order ID.
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.UpdateOnSiteCollectionOrderDrawCompletedLabTestsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabTests.RequestOptions`
-
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
@@ -11360,10 +11652,10 @@ await client.labTests.updateOnSiteCollectionOrderDrawCompleted("order_id");
 
 ```typescript
 await client.labTests.validateIcdCodes({
-    codes: ["codes"],
+    codes: ["codes"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11377,27 +11669,27 @@ await client.labTests.validateIcdCodes({
 <dl>
 <dd>
 
-**request:** `Vital.ValidateIcdCodesBody`
-
+**request:** `Vital.ValidateIcdCodesBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabTests.RequestOptions`
+**requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Testkit
-
 <details><summary><code>client.testkit.<a href="/src/api/resources/testkit/client/Client.ts">register</a>({ ...params }) -> Vital.PostOrderResponse</code></summary>
 <dl>
 <dd>
@@ -11416,21 +11708,21 @@ await client.testkit.register({
     patientDetails: {
         firstName: "first_name",
         lastName: "last_name",
-        dob: "2023-01-15",
+        dob: "dob",
         gender: "female",
         phoneNumber: "phone_number",
-        email: "email",
+        email: "email"
     },
     patientAddress: {
         firstLine: "first_line",
         city: "city",
         state: "state",
         zip: "zip",
-        country: "country",
-    },
+        country: "country"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11444,20 +11736,21 @@ await client.testkit.register({
 <dl>
 <dd>
 
-**request:** `Vital.RegisterTestkitRequest`
-
+**request:** `Vital.RegisterTestkitRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Testkit.RequestOptions`
+**requestOptions:** `TestkitClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11476,7 +11769,6 @@ await client.testkit.register({
 <dd>
 
 Creates an order for an unregistered testkit
-
 </dd>
 </dl>
 </dd>
@@ -11501,11 +11793,11 @@ await client.testkit.createOrder({
         state: "state",
         zip: "zip",
         country: "country",
-        phoneNumber: "phone_number",
-    },
+        phoneNumber: "phone_number"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11519,27 +11811,27 @@ await client.testkit.createOrder({
 <dl>
 <dd>
 
-**request:** `Vital.CreateRegistrableTestkitOrderRequest`
-
+**request:** `Vital.CreateRegistrableTestkitOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Testkit.RequestOptions`
+**requestOptions:** `TestkitClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Order
-
 <details><summary><code>client.order.<a href="/src/api/resources/order/client/Client.ts">resendEvents</a>({ ...params }) -> Vital.ResendWebhookResponse</code></summary>
 <dl>
 <dd>
@@ -11553,7 +11845,6 @@ await client.testkit.createOrder({
 <dd>
 
 Replay a webhook for a given set of orders
-
 </dd>
 </dl>
 </dd>
@@ -11569,8 +11860,8 @@ Replay a webhook for a given set of orders
 
 ```typescript
 await client.order.resendEvents();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11584,27 +11875,27 @@ await client.order.resendEvents();
 <dl>
 <dd>
 
-**request:** `Vital.ResendWebhookBody`
-
+**request:** `Vital.ResendWebhookBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Order.RequestOptions`
+**requestOptions:** `OrderClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Insurance
-
 <details><summary><code>client.insurance.<a href="/src/api/resources/insurance/client/Client.ts">searchGetPayorInfo</a>({ ...params }) -> Vital.ClientFacingPayorSearchResponse[]</code></summary>
 <dl>
 <dd>
@@ -11618,9 +11909,13 @@ await client.order.resendEvents();
 <dd>
 
 ```typescript
-await client.insurance.searchGetPayorInfo();
-```
+await client.insurance.searchGetPayorInfo({
+    insuranceName: "insurance_name",
+    provider: "change_healthcare",
+    providerPayorId: "provider_payor_id"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -11634,20 +11929,21 @@ await client.insurance.searchGetPayorInfo();
 <dl>
 <dd>
 
-**request:** `Vital.SearchGetPayorInfoInsuranceRequest`
-
+**request:** `Vital.InsuranceSearchGetPayorInfoRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Insurance.RequestOptions`
+**requestOptions:** `InsuranceClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11667,8 +11963,8 @@ await client.insurance.searchGetPayorInfo();
 
 ```typescript
 await client.insurance.searchPayorInfo();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11682,20 +11978,21 @@ await client.insurance.searchPayorInfo();
 <dl>
 <dd>
 
-**request:** `Vital.PayorSearchRequest`
-
+**request:** `Vital.PayorSearchRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Insurance.RequestOptions`
+**requestOptions:** `InsuranceClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11715,10 +12012,10 @@ await client.insurance.searchPayorInfo();
 
 ```typescript
 await client.insurance.searchDiagnosis({
-    diagnosisQuery: "diagnosis_query",
+    diagnosisQuery: "diagnosis_query"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11732,27 +12029,27 @@ await client.insurance.searchDiagnosis({
 <dl>
 <dd>
 
-**request:** `Vital.SearchDiagnosisInsuranceRequest`
-
+**request:** `Vital.InsuranceSearchDiagnosisRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Insurance.RequestOptions`
+**requestOptions:** `InsuranceClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Payor
-
 <details><summary><code>client.payor.<a href="/src/api/resources/payor/client/Client.ts">createPayor</a>({ ...params }) -> Vital.ClientFacingPayor</code></summary>
 <dl>
 <dd>
@@ -11773,11 +12070,11 @@ await client.payor.createPayor({
         country: "country",
         zip: "zip",
         city: "city",
-        state: "state",
-    },
+        state: "state"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11791,27 +12088,27 @@ await client.payor.createPayor({
 <dl>
 <dd>
 
-**request:** `Vital.CreatePayorBody`
-
+**request:** `Vital.CreatePayorBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payor.RequestOptions`
+**requestOptions:** `PayorClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## LabReport
-
 <details><summary><code>client.labReport.<a href="/src/api/resources/labReport/client/Client.ts">parserCreateJob</a>(file, { ...params }) -> Vital.ParsingJob</code></summary>
 <dl>
 <dd>
@@ -11826,7 +12123,6 @@ await client.payor.createPayor({
 
 Creates a parse job, uploads the file to provider, persists the job row,
 and starts the ParseLabReport. Returns a generated job_id.
-
 </dd>
 </dl>
 </dd>
@@ -11841,11 +12137,11 @@ and starts the ParseLabReport. Returns a generated job_id.
 <dd>
 
 ```typescript
-await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file"), {
-    userId: "user_id",
+await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
+    userId: "user_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11859,34 +12155,35 @@ await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file")
 <dl>
 <dd>
 
-**file:** `File | fs.ReadStream | Blob`
-
+**file:** `core.file.Uploadable` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.BodyCreateLabReportParserJob`
-
+**request:** `Vital.BodyCreateLabReportParserJob` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LabReport.RequestOptions`
+**requestOptions:** `LabReportClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.labReport.<a href="/src/api/resources/labReport/client/Client.ts">parserGetJob</a>(jobId, { ...params }) -> Vital.ParsingJob</code></summary>
+<details><summary><code>client.labReport.<a href="/src/api/resources/labReport/client/Client.ts">parserGetJob</a>(job_id) -> Vital.ParsingJob</code></summary>
 <dl>
 <dd>
 
@@ -11901,8 +12198,7 @@ await client.labReport.parserCreateJob(fs.createReadStream("/path/to/your/file")
 Retrieves the parse job status and stored result if completed.
 
 Returns:
-ParseLabResultJobResponse with job status and parsed data (if complete)
-
+    ParseLabResultJobResponse with job status and parsed data (if complete)
 </dd>
 </dl>
 </dd>
@@ -11918,8 +12214,8 @@ ParseLabResultJobResponse with job status and parsed data (if complete)
 
 ```typescript
 await client.labReport.parserGetJob("job_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11933,36 +12229,28 @@ await client.labReport.parserGetJob("job_id");
 <dl>
 <dd>
 
-**jobId:** `string`
-
+**job_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.ParserGetJobLabReportRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LabReport.RequestOptions`
-
+**requestOptions:** `LabReportClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Aggregate
-
-<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">queryOne</a>(userId, { ...params }) -> Vital.AggregationResponse</code></summary>
+<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">queryOne</a>(user_id, { ...params }) -> Vital.AggregationResponse</code></summary>
 <dl>
 <dd>
 
@@ -11978,26 +12266,22 @@ await client.labReport.parserGetJob("job_id");
 await client.aggregate.queryOne("user_id", {
     timeframe: {
         type: "relative",
-        anchor: "2023-01-15",
+        anchor: "anchor",
         past: {
-            unit: "minute",
-        },
+            unit: "minute"
+        }
     },
-    queries: [
-        {
-            select: [
-                {
+    queries: [{
+            select: [{
                     arg: {
-                        sleep: "id",
+                        sleep: "id"
                     },
-                    func: "mean",
-                },
-            ],
-        },
-    ],
+                    func: "mean"
+                }]
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12011,34 +12295,35 @@ await client.aggregate.queryOne("user_id", {
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.QueryBatch`
-
+**request:** `Vital.QueryBatch` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Aggregate.RequestOptions`
+**requestOptions:** `AggregateClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getResultTableForContinuousQuery</a>(userId, queryIdOrSlug, { ...params }) -> Vital.AggregationResult</code></summary>
+<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getResultTableForContinuousQuery</a>(user_id, query_id_or_slug) -> Vital.AggregationResult</code></summary>
 <dl>
 <dd>
 
@@ -12052,8 +12337,8 @@ await client.aggregate.queryOne("user_id", {
 
 ```typescript
 await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_slug");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12067,42 +12352,35 @@ await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**queryIdOrSlug:** `string`
-
+**query_id_or_slug:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetResultTableForContinuousQueryAggregateRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Aggregate.RequestOptions`
-
+**requestOptions:** `AggregateClient.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getTaskHistoryForContinuousQuery</a>(userId, queryIdOrSlug, { ...params }) -> Vital.ContinuousQueryTaskHistoryResponse</code></summary>
+<details><summary><code>client.aggregate.<a href="/src/api/resources/aggregate/client/Client.ts">getTaskHistoryForContinuousQuery</a>(user_id, query_id_or_slug, { ...params }) -> Vital.ContinuousQueryTaskHistoryResponse</code></summary>
 <dl>
 <dd>
 
@@ -12115,9 +12393,12 @@ await client.aggregate.getResultTableForContinuousQuery("user_id", "query_id_or_
 <dd>
 
 ```typescript
-await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug");
-```
+await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_slug", {
+    nextCursor: "next_cursor",
+    limit: 1
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -12131,36 +12412,37 @@ await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_
 <dl>
 <dd>
 
-**userId:** `string`
-
+**user_id:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**queryIdOrSlug:** `string`
-
+**query_id_or_slug:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `Vital.GetTaskHistoryForContinuousQueryAggregateRequest`
-
+**request:** `Vital.AggregateGetTaskHistoryForContinuousQueryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Aggregate.RequestOptions`
+**requestOptions:** `AggregateClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
