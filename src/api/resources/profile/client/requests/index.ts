@@ -1,2 +1,2 @@
-export { type GetProfileRequest } from "./GetProfileRequest";
-export { type GetRawProfileRequest } from "./GetRawProfileRequest";
+export type { ProfileGetRawRequest } from "./ProfileGetRawRequest.js";
+export type { ProfileGetRequest } from "./ProfileGetRequest.js";

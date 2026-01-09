@@ -1,1 +1,1 @@
-export { type GetMealRequest } from "./GetMealRequest";
+export type { MealGetRequest } from "./MealGetRequest.js";

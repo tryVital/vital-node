@@ -1,4 +1,4 @@
-export * as searchGetPayorInfo from "./searchGetPayorInfo";
-export * as searchPayorInfo from "./searchPayorInfo";
-export * as searchDiagnosis from "./searchDiagnosis";
-export * from "./requests";
+export * from "./requests/index.js";
+export * as searchDiagnosis from "./searchDiagnosis.js";
+export * as searchGetPayorInfo from "./searchGetPayorInfo.js";
+export * as searchPayorInfo from "./searchPayorInfo.js";

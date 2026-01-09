@@ -1,1 +1,1 @@
-export { type GetSleepCycleRequest } from "./GetSleepCycleRequest";
+export type { SleepCycleGetRequest } from "./SleepCycleGetRequest.js";
