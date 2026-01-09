@@ -1,6 +1,6 @@
-export * as get from "./get";
-export * as getLabs from "./getLabs";
-export * as getPhlebotomyAppointmentCancellationReason from "./getPhlebotomyAppointmentCancellationReason";
-export * as getPscAppointmentCancellationReason from "./getPscAppointmentCancellationReason";
-export * as simulateOrderProcess from "./simulateOrderProcess";
-export * from "./requests";
+export * as get from "./get.js";
+export * as getLabs from "./getLabs.js";
+export * as getPhlebotomyAppointmentCancellationReason from "./getPhlebotomyAppointmentCancellationReason.js";
+export * as getPscAppointmentCancellationReason from "./getPscAppointmentCancellationReason.js";
+export * from "./requests/index.js";
+export * as simulateOrderProcess from "./simulateOrderProcess.js";

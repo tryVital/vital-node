@@ -1,1 +1,1 @@
-export { ResendWebhookBody } from "./ResendWebhookBody";
+export { ResendWebhookBody } from "./ResendWebhookBody.js";

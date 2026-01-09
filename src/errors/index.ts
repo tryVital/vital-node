@@ -1,2 +1,2 @@
-export { VitalError } from "./VitalError";
-export { VitalTimeoutError } from "./VitalTimeoutError";
+export { VitalError } from "./VitalError.js";
+export { VitalTimeoutError } from "./VitalTimeoutError.js";

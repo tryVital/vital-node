@@ -1,1 +1,1 @@
-export * from "./CreateUserPortalUrlBodyContext";
+export * from "./CreateUserPortalUrlBodyContext.js";

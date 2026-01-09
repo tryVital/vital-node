@@ -1,2 +1,2 @@
-export { type RegisterTestkitRequest } from "./RegisterTestkitRequest";
-export { type CreateRegistrableTestkitOrderRequest } from "./CreateRegistrableTestkitOrderRequest";
+export type { CreateRegistrableTestkitOrderRequest } from "./CreateRegistrableTestkitOrderRequest.js";
+export type { RegisterTestkitRequest } from "./RegisterTestkitRequest.js";
