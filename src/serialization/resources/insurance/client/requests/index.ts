@@ -1,1 +1,1 @@
-export { PayorSearchRequest } from "./PayorSearchRequest";
+export { PayorSearchRequest } from "./PayorSearchRequest.js";
