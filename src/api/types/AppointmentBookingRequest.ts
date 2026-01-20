@@ -2,4 +2,38 @@
 
 export interface AppointmentBookingRequest {
     bookingKey: string;
+    /**
+     * [!] This feature (Async Confirmation) is under Closed Beta.
+     *
+     * If `true`, when the PSC system fails to confirm the booking within `sync_confirmation_timeout_millisecond`, this API
+     * endpoint would respond with a `pending` appointment. The booking attempt will continue asynchronously in background, until either:
+     *
+     * 1. the appointment moves to the reserved or confirmed state because an acknowledgement from the PSC system has been received; OR
+     * 2. the pending appointment moves to the cancelled state because the `async_confirmation_timeout_millisecond` timeout is reached.
+     *
+     * You will receive `labtest.appointment.updated` webhooks for all the relevant status changes (pending, confirmed, reserved
+     * and cancelled).
+     *
+     * If `false` (default), when the PSC system fails to confirm the booking, this API endpoint would respond with
+     * 500 Internal Server Error.
+     */
+    asyncConfirmation?: boolean;
+    /**
+     * This parameter only takes effect when `async_confirmation` is `true`; no-op otherwise.
+     *
+     * The maximum amount of time which the Book Appointment endpoint would wait before it responds with a pending appointment.
+     * This timeout does not stop the booking attempt — it will continue asynchronously in background.
+     *
+     * Defaults to 2.5 seconds. Must be 1-10 seconds.
+     */
+    syncConfirmationTimeoutMillisecond?: number;
+    /**
+     * This parameter only takes effect when `async_confirmation` is `true`; no-op otherwise.
+     *
+     * The maximum amount of time which Junction would try to asynchronously book in the pending appointment. If this timeout is
+     * reached, the pending appointment would be cancelled.
+     *
+     * Defaults to 15 minutes. Must be 1-2880 minutes.
+     */
+    asyncConfirmationTimeoutMillisecond?: number;
 }
