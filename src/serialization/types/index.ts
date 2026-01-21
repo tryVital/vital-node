@@ -599,6 +599,7 @@ export * from "./PaginatedUsersResponse.js";
 export * from "./ParentBiomarkerData.js";
 export * from "./ParsedLabReportData.js";
 export * from "./ParsingJob.js";
+export * from "./ParsingJobFailureReason.js";
 export * from "./ParsingJobStatus.js";
 export * from "./PasswordProviders.js";
 export * from "./PatientAddress.js";
