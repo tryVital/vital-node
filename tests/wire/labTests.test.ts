@@ -1376,9 +1376,9 @@ describe("LabTestsClient", () => {
         const rawResponseBody = {
             orders: [
                 {
-                    user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                    id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                    team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                    user_id: "5973994d-b942-47ee-a1ab-914a868c6827",
+                    id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                    team_id: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                     patient_details: { dob: "2020-01-01T00:00:00Z", gender: "male" },
                     patient_address: {
                         receiver_name: "John Doe",
@@ -1443,9 +1443,9 @@ describe("LabTestsClient", () => {
                     details: {
                         type: "testkit",
                         data: {
-                            id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                            id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                             shipment: {
-                                id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                                id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                                 outbound_tracking_number: "<outbound_tracking_number>",
                                 outbound_tracking_url: "<outbound_tracking_url>",
                                 inbound_tracking_number: "<inbound_tracking_number>",
@@ -1521,9 +1521,9 @@ describe("LabTestsClient", () => {
         expect(response).toEqual({
             orders: [
                 {
-                    userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                    id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                    teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                    userId: "5973994d-b942-47ee-a1ab-914a868c6827",
+                    id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                    teamId: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                     patientDetails: {
                         dob: new Date("2020-01-01T00:00:00.000Z"),
                         gender: "male",
@@ -1597,9 +1597,9 @@ describe("LabTestsClient", () => {
                     details: {
                         type: "testkit",
                         data: {
-                            id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                            id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                             shipment: {
-                                id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                                id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                                 outboundTrackingNumber: "<outbound_tracking_number>",
                                 outboundTrackingUrl: "<outbound_tracking_url>",
                                 inboundTrackingNumber: "<inbound_tracking_number>",
@@ -1789,9 +1789,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -1832,9 +1832,9 @@ describe("LabTestsClient", () => {
             bookingKey: "booking_key",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -1908,9 +1908,9 @@ describe("LabTestsClient", () => {
             provider: "getlabs",
         };
         const rawResponseBody = {
-            id: "aae38b08-42a2-4933-affc-b0f79ba99d9d",
-            user_id: "6fff4647-6e06-4d0e-be65-5b4749c8b8b9",
-            order_id: "2bd5b223-d99c-4949-bf19-ffb0349b7534",
+            id: "139e3834-8dbd-449d-b620-6937cad51993",
+            user_id: "8356cbd5-b3a0-4791-b6b8-987362308658",
+            order_id: "ef078a13-cd7a-48dc-b292-a4af14581eb6",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -1954,9 +1954,9 @@ describe("LabTestsClient", () => {
             provider: "getlabs",
         });
         expect(response).toEqual({
-            id: "aae38b08-42a2-4933-affc-b0f79ba99d9d",
-            userId: "6fff4647-6e06-4d0e-be65-5b4749c8b8b9",
-            orderId: "2bd5b223-d99c-4949-bf19-ffb0349b7534",
+            id: "139e3834-8dbd-449d-b620-6937cad51993",
+            userId: "8356cbd5-b3a0-4791-b6b8-987362308658",
+            orderId: "ef078a13-cd7a-48dc-b292-a4af14581eb6",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -2029,9 +2029,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -2072,9 +2072,9 @@ describe("LabTestsClient", () => {
             bookingKey: "booking_key",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -2145,9 +2145,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { cancellation_reason_id: "cancellation_reason_id" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -2188,9 +2188,9 @@ describe("LabTestsClient", () => {
             cancellationReasonId: "cancellation_reason_id",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -2261,7 +2261,7 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = [
-            { id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522", name: "I'm feeling sick", is_refundable: true },
+            { id: "a3e4b382-5b4e-4a19-8810-ec9c2b9f75e5", name: "I'm feeling sick", is_refundable: true },
         ];
         server
             .mockEndpoint()
@@ -2274,7 +2274,7 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.getPhlebotomyAppointmentCancellationReason();
         expect(response).toEqual([
             {
-                id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522",
+                id: "a3e4b382-5b4e-4a19-8810-ec9c2b9f75e5",
                 name: "I'm feeling sick",
                 isRefundable: true,
             },
@@ -2286,9 +2286,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -2326,9 +2326,9 @@ describe("LabTestsClient", () => {
 
         const response = await client.labTests.getPhlebotomyAppointment("order_id");
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -2898,6 +2898,7 @@ describe("LabTestsClient", () => {
             startDate: "start_date",
             zipCode: "zip_code",
             radius: "10",
+            allowStale: true,
         });
         expect(response).toEqual({
             slots: [
@@ -2977,9 +2978,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -3010,6 +3011,7 @@ describe("LabTestsClient", () => {
         server
             .mockEndpoint()
             .post("/v3/order/order_id/psc/appointment/book")
+            .header("x-idempotency-key", "x-idempotency-key")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -3017,12 +3019,15 @@ describe("LabTestsClient", () => {
             .build();
 
         const response = await client.labTests.bookPscAppointment("order_id", {
-            bookingKey: "booking_key",
+            idempotencyKey: "x-idempotency-key",
+            body: {
+                bookingKey: "booking_key",
+            },
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3083,7 +3088,9 @@ describe("LabTestsClient", () => {
 
         await expect(async () => {
             return await client.labTests.bookPscAppointment("order_id", {
-                bookingKey: "booking_key",
+                body: {
+                    bookingKey: "booking_key",
+                },
             });
         }).rejects.toThrow(Vital.UnprocessableEntityError);
     });
@@ -3093,9 +3100,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -3136,9 +3143,9 @@ describe("LabTestsClient", () => {
             bookingKey: "booking_key",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3209,9 +3216,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { cancellationReasonId: "cancellationReasonId" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -3252,9 +3259,9 @@ describe("LabTestsClient", () => {
             cancellationReasonId: "cancellationReasonId",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3325,7 +3332,7 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = [
-            { id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522", name: "I'm feeling sick", is_refundable: true },
+            { id: "a3e4b382-5b4e-4a19-8810-ec9c2b9f75e5", name: "I'm feeling sick", is_refundable: true },
         ];
         server
             .mockEndpoint()
@@ -3338,7 +3345,7 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.getPscAppointmentCancellationReason();
         expect(response).toEqual([
             {
-                id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522",
+                id: "a3e4b382-5b4e-4a19-8810-ec9c2b9f75e5",
                 name: "I'm feeling sick",
                 isRefundable: true,
             },
@@ -3350,9 +3357,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            user_id: "36d570f9-acce-4e37-b527-ea28b351742e",
+            order_id: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -3390,9 +3397,9 @@ describe("LabTestsClient", () => {
 
         const response = await client.labTests.getPscAppointment("order_id");
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "30f6a503-c9ff-483f-8111-3c83935cdf30",
+            userId: "36d570f9-acce-4e37-b527-ea28b351742e",
+            orderId: "8c495112-7b25-4fd5-a9d6-a4299eb539f8",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3460,9 +3467,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-            id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-            team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+            user_id: "5973994d-b942-47ee-a1ab-914a868c6827",
+            id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+            team_id: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
             patient_details: {
                 first_name: "first_name",
                 last_name: "last_name",
@@ -3552,9 +3559,9 @@ describe("LabTestsClient", () => {
             details: {
                 type: "testkit",
                 data: {
-                    id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                    id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                     shipment: {
-                        id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                        id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                         outbound_tracking_number: "<outbound_tracking_number>",
                         outbound_tracking_url: "<outbound_tracking_url>",
                         inbound_tracking_number: "<inbound_tracking_number>",
@@ -3605,9 +3612,9 @@ describe("LabTestsClient", () => {
 
         const response = await client.labTests.getOrder("order_id");
         expect(response).toEqual({
-            userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-            id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-            teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+            userId: "5973994d-b942-47ee-a1ab-914a868c6827",
+            id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+            teamId: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
             patientDetails: {
                 firstName: "first_name",
                 lastName: "last_name",
@@ -3709,9 +3716,9 @@ describe("LabTestsClient", () => {
             details: {
                 type: "testkit",
                 data: {
-                    id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                    id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                     shipment: {
-                        id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                        id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                         outboundTrackingNumber: "<outbound_tracking_number>",
                         outboundTrackingUrl: "<outbound_tracking_url>",
                         inboundTrackingNumber: "<inbound_tracking_number>",
@@ -3805,9 +3812,9 @@ describe("LabTestsClient", () => {
         };
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                team_id: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -3900,9 +3907,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -3985,9 +3992,9 @@ describe("LabTestsClient", () => {
         });
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                teamId: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4086,9 +4093,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -4231,9 +4238,9 @@ describe("LabTestsClient", () => {
         };
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                team_id: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -4326,9 +4333,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -4412,9 +4419,9 @@ describe("LabTestsClient", () => {
         });
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                teamId: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4513,9 +4520,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -4652,9 +4659,9 @@ describe("LabTestsClient", () => {
 
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                team_id: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -4747,9 +4754,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -4810,9 +4817,9 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.cancelOrder("order_id");
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                teamId: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4911,9 +4918,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -5048,9 +5055,9 @@ describe("LabTestsClient", () => {
 
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                team_id: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -5143,9 +5150,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -5206,9 +5213,9 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.updateOnSiteCollectionOrderDrawCompleted("order_id");
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "5973994d-b942-47ee-a1ab-914a868c6827",
+                id: "27bb3ee4-93c2-44a7-8197-af3f76f45e50",
+                teamId: "d7b8cc0c-5fc6-4565-a0b6-aff69eebade9",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -5307,9 +5314,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "118b6bc4-dce4-425b-92e3-874c902c40ef",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "68531bd6-4a41-482e-922f-bef5b53cb0df",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
