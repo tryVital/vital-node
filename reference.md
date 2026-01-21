@@ -10728,7 +10728,8 @@ await client.labTests.getPscAppointmentAvailability({
     lab: "quest",
     startDate: "start_date",
     zipCode: "zip_code",
-    radius: "10"
+    radius: "10",
+    allowStale: true
 });
 
 ```
@@ -10779,7 +10780,10 @@ await client.labTests.getPscAppointmentAvailability({
 
 ```typescript
 await client.labTests.bookPscAppointment("order_id", {
-    bookingKey: "booking_key"
+    idempotencyKey: "x-idempotency-key",
+    body: {
+        bookingKey: "booking_key"
+    }
 });
 
 ```
@@ -10804,7 +10808,7 @@ await client.labTests.bookPscAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.AppointmentBookingRequest` 
+**request:** `Vital.LabTestsBookPscAppointmentRequest` 
     
 </dd>
 </dl>
