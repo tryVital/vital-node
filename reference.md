@@ -9737,6 +9737,7 @@ await client.labTests.getOrders({
     userId: "user_id",
     patientName: "patient_name",
     shippingRecipientName: "shipping_recipient_name",
+    orderTransactionId: "order_transaction_id",
     page: 1,
     size: 1
 });
@@ -10728,7 +10729,8 @@ await client.labTests.getPscAppointmentAvailability({
     lab: "quest",
     startDate: "start_date",
     zipCode: "zip_code",
-    radius: "10"
+    radius: "10",
+    allowStale: true
 });
 
 ```
@@ -10779,7 +10781,10 @@ await client.labTests.getPscAppointmentAvailability({
 
 ```typescript
 await client.labTests.bookPscAppointment("order_id", {
-    bookingKey: "booking_key"
+    idempotencyKey: "x-idempotency-key",
+    body: {
+        bookingKey: "booking_key"
+    }
 });
 
 ```
@@ -10804,7 +10809,7 @@ await client.labTests.bookPscAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.AppointmentBookingRequest` 
+**request:** `Vital.LabTestsBookPscAppointmentRequest` 
     
 </dd>
 </dl>
