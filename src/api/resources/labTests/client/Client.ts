@@ -1175,6 +1175,7 @@ export class LabTestsClient {
      *         userId: "user_id",
      *         patientName: "patient_name",
      *         shippingRecipientName: "shipping_recipient_name",
+     *         orderTransactionId: "order_transaction_id",
      *         page: 1,
      *         size: 1
      *     })
@@ -1207,6 +1208,7 @@ export class LabTestsClient {
             patientName,
             shippingRecipientName,
             orderIds,
+            orderTransactionId,
             page,
             size,
         } = request;
@@ -1309,6 +1311,10 @@ export class LabTestsClient {
             } else {
                 _queryParams.order_ids = orderIds;
             }
+        }
+
+        if (orderTransactionId != null) {
+            _queryParams.order_transaction_id = orderTransactionId;
         }
 
         if (page != null) {
@@ -2677,7 +2683,8 @@ export class LabTestsClient {
      *         lab: "quest",
      *         startDate: "start_date",
      *         zipCode: "zip_code",
-     *         radius: "10"
+     *         radius: "10",
+     *         allowStale: true
      *     })
      */
     public getPscAppointmentAvailability(
@@ -2691,7 +2698,7 @@ export class LabTestsClient {
         request: Vital.LabTestsGetPscAppointmentAvailabilityRequest,
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.AppointmentAvailabilitySlots>> {
-        const { lab, startDate, siteCodes, zipCode, radius } = request;
+        const { lab, startDate, siteCodes, zipCode, radius, allowStale } = request;
         const _queryParams: Record<string, unknown> = {};
         _queryParams.lab = serializers.AppointmentPscLabs.jsonOrThrow(lab, { unrecognizedObjectKeys: "strip" });
         if (startDate != null) {
@@ -2712,6 +2719,10 @@ export class LabTestsClient {
 
         if (radius != null) {
             _queryParams.radius = serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" });
+        }
+
+        if (allowStale != null) {
+            _queryParams.allow_stale = allowStale;
         }
 
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -2789,19 +2800,22 @@ export class LabTestsClient {
 
     /**
      * @param {string} order_id - Your Order ID.
-     * @param {Vital.AppointmentBookingRequest} request
+     * @param {Vital.LabTestsBookPscAppointmentRequest} request
      * @param {LabTestsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.bookPscAppointment("order_id", {
-     *         bookingKey: "booking_key"
+     *         idempotencyKey: "x-idempotency-key",
+     *         body: {
+     *             bookingKey: "booking_key"
+     *         }
      *     })
      */
     public bookPscAppointment(
         order_id: string,
-        request: Vital.AppointmentBookingRequest,
+        request: Vital.LabTestsBookPscAppointmentRequest,
         requestOptions?: LabTestsClient.RequestOptions,
     ): core.HttpResponsePromise<Vital.ClientFacingAppointment> {
         return core.HttpResponsePromise.fromPromise(this.__bookPscAppointment(order_id, request, requestOptions));
@@ -2809,13 +2823,15 @@ export class LabTestsClient {
 
     private async __bookPscAppointment(
         order_id: string,
-        request: Vital.AppointmentBookingRequest,
+        request: Vital.LabTestsBookPscAppointmentRequest,
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingAppointment>> {
+        const { idempotencyKey, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
+            mergeOnlyDefinedHeaders({ "x-idempotency-key": idempotencyKey }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -2830,7 +2846,7 @@ export class LabTestsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.AppointmentBookingRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.AppointmentBookingRequest.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
