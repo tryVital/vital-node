@@ -13,6 +13,7 @@ describe("LabReportClient", () => {
             id: "id",
             job_id: "job_id",
             status: "upload_pending",
+            failure_reason: "invalid_input",
             data: {
                 metadata: {
                     patient_first_name: "patient_first_name",
@@ -41,6 +42,7 @@ describe("LabReportClient", () => {
             id: "id",
             jobId: "job_id",
             status: "upload_pending",
+            failureReason: "invalid_input",
             data: {
                 metadata: {
                     patientFirstName: "patient_first_name",
