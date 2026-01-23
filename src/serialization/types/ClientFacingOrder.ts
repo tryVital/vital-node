@@ -7,9 +7,11 @@ import { Billing } from "./Billing.js";
 import { ClientFacingLabTest } from "./ClientFacingLabTest.js";
 import { ClientFacingOrderDetails } from "./ClientFacingOrderDetails.js";
 import { ClientFacingOrderEvent } from "./ClientFacingOrderEvent.js";
+import { ClientFacingOrderTransaction } from "./ClientFacingOrderTransaction.js";
 import { ClientFacingPatientDetailsCompatible } from "./ClientFacingPatientDetailsCompatible.js";
 import { ClientFacingPhysician } from "./ClientFacingPhysician.js";
 import { Interpretation } from "./Interpretation.js";
+import { OrderOrigin } from "./OrderOrigin.js";
 import { OrderTopLevelStatus } from "./OrderTopLevelStatus.js";
 import { PatientAddressCompatible } from "./PatientAddressCompatible.js";
 import { ShippingAddress } from "./ShippingAddress.js";
@@ -51,6 +53,9 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
         "worst_case_result_by_date",
         core.serialization.string().optional(),
     ),
+    origin: OrderOrigin.optional(),
+    parentId: core.serialization.property("parent_id", core.serialization.string().optional()),
+    orderTransaction: core.serialization.property("order_transaction", ClientFacingOrderTransaction.optional()),
 });
 
 export declare namespace ClientFacingOrder {
@@ -82,5 +87,8 @@ export declare namespace ClientFacingOrder {
         has_missing_results?: boolean | null;
         expected_result_by_date?: string | null;
         worst_case_result_by_date?: string | null;
+        origin?: OrderOrigin.Raw | null;
+        parent_id?: string | null;
+        order_transaction?: ClientFacingOrderTransaction.Raw | null;
     }
 }
