@@ -50,4 +50,7 @@ export interface ClientFacingOrder {
     expectedResultByDate?: string;
     /** The latest date by which the order result is expected to be available. */
     worstCaseResultByDate?: string;
+    origin?: Vital.OrderOrigin;
+    parentId?: string;
+    orderTransaction?: Vital.ClientFacingOrderTransaction;
 }
