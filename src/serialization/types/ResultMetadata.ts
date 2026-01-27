@@ -6,10 +6,10 @@ import type * as serializers from "../index.js";
 
 export const ResultMetadata: core.serialization.ObjectSchema<serializers.ResultMetadata.Raw, Vital.ResultMetadata> =
     core.serialization.object({
-        patientFirstName: core.serialization.property("patient_first_name", core.serialization.string()),
-        patientLastName: core.serialization.property("patient_last_name", core.serialization.string()),
-        dob: core.serialization.string(),
-        labName: core.serialization.property("lab_name", core.serialization.string()),
+        patientFirstName: core.serialization.property("patient_first_name", core.serialization.string().optional()),
+        patientLastName: core.serialization.property("patient_last_name", core.serialization.string().optional()),
+        dob: core.serialization.string().optional(),
+        labName: core.serialization.property("lab_name", core.serialization.string().optional()),
         dateReported: core.serialization.property("date_reported", core.serialization.string().optional()),
         dateCollected: core.serialization.property("date_collected", core.serialization.string().optional()),
         specimenNumber: core.serialization.property("specimen_number", core.serialization.string().optional()),
@@ -17,10 +17,10 @@ export const ResultMetadata: core.serialization.ObjectSchema<serializers.ResultM
 
 export declare namespace ResultMetadata {
     export interface Raw {
-        patient_first_name: string;
-        patient_last_name: string;
-        dob: string;
-        lab_name: string;
+        patient_first_name?: string | null;
+        patient_last_name?: string | null;
+        dob?: string | null;
+        lab_name?: string | null;
         date_reported?: string | null;
         date_collected?: string | null;
         specimen_number?: string | null;
