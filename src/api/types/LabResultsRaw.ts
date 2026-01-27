@@ -7,4 +7,5 @@ export interface LabResultsRaw {
     results: Vital.LabResultsRawResults;
     missingResults?: Vital.MissingBiomarkerResult[];
     sampleInformation?: Record<string, Vital.SampleData | undefined>;
+    orderTransaction?: Vital.ClientFacingOrderTransaction;
 }

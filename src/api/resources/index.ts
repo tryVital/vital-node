@@ -27,6 +27,7 @@ export * from "./menstrualCycle/client/requests/index.js";
 export * as menstrualCycle from "./menstrualCycle/index.js";
 export * from "./order/client/requests/index.js";
 export * as order from "./order/index.js";
+export * as orderTransaction from "./orderTransaction/index.js";
 export * from "./payor/client/requests/index.js";
 export * as payor from "./payor/index.js";
 export * from "./profile/client/requests/index.js";

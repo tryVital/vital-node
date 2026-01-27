@@ -6,6 +6,7 @@ export interface ClientFacingAppointment {
     id: string;
     userId: string;
     orderId: string;
+    orderTransactionId?: string;
     address: Vital.UsAddress;
     location: Vital.LngLat;
     /** Time is in UTC */
