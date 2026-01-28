@@ -2,6 +2,7 @@ export type { ApiApiV1EndpointsVitalApiLabTestingOrdersHelpersAppointmentCancelR
 export type { CreateLabTestRequest } from "./CreateLabTestRequest.js";
 export type { CreateOrderRequestCompatible } from "./CreateOrderRequestCompatible.js";
 export type { ImportOrderBody } from "./ImportOrderBody.js";
+export type { LabTestsBookPscAppointmentRequest } from "./LabTestsBookPscAppointmentRequest.js";
 export type { LabTestsGetAreaInfoRequest } from "./LabTestsGetAreaInfoRequest.js";
 export type { LabTestsGetByIdRequest } from "./LabTestsGetByIdRequest.js";
 export type { LabTestsGetLabelsPdfRequest } from "./LabTestsGetLabelsPdfRequest.js";
