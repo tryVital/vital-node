@@ -17,6 +17,7 @@ import type * as Vital from "../../../../index.js";
  *         userId: "user_id",
  *         patientName: "patient_name",
  *         shippingRecipientName: "shipping_recipient_name",
+ *         orderTransactionId: "order_transaction_id",
  *         page: 1,
  *         size: 1
  *     }
@@ -54,6 +55,8 @@ export interface LabTestsGetOrdersRequest {
     shippingRecipientName?: string;
     /** Filter by order ids. */
     orderIds?: string | string[];
+    /** Filter by order transaction ID */
+    orderTransactionId?: string;
     page?: number;
     size?: number;
 }

@@ -22,9 +22,9 @@ describe("TestkitClient", () => {
         };
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "79f1f923-7a2b-4568-9c5a-204f4302c1d4",
+                id: "b87a455f-cd9c-4cbe-a326-9c6085ebafe2",
+                team_id: "e5fee1df-17a2-404b-99de-4dfa9921ab99",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -117,9 +117,9 @@ describe("TestkitClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "58e0e5cf-b38f-4408-acf3-09c1ccd57a0d",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "7152f5d7-dc49-46f8-8aef-e11c0ecba67b",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -165,6 +165,29 @@ describe("TestkitClient", () => {
                 has_missing_results: true,
                 expected_result_by_date: "expected_result_by_date",
                 worst_case_result_by_date: "worst_case_result_by_date",
+                origin: "initial",
+                order_transaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            low_level_status: "transit_customer",
+                            low_level_status_created_at: "2020-01-05T00:00:00Z",
+                            origin: "initial",
+                            created_at: "2020-01-01T00:00:00Z",
+                            updated_at: "2020-01-05T00:00:00Z",
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            low_level_status: "requisition_created",
+                            low_level_status_created_at: "2020-01-05T01:00:00Z",
+                            origin: "redraw",
+                            created_at: "2020-01-05T01:00:00Z",
+                            updated_at: "2020-01-05T01:00:00Z",
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -198,9 +221,9 @@ describe("TestkitClient", () => {
         });
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "79f1f923-7a2b-4568-9c5a-204f4302c1d4",
+                id: "b87a455f-cd9c-4cbe-a326-9c6085ebafe2",
+                teamId: "e5fee1df-17a2-404b-99de-4dfa9921ab99",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -299,9 +322,9 @@ describe("TestkitClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "58e0e5cf-b38f-4408-acf3-09c1ccd57a0d",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "7152f5d7-dc49-46f8-8aef-e11c0ecba67b",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -363,6 +386,29 @@ describe("TestkitClient", () => {
                 hasMissingResults: true,
                 expectedResultByDate: "expected_result_by_date",
                 worstCaseResultByDate: "worst_case_result_by_date",
+                origin: "initial",
+                orderTransaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            lowLevelStatus: "transit_customer",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                            origin: "initial",
+                            createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            lowLevelStatus: "requisition_created",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                            origin: "redraw",
+                            createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -434,9 +480,9 @@ describe("TestkitClient", () => {
         };
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "79f1f923-7a2b-4568-9c5a-204f4302c1d4",
+                id: "b87a455f-cd9c-4cbe-a326-9c6085ebafe2",
+                team_id: "e5fee1df-17a2-404b-99de-4dfa9921ab99",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -529,9 +575,9 @@ describe("TestkitClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "58e0e5cf-b38f-4408-acf3-09c1ccd57a0d",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "7152f5d7-dc49-46f8-8aef-e11c0ecba67b",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -577,6 +623,29 @@ describe("TestkitClient", () => {
                 has_missing_results: true,
                 expected_result_by_date: "expected_result_by_date",
                 worst_case_result_by_date: "worst_case_result_by_date",
+                origin: "initial",
+                order_transaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            low_level_status: "transit_customer",
+                            low_level_status_created_at: "2020-01-05T00:00:00Z",
+                            origin: "initial",
+                            created_at: "2020-01-01T00:00:00Z",
+                            updated_at: "2020-01-05T00:00:00Z",
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            low_level_status: "requisition_created",
+                            low_level_status_created_at: "2020-01-05T01:00:00Z",
+                            origin: "redraw",
+                            created_at: "2020-01-05T01:00:00Z",
+                            updated_at: "2020-01-05T01:00:00Z",
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -605,9 +674,9 @@ describe("TestkitClient", () => {
         });
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "79f1f923-7a2b-4568-9c5a-204f4302c1d4",
+                id: "b87a455f-cd9c-4cbe-a326-9c6085ebafe2",
+                teamId: "e5fee1df-17a2-404b-99de-4dfa9921ab99",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -706,9 +775,9 @@ describe("TestkitClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "58e0e5cf-b38f-4408-acf3-09c1ccd57a0d",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "7152f5d7-dc49-46f8-8aef-e11c0ecba67b",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -770,6 +839,29 @@ describe("TestkitClient", () => {
                 hasMissingResults: true,
                 expectedResultByDate: "expected_result_by_date",
                 worstCaseResultByDate: "worst_case_result_by_date",
+                origin: "initial",
+                orderTransaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            lowLevelStatus: "transit_customer",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                            origin: "initial",
+                            createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            lowLevelStatus: "requisition_created",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                            origin: "redraw",
+                            createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
