@@ -6,6 +6,7 @@ export interface ParsingJob {
     id: string;
     jobId: string;
     status: Vital.ParsingJobStatus;
+    failureReason?: Vital.ParsingJobFailureReason;
     data?: Vital.ParsedLabReportData;
     needsHumanReview: boolean;
     isReviewed: boolean;
