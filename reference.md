@@ -9737,6 +9737,7 @@ await client.labTests.getOrders({
     userId: "user_id",
     patientName: "patient_name",
     shippingRecipientName: "shipping_recipient_name",
+    orderTransactionId: "order_transaction_id",
     page: 1,
     size: 1
 });
@@ -10728,7 +10729,8 @@ await client.labTests.getPscAppointmentAvailability({
     lab: "quest",
     startDate: "start_date",
     zipCode: "zip_code",
-    radius: "10"
+    radius: "10",
+    allowStale: true
 });
 
 ```
@@ -10779,7 +10781,11 @@ await client.labTests.getPscAppointmentAvailability({
 
 ```typescript
 await client.labTests.bookPscAppointment("order_id", {
-    bookingKey: "booking_key"
+    idempotencyKey: "x-idempotency-key",
+    idempotencyError: "no-cache",
+    body: {
+        bookingKey: "booking_key"
+    }
 });
 
 ```
@@ -10804,7 +10810,7 @@ await client.labTests.bookPscAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.AppointmentBookingRequest` 
+**request:** `Vital.LabTestsBookPscAppointmentRequest` 
     
 </dd>
 </dl>
@@ -11678,6 +11684,154 @@ await client.labTests.validateIcdCodes({
 <dd>
 
 **requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## OrderTransaction
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransaction</a>(transaction_id) -> Vital.GetOrderTransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransaction("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransactionResult</a>(transaction_id) -> Vital.LabResultsRaw</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransactionResult("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransactionResultPdf</a>(transaction_id) -> core.BinaryResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransactionResultPdf("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
     
 </dd>
 </dl>
