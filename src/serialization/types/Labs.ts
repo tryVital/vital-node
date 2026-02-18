@@ -9,6 +9,7 @@ export const Labs: core.serialization.Schema<serializers.Labs.Raw, Vital.Labs> =
     "spiriplex",
     "ussl",
     "quest",
+    "sonora_quest",
     "labcorp",
     "bioreference",
     "us_biotek",
@@ -25,6 +26,7 @@ export declare namespace Labs {
         | "spiriplex"
         | "ussl"
         | "quest"
+        | "sonora_quest"
         | "labcorp"
         | "bioreference"
         | "us_biotek"
