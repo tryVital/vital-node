@@ -6,6 +6,7 @@ export const Labs = {
     Spiriplex: "spiriplex",
     Ussl: "ussl",
     Quest: "quest",
+    SonoraQuest: "sonora_quest",
     Labcorp: "labcorp",
     Bioreference: "bioreference",
     UsBiotek: "us_biotek",
