@@ -2,4 +2,10 @@
 
 export interface AppointmentBookingRequest {
     bookingKey: string;
+    /** If true, the endpoint attempts to confirm the booking within the `sync_confirmation_timeout_millisecond` window. If confirmation is not received in time, a pending appointment is returned and booking continues asynchronously. If false (default), the endpoint waits for confirmation or returns a 500 error on failure. */
+    asyncConfirmation?: boolean;
+    /** Maximum time (in milliseconds) to wait for booking confirmation before returning a pending appointment. Only applies when `async_confirmation` is true. Defaults to 2500ms. Range: 1000-10000ms. */
+    syncConfirmationTimeoutMillisecond?: number;
+    /** Maximum time (in milliseconds) to attempt asynchronous booking before cancelling the pending appointment. Only applies when `async_confirmation` is true. Defaults to 15 minutes. Range: 60000-172800000ms. */
+    asyncConfirmationTimeoutMillisecond?: number;
 }

@@ -17,4 +17,5 @@ export interface CreateLabTestRequest {
     method: Vital.LabTestCollectionMethod;
     description: string;
     fasting?: boolean;
+    labAccountId?: string;
 }
