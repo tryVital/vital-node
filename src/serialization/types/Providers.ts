@@ -36,6 +36,7 @@ export const Providers: core.serialization.Schema<serializers.Providers.Raw, Vit
         "hammerhead",
         "my_fitness_pal",
         "health_connect",
+        "samsung_health",
         "polar",
         "cronometer",
         "kardia",
@@ -78,6 +79,7 @@ export declare namespace Providers {
         | "hammerhead"
         | "my_fitness_pal"
         | "health_connect"
+        | "samsung_health"
         | "polar"
         | "cronometer"
         | "kardia"

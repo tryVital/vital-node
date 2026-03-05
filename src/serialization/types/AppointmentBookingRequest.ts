@@ -9,10 +9,22 @@ export const AppointmentBookingRequest: core.serialization.ObjectSchema<
     Vital.AppointmentBookingRequest
 > = core.serialization.object({
     bookingKey: core.serialization.property("booking_key", core.serialization.string()),
+    asyncConfirmation: core.serialization.property("async_confirmation", core.serialization.boolean().optional()),
+    syncConfirmationTimeoutMillisecond: core.serialization.property(
+        "sync_confirmation_timeout_millisecond",
+        core.serialization.number().optional(),
+    ),
+    asyncConfirmationTimeoutMillisecond: core.serialization.property(
+        "async_confirmation_timeout_millisecond",
+        core.serialization.number().optional(),
+    ),
 });
 
 export declare namespace AppointmentBookingRequest {
     export interface Raw {
         booking_key: string;
+        async_confirmation?: boolean | null;
+        sync_confirmation_timeout_millisecond?: number | null;
+        async_confirmation_timeout_millisecond?: number | null;
     }
 }
