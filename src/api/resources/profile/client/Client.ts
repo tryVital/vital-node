@@ -51,11 +51,9 @@ export class ProfileClient {
         requestOptions?: ProfileClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingProfile>> {
         const { provider } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -142,11 +140,9 @@ export class ProfileClient {
         requestOptions?: ProfileClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.RawProfile>> {
         const { provider } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
