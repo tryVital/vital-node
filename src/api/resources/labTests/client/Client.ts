@@ -64,59 +64,38 @@ export class LabTestsClient {
             orderKey,
             orderDirection,
         } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (generationMethod != null) {
-            _queryParams.generation_method = serializers.LabTestGenerationMethodFilter.jsonOrThrow(generationMethod, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (labSlug != null) {
-            _queryParams.lab_slug = labSlug;
-        }
-
-        if (collectionMethod != null) {
-            _queryParams.collection_method = serializers.LabTestCollectionMethod.jsonOrThrow(collectionMethod, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (status != null) {
-            _queryParams.status = serializers.LabTestStatus.jsonOrThrow(status, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (markerIds != null) {
-            if (Array.isArray(markerIds)) {
-                _queryParams.marker_ids = markerIds.map((item) => item.toString());
-            } else {
-                _queryParams.marker_ids = markerIds;
-            }
-        }
-
-        if (providerIds != null) {
-            if (Array.isArray(providerIds)) {
-                _queryParams.provider_ids = providerIds.map((item) => item);
-            } else {
-                _queryParams.provider_ids = providerIds;
-            }
-        }
-
-        if (name != null) {
-            _queryParams.name = name;
-        }
-
-        if (orderKey != null) {
-            _queryParams.order_key = serializers.LabTestsGetRequestOrderKey.jsonOrThrow(orderKey, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (orderDirection != null) {
-            _queryParams.order_direction = serializers.LabTestsGetRequestOrderDirection.jsonOrThrow(orderDirection, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            generation_method:
+                generationMethod != null
+                    ? serializers.LabTestGenerationMethodFilter.jsonOrThrow(generationMethod, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            lab_slug: labSlug,
+            collection_method:
+                collectionMethod != null
+                    ? serializers.LabTestCollectionMethod.jsonOrThrow(collectionMethod, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            status:
+                status != null
+                    ? serializers.LabTestStatus.jsonOrThrow(status, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            marker_ids: markerIds,
+            provider_ids: providerIds,
+            name,
+            order_key:
+                orderKey != null
+                    ? serializers.LabTestsGetRequestOrderKey.jsonOrThrow(orderKey, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            order_direction:
+                orderDirection != null
+                    ? serializers.LabTestsGetRequestOrderDirection.jsonOrThrow(orderDirection, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -288,11 +267,9 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingLabTest>> {
         const { labAccountId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (labAccountId != null) {
-            _queryParams.lab_account_id = labAccountId;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            lab_account_id: labAccountId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -445,6 +422,7 @@ export class LabTestsClient {
      *
      * @example
      *     await client.labTests.getMarkers({
+     *         labSlug: "lab_slug",
      *         name: "name",
      *         aLaCarteEnabled: true,
      *         labAccountId: "lab_account_id",
@@ -463,36 +441,16 @@ export class LabTestsClient {
         request: Vital.LabTestsGetMarkersRequest = {},
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GetMarkersResponse>> {
-        const { labId, name, aLaCarteEnabled, labAccountId, page, size } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (labId != null) {
-            if (Array.isArray(labId)) {
-                _queryParams.lab_id = labId.map((item) => item.toString());
-            } else {
-                _queryParams.lab_id = labId;
-            }
-        }
-
-        if (name != null) {
-            _queryParams.name = name;
-        }
-
-        if (aLaCarteEnabled != null) {
-            _queryParams.a_la_carte_enabled = aLaCarteEnabled;
-        }
-
-        if (labAccountId != null) {
-            _queryParams.lab_account_id = labAccountId;
-        }
-
-        if (page != null) {
-            _queryParams.page = page;
-        }
-
-        if (size != null) {
-            _queryParams.size = size;
-        }
-
+        const { labId, labSlug, name, aLaCarteEnabled, labAccountId, page, size } = request;
+        const _queryParams: Record<string, unknown> = {
+            lab_id: labId,
+            lab_slug: labSlug,
+            name,
+            a_la_carte_enabled: aLaCarteEnabled,
+            lab_account_id: labAccountId,
+            page,
+            size,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -576,15 +534,10 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GetMarkersResponse>> {
         const { page, size, body: _body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (page != null) {
-            _queryParams.page = page;
-        }
-
-        if (size != null) {
-            _queryParams.size = size;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            page,
+            size,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -679,19 +632,11 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GetMarkersResponse>> {
         const { labAccountId, page, size } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (labAccountId != null) {
-            _queryParams.lab_account_id = labAccountId;
-        }
-
-        if (page != null) {
-            _queryParams.page = page;
-        }
-
-        if (size != null) {
-            _queryParams.size = size;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            lab_account_id: labAccountId,
+            page,
+            size,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -788,11 +733,9 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingMarker>> {
         const { labAccountId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (labAccountId != null) {
-            _queryParams.lab_account_id = labAccountId;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            lab_account_id: labAccountId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -961,68 +904,42 @@ export class LabTestsClient {
             orderKey,
             orderDirection,
         } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (labTestLimit != null) {
-            _queryParams.lab_test_limit = labTestLimit;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (generationMethod != null) {
-            _queryParams.generation_method = serializers.LabTestGenerationMethodFilter.jsonOrThrow(generationMethod, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (labSlug != null) {
-            _queryParams.lab_slug = labSlug;
-        }
-
-        if (collectionMethod != null) {
-            _queryParams.collection_method = serializers.LabTestCollectionMethod.jsonOrThrow(collectionMethod, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (status != null) {
-            _queryParams.status = serializers.LabTestStatus.jsonOrThrow(status, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (markerIds != null) {
-            if (Array.isArray(markerIds)) {
-                _queryParams.marker_ids = markerIds.map((item) => item.toString());
-            } else {
-                _queryParams.marker_ids = markerIds;
-            }
-        }
-
-        if (providerIds != null) {
-            if (Array.isArray(providerIds)) {
-                _queryParams.provider_ids = providerIds.map((item) => item);
-            } else {
-                _queryParams.provider_ids = providerIds;
-            }
-        }
-
-        if (name != null) {
-            _queryParams.name = name;
-        }
-
-        if (orderKey != null) {
-            _queryParams.order_key = serializers.LabTestsGetPaginatedRequestOrderKey.jsonOrThrow(orderKey, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (orderDirection != null) {
-            _queryParams.order_direction = serializers.LabTestsGetPaginatedRequestOrderDirection.jsonOrThrow(
-                orderDirection,
-                { unrecognizedObjectKeys: "strip" },
-            );
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            lab_test_limit: labTestLimit,
+            next_cursor: nextCursor,
+            generation_method:
+                generationMethod != null
+                    ? serializers.LabTestGenerationMethodFilter.jsonOrThrow(generationMethod, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            lab_slug: labSlug,
+            collection_method:
+                collectionMethod != null
+                    ? serializers.LabTestCollectionMethod.jsonOrThrow(collectionMethod, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            status:
+                status != null
+                    ? serializers.LabTestStatus.jsonOrThrow(status, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            marker_ids: markerIds,
+            provider_ids: providerIds,
+            name,
+            order_key:
+                orderKey != null
+                    ? serializers.LabTestsGetPaginatedRequestOrderKey.jsonOrThrow(orderKey, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            order_direction:
+                orderDirection != null
+                    ? serializers.LabTestsGetPaginatedRequestOrderDirection.jsonOrThrow(orderDirection, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1175,6 +1092,7 @@ export class LabTestsClient {
      *         userId: "user_id",
      *         patientName: "patient_name",
      *         shippingRecipientName: "shipping_recipient_name",
+     *         orderTransactionId: "order_transaction_id",
      *         page: 1,
      *         size: 1
      *     })
@@ -1207,118 +1125,64 @@ export class LabTestsClient {
             patientName,
             shippingRecipientName,
             orderIds,
+            orderTransactionId,
             page,
             size,
         } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (searchInput != null) {
-            _queryParams.search_input = searchInput;
-        }
-
-        if (startDate != null) {
-            _queryParams.start_date = startDate.toISOString();
-        }
-
-        if (endDate != null) {
-            _queryParams.end_date = endDate.toISOString();
-        }
-
-        if (updatedStartDate != null) {
-            _queryParams.updated_start_date = updatedStartDate.toISOString();
-        }
-
-        if (updatedEndDate != null) {
-            _queryParams.updated_end_date = updatedEndDate.toISOString();
-        }
-
-        if (status != null) {
-            if (Array.isArray(status)) {
-                _queryParams.status = status.map((item) =>
-                    serializers.OrderLowLevelStatus.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
-                );
-            } else {
-                _queryParams.status = serializers.OrderLowLevelStatus.jsonOrThrow(status, {
-                    unrecognizedObjectKeys: "strip",
-                });
-            }
-        }
-
-        if (orderKey != null) {
-            _queryParams.order_key = serializers.LabTestsGetOrdersRequestOrderKey.jsonOrThrow(orderKey, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (orderDirection != null) {
-            _queryParams.order_direction = serializers.LabTestsGetOrdersRequestOrderDirection.jsonOrThrow(
-                orderDirection,
-                { unrecognizedObjectKeys: "strip" },
-            );
-        }
-
-        if (orderType != null) {
-            if (Array.isArray(orderType)) {
-                _queryParams.order_type = orderType.map((item) =>
-                    serializers.LabTestCollectionMethod.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
-                );
-            } else {
-                _queryParams.order_type = serializers.LabTestCollectionMethod.jsonOrThrow(orderType, {
-                    unrecognizedObjectKeys: "strip",
-                });
-            }
-        }
-
-        if (isCritical != null) {
-            _queryParams.is_critical = isCritical;
-        }
-
-        if (interpretation != null) {
-            _queryParams.interpretation = serializers.Interpretation.jsonOrThrow(interpretation, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (orderActivationTypes != null) {
-            if (Array.isArray(orderActivationTypes)) {
-                _queryParams.order_activation_types = orderActivationTypes.map((item) =>
-                    serializers.OrderActivationType.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
-                );
-            } else {
-                _queryParams.order_activation_types = serializers.OrderActivationType.jsonOrThrow(
-                    orderActivationTypes,
-                    { unrecognizedObjectKeys: "strip" },
-                );
-            }
-        }
-
-        if (userId != null) {
-            _queryParams.user_id = userId;
-        }
-
-        if (patientName != null) {
-            _queryParams.patient_name = patientName;
-        }
-
-        if (shippingRecipientName != null) {
-            _queryParams.shipping_recipient_name = shippingRecipientName;
-        }
-
-        if (orderIds != null) {
-            if (Array.isArray(orderIds)) {
-                _queryParams.order_ids = orderIds.map((item) => item);
-            } else {
-                _queryParams.order_ids = orderIds;
-            }
-        }
-
-        if (page != null) {
-            _queryParams.page = page;
-        }
-
-        if (size != null) {
-            _queryParams.size = size;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            search_input: searchInput,
+            start_date: startDate != null ? startDate?.toISOString() : undefined,
+            end_date: endDate != null ? endDate?.toISOString() : undefined,
+            updated_start_date: updatedStartDate != null ? updatedStartDate?.toISOString() : undefined,
+            updated_end_date: updatedEndDate != null ? updatedEndDate?.toISOString() : undefined,
+            status: Array.isArray(status)
+                ? status.map((item) =>
+                      serializers.OrderLowLevelStatus.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                  )
+                : status != null
+                  ? serializers.OrderLowLevelStatus.jsonOrThrow(status, { unrecognizedObjectKeys: "strip" })
+                  : undefined,
+            order_key:
+                orderKey != null
+                    ? serializers.LabTestsGetOrdersRequestOrderKey.jsonOrThrow(orderKey, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            order_direction:
+                orderDirection != null
+                    ? serializers.LabTestsGetOrdersRequestOrderDirection.jsonOrThrow(orderDirection, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            order_type: Array.isArray(orderType)
+                ? orderType.map((item) =>
+                      serializers.LabTestCollectionMethod.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                  )
+                : orderType != null
+                  ? serializers.LabTestCollectionMethod.jsonOrThrow(orderType, { unrecognizedObjectKeys: "strip" })
+                  : undefined,
+            is_critical: isCritical,
+            interpretation:
+                interpretation != null
+                    ? serializers.Interpretation.jsonOrThrow(interpretation, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            order_activation_types: Array.isArray(orderActivationTypes)
+                ? orderActivationTypes.map((item) =>
+                      serializers.OrderActivationType.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                  )
+                : orderActivationTypes != null
+                  ? serializers.OrderActivationType.jsonOrThrow(orderActivationTypes, {
+                        unrecognizedObjectKeys: "strip",
+                    })
+                  : undefined,
+            user_id: userId,
+            patient_name: patientName,
+            shipping_recipient_name: shippingRecipientName,
+            order_ids: orderIds,
+            order_transaction_id: orderTransactionId,
+            page,
+            size,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1411,11 +1275,9 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.AppointmentAvailabilitySlots>> {
         const { startDate, body: _body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (startDate != null) {
-            _queryParams.start_date = startDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            start_date: startDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2058,30 +1920,25 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.AreaInfo>> {
         const { zipCode, radius, lab, labs, labAccountId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        _queryParams.zip_code = zipCode;
-        if (radius != null) {
-            _queryParams.radius = serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (lab != null) {
-            _queryParams.lab = serializers.ClientFacingLabs.jsonOrThrow(lab, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (labs != null) {
-            if (Array.isArray(labs)) {
-                _queryParams.labs = labs.map((item) =>
-                    serializers.ClientFacingLabs.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
-                );
-            } else {
-                _queryParams.labs = serializers.ClientFacingLabs.jsonOrThrow(labs, { unrecognizedObjectKeys: "strip" });
-            }
-        }
-
-        if (labAccountId != null) {
-            _queryParams.lab_account_id = labAccountId;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            zip_code: zipCode,
+            radius:
+                radius != null
+                    ? serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            lab:
+                lab != null
+                    ? serializers.ClientFacingLabs.jsonOrThrow(lab, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            labs: Array.isArray(labs)
+                ? labs.map((item) =>
+                      serializers.ClientFacingLabs.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                  )
+                : labs != null
+                  ? serializers.ClientFacingLabs.jsonOrThrow(labs, { unrecognizedObjectKeys: "strip" })
+                  : undefined,
+            lab_account_id: labAccountId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2166,29 +2023,22 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.PscInfo>> {
         const { zipCode, labId, radius, capabilities, labAccountId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        _queryParams.zip_code = zipCode;
-        _queryParams.lab_id = labId;
-        if (radius != null) {
-            _queryParams.radius = serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (capabilities != null) {
-            if (Array.isArray(capabilities)) {
-                _queryParams.capabilities = capabilities.map((item) =>
-                    serializers.LabLocationCapability.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
-                );
-            } else {
-                _queryParams.capabilities = serializers.LabLocationCapability.jsonOrThrow(capabilities, {
-                    unrecognizedObjectKeys: "strip",
-                });
-            }
-        }
-
-        if (labAccountId != null) {
-            _queryParams.lab_account_id = labAccountId;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            zip_code: zipCode,
+            lab_id: labId,
+            radius:
+                radius != null
+                    ? serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            capabilities: Array.isArray(capabilities)
+                ? capabilities.map((item) =>
+                      serializers.LabLocationCapability.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                  )
+                : capabilities != null
+                  ? serializers.LabLocationCapability.jsonOrThrow(capabilities, { unrecognizedObjectKeys: "strip" })
+                  : undefined,
+            lab_account_id: labAccountId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2273,23 +2123,19 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.PscInfo>> {
         const { radius, capabilities } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (radius != null) {
-            _queryParams.radius = serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (capabilities != null) {
-            if (Array.isArray(capabilities)) {
-                _queryParams.capabilities = capabilities.map((item) =>
-                    serializers.LabLocationCapability.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
-                );
-            } else {
-                _queryParams.capabilities = serializers.LabLocationCapability.jsonOrThrow(capabilities, {
-                    unrecognizedObjectKeys: "strip",
-                });
-            }
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            radius:
+                radius != null
+                    ? serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            capabilities: Array.isArray(capabilities)
+                ? capabilities.map((item) =>
+                      serializers.LabLocationCapability.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                  )
+                : capabilities != null
+                  ? serializers.LabLocationCapability.jsonOrThrow(capabilities, { unrecognizedObjectKeys: "strip" })
+                  : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2603,12 +2449,10 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<core.BinaryResponse>> {
         const { numberOfLabels, collectionDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (numberOfLabels != null) {
-            _queryParams.number_of_labels = numberOfLabels;
-        }
-
-        _queryParams.collection_date = collectionDate.toISOString();
+        const _queryParams: Record<string, unknown> = {
+            number_of_labels: numberOfLabels,
+            collection_date: collectionDate.toISOString(),
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2677,7 +2521,8 @@ export class LabTestsClient {
      *         lab: "quest",
      *         startDate: "start_date",
      *         zipCode: "zip_code",
-     *         radius: "10"
+     *         radius: "10",
+     *         allowStale: true
      *     })
      */
     public getPscAppointmentAvailability(
@@ -2691,29 +2536,18 @@ export class LabTestsClient {
         request: Vital.LabTestsGetPscAppointmentAvailabilityRequest,
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.AppointmentAvailabilitySlots>> {
-        const { lab, startDate, siteCodes, zipCode, radius } = request;
-        const _queryParams: Record<string, unknown> = {};
-        _queryParams.lab = serializers.AppointmentPscLabs.jsonOrThrow(lab, { unrecognizedObjectKeys: "strip" });
-        if (startDate != null) {
-            _queryParams.start_date = startDate;
-        }
-
-        if (siteCodes != null) {
-            if (Array.isArray(siteCodes)) {
-                _queryParams.site_codes = siteCodes.map((item) => item);
-            } else {
-                _queryParams.site_codes = siteCodes;
-            }
-        }
-
-        if (zipCode != null) {
-            _queryParams.zip_code = zipCode;
-        }
-
-        if (radius != null) {
-            _queryParams.radius = serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" });
-        }
-
+        const { lab, startDate, siteCodes, zipCode, radius, allowStale } = request;
+        const _queryParams: Record<string, unknown> = {
+            lab: serializers.AppointmentPscLabs.jsonOrThrow(lab, { unrecognizedObjectKeys: "strip" }),
+            start_date: startDate,
+            site_codes: siteCodes,
+            zip_code: zipCode,
+            radius:
+                radius != null
+                    ? serializers.AllowedRadius.jsonOrThrow(radius, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            allow_stale: allowStale,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2789,19 +2623,21 @@ export class LabTestsClient {
 
     /**
      * @param {string} order_id - Your Order ID.
-     * @param {Vital.AppointmentBookingRequest} request
+     * @param {Vital.LabTestsBookPscAppointmentRequest} request
      * @param {LabTestsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     await client.labTests.bookPscAppointment("order_id", {
-     *         bookingKey: "booking_key"
+     *         body: {
+     *             bookingKey: "booking_key"
+     *         }
      *     })
      */
     public bookPscAppointment(
         order_id: string,
-        request: Vital.AppointmentBookingRequest,
+        request: Vital.LabTestsBookPscAppointmentRequest,
         requestOptions?: LabTestsClient.RequestOptions,
     ): core.HttpResponsePromise<Vital.ClientFacingAppointment> {
         return core.HttpResponsePromise.fromPromise(this.__bookPscAppointment(order_id, request, requestOptions));
@@ -2809,13 +2645,15 @@ export class LabTestsClient {
 
     private async __bookPscAppointment(
         order_id: string,
-        request: Vital.AppointmentBookingRequest,
+        request: Vital.LabTestsBookPscAppointmentRequest,
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingAppointment>> {
+        const { idempotencyKey, idempotencyError, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
+            mergeOnlyDefinedHeaders({ "x-idempotency-key": idempotencyKey, "x-idempotency-error": idempotencyError }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -2830,7 +2668,7 @@ export class LabTestsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.AppointmentBookingRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.AppointmentBookingRequest.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -3508,8 +3346,6 @@ export class LabTestsClient {
      *
      * @example
      *     await client.labTests.createOrder({
-     *         idempotencyKey: "X-Idempotency-Key",
-     *         idempotencyError: "no-cache",
      *         userId: "user_id",
      *         patientDetails: {
      *             firstName: "first_name",
@@ -3815,17 +3651,13 @@ export class LabTestsClient {
         requestOptions?: LabTestsClient.RequestOptions,
     ): Promise<core.WithRawResponse<unknown>> {
         const { finalStatus, delay, body: _body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (finalStatus != null) {
-            _queryParams.final_status = serializers.OrderStatus.jsonOrThrow(finalStatus, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (delay != null) {
-            _queryParams.delay = delay;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            final_status:
+                finalStatus != null
+                    ? serializers.OrderStatus.jsonOrThrow(finalStatus, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            delay,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3844,12 +3676,9 @@ export class LabTestsClient {
             contentType: "application/json",
             queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             requestType: "json",
-            body:
-                _body != null
-                    ? serializers.labTests.simulateOrderProcess.Request.jsonOrThrow(_body, {
-                          unrecognizedObjectKeys: "strip",
-                      })
-                    : undefined,
+            body: serializers.labTests.simulateOrderProcess.Request.jsonOrThrow(_body, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
