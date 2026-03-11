@@ -30,6 +30,7 @@ export const CreateOrderRequestCompatible: core.serialization.Schema<
     activateBy: core.serialization.property("activate_by", core.serialization.string().optional()),
     aoeAnswers: core.serialization.property("aoe_answers", core.serialization.list(AoEAnswer).optional()),
     passthrough: core.serialization.string().optional(),
+    clinicalNotes: core.serialization.property("clinical_notes", core.serialization.string().optional()),
     labAccountId: core.serialization.property("lab_account_id", core.serialization.string().optional()),
     creatorMemberId: core.serialization.property("creator_member_id", core.serialization.string().optional()),
     patientDetails: core.serialization.property("patient_details", PatientDetailsWithValidation),
@@ -51,6 +52,7 @@ export declare namespace CreateOrderRequestCompatible {
         activate_by?: string | null;
         aoe_answers?: AoEAnswer.Raw[] | null;
         passthrough?: string | null;
+        clinical_notes?: string | null;
         lab_account_id?: string | null;
         creator_member_id?: string | null;
         patient_details: PatientDetailsWithValidation.Raw;
