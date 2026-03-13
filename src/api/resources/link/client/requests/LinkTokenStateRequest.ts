@@ -2,9 +2,7 @@
 
 /**
  * @example
- *     {
- *         vitalLinkToken: "x-vital-link-token"
- *     }
+ *     {}
  */
 export interface LinkTokenStateRequest {
     vitalLinkToken?: string;
