@@ -49,15 +49,10 @@ export class UserClient {
         requestOptions?: UserClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.PaginatedUsersResponse>> {
         const { offset, limit } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (offset != null) {
-            _queryParams.offset = offset;
-        }
-
-        if (limit != null) {
-            _queryParams.limit = limit;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            offset,
+            limit,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -556,11 +551,9 @@ export class UserClient {
         requestOptions?: UserClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingInsurance>> {
         const { isPrimary } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (isPrimary != null) {
-            _queryParams.is_primary = isPrimary;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            is_primary: isPrimary,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1149,15 +1142,10 @@ export class UserClient {
         requestOptions?: UserClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.UserSuccessResponse>> {
         const { userId, clientUserId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (userId != null) {
-            _queryParams.user_id = userId;
-        }
-
-        if (clientUserId != null) {
-            _queryParams.client_user_id = clientUserId;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            user_id: userId,
+            client_user_id: clientUserId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1245,11 +1233,9 @@ export class UserClient {
         requestOptions?: UserClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.UserRefreshSuccessResponse>> {
         const { timeout } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (timeout != null) {
-            _queryParams.timeout = timeout;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            timeout,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
