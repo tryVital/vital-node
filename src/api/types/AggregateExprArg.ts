@@ -4,6 +4,7 @@ import type * as Vital from "../index.js";
 
 export type AggregateExprArg =
     | Vital.SleepColumnExpr
+    | Vital.DerivedReadinessColumnExpr
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr
