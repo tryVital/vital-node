@@ -23,6 +23,7 @@ describe("PayorClient", () => {
                 zip: "zip",
                 city: "city",
                 state: "state",
+                access_notes: "access_notes",
             },
             source: "platform",
         };
@@ -56,6 +57,7 @@ describe("PayorClient", () => {
                 zip: "zip",
                 city: "city",
                 state: "state",
+                accessNotes: "access_notes",
             },
             source: "platform",
         });
