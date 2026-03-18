@@ -1,0 +1,10 @@
+## 4.0.0 - 2026-03-18
+* The SDK now supports "sonora_quest" as a new appointment provider and lab option. Additional enum values have been added including "derived_readiness" for index columns and "apero", "pverify" for payor code providers.
+* The `parserCreateJob()` method now accepts an array of files instead of a single file, enabling batch processing of multiple lab reports in one request.
+* The SDK now supports additional optional parameters across several LabTests methods: `labSlug` for `getMarkers()`, `orderTransactionId` for `getOrders()`, `allowStale` for `getPscAppointmentAvailability()`, and `clinicalNotes` for `createOrder()`. The `bookPscAppointment()` method now accepts idempotency headers through a structured request object.
+* The SDK now includes a new CompendiumClient accessible via `client.compendium` with `search()` and `convert()` methods for lab test compendium operations.
+* New lab account and order transaction management APIs available. The SDK now includes `LabAccountClient` for managing team lab accounts and `OrderTransactionClient` for tracking order transactions and retrieving results. Enhanced existing APIs with appointment notes, lab account filtering, and compendium search capabilities.
+* The SDK now includes a new compendium resource for searching and converting lab tests across different lab providers. Lab test creation now supports optional lab account ID and lab slug parameters. Added support for Samsung Health and Sonora Quest providers, plus new address access notes for delivery instructions.
+* The SDK now supports order transaction management, allowing tracking of related orders through the new `ClientFacingOrderTransaction` type. Enhanced appointment and order objects with additional metadata fields including clinical notes, appointment notes, and order origins. Added support for Sonora Quest lab provider and Samsung Health integration.
+* The SDK now supports enhanced laboratory functionality including compendium search for canonical and crosswalk lab codes, comprehensive US address handling with access notes, and expanded lab account management with transaction tracking.
+
