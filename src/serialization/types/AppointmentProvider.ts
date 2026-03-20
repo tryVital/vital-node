@@ -7,8 +7,8 @@ import type * as serializers from "../index.js";
 export const AppointmentProvider: core.serialization.Schema<
     serializers.AppointmentProvider.Raw,
     Vital.AppointmentProvider
-> = core.serialization.enum_(["getlabs", "phlebfinders", "quest"]);
+> = core.serialization.enum_(["getlabs", "phlebfinders", "quest", "sonora_quest"]);
 
 export declare namespace AppointmentProvider {
-    export type Raw = "getlabs" | "phlebfinders" | "quest";
+    export type Raw = "getlabs" | "phlebfinders" | "quest" | "sonora_quest";
 }
