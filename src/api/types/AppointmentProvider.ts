@@ -5,5 +5,6 @@ export const AppointmentProvider = {
     Getlabs: "getlabs",
     Phlebfinders: "phlebfinders",
     Quest: "quest",
+    SonoraQuest: "sonora_quest",
 } as const;
 export type AppointmentProvider = (typeof AppointmentProvider)[keyof typeof AppointmentProvider];
