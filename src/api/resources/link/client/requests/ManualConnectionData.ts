@@ -7,6 +7,9 @@
  *     }
  */
 export interface ManualConnectionData {
+    vitalIosSdkVersion?: string;
+    vitalAndroidSdkVersion?: string;
     userId: string;
     providerId?: string;
+    grantedPermissions?: string[];
 }
