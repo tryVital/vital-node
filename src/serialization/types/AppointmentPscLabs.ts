@@ -7,8 +7,8 @@ import type * as serializers from "../index.js";
 export const AppointmentPscLabs: core.serialization.Schema<
     serializers.AppointmentPscLabs.Raw,
     Vital.AppointmentPscLabs
-> = core.serialization.stringLiteral("quest");
+> = core.serialization.enum_(["quest", "sonora_quest"]);
 
 export declare namespace AppointmentPscLabs {
-    export type Raw = "quest";
+    export type Raw = "quest" | "sonora_quest";
 }
