@@ -34,6 +34,7 @@ export const OrderStatus = {
     CollectingSampleTestkitWithCustomer: "collecting_sample.testkit.with_customer",
     CollectingSampleTestkitTransitLab: "collecting_sample.testkit.transit_lab",
     SampleWithLabTestkitDeliveredToLab: "sample_with_lab.testkit.delivered_to_lab",
+    SampleWithLabTestkitLabProcessingBlocked: "sample_with_lab.testkit.lab_processing_blocked",
     CompletedTestkitCompleted: "completed.testkit.completed",
     FailedTestkitFailureToDeliverToCustomer: "failed.testkit.failure_to_deliver_to_customer",
     FailedTestkitFailureToDeliverToLab: "failed.testkit.failure_to_deliver_to_lab",
@@ -51,5 +52,9 @@ export const OrderStatus = {
     CancelledOnSiteCollectionCancelled: "cancelled.on_site_collection.cancelled",
     SampleWithLabOnSiteCollectionPartialResults: "sample_with_lab.on_site_collection.partial_results",
     FailedOnSiteCollectionSampleError: "failed.on_site_collection.sample_error",
+    CompletedWalkInTestCorrected: "completed.walk_in_test.corrected",
+    CompletedAtHomePhlebotomyCorrected: "completed.at_home_phlebotomy.corrected",
+    CompletedOnSiteCollectionCorrected: "completed.on_site_collection.corrected",
+    CompletedTestkitCorrected: "completed.testkit.corrected",
 } as const;
 export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];

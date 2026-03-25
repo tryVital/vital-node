@@ -9,6 +9,7 @@ import { AwakeAtValueMacroExpr } from "./AwakeAtValueMacroExpr.js";
 import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr.js";
 import { BodyColumnExpr } from "./BodyColumnExpr.js";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr.js";
+import { DerivedReadinessColumnExpr } from "./DerivedReadinessColumnExpr.js";
 import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr.js";
 import { IndexColumnExpr } from "./IndexColumnExpr.js";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr.js";
@@ -25,6 +26,7 @@ import { WorkoutDurationTimeseriesExpr } from "./WorkoutDurationTimeseriesExpr.j
 export const AggregateExprArg: core.serialization.Schema<serializers.AggregateExprArg.Raw, Vital.AggregateExprArg> =
     core.serialization.undiscriminatedUnion([
         SleepColumnExpr,
+        DerivedReadinessColumnExpr,
         ActivityColumnExpr,
         WorkoutColumnExpr,
         BodyColumnExpr,
@@ -47,6 +49,7 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
 export declare namespace AggregateExprArg {
     export type Raw =
         | SleepColumnExpr.Raw
+        | DerivedReadinessColumnExpr.Raw
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
