@@ -7,8 +7,8 @@ import type * as serializers from "../index.js";
 export const PayorCodeExternalProvider: core.serialization.Schema<
     serializers.PayorCodeExternalProvider.Raw,
     Vital.PayorCodeExternalProvider
-> = core.serialization.enum_(["change_healthcare", "availity", "stedi", "waystar", "claim_md"]);
+> = core.serialization.enum_(["change_healthcare", "availity", "stedi", "waystar", "claim_md", "apero", "pverify"]);
 
 export declare namespace PayorCodeExternalProvider {
-    export type Raw = "change_healthcare" | "availity" | "stedi" | "waystar" | "claim_md";
+    export type Raw = "change_healthcare" | "availity" | "stedi" | "waystar" | "claim_md" | "apero" | "pverify";
 }
