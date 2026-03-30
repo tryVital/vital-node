@@ -28,7 +28,6 @@ describe("LinkClient", () => {
         const response = await client.link.listBulkOps({
             nextCursor: "next_cursor",
             pageSize: 1,
-            teamId: "infer_from_context",
         });
         expect(response).toEqual({
             data: [
@@ -84,7 +83,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkImport({
-            teamId: "infer_from_context",
             provider: "oura",
             connections: [
                 {
@@ -172,7 +170,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkTriggerHistoricalPull({
-            teamId: "infer_from_context",
             userIds: ["user_ids"],
             provider: "oura",
         });
@@ -230,7 +227,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkExport({
-            teamId: "infer_from_context",
             provider: "oura",
         });
         expect(response).toEqual({
@@ -284,7 +280,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkPause({
-            teamId: "infer_from_context",
             userIds: ["user_ids"],
             provider: "oura",
         });
@@ -499,18 +494,9 @@ describe("LinkClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/v2/link/state")
-            .header("x-vital-link-token", "x-vital-link-token")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
+        server.mockEndpoint().get("/v2/link/state").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.link.tokenState({
-            vitalLinkToken: "x-vital-link-token",
-        });
+        const response = await client.link.tokenState();
         expect(response).toEqual({
             key: "value",
         });
@@ -536,7 +522,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/auth/email")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -544,7 +529,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.emailAuth({
-            vitalLinkToken: "x-vital-link-token",
             email: "email",
             provider: "oura",
             authType: "password",
@@ -585,7 +569,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/auth")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -593,7 +576,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.passwordAuth({
-            vitalLinkToken: "x-vital-link-token",
             username: "username",
             password: "password",
             provider: "oura",
@@ -648,15 +630,12 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .get("/v2/link/provider/oauth/oura")
-            .header("x-vital-link-token", "x-vital-link-token")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.link.generateOauthLink("oura", {
-            vitalLinkToken: "x-vital-link-token",
-        });
+        const response = await client.link.generateOauthLink("oura");
         expect(response).toEqual({
             name: "Garmin",
             slug: "garmin",
@@ -707,7 +686,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/provider/password/whoop")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -715,7 +693,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.connectPasswordProvider("whoop", {
-            vitalLinkToken: "x-vital-link-token",
             username: "username",
             password: "password",
         });
@@ -773,7 +750,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/provider/password/whoop/complete_mfa")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -781,7 +757,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.completePasswordProviderMfa("whoop", {
-            vitalLinkToken: "x-vital-link-token",
             mfaCode: "mfa_code",
         });
         expect(response).toEqual({
@@ -828,7 +803,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/provider/email/freestyle_libre")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -836,7 +810,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.connectEmailAuthProvider("freestyle_libre", {
-            vitalLinkToken: "x-vital-link-token",
             email: "email",
         });
         expect(response).toEqual({
@@ -881,18 +854,9 @@ describe("LinkClient", () => {
                 form_components: { key: "value" },
             },
         ];
-        server
-            .mockEndpoint()
-            .get("/v2/link/providers")
-            .header("x-vital-link-token", "x-vital-link-token")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
+        server.mockEndpoint().get("/v2/link/providers").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.link.getAllProviders({
-            vitalLinkToken: "x-vital-link-token",
-        });
+        const response = await client.link.getAllProviders();
         expect(response).toEqual([
             {
                 id: 1,
