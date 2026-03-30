@@ -3,6 +3,7 @@
 /** ℹ️ This enum is non-exhaustive. */
 export const IndexColumnExprIndex = {
     Sleep: "sleep",
+    DerivedReadiness: "derived_readiness",
     Activity: "activity",
     Workout: "workout",
     Body: "body",
