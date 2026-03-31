@@ -5,8 +5,8 @@ import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
 
 export const ClientFacingLabs: core.serialization.Schema<serializers.ClientFacingLabs.Raw, Vital.ClientFacingLabs> =
-    core.serialization.enum_(["quest", "labcorp", "bioreference"]);
+    core.serialization.enum_(["quest", "labcorp", "bioreference", "sonora_quest"]);
 
 export declare namespace ClientFacingLabs {
-    export type Raw = "quest" | "labcorp" | "bioreference";
+    export type Raw = "quest" | "labcorp" | "bioreference" | "sonora_quest";
 }

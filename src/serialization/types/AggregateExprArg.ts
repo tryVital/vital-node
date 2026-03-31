@@ -6,11 +6,14 @@ import type * as serializers from "../index.js";
 import { ActivityColumnExpr } from "./ActivityColumnExpr.js";
 import { AsleepAtValueMacroExpr } from "./AsleepAtValueMacroExpr.js";
 import { AwakeAtValueMacroExpr } from "./AwakeAtValueMacroExpr.js";
+import { AwakeningsValueMacroExpr } from "./AwakeningsValueMacroExpr.js";
 import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr.js";
 import { BodyColumnExpr } from "./BodyColumnExpr.js";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr.js";
+import { DerivedReadinessColumnExpr } from "./DerivedReadinessColumnExpr.js";
 import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr.js";
 import { IndexColumnExpr } from "./IndexColumnExpr.js";
+import { InsulinInjectionTimeseriesExpr } from "./InsulinInjectionTimeseriesExpr.js";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr.js";
 import { MealColumnExpr } from "./MealColumnExpr.js";
 import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr.js";
@@ -25,6 +28,7 @@ import { WorkoutDurationTimeseriesExpr } from "./WorkoutDurationTimeseriesExpr.j
 export const AggregateExprArg: core.serialization.Schema<serializers.AggregateExprArg.Raw, Vital.AggregateExprArg> =
     core.serialization.undiscriminatedUnion([
         SleepColumnExpr,
+        DerivedReadinessColumnExpr,
         ActivityColumnExpr,
         WorkoutColumnExpr,
         BodyColumnExpr,
@@ -34,9 +38,11 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
         ChronotypeValueMacroExpr,
         AsleepAtValueMacroExpr,
         AwakeAtValueMacroExpr,
+        AwakeningsValueMacroExpr,
         UnrecognizedValueMacroExpr,
         DiscreteTimeseriesExpr,
         IntervalTimeseriesExpr,
+        InsulinInjectionTimeseriesExpr,
         BloodPressureTimeseriesExpr,
         TemperatureTimeseriesExpr,
         WorkoutDurationTimeseriesExpr,
@@ -47,6 +53,7 @@ export const AggregateExprArg: core.serialization.Schema<serializers.AggregateEx
 export declare namespace AggregateExprArg {
     export type Raw =
         | SleepColumnExpr.Raw
+        | DerivedReadinessColumnExpr.Raw
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
@@ -56,9 +63,11 @@ export declare namespace AggregateExprArg {
         | ChronotypeValueMacroExpr.Raw
         | AsleepAtValueMacroExpr.Raw
         | AwakeAtValueMacroExpr.Raw
+        | AwakeningsValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw
         | DiscreteTimeseriesExpr.Raw
         | IntervalTimeseriesExpr.Raw
+        | InsulinInjectionTimeseriesExpr.Raw
         | BloodPressureTimeseriesExpr.Raw
         | TemperatureTimeseriesExpr.Raw
         | WorkoutDurationTimeseriesExpr.Raw
