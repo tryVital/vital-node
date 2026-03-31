@@ -9,10 +9,12 @@ export const AppointmentRescheduleRequest: core.serialization.ObjectSchema<
     Vital.AppointmentRescheduleRequest
 > = core.serialization.object({
     bookingKey: core.serialization.property("booking_key", core.serialization.string()),
+    appointmentNotes: core.serialization.property("appointment_notes", core.serialization.string().optional()),
 });
 
 export declare namespace AppointmentRescheduleRequest {
     export interface Raw {
         booking_key: string;
+        appointment_notes?: string | null;
     }
 }
