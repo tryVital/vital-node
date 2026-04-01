@@ -27,5 +27,7 @@ export const OrderLowLevelStatus = {
     AwaitingRegistration: "awaiting_registration",
     Registered: "registered",
     RedrawAvailable: "redraw_available",
+    Corrected: "corrected",
+    LabProcessingBlocked: "lab_processing_blocked",
 } as const;
 export type OrderLowLevelStatus = (typeof OrderLowLevelStatus)[keyof typeof OrderLowLevelStatus];
