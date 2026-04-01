@@ -32,9 +32,7 @@ export class TeamClient {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.team.getLinkConfig({
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.team.getLinkConfig()
      */
     public getLinkConfig(
         request: Vital.TeamGetLinkConfigRequest = {},
@@ -210,11 +208,9 @@ export class TeamClient {
         requestOptions?: TeamClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingUser[]>> {
         const { queryId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (queryId != null) {
-            _queryParams.query_id = queryId;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            query_id: queryId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -356,13 +352,12 @@ export class TeamClient {
         requestOptions?: TeamClient.RequestOptions,
     ): Promise<core.WithRawResponse<Record<string, unknown>[]>> {
         const { dataType } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (dataType != null) {
-            _queryParams.data_type = serializers.PriorityResource.jsonOrThrow(dataType, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            data_type:
+                dataType != null
+                    ? serializers.PriorityResource.jsonOrThrow(dataType, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

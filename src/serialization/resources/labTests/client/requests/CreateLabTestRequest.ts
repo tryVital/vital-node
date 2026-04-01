@@ -3,6 +3,7 @@
 import type * as Vital from "../../../../../api/index.js";
 import * as core from "../../../../../core/index.js";
 import type * as serializers from "../../../../index.js";
+import { Labs } from "../../../../types/Labs.js";
 import { LabTestCollectionMethod } from "../../../../types/LabTestCollectionMethod.js";
 
 export const CreateLabTestRequest: core.serialization.Schema<
@@ -21,6 +22,8 @@ export const CreateLabTestRequest: core.serialization.Schema<
     method: LabTestCollectionMethod,
     description: core.serialization.string(),
     fasting: core.serialization.boolean().optional(),
+    labAccountId: core.serialization.property("lab_account_id", core.serialization.string().optional()),
+    labSlug: core.serialization.property("lab_slug", Labs.optional()),
 });
 
 export declare namespace CreateLabTestRequest {
@@ -31,5 +34,7 @@ export declare namespace CreateLabTestRequest {
         method: LabTestCollectionMethod.Raw;
         description: string;
         fasting?: boolean | null;
+        lab_account_id?: string | null;
+        lab_slug?: Labs.Raw | null;
     }
 }
