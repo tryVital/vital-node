@@ -37,6 +37,8 @@ export interface ClientFacingSleep {
     deep: number;
     /** A value between 1 and 100 representing how well the user slept. Currently only available for Withings, Oura, Whoop and Garmin::scalar */
     score?: number;
+    /** A value between 0 and 100 representing the provider's recovery/readiness proxy. Currently sourced from Oura readiness score, Whoop recovery score, and Ultrahuman recovery::scalar */
+    recoveryReadinessScore?: number;
     /** The lowest heart rate (5 minutes sliding average) registered during the sleep period::beats per minute */
     hrLowest?: number;
     /** The average heart rate registered during the sleep period::beats per minute */
