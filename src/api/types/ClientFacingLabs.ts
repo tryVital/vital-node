@@ -5,5 +5,6 @@ export const ClientFacingLabs = {
     Quest: "quest",
     Labcorp: "labcorp",
     Bioreference: "bioreference",
+    SonoraQuest: "sonora_quest",
 } as const;
 export type ClientFacingLabs = (typeof ClientFacingLabs)[keyof typeof ClientFacingLabs];

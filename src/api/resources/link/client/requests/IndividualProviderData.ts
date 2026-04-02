@@ -5,7 +5,6 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         vitalLinkToken: "x-vital-link-token",
  *         username: "username",
  *         password: "password"
  *     }
