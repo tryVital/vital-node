@@ -3,6 +3,7 @@
 import type * as Vital from "../../api/index.js";
 import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
+import { ClientFacingOrderTransaction } from "./ClientFacingOrderTransaction.js";
 import { LabResultsMetadata } from "./LabResultsMetadata.js";
 import { LabResultsRawResults } from "./LabResultsRawResults.js";
 import { MissingBiomarkerResult } from "./MissingBiomarkerResult.js";
@@ -20,6 +21,7 @@ export const LabResultsRaw: core.serialization.ObjectSchema<serializers.LabResul
             "sample_information",
             core.serialization.record(core.serialization.string(), SampleData.optional()).optional(),
         ),
+        orderTransaction: core.serialization.property("order_transaction", ClientFacingOrderTransaction.optional()),
     });
 
 export declare namespace LabResultsRaw {
@@ -28,5 +30,6 @@ export declare namespace LabResultsRaw {
         results: LabResultsRawResults.Raw;
         missing_results?: MissingBiomarkerResult.Raw[] | null;
         sample_information?: Record<string, SampleData.Raw | null | undefined> | null;
+        order_transaction?: ClientFacingOrderTransaction.Raw | null;
     }
 }
