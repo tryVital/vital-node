@@ -14,7 +14,6 @@ export const IntervalTimeseriesExprTimeseries: core.serialization.Schema<
     "heart_rate_alert",
     "stand_hour",
     "sleep_breathing_disturbance",
-    "insulin_injection",
     "water",
     "caffeine",
     "mindfulness_minutes",
@@ -51,7 +50,6 @@ export declare namespace IntervalTimeseriesExprTimeseries {
         | "heart_rate_alert"
         | "stand_hour"
         | "sleep_breathing_disturbance"
-        | "insulin_injection"
         | "water"
         | "caffeine"
         | "mindfulness_minutes"

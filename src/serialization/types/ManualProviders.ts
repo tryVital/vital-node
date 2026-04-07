@@ -15,6 +15,7 @@ export const ManualProviders: core.serialization.Schema<serializers.ManualProvid
         "apple_health_kit",
         "manual",
         "health_connect",
+        "samsung_health",
     ]);
 
 export declare namespace ManualProviders {
@@ -27,5 +28,6 @@ export declare namespace ManualProviders {
         | "onetouch_ble"
         | "apple_health_kit"
         | "manual"
-        | "health_connect";
+        | "health_connect"
+        | "samsung_health";
 }
