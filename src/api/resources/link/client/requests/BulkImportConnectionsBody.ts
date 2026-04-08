@@ -5,7 +5,6 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         teamId: "infer_from_context",
  *         provider: "oura",
  *         connections: [{
  *                 userId: "user_id",
@@ -17,7 +16,6 @@ import type * as Vital from "../../../../index.js";
  *     }
  */
 export interface BulkImportConnectionsBody {
-    teamId?: Vital.LinkBulkImportRequestTeamId;
     provider: Vital.OAuthProviders;
     connections: Vital.ConnectionRecipe[];
     /**
