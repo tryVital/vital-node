@@ -20,12 +20,16 @@ export interface ClientFacingOrder {
     sampleId?: string;
     /** Notes associated with the order */
     notes?: string;
+    clinicalNotes?: string;
     /** When your order was created */
     createdAt: Date;
     /** When your order was last updated. */
     updatedAt: Date;
     events: Vital.ClientFacingOrderEvent[];
+    /** The top-level status of the latest event for this order. This field is deprecated. Please use `last_event` instead. */
     status?: Vital.OrderTopLevelStatus;
+    /** The latest event in the order's lifecycle. */
+    lastEvent: Vital.ClientFacingOrderEvent;
     physician?: Vital.ClientFacingPhysician;
     /** Vital ID of the health insurance. */
     healthInsuranceId?: string;
@@ -50,4 +54,6 @@ export interface ClientFacingOrder {
     expectedResultByDate?: string;
     /** The latest date by which the order result is expected to be available. */
     worstCaseResultByDate?: string;
+    origin?: Vital.OrderOrigin;
+    orderTransaction?: Vital.ClientFacingOrderTransaction;
 }
