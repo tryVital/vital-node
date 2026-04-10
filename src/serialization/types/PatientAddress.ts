@@ -13,6 +13,7 @@ export const PatientAddress: core.serialization.ObjectSchema<serializers.Patient
         state: core.serialization.string(),
         zip: core.serialization.string(),
         country: core.serialization.string(),
+        accessNotes: core.serialization.property("access_notes", core.serialization.string().optional()),
     });
 
 export declare namespace PatientAddress {
@@ -24,5 +25,6 @@ export declare namespace PatientAddress {
         state: string;
         zip: string;
         country: string;
+        access_notes?: string | null;
     }
 }
