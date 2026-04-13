@@ -8,7 +8,7 @@ import { OAuthProviders } from "../../../../types/OAuthProviders.js";
 
 export const BulkImportConnectionsBody: core.serialization.Schema<
     serializers.BulkImportConnectionsBody.Raw,
-    Omit<Vital.BulkImportConnectionsBody, "teamId">
+    Vital.BulkImportConnectionsBody
 > = core.serialization.object({
     provider: OAuthProviders,
     connections: core.serialization.list(ConnectionRecipe),

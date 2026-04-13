@@ -8,7 +8,7 @@ export interface ClientFacingProfile {
     userId: string;
     height?: number;
     birthDate?: string;
-    wheelchairUse?: boolean;
+    wheelchairUse?: true;
     gender?: Vital.Gender;
     sex?: Vital.Sex;
     source: Vital.ClientFacingSource;
