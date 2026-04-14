@@ -17,6 +17,7 @@ export const ClientFacingElectrocardiogramSourceType: core.serialization.Schema<
     "cuff",
     "manual_scan",
     "automatic",
+    "insulin_pump",
     "scale",
     "chest_strap",
     "ring",
@@ -36,6 +37,7 @@ export declare namespace ClientFacingElectrocardiogramSourceType {
         | "cuff"
         | "manual_scan"
         | "automatic"
+        | "insulin_pump"
         | "scale"
         | "chest_strap"
         | "ring"
