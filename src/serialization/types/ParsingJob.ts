@@ -4,13 +4,14 @@ import type * as Vital from "../../api/index.js";
 import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
 import { ParsedLabReportData } from "./ParsedLabReportData.js";
+import { ParsingJobFailureReason } from "./ParsingJobFailureReason.js";
 import { ParsingJobStatus } from "./ParsingJobStatus.js";
 
 export const ParsingJob: core.serialization.ObjectSchema<serializers.ParsingJob.Raw, Vital.ParsingJob> =
     core.serialization.object({
         id: core.serialization.string(),
-        jobId: core.serialization.property("job_id", core.serialization.string()),
         status: ParsingJobStatus,
+        failureReason: core.serialization.property("failure_reason", ParsingJobFailureReason.optional()),
         data: ParsedLabReportData.optional(),
         needsHumanReview: core.serialization.property("needs_human_review", core.serialization.boolean()),
         isReviewed: core.serialization.property("is_reviewed", core.serialization.boolean()),
@@ -19,8 +20,8 @@ export const ParsingJob: core.serialization.ObjectSchema<serializers.ParsingJob.
 export declare namespace ParsingJob {
     export interface Raw {
         id: string;
-        job_id: string;
         status: ParsingJobStatus.Raw;
+        failure_reason?: ParsingJobFailureReason.Raw | null;
         data?: ParsedLabReportData.Raw | null;
         needs_human_review: boolean;
         is_reviewed: boolean;
