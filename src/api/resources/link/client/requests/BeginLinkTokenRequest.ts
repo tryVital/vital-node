@@ -11,5 +11,6 @@ import type * as Vital from "../../../../index.js";
  */
 export interface BeginLinkTokenRequest {
     linkToken: string;
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.Providers;
 }

@@ -5,15 +5,15 @@ import type * as Vital from "../index.js";
 export interface WorkoutV2InDb {
     timestamp: Date;
     data: Record<string, unknown>;
-    providerId: string;
     userId: string;
+    providerId: string;
     sourceId: number;
     priorityId?: number;
     id: string;
     sportId: number;
-    source: Vital.ClientFacingProvider;
     sport: Vital.ClientFacingSport;
     sourceDeviceId?: string;
     createdAt?: Date;
     updatedAt?: Date;
+    source: Vital.ClientFacingProvider;
 }

@@ -8,8 +8,10 @@ export interface ClientFacingProfile {
     userId: string;
     height?: number;
     birthDate?: string;
-    wheelchairUse?: boolean;
+    wheelchairUse?: true;
+    /** ℹ️ This enum is non-exhaustive. */
     gender?: Vital.Gender;
+    /** ℹ️ This enum is non-exhaustive. */
     sex?: Vital.Sex;
     source: Vital.ClientFacingSource;
     createdAt: Date;

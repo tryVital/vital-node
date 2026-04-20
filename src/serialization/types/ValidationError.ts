@@ -10,6 +10,8 @@ export const ValidationError: core.serialization.ObjectSchema<serializers.Valida
         loc: core.serialization.list(ValidationErrorLocItem),
         msg: core.serialization.string(),
         type: core.serialization.string(),
+        input: core.serialization.unknown().optional(),
+        ctx: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     });
 
 export declare namespace ValidationError {
@@ -17,5 +19,7 @@ export declare namespace ValidationError {
         loc: ValidationErrorLocItem.Raw[];
         msg: string;
         type: string;
+        input?: unknown | null;
+        ctx?: Record<string, unknown> | null;
     }
 }
