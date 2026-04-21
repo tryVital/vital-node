@@ -5,6 +5,7 @@ import type * as Vital from "../index.js";
 export interface MissingBiomarkerResult {
     name: string;
     slug: string;
+    /** ℹ️ This enum is non-exhaustive. */
     inferredFailureType: Vital.FailureType;
     note?: string;
     loinc?: string;
