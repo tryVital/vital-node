@@ -17,6 +17,7 @@ export const ClientFacingSleepCycleSourceType: core.serialization.Schema<
     "cuff",
     "manual_scan",
     "automatic",
+    "insulin_pump",
     "scale",
     "chest_strap",
     "ring",
@@ -36,6 +37,7 @@ export declare namespace ClientFacingSleepCycleSourceType {
         | "cuff"
         | "manual_scan"
         | "automatic"
+        | "insulin_pump"
         | "scale"
         | "chest_strap"
         | "ring"

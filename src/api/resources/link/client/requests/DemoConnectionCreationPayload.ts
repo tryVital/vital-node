@@ -12,6 +12,6 @@ import type * as Vital from "../../../../index.js";
 export interface DemoConnectionCreationPayload {
     /** Vital user ID */
     userId: string;
-    /** Demo provider. For more information, please check out our docs (https://docs.tryvital.io/wearables/providers/test_data) */
+    /** Demo provider. For more information, please check out our docs (https://docs.tryvital.io/wearables/providers/test_data) ℹ️ This enum is non-exhaustive. */
     provider: Vital.DemoProviders;
 }

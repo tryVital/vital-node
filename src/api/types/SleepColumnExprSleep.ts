@@ -27,6 +27,7 @@ export const SleepColumnExprSleep = {
     SkinTemperatureDelta: "skin_temperature_delta",
     RespiratoryRate: "respiratory_rate",
     Score: "score",
+    RecoveryReadinessScore: "recovery_readiness_score",
     SourceType: "source_type",
     SourceProvider: "source_provider",
     SourceAppId: "source_app_id",
