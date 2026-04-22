@@ -8,7 +8,6 @@ export const IntervalTimeseriesExprTimeseries = {
     HeartRateAlert: "heart_rate_alert",
     StandHour: "stand_hour",
     SleepBreathingDisturbance: "sleep_breathing_disturbance",
-    InsulinInjection: "insulin_injection",
     Water: "water",
     Caffeine: "caffeine",
     MindfulnessMinutes: "mindfulness_minutes",
