@@ -4,8 +4,10 @@ import type * as Vital from "../index.js";
 
 export interface ParsingJob {
     id: string;
-    jobId: string;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.ParsingJobStatus;
+    /** ℹ️ This enum is non-exhaustive. */
+    failureReason?: Vital.ParsingJobFailureReason;
     data?: Vital.ParsedLabReportData;
     needsHumanReview: boolean;
     isReviewed: boolean;

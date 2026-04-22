@@ -17,5 +17,7 @@ import type * as Vital from "../../../../index.js";
 export interface RequestAppointmentRequest {
     /** At-home phlebotomy appointment address. */
     address: Vital.UsAddress;
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.AppointmentProvider;
+    appointmentNotes?: string;
 }

@@ -27,10 +27,14 @@ export interface UserInfoCreateRequest {
     phoneNumber: string;
     gender: string;
     dob: string;
-    address: Vital.Address;
+    address: Vital.UserAddress;
     medicalProxy?: Vital.GuarantorDetails;
+    /** ℹ️ This enum is non-exhaustive. */
     race?: Vital.Race;
+    /** ℹ️ This enum is non-exhaustive. */
     ethnicity?: Vital.Ethnicity;
+    /** ℹ️ This enum is non-exhaustive. */
     sexualOrientation?: Vital.SexualOrientation;
+    /** ℹ️ This enum is non-exhaustive. */
     genderIdentity?: Vital.GenderIdentity;
 }
