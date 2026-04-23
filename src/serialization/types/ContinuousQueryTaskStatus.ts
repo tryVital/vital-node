@@ -7,8 +7,8 @@ import type * as serializers from "../index.js";
 export const ContinuousQueryTaskStatus: core.serialization.Schema<
     serializers.ContinuousQueryTaskStatus.Raw,
     Vital.ContinuousQueryTaskStatus
-> = core.serialization.enum_(["scheduled", "started", "completed", "error"]);
+> = core.serialization.enum_(["scheduled", "started", "completed", "error", "skipped"]);
 
 export declare namespace ContinuousQueryTaskStatus {
-    export type Raw = "scheduled" | "started" | "completed" | "error";
+    export type Raw = "scheduled" | "started" | "completed" | "error" | "skipped";
 }
