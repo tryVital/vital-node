@@ -5,13 +5,13 @@ import type * as Vital from "../index.js";
 export interface ActivityV2InDb {
     timestamp: Date;
     data: Record<string, unknown>;
-    providerId: string;
     userId: string;
+    providerId: string;
     sourceId: number;
     priorityId: number;
     id: string;
-    source: Vital.ClientFacingProvider;
     sourceDeviceId?: string;
     createdAt?: Date;
     updatedAt?: Date;
+    source: Vital.ClientFacingProvider;
 }
