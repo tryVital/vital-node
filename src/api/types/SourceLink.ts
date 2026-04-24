@@ -9,6 +9,7 @@ export interface SourceLink {
     description: string;
     logo: string;
     oauthUrl?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     authType?: Vital.SourceAuthType;
     formComponents?: Record<string, unknown>;
 }
