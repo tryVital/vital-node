@@ -10,23 +10,46 @@ describe("LabReportClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "id",
-            job_id: "job_id",
-            status: "upload_pending",
+            id: "8eb0217f-4683-4a3c-adca-faf95ac65739",
+            status: "completed",
+            failure_reason: "invalid_input",
             data: {
                 metadata: {
-                    patient_first_name: "patient_first_name",
-                    patient_last_name: "patient_last_name",
-                    dob: "dob",
-                    lab_name: "lab_name",
-                    date_reported: "date_reported",
-                    date_collected: "date_collected",
-                    specimen_number: "specimen_number",
+                    patient_first_name: "Jane",
+                    patient_last_name: "Doe",
+                    dob: "1990-01-01",
+                    gender: "male",
+                    lab_name: "Acme Labs",
+                    date_reported: "2025-01-01",
+                    date_collected: "2024-12-30",
+                    specimen_number: "ABC123",
                 },
-                results: [{ test_name: "test_name", value: "value" }],
+                results: [
+                    {
+                        test_name: "Glucose",
+                        value: "90",
+                        type: "numeric",
+                        units: "mg/dL",
+                        max_reference_range: 99,
+                        min_reference_range: 70,
+                        source_panel_name: "CMP",
+                        loinc_matches: [
+                            {
+                                loinc_code: "2345-7",
+                                loinc_name: "Glucose [Mass/volume] in Serum or Plasma",
+                                display_name: "Glucose",
+                                aliases: ["aliases"],
+                                confidence_score: 0.99,
+                            },
+                        ],
+                        interpretation: "normal",
+                        is_above_max_range: false,
+                        is_below_min_range: false,
+                    },
+                ],
             },
-            needs_human_review: true,
-            is_reviewed: true,
+            needs_human_review: false,
+            is_reviewed: false,
         };
         server
             .mockEndpoint()
@@ -38,28 +61,46 @@ describe("LabReportClient", () => {
 
         const response = await client.labReport.parserGetJob("job_id");
         expect(response).toEqual({
-            id: "id",
-            jobId: "job_id",
-            status: "upload_pending",
+            id: "8eb0217f-4683-4a3c-adca-faf95ac65739",
+            status: "completed",
+            failureReason: "invalid_input",
             data: {
                 metadata: {
-                    patientFirstName: "patient_first_name",
-                    patientLastName: "patient_last_name",
-                    dob: "dob",
-                    labName: "lab_name",
-                    dateReported: "date_reported",
-                    dateCollected: "date_collected",
-                    specimenNumber: "specimen_number",
+                    patientFirstName: "Jane",
+                    patientLastName: "Doe",
+                    dob: "1990-01-01",
+                    gender: "male",
+                    labName: "Acme Labs",
+                    dateReported: "2025-01-01",
+                    dateCollected: "2024-12-30",
+                    specimenNumber: "ABC123",
                 },
                 results: [
                     {
-                        testName: "test_name",
-                        value: "value",
+                        testName: "Glucose",
+                        value: "90",
+                        type: "numeric",
+                        units: "mg/dL",
+                        maxReferenceRange: 99,
+                        minReferenceRange: 70,
+                        sourcePanelName: "CMP",
+                        loincMatches: [
+                            {
+                                loincCode: "2345-7",
+                                loincName: "Glucose [Mass/volume] in Serum or Plasma",
+                                displayName: "Glucose",
+                                aliases: ["aliases"],
+                                confidenceScore: 0.99,
+                            },
+                        ],
+                        interpretation: "normal",
+                        isAboveMaxRange: false,
+                        isBelowMinRange: false,
                     },
                 ],
             },
-            needsHumanReview: true,
-            isReviewed: true,
+            needsHumanReview: false,
+            isReviewed: false,
         });
     });
 

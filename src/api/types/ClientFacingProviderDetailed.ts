@@ -11,6 +11,7 @@ export interface ClientFacingProviderDetailed {
     description: string;
     /** URL for source logo */
     logo?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     authType?: Vital.SourceAuthType;
     supportedResources?: Vital.ClientFacingResource[];
 }

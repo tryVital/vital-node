@@ -5,13 +5,12 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         teamId: "infer_from_context",
  *         userIds: ["user_ids"],
  *         provider: "oura"
  *     }
  */
 export interface BulkPauseConnectionsBody {
-    teamId?: Vital.LinkBulkPauseRequestTeamId;
     userIds: string[];
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.OAuthProviders;
 }
