@@ -6,5 +6,6 @@ export const ContinuousQueryTaskStatus = {
     Started: "started",
     Completed: "completed",
     Error: "error",
+    Skipped: "skipped",
 } as const;
 export type ContinuousQueryTaskStatus = (typeof ContinuousQueryTaskStatus)[keyof typeof ContinuousQueryTaskStatus];

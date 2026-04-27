@@ -5,5 +5,8 @@ import type * as Vital from "../index.js";
 export interface ClientFacingOrderEvent {
     id: number;
     createdAt: Date;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.OrderStatus;
+    /** ℹ️ This enum is non-exhaustive. */
+    statusDetail?: Vital.OrderStatusDetail;
 }
