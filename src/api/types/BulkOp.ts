@@ -7,6 +7,7 @@ export interface BulkOp {
     type: Vital.BulkOpType;
     /** ℹ️ This enum is non-exhaustive. */
     status: Vital.BulkOpStatus;
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.Providers;
     pending: number;
     processed: number;

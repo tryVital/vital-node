@@ -11,7 +11,7 @@ export const HistoricalPullCompleted: core.serialization.ObjectSchema<
     userId: core.serialization.property("user_id", core.serialization.string()),
     startDate: core.serialization.property("start_date", core.serialization.date()),
     endDate: core.serialization.property("end_date", core.serialization.date()),
-    isFinal: core.serialization.property("is_final", core.serialization.boolean()),
+    isFinal: core.serialization.property("is_final", core.serialization.booleanLiteral(true)),
     provider: core.serialization.string(),
 });
 
@@ -20,7 +20,7 @@ export declare namespace HistoricalPullCompleted {
         user_id: string;
         start_date: string;
         end_date: string;
-        is_final: boolean;
+        is_final: true;
         provider: string;
     }
 }

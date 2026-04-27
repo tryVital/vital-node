@@ -133,17 +133,17 @@ describe("WorkoutsClient", () => {
                 {
                     timestamp: "2023-02-27T12:31:24Z",
                     data: { provider_specific: "..._data" },
-                    provider_id: "5e8271a3-e71b-4882-a94a-7e364694cd16",
                     user_id: "1449752e-0d8a-40e0-9206-91ab099b2537",
+                    provider_id: "5e8271a3-e71b-4882-a94a-7e364694cd16",
                     source_id: 1,
                     priority_id: 1,
                     id: "id",
                     sport_id: 3,
-                    source: { name: "Oura", slug: "oura", logo: "https://logo_url.com" },
                     sport: { id: 1, name: "name", slug: "slug" },
                     source_device_id: "550e8400-e29b-41d4-a716-446655440000",
                     created_at: "2024-01-15T09:30:00Z",
                     updated_at: "2024-01-15T09:30:00Z",
+                    source: { name: "Oura", slug: "oura", logo: "https://logo_url.com" },
                 },
             ],
         };
@@ -167,17 +167,12 @@ describe("WorkoutsClient", () => {
                     data: {
                         provider_specific: "..._data",
                     },
-                    providerId: "5e8271a3-e71b-4882-a94a-7e364694cd16",
                     userId: "1449752e-0d8a-40e0-9206-91ab099b2537",
+                    providerId: "5e8271a3-e71b-4882-a94a-7e364694cd16",
                     sourceId: 1,
                     priorityId: 1,
                     id: "id",
                     sportId: 3,
-                    source: {
-                        name: "Oura",
-                        slug: "oura",
-                        logo: "https://logo_url.com",
-                    },
                     sport: {
                         id: 1,
                         name: "name",
@@ -186,6 +181,11 @@ describe("WorkoutsClient", () => {
                     sourceDeviceId: "550e8400-e29b-41d4-a716-446655440000",
                     createdAt: new Date("2024-01-15T09:30:00.000Z"),
                     updatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                    source: {
+                        name: "Oura",
+                        slug: "oura",
+                        logo: "https://logo_url.com",
+                    },
                 },
             ],
         });
