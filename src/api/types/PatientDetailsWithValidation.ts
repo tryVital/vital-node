@@ -9,18 +9,19 @@ export interface PatientDetailsWithValidation {
     firstName: string;
     lastName: string;
     dob: string;
+    /** ℹ️ This enum is non-exhaustive. */
     gender: Vital.Gender;
     phoneNumber: string;
     email: string;
     /** Parent/medical_proxy details. Required if patient is a minor. */
     medicalProxy?: Vital.GuarantorDetails;
-    /** If not provided, will be set to 'Not Specified' */
+    /** If not provided, will be set to 'Not Specified' ℹ️ This enum is non-exhaustive. */
     race?: Vital.Race;
-    /** If not provided, will be set to 'Not Specified' */
+    /** If not provided, will be set to 'Not Specified' ℹ️ This enum is non-exhaustive. */
     ethnicity?: Vital.Ethnicity;
-    /** If not provided, will be set to 'Not Specified' */
+    /** If not provided, will be set to 'Not Specified' ℹ️ This enum is non-exhaustive. */
     sexualOrientation?: Vital.SexualOrientation;
-    /** If not provided, will be set to 'Not Specified' */
+    /** If not provided, will be set to 'Not Specified' ℹ️ This enum is non-exhaustive. */
     genderIdentity?: Vital.GenderIdentity;
     /** Household income in USD. If not provided, will be set to None */
     householdIncome?: number;

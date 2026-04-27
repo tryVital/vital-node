@@ -38,6 +38,7 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "collecting_sample.testkit.with_customer",
         "collecting_sample.testkit.transit_lab",
         "sample_with_lab.testkit.delivered_to_lab",
+        "sample_with_lab.testkit.lab_processing_blocked",
         "completed.testkit.completed",
         "failed.testkit.failure_to_deliver_to_customer",
         "failed.testkit.failure_to_deliver_to_lab",
@@ -55,6 +56,10 @@ export const OrderStatus: core.serialization.Schema<serializers.OrderStatus.Raw,
         "cancelled.on_site_collection.cancelled",
         "sample_with_lab.on_site_collection.partial_results",
         "failed.on_site_collection.sample_error",
+        "completed.walk_in_test.corrected",
+        "completed.at_home_phlebotomy.corrected",
+        "completed.on_site_collection.corrected",
+        "completed.testkit.corrected",
     ]);
 
 export declare namespace OrderStatus {
@@ -91,6 +96,7 @@ export declare namespace OrderStatus {
         | "collecting_sample.testkit.with_customer"
         | "collecting_sample.testkit.transit_lab"
         | "sample_with_lab.testkit.delivered_to_lab"
+        | "sample_with_lab.testkit.lab_processing_blocked"
         | "completed.testkit.completed"
         | "failed.testkit.failure_to_deliver_to_customer"
         | "failed.testkit.failure_to_deliver_to_lab"
@@ -107,5 +113,9 @@ export declare namespace OrderStatus {
         | "completed.on_site_collection.completed"
         | "cancelled.on_site_collection.cancelled"
         | "sample_with_lab.on_site_collection.partial_results"
-        | "failed.on_site_collection.sample_error";
+        | "failed.on_site_collection.sample_error"
+        | "completed.walk_in_test.corrected"
+        | "completed.at_home_phlebotomy.corrected"
+        | "completed.on_site_collection.corrected"
+        | "completed.testkit.corrected";
 }

@@ -5,6 +5,7 @@ import type * as Vital from "../index.js";
 export interface ContinuousQueryTaskHistoryEntry {
     queryId: string;
     userId: string;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.ContinuousQueryTaskStatus;
     scheduledAt: Date;
     startedAt?: Date;

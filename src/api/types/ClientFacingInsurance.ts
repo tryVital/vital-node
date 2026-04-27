@@ -5,6 +5,7 @@ import type * as Vital from "../index.js";
 export interface ClientFacingInsurance {
     memberId: string;
     payorCode: string;
+    /** ℹ️ This enum is non-exhaustive. */
     relationship: Vital.ResponsibleRelationship;
     insured: Vital.VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails;
     company: Vital.CompanyDetails;

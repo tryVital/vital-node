@@ -5,8 +5,8 @@ import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
 
 export const LabTestSampleType: core.serialization.Schema<serializers.LabTestSampleType.Raw, Vital.LabTestSampleType> =
-    core.serialization.enum_(["dried_blood_spot", "arm_collector", "serum", "saliva", "urine"]);
+    core.serialization.enum_(["dried_blood_spot", "arm_collector", "serum", "saliva", "urine", "stool"]);
 
 export declare namespace LabTestSampleType {
-    export type Raw = "dried_blood_spot" | "arm_collector" | "serum" | "saliva" | "urine";
+    export type Raw = "dried_blood_spot" | "arm_collector" | "serum" | "saliva" | "urine" | "stool";
 }

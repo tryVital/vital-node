@@ -3,6 +3,7 @@
 import type * as Vital from "../index.js";
 
 export interface ResourceAvailability {
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.Availability;
     scopeRequirements?: Vital.ScopeRequirementsGrants;
 }

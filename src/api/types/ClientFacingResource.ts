@@ -11,6 +11,7 @@ export const ClientFacingResource = {
     Connection: "connection",
     Order: "order",
     Result: "result",
+    MatchReview: "match_review",
     Appointment: "appointment",
     Glucose: "glucose",
     Heartrate: "heartrate",
