@@ -28,7 +28,6 @@ describe("LinkClient", () => {
         const response = await client.link.listBulkOps({
             nextCursor: "next_cursor",
             pageSize: 1,
-            teamId: "infer_from_context",
         });
         expect(response).toEqual({
             data: [
@@ -84,7 +83,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkImport({
-            teamId: "infer_from_context",
             provider: "oura",
             connections: [
                 {
@@ -172,7 +170,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkTriggerHistoricalPull({
-            teamId: "infer_from_context",
             userIds: ["user_ids"],
             provider: "oura",
         });
@@ -230,7 +227,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkExport({
-            teamId: "infer_from_context",
             provider: "oura",
         });
         expect(response).toEqual({
@@ -284,7 +280,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.bulkPause({
-            teamId: "infer_from_context",
             userIds: ["user_ids"],
             provider: "oura",
         });
@@ -362,49 +357,6 @@ describe("LinkClient", () => {
         }).rejects.toThrow(Vital.UnprocessableEntityError);
     });
 
-    test("is_token_valid (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { token: "token" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/v2/link/token/isValid")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.link.isTokenValid({
-            token: "token",
-        });
-        expect(response).toEqual({
-            key: "value",
-        });
-    });
-
-    test("is_token_valid (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { token: "token" };
-        const rawResponseBody = {};
-        server
-            .mockEndpoint()
-            .post("/v2/link/token/isValid")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(422)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.link.isTokenValid({
-                token: "token",
-            });
-        }).rejects.toThrow(Vital.UnprocessableEntityError);
-    });
-
     test("code_create (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
@@ -449,185 +401,6 @@ describe("LinkClient", () => {
         }).rejects.toThrow(Vital.UnprocessableEntityError);
     });
 
-    test("start_connect (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { link_token: "link_token", provider: "oura" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/v2/link/start")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.link.startConnect({
-            linkToken: "link_token",
-            provider: "oura",
-        });
-        expect(response).toEqual({
-            key: "value",
-        });
-    });
-
-    test("start_connect (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { link_token: "link_token", provider: "oura" };
-        const rawResponseBody = {};
-        server
-            .mockEndpoint()
-            .post("/v2/link/start")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(422)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.link.startConnect({
-                linkToken: "link_token",
-                provider: "oura",
-            });
-        }).rejects.toThrow(Vital.UnprocessableEntityError);
-    });
-
-    test("token_state (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/v2/link/state")
-            .header("x-vital-link-token", "x-vital-link-token")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.link.tokenState({
-            vitalLinkToken: "x-vital-link-token",
-        });
-        expect(response).toEqual({
-            key: "value",
-        });
-    });
-
-    test("token_state (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-
-        const rawResponseBody = {};
-        server.mockEndpoint().get("/v2/link/state").respondWith().statusCode(422).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.link.tokenState();
-        }).rejects.toThrow(Vital.UnprocessableEntityError);
-    });
-
-    test("email_auth (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { email: "email", provider: "oura", auth_type: "password" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/v2/link/auth/email")
-            .header("x-vital-link-token", "x-vital-link-token")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.link.emailAuth({
-            vitalLinkToken: "x-vital-link-token",
-            email: "email",
-            provider: "oura",
-            authType: "password",
-        });
-        expect(response).toEqual({
-            key: "value",
-        });
-    });
-
-    test("email_auth (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { email: "email", provider: "oura", auth_type: "password" };
-        const rawResponseBody = {};
-        server
-            .mockEndpoint()
-            .post("/v2/link/auth/email")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(422)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.link.emailAuth({
-                email: "email",
-                provider: "oura",
-                authType: "password",
-            });
-        }).rejects.toThrow(Vital.UnprocessableEntityError);
-    });
-
-    test("password_auth (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { username: "username", password: "password", provider: "oura", auth_type: "password" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/v2/link/auth")
-            .header("x-vital-link-token", "x-vital-link-token")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.link.passwordAuth({
-            vitalLinkToken: "x-vital-link-token",
-            username: "username",
-            password: "password",
-            provider: "oura",
-            authType: "password",
-        });
-        expect(response).toEqual({
-            key: "value",
-        });
-    });
-
-    test("password_auth (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { username: "username", password: "password", provider: "oura", auth_type: "password" };
-        const rawResponseBody = {};
-        server
-            .mockEndpoint()
-            .post("/v2/link/auth")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(422)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.link.passwordAuth({
-                username: "username",
-                password: "password",
-                provider: "oura",
-                authType: "password",
-            });
-        }).rejects.toThrow(Vital.UnprocessableEntityError);
-    });
-
     test("generate_oauth_link (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
@@ -648,15 +421,12 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .get("/v2/link/provider/oauth/oura")
-            .header("x-vital-link-token", "x-vital-link-token")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.link.generateOauthLink("oura", {
-            vitalLinkToken: "x-vital-link-token",
-        });
+        const response = await client.link.generateOauthLink("oura");
         expect(response).toEqual({
             name: "Garmin",
             slug: "garmin",
@@ -707,7 +477,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/provider/password/whoop")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -715,7 +484,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.connectPasswordProvider("whoop", {
-            vitalLinkToken: "x-vital-link-token",
             username: "username",
             password: "password",
         });
@@ -773,7 +541,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/provider/password/whoop/complete_mfa")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -781,7 +548,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.completePasswordProviderMfa("whoop", {
-            vitalLinkToken: "x-vital-link-token",
             mfaCode: "mfa_code",
         });
         expect(response).toEqual({
@@ -828,7 +594,6 @@ describe("LinkClient", () => {
         server
             .mockEndpoint()
             .post("/v2/link/provider/email/freestyle_libre")
-            .header("x-vital-link-token", "x-vital-link-token")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -836,7 +601,6 @@ describe("LinkClient", () => {
             .build();
 
         const response = await client.link.connectEmailAuthProvider("freestyle_libre", {
-            vitalLinkToken: "x-vital-link-token",
             email: "email",
         });
         expect(response).toEqual({
@@ -881,18 +645,9 @@ describe("LinkClient", () => {
                 form_components: { key: "value" },
             },
         ];
-        server
-            .mockEndpoint()
-            .get("/v2/link/providers")
-            .header("x-vital-link-token", "x-vital-link-token")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
+        server.mockEndpoint().get("/v2/link/providers").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.link.getAllProviders({
-            vitalLinkToken: "x-vital-link-token",
-        });
+        const response = await client.link.getAllProviders();
         expect(response).toEqual([
             {
                 id: 1,
@@ -918,49 +673,6 @@ describe("LinkClient", () => {
 
         await expect(async () => {
             return await client.link.getAllProviders();
-        }).rejects.toThrow(Vital.UnprocessableEntityError);
-    });
-
-    test("connect_manual_provider (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { user_id: "user_id" };
-        const rawResponseBody = { key: true };
-        server
-            .mockEndpoint()
-            .post("/v2/link/provider/manual/beurer_ble")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.link.connectManualProvider("beurer_ble", {
-            userId: "user_id",
-        });
-        expect(response).toEqual({
-            key: true,
-        });
-    });
-
-    test("connect_manual_provider (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { user_id: "user_id" };
-        const rawResponseBody = {};
-        server
-            .mockEndpoint()
-            .post("/v2/link/provider/manual/beurer_ble")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(422)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.link.connectManualProvider("beurer_ble", {
-                userId: "user_id",
-            });
         }).rejects.toThrow(Vital.UnprocessableEntityError);
     });
 

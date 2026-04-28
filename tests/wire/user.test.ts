@@ -15,23 +15,23 @@ describe("UserClient", () => {
                     user_id: "56bd81c9-6219-4000-a775-ae85526eba18",
                     team_id: "56bd81c9-6219-4000-a775-ae85526eba18",
                     client_user_id: "ZTEwZjNjMjctOTI2ZS00M2Vm",
-                    created_on: "2026-01-12T12:39:40Z",
+                    created_on: "2026-04-28T16:11:59Z",
                     connected_sources: [
                         {
                             provider: { name: "Oura", slug: "oura", logo: "https://logo_url.com" },
-                            created_on: "2026-01-12T12:39:40Z",
+                            created_on: "2026-04-28T16:11:59Z",
                             source: { name: "Oura", slug: "oura", logo: "logo_url" },
                         },
                     ],
                     fallback_time_zone: {
                         id: "Europe/London",
                         source_slug: "manual",
-                        updated_at: "2026-01-12T12:39:40Z",
+                        updated_at: "2026-04-28T16:11:59Z",
                     },
                     fallback_birth_date: {
                         value: "1989-09-12",
                         source_slug: "manual",
-                        updated_at: "2026-01-12T12:39:40Z",
+                        updated_at: "2026-04-28T16:11:59Z",
                     },
                     ingestion_start: "ingestion_start",
                     ingestion_end: "ingestion_end",
@@ -53,7 +53,7 @@ describe("UserClient", () => {
                     userId: "56bd81c9-6219-4000-a775-ae85526eba18",
                     teamId: "56bd81c9-6219-4000-a775-ae85526eba18",
                     clientUserId: "ZTEwZjNjMjctOTI2ZS00M2Vm",
-                    createdOn: new Date("2026-01-12T12:39:40.000Z"),
+                    createdOn: new Date("2026-04-28T16:11:59.000Z"),
                     connectedSources: [
                         {
                             provider: {
@@ -61,7 +61,7 @@ describe("UserClient", () => {
                                 slug: "oura",
                                 logo: "https://logo_url.com",
                             },
-                            createdOn: new Date("2026-01-12T12:39:40.000Z"),
+                            createdOn: new Date("2026-04-28T16:11:59.000Z"),
                             source: {
                                 name: "Oura",
                                 slug: "oura",
@@ -72,12 +72,12 @@ describe("UserClient", () => {
                     fallbackTimeZone: {
                         id: "Europe/London",
                         sourceSlug: "manual",
-                        updatedAt: new Date("2026-01-12T12:39:40.000Z"),
+                        updatedAt: new Date("2026-04-28T16:11:59.000Z"),
                     },
                     fallbackBirthDate: {
                         value: "1989-09-12",
                         sourceSlug: "manual",
-                        updatedAt: new Date("2026-01-12T12:39:40.000Z"),
+                        updatedAt: new Date("2026-04-28T16:11:59.000Z"),
                     },
                     ingestionStart: "ingestion_start",
                     ingestionEnd: "ingestion_end",
@@ -106,8 +106,21 @@ describe("UserClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { client_user_id: "client_user_id" };
         const rawResponseBody = {
-            user_id: "1449752e-0d8a-40e0-9206-91ab099b2537",
+            user_id: "56bd81c9-6219-4000-a775-ae85526eba18",
+            team_id: "56bd81c9-6219-4000-a775-ae85526eba18",
             client_user_id: "ZTEwZjNjMjctOTI2ZS00M2Vm",
+            created_on: "2026-04-28T16:11:59Z",
+            connected_sources: [
+                {
+                    provider: { name: "Oura", slug: "oura", logo: "https://logo_url.com" },
+                    created_on: "2026-04-28T16:11:59Z",
+                    source: { name: "Oura", slug: "oura", logo: "logo_url" },
+                },
+            ],
+            fallback_time_zone: { id: "Europe/London", source_slug: "manual", updated_at: "2026-04-28T16:11:59Z" },
+            fallback_birth_date: { value: "1989-09-12", source_slug: "manual", updated_at: "2026-04-28T16:11:59Z" },
+            ingestion_start: "ingestion_start",
+            ingestion_end: "ingestion_end",
         };
         server
             .mockEndpoint()
@@ -122,8 +135,37 @@ describe("UserClient", () => {
             clientUserId: "client_user_id",
         });
         expect(response).toEqual({
-            userId: "1449752e-0d8a-40e0-9206-91ab099b2537",
+            userId: "56bd81c9-6219-4000-a775-ae85526eba18",
+            teamId: "56bd81c9-6219-4000-a775-ae85526eba18",
             clientUserId: "ZTEwZjNjMjctOTI2ZS00M2Vm",
+            createdOn: new Date("2026-04-28T16:11:59.000Z"),
+            connectedSources: [
+                {
+                    provider: {
+                        name: "Oura",
+                        slug: "oura",
+                        logo: "https://logo_url.com",
+                    },
+                    createdOn: new Date("2026-04-28T16:11:59.000Z"),
+                    source: {
+                        name: "Oura",
+                        slug: "oura",
+                        logo: "logo_url",
+                    },
+                },
+            ],
+            fallbackTimeZone: {
+                id: "Europe/London",
+                sourceSlug: "manual",
+                updatedAt: new Date("2026-04-28T16:11:59.000Z"),
+            },
+            fallbackBirthDate: {
+                value: "1989-09-12",
+                sourceSlug: "manual",
+                updatedAt: new Date("2026-04-28T16:11:59.000Z"),
+            },
+            ingestionStart: "ingestion_start",
+            ingestionEnd: "ingestion_end",
         });
     });
 
@@ -309,6 +351,7 @@ describe("UserClient", () => {
                 zip: "zip",
                 city: "city",
                 state: "state",
+                access_notes: "access_notes",
             },
             medical_proxy: {
                 first_name: "first_name",
@@ -320,6 +363,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
                 phone_number: "phone_number",
                 household_income: 1,
@@ -354,6 +398,7 @@ describe("UserClient", () => {
                 zip: "zip",
                 city: "city",
                 state: "state",
+                accessNotes: "access_notes",
             },
             medicalProxy: {
                 firstName: "first_name",
@@ -365,6 +410,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
                 phoneNumber: "phone_number",
                 householdIncome: 1,
@@ -428,6 +474,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
                 dob: "dob",
                 email: "email",
@@ -442,6 +489,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
             },
             group_id: "group_id",
@@ -455,6 +503,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
                 phone_number: "phone_number",
                 household_income: 1,
@@ -507,6 +556,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
                 dob: "dob",
                 email: "email",
@@ -521,6 +571,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
             },
             groupId: "group_id",
@@ -534,6 +585,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
                 phoneNumber: "phone_number",
                 householdIncome: 1,
@@ -614,6 +666,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
                 dob: "dob",
                 email: "email",
@@ -628,6 +681,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
             },
             group_id: "group_id",
@@ -641,6 +695,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
                 phone_number: "phone_number",
                 household_income: 1,
@@ -675,6 +730,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
                 dob: "dob",
                 email: "email",
@@ -689,6 +745,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
             },
             groupId: "group_id",
@@ -702,6 +759,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
                 phoneNumber: "phone_number",
                 householdIncome: 1,
@@ -756,6 +814,7 @@ describe("UserClient", () => {
                 zip: "zip",
                 city: "city",
                 state: "state",
+                access_notes: "access_notes",
             },
             medical_proxy: {
                 first_name: "first_name",
@@ -767,6 +826,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    access_notes: "access_notes",
                 },
                 phone_number: "phone_number",
                 household_income: 1,
@@ -816,6 +876,7 @@ describe("UserClient", () => {
                 zip: "zip",
                 city: "city",
                 state: "state",
+                accessNotes: "access_notes",
             },
             medicalProxy: {
                 firstName: "first_name",
@@ -827,6 +888,7 @@ describe("UserClient", () => {
                     zip: "zip",
                     city: "city",
                     state: "state",
+                    accessNotes: "access_notes",
                 },
                 phoneNumber: "phone_number",
                 householdIncome: 1,
@@ -889,16 +951,16 @@ describe("UserClient", () => {
             user_id: "56bd81c9-6219-4000-a775-ae85526eba18",
             team_id: "56bd81c9-6219-4000-a775-ae85526eba18",
             client_user_id: "ZTEwZjNjMjctOTI2ZS00M2Vm",
-            created_on: "2026-01-12T12:39:40Z",
+            created_on: "2026-04-28T16:11:59Z",
             connected_sources: [
                 {
                     provider: { name: "Oura", slug: "oura", logo: "https://logo_url.com" },
-                    created_on: "2026-01-12T12:39:40Z",
+                    created_on: "2026-04-28T16:11:59Z",
                     source: { name: "Oura", slug: "oura", logo: "logo_url" },
                 },
             ],
-            fallback_time_zone: { id: "Europe/London", source_slug: "manual", updated_at: "2026-01-12T12:39:40Z" },
-            fallback_birth_date: { value: "1989-09-12", source_slug: "manual", updated_at: "2026-01-12T12:39:40Z" },
+            fallback_time_zone: { id: "Europe/London", source_slug: "manual", updated_at: "2026-04-28T16:11:59Z" },
+            fallback_birth_date: { value: "1989-09-12", source_slug: "manual", updated_at: "2026-04-28T16:11:59Z" },
             ingestion_start: "ingestion_start",
             ingestion_end: "ingestion_end",
         };
@@ -915,7 +977,7 @@ describe("UserClient", () => {
             userId: "56bd81c9-6219-4000-a775-ae85526eba18",
             teamId: "56bd81c9-6219-4000-a775-ae85526eba18",
             clientUserId: "ZTEwZjNjMjctOTI2ZS00M2Vm",
-            createdOn: new Date("2026-01-12T12:39:40.000Z"),
+            createdOn: new Date("2026-04-28T16:11:59.000Z"),
             connectedSources: [
                 {
                     provider: {
@@ -923,7 +985,7 @@ describe("UserClient", () => {
                         slug: "oura",
                         logo: "https://logo_url.com",
                     },
-                    createdOn: new Date("2026-01-12T12:39:40.000Z"),
+                    createdOn: new Date("2026-04-28T16:11:59.000Z"),
                     source: {
                         name: "Oura",
                         slug: "oura",
@@ -934,12 +996,12 @@ describe("UserClient", () => {
             fallbackTimeZone: {
                 id: "Europe/London",
                 sourceSlug: "manual",
-                updatedAt: new Date("2026-01-12T12:39:40.000Z"),
+                updatedAt: new Date("2026-04-28T16:11:59.000Z"),
             },
             fallbackBirthDate: {
                 value: "1989-09-12",
                 sourceSlug: "manual",
-                updatedAt: new Date("2026-01-12T12:39:40.000Z"),
+                updatedAt: new Date("2026-04-28T16:11:59.000Z"),
             },
             ingestionStart: "ingestion_start",
             ingestionEnd: "ingestion_end",
@@ -1009,16 +1071,16 @@ describe("UserClient", () => {
             user_id: "56bd81c9-6219-4000-a775-ae85526eba18",
             team_id: "56bd81c9-6219-4000-a775-ae85526eba18",
             client_user_id: "ZTEwZjNjMjctOTI2ZS00M2Vm",
-            created_on: "2026-01-12T12:39:40Z",
+            created_on: "2026-04-28T16:11:59Z",
             connected_sources: [
                 {
                     provider: { name: "Oura", slug: "oura", logo: "https://logo_url.com" },
-                    created_on: "2026-01-12T12:39:40Z",
+                    created_on: "2026-04-28T16:11:59Z",
                     source: { name: "Oura", slug: "oura", logo: "logo_url" },
                 },
             ],
-            fallback_time_zone: { id: "Europe/London", source_slug: "manual", updated_at: "2026-01-12T12:39:40Z" },
-            fallback_birth_date: { value: "1989-09-12", source_slug: "manual", updated_at: "2026-01-12T12:39:40Z" },
+            fallback_time_zone: { id: "Europe/London", source_slug: "manual", updated_at: "2026-04-28T16:11:59Z" },
+            fallback_birth_date: { value: "1989-09-12", source_slug: "manual", updated_at: "2026-04-28T16:11:59Z" },
             ingestion_start: "ingestion_start",
             ingestion_end: "ingestion_end",
         };
@@ -1029,7 +1091,7 @@ describe("UserClient", () => {
             userId: "56bd81c9-6219-4000-a775-ae85526eba18",
             teamId: "56bd81c9-6219-4000-a775-ae85526eba18",
             clientUserId: "ZTEwZjNjMjctOTI2ZS00M2Vm",
-            createdOn: new Date("2026-01-12T12:39:40.000Z"),
+            createdOn: new Date("2026-04-28T16:11:59.000Z"),
             connectedSources: [
                 {
                     provider: {
@@ -1037,7 +1099,7 @@ describe("UserClient", () => {
                         slug: "oura",
                         logo: "https://logo_url.com",
                     },
-                    createdOn: new Date("2026-01-12T12:39:40.000Z"),
+                    createdOn: new Date("2026-04-28T16:11:59.000Z"),
                     source: {
                         name: "Oura",
                         slug: "oura",
@@ -1048,12 +1110,12 @@ describe("UserClient", () => {
             fallbackTimeZone: {
                 id: "Europe/London",
                 sourceSlug: "manual",
-                updatedAt: new Date("2026-01-12T12:39:40.000Z"),
+                updatedAt: new Date("2026-04-28T16:11:59.000Z"),
             },
             fallbackBirthDate: {
                 value: "1989-09-12",
                 sourceSlug: "manual",
-                updatedAt: new Date("2026-01-12T12:39:40.000Z"),
+                updatedAt: new Date("2026-04-28T16:11:59.000Z"),
             },
             ingestionStart: "ingestion_start",
             ingestionEnd: "ingestion_end",
