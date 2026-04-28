@@ -3,6 +3,7 @@
 import type * as Vital from "../index.js";
 
 export interface PhlebotomyProviderInfo {
+    /** ℹ️ This enum is non-exhaustive. */
     name: Vital.AppointmentProvider;
     serviceTypes: Vital.AppointmentServiceType[];
 }
