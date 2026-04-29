@@ -53,16 +53,11 @@ export class SleepClient {
         requestOptions?: SleepClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientSleepResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -141,7 +136,7 @@ export class SleepClient {
         user_id: string,
         request: Vital.SleepGetRawRequest,
         requestOptions?: SleepClient.RequestOptions,
-    ): core.HttpResponsePromise<Vital.RawSleep> {
+    ): core.HttpResponsePromise<Vital.RawSleepResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getRaw(user_id, request, requestOptions));
     }
 
@@ -149,18 +144,13 @@ export class SleepClient {
         user_id: string,
         request: Vital.SleepGetRawRequest,
         requestOptions?: SleepClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Vital.RawSleep>> {
+    ): Promise<core.WithRawResponse<Vital.RawSleepResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -185,7 +175,7 @@ export class SleepClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.RawSleep.parseOrThrow(_response.body, {
+                data: serializers.RawSleepResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

@@ -53,16 +53,11 @@ export class ActivityClient {
         requestOptions?: ActivityClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientActivityResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -146,7 +141,7 @@ export class ActivityClient {
         user_id: string,
         request: Vital.ActivityGetRawRequest,
         requestOptions?: ActivityClient.RequestOptions,
-    ): core.HttpResponsePromise<Vital.RawActivity> {
+    ): core.HttpResponsePromise<Vital.RawActivityResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getRaw(user_id, request, requestOptions));
     }
 
@@ -154,18 +149,13 @@ export class ActivityClient {
         user_id: string,
         request: Vital.ActivityGetRawRequest,
         requestOptions?: ActivityClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Vital.RawActivity>> {
+    ): Promise<core.WithRawResponse<Vital.RawActivityResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -190,7 +180,7 @@ export class ActivityClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.RawActivity.parseOrThrow(_response.body, {
+                data: serializers.RawActivityResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

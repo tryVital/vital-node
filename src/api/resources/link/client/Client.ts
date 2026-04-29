@@ -32,8 +32,7 @@ export class LinkClient {
      * @example
      *     await client.link.listBulkOps({
      *         nextCursor: "next_cursor",
-     *         pageSize: 1,
-     *         teamId: "infer_from_context"
+     *         pageSize: 1
      *     })
      */
     public listBulkOps(
@@ -47,22 +46,11 @@ export class LinkClient {
         request: Vital.LinkListBulkOpsRequest = {},
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.BulkOpsResponse>> {
-        const { nextCursor, pageSize, teamId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (pageSize != null) {
-            _queryParams.page_size = pageSize;
-        }
-
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkListBulkOpsRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const { nextCursor, pageSize } = request;
+        const _queryParams: Record<string, unknown> = {
+            next_cursor: nextCursor,
+            page_size: pageSize,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -129,7 +117,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.bulkImport({
-     *         teamId: "infer_from_context",
      *         provider: "oura",
      *         connections: [{
      *                 userId: "user_id",
@@ -151,14 +138,6 @@ export class LinkClient {
         request: Vital.BulkImportConnectionsBody,
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.BulkImportConnectionsResponse>> {
-        const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkImportRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -175,9 +154,9 @@ export class LinkClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.BulkImportConnectionsBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkImportConnectionsBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -228,7 +207,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.bulkTriggerHistoricalPull({
-     *         teamId: "infer_from_context",
      *         userIds: ["user_ids"],
      *         provider: "oura"
      *     })
@@ -244,14 +222,6 @@ export class LinkClient {
         request: Vital.BulkTriggerHistoricalPullBody,
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<unknown>> {
-        const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkTriggerHistoricalPullRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -268,9 +238,9 @@ export class LinkClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.BulkTriggerHistoricalPullBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkTriggerHistoricalPullBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -318,7 +288,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.bulkExport({
-     *         teamId: "infer_from_context",
      *         provider: "oura"
      *     })
      */
@@ -333,14 +302,6 @@ export class LinkClient {
         request: Vital.BulkExportConnectionsBody,
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.BulkExportConnectionsResponse>> {
-        const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkExportRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -357,9 +318,9 @@ export class LinkClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.BulkExportConnectionsBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkExportConnectionsBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -410,7 +371,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.bulkPause({
-     *         teamId: "infer_from_context",
      *         userIds: ["user_ids"],
      *         provider: "oura"
      *     })
@@ -426,14 +386,6 @@ export class LinkClient {
         request: Vital.BulkPauseConnectionsBody,
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<unknown>> {
-        const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkPauseRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -450,9 +402,9 @@ export class LinkClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.BulkPauseConnectionsBody.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkPauseConnectionsBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -578,89 +530,6 @@ export class LinkClient {
     }
 
     /**
-     * @param {Vital.LinkTokenValidationRequest} request
-     * @param {LinkClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.link.isTokenValid({
-     *         token: "token"
-     *     })
-     */
-    public isTokenValid(
-        request: Vital.LinkTokenValidationRequest,
-        requestOptions?: LinkClient.RequestOptions,
-    ): core.HttpResponsePromise<Record<string, unknown>> {
-        return core.HttpResponsePromise.fromPromise(this.__isTokenValid(request, requestOptions));
-    }
-
-    private async __isTokenValid(
-        request: Vital.LinkTokenValidationRequest,
-        requestOptions?: LinkClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Record<string, unknown>>> {
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.VitalEnvironment.Production,
-                "v2/link/token/isValid",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: serializers.LinkTokenValidationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.link.isTokenValid.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        }),
-                        _response.rawResponse,
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/v2/link/token/isValid");
-    }
-
-    /**
      * Generate a token to invite a user of Vital mobile app to your team
      *
      * @param {Vital.LinkCodeCreateRequest} request
@@ -686,12 +555,10 @@ export class LinkClient {
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.VitalTokenCreatedResponse>> {
         const { userId, expiresAt } = request;
-        const _queryParams: Record<string, unknown> = {};
-        _queryParams.user_id = userId;
-        if (expiresAt != null) {
-            _queryParams.expires_at = expiresAt.toISOString();
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            user_id: userId,
+            expires_at: expiresAt != null ? expiresAt?.toISOString() : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -751,337 +618,6 @@ export class LinkClient {
     }
 
     /**
-     * REQUEST_SOURCE: VITAL-LINK
-     * Start link token process
-     *
-     * @param {Vital.BeginLinkTokenRequest} request
-     * @param {LinkClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.link.startConnect({
-     *         linkToken: "link_token",
-     *         provider: "oura"
-     *     })
-     */
-    public startConnect(
-        request: Vital.BeginLinkTokenRequest,
-        requestOptions?: LinkClient.RequestOptions,
-    ): core.HttpResponsePromise<Record<string, unknown>> {
-        return core.HttpResponsePromise.fromPromise(this.__startConnect(request, requestOptions));
-    }
-
-    private async __startConnect(
-        request: Vital.BeginLinkTokenRequest,
-        requestOptions?: LinkClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Record<string, unknown>>> {
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.VitalEnvironment.Production,
-                "v2/link/start",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: serializers.BeginLinkTokenRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.link.startConnect.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        }),
-                        _response.rawResponse,
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/v2/link/start");
-    }
-
-    /**
-     * REQUEST_SOURCE: VITAL-LINK
-     * Check link token state - can be hit continuously used as heartbeat
-     *
-     * @param {Vital.LinkTokenStateRequest} request
-     * @param {LinkClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.link.tokenState({
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
-     */
-    public tokenState(
-        request: Vital.LinkTokenStateRequest = {},
-        requestOptions?: LinkClient.RequestOptions,
-    ): core.HttpResponsePromise<Record<string, unknown>> {
-        return core.HttpResponsePromise.fromPromise(this.__tokenState(request, requestOptions));
-    }
-
-    private async __tokenState(
-        request: Vital.LinkTokenStateRequest = {},
-        requestOptions?: LinkClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Record<string, unknown>>> {
-        const { vitalLinkToken } = request;
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "x-vital-link-token": vitalLinkToken }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.VitalEnvironment.Production,
-                "v2/link/state",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: requestOptions?.queryParams,
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.link.tokenState.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        }),
-                        _response.rawResponse,
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/v2/link/state");
-    }
-
-    /**
-     * Deprecated. Use `POST /v2/link/provider/email/{provider}` instead.
-     *
-     * @param {Vital.EmailAuthLink} request
-     * @param {LinkClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.link.emailAuth({
-     *         vitalLinkToken: "x-vital-link-token",
-     *         email: "email",
-     *         provider: "oura",
-     *         authType: "password"
-     *     })
-     */
-    public emailAuth(
-        request: Vital.EmailAuthLink,
-        requestOptions?: LinkClient.RequestOptions,
-    ): core.HttpResponsePromise<unknown> {
-        return core.HttpResponsePromise.fromPromise(this.__emailAuth(request, requestOptions));
-    }
-
-    private async __emailAuth(
-        request: Vital.EmailAuthLink,
-        requestOptions?: LinkClient.RequestOptions,
-    ): Promise<core.WithRawResponse<unknown>> {
-        const { vitalLinkToken, ..._body } = request;
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "x-vital-link-token": vitalLinkToken }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.VitalEnvironment.Production,
-                "v2/link/auth/email",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: serializers.EmailAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: _response.body, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        }),
-                        _response.rawResponse,
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/v2/link/auth/email");
-    }
-
-    /**
-     * Deprecated. Use `POST /v2/link/provider/password/{provider}` instead.
-     *
-     * @param {Vital.PasswordAuthLink} request
-     * @param {LinkClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.link.passwordAuth({
-     *         vitalLinkToken: "x-vital-link-token",
-     *         username: "username",
-     *         password: "password",
-     *         provider: "oura",
-     *         authType: "password"
-     *     })
-     */
-    public passwordAuth(
-        request: Vital.PasswordAuthLink,
-        requestOptions?: LinkClient.RequestOptions,
-    ): core.HttpResponsePromise<unknown> {
-        return core.HttpResponsePromise.fromPromise(this.__passwordAuth(request, requestOptions));
-    }
-
-    private async __passwordAuth(
-        request: Vital.PasswordAuthLink,
-        requestOptions?: LinkClient.RequestOptions,
-    ): Promise<core.WithRawResponse<unknown>> {
-        const { vitalLinkToken, ..._body } = request;
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "x-vital-link-token": vitalLinkToken }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.VitalEnvironment.Production,
-                "v2/link/auth",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: serializers.PasswordAuthLink.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: _response.body, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        }),
-                        _response.rawResponse,
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/v2/link/auth");
-    }
-
-    /**
      * This endpoint generates an OAuth link for oauth provider
      *
      * @param {Vital.OAuthProviders} oauth_provider
@@ -1091,9 +627,7 @@ export class LinkClient {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.generateOauthLink("oura", {
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.generateOauthLink("oura")
      */
     public generateOauthLink(
         oauth_provider: Vital.OAuthProviders,
@@ -1182,7 +716,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.connectPasswordProvider("whoop", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         username: "username",
      *         password: "password"
      *     })
@@ -1277,7 +810,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.completePasswordProviderMfa("whoop", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         mfaCode: "mfa_code"
      *     })
      */
@@ -1373,7 +905,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.connectEmailAuthProvider("freestyle_libre", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         email: "email"
      *     })
      */
@@ -1457,9 +988,7 @@ export class LinkClient {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.getAllProviders({
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.getAllProviders()
      */
     public getAllProviders(
         request: Vital.LinkGetAllProvidersRequest = {},
@@ -1528,97 +1057,6 @@ export class LinkClient {
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/v2/link/providers");
-    }
-
-    /**
-     * @param {Vital.ManualProviders} provider
-     * @param {Vital.ManualConnectionData} request
-     * @param {LinkClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vital.UnprocessableEntityError}
-     *
-     * @example
-     *     await client.link.connectManualProvider("beurer_ble", {
-     *         userId: "user_id"
-     *     })
-     */
-    public connectManualProvider(
-        provider: Vital.ManualProviders,
-        request: Vital.ManualConnectionData,
-        requestOptions?: LinkClient.RequestOptions,
-    ): core.HttpResponsePromise<Record<string, boolean>> {
-        return core.HttpResponsePromise.fromPromise(this.__connectManualProvider(provider, request, requestOptions));
-    }
-
-    private async __connectManualProvider(
-        provider: Vital.ManualProviders,
-        request: Vital.ManualConnectionData,
-        requestOptions?: LinkClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Record<string, boolean>>> {
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.VitalEnvironment.Production,
-                `v2/link/provider/manual/${core.url.encodePathParam(serializers.ManualProviders.jsonOrThrow(provider))}`,
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: serializers.ManualConnectionData.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.link.connectManualProvider.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new Vital.UnprocessableEntityError(
-                        serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        }),
-                        _response.rawResponse,
-                    );
-                default:
-                    throw new errors.VitalError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "POST",
-            "/v2/link/provider/manual/{provider}",
-        );
     }
 
     /**

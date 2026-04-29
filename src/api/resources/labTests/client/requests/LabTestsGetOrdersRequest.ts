@@ -10,13 +10,18 @@ import type * as Vital from "../../../../index.js";
  *         endDate: new Date("2024-01-15T09:30:00.000Z"),
  *         updatedStartDate: new Date("2024-01-15T09:30:00.000Z"),
  *         updatedEndDate: new Date("2024-01-15T09:30:00.000Z"),
+ *         status: ["ordered"],
  *         orderKey: "created_at",
  *         orderDirection: "asc",
+ *         orderType: ["testkit"],
  *         isCritical: true,
  *         interpretation: "normal",
+ *         orderActivationTypes: ["current"],
  *         userId: "user_id",
  *         patientName: "patient_name",
  *         shippingRecipientName: "shipping_recipient_name",
+ *         orderIds: ["order_ids"],
+ *         orderTransactionId: "order_transaction_id",
  *         page: 1,
  *         size: 1
  *     }
@@ -54,6 +59,8 @@ export interface LabTestsGetOrdersRequest {
     shippingRecipientName?: string;
     /** Filter by order ids. */
     orderIds?: string | string[];
+    /** Filter by order transaction ID */
+    orderTransactionId?: string;
     page?: number;
     size?: number;
 }

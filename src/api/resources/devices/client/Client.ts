@@ -41,7 +41,7 @@ export class DevicesClient {
         user_id: string,
         request: Vital.DevicesGetRawRequest = {},
         requestOptions?: DevicesClient.RequestOptions,
-    ): core.HttpResponsePromise<Vital.RawDevices> {
+    ): core.HttpResponsePromise<Vital.RawDevicesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getRaw(user_id, request, requestOptions));
     }
 
@@ -49,13 +49,11 @@ export class DevicesClient {
         user_id: string,
         request: Vital.DevicesGetRawRequest = {},
         requestOptions?: DevicesClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Vital.RawDevices>> {
+    ): Promise<core.WithRawResponse<Vital.RawDevicesResponse>> {
         const { provider } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -80,7 +78,7 @@ export class DevicesClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.RawDevices.parseOrThrow(_response.body, {
+                data: serializers.RawDevicesResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

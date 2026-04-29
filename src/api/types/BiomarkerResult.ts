@@ -9,6 +9,7 @@ export interface BiomarkerResult {
     name: string;
     slug?: string;
     result: string;
+    /** ℹ️ This enum is non-exhaustive. */
     type: Vital.ResultType;
     unit?: string;
     timestamp?: Date;

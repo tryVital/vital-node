@@ -7,6 +7,7 @@ export interface Question {
     required: boolean;
     code: string;
     value: string;
+    /** ℹ️ This enum is non-exhaustive. */
     type: Vital.QuestionType;
     sequence: number;
     answers: Vital.Answer[];
