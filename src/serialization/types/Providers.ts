@@ -17,6 +17,7 @@ export const Providers: core.serialization.Schema<serializers.Providers.Raw, Vit
         "zwift",
         "freestyle_libre",
         "abbott_libreview",
+        "tandem_source",
         "freestyle_libre_ble",
         "eight_sleep",
         "withings",
@@ -36,6 +37,7 @@ export const Providers: core.serialization.Schema<serializers.Providers.Raw, Vit
         "hammerhead",
         "my_fitness_pal",
         "health_connect",
+        "samsung_health",
         "polar",
         "cronometer",
         "kardia",
@@ -59,6 +61,7 @@ export declare namespace Providers {
         | "zwift"
         | "freestyle_libre"
         | "abbott_libreview"
+        | "tandem_source"
         | "freestyle_libre_ble"
         | "eight_sleep"
         | "withings"
@@ -78,6 +81,7 @@ export declare namespace Providers {
         | "hammerhead"
         | "my_fitness_pal"
         | "health_connect"
+        | "samsung_health"
         | "polar"
         | "cronometer"
         | "kardia"

@@ -3,5 +3,17 @@
 import type * as Vital from "../index.js";
 
 export interface RawWorkout {
-    workouts: Vital.WorkoutV2InDb[];
+    timestamp: Date;
+    data: Record<string, unknown>;
+    userId: string;
+    providerId: string;
+    sourceId: number;
+    priorityId?: number;
+    id: string;
+    sportId: number;
+    sport: Vital.ClientFacingSport;
+    sourceDeviceId?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    source: Vital.ClientFacingProvider;
 }

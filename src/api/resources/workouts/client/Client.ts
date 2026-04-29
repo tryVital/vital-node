@@ -53,16 +53,11 @@ export class WorkoutsClient {
         requestOptions?: WorkoutsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientWorkoutResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -146,7 +141,7 @@ export class WorkoutsClient {
         user_id: string,
         request: Vital.WorkoutsGetRawRequest,
         requestOptions?: WorkoutsClient.RequestOptions,
-    ): core.HttpResponsePromise<Vital.RawWorkout> {
+    ): core.HttpResponsePromise<Vital.RawWorkoutResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getRaw(user_id, request, requestOptions));
     }
 
@@ -154,18 +149,13 @@ export class WorkoutsClient {
         user_id: string,
         request: Vital.WorkoutsGetRawRequest,
         requestOptions?: WorkoutsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Vital.RawWorkout>> {
+    ): Promise<core.WithRawResponse<Vital.RawWorkoutResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -190,7 +180,7 @@ export class WorkoutsClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.RawWorkout.parseOrThrow(_response.body, {
+                data: serializers.RawWorkoutResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
