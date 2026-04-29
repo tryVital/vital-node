@@ -3,5 +3,16 @@
 import type * as Vital from "../index.js";
 
 export interface RawSleep {
-    sleep: Vital.SleepV2InDb[];
+    timestamp: Date;
+    data: Record<string, unknown>;
+    userId: string;
+    providerId: string;
+    sourceId: number;
+    priorityId?: number;
+    id: string;
+    sourceDeviceId?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    source: Vital.ClientFacingProvider;
+    priority?: number;
 }

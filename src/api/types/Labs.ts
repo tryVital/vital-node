@@ -6,6 +6,7 @@ export const Labs = {
     Spiriplex: "spiriplex",
     Ussl: "ussl",
     Quest: "quest",
+    SonoraQuest: "sonora_quest",
     Labcorp: "labcorp",
     Bioreference: "bioreference",
     UsBiotek: "us_biotek",
@@ -14,5 +15,6 @@ export const Labs = {
     Ihd: "ihd",
     Nexus: "nexus",
     MyUti: "my_uti",
+    Crl: "crl",
 } as const;
 export type Labs = (typeof Labs)[keyof typeof Labs];
