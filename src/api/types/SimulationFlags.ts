@@ -3,6 +3,7 @@
 import type * as Vital from "../index.js";
 
 export interface SimulationFlags {
+    /** ℹ️ This enum is non-exhaustive. */
     interpretation?: Vital.Interpretation;
     resultTypes?: Vital.ResultType[];
     hasMissingResults?: boolean;

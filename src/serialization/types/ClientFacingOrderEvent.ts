@@ -4,6 +4,7 @@ import type * as Vital from "../../api/index.js";
 import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
 import { OrderStatus } from "./OrderStatus.js";
+import { OrderStatusDetail } from "./OrderStatusDetail.js";
 
 export const ClientFacingOrderEvent: core.serialization.ObjectSchema<
     serializers.ClientFacingOrderEvent.Raw,
@@ -12,6 +13,7 @@ export const ClientFacingOrderEvent: core.serialization.ObjectSchema<
     id: core.serialization.number(),
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     status: OrderStatus,
+    statusDetail: core.serialization.property("status_detail", OrderStatusDetail.optional()),
 });
 
 export declare namespace ClientFacingOrderEvent {
@@ -19,5 +21,6 @@ export declare namespace ClientFacingOrderEvent {
         id: number;
         created_at: string;
         status: OrderStatus.Raw;
+        status_detail?: OrderStatusDetail.Raw | null;
     }
 }

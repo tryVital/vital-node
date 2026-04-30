@@ -24,42 +24,45 @@ export class LabReportClient {
     }
 
     /**
-     * Creates a parse job, uploads the file to provider, persists the job row,
+     * Creates a parse job, uploads the file(s) to provider, persists the job row,
      * and starts the ParseLabReport. Returns a generated job_id.
      *
-     * @param {core.file.Uploadable} file
-     * @param {Vital.BodyCreateLabReportParserJob} request
+     * @param {core.file.Uploadable[]} file
+     * @param {Vital.CreateLabReportParserJobBody} request
      * @param {LabReportClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
      *     import { createReadStream } from "fs";
-     *     await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
+     *     await client.labReport.parserCreateJob([createReadStream("path/to/file")], {
      *         userId: "user_id"
      *     })
      */
     public parserCreateJob(
-        file: core.file.Uploadable,
-        request: Vital.BodyCreateLabReportParserJob,
+        file: core.file.Uploadable[],
+        request: Vital.CreateLabReportParserJobBody,
         requestOptions?: LabReportClient.RequestOptions,
     ): core.HttpResponsePromise<Vital.ParsingJob> {
         return core.HttpResponsePromise.fromPromise(this.__parserCreateJob(file, request, requestOptions));
     }
 
     private async __parserCreateJob(
-        file: core.file.Uploadable,
-        request: Vital.BodyCreateLabReportParserJob,
+        file: core.file.Uploadable[],
+        request: Vital.CreateLabReportParserJobBody,
         requestOptions?: LabReportClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ParsingJob>> {
-        const _request = await core.newFormData();
-        await _request.appendFile("file", file);
-        _request.append("user_id", request.userId);
-        if (request.needsHumanReview != null) {
-            _request.append("needs_human_review", request.needsHumanReview.toString());
+        const _body = await core.newFormData();
+        for (const _file of file) {
+            await _body.appendFile("file", _file);
         }
 
-        const _maybeEncodedRequest = await _request.getRequest();
+        _body.append("user_id", request.userId);
+        if (request.needsHumanReview != null) {
+            _body.append("needs_human_review", request.needsHumanReview?.toString());
+        }
+
+        const _maybeEncodedRequest = await _body.getRequest();
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

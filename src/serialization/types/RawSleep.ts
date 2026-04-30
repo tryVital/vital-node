@@ -3,15 +3,37 @@
 import type * as Vital from "../../api/index.js";
 import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
-import { SleepV2InDb } from "./SleepV2InDb.js";
+import { ClientFacingProvider } from "./ClientFacingProvider.js";
 
 export const RawSleep: core.serialization.ObjectSchema<serializers.RawSleep.Raw, Vital.RawSleep> =
     core.serialization.object({
-        sleep: core.serialization.list(SleepV2InDb),
+        timestamp: core.serialization.date(),
+        data: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+        userId: core.serialization.property("user_id", core.serialization.string()),
+        providerId: core.serialization.property("provider_id", core.serialization.string()),
+        sourceId: core.serialization.property("source_id", core.serialization.number()),
+        priorityId: core.serialization.property("priority_id", core.serialization.number().optional()),
+        id: core.serialization.string(),
+        sourceDeviceId: core.serialization.property("source_device_id", core.serialization.string().optional()),
+        createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
+        updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
+        source: ClientFacingProvider,
+        priority: core.serialization.number().optional(),
     });
 
 export declare namespace RawSleep {
     export interface Raw {
-        sleep: SleepV2InDb.Raw[];
+        timestamp: string;
+        data: Record<string, unknown>;
+        user_id: string;
+        provider_id: string;
+        source_id: number;
+        priority_id?: number | null;
+        id: string;
+        source_device_id?: string | null;
+        created_at?: string | null;
+        updated_at?: string | null;
+        source: ClientFacingProvider.Raw;
+        priority?: number | null;
     }
 }
