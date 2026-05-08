@@ -3,7 +3,13 @@
 [![npm shield](https://img.shields.io/npm/v/@tryvital/vital-node)](https://www.npmjs.com/package/@tryvital/vital-node)
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
 
-The Vital Node.js library provides access to the Vital API from JavaScript/TypeScript.
+> [!IMPORTANT]                                                                                                                                                                                                     
+> This repository has been archived and will not receive further updates.
+>
+> The maintained SDK lives at **[junction-api/junction-typescript](https://github.com/junction-api/junction-typescript)**                                  
+> and is published to npm.js as **`@junction-api/sdk`**.
+>
+> See the [migration guide](https://github.com/junction-api/junction-typescript/blob/main/migration-from-vital/MIGRATION.md)) for upgrade instructions.
 
 ## Documentation
 
