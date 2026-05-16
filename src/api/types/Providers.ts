@@ -32,6 +32,7 @@ export const Providers = {
     Hammerhead: "hammerhead",
     MyFitnessPal: "my_fitness_pal",
     HealthConnect: "health_connect",
+    SamsungHealth: "samsung_health",
     Polar: "polar",
     Cronometer: "cronometer",
     Kardia: "kardia",

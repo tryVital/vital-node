@@ -6,6 +6,7 @@ export interface ClientFacingAppointment {
     id: string;
     userId: string;
     orderId: string;
+    orderTransactionId?: string;
     address: Vital.UsAddress;
     location: Vital.LngLat;
     /** Time is in UTC */
@@ -19,6 +20,7 @@ export interface ClientFacingAppointment {
     providerId: string;
     externalId?: string;
     canReschedule: boolean;
+    appointmentNotes?: string;
     eventStatus: Vital.AppointmentEventStatus;
     eventData?: Record<string, unknown>;
     events: Vital.ClientFacingAppointmentEvent[];
