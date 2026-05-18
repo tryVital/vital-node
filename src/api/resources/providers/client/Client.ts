@@ -48,11 +48,9 @@ export class ProvidersClient {
         requestOptions?: ProvidersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingProviderDetailed[]>> {
         const { sourceType } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (sourceType != null) {
-            _queryParams.source_type = sourceType;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            source_type: sourceType,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

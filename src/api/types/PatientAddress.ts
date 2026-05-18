@@ -8,4 +8,5 @@ export interface PatientAddress {
     state: string;
     zip: string;
     country: string;
+    accessNotes?: string;
 }
