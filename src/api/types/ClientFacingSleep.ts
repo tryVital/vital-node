@@ -19,6 +19,7 @@ export interface ClientFacingSleep {
      * `short_sleep`: <3 hours of sleep;
      * `acknowledged_nap`: User-acknowledged naps, typically under 3 hours of sleep;
      * `unknown`: The sleep session recording is ongoing.
+     *  ℹ️ This enum is non-exhaustive.
      */
     type: Vital.SleepType;
     /** Timezone offset from UTC as seconds. For example, EEST (Eastern European Summer Time, +3h) is 10800. PST (Pacific Standard Time, -8h) is -28800::seconds */
@@ -37,6 +38,8 @@ export interface ClientFacingSleep {
     deep: number;
     /** A value between 1 and 100 representing how well the user slept. Currently only available for Withings, Oura, Whoop and Garmin::scalar */
     score?: number;
+    /** A value between 0 and 100 representing the provider's recovery/readiness proxy. Currently sourced from Oura readiness score, Whoop recovery score, and Ultrahuman recovery::scalar */
+    recoveryReadinessScore?: number;
     /** The lowest heart rate (5 minutes sliding average) registered during the sleep period::beats per minute */
     hrLowest?: number;
     /** The average heart rate registered during the sleep period::beats per minute */
@@ -53,7 +56,7 @@ export interface ClientFacingSleep {
     skinTemperature?: number;
     /** Sleeping Heart Rate Dip is the percentage difference between your average waking heart rate and your average sleeping heart rate. In health studies, a greater "dip" is typically seen as a positive indicator of overall health. Currently only available for Garmin::perc */
     hrDip?: number;
-    /** Some providers can provide updates to the sleep summary hours after the sleep period has ended. This field indicates the state of the sleep summary. For example, TENTATIVE means the summary is an intial prediction from the provider and can be subject to change. Currently only available for Garmin and EightSleep::str */
+    /** Some providers can provide updates to the sleep summary hours after the sleep period has ended. This field indicates the state of the sleep summary. For example, TENTATIVE means the summary is an intial prediction from the provider and can be subject to change. Currently only available for Garmin and EightSleep::str ℹ️ This enum is non-exhaustive. */
     state?: Vital.SleepSummaryState;
     /** The average heart rate variability registered during the sleep period::rmssd */
     averageHrv?: number;

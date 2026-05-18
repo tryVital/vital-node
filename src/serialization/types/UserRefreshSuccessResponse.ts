@@ -8,7 +8,7 @@ export const UserRefreshSuccessResponse: core.serialization.ObjectSchema<
     serializers.UserRefreshSuccessResponse.Raw,
     Vital.UserRefreshSuccessResponse
 > = core.serialization.object({
-    success: core.serialization.boolean(),
+    success: core.serialization.booleanLiteral(true),
     userId: core.serialization.property("user_id", core.serialization.string()),
     refreshedSources: core.serialization.property(
         "refreshed_sources",
@@ -23,7 +23,7 @@ export const UserRefreshSuccessResponse: core.serialization.ObjectSchema<
 
 export declare namespace UserRefreshSuccessResponse {
     export interface Raw {
-        success: boolean;
+        success: true;
         user_id: string;
         refreshed_sources: string[];
         in_progress_sources: string[];

@@ -7,8 +7,27 @@ import type * as serializers from "../index.js";
 export const IndexColumnExprIndex: core.serialization.Schema<
     serializers.IndexColumnExprIndex.Raw,
     Vital.IndexColumnExprIndex
-> = core.serialization.enum_(["sleep", "activity", "workout", "body", "meal", "profile", "timeseries"]);
+> = core.serialization.enum_([
+    "sleep",
+    "derived_readiness",
+    "activity",
+    "workout",
+    "body",
+    "meal",
+    "menstrual_cycle",
+    "profile",
+    "timeseries",
+]);
 
 export declare namespace IndexColumnExprIndex {
-    export type Raw = "sleep" | "activity" | "workout" | "body" | "meal" | "profile" | "timeseries";
+    export type Raw =
+        | "sleep"
+        | "derived_readiness"
+        | "activity"
+        | "workout"
+        | "body"
+        | "meal"
+        | "menstrual_cycle"
+        | "profile"
+        | "timeseries";
 }

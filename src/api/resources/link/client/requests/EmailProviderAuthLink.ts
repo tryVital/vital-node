@@ -5,13 +5,14 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         vitalLinkToken: "x-vital-link-token",
  *         email: "email"
  *     }
  */
 export interface EmailProviderAuthLink {
     vitalLinkToken?: string;
     email: string;
+    /** ℹ️ This enum is non-exhaustive. */
     emailProviderAuthLinkProvider?: Vital.Providers;
+    /** ℹ️ This enum is non-exhaustive. */
     region?: Vital.Region;
 }
