@@ -8,4 +8,5 @@ export interface UsAddress {
     zipCode: string;
     /** Deprecated. Use `second_line` instead to provide the unit number. Subject to removal after 20 Nov 2023. */
     unit?: string;
+    accessNotes?: string;
 }

@@ -11,6 +11,6 @@ export interface ClientFacingPayorSearchResponseDeprecated {
     aliases: string[];
     /** Insurance business address returned for the insurance information. */
     orgAddress: Vital.Address;
-    /** The source of the payor, can be one of (platform, team). */
+    /** The source of the payor, can be one of (platform, team). ℹ️ This enum is non-exhaustive. */
     source: Vital.ClientFacingPayorCodeSource;
 }
