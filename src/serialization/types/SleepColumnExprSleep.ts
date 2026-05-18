@@ -33,6 +33,7 @@ export const SleepColumnExprSleep: core.serialization.Schema<
     "skin_temperature_delta",
     "respiratory_rate",
     "score",
+    "recovery_readiness_score",
     "source_type",
     "source_provider",
     "source_app_id",
@@ -67,6 +68,7 @@ export declare namespace SleepColumnExprSleep {
         | "skin_temperature_delta"
         | "respiratory_rate"
         | "score"
+        | "recovery_readiness_score"
         | "source_type"
         | "source_provider"
         | "source_app_id"
