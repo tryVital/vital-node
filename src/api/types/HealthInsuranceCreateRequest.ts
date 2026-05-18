@@ -17,7 +17,7 @@ export interface HealthInsuranceCreateRequest {
     payorCode?: string;
     /** Insurance unique number assigned to a patient, usually present on the insurance card. */
     insuranceId?: string;
-    /** Relationship between the patient and the insurance contractor. Values can be (Self, Spouse, Other Relationship). */
+    /** Relationship between the patient and the insurance contractor. Values can be (Self, Spouse, Other Relationship). ℹ️ This enum is non-exhaustive. */
     responsibleRelationship?: Vital.ResponsibleRelationship;
     /** Responsible details when the value of responsible_relationship is not 'Self'. */
     responsibleDetails?: Vital.VitalCoreSchemasDbSchemasLabTestHealthInsurancePersonDetails;

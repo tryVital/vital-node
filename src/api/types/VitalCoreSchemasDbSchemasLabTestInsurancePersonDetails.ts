@@ -5,6 +5,7 @@ import type * as Vital from "../index.js";
 export interface VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails {
     firstName: string;
     lastName: string;
+    /** ℹ️ This enum is non-exhaustive. */
     gender: Vital.Gender;
     address: Vital.Address;
     dob: string;
