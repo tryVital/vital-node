@@ -53,16 +53,11 @@ export class WorkoutsClient {
         requestOptions?: WorkoutsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientWorkoutResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -156,16 +151,11 @@ export class WorkoutsClient {
         requestOptions?: WorkoutsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.RawWorkout>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

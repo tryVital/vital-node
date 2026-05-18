@@ -6,14 +6,18 @@ import type * as serializers from "../index.js";
 import { ActivityColumnExpr } from "./ActivityColumnExpr.js";
 import { AsleepAtValueMacroExpr } from "./AsleepAtValueMacroExpr.js";
 import { AwakeAtValueMacroExpr } from "./AwakeAtValueMacroExpr.js";
+import { AwakeningsValueMacroExpr } from "./AwakeningsValueMacroExpr.js";
 import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr.js";
 import { BodyColumnExpr } from "./BodyColumnExpr.js";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr.js";
 import { DatePartExpr } from "./DatePartExpr.js";
 import { DateTruncExpr } from "./DateTruncExpr.js";
+import { DerivedReadinessColumnExpr } from "./DerivedReadinessColumnExpr.js";
 import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr.js";
+import { InsulinInjectionTimeseriesExpr } from "./InsulinInjectionTimeseriesExpr.js";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr.js";
 import { MealColumnExpr } from "./MealColumnExpr.js";
+import { MenstrualCycleColumnExpr } from "./MenstrualCycleColumnExpr.js";
 import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr.js";
 import { ProfileColumnExpr } from "./ProfileColumnExpr.js";
 import { SleepColumnExpr } from "./SleepColumnExpr.js";
@@ -29,18 +33,22 @@ export const QueryGroupByItem: core.serialization.Schema<serializers.QueryGroupB
         DateTruncExpr,
         DatePartExpr,
         SleepColumnExpr,
+        DerivedReadinessColumnExpr,
         ActivityColumnExpr,
         WorkoutColumnExpr,
         BodyColumnExpr,
         MealColumnExpr,
+        MenstrualCycleColumnExpr,
         ProfileColumnExpr,
         SleepScoreValueMacroExpr,
         ChronotypeValueMacroExpr,
         AsleepAtValueMacroExpr,
         AwakeAtValueMacroExpr,
+        AwakeningsValueMacroExpr,
         UnrecognizedValueMacroExpr,
         DiscreteTimeseriesExpr,
         IntervalTimeseriesExpr,
+        InsulinInjectionTimeseriesExpr,
         BloodPressureTimeseriesExpr,
         TemperatureTimeseriesExpr,
         WorkoutDurationTimeseriesExpr,
@@ -53,18 +61,22 @@ export declare namespace QueryGroupByItem {
         | DateTruncExpr.Raw
         | DatePartExpr.Raw
         | SleepColumnExpr.Raw
+        | DerivedReadinessColumnExpr.Raw
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
         | MealColumnExpr.Raw
+        | MenstrualCycleColumnExpr.Raw
         | ProfileColumnExpr.Raw
         | SleepScoreValueMacroExpr.Raw
         | ChronotypeValueMacroExpr.Raw
         | AsleepAtValueMacroExpr.Raw
         | AwakeAtValueMacroExpr.Raw
+        | AwakeningsValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw
         | DiscreteTimeseriesExpr.Raw
         | IntervalTimeseriesExpr.Raw
+        | InsulinInjectionTimeseriesExpr.Raw
         | BloodPressureTimeseriesExpr.Raw
         | TemperatureTimeseriesExpr.Raw
         | WorkoutDurationTimeseriesExpr.Raw

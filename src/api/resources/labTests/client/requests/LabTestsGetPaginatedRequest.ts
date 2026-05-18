@@ -11,6 +11,8 @@ import type * as Vital from "../../../../index.js";
  *         labSlug: "lab_slug",
  *         collectionMethod: "testkit",
  *         status: "active",
+ *         markerIds: [1],
+ *         providerIds: ["provider_ids"],
  *         name: "name",
  *         orderKey: "price",
  *         orderDirection: "asc"

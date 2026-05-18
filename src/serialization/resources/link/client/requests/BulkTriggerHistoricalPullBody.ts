@@ -7,7 +7,7 @@ import { OAuthProviders } from "../../../../types/OAuthProviders.js";
 
 export const BulkTriggerHistoricalPullBody: core.serialization.Schema<
     serializers.BulkTriggerHistoricalPullBody.Raw,
-    Omit<Vital.BulkTriggerHistoricalPullBody, "teamId">
+    Vital.BulkTriggerHistoricalPullBody
 > = core.serialization.object({
     userIds: core.serialization.property("user_ids", core.serialization.list(core.serialization.string())),
     provider: OAuthProviders,

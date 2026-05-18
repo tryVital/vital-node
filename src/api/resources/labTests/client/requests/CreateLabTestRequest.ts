@@ -14,7 +14,11 @@ export interface CreateLabTestRequest {
     markerIds?: number[];
     providerIds?: string[];
     name: string;
+    /** ℹ️ This enum is non-exhaustive. */
     method: Vital.LabTestCollectionMethod;
     description: string;
     fasting?: boolean;
+    labAccountId?: string;
+    /** ℹ️ This enum is non-exhaustive. */
+    labSlug?: Vital.Labs;
 }
