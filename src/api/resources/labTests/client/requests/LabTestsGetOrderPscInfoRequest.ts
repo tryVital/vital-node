@@ -5,7 +5,8 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         radius: "10"
+ *         radius: "10",
+ *         capabilities: ["stat"]
  *     }
  */
 export interface LabTestsGetOrderPscInfoRequest {

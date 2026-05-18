@@ -5,7 +5,6 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         vitalLinkToken: "x-vital-link-token",
  *         username: "username",
  *         password: "password",
  *         provider: "oura",
@@ -16,6 +15,8 @@ export interface PasswordAuthLink {
     vitalLinkToken?: string;
     username: string;
     password: string;
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.Providers;
+    /** ℹ️ This enum is non-exhaustive. */
     authType: Vital.AuthType;
 }

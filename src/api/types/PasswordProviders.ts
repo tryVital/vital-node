@@ -13,5 +13,6 @@ export const PasswordProviders = {
     MyFitnessPal: "my_fitness_pal",
     Kardia: "kardia",
     AbbottLibreview: "abbott_libreview",
+    TandemSource: "tandem_source",
 } as const;
 export type PasswordProviders = (typeof PasswordProviders)[keyof typeof PasswordProviders];

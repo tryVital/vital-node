@@ -12,11 +12,13 @@ export const RequestAppointmentRequest: core.serialization.Schema<
 > = core.serialization.object({
     address: UsAddress,
     provider: AppointmentProvider,
+    appointmentNotes: core.serialization.property("appointment_notes", core.serialization.string().optional()),
 });
 
 export declare namespace RequestAppointmentRequest {
     export interface Raw {
         address: UsAddress.Raw;
         provider: AppointmentProvider.Raw;
+        appointment_notes?: string | null;
     }
 }
