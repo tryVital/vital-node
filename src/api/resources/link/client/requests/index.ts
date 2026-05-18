@@ -1,11 +1,9 @@
-export type { BeginLinkTokenRequest } from "./BeginLinkTokenRequest.js";
 export type { BulkExportConnectionsBody } from "./BulkExportConnectionsBody.js";
 export type { BulkImportConnectionsBody } from "./BulkImportConnectionsBody.js";
 export type { BulkPauseConnectionsBody } from "./BulkPauseConnectionsBody.js";
 export type { BulkTriggerHistoricalPullBody } from "./BulkTriggerHistoricalPullBody.js";
 export type { CompletePasswordProviderMfaBody } from "./CompletePasswordProviderMfaBody.js";
 export type { DemoConnectionCreationPayload } from "./DemoConnectionCreationPayload.js";
-export type { EmailAuthLink } from "./EmailAuthLink.js";
 export type { EmailProviderAuthLink } from "./EmailProviderAuthLink.js";
 export type { IndividualProviderData } from "./IndividualProviderData.js";
 export type { LinkCodeCreateRequest } from "./LinkCodeCreateRequest.js";
@@ -13,7 +11,3 @@ export type { LinkGenerateOauthLinkRequest } from "./LinkGenerateOauthLinkReques
 export type { LinkGetAllProvidersRequest } from "./LinkGetAllProvidersRequest.js";
 export type { LinkListBulkOpsRequest } from "./LinkListBulkOpsRequest.js";
 export type { LinkTokenExchange } from "./LinkTokenExchange.js";
-export type { LinkTokenStateRequest } from "./LinkTokenStateRequest.js";
-export type { LinkTokenValidationRequest } from "./LinkTokenValidationRequest.js";
-export type { ManualConnectionData } from "./ManualConnectionData.js";
-export type { PasswordAuthLink } from "./PasswordAuthLink.js";

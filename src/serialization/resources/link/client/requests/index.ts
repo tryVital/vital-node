@@ -1,14 +1,9 @@
-export { BeginLinkTokenRequest } from "./BeginLinkTokenRequest.js";
 export { BulkExportConnectionsBody } from "./BulkExportConnectionsBody.js";
 export { BulkImportConnectionsBody } from "./BulkImportConnectionsBody.js";
 export { BulkPauseConnectionsBody } from "./BulkPauseConnectionsBody.js";
 export { BulkTriggerHistoricalPullBody } from "./BulkTriggerHistoricalPullBody.js";
 export { CompletePasswordProviderMfaBody } from "./CompletePasswordProviderMfaBody.js";
 export { DemoConnectionCreationPayload } from "./DemoConnectionCreationPayload.js";
-export { EmailAuthLink } from "./EmailAuthLink.js";
 export { EmailProviderAuthLink } from "./EmailProviderAuthLink.js";
 export { IndividualProviderData } from "./IndividualProviderData.js";
 export { LinkTokenExchange } from "./LinkTokenExchange.js";
-export { LinkTokenValidationRequest } from "./LinkTokenValidationRequest.js";
-export { ManualConnectionData } from "./ManualConnectionData.js";
-export { PasswordAuthLink } from "./PasswordAuthLink.js";

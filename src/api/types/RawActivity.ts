@@ -3,5 +3,15 @@
 import type * as Vital from "../index.js";
 
 export interface RawActivity {
-    activity: Vital.ActivityV2InDb[];
+    timestamp: Date;
+    data: Record<string, unknown>;
+    userId: string;
+    providerId: string;
+    sourceId: number;
+    priorityId: number;
+    id: string;
+    sourceDeviceId?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    source: Vital.ClientFacingProvider;
 }

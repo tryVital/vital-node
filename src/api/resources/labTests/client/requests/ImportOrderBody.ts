@@ -30,8 +30,10 @@ import type * as Vital from "../../../../index.js";
  */
 export interface ImportOrderBody {
     userId: string;
+    /** ℹ️ This enum is non-exhaustive. */
     billingType: Vital.Billing;
     orderSet: Vital.OrderSetRequest;
+    /** ℹ️ This enum is non-exhaustive. */
     collectionMethod: Vital.LabTestCollectionMethod;
     physician?: Vital.PhysicianCreateRequest;
     patientDetails: Vital.PatientDetailsWithValidation;

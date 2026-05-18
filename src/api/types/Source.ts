@@ -9,7 +9,9 @@ export interface Source {
     logo: string;
     group?: string;
     oauthUrl?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     authType?: Vital.SourceAuthType;
+    /** ℹ️ This enum is non-exhaustive. */
     sourceType?: Vital.SourceType;
     isActive?: boolean;
     backfillNumDays?: number;

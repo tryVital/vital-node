@@ -53,16 +53,11 @@ export class BodyClient {
         requestOptions?: BodyClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientBodyResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -141,7 +136,7 @@ export class BodyClient {
         user_id: string,
         request: Vital.BodyGetRawRequest,
         requestOptions?: BodyClient.RequestOptions,
-    ): core.HttpResponsePromise<Vital.RawBody> {
+    ): core.HttpResponsePromise<Vital.RawBodyResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getRaw(user_id, request, requestOptions));
     }
 
@@ -149,18 +144,13 @@ export class BodyClient {
         user_id: string,
         request: Vital.BodyGetRawRequest,
         requestOptions?: BodyClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Vital.RawBody>> {
+    ): Promise<core.WithRawResponse<Vital.RawBodyResponse>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -185,7 +175,7 @@ export class BodyClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.RawBody.parseOrThrow(_response.body, {
+                data: serializers.RawBodyResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
