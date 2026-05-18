@@ -55,24 +55,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedWorkoutSwimmingStrokeResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -166,24 +155,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedWorkoutDistanceResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -279,24 +257,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedHeartRateRecoveryOneMinuteResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -390,24 +357,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedWaistCircumferenceResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -501,24 +457,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedLeanBodyMassResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -612,24 +557,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBodyMassIndexResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -725,24 +659,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBasalBodyTemperatureResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -836,24 +759,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedHandwashingResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -947,24 +859,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedDaylightExposureResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1058,24 +959,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedUvExposureResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1169,24 +1059,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedFallResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1280,24 +1159,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedInhalerUsageResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1393,24 +1261,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedPeakExpiratoryFlowRateResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1506,24 +1363,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedForcedVitalCapacityResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1619,24 +1465,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedForcedExpiratoryVolume1Response>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1730,24 +1565,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedWheelchairPushResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1843,24 +1667,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedSleepBreathingDisturbanceResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1954,24 +1767,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedSleepApneaAlertResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2065,24 +1867,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedStandDurationResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2176,24 +1967,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedStandHourResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2287,24 +2067,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedHeartRateAlertResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2398,24 +2167,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedAFibBurdenResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2509,24 +2267,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedWorkoutDurationResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2620,24 +2367,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedVo2MaxResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2731,24 +2467,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedStressLevelResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2842,24 +2567,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedMindfulnessMinutesResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -2953,24 +2667,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedCaffeineResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3064,24 +2767,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedWaterResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3175,24 +2867,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedStepsResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3286,24 +2967,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedFloorsClimbedResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3397,24 +3067,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedDistanceResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3508,24 +3167,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedCaloriesBasalResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3619,24 +3267,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedCaloriesActiveResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3730,24 +3367,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedRespiratoryRateResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3841,24 +3467,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedNoteResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -3952,24 +3567,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedInsulinInjectionResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4063,24 +3667,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedIgeResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4174,24 +3767,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedIggResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4285,24 +3867,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedHypnogramResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4396,24 +3967,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedHrvResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4507,24 +4067,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedHeartRateResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4618,24 +4167,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedGlucoseResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4729,24 +4267,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedCholesterolResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4840,24 +4367,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedCarbohydratesResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -4953,24 +4469,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBodyTemperatureDeltaResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5064,24 +4569,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBodyTemperatureResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5175,24 +4669,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBodyWeightResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5286,24 +4769,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBodyFatResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5397,24 +4869,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBloodOxygenResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5510,24 +4971,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedElectrocardiogramVoltageResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5621,24 +5071,13 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.GroupedBloodPressureResponse>> {
         const { cursor, nextCursor, provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            cursor,
+            next_cursor: nextCursor,
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5730,16 +5169,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingVo2MaxTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5831,16 +5265,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingStressLevelTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -5932,16 +5361,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingMindfulnessMinutesTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6033,16 +5457,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCaffeineTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6134,16 +5553,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingWaterTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6235,16 +5649,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingStepsTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6336,16 +5745,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingFloorsClimbedTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6437,16 +5841,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingDistanceTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6538,16 +5937,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCaloriesBasalTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6639,16 +6033,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCaloriesActiveTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6740,16 +6129,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingRespiratoryRateTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6841,16 +6225,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingIgeTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -6937,16 +6316,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingIggTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7033,16 +6407,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingHypnogramTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7134,16 +6503,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingHrvTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7230,16 +6594,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingHeartRateTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7331,16 +6690,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingGlucoseTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7432,16 +6786,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCholesterolTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7533,16 +6882,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCholesterolTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7634,16 +6978,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCholesterolTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7735,16 +7074,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCholesterolTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7836,16 +7170,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingCholesterolTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -7937,16 +7266,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingBodyWeightTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -8038,16 +7362,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingBodyFatTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -8139,16 +7458,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingBloodOxygenTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -8240,16 +7554,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingElectrocardiogramVoltageTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -8341,16 +7650,11 @@ export class VitalsClient {
         requestOptions?: VitalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingBloodPressureTimeseries[]>> {
         const { provider, startDate, endDate } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (provider != null) {
-            _queryParams.provider = provider;
-        }
-
-        _queryParams.start_date = startDate;
-        if (endDate != null) {
-            _queryParams.end_date = endDate;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            provider,
+            start_date: startDate,
+            end_date: endDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

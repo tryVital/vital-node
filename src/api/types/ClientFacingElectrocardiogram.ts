@@ -15,6 +15,7 @@ export interface ClientFacingElectrocardiogram {
     inconclusiveCause?: Vital.ClientFacingElectrocardiogramInconclusiveCause;
     algorithmVersion?: string;
     timeZone?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     sourceProvider: Vital.ClientFacingElectrocardiogramSourceProvider;
     /** ℹ️ This enum is non-exhaustive. */
     sourceType: Vital.ClientFacingElectrocardiogramSourceType;
