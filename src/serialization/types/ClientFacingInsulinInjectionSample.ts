@@ -3,6 +3,9 @@
 import type * as Vital from "../../api/index.js";
 import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
+import { ClientFacingInsulinInjectionSampleBolusPurpose } from "./ClientFacingInsulinInjectionSampleBolusPurpose.js";
+import { ClientFacingInsulinInjectionSampleDeliveryForm } from "./ClientFacingInsulinInjectionSampleDeliveryForm.js";
+import { ClientFacingInsulinInjectionSampleDeliveryMode } from "./ClientFacingInsulinInjectionSampleDeliveryMode.js";
 import { ClientFacingInsulinInjectionSampleType } from "./ClientFacingInsulinInjectionSampleType.js";
 
 export const ClientFacingInsulinInjectionSample: core.serialization.ObjectSchema<
@@ -17,6 +20,18 @@ export const ClientFacingInsulinInjectionSample: core.serialization.ObjectSchema
     start: core.serialization.date(),
     end: core.serialization.date(),
     value: core.serialization.number(),
+    deliveryMode: core.serialization.property(
+        "delivery_mode",
+        ClientFacingInsulinInjectionSampleDeliveryMode.optional(),
+    ),
+    deliveryForm: core.serialization.property(
+        "delivery_form",
+        ClientFacingInsulinInjectionSampleDeliveryForm.optional(),
+    ),
+    bolusPurpose: core.serialization.property(
+        "bolus_purpose",
+        ClientFacingInsulinInjectionSampleBolusPurpose.optional(),
+    ),
 });
 
 export declare namespace ClientFacingInsulinInjectionSample {
@@ -29,5 +44,8 @@ export declare namespace ClientFacingInsulinInjectionSample {
         start: string;
         end: string;
         value: number;
+        delivery_mode?: ClientFacingInsulinInjectionSampleDeliveryMode.Raw | null;
+        delivery_form?: ClientFacingInsulinInjectionSampleDeliveryForm.Raw | null;
+        bolus_purpose?: ClientFacingInsulinInjectionSampleBolusPurpose.Raw | null;
     }
 }

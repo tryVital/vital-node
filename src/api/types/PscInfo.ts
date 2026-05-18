@@ -4,6 +4,7 @@ import type * as Vital from "../index.js";
 
 export interface PscInfo {
     labId: number;
+    /** ℹ️ This enum is non-exhaustive. */
     slug: Vital.Labs;
     patientServiceCenters: Vital.ClientFacingLabLocation[];
 }

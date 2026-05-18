@@ -27,7 +27,7 @@ export const ClientFacingActivity: core.serialization.ObjectSchema<
     timeZone: core.serialization.property("time_zone", core.serialization.string().optional()),
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
     heartRate: core.serialization.property("heart_rate", ClientFacingHeartRate.optional()),
-    wheelchairUse: core.serialization.property("wheelchair_use", core.serialization.boolean().optional()),
+    wheelchairUse: core.serialization.property("wheelchair_use", core.serialization.booleanLiteral(true).optional()),
     wheelchairPush: core.serialization.property("wheelchair_push", core.serialization.number().optional()),
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     updatedAt: core.serialization.property("updated_at", core.serialization.date()),
@@ -52,7 +52,7 @@ export declare namespace ClientFacingActivity {
         time_zone?: string | null;
         timezone_offset?: number | null;
         heart_rate?: ClientFacingHeartRate.Raw | null;
-        wheelchair_use?: boolean | null;
+        wheelchair_use?: true | null;
         wheelchair_push?: number | null;
         created_at: string;
         updated_at: string;

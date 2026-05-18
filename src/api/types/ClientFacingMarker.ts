@@ -9,6 +9,7 @@ export interface ClientFacingMarker {
     description?: string;
     labId?: number;
     providerId?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     type?: Vital.MarkerType;
     unit?: string;
     price?: string;

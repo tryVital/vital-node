@@ -7,9 +7,11 @@ import { Billing } from "./Billing.js";
 import { ClientFacingLabTest } from "./ClientFacingLabTest.js";
 import { ClientFacingOrderDetails } from "./ClientFacingOrderDetails.js";
 import { ClientFacingOrderEvent } from "./ClientFacingOrderEvent.js";
+import { ClientFacingOrderTransaction } from "./ClientFacingOrderTransaction.js";
 import { ClientFacingPatientDetailsCompatible } from "./ClientFacingPatientDetailsCompatible.js";
 import { ClientFacingPhysician } from "./ClientFacingPhysician.js";
 import { Interpretation } from "./Interpretation.js";
+import { OrderOrigin } from "./OrderOrigin.js";
 import { OrderTopLevelStatus } from "./OrderTopLevelStatus.js";
 import { PatientAddressCompatible } from "./PatientAddressCompatible.js";
 import { ShippingAddress } from "./ShippingAddress.js";
@@ -27,10 +29,12 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
     details: ClientFacingOrderDetails,
     sampleId: core.serialization.property("sample_id", core.serialization.string().optional()),
     notes: core.serialization.string().optional(),
+    clinicalNotes: core.serialization.property("clinical_notes", core.serialization.string().optional()),
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     updatedAt: core.serialization.property("updated_at", core.serialization.date()),
     events: core.serialization.list(ClientFacingOrderEvent),
     status: OrderTopLevelStatus.optional(),
+    lastEvent: core.serialization.property("last_event", ClientFacingOrderEvent),
     physician: ClientFacingPhysician.optional(),
     healthInsuranceId: core.serialization.property("health_insurance_id", core.serialization.string().optional()),
     requisitionFormUrl: core.serialization.property("requisition_form_url", core.serialization.string().optional()),
@@ -51,6 +55,8 @@ export const ClientFacingOrder: core.serialization.ObjectSchema<
         "worst_case_result_by_date",
         core.serialization.string().optional(),
     ),
+    origin: OrderOrigin.optional(),
+    orderTransaction: core.serialization.property("order_transaction", ClientFacingOrderTransaction.optional()),
 });
 
 export declare namespace ClientFacingOrder {
@@ -64,10 +70,12 @@ export declare namespace ClientFacingOrder {
         details: ClientFacingOrderDetails.Raw;
         sample_id?: string | null;
         notes?: string | null;
+        clinical_notes?: string | null;
         created_at: string;
         updated_at: string;
         events: ClientFacingOrderEvent.Raw[];
         status?: OrderTopLevelStatus.Raw | null;
+        last_event: ClientFacingOrderEvent.Raw;
         physician?: ClientFacingPhysician.Raw | null;
         health_insurance_id?: string | null;
         requisition_form_url?: string | null;
@@ -82,5 +90,7 @@ export declare namespace ClientFacingOrder {
         has_missing_results?: boolean | null;
         expected_result_by_date?: string | null;
         worst_case_result_by_date?: string | null;
+        origin?: OrderOrigin.Raw | null;
+        order_transaction?: ClientFacingOrderTransaction.Raw | null;
     }
 }

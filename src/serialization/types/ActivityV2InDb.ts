@@ -9,29 +9,29 @@ export const ActivityV2InDb: core.serialization.ObjectSchema<serializers.Activit
     core.serialization.object({
         timestamp: core.serialization.date(),
         data: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-        providerId: core.serialization.property("provider_id", core.serialization.string()),
         userId: core.serialization.property("user_id", core.serialization.string()),
+        providerId: core.serialization.property("provider_id", core.serialization.string()),
         sourceId: core.serialization.property("source_id", core.serialization.number()),
         priorityId: core.serialization.property("priority_id", core.serialization.number()),
         id: core.serialization.string(),
-        source: ClientFacingProvider,
         sourceDeviceId: core.serialization.property("source_device_id", core.serialization.string().optional()),
         createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
         updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
+        source: ClientFacingProvider,
     });
 
 export declare namespace ActivityV2InDb {
     export interface Raw {
         timestamp: string;
         data: Record<string, unknown>;
-        provider_id: string;
         user_id: string;
+        provider_id: string;
         source_id: number;
         priority_id: number;
         id: string;
-        source: ClientFacingProvider.Raw;
         source_device_id?: string | null;
         created_at?: string | null;
         updated_at?: string | null;
+        source: ClientFacingProvider.Raw;
     }
 }
