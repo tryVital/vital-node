@@ -2,4 +2,7 @@
 
 import type * as Vital from "../index.js";
 
+/**
+ * ℹ️ This enum is non-exhaustive.
+ */
 export type ClientFacingMenstrualCycleSourceProvider = Vital.Providers | Vital.Labs;

@@ -7,5 +7,6 @@ export const LabTestSampleType = {
     Serum: "serum",
     Saliva: "saliva",
     Urine: "urine",
+    Stool: "stool",
 } as const;
 export type LabTestSampleType = (typeof LabTestSampleType)[keyof typeof LabTestSampleType];

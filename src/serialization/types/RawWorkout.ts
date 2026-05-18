@@ -3,15 +3,40 @@
 import type * as Vital from "../../api/index.js";
 import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
-import { WorkoutV2InDb } from "./WorkoutV2InDb.js";
+import { ClientFacingProvider } from "./ClientFacingProvider.js";
+import { ClientFacingSport } from "./ClientFacingSport.js";
 
 export const RawWorkout: core.serialization.ObjectSchema<serializers.RawWorkout.Raw, Vital.RawWorkout> =
     core.serialization.object({
-        workouts: core.serialization.list(WorkoutV2InDb),
+        timestamp: core.serialization.date(),
+        data: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+        userId: core.serialization.property("user_id", core.serialization.string()),
+        providerId: core.serialization.property("provider_id", core.serialization.string()),
+        sourceId: core.serialization.property("source_id", core.serialization.number()),
+        priorityId: core.serialization.property("priority_id", core.serialization.number().optional()),
+        id: core.serialization.string(),
+        sportId: core.serialization.property("sport_id", core.serialization.number()),
+        sport: ClientFacingSport,
+        sourceDeviceId: core.serialization.property("source_device_id", core.serialization.string().optional()),
+        createdAt: core.serialization.property("created_at", core.serialization.date().optional()),
+        updatedAt: core.serialization.property("updated_at", core.serialization.date().optional()),
+        source: ClientFacingProvider,
     });
 
 export declare namespace RawWorkout {
     export interface Raw {
-        workouts: WorkoutV2InDb.Raw[];
+        timestamp: string;
+        data: Record<string, unknown>;
+        user_id: string;
+        provider_id: string;
+        source_id: number;
+        priority_id?: number | null;
+        id: string;
+        sport_id: number;
+        sport: ClientFacingSport.Raw;
+        source_device_id?: string | null;
+        created_at?: string | null;
+        updated_at?: string | null;
+        source: ClientFacingProvider.Raw;
     }
 }

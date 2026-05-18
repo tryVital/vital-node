@@ -5,12 +5,14 @@ import type * as Vital from "../index.js";
 export interface LabReportResult {
     testName: string;
     value: string;
+    /** ℹ️ This enum is non-exhaustive. */
     type?: Vital.LabReportResultType;
     units?: string;
     maxReferenceRange?: number;
     minReferenceRange?: number;
     sourcePanelName?: string;
     loincMatches?: Vital.LoincMatch[];
+    /** ℹ️ This enum is non-exhaustive. */
     interpretation?: Vital.Interpretation;
     isAboveMaxRange?: boolean;
     isBelowMinRange?: boolean;
