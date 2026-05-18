@@ -29,6 +29,7 @@ export interface CreateInsuranceRequest {
     payorCode: string;
     memberId: string;
     groupId?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     relationship: Vital.ResponsibleRelationship;
     insured: Vital.VitalCoreSchemasDbSchemasLabTestInsurancePersonDetails;
     guarantor?: Vital.GuarantorDetails;
