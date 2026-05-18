@@ -3,6 +3,7 @@
 import type * as Vital from "../index.js";
 
 export interface SingleHistoricalPullStatistics {
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.HistoricalPullStatus;
     rangeStart?: Date;
     rangeEnd?: Date;
@@ -10,5 +11,6 @@ export interface SingleHistoricalPullStatistics {
     daysWithData?: number;
     release: string;
     traceId?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     errorDetails?: Vital.SingleHistoricalPullStatisticsErrorDetails;
 }

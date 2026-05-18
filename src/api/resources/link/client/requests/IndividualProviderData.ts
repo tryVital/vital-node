@@ -5,7 +5,6 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         vitalLinkToken: "x-vital-link-token",
  *         username: "username",
  *         password: "password"
  *     }
@@ -16,6 +15,6 @@ export interface IndividualProviderData {
     username: string;
     /** Password for provider */
     password: string;
-    /** Provider region to authenticate against. Only applicable to specific providers. */
+    /** Provider region to authenticate against. Only applicable to specific providers. ℹ️ This enum is non-exhaustive. */
     region?: Vital.Region;
 }

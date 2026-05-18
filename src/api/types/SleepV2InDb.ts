@@ -5,14 +5,14 @@ import type * as Vital from "../index.js";
 export interface SleepV2InDb {
     timestamp: Date;
     data: Record<string, unknown>;
-    providerId: string;
     userId: string;
+    providerId: string;
     sourceId: number;
     priorityId?: number;
     id: string;
-    source: Vital.ClientFacingProvider;
-    priority?: number;
     sourceDeviceId?: string;
     createdAt?: Date;
     updatedAt?: Date;
+    source: Vital.ClientFacingProvider;
+    priority?: number;
 }
