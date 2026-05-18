@@ -3,12 +3,12 @@
 import type * as Vital from "../../../../../api/index.js";
 import * as core from "../../../../../core/index.js";
 import type * as serializers from "../../../../index.js";
-import { Address } from "../../../../types/Address.js";
 import { Ethnicity } from "../../../../types/Ethnicity.js";
 import { GenderIdentity } from "../../../../types/GenderIdentity.js";
 import { GuarantorDetails } from "../../../../types/GuarantorDetails.js";
 import { Race } from "../../../../types/Race.js";
 import { SexualOrientation } from "../../../../types/SexualOrientation.js";
+import { UserAddress } from "../../../../types/UserAddress.js";
 
 export const UserInfoCreateRequest: core.serialization.Schema<
     serializers.UserInfoCreateRequest.Raw,
@@ -20,7 +20,7 @@ export const UserInfoCreateRequest: core.serialization.Schema<
     phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
     gender: core.serialization.string(),
     dob: core.serialization.string(),
-    address: Address,
+    address: UserAddress,
     medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
     race: Race.optional(),
     ethnicity: Ethnicity.optional(),
@@ -36,7 +36,7 @@ export declare namespace UserInfoCreateRequest {
         phone_number: string;
         gender: string;
         dob: string;
-        address: Address.Raw;
+        address: UserAddress.Raw;
         medical_proxy?: GuarantorDetails.Raw | null;
         race?: Race.Raw | null;
         ethnicity?: Ethnicity.Raw | null;
