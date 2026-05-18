@@ -6,4 +6,6 @@ export interface ValidationError {
     loc: Vital.ValidationErrorLocItem[];
     msg: string;
     type: string;
+    input?: unknown;
+    ctx?: Record<string, unknown>;
 }

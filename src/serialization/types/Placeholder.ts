@@ -6,11 +6,11 @@ import type * as serializers from "../index.js";
 
 export const Placeholder: core.serialization.ObjectSchema<serializers.Placeholder.Raw, Vital.Placeholder> =
     core.serialization.object({
-        placeholder: core.serialization.boolean(),
+        placeholder: core.serialization.booleanLiteral(true),
     });
 
 export declare namespace Placeholder {
     export interface Raw {
-        placeholder: boolean;
+        placeholder: true;
     }
 }

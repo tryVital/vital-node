@@ -7,7 +7,7 @@ export interface ClientFacingInsulinInjectionSample {
     id?: number;
     /** Time zone UTC offset in seconds. Positive offset indicates east of UTC; negative offset indicates west of UTC; and null indicates the time zone information is unavailable at source. */
     timezoneOffset?: number;
-    /** The type of insulin injection. ℹ️ This enum is non-exhaustive. */
+    /** The insulin formulation type. ℹ️ This enum is non-exhaustive. */
     type: Vital.ClientFacingInsulinInjectionSampleType;
     unit: "unit";
     /** Depracated. The start time (inclusive) of the interval. */
@@ -18,4 +18,10 @@ export interface ClientFacingInsulinInjectionSample {
     end: Date;
     /** The recorded value for the interval. */
     value: number;
+    /** How the insulin was delivered. ℹ️ This enum is non-exhaustive. */
+    deliveryMode?: Vital.ClientFacingInsulinInjectionSampleDeliveryMode;
+    /** For bolus deliveries, whether the dose was standard or extended. ℹ️ This enum is non-exhaustive. */
+    deliveryForm?: Vital.ClientFacingInsulinInjectionSampleDeliveryForm;
+    /** For bolus deliveries, what the bolus was intended for. ℹ️ This enum is non-exhaustive. */
+    bolusPurpose?: Vital.ClientFacingInsulinInjectionSampleBolusPurpose;
 }
