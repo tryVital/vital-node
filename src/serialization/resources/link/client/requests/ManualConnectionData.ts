@@ -6,15 +6,20 @@ import type * as serializers from "../../../../index.js";
 
 export const ManualConnectionData: core.serialization.Schema<
     serializers.ManualConnectionData.Raw,
-    Vital.ManualConnectionData
+    Omit<Vital.ManualConnectionData, "vitalIosSdkVersion" | "vitalAndroidSdkVersion">
 > = core.serialization.object({
     userId: core.serialization.property("user_id", core.serialization.string()),
     providerId: core.serialization.property("provider_id", core.serialization.string().optional()),
+    grantedPermissions: core.serialization.property(
+        "granted_permissions",
+        core.serialization.list(core.serialization.string()).optional(),
+    ),
 });
 
 export declare namespace ManualConnectionData {
     export interface Raw {
         user_id: string;
         provider_id?: string | null;
+        granted_permissions?: string[] | null;
     }
 }

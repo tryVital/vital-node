@@ -6,18 +6,22 @@ export type QueryGroupByItem =
     | Vital.DateTruncExpr
     | Vital.DatePartExpr
     | Vital.SleepColumnExpr
+    | Vital.DerivedReadinessColumnExpr
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr
     | Vital.MealColumnExpr
+    | Vital.MenstrualCycleColumnExpr
     | Vital.ProfileColumnExpr
     | Vital.SleepScoreValueMacroExpr
     | Vital.ChronotypeValueMacroExpr
     | Vital.AsleepAtValueMacroExpr
     | Vital.AwakeAtValueMacroExpr
+    | Vital.AwakeningsValueMacroExpr
     | Vital.UnrecognizedValueMacroExpr
     | Vital.DiscreteTimeseriesExpr
     | Vital.IntervalTimeseriesExpr
+    | Vital.InsulinInjectionTimeseriesExpr
     | Vital.BloodPressureTimeseriesExpr
     | Vital.TemperatureTimeseriesExpr
     | Vital.WorkoutDurationTimeseriesExpr
