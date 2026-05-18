@@ -5,8 +5,6 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         idempotencyKey: "X-Idempotency-Key",
- *         idempotencyError: "no-cache",
  *         userId: "user_id",
  *         patientDetails: {
  *             firstName: "first_name",
@@ -31,11 +29,13 @@ export interface CreateOrderRequestCompatible {
     userId: string;
     labTestId?: string;
     orderSet?: Vital.OrderSetRequest;
+    /** ℹ️ This enum is non-exhaustive. */
     collectionMethod?: Vital.LabTestCollectionMethod;
     physician?: Vital.PhysicianCreateRequest;
     healthInsurance?: Vital.HealthInsuranceCreateRequest;
     /** Defines whether order is priority or not. For some labs, this refers to a STAT order. */
     priority?: boolean;
+    /** ℹ️ This enum is non-exhaustive. */
     billingType?: Vital.Billing;
     icdCodes?: string[];
     consents?: Vital.Consent[];
@@ -43,6 +43,7 @@ export interface CreateOrderRequestCompatible {
     activateBy?: string;
     aoeAnswers?: Vital.AoEAnswer[];
     passthrough?: string;
+    clinicalNotes?: string;
     labAccountId?: string;
     creatorMemberId?: string;
     patientDetails: Vital.PatientDetailsWithValidation;

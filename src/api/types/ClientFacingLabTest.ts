@@ -6,11 +6,14 @@ export interface ClientFacingLabTest {
     id: string;
     slug: string;
     name: string;
+    /** ℹ️ This enum is non-exhaustive. */
     sampleType: Vital.LabTestSampleType;
+    /** ℹ️ This enum is non-exhaustive. */
     method: Vital.LabTestCollectionMethod;
     price: number;
     /** Deprecated. Use status instead. */
     isActive: boolean;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.LabTestStatus;
     /** Defines whether a lab test requires fasting. */
     fasting?: boolean;
