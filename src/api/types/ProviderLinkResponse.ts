@@ -13,6 +13,7 @@ export interface ProviderLinkResponse {
     error?: string;
     /** The provider MFA request. This field is populated only when state is `pending_provider_mfa`. */
     providerMfa?: Vital.ProviderMfaRequest;
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.PasswordProviders;
     connected: boolean;
     providerId?: string;

@@ -26,6 +26,7 @@ export interface ClientFacingTeam {
     labTestsPatientSmsCommunicationEnabled: boolean;
     labTestsPatientEmailCommunicationEnabled: boolean;
     logoUrl?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     delegatedFlow: Vital.DelegatedFlowType;
     criticalResultNotificationEmail?: string;
 }

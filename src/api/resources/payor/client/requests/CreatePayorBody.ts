@@ -18,6 +18,7 @@ import type * as Vital from "../../../../index.js";
 export interface CreatePayorBody {
     name: string;
     address: Vital.Address;
+    /** ℹ️ This enum is non-exhaustive. */
     provider?: Vital.PayorCodeExternalProvider;
     providerPayorId?: string;
 }

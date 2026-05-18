@@ -3,12 +3,12 @@
 import type * as Vital from "../../api/index.js";
 import * as core from "../../core/index.js";
 import type * as serializers from "../index.js";
-import { Address } from "./Address.js";
 import { Ethnicity } from "./Ethnicity.js";
 import { GenderIdentity } from "./GenderIdentity.js";
 import { GuarantorDetails } from "./GuarantorDetails.js";
 import { Race } from "./Race.js";
 import { SexualOrientation } from "./SexualOrientation.js";
+import { UserAddress } from "./UserAddress.js";
 
 export const UserInfo: core.serialization.ObjectSchema<serializers.UserInfo.Raw, Vital.UserInfo> =
     core.serialization.object({
@@ -18,7 +18,7 @@ export const UserInfo: core.serialization.ObjectSchema<serializers.UserInfo.Raw,
         phoneNumber: core.serialization.property("phone_number", core.serialization.string()),
         gender: core.serialization.string(),
         dob: core.serialization.string(),
-        address: Address,
+        address: UserAddress,
         medicalProxy: core.serialization.property("medical_proxy", GuarantorDetails.optional()),
         race: Race.optional(),
         ethnicity: Ethnicity.optional(),
@@ -34,7 +34,7 @@ export declare namespace UserInfo {
         phone_number: string;
         gender: string;
         dob: string;
-        address: Address.Raw;
+        address: UserAddress.Raw;
         medical_proxy?: GuarantorDetails.Raw | null;
         race?: Race.Raw | null;
         ethnicity?: Ethnicity.Raw | null;

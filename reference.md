@@ -15,8 +15,7 @@
 ```typescript
 await client.link.listBulkOps({
     nextCursor: "next_cursor",
-    pageSize: 1,
-    teamId: "infer_from_context"
+    pageSize: 1
 });
 
 ```
@@ -67,7 +66,6 @@ await client.link.listBulkOps({
 
 ```typescript
 await client.link.bulkImport({
-    teamId: "infer_from_context",
     provider: "oura",
     connections: [{
             userId: "user_id",
@@ -126,7 +124,6 @@ await client.link.bulkImport({
 
 ```typescript
 await client.link.bulkTriggerHistoricalPull({
-    teamId: "infer_from_context",
     userIds: ["user_ids"],
     provider: "oura"
 });
@@ -179,7 +176,6 @@ await client.link.bulkTriggerHistoricalPull({
 
 ```typescript
 await client.link.bulkExport({
-    teamId: "infer_from_context",
     provider: "oura"
 });
 
@@ -231,7 +227,6 @@ await client.link.bulkExport({
 
 ```typescript
 await client.link.bulkPause({
-    teamId: "infer_from_context",
     userIds: ["user_ids"],
     provider: "oura"
 });
@@ -340,57 +335,6 @@ await client.link.token({
 </dl>
 </details>
 
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">isTokenValid</a>({ ...params }) -> Record<string, unknown></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.link.isTokenValid({
-    token: "token"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vital.LinkTokenValidationRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LinkClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">codeCreate</a>({ ...params }) -> Vital.VitalTokenCreatedResponse</code></summary>
 <dl>
 <dd>
@@ -457,276 +401,6 @@ await client.link.codeCreate({
 </dl>
 </details>
 
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">startConnect</a>({ ...params }) -> Record<string, unknown></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-REQUEST_SOURCE: VITAL-LINK
-Start link token process
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.link.startConnect({
-    linkToken: "link_token",
-    provider: "oura"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vital.BeginLinkTokenRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LinkClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">tokenState</a>({ ...params }) -> Record<string, unknown></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-REQUEST_SOURCE: VITAL-LINK
-Check link token state - can be hit continuously used as heartbeat
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.link.tokenState({
-    vitalLinkToken: "x-vital-link-token"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vital.LinkTokenStateRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LinkClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">emailAuth</a>({ ...params }) -> unknown</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deprecated. Use `POST /v2/link/provider/email/{provider}` instead.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.link.emailAuth({
-    vitalLinkToken: "x-vital-link-token",
-    email: "email",
-    provider: "oura",
-    authType: "password"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vital.EmailAuthLink` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LinkClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">passwordAuth</a>({ ...params }) -> unknown</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deprecated. Use `POST /v2/link/provider/password/{provider}` instead.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.link.passwordAuth({
-    vitalLinkToken: "x-vital-link-token",
-    username: "username",
-    password: "password",
-    provider: "oura",
-    authType: "password"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vital.PasswordAuthLink` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LinkClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">generateOauthLink</a>(oauth_provider, { ...params }) -> Vital.Source</code></summary>
 <dl>
 <dd>
@@ -754,9 +428,7 @@ This endpoint generates an OAuth link for oauth provider
 <dd>
 
 ```typescript
-await client.link.generateOauthLink("oura", {
-    vitalLinkToken: "x-vital-link-token"
-});
+await client.link.generateOauthLink("oura");
 
 ```
 </dd>
@@ -828,7 +500,6 @@ This connects auth providers that are password based.
 
 ```typescript
 await client.link.connectPasswordProvider("whoop", {
-    vitalLinkToken: "x-vital-link-token",
     username: "username",
     password: "password"
 });
@@ -903,7 +574,6 @@ This connects auth providers that are password based.
 
 ```typescript
 await client.link.completePasswordProviderMfa("whoop", {
-    vitalLinkToken: "x-vital-link-token",
     mfaCode: "mfa_code"
 });
 
@@ -977,7 +647,6 @@ This connects auth providers that are email based.
 
 ```typescript
 await client.link.connectEmailAuthProvider("freestyle_libre", {
-    vitalLinkToken: "x-vital-link-token",
     email: "email"
 });
 
@@ -1050,9 +719,7 @@ GET List of all available providers given the generated link token.
 <dd>
 
 ```typescript
-await client.link.getAllProviders({
-    vitalLinkToken: "x-vital-link-token"
-});
+await client.link.getAllProviders();
 
 ```
 </dd>
@@ -1069,65 +736,6 @@ await client.link.getAllProviders({
 <dd>
 
 **request:** `Vital.LinkGetAllProvidersRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `LinkClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.link.<a href="/src/api/resources/link/client/Client.ts">connectManualProvider</a>(provider, { ...params }) -> Record<string, boolean></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.link.connectManualProvider("beurer_ble", {
-    userId: "user_id"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**provider:** `Vital.ManualProviders` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vital.ManualConnectionData` 
     
 </dd>
 </dl>
@@ -1513,7 +1121,7 @@ await client.profile.getRaw("user_id", {
 </details>
 
 ## Devices
-<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawDevices</code></summary>
+<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawDevicesResponse</code></summary>
 <dl>
 <dd>
 
@@ -1662,7 +1270,7 @@ await client.activity.get("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.activity.<a href="/src/api/resources/activity/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawActivity</code></summary>
+<details><summary><code>client.activity.<a href="/src/api/resources/activity/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawActivityResponse</code></summary>
 <dl>
 <dd>
 
@@ -1813,7 +1421,7 @@ await client.workouts.get("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawWorkout</code></summary>
+<details><summary><code>client.workouts.<a href="/src/api/resources/workouts/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawWorkoutResponse</code></summary>
 <dl>
 <dd>
 
@@ -2013,7 +1621,7 @@ await client.sleep.get("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawSleep</code></summary>
+<details><summary><code>client.sleep.<a href="/src/api/resources/sleep/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawSleepResponse</code></summary>
 <dl>
 <dd>
 
@@ -2227,7 +1835,7 @@ await client.body.get("user_id", {
 </dl>
 </details>
 
-<details><summary><code>client.body.<a href="/src/api/resources/body/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawBody</code></summary>
+<details><summary><code>client.body.<a href="/src/api/resources/body/client/Client.ts">getRaw</a>(user_id, { ...params }) -> Vital.RawBodyResponse</code></summary>
 <dl>
 <dd>
 
@@ -7368,7 +6976,7 @@ await client.user.getAll({
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">create</a>({ ...params }) -> Vital.ClientFacingUserKey</code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">create</a>({ ...params }) -> Vital.ClientFacingUser</code></summary>
 <dl>
 <dd>
 
@@ -7488,7 +7096,7 @@ await client.user.getTeamMetrics();
 </dl>
 </details>
 
-<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getConnectedProviders</a>(user_id) -> Record<string, Vital.ClientFacingProviderWithStatus[]></code></summary>
+<details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">getConnectedProviders</a>(user_id) -> Record&lt;string, Vital.ClientFacingProviderWithStatus[]&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8421,71 +8029,6 @@ await client.user.createPortalUrl("user_id", {
 </details>
 
 ## Team
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getLinkConfig</a>({ ...params }) -> Record<string, unknown></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Post teams.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.team.getLinkConfig({
-    vitalLinkToken: "x-vital-link-token"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vital.TeamGetLinkConfigRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `TeamClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">get</a>(team_id) -> Vital.ClientFacingTeam</code></summary>
 <dl>
 <dd>
@@ -8614,7 +8157,7 @@ await client.team.getUserById({
 </dl>
 </details>
 
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getSvixUrl</a>() -> Record<string, unknown></code></summary>
+<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getSvixUrl</a>() -> Record&lt;string, unknown&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8655,7 +8198,7 @@ await client.team.getSvixUrl();
 </dl>
 </details>
 
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getSourcePriorities</a>({ ...params }) -> Record<string, unknown>[]</code></summary>
+<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">getSourcePriorities</a>({ ...params }) -> Record&lt;string, unknown&gt;[]</code></summary>
 <dl>
 <dd>
 
@@ -8720,7 +8263,7 @@ await client.team.getSourcePriorities({
 </dl>
 </details>
 
-<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">updateSourcePriorities</a>() -> Record<string, unknown>[]</code></summary>
+<details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">updateSourcePriorities</a>() -> Record&lt;string, unknown&gt;[]</code></summary>
 <dl>
 <dd>
 
@@ -9034,6 +8577,8 @@ await client.labTests.get({
     labSlug: "lab_slug",
     collectionMethod: "testkit",
     status: "active",
+    markerIds: [1],
+    providerIds: ["provider_ids"],
     name: "name",
     orderKey: "price",
     orderDirection: "asc"
@@ -9268,7 +8813,7 @@ await client.labTests.updateLabTest("lab_test_id");
 <dl>
 <dd>
 
-GET all the markers for the given lab.
+List active and orderable markers for a given Lab. Note that reflex markers are not included.
 </dd>
 </dl>
 </dd>
@@ -9284,6 +8829,8 @@ GET all the markers for the given lab.
 
 ```typescript
 await client.labTests.getMarkers({
+    labId: [1],
+    labSlug: "lab_slug",
     name: "name",
     aLaCarteEnabled: true,
     labAccountId: "lab_account_id",
@@ -9381,6 +8928,20 @@ await client.labTests.getMarkersForOrderSet({
 <details><summary><code>client.labTests.<a href="/src/api/resources/labTests/client/Client.ts">getMarkersForLabTest</a>(lab_test_id, { ...params }) -> Vital.GetMarkersResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all markers for a given Lab Test, as well as any associated reflex markers.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -9609,6 +9170,8 @@ await client.labTests.getPaginated({
     labSlug: "lab_slug",
     collectionMethod: "testkit",
     status: "active",
+    markerIds: [1],
+    providerIds: ["provider_ids"],
     name: "name",
     orderKey: "price",
     orderDirection: "asc"
@@ -9730,13 +9293,18 @@ await client.labTests.getOrders({
     endDate: new Date("2024-01-15T09:30:00.000Z"),
     updatedStartDate: new Date("2024-01-15T09:30:00.000Z"),
     updatedEndDate: new Date("2024-01-15T09:30:00.000Z"),
+    status: ["ordered"],
     orderKey: "created_at",
     orderDirection: "asc",
+    orderType: ["testkit"],
     isCritical: true,
     interpretation: "normal",
+    orderActivationTypes: ["current"],
     userId: "user_id",
     patientName: "patient_name",
     shippingRecipientName: "shipping_recipient_name",
+    orderIds: ["order_ids"],
+    orderTransactionId: "order_transaction_id",
     page: 1,
     size: 1
 });
@@ -10298,6 +9866,7 @@ await client.labTests.getAreaInfo({
     zipCode: "zip_code",
     radius: "10",
     lab: "quest",
+    labs: ["quest"],
     labAccountId: "lab_account_id"
 });
 
@@ -10352,6 +9921,7 @@ await client.labTests.getPscInfo({
     zipCode: "zip_code",
     labId: 1,
     radius: "10",
+    capabilities: ["stat"],
     labAccountId: "lab_account_id"
 });
 
@@ -10403,7 +9973,8 @@ await client.labTests.getPscInfo({
 
 ```typescript
 await client.labTests.getOrderPscInfo("order_id", {
-    radius: "10"
+    radius: "10",
+    capabilities: ["stat"]
 });
 
 ```
@@ -10727,8 +10298,10 @@ await client.labTests.getLabelsPdf("order_id", {
 await client.labTests.getPscAppointmentAvailability({
     lab: "quest",
     startDate: "start_date",
+    siteCodes: ["site_codes"],
     zipCode: "zip_code",
-    radius: "10"
+    radius: "10",
+    allowStale: true
 });
 
 ```
@@ -10779,7 +10352,9 @@ await client.labTests.getPscAppointmentAvailability({
 
 ```typescript
 await client.labTests.bookPscAppointment("order_id", {
-    bookingKey: "booking_key"
+    body: {
+        bookingKey: "booking_key"
+    }
 });
 
 ```
@@ -10804,7 +10379,7 @@ await client.labTests.bookPscAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.AppointmentBookingRequest` 
+**request:** `Vital.LabTestsBookPscAppointmentRequest` 
     
 </dd>
 </dl>
@@ -11312,8 +10887,6 @@ await client.labTests.getOrder("order_id");
 
 ```typescript
 await client.labTests.createOrder({
-    idempotencyKey: "X-Idempotency-Key",
-    idempotencyError: "no-cache",
     userId: "user_id",
     patientDetails: {
         firstName: "first_name",
@@ -11678,6 +11251,310 @@ await client.labTests.validateIcdCodes({
 <dd>
 
 **requestOptions:** `LabTestsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Compendium
+<details><summary><code>client.compendium.<a href="/src/api/resources/compendium/client/Client.ts">search</a>({ ...params }) -> Vital.SearchCompendiumResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.compendium.search({
+    mode: "canonical"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.SearchCompendiumBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CompendiumClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.compendium.<a href="/src/api/resources/compendium/client/Client.ts">convert</a>({ ...params }) -> Vital.ConvertCompendiumResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.compendium.convert({
+    targetLab: "labcorp"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.ConvertCompendiumBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CompendiumClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## LabAccount
+<details><summary><code>client.labAccount.<a href="/src/api/resources/labAccount/client/Client.ts">getTeamLabAccounts</a>({ ...params }) -> Vital.GetTeamLabAccountsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labAccount.getTeamLabAccounts({
+    labAccountId: "lab_account_id",
+    status: "active"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.LabAccountGetTeamLabAccountsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LabAccountClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## OrderTransaction
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransaction</a>(transaction_id) -> Vital.GetOrderTransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransaction("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransactionResult</a>(transaction_id) -> Vital.LabResultsRaw</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransactionResult("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransactionResultPdf</a>(transaction_id) -> core.BinaryResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransactionResultPdf("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12121,7 +11998,7 @@ await client.payor.createPayor({
 <dl>
 <dd>
 
-Creates a parse job, uploads the file to provider, persists the job row,
+Creates a parse job, uploads the file(s) to provider, persists the job row,
 and starts the ParseLabReport. Returns a generated job_id.
 </dd>
 </dl>
@@ -12137,7 +12014,7 @@ and starts the ParseLabReport. Returns a generated job_id.
 <dd>
 
 ```typescript
-await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
+await client.labReport.parserCreateJob([createReadStream("path/to/file")], {
     userId: "user_id"
 });
 
@@ -12155,7 +12032,7 @@ await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
 <dl>
 <dd>
 
-**file:** `core.file.Uploadable` 
+**file:** `core.file.Uploadable[]` 
     
 </dd>
 </dl>
@@ -12163,7 +12040,7 @@ await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
 <dl>
 <dd>
 
-**request:** `Vital.BodyCreateLabReportParserJob` 
+**request:** `Vital.CreateLabReportParserJobBody` 
     
 </dd>
 </dl>
@@ -12447,3 +12324,4 @@ await client.aggregate.getTaskHistoryForContinuousQuery("user_id", "query_id_or_
 </dd>
 </dl>
 </details>
+

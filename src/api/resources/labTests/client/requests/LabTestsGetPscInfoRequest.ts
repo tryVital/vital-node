@@ -8,6 +8,7 @@ import type * as Vital from "../../../../index.js";
  *         zipCode: "zip_code",
  *         labId: 1,
  *         radius: "10",
+ *         capabilities: ["stat"],
  *         labAccountId: "lab_account_id"
  *     }
  */
