@@ -3,6 +3,7 @@
 import type * as Vital from "../index.js";
 
 export interface Consent {
+    /** ℹ️ This enum is non-exhaustive. */
     consentType: Vital.ConsentType;
     version?: string;
     timeOfConsent?: Date;
