@@ -3,5 +3,16 @@
 import type * as Vital from "../index.js";
 
 export interface RawBody {
-    body: Vital.BodyV2InDb[];
+    timestamp: Date;
+    data: Record<string, unknown>;
+    userId: string;
+    providerId: string;
+    sourceId: number;
+    priorityId?: number;
+    id: string;
+    sourceDeviceId?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    priority?: number;
+    source: Vital.ClientFacingProvider;
 }
