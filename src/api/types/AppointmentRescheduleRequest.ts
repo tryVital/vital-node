@@ -2,4 +2,5 @@
 
 export interface AppointmentRescheduleRequest {
     bookingKey: string;
+    appointmentNotes?: string;
 }
