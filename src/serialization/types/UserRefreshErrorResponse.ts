@@ -8,7 +8,7 @@ export const UserRefreshErrorResponse: core.serialization.ObjectSchema<
     serializers.UserRefreshErrorResponse.Raw,
     Vital.UserRefreshErrorResponse
 > = core.serialization.object({
-    success: core.serialization.boolean(),
+    success: core.serialization.booleanLiteral(false),
     userId: core.serialization.property("user_id", core.serialization.string()),
     error: core.serialization.string(),
     failedSources: core.serialization.property(
@@ -19,7 +19,7 @@ export const UserRefreshErrorResponse: core.serialization.ObjectSchema<
 
 export declare namespace UserRefreshErrorResponse {
     export interface Raw {
-        success: boolean;
+        success: false;
         user_id: string;
         error: string;
         failed_sources?: string[] | null;
