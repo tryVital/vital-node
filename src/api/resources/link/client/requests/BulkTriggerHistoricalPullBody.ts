@@ -5,14 +5,13 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         teamId: "infer_from_context",
  *         userIds: ["user_ids"],
  *         provider: "oura"
  *     }
  */
 export interface BulkTriggerHistoricalPullBody {
-    teamId?: Vital.LinkBulkTriggerHistoricalPullRequestTeamId;
     userIds: string[];
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.OAuthProviders;
     /**
      * Whether or not the endpoint should wait for the Bulk Op to complete before responding.

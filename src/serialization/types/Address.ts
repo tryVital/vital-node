@@ -12,6 +12,7 @@ export const Address: core.serialization.ObjectSchema<serializers.Address.Raw, V
         zip: core.serialization.string(),
         city: core.serialization.string(),
         state: core.serialization.string(),
+        accessNotes: core.serialization.property("access_notes", core.serialization.string().optional()),
     });
 
 export declare namespace Address {
@@ -22,5 +23,6 @@ export declare namespace Address {
         zip: string;
         city: string;
         state: string;
+        access_notes?: string | null;
     }
 }
