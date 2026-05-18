@@ -6,6 +6,7 @@ export interface ClientFacingAppointment {
     id: string;
     userId: string;
     orderId: string;
+    orderTransactionId?: string;
     address: Vital.UsAddress;
     location: Vital.LngLat;
     /** Time is in UTC */
@@ -13,12 +14,17 @@ export interface ClientFacingAppointment {
     /** Time is in UTC */
     endAt?: Date;
     ianaTimezone?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     type: Vital.AppointmentType;
+    /** ℹ️ This enum is non-exhaustive. */
     provider: Vital.AppointmentProvider;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.AppointmentStatus;
     providerId: string;
     externalId?: string;
     canReschedule: boolean;
+    appointmentNotes?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     eventStatus: Vital.AppointmentEventStatus;
     eventData?: Record<string, unknown>;
     events: Vital.ClientFacingAppointmentEvent[];
