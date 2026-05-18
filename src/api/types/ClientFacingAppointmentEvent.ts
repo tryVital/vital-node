@@ -4,6 +4,7 @@ import type * as Vital from "../index.js";
 
 export interface ClientFacingAppointmentEvent {
     createdAt: Date;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.AppointmentEventStatus;
     data?: Record<string, unknown>;
 }

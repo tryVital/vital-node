@@ -20,12 +20,16 @@ export interface ClientFacingOrder {
     sampleId?: string;
     /** Notes associated with the order */
     notes?: string;
+    clinicalNotes?: string;
     /** When your order was created */
     createdAt: Date;
     /** When your order was last updated. */
     updatedAt: Date;
     events: Vital.ClientFacingOrderEvent[];
+    /** The top-level status of the latest event for this order. This field is deprecated. Please use `last_event` instead. ℹ️ This enum is non-exhaustive. */
     status?: Vital.OrderTopLevelStatus;
+    /** The latest event in the order's lifecycle. */
+    lastEvent: Vital.ClientFacingOrderEvent;
     physician?: Vital.ClientFacingPhysician;
     /** Vital ID of the health insurance. */
     healthInsuranceId?: string;
@@ -38,11 +42,12 @@ export interface ClientFacingOrder {
     /** Schedule an Order to be processed in a future date. */
     activateBy?: string;
     passthrough?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     billingType?: Vital.Billing;
     icdCodes?: string[];
     /** Defines whether the order has an Advanced Beneficiary Notice (ABN) form or not. */
     hasAbn: boolean;
-    /** Interpretation of the order result. Can be one of (normal, abnormal, critical). */
+    /** Interpretation of the order result. Can be one of (normal, abnormal, critical). ℹ️ This enum is non-exhaustive. */
     interpretation?: Vital.Interpretation;
     /** Defines whether the order result has missing biomarkers. */
     hasMissingResults?: boolean;
@@ -50,4 +55,7 @@ export interface ClientFacingOrder {
     expectedResultByDate?: string;
     /** The latest date by which the order result is expected to be available. */
     worstCaseResultByDate?: string;
+    /** ℹ️ This enum is non-exhaustive. */
+    origin?: Vital.OrderOrigin;
+    orderTransaction?: Vital.ClientFacingOrderTransaction;
 }

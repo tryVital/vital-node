@@ -4,5 +4,6 @@ import type * as Vital from "../index.js";
 
 export interface LastAttempt {
     timestamp: Date;
+    /** ℹ️ This enum is non-exhaustive. */
     status: Vital.AttemptStatus;
 }
