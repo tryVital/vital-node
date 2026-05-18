@@ -8,6 +8,7 @@ import type * as Vital from "../../../../index.js";
  */
 export interface PayorSearchRequest {
     insuranceName?: string;
+    /** ℹ️ This enum is non-exhaustive. */
     provider?: Vital.PayorCodeExternalProvider;
     providerId?: string;
 }
