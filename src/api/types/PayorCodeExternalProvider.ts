@@ -7,5 +7,6 @@ export const PayorCodeExternalProvider = {
     Stedi: "stedi",
     Waystar: "waystar",
     ClaimMd: "claim_md",
+    Apreo: "apreo",
 } as const;
 export type PayorCodeExternalProvider = (typeof PayorCodeExternalProvider)[keyof typeof PayorCodeExternalProvider];
