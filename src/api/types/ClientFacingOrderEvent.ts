@@ -6,4 +6,5 @@ export interface ClientFacingOrderEvent {
     id: number;
     createdAt: Date;
     status: Vital.OrderStatus;
+    statusDetail?: Vital.OrderStatusDetail;
 }
