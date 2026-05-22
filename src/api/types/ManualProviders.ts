@@ -11,5 +11,6 @@ export const ManualProviders = {
     AppleHealthKit: "apple_health_kit",
     Manual: "manual",
     HealthConnect: "health_connect",
+    SamsungHealth: "samsung_health",
 } as const;
 export type ManualProviders = (typeof ManualProviders)[keyof typeof ManualProviders];

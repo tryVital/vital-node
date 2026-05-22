@@ -11,6 +11,7 @@ export const ClientFacingSleepCycleSourceType = {
     Cuff: "cuff",
     ManualScan: "manual_scan",
     Automatic: "automatic",
+    InsulinPump: "insulin_pump",
     Scale: "scale",
     ChestStrap: "chest_strap",
     Ring: "ring",

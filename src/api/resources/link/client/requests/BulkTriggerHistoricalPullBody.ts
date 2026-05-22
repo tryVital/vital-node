@@ -5,13 +5,11 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         teamId: "infer_from_context",
  *         userIds: ["user_ids"],
  *         provider: "oura"
  *     }
  */
 export interface BulkTriggerHistoricalPullBody {
-    teamId?: Vital.LinkBulkTriggerHistoricalPullRequestTeamId;
     userIds: string[];
     provider: Vital.OAuthProviders;
     /**
