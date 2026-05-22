@@ -9284,6 +9284,7 @@ GET all the markers for the given lab.
 
 ```typescript
 await client.labTests.getMarkers({
+    labSlug: "lab_slug",
     name: "name",
     aLaCarteEnabled: true,
     labAccountId: "lab_account_id",
@@ -9737,6 +9738,7 @@ await client.labTests.getOrders({
     userId: "user_id",
     patientName: "patient_name",
     shippingRecipientName: "shipping_recipient_name",
+    orderTransactionId: "order_transaction_id",
     page: 1,
     size: 1
 });
@@ -10728,7 +10730,8 @@ await client.labTests.getPscAppointmentAvailability({
     lab: "quest",
     startDate: "start_date",
     zipCode: "zip_code",
-    radius: "10"
+    radius: "10",
+    allowStale: true
 });
 
 ```
@@ -10779,7 +10782,11 @@ await client.labTests.getPscAppointmentAvailability({
 
 ```typescript
 await client.labTests.bookPscAppointment("order_id", {
-    bookingKey: "booking_key"
+    idempotencyKey: "x-idempotency-key",
+    idempotencyError: "no-cache",
+    body: {
+        bookingKey: "booking_key"
+    }
 });
 
 ```
@@ -10804,7 +10811,7 @@ await client.labTests.bookPscAppointment("order_id", {
 <dl>
 <dd>
 
-**request:** `Vital.AppointmentBookingRequest` 
+**request:** `Vital.LabTestsBookPscAppointmentRequest` 
     
 </dd>
 </dl>
@@ -11689,6 +11696,312 @@ await client.labTests.validateIcdCodes({
 </dl>
 </details>
 
+## Compendium
+<details><summary><code>client.compendium.<a href="/src/api/resources/compendium/client/Client.ts">search</a>({ ...params }) -> Vital.SearchCompendiumResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.compendium.search({
+    teamId: "infer_from_context",
+    mode: "canonical"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.SearchCompendiumBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CompendiumClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.compendium.<a href="/src/api/resources/compendium/client/Client.ts">convert</a>({ ...params }) -> Vital.ConvertCompendiumResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.compendium.convert({
+    teamId: "infer_from_context",
+    targetLab: "labcorp"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.ConvertCompendiumBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CompendiumClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## LabAccount
+<details><summary><code>client.labAccount.<a href="/src/api/resources/labAccount/client/Client.ts">getTeamLabAccounts</a>({ ...params }) -> Vital.GetTeamLabAccountsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labAccount.getTeamLabAccounts({
+    labAccountId: "lab_account_id",
+    status: "active"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vital.LabAccountGetTeamLabAccountsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LabAccountClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## OrderTransaction
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransaction</a>(transaction_id) -> Vital.GetOrderTransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransaction("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransactionResult</a>(transaction_id) -> Vital.LabResultsRaw</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransactionResult("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orderTransaction.<a href="/src/api/resources/orderTransaction/client/Client.ts">getTransactionResultPdf</a>(transaction_id) -> core.BinaryResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orderTransaction.getTransactionResultPdf("transaction_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OrderTransactionClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Testkit
 <details><summary><code>client.testkit.<a href="/src/api/resources/testkit/client/Client.ts">register</a>({ ...params }) -> Vital.PostOrderResponse</code></summary>
 <dl>
@@ -12121,7 +12434,7 @@ await client.payor.createPayor({
 <dl>
 <dd>
 
-Creates a parse job, uploads the file to provider, persists the job row,
+Creates a parse job, uploads the file(s) to provider, persists the job row,
 and starts the ParseLabReport. Returns a generated job_id.
 </dd>
 </dl>
@@ -12137,7 +12450,7 @@ and starts the ParseLabReport. Returns a generated job_id.
 <dd>
 
 ```typescript
-await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
+await client.labReport.parserCreateJob([createReadStream("path/to/file")], {
     userId: "user_id"
 });
 
@@ -12155,7 +12468,7 @@ await client.labReport.parserCreateJob(createReadStream("path/to/file"), {
 <dl>
 <dd>
 
-**file:** `core.file.Uploadable` 
+**file:** `core.file.Uploadable[]` 
     
 </dd>
 </dl>
