@@ -5,8 +5,6 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         idempotencyKey: "X-Idempotency-Key",
- *         idempotencyError: "no-cache",
  *         userId: "user_id",
  *         patientDetails: {
  *             firstName: "first_name",
