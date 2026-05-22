@@ -51,5 +51,9 @@ export const OrderStatus = {
     CancelledOnSiteCollectionCancelled: "cancelled.on_site_collection.cancelled",
     SampleWithLabOnSiteCollectionPartialResults: "sample_with_lab.on_site_collection.partial_results",
     FailedOnSiteCollectionSampleError: "failed.on_site_collection.sample_error",
+    CompletedWalkInTestCorrected: "completed.walk_in_test.corrected",
+    CompletedAtHomePhlebotomyCorrected: "completed.at_home_phlebotomy.corrected",
+    CompletedOnSiteCollectionCorrected: "completed.on_site_collection.corrected",
+    CompletedTestkitCorrected: "completed.testkit.corrected",
 } as const;
 export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];
