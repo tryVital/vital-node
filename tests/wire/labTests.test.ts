@@ -688,6 +688,7 @@ describe("LabTestsClient", () => {
             .build();
 
         const response = await client.labTests.getMarkers({
+            labSlug: "lab_slug",
             name: "name",
             aLaCarteEnabled: true,
             labAccountId: "lab_account_id",
@@ -1376,9 +1377,9 @@ describe("LabTestsClient", () => {
         const rawResponseBody = {
             orders: [
                 {
-                    user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                    id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                    team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                    user_id: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                    id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                    team_id: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                     patient_details: { dob: "2020-01-01T00:00:00Z", gender: "male" },
                     patient_address: {
                         receiver_name: "John Doe",
@@ -1443,9 +1444,9 @@ describe("LabTestsClient", () => {
                     details: {
                         type: "testkit",
                         data: {
-                            id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                            id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                             shipment: {
-                                id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                                id: "0ee60691-e77e-434f-8471-f513abe0371c",
                                 outbound_tracking_number: "<outbound_tracking_number>",
                                 outbound_tracking_url: "<outbound_tracking_url>",
                                 inbound_tracking_number: "<inbound_tracking_number>",
@@ -1460,6 +1461,7 @@ describe("LabTestsClient", () => {
                     },
                     sample_id: "123456789",
                     notes: "This is a note",
+                    clinical_notes: "clinical_notes",
                     created_at: "2020-01-01T00:00:00Z",
                     updated_at: "2020-01-01T00:00:00Z",
                     events: [
@@ -1472,6 +1474,11 @@ describe("LabTestsClient", () => {
                         },
                     ],
                     status: "collecting_sample",
+                    last_event: {
+                        id: 3,
+                        created_at: "2022-01-03T00:00:00Z",
+                        status: "collecting_sample.testkit.transit_customer",
+                    },
                     physician: { first_name: "first_name", last_name: "last_name", npi: "npi" },
                     health_insurance_id: "health_insurance_id",
                     requisition_form_url: "https://www.example.com",
@@ -1494,6 +1501,29 @@ describe("LabTestsClient", () => {
                     has_missing_results: true,
                     expected_result_by_date: "expected_result_by_date",
                     worst_case_result_by_date: "worst_case_result_by_date",
+                    origin: "initial",
+                    order_transaction: {
+                        id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                        status: "active",
+                        orders: [
+                            {
+                                id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                                low_level_status: "transit_customer",
+                                low_level_status_created_at: "2020-01-05T00:00:00Z",
+                                origin: "initial",
+                                created_at: "2020-01-01T00:00:00Z",
+                                updated_at: "2020-01-05T00:00:00Z",
+                            },
+                            {
+                                id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                                low_level_status: "requisition_created",
+                                low_level_status_created_at: "2020-01-05T01:00:00Z",
+                                origin: "redraw",
+                                created_at: "2020-01-05T01:00:00Z",
+                                updated_at: "2020-01-05T01:00:00Z",
+                            },
+                        ],
+                    },
                 },
             ],
             total: 1,
@@ -1515,15 +1545,16 @@ describe("LabTestsClient", () => {
             userId: "user_id",
             patientName: "patient_name",
             shippingRecipientName: "shipping_recipient_name",
+            orderTransactionId: "order_transaction_id",
             page: 1,
             size: 1,
         });
         expect(response).toEqual({
             orders: [
                 {
-                    userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                    id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                    teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                    userId: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                    id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                    teamId: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                     patientDetails: {
                         dob: new Date("2020-01-01T00:00:00.000Z"),
                         gender: "male",
@@ -1597,9 +1628,9 @@ describe("LabTestsClient", () => {
                     details: {
                         type: "testkit",
                         data: {
-                            id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                            id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                             shipment: {
-                                id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                                id: "0ee60691-e77e-434f-8471-f513abe0371c",
                                 outboundTrackingNumber: "<outbound_tracking_number>",
                                 outboundTrackingUrl: "<outbound_tracking_url>",
                                 inboundTrackingNumber: "<inbound_tracking_number>",
@@ -1614,6 +1645,7 @@ describe("LabTestsClient", () => {
                     },
                     sampleId: "123456789",
                     notes: "This is a note",
+                    clinicalNotes: "clinical_notes",
                     createdAt: new Date("2020-01-01T00:00:00.000Z"),
                     updatedAt: new Date("2020-01-01T00:00:00.000Z"),
                     events: [
@@ -1634,6 +1666,11 @@ describe("LabTestsClient", () => {
                         },
                     ],
                     status: "collecting_sample",
+                    lastEvent: {
+                        id: 3,
+                        createdAt: new Date("2022-01-03T00:00:00.000Z"),
+                        status: "collecting_sample.testkit.transit_customer",
+                    },
                     physician: {
                         firstName: "first_name",
                         lastName: "last_name",
@@ -1660,6 +1697,29 @@ describe("LabTestsClient", () => {
                     hasMissingResults: true,
                     expectedResultByDate: "expected_result_by_date",
                     worstCaseResultByDate: "worst_case_result_by_date",
+                    origin: "initial",
+                    orderTransaction: {
+                        id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                        status: "active",
+                        orders: [
+                            {
+                                id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                                lowLevelStatus: "transit_customer",
+                                lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                                origin: "initial",
+                                createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                                updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                            },
+                            {
+                                id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                                lowLevelStatus: "requisition_created",
+                                lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                                origin: "redraw",
+                                createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                                updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                            },
+                        ],
+                    },
                 },
             ],
             total: 1,
@@ -1789,9 +1849,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -1799,6 +1860,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -1810,6 +1872,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -1832,9 +1895,10 @@ describe("LabTestsClient", () => {
             bookingKey: "booking_key",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -1842,6 +1906,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -1856,6 +1921,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -1908,9 +1974,10 @@ describe("LabTestsClient", () => {
             provider: "getlabs",
         };
         const rawResponseBody = {
-            id: "aae38b08-42a2-4933-affc-b0f79ba99d9d",
-            user_id: "6fff4647-6e06-4d0e-be65-5b4749c8b8b9",
-            order_id: "2bd5b223-d99c-4949-bf19-ffb0349b7534",
+            id: "6f3637fb-c47a-4dc1-99f5-e6d48fff5e35",
+            user_id: "4d4f8ced-6084-4602-b3af-d7cb53585fc2",
+            order_id: "75f6029b-1f0d-452f-8b8b-8c17aab9a5c7",
+            order_transaction_id: "530542d3-add0-4ee0-8172-6a13c38a8e64",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -1918,6 +1985,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2024-01-15T09:30:00Z",
@@ -1929,6 +1997,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "external_id",
             can_reschedule: false,
+            appointment_notes: "appointment_notes",
             event_status: "pending",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -1954,9 +2023,10 @@ describe("LabTestsClient", () => {
             provider: "getlabs",
         });
         expect(response).toEqual({
-            id: "aae38b08-42a2-4933-affc-b0f79ba99d9d",
-            userId: "6fff4647-6e06-4d0e-be65-5b4749c8b8b9",
-            orderId: "2bd5b223-d99c-4949-bf19-ffb0349b7534",
+            id: "6f3637fb-c47a-4dc1-99f5-e6d48fff5e35",
+            userId: "4d4f8ced-6084-4602-b3af-d7cb53585fc2",
+            orderId: "75f6029b-1f0d-452f-8b8b-8c17aab9a5c7",
+            orderTransactionId: "530542d3-add0-4ee0-8172-6a13c38a8e64",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -1964,6 +2034,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -1978,6 +2049,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "external_id",
             canReschedule: false,
+            appointmentNotes: "appointment_notes",
             eventStatus: "pending",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -2029,9 +2101,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -2039,6 +2112,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -2050,6 +2124,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -2072,9 +2147,10 @@ describe("LabTestsClient", () => {
             bookingKey: "booking_key",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -2082,6 +2158,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -2096,6 +2173,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -2145,9 +2223,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { cancellation_reason_id: "cancellation_reason_id" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -2155,6 +2234,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -2166,6 +2246,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -2188,9 +2269,10 @@ describe("LabTestsClient", () => {
             cancellationReasonId: "cancellation_reason_id",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -2198,6 +2280,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -2212,6 +2295,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -2261,7 +2345,7 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = [
-            { id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522", name: "I'm feeling sick", is_refundable: true },
+            { id: "456f0632-3a91-42fc-9c44-d67214d87be1", name: "I'm feeling sick", is_refundable: true },
         ];
         server
             .mockEndpoint()
@@ -2274,7 +2358,7 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.getPhlebotomyAppointmentCancellationReason();
         expect(response).toEqual([
             {
-                id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522",
+                id: "456f0632-3a91-42fc-9c44-d67214d87be1",
                 name: "I'm feeling sick",
                 isRefundable: true,
             },
@@ -2286,9 +2370,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -2296,6 +2381,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -2307,6 +2393,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -2326,9 +2413,10 @@ describe("LabTestsClient", () => {
 
         const response = await client.labTests.getPhlebotomyAppointment("order_id");
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -2336,6 +2424,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -2350,6 +2439,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -2745,6 +2835,11 @@ describe("LabTestsClient", () => {
                     date_reported: { timestamp: "2024-01-15T09:30:00Z", timezone_offset: 1 },
                 },
             },
+            order_transaction: {
+                id: "id",
+                status: "active",
+                orders: [{ id: "id", created_at: "2024-01-15T09:30:00Z", updated_at: "2024-01-15T09:30:00Z" }],
+            },
         };
         server
             .mockEndpoint()
@@ -2837,6 +2932,17 @@ describe("LabTestsClient", () => {
                     },
                 },
             },
+            orderTransaction: {
+                id: "id",
+                status: "active",
+                orders: [
+                    {
+                        id: "id",
+                        createdAt: new Date("2024-01-15T09:30:00.000Z"),
+                        updatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                    },
+                ],
+            },
         });
     });
 
@@ -2898,6 +3004,7 @@ describe("LabTestsClient", () => {
             startDate: "start_date",
             zipCode: "zip_code",
             radius: "10",
+            allowStale: true,
         });
         expect(response).toEqual({
             slots: [
@@ -2977,9 +3084,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -2987,6 +3095,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -2998,6 +3107,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3017,12 +3127,15 @@ describe("LabTestsClient", () => {
             .build();
 
         const response = await client.labTests.bookPscAppointment("order_id", {
-            bookingKey: "booking_key",
+            body: {
+                bookingKey: "booking_key",
+            },
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3030,6 +3143,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -3044,6 +3158,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3083,7 +3198,9 @@ describe("LabTestsClient", () => {
 
         await expect(async () => {
             return await client.labTests.bookPscAppointment("order_id", {
-                bookingKey: "booking_key",
+                body: {
+                    bookingKey: "booking_key",
+                },
             });
         }).rejects.toThrow(Vital.UnprocessableEntityError);
     });
@@ -3093,9 +3210,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_key: "booking_key" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -3103,6 +3221,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -3114,6 +3233,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3136,9 +3256,10 @@ describe("LabTestsClient", () => {
             bookingKey: "booking_key",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3146,6 +3267,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -3160,6 +3282,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3209,9 +3332,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { cancellationReasonId: "cancellationReasonId" };
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -3219,6 +3343,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -3230,6 +3355,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3252,9 +3378,10 @@ describe("LabTestsClient", () => {
             cancellationReasonId: "cancellationReasonId",
         });
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3262,6 +3389,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -3276,6 +3404,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3325,7 +3454,7 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = [
-            { id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522", name: "I'm feeling sick", is_refundable: true },
+            { id: "456f0632-3a91-42fc-9c44-d67214d87be1", name: "I'm feeling sick", is_refundable: true },
         ];
         server
             .mockEndpoint()
@@ -3338,7 +3467,7 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.getPscAppointmentCancellationReason();
         expect(response).toEqual([
             {
-                id: "8dc08e6a-7afc-41d6-8ff2-4522bb5a0522",
+                id: "456f0632-3a91-42fc-9c44-d67214d87be1",
                 name: "I'm feeling sick",
                 isRefundable: true,
             },
@@ -3350,9 +3479,10 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            user_id: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            order_id: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            user_id: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            order_id: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            order_transaction_id: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 first_line: "123 Main St.",
                 second_line: "Apt. 208",
@@ -3360,6 +3490,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip_code: "91189",
                 unit: "unit",
+                access_notes: "Gate code #1234, use side entrance",
             },
             location: { lng: -122.4194155, lat: 37.7749295 },
             start_at: "2022-01-01T00:00:00Z",
@@ -3371,6 +3502,7 @@ describe("LabTestsClient", () => {
             provider_id: "123",
             external_id: "ext-123",
             can_reschedule: true,
+            appointment_notes: "Please bring photo ID",
             event_status: "scheduled",
             event_data: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3390,9 +3522,10 @@ describe("LabTestsClient", () => {
 
         const response = await client.labTests.getPscAppointment("order_id");
         expect(response).toEqual({
-            id: "c64c03de-8a4d-4633-8cc2-0b539e4c12bd",
-            userId: "ee417bae-a9e6-4b8d-b5b0-8fff4f699cad",
-            orderId: "2ba972e3-c84a-446a-9028-51ff63d79ec6",
+            id: "dcd86aea-0fcd-441e-b2f2-f67801da3981",
+            userId: "17d38f1b-b3b2-476e-80dd-048d4633b8c2",
+            orderId: "3bd8845b-a0a6-415b-9fc8-cfeac79109c3",
+            orderTransactionId: "b30f5ff3-3973-4278-8305-c98dbf5f3237",
             address: {
                 firstLine: "123 Main St.",
                 secondLine: "Apt. 208",
@@ -3400,6 +3533,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zipCode: "91189",
                 unit: "unit",
+                accessNotes: "Gate code #1234, use side entrance",
             },
             location: {
                 lng: -122.4194155,
@@ -3414,6 +3548,7 @@ describe("LabTestsClient", () => {
             providerId: "123",
             externalId: "ext-123",
             canReschedule: true,
+            appointmentNotes: "Please bring photo ID",
             eventStatus: "scheduled",
             eventData: {
                 description: "Metadata field containing provider specific data, like cancellation reason or origin",
@@ -3460,9 +3595,9 @@ describe("LabTestsClient", () => {
         const client = new VitalClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-            id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-            team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+            user_id: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+            id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+            team_id: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
             patient_details: {
                 first_name: "first_name",
                 last_name: "last_name",
@@ -3492,6 +3627,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip: "91189",
                 country: "United States",
+                access_notes: "access_notes",
                 phone_number: "+11234567890",
             },
             lab_test: {
@@ -3552,9 +3688,9 @@ describe("LabTestsClient", () => {
             details: {
                 type: "testkit",
                 data: {
-                    id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                    id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                     shipment: {
-                        id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                        id: "0ee60691-e77e-434f-8471-f513abe0371c",
                         outbound_tracking_number: "<outbound_tracking_number>",
                         outbound_tracking_url: "<outbound_tracking_url>",
                         inbound_tracking_number: "<inbound_tracking_number>",
@@ -3569,14 +3705,36 @@ describe("LabTestsClient", () => {
             },
             sample_id: "123456789",
             notes: "This is a note",
+            clinical_notes: "clinical_notes",
             created_at: "2020-01-01T00:00:00Z",
             updated_at: "2020-01-01T00:00:00Z",
             events: [
-                { id: 1, created_at: "2022-01-01T00:00:00Z", status: "received.testkit.ordered" },
-                { id: 2, created_at: "2022-01-02T00:00:00Z", status: "received.testkit.requisition_created" },
-                { id: 3, created_at: "2022-01-03T00:00:00Z", status: "collecting_sample.testkit.transit_customer" },
+                {
+                    id: 1,
+                    created_at: "2022-01-01T00:00:00Z",
+                    status: "received.testkit.ordered",
+                    status_detail: "fulfillment_error",
+                },
+                {
+                    id: 2,
+                    created_at: "2022-01-02T00:00:00Z",
+                    status: "received.testkit.requisition_created",
+                    status_detail: "fulfillment_error",
+                },
+                {
+                    id: 3,
+                    created_at: "2022-01-03T00:00:00Z",
+                    status: "collecting_sample.testkit.transit_customer",
+                    status_detail: "fulfillment_error",
+                },
             ],
             status: "collecting_sample",
+            last_event: {
+                id: 3,
+                created_at: "2022-01-03T00:00:00Z",
+                status: "collecting_sample.testkit.transit_customer",
+                status_detail: "fulfillment_error",
+            },
             physician: { first_name: "first_name", last_name: "last_name", npi: "npi" },
             health_insurance_id: "health_insurance_id",
             requisition_form_url: "https://www.example.com",
@@ -3600,14 +3758,37 @@ describe("LabTestsClient", () => {
             has_missing_results: true,
             expected_result_by_date: "expected_result_by_date",
             worst_case_result_by_date: "worst_case_result_by_date",
+            origin: "initial",
+            order_transaction: {
+                id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                status: "active",
+                orders: [
+                    {
+                        id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                        low_level_status: "transit_customer",
+                        low_level_status_created_at: "2020-01-05T00:00:00Z",
+                        origin: "initial",
+                        created_at: "2020-01-01T00:00:00Z",
+                        updated_at: "2020-01-05T00:00:00Z",
+                    },
+                    {
+                        id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                        low_level_status: "requisition_created",
+                        low_level_status_created_at: "2020-01-05T01:00:00Z",
+                        origin: "redraw",
+                        created_at: "2020-01-05T01:00:00Z",
+                        updated_at: "2020-01-05T01:00:00Z",
+                    },
+                ],
+            },
         };
         server.mockEndpoint().get("/v3/order/order_id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.labTests.getOrder("order_id");
         expect(response).toEqual({
-            userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-            id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-            teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+            userId: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+            id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+            teamId: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
             patientDetails: {
                 firstName: "first_name",
                 lastName: "last_name",
@@ -3643,6 +3824,7 @@ describe("LabTestsClient", () => {
                 state: "CA",
                 zip: "91189",
                 country: "United States",
+                accessNotes: "access_notes",
                 phoneNumber: "+11234567890",
             },
             labTest: {
@@ -3709,9 +3891,9 @@ describe("LabTestsClient", () => {
             details: {
                 type: "testkit",
                 data: {
-                    id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                    id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                     shipment: {
-                        id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                        id: "0ee60691-e77e-434f-8471-f513abe0371c",
                         outboundTrackingNumber: "<outbound_tracking_number>",
                         outboundTrackingUrl: "<outbound_tracking_url>",
                         inboundTrackingNumber: "<inbound_tracking_number>",
@@ -3726,6 +3908,7 @@ describe("LabTestsClient", () => {
             },
             sampleId: "123456789",
             notes: "This is a note",
+            clinicalNotes: "clinical_notes",
             createdAt: new Date("2020-01-01T00:00:00.000Z"),
             updatedAt: new Date("2020-01-01T00:00:00.000Z"),
             events: [
@@ -3733,19 +3916,28 @@ describe("LabTestsClient", () => {
                     id: 1,
                     createdAt: new Date("2022-01-01T00:00:00.000Z"),
                     status: "received.testkit.ordered",
+                    statusDetail: "fulfillment_error",
                 },
                 {
                     id: 2,
                     createdAt: new Date("2022-01-02T00:00:00.000Z"),
                     status: "received.testkit.requisition_created",
+                    statusDetail: "fulfillment_error",
                 },
                 {
                     id: 3,
                     createdAt: new Date("2022-01-03T00:00:00.000Z"),
                     status: "collecting_sample.testkit.transit_customer",
+                    statusDetail: "fulfillment_error",
                 },
             ],
             status: "collecting_sample",
+            lastEvent: {
+                id: 3,
+                createdAt: new Date("2022-01-03T00:00:00.000Z"),
+                status: "collecting_sample.testkit.transit_customer",
+                statusDetail: "fulfillment_error",
+            },
             physician: {
                 firstName: "first_name",
                 lastName: "last_name",
@@ -3773,6 +3965,29 @@ describe("LabTestsClient", () => {
             hasMissingResults: true,
             expectedResultByDate: "expected_result_by_date",
             worstCaseResultByDate: "worst_case_result_by_date",
+            origin: "initial",
+            orderTransaction: {
+                id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                status: "active",
+                orders: [
+                    {
+                        id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                        lowLevelStatus: "transit_customer",
+                        lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                        origin: "initial",
+                        createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                        updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                    },
+                    {
+                        id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                        lowLevelStatus: "requisition_created",
+                        lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                        origin: "redraw",
+                        createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                        updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                    },
+                ],
+            },
         });
     });
 
@@ -3805,9 +4020,9 @@ describe("LabTestsClient", () => {
         };
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                team_id: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -3840,6 +4055,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    access_notes: "access_notes",
                     phone_number: "+11234567890",
                 },
                 lab_test: {
@@ -3900,9 +4116,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -3917,6 +4133,7 @@ describe("LabTestsClient", () => {
                 },
                 sample_id: "123456789",
                 notes: "This is a note",
+                clinical_notes: "clinical_notes",
                 created_at: "2020-01-01T00:00:00Z",
                 updated_at: "2020-01-01T00:00:00Z",
                 events: [
@@ -3925,6 +4142,12 @@ describe("LabTestsClient", () => {
                     { id: 3, created_at: "2022-01-03T00:00:00Z", status: "collecting_sample.testkit.transit_customer" },
                 ],
                 status: "collecting_sample",
+                last_event: {
+                    id: 3,
+                    created_at: "2022-01-03T00:00:00Z",
+                    status: "collecting_sample.testkit.transit_customer",
+                    status_detail: "fulfillment_error",
+                },
                 physician: { first_name: "first_name", last_name: "last_name", npi: "npi" },
                 health_insurance_id: "health_insurance_id",
                 requisition_form_url: "https://www.example.com",
@@ -3948,6 +4171,29 @@ describe("LabTestsClient", () => {
                 has_missing_results: true,
                 expected_result_by_date: "expected_result_by_date",
                 worst_case_result_by_date: "worst_case_result_by_date",
+                origin: "initial",
+                order_transaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            low_level_status: "transit_customer",
+                            low_level_status_created_at: "2020-01-05T00:00:00Z",
+                            origin: "initial",
+                            created_at: "2020-01-01T00:00:00Z",
+                            updated_at: "2020-01-05T00:00:00Z",
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            low_level_status: "requisition_created",
+                            low_level_status_created_at: "2020-01-05T01:00:00Z",
+                            origin: "redraw",
+                            created_at: "2020-01-05T01:00:00Z",
+                            updated_at: "2020-01-05T01:00:00Z",
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -3955,8 +4201,6 @@ describe("LabTestsClient", () => {
         server
             .mockEndpoint()
             .post("/v3/order")
-            .header("X-Idempotency-Key", "X-Idempotency-Key")
-            .header("X-Idempotency-Error", "no-cache")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
@@ -3964,8 +4208,6 @@ describe("LabTestsClient", () => {
             .build();
 
         const response = await client.labTests.createOrder({
-            idempotencyKey: "X-Idempotency-Key",
-            idempotencyError: "no-cache",
             userId: "user_id",
             patientDetails: {
                 firstName: "first_name",
@@ -3985,9 +4227,9 @@ describe("LabTestsClient", () => {
         });
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                teamId: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4020,6 +4262,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    accessNotes: "access_notes",
                     phoneNumber: "+11234567890",
                 },
                 labTest: {
@@ -4086,9 +4329,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -4103,6 +4346,7 @@ describe("LabTestsClient", () => {
                 },
                 sampleId: "123456789",
                 notes: "This is a note",
+                clinicalNotes: "clinical_notes",
                 createdAt: new Date("2020-01-01T00:00:00.000Z"),
                 updatedAt: new Date("2020-01-01T00:00:00.000Z"),
                 events: [
@@ -4123,6 +4367,12 @@ describe("LabTestsClient", () => {
                     },
                 ],
                 status: "collecting_sample",
+                lastEvent: {
+                    id: 3,
+                    createdAt: new Date("2022-01-03T00:00:00.000Z"),
+                    status: "collecting_sample.testkit.transit_customer",
+                    statusDetail: "fulfillment_error",
+                },
                 physician: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4150,6 +4400,29 @@ describe("LabTestsClient", () => {
                 hasMissingResults: true,
                 expectedResultByDate: "expected_result_by_date",
                 worstCaseResultByDate: "worst_case_result_by_date",
+                origin: "initial",
+                orderTransaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            lowLevelStatus: "transit_customer",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                            origin: "initial",
+                            createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            lowLevelStatus: "requisition_created",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                            origin: "redraw",
+                            createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -4231,9 +4504,9 @@ describe("LabTestsClient", () => {
         };
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                team_id: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -4266,6 +4539,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    access_notes: "access_notes",
                     phone_number: "+11234567890",
                 },
                 lab_test: {
@@ -4326,9 +4600,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -4343,6 +4617,7 @@ describe("LabTestsClient", () => {
                 },
                 sample_id: "123456789",
                 notes: "This is a note",
+                clinical_notes: "clinical_notes",
                 created_at: "2020-01-01T00:00:00Z",
                 updated_at: "2020-01-01T00:00:00Z",
                 events: [
@@ -4351,6 +4626,12 @@ describe("LabTestsClient", () => {
                     { id: 3, created_at: "2022-01-03T00:00:00Z", status: "collecting_sample.testkit.transit_customer" },
                 ],
                 status: "collecting_sample",
+                last_event: {
+                    id: 3,
+                    created_at: "2022-01-03T00:00:00Z",
+                    status: "collecting_sample.testkit.transit_customer",
+                    status_detail: "fulfillment_error",
+                },
                 physician: { first_name: "first_name", last_name: "last_name", npi: "npi" },
                 health_insurance_id: "health_insurance_id",
                 requisition_form_url: "https://www.example.com",
@@ -4374,6 +4655,29 @@ describe("LabTestsClient", () => {
                 has_missing_results: true,
                 expected_result_by_date: "expected_result_by_date",
                 worst_case_result_by_date: "worst_case_result_by_date",
+                origin: "initial",
+                order_transaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            low_level_status: "transit_customer",
+                            low_level_status_created_at: "2020-01-05T00:00:00Z",
+                            origin: "initial",
+                            created_at: "2020-01-01T00:00:00Z",
+                            updated_at: "2020-01-05T00:00:00Z",
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            low_level_status: "requisition_created",
+                            low_level_status_created_at: "2020-01-05T01:00:00Z",
+                            origin: "redraw",
+                            created_at: "2020-01-05T01:00:00Z",
+                            updated_at: "2020-01-05T01:00:00Z",
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -4412,9 +4716,9 @@ describe("LabTestsClient", () => {
         });
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                teamId: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4447,6 +4751,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    accessNotes: "access_notes",
                     phoneNumber: "+11234567890",
                 },
                 labTest: {
@@ -4513,9 +4818,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -4530,6 +4835,7 @@ describe("LabTestsClient", () => {
                 },
                 sampleId: "123456789",
                 notes: "This is a note",
+                clinicalNotes: "clinical_notes",
                 createdAt: new Date("2020-01-01T00:00:00.000Z"),
                 updatedAt: new Date("2020-01-01T00:00:00.000Z"),
                 events: [
@@ -4550,6 +4856,12 @@ describe("LabTestsClient", () => {
                     },
                 ],
                 status: "collecting_sample",
+                lastEvent: {
+                    id: 3,
+                    createdAt: new Date("2022-01-03T00:00:00.000Z"),
+                    status: "collecting_sample.testkit.transit_customer",
+                    statusDetail: "fulfillment_error",
+                },
                 physician: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4577,6 +4889,29 @@ describe("LabTestsClient", () => {
                 hasMissingResults: true,
                 expectedResultByDate: "expected_result_by_date",
                 worstCaseResultByDate: "worst_case_result_by_date",
+                origin: "initial",
+                orderTransaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            lowLevelStatus: "transit_customer",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                            origin: "initial",
+                            createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            lowLevelStatus: "requisition_created",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                            origin: "redraw",
+                            createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -4652,9 +4987,9 @@ describe("LabTestsClient", () => {
 
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                team_id: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -4687,6 +5022,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    access_notes: "access_notes",
                     phone_number: "+11234567890",
                 },
                 lab_test: {
@@ -4747,9 +5083,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -4764,6 +5100,7 @@ describe("LabTestsClient", () => {
                 },
                 sample_id: "123456789",
                 notes: "This is a note",
+                clinical_notes: "clinical_notes",
                 created_at: "2020-01-01T00:00:00Z",
                 updated_at: "2020-01-01T00:00:00Z",
                 events: [
@@ -4772,6 +5109,12 @@ describe("LabTestsClient", () => {
                     { id: 3, created_at: "2022-01-03T00:00:00Z", status: "collecting_sample.testkit.transit_customer" },
                 ],
                 status: "collecting_sample",
+                last_event: {
+                    id: 3,
+                    created_at: "2022-01-03T00:00:00Z",
+                    status: "collecting_sample.testkit.transit_customer",
+                    status_detail: "fulfillment_error",
+                },
                 physician: { first_name: "first_name", last_name: "last_name", npi: "npi" },
                 health_insurance_id: "health_insurance_id",
                 requisition_form_url: "https://www.example.com",
@@ -4795,6 +5138,29 @@ describe("LabTestsClient", () => {
                 has_missing_results: true,
                 expected_result_by_date: "expected_result_by_date",
                 worst_case_result_by_date: "worst_case_result_by_date",
+                origin: "initial",
+                order_transaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            low_level_status: "transit_customer",
+                            low_level_status_created_at: "2020-01-05T00:00:00Z",
+                            origin: "initial",
+                            created_at: "2020-01-01T00:00:00Z",
+                            updated_at: "2020-01-05T00:00:00Z",
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            low_level_status: "requisition_created",
+                            low_level_status_created_at: "2020-01-05T01:00:00Z",
+                            origin: "redraw",
+                            created_at: "2020-01-05T01:00:00Z",
+                            updated_at: "2020-01-05T01:00:00Z",
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -4810,9 +5176,9 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.cancelOrder("order_id");
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                teamId: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4845,6 +5211,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    accessNotes: "access_notes",
                     phoneNumber: "+11234567890",
                 },
                 labTest: {
@@ -4911,9 +5278,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -4928,6 +5295,7 @@ describe("LabTestsClient", () => {
                 },
                 sampleId: "123456789",
                 notes: "This is a note",
+                clinicalNotes: "clinical_notes",
                 createdAt: new Date("2020-01-01T00:00:00.000Z"),
                 updatedAt: new Date("2020-01-01T00:00:00.000Z"),
                 events: [
@@ -4948,6 +5316,12 @@ describe("LabTestsClient", () => {
                     },
                 ],
                 status: "collecting_sample",
+                lastEvent: {
+                    id: 3,
+                    createdAt: new Date("2022-01-03T00:00:00.000Z"),
+                    status: "collecting_sample.testkit.transit_customer",
+                    statusDetail: "fulfillment_error",
+                },
                 physician: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -4975,6 +5349,29 @@ describe("LabTestsClient", () => {
                 hasMissingResults: true,
                 expectedResultByDate: "expected_result_by_date",
                 worstCaseResultByDate: "worst_case_result_by_date",
+                origin: "initial",
+                orderTransaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            lowLevelStatus: "transit_customer",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                            origin: "initial",
+                            createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            lowLevelStatus: "requisition_created",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                            origin: "redraw",
+                            createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -5048,9 +5445,9 @@ describe("LabTestsClient", () => {
 
         const rawResponseBody = {
             order: {
-                user_id: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                team_id: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                user_id: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                team_id: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patient_details: {
                     first_name: "first_name",
                     last_name: "last_name",
@@ -5083,6 +5480,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    access_notes: "access_notes",
                     phone_number: "+11234567890",
                 },
                 lab_test: {
@@ -5143,9 +5541,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outbound_tracking_number: "<outbound_tracking_number>",
                             outbound_tracking_url: "<outbound_tracking_url>",
                             inbound_tracking_number: "<inbound_tracking_number>",
@@ -5160,6 +5558,7 @@ describe("LabTestsClient", () => {
                 },
                 sample_id: "123456789",
                 notes: "This is a note",
+                clinical_notes: "clinical_notes",
                 created_at: "2020-01-01T00:00:00Z",
                 updated_at: "2020-01-01T00:00:00Z",
                 events: [
@@ -5168,6 +5567,12 @@ describe("LabTestsClient", () => {
                     { id: 3, created_at: "2022-01-03T00:00:00Z", status: "collecting_sample.testkit.transit_customer" },
                 ],
                 status: "collecting_sample",
+                last_event: {
+                    id: 3,
+                    created_at: "2022-01-03T00:00:00Z",
+                    status: "collecting_sample.testkit.transit_customer",
+                    status_detail: "fulfillment_error",
+                },
                 physician: { first_name: "first_name", last_name: "last_name", npi: "npi" },
                 health_insurance_id: "health_insurance_id",
                 requisition_form_url: "https://www.example.com",
@@ -5191,6 +5596,29 @@ describe("LabTestsClient", () => {
                 has_missing_results: true,
                 expected_result_by_date: "expected_result_by_date",
                 worst_case_result_by_date: "worst_case_result_by_date",
+                origin: "initial",
+                order_transaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            low_level_status: "transit_customer",
+                            low_level_status_created_at: "2020-01-05T00:00:00Z",
+                            origin: "initial",
+                            created_at: "2020-01-01T00:00:00Z",
+                            updated_at: "2020-01-05T00:00:00Z",
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            low_level_status: "requisition_created",
+                            low_level_status_created_at: "2020-01-05T01:00:00Z",
+                            origin: "redraw",
+                            created_at: "2020-01-05T01:00:00Z",
+                            updated_at: "2020-01-05T01:00:00Z",
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
@@ -5206,9 +5634,9 @@ describe("LabTestsClient", () => {
         const response = await client.labTests.updateOnSiteCollectionOrderDrawCompleted("order_id");
         expect(response).toEqual({
             order: {
-                userId: "82900d44-4b2d-4adf-a1bb-d0372468ebf4",
-                id: "fdf02066-86d7-486e-8646-d81fb661d2c1",
-                teamId: "525ea597-8447-469c-9031-b6b08ca0bad9",
+                userId: "4263c5ab-21fe-4e33-8adc-50309c45016b",
+                id: "4316e951-2cac-4fe1-ae74-b6e6ff062e45",
+                teamId: "9c90e3ca-01eb-4f08-b223-51930dcdf638",
                 patientDetails: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -5241,6 +5669,7 @@ describe("LabTestsClient", () => {
                     state: "CA",
                     zip: "91189",
                     country: "United States",
+                    accessNotes: "access_notes",
                     phoneNumber: "+11234567890",
                 },
                 labTest: {
@@ -5307,9 +5736,9 @@ describe("LabTestsClient", () => {
                 details: {
                     type: "testkit",
                     data: {
-                        id: "ab71e177-9f45-4657-a9c8-5998150cbec4",
+                        id: "d187dc03-50f2-4290-ae8b-8d07c6096e2f",
                         shipment: {
-                            id: "0bc8393b-a913-4039-a970-00b63639bfe9",
+                            id: "0ee60691-e77e-434f-8471-f513abe0371c",
                             outboundTrackingNumber: "<outbound_tracking_number>",
                             outboundTrackingUrl: "<outbound_tracking_url>",
                             inboundTrackingNumber: "<inbound_tracking_number>",
@@ -5324,6 +5753,7 @@ describe("LabTestsClient", () => {
                 },
                 sampleId: "123456789",
                 notes: "This is a note",
+                clinicalNotes: "clinical_notes",
                 createdAt: new Date("2020-01-01T00:00:00.000Z"),
                 updatedAt: new Date("2020-01-01T00:00:00.000Z"),
                 events: [
@@ -5344,6 +5774,12 @@ describe("LabTestsClient", () => {
                     },
                 ],
                 status: "collecting_sample",
+                lastEvent: {
+                    id: 3,
+                    createdAt: new Date("2022-01-03T00:00:00.000Z"),
+                    status: "collecting_sample.testkit.transit_customer",
+                    statusDetail: "fulfillment_error",
+                },
                 physician: {
                     firstName: "first_name",
                     lastName: "last_name",
@@ -5371,6 +5807,29 @@ describe("LabTestsClient", () => {
                 hasMissingResults: true,
                 expectedResultByDate: "expected_result_by_date",
                 worstCaseResultByDate: "worst_case_result_by_date",
+                origin: "initial",
+                orderTransaction: {
+                    id: "a655f0e4-6405-4a1d-80b7-66f06c2108a7",
+                    status: "active",
+                    orders: [
+                        {
+                            id: "d55210cc-3d9f-4115-8262-5013f700c7be",
+                            lowLevelStatus: "transit_customer",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                            origin: "initial",
+                            createdAt: new Date("2020-01-01T00:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T00:00:00.000Z"),
+                        },
+                        {
+                            id: "e66321dd-4e0g-5226-9373-6124g811d8cf",
+                            lowLevelStatus: "requisition_created",
+                            lowLevelStatusCreatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                            origin: "redraw",
+                            createdAt: new Date("2020-01-05T01:00:00.000Z"),
+                            updatedAt: new Date("2020-01-05T01:00:00.000Z"),
+                        },
+                    ],
+                },
             },
             status: "status",
             message: "message",
