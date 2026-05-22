@@ -1,6 +1,8 @@
 export * from "./aggregate/client/requests/index.js";
 export * as aggregate from "./aggregate/index.js";
 export * from "./aggregate/types/index.js";
+export * from "./compendium/client/requests/index.js";
+export * as compendium from "./compendium/index.js";
 export * from "./insurance/client/requests/index.js";
 export * as insurance from "./insurance/index.js";
 export * from "./labTests/client/requests/index.js";
@@ -8,7 +10,6 @@ export * as labTests from "./labTests/index.js";
 export * from "./labTests/types/index.js";
 export * from "./link/client/requests/index.js";
 export * as link from "./link/index.js";
-export * from "./link/types/index.js";
 export * from "./order/client/requests/index.js";
 export * as order from "./order/index.js";
 export * from "./payor/client/requests/index.js";

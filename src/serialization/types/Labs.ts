@@ -9,6 +9,7 @@ export const Labs: core.serialization.Schema<serializers.Labs.Raw, Vital.Labs> =
     "spiriplex",
     "ussl",
     "quest",
+    "sonora_quest",
     "labcorp",
     "bioreference",
     "us_biotek",
@@ -17,6 +18,7 @@ export const Labs: core.serialization.Schema<serializers.Labs.Raw, Vital.Labs> =
     "ihd",
     "nexus",
     "my_uti",
+    "crl",
 ]);
 
 export declare namespace Labs {
@@ -25,6 +27,7 @@ export declare namespace Labs {
         | "spiriplex"
         | "ussl"
         | "quest"
+        | "sonora_quest"
         | "labcorp"
         | "bioreference"
         | "us_biotek"
@@ -32,5 +35,6 @@ export declare namespace Labs {
         | "sanocardio"
         | "ihd"
         | "nexus"
-        | "my_uti";
+        | "my_uti"
+        | "crl";
 }
