@@ -1,0 +1,17 @@
+## 4.0.0 - 2026-03-30
+* Breaking changes in this release:
+* The optional `teamId` parameter has been removed from `BulkExportConnectionsBody`, `BulkImportConnectionsBody`, `BulkPauseConnectionsBody`, and `BulkTriggerHistoricalPullBody` interfaces. Remove any usage of these parameters from your bulk operation calls.
+* The `insulin_injection` enum value has been removed from `IntervalTimeseriesExprTimeseries`. Update any code that references this value.
+* New capabilities:
+* Added support for Sonora Quest lab provider in appointment and lab-related enums
+* Added support for Apero and Pverify external payor providers
+* Added `derived_readiness` index support for enhanced data querying
+* The lab report parser now supports uploading multiple files in a single request. The `parserCreateJob` method now accepts an array of files instead of a single file parameter.
+* New optional parameters added to lab test methods: `orderTransactionId` for filtering orders and `allowStale` for appointment availability caching. The SDK also includes improved JSDoc documentation for better developer experience.
+* The SDK now includes three new client modules: CompendiumClient, LabAccountClient, and OrderTransactionClient, providing access to additional Vital API endpoints. Enhanced insulin injection data model with new optional fields for delivery mode, delivery form, and bolus purpose. Added support for Samsung Health as a manual provider and expanded lab provider support.
+* The SDK now includes three new client modules: CompendiumClient for lab test search and standardization, LabAccountClient for team lab account management, and OrderTransactionClient for transaction-level order tracking and result retrieval. Enhanced lab testing functionality includes new optional parameters for lab-specific filtering and appointment booking improvements with asynchronous confirmation support.
+* The SDK now supports insulin injection data tracking with comprehensive delivery mode and bolus purpose classifications. New order transaction management capabilities allow tracking of lab order workflows and statuses. Additional provider support includes TandemSource for insulin pump data and Samsung Health for manual health data entry. Lab account management features now include delegated flow configurations for custom lab testing workflows.
+* The SDK now supports compendium search and conversion operations for lab test discovery through the new CompendiumClient. Insulin injection samples include additional delivery details (mode, form, bolus purpose). Lab account management capabilities have been added with support for delegated flows and business unit configuration. Enhanced lab workflows now support clinical notes and appointment scheduling with detailed tracking.
+* The SDK now supports order transaction management with new `ClientFacingOrderTransaction` and related types for tracking multi-order transactions. Added compendium search and conversion capabilities for lab test provider mappings. Enhanced data models include insulin injection monitoring with delivery modes and bolus purposes, derived readiness analytics, and extended address fields with access notes.
+* The SDK now includes new types for compendium search functionality, US address management with state validation, and enhanced lab order tracking. New capabilities include SearchCompendiumResponse for search results, UsState enum for state validation, UserAddress type for user addresses, and additional properties for insulin injection and lab management workflows.
+

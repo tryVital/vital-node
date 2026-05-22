@@ -6,6 +6,7 @@ export type QuerySelectItem =
     | Vital.AggregateExpr
     | Vital.GroupKeyColumnExpr
     | Vital.SleepColumnExpr
+    | Vital.DerivedReadinessColumnExpr
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr
@@ -18,6 +19,7 @@ export type QuerySelectItem =
     | Vital.UnrecognizedValueMacroExpr
     | Vital.DiscreteTimeseriesExpr
     | Vital.IntervalTimeseriesExpr
+    | Vital.InsulinInjectionTimeseriesExpr
     | Vital.BloodPressureTimeseriesExpr
     | Vital.TemperatureTimeseriesExpr
     | Vital.WorkoutDurationTimeseriesExpr
