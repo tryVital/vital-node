@@ -9,7 +9,7 @@ export interface UserInfo {
     phoneNumber: string;
     gender: string;
     dob: string;
-    address: Vital.Address;
+    address: Vital.UserAddress;
     medicalProxy?: Vital.GuarantorDetails;
     race?: Vital.Race;
     ethnicity?: Vital.Ethnicity;
