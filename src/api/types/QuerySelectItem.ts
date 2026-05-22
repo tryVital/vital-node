@@ -6,6 +6,7 @@ export type QuerySelectItem =
     | Vital.AggregateExpr
     | Vital.GroupKeyColumnExpr
     | Vital.SleepColumnExpr
+    | Vital.DerivedReadinessColumnExpr
     | Vital.ActivityColumnExpr
     | Vital.WorkoutColumnExpr
     | Vital.BodyColumnExpr

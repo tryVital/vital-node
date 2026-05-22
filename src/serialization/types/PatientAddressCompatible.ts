@@ -15,6 +15,7 @@ export const PatientAddressCompatible: core.serialization.ObjectSchema<
     state: core.serialization.string(),
     zip: core.serialization.string(),
     country: core.serialization.string(),
+    accessNotes: core.serialization.property("access_notes", core.serialization.string().optional()),
     phoneNumber: core.serialization.property("phone_number", core.serialization.string().optional()),
 });
 
@@ -27,6 +28,7 @@ export declare namespace PatientAddressCompatible {
         state: string;
         zip: string;
         country: string;
+        access_notes?: string | null;
         phone_number?: string | null;
     }
 }
