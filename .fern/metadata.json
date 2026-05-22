@@ -1,7 +1,7 @@
 {
-    "cliVersion": "3.35.1",
+    "cliVersion": "4.58.0",
     "generatorName": "fernapi/fern-typescript-sdk",
-    "generatorVersion": "3.43.1",
+    "generatorVersion": "3.51.3",
     "generatorConfig": {
         "namespaceExport": "Vital",
         "inlineFileProperties": false,
@@ -11,5 +11,6 @@
         "omitUndefined": false,
         "skipResponseValidation": false
     },
-    "sdkVersion": "3.1.551"
+    "originGitCommit": "719e71750189cf2f94ce397052c26c1d6f020a69",
+    "sdkVersion": "4.0.0"
 }
