@@ -3,6 +3,7 @@
 /**
  * @example
  *     {
+ *         labSlug: "lab_slug",
  *         name: "name",
  *         aLaCarteEnabled: true,
  *         labAccountId: "lab_account_id",
@@ -13,6 +14,8 @@
 export interface LabTestsGetMarkersRequest {
     /** The identifier Vital assigned to a lab partner. */
     labId?: number | number[];
+    /** The slug of the lab for these markers. If both lab_id and lab_slug are provided, lab_slug will be used. */
+    labSlug?: string;
     /** The name or test code of an individual biomarker or a panel. */
     name?: string;
     aLaCarteEnabled?: boolean;
