@@ -20,6 +20,7 @@ export interface ClientFacingOrder {
     sampleId?: string;
     /** Notes associated with the order */
     notes?: string;
+    clinicalNotes?: string;
     /** When your order was created */
     createdAt: Date;
     /** When your order was last updated. */
@@ -50,4 +51,6 @@ export interface ClientFacingOrder {
     expectedResultByDate?: string;
     /** The latest date by which the order result is expected to be available. */
     worstCaseResultByDate?: string;
+    origin?: Vital.OrderOrigin;
+    orderTransaction?: Vital.ClientFacingOrderTransaction;
 }

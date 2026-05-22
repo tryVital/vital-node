@@ -10,6 +10,7 @@ import { AwakeAtValueMacroExpr } from "./AwakeAtValueMacroExpr.js";
 import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr.js";
 import { BodyColumnExpr } from "./BodyColumnExpr.js";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr.js";
+import { DerivedReadinessColumnExpr } from "./DerivedReadinessColumnExpr.js";
 import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr.js";
 import { GroupKeyColumnExpr } from "./GroupKeyColumnExpr.js";
 import { IndexColumnExpr } from "./IndexColumnExpr.js";
@@ -30,6 +31,7 @@ export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectI
         AggregateExpr,
         GroupKeyColumnExpr,
         SleepColumnExpr,
+        DerivedReadinessColumnExpr,
         ActivityColumnExpr,
         WorkoutColumnExpr,
         BodyColumnExpr,
@@ -55,6 +57,7 @@ export declare namespace QuerySelectItem {
         | AggregateExpr.Raw
         | GroupKeyColumnExpr.Raw
         | SleepColumnExpr.Raw
+        | DerivedReadinessColumnExpr.Raw
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
