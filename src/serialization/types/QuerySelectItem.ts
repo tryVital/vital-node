@@ -7,12 +7,15 @@ import { ActivityColumnExpr } from "./ActivityColumnExpr.js";
 import { AggregateExpr } from "./AggregateExpr.js";
 import { AsleepAtValueMacroExpr } from "./AsleepAtValueMacroExpr.js";
 import { AwakeAtValueMacroExpr } from "./AwakeAtValueMacroExpr.js";
+import { AwakeningsValueMacroExpr } from "./AwakeningsValueMacroExpr.js";
 import { BloodPressureTimeseriesExpr } from "./BloodPressureTimeseriesExpr.js";
 import { BodyColumnExpr } from "./BodyColumnExpr.js";
 import { ChronotypeValueMacroExpr } from "./ChronotypeValueMacroExpr.js";
+import { DerivedReadinessColumnExpr } from "./DerivedReadinessColumnExpr.js";
 import { DiscreteTimeseriesExpr } from "./DiscreteTimeseriesExpr.js";
 import { GroupKeyColumnExpr } from "./GroupKeyColumnExpr.js";
 import { IndexColumnExpr } from "./IndexColumnExpr.js";
+import { InsulinInjectionTimeseriesExpr } from "./InsulinInjectionTimeseriesExpr.js";
 import { IntervalTimeseriesExpr } from "./IntervalTimeseriesExpr.js";
 import { MealColumnExpr } from "./MealColumnExpr.js";
 import { NoteTimeseriesExpr } from "./NoteTimeseriesExpr.js";
@@ -30,6 +33,7 @@ export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectI
         AggregateExpr,
         GroupKeyColumnExpr,
         SleepColumnExpr,
+        DerivedReadinessColumnExpr,
         ActivityColumnExpr,
         WorkoutColumnExpr,
         BodyColumnExpr,
@@ -39,9 +43,11 @@ export const QuerySelectItem: core.serialization.Schema<serializers.QuerySelectI
         ChronotypeValueMacroExpr,
         AsleepAtValueMacroExpr,
         AwakeAtValueMacroExpr,
+        AwakeningsValueMacroExpr,
         UnrecognizedValueMacroExpr,
         DiscreteTimeseriesExpr,
         IntervalTimeseriesExpr,
+        InsulinInjectionTimeseriesExpr,
         BloodPressureTimeseriesExpr,
         TemperatureTimeseriesExpr,
         WorkoutDurationTimeseriesExpr,
@@ -55,6 +61,7 @@ export declare namespace QuerySelectItem {
         | AggregateExpr.Raw
         | GroupKeyColumnExpr.Raw
         | SleepColumnExpr.Raw
+        | DerivedReadinessColumnExpr.Raw
         | ActivityColumnExpr.Raw
         | WorkoutColumnExpr.Raw
         | BodyColumnExpr.Raw
@@ -64,9 +71,11 @@ export declare namespace QuerySelectItem {
         | ChronotypeValueMacroExpr.Raw
         | AsleepAtValueMacroExpr.Raw
         | AwakeAtValueMacroExpr.Raw
+        | AwakeningsValueMacroExpr.Raw
         | UnrecognizedValueMacroExpr.Raw
         | DiscreteTimeseriesExpr.Raw
         | IntervalTimeseriesExpr.Raw
+        | InsulinInjectionTimeseriesExpr.Raw
         | BloodPressureTimeseriesExpr.Raw
         | TemperatureTimeseriesExpr.Raw
         | WorkoutDurationTimeseriesExpr.Raw
