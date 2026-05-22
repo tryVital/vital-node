@@ -18,6 +18,7 @@ export const ClientFacingAppointment: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     userId: core.serialization.property("user_id", core.serialization.string()),
     orderId: core.serialization.property("order_id", core.serialization.string()),
+    orderTransactionId: core.serialization.property("order_transaction_id", core.serialization.string().optional()),
     address: UsAddress,
     location: LngLat,
     startAt: core.serialization.property("start_at", core.serialization.date().optional()),
@@ -29,6 +30,7 @@ export const ClientFacingAppointment: core.serialization.ObjectSchema<
     providerId: core.serialization.property("provider_id", core.serialization.string()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     canReschedule: core.serialization.property("can_reschedule", core.serialization.boolean()),
+    appointmentNotes: core.serialization.property("appointment_notes", core.serialization.string().optional()),
     eventStatus: core.serialization.property("event_status", AppointmentEventStatus),
     eventData: core.serialization.property(
         "event_data",
@@ -42,6 +44,7 @@ export declare namespace ClientFacingAppointment {
         id: string;
         user_id: string;
         order_id: string;
+        order_transaction_id?: string | null;
         address: UsAddress.Raw;
         location: LngLat.Raw;
         start_at?: string | null;
@@ -53,6 +56,7 @@ export declare namespace ClientFacingAppointment {
         provider_id: string;
         external_id?: string | null;
         can_reschedule: boolean;
+        appointment_notes?: string | null;
         event_status: AppointmentEventStatus.Raw;
         event_data?: Record<string, unknown> | null;
         events: ClientFacingAppointmentEvent.Raw[];
