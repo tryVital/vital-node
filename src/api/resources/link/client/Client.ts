@@ -48,21 +48,14 @@ export class LinkClient {
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.BulkOpsResponse>> {
         const { nextCursor, pageSize, teamId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (pageSize != null) {
-            _queryParams.page_size = pageSize;
-        }
-
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkListBulkOpsRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            next_cursor: nextCursor,
+            page_size: pageSize,
+            team_id:
+                teamId != null
+                    ? serializers.LinkListBulkOpsRequestTeamId.jsonOrThrow(teamId, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -152,13 +145,12 @@ export class LinkClient {
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.BulkImportConnectionsResponse>> {
         const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkImportRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            team_id:
+                teamId != null
+                    ? serializers.LinkBulkImportRequestTeamId.jsonOrThrow(teamId, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -245,13 +237,14 @@ export class LinkClient {
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<unknown>> {
         const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkTriggerHistoricalPullRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            team_id:
+                teamId != null
+                    ? serializers.LinkBulkTriggerHistoricalPullRequestTeamId.jsonOrThrow(teamId, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -334,13 +327,12 @@ export class LinkClient {
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.BulkExportConnectionsResponse>> {
         const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkExportRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            team_id:
+                teamId != null
+                    ? serializers.LinkBulkExportRequestTeamId.jsonOrThrow(teamId, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -427,13 +419,12 @@ export class LinkClient {
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<unknown>> {
         const { teamId, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (teamId != null) {
-            _queryParams.team_id = serializers.LinkBulkPauseRequestTeamId.jsonOrThrow(teamId, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            team_id:
+                teamId != null
+                    ? serializers.LinkBulkPauseRequestTeamId.jsonOrThrow(teamId, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -686,12 +677,10 @@ export class LinkClient {
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.VitalTokenCreatedResponse>> {
         const { userId, expiresAt } = request;
-        const _queryParams: Record<string, unknown> = {};
-        _queryParams.user_id = userId;
-        if (expiresAt != null) {
-            _queryParams.expires_at = expiresAt.toISOString();
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            user_id: userId,
+            expires_at: expiresAt != null ? expiresAt?.toISOString() : undefined,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -847,9 +836,7 @@ export class LinkClient {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.tokenState({
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.tokenState()
      */
     public tokenState(
         request: Vital.LinkTokenStateRequest = {},
@@ -930,7 +917,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.emailAuth({
-     *         vitalLinkToken: "x-vital-link-token",
      *         email: "email",
      *         provider: "oura",
      *         authType: "password"
@@ -1010,7 +996,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.passwordAuth({
-     *         vitalLinkToken: "x-vital-link-token",
      *         username: "username",
      *         password: "password",
      *         provider: "oura",
@@ -1091,9 +1076,7 @@ export class LinkClient {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.generateOauthLink("oura", {
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.generateOauthLink("oura")
      */
     public generateOauthLink(
         oauth_provider: Vital.OAuthProviders,
@@ -1182,7 +1165,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.connectPasswordProvider("whoop", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         username: "username",
      *         password: "password"
      *     })
@@ -1277,7 +1259,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.completePasswordProviderMfa("whoop", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         mfaCode: "mfa_code"
      *     })
      */
@@ -1373,7 +1354,6 @@ export class LinkClient {
      *
      * @example
      *     await client.link.connectEmailAuthProvider("freestyle_libre", {
-     *         vitalLinkToken: "x-vital-link-token",
      *         email: "email"
      *     })
      */
@@ -1457,9 +1437,7 @@ export class LinkClient {
      * @throws {@link Vital.UnprocessableEntityError}
      *
      * @example
-     *     await client.link.getAllProviders({
-     *         vitalLinkToken: "x-vital-link-token"
-     *     })
+     *     await client.link.getAllProviders()
      */
     public getAllProviders(
         request: Vital.LinkGetAllProvidersRequest = {},
@@ -1555,10 +1533,15 @@ export class LinkClient {
         request: Vital.ManualConnectionData,
         requestOptions?: LinkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Record<string, boolean>>> {
+        const { vitalIosSdkVersion, vitalAndroidSdkVersion, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
+            mergeOnlyDefinedHeaders({
+                "x-vital-ios-sdk-version": vitalIosSdkVersion,
+                "x-vital-android-sdk-version": vitalAndroidSdkVersion,
+            }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -1573,7 +1556,7 @@ export class LinkClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.ManualConnectionData.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.ManualConnectionData.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
