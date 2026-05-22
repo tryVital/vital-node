@@ -250,15 +250,10 @@ export class AggregateClient {
         requestOptions?: AggregateClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ContinuousQueryTaskHistoryResponse>> {
         const { nextCursor, limit } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
-        if (limit != null) {
-            _queryParams.limit = limit;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            next_cursor: nextCursor,
+            limit,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
