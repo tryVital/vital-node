@@ -50,27 +50,16 @@ export class IntrospectClient {
         requestOptions?: IntrospectClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.UserResourcesResponse>> {
         const { userId, provider, userLimit, cursor, nextCursor } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (userId != null) {
-            _queryParams.user_id = userId;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = serializers.Providers.jsonOrThrow(provider, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (userLimit != null) {
-            _queryParams.user_limit = userLimit;
-        }
-
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            user_id: userId,
+            provider:
+                provider != null
+                    ? serializers.Providers.jsonOrThrow(provider, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            user_limit: userLimit,
+            cursor,
+            next_cursor: nextCursor,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -156,27 +145,16 @@ export class IntrospectClient {
         requestOptions?: IntrospectClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.UserHistoricalPullsResponse>> {
         const { userId, provider, userLimit, cursor, nextCursor } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (userId != null) {
-            _queryParams.user_id = userId;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = serializers.Providers.jsonOrThrow(provider, { unrecognizedObjectKeys: "strip" });
-        }
-
-        if (userLimit != null) {
-            _queryParams.user_limit = userLimit;
-        }
-
-        if (cursor != null) {
-            _queryParams.cursor = cursor;
-        }
-
-        if (nextCursor != null) {
-            _queryParams.next_cursor = nextCursor;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            user_id: userId,
+            provider:
+                provider != null
+                    ? serializers.Providers.jsonOrThrow(provider, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            user_limit: userLimit,
+            cursor,
+            next_cursor: nextCursor,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

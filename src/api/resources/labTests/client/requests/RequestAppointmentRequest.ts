@@ -18,4 +18,5 @@ export interface RequestAppointmentRequest {
     /** At-home phlebotomy appointment address. */
     address: Vital.UsAddress;
     provider: Vital.AppointmentProvider;
+    appointmentNotes?: string;
 }
