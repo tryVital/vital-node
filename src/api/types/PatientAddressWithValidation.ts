@@ -8,5 +8,6 @@ export interface PatientAddressWithValidation {
     state: string;
     zip: string;
     country: string;
+    accessNotes?: string;
     phoneNumber?: string;
 }

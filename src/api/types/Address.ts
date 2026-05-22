@@ -7,4 +7,5 @@ export interface Address {
     zip: string;
     city: string;
     state: string;
+    accessNotes?: string;
 }

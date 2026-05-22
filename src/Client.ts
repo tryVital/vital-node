@@ -3,16 +3,19 @@
 import { ActivityClient } from "./api/resources/activity/client/Client.js";
 import { AggregateClient } from "./api/resources/aggregate/client/Client.js";
 import { BodyClient } from "./api/resources/body/client/Client.js";
+import { CompendiumClient } from "./api/resources/compendium/client/Client.js";
 import { DevicesClient } from "./api/resources/devices/client/Client.js";
 import { ElectrocardiogramClient } from "./api/resources/electrocardiogram/client/Client.js";
 import { InsuranceClient } from "./api/resources/insurance/client/Client.js";
 import { IntrospectClient } from "./api/resources/introspect/client/Client.js";
+import { LabAccountClient } from "./api/resources/labAccount/client/Client.js";
 import { LabReportClient } from "./api/resources/labReport/client/Client.js";
 import { LabTestsClient } from "./api/resources/labTests/client/Client.js";
 import { LinkClient } from "./api/resources/link/client/Client.js";
 import { MealClient } from "./api/resources/meal/client/Client.js";
 import { MenstrualCycleClient } from "./api/resources/menstrualCycle/client/Client.js";
 import { OrderClient } from "./api/resources/order/client/Client.js";
+import { OrderTransactionClient } from "./api/resources/orderTransaction/client/Client.js";
 import { PayorClient } from "./api/resources/payor/client/Client.js";
 import { ProfileClient } from "./api/resources/profile/client/Client.js";
 import { ProvidersClient } from "./api/resources/providers/client/Client.js";
@@ -51,6 +54,9 @@ export class VitalClient {
     protected _providers: ProvidersClient | undefined;
     protected _introspect: IntrospectClient | undefined;
     protected _labTests: LabTestsClient | undefined;
+    protected _compendium: CompendiumClient | undefined;
+    protected _labAccount: LabAccountClient | undefined;
+    protected _orderTransaction: OrderTransactionClient | undefined;
     protected _testkit: TestkitClient | undefined;
     protected _order: OrderClient | undefined;
     protected _insurance: InsuranceClient | undefined;
@@ -128,6 +134,18 @@ export class VitalClient {
 
     public get labTests(): LabTestsClient {
         return (this._labTests ??= new LabTestsClient(this._options));
+    }
+
+    public get compendium(): CompendiumClient {
+        return (this._compendium ??= new CompendiumClient(this._options));
+    }
+
+    public get labAccount(): LabAccountClient {
+        return (this._labAccount ??= new LabAccountClient(this._options));
+    }
+
+    public get orderTransaction(): OrderTransactionClient {
+        return (this._orderTransaction ??= new OrderTransactionClient(this._options));
     }
 
     public get testkit(): TestkitClient {
