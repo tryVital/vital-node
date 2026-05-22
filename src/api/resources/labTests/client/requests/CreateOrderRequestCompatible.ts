@@ -5,8 +5,6 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         idempotencyKey: "X-Idempotency-Key",
- *         idempotencyError: "no-cache",
  *         userId: "user_id",
  *         patientDetails: {
  *             firstName: "first_name",
@@ -43,6 +41,7 @@ export interface CreateOrderRequestCompatible {
     activateBy?: string;
     aoeAnswers?: Vital.AoEAnswer[];
     passthrough?: string;
+    clinicalNotes?: string;
     labAccountId?: string;
     creatorMemberId?: string;
     patientDetails: Vital.PatientDetailsWithValidation;
