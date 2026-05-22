@@ -18,6 +18,7 @@ export const ClientFacingAppointment: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     userId: core.serialization.property("user_id", core.serialization.string()),
     orderId: core.serialization.property("order_id", core.serialization.string()),
+    orderTransactionId: core.serialization.property("order_transaction_id", core.serialization.string().optional()),
     address: UsAddress,
     location: LngLat,
     startAt: core.serialization.property("start_at", core.serialization.date().optional()),
@@ -42,6 +43,7 @@ export declare namespace ClientFacingAppointment {
         id: string;
         user_id: string;
         order_id: string;
+        order_transaction_id?: string | null;
         address: UsAddress.Raw;
         location: LngLat.Raw;
         start_at?: string | null;
