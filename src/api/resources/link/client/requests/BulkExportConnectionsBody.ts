@@ -5,12 +5,10 @@ import type * as Vital from "../../../../index.js";
 /**
  * @example
  *     {
- *         teamId: "infer_from_context",
  *         provider: "oura"
  *     }
  */
 export interface BulkExportConnectionsBody {
-    teamId?: Vital.LinkBulkExportRequestTeamId;
     userIds?: string[];
     provider: Vital.OAuthProviders;
     nextToken?: string;
