@@ -3,7 +3,6 @@
 /**
  * @example
  *     {
- *         vitalLinkToken: "x-vital-link-token",
  *         mfaCode: "mfa_code"
  *     }
  */
