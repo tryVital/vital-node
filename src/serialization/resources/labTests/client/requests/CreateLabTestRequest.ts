@@ -21,6 +21,7 @@ export const CreateLabTestRequest: core.serialization.Schema<
     method: LabTestCollectionMethod,
     description: core.serialization.string(),
     fasting: core.serialization.boolean().optional(),
+    labAccountId: core.serialization.property("lab_account_id", core.serialization.string().optional()),
 });
 
 export declare namespace CreateLabTestRequest {
@@ -31,5 +32,6 @@ export declare namespace CreateLabTestRequest {
         method: LabTestCollectionMethod.Raw;
         description: string;
         fasting?: boolean | null;
+        lab_account_id?: string | null;
     }
 }

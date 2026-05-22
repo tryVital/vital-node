@@ -48,21 +48,14 @@ export class InsuranceClient {
         requestOptions?: InsuranceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingPayorSearchResponse[]>> {
         const { insuranceName, provider, providerPayorId } = request;
-        const _queryParams: Record<string, unknown> = {};
-        if (insuranceName != null) {
-            _queryParams.insurance_name = insuranceName;
-        }
-
-        if (provider != null) {
-            _queryParams.provider = serializers.PayorCodeExternalProvider.jsonOrThrow(provider, {
-                unrecognizedObjectKeys: "strip",
-            });
-        }
-
-        if (providerPayorId != null) {
-            _queryParams.provider_payor_id = providerPayorId;
-        }
-
+        const _queryParams: Record<string, unknown> = {
+            insurance_name: insuranceName,
+            provider:
+                provider != null
+                    ? serializers.PayorCodeExternalProvider.jsonOrThrow(provider, { unrecognizedObjectKeys: "strip" })
+                    : undefined,
+            provider_payor_id: providerPayorId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -225,8 +218,9 @@ export class InsuranceClient {
         requestOptions?: InsuranceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Vital.ClientFacingDiagnosisInformation[]>> {
         const { diagnosisQuery } = request;
-        const _queryParams: Record<string, unknown> = {};
-        _queryParams.diagnosis_query = diagnosisQuery;
+        const _queryParams: Record<string, unknown> = {
+            diagnosis_query: diagnosisQuery,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
