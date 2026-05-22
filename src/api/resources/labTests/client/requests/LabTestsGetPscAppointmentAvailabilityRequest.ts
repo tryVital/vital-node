@@ -8,7 +8,8 @@ import type * as Vital from "../../../../index.js";
  *         lab: "quest",
  *         startDate: "start_date",
  *         zipCode: "zip_code",
- *         radius: "10"
+ *         radius: "10",
+ *         allowStale: true
  *     }
  */
 export interface LabTestsGetPscAppointmentAvailabilityRequest {
@@ -20,6 +21,8 @@ export interface LabTestsGetPscAppointmentAvailabilityRequest {
     siteCodes?: string | string[];
     /** Zip code of the area to check */
     zipCode?: string;
-    /** Radius in which to search. (meters) */
+    /** Radius in which to search in miles */
     radius?: Vital.AllowedRadius;
+    /** If true, allows cached availability data to be returned. */
+    allowStale?: boolean;
 }
